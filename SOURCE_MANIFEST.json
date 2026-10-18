@@ -354,8 +354,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6359,
-      "sha256": "ab33167e2c15edc2c49277d6af42645deae3bbf7679ce44fa8f4308ab12edd52"
+      "bytes": 5737,
+      "sha256": "2f12acb0e769b718f82403cfc372d0ca6f08b3b51c26a861badfe87998a878c1"
     },
     {
       "path": "LICENSE",
@@ -426,6 +426,11 @@
       "path": "docs/remix.md",
       "bytes": 2434,
       "sha256": "309c28224ca0e8d534dd8a7d485e912120ca7685ed231964cae4f4d1526c7b7a"
+    },
+    {
+      "path": "docs/images/neon-defender.png",
+      "bytes": 283348,
+      "sha256": "8588f7a89df1c505e951c5684487bc2838259bff32b026bc1f8b7b17074410f7"
     }
   ]
 }
