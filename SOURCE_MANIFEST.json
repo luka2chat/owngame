@@ -1,5 +1,5 @@
 {
-  "version": "0.8.0",
+  "version": "0.9.0",
   "scope": "Explicit public toolkit and reviewed Star Letters game source; private production files excluded",
   "files": [
     {
@@ -29,8 +29,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 1326,
-      "sha256": "e65c463d0a29dcf724e94146a0659a0528f81d2d6521eb1aad165e5f70b8e4b7"
+      "bytes": 2074,
+      "sha256": "b03d29c2f4546a584649737a64c903b4b0daac6d5bfc040001fa8acb96545d75"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -44,8 +44,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 17819,
-      "sha256": "4cb84e11a7a74be979ab7c5d2bbc97b3531823a505037cbbd080ce2addb807cc"
+      "bytes": 18216,
+      "sha256": "564d01f1c163df014379df1517ab5a91f8753a14a7192390a7b73dae83e5cedb"
     },
     {
       "path": "SECURITY.md",
@@ -94,8 +94,8 @@
     },
     {
       "path": "docs/install.md",
-      "bytes": 3868,
-      "sha256": "da44df295895997c5a338f46b22f8d7ed3b66baa8ee4ddc9c943a58830210311"
+      "bytes": 4723,
+      "sha256": "091a07de145b120277ca9989d06ddad36a993b90a2918140895860f8f23a9fd0"
     },
     {
       "path": "docs/quickstart.md",
@@ -109,8 +109,8 @@
     },
     {
       "path": "docs/remix.md",
-      "bytes": 2434,
-      "sha256": "309c28224ca0e8d534dd8a7d485e912120ca7685ed231964cae4f4d1526c7b7a"
+      "bytes": 2435,
+      "sha256": "e65c74e76f30bd711f72c0fcb7afcdf44ca91d21cb75eee6c739425e98ab7ee8"
     },
     {
       "path": "docs/style-recipes.json",
@@ -5254,8 +5254,8 @@
     },
     {
       "path": "scripts/release/verify-package.mjs",
-      "bytes": 11588,
-      "sha256": "959dd3375d2b72d7a9decdc4eb5040a834f87fb027e2e92310e834c030dbe731"
+      "bytes": 14359,
+      "sha256": "c4f238b318637597cebeed366014972fb7671d68b6d4e597d6a39f12f8d845eb"
     },
     {
       "path": "scripts/toolkit/build-cocos.mjs",
@@ -6419,13 +6419,13 @@
     },
     {
       "path": "templates/unity-home/README.md",
-      "bytes": 3927,
-      "sha256": "487c1aae25ac61c91801638bd9d6e4a4019bc67903de4bdc65d53d5c14f77271"
+      "bytes": 4213,
+      "sha256": "dde526c18c19f1fb9594c04366efd67ca067d3f8bf5e1919bbd36466b582ccc5"
     },
     {
       "path": "templates/unity-home/SOURCE_MANIFEST.json",
       "bytes": 58997,
-      "sha256": "fba1ad1a171eca6b1abe2fdc9258c0819c8f4263874d49d77bcd4ece1f5d71b8"
+      "sha256": "0b48bb0d269aa372d02a2ddd94edc9ab97f6b47bc156651eaf3119f30b966de1"
     },
     {
       "path": "templates/unity-home/THIRD_PARTY_NOTICES.md",
