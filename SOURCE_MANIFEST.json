@@ -354,8 +354,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3677,
-      "sha256": "5844fb2c5ad5aec467abbb65020211f6480b6551f012387046b3eb45f49093b3"
+      "bytes": 6359,
+      "sha256": "ab33167e2c15edc2c49277d6af42645deae3bbf7679ce44fa8f4308ab12edd52"
     },
     {
       "path": "LICENSE",
@@ -421,6 +421,11 @@
       "path": "docs/images/moonlit-lines.png",
       "bytes": 359719,
       "sha256": "2e48923f5479f97fef8709181f6fa47d527f7cca636c6108d6ed200bb8e6a7bc"
+    },
+    {
+      "path": "docs/remix.md",
+      "bytes": 2434,
+      "sha256": "309c28224ca0e8d534dd8a7d485e912120ca7685ed231964cae4f4d1526c7b7a"
     }
   ]
 }
