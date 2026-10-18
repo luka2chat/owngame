@@ -33,7 +33,7 @@ try{
  run(npm,['install','--ignore-scripts','--no-audit','--no-fund',...(process.argv.includes('--offline')?['--offline']:[]),tar],workspace);
  const installed=path.join(workspace,'node_modules/@owngame/cli');
  // Exercise npm's default executable inference, not only an explicit bin name.
- const npxHelp=run(npm,['exec','--yes',...(process.argv.includes('--offline')?['--offline']:[]),tar,'--','--help'],workspace);
+ const npxHelp=run(npm,['exec','--yes',...(process.argv.includes('--offline')?['--offline']:[]),'--',`file:${tar}`,'--help'],workspace);
  assert(npxHelp.includes('setup [--agent'),'npx package entry is not discoverable');
  for(const file of files){const b=await fs.readFile(path.join(installed,file));if(b.length<1024*1024&&/\.(json|js|ts|mjs|md|map)$/.test(file))assert(!/\/(?:Users|Volumes)\/[A-Za-z0-9_.-]+|\b192\.168\.\d+\.\d+\b/.test(b.toString()),`Machine-specific material: ${file}`);}
  const cli=(op,input)=>JSON.parse(run(process.execPath,[path.join(installed,'dist/packages/cli/index.js'),op,...(input===undefined?[]:[JSON.stringify(input)]),'--workspace',workspace],workspace,[0,1,2]));
@@ -78,7 +78,18 @@ try{
  await page.setViewportSize({width:390,height:844});await shot('tall');
  // Actual input draw after the art revision, with normal restart confirmation.
  page.on('dialog',d=>d.accept());await page.locator('#restart').click();for(const cell of [0,1,2,4,3,5,7,6,8])await click(cell);assert.match(await page.locator('#status').textContent(),/平手/);
- const report={status:'succeeded',version:pkg.version,tarball:info.filename,sha256:createHash('sha256').update(await fs.readFile(tar)).digest('hex'),bytes:info.size,files:files.length,operations:tools.tools.length,npx_default_entry:true,cli_mcp_parity:true,installed_creation:true,rules_positions:5478,real_input:['win','terminal-input-disabled','undo','restart','draw','keyboard','save-reload'],viewports:['1280x900','360x640','390x844'],art_revision_preserves_save:true,build_changed:before.data.build_sha256!==after.data.build_sha256,browser:await browser.version(),page_errors:errors,external_requests:external,physical_phone:'not_run',offline_cold_start:'not_run',human_art_and_feel:'not_evaluated',public_npm:published?'verified_registry_install':'not_published',github_ci:'not_run'};
+ if(published){
+  const consumer=await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(),'owngame-npx-consumer-')));let consumerClient;
+  try{
+   const configured=JSON.parse(run(npm,['exec','--yes','--',pkg.name+'@'+pkg.version,'setup','--agent','generic','--apply','--workspace',consumer],consumer));
+   assert.equal(configured.applied,true);assert.equal(configured.runtime,path.join(consumer,'.owngame/toolkit/node_modules/@owngame/cli'));
+   const config=JSON.parse(await fs.readFile(path.join(consumer,'.owngame/mcp.json'))).mcpServers.owngame;
+   consumerClient=new Client({name:'owngame-npx-installed-check',version:'1'});await consumerClient.connect(new StdioClientTransport({...config,cwd:consumer,stderr:'pipe'}));
+   const capability=await consumerClient.callTool({name:'owngame_capabilities',arguments:{}});assert.equal(capability.structuredContent.data.package_version,pkg.version);
+   assert.equal(await fs.readFile(path.join(consumer,'.agents/skills/owngame/SKILL.md'),'utf8'),await fs.readFile(path.join(installed,'skills/owngame/SKILL.md'),'utf8'));
+  }finally{await consumerClient?.close();await fs.rm(consumer,{recursive:true,force:true});}
+ }
+ const report={status:'succeeded',version:pkg.version,tarball:info.filename,sha256:createHash('sha256').update(await fs.readFile(tar)).digest('hex'),bytes:info.size,files:files.length,operations:tools.tools.length,npx_default_entry:true,npx_project_install:published?'verified':'requires_registry',cli_mcp_parity:true,installed_creation:true,rules_positions:5478,real_input:['win','terminal-input-disabled','undo','restart','draw','keyboard','save-reload'],viewports:['1280x900','360x640','390x844'],art_revision_preserves_save:true,build_changed:before.data.build_sha256!==after.data.build_sha256,browser:await browser.version(),page_errors:errors,external_requests:external,physical_phone:'not_run',offline_cold_start:'not_run',human_art_and_feel:'not_evaluated',public_npm:published?'verified_registry_install':'not_published',github_ci:'not_run'};
  await fs.writeFile(path.join(reportDir,'verification.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
 }catch(error){
  await fs.writeFile(path.join(reportDir,'verification.json'),JSON.stringify({status:'failed',version:pkg.version,error:String(error)},null,2)+'\n');throw error;

@@ -319,8 +319,8 @@
     },
     {
       "path": "scripts/release/verify-package.mjs",
-      "bytes": 10354,
-      "sha256": "88c8fcf21fcc6e46cef4add58055f9c1ec0eaa8c861b86b4ed0200dd07df34e3"
+      "bytes": 11588,
+      "sha256": "959dd3375d2b72d7a9decdc4eb5040a834f87fb027e2e92310e834c030dbe731"
     },
     {
       "path": "tests/release/toolkit.test.mjs",
