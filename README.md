@@ -40,7 +40,7 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 需要 **Node.js 22 或以上**及 npm。在你的游戏项目目录中执行：
 
 ```sh
-npx @owngame/cli@0.8.0 setup --agent codex --apply
+npx @owngame/cli@latest setup --agent codex --apply
 ```
 
 | 助手 | 接入方式 |
@@ -49,7 +49,7 @@ npx @owngame/cli@0.8.0 setup --agent codex --apply
 | Cursor | 使用 `--agent cursor`，写入项目 MCP 配置与 Skill |
 | 其他支持本地 MCP 的助手 | 使用 `--agent generic`，生成配置与 Skill，再按宿主要求手动导入 |
 
-去掉 `--apply` 可预览配置变更。安装仅写入当前项目，保留其他配置，并对覆盖内容建立备份；已修改的 owngame 配置会触发冲突检查。
+`@latest` 获取 npm 当前发布版本。去掉 `--apply` 可预览配置变更。安装仅写入当前项目，保留其他配置，并对覆盖内容建立备份；已修改的 owngame 配置会触发冲突检查。
 
 完成后重载助手、信任项目配置，并让助手调用 `owngame_capabilities` 确认连接。详细步骤见 [安装与接入](docs/install.md)。
 
@@ -66,7 +66,7 @@ npx @owngame/cli@0.8.0 setup --agent codex --apply
 无需先配置助手，即可从默认 Web 模板创建游戏：
 
 ```sh
-npx @owngame/cli@0.8.0 project.create '{"directory":"my-game","name":"my-game"}'
+npx @owngame/cli@latest project.create '{"directory":"my-game","name":"my-game"}'
 cd my-game
 npm test
 npm run build
@@ -107,7 +107,7 @@ owngame 提供参考、模板和检查接口；规划、代码实现、图片生
 当前 CLI / MCP 共享 **20 个操作**。运行以下命令查看本版本提供的能力：
 
 ```sh
-npx @owngame/cli@0.8.0 capabilities
+npx @owngame/cli@latest capabilities
 ```
 
 ### 模板与运行环境

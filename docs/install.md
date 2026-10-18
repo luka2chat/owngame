@@ -1,13 +1,13 @@
 # 安装与 Agent 接入
 
-需要 Node.js >=22。本页适用于 0.8.0；旧版 0.0.1 不具备这些能力。发布状态以 GitHub Releases 和 npm 中的实际版本为准，未发布的版本可从源码打包安装。
+需要 Node.js >=22。日常安装使用 `@latest` 获取 npm 当前发布版本；未发布的开发版本可从源码打包安装。
 
 ## 从本地安装包开始
 
-源码目录执行 `npm ci` 和 `npm pack`。在另一个空目录安装输出的 tarball：
+源码目录执行 `npm ci` 和 `npm pack`。在另一个空目录安装输出的 tarball，将下方路径和 `<version>` 替换为实际生成的安装包路径与版本：
 
 ```sh
-npm install /absolute/path/owngame-cli-0.8.0.tgz
+npm install "/absolute/path/owngame-cli-<version>.tgz"
 npx owngame --version
 npx owngame capabilities
 npx owngame setup --agent codex
@@ -27,16 +27,16 @@ setup 默认只预览，--apply 才写入。所有写入限定当前项目，也
 
 依据：[Codex MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli)、[Skill](https://learn.chatgpt.com/docs/build-skills)、[Cursor MCP](https://cursor.com/docs/mcp)。
 
-## 按指定版本从 npm 安装
+## 从 npm 安装当前发布版本
 
-以下命令获取指定版本；若 registry 尚未提供该版本，使用上面的本地安装方式：
+以下命令使用 npm 的 `latest` 发布标签，避免文档中的固定版本过期：
 
 ```sh
-npx @owngame/cli@0.8.0 setup --agent codex
-npx @owngame/cli@0.8.0 setup --agent codex --apply
+npx @owngame/cli@latest setup --agent codex
+npx @owngame/cli@latest setup --agent codex --apply
 ```
 
-从 npx 临时缓存启动时，apply 会把同一版本安装到项目 .owngame/toolkit，再注册其绝对入口，以免缓存清理后连接失效。该步骤需要 npm 网络访问，并禁用依赖安装脚本。已有稳定本地安装直接使用安装位置；移动或删除安装目录后需重新 setup。更新前先安装新版本、预览再应用；不是自动后台更新。
+从 npx 临时缓存启动时，apply 会把同一版本安装到项目 .owngame/toolkit，再注册其绝对入口，以免缓存清理后连接失效。该步骤需要 npm 网络访问，并禁用依赖安装脚本。已有稳定本地安装直接使用安装位置；移动或删除安装目录后需重新 setup。更新时重新运行上述 `@latest` 命令，先预览再应用。已有项目不会在后台自动更新。
 
 ## Skill 与 MCP 可分别使用
 
