@@ -33,6 +33,8 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 
 > 试着告诉 AI：参考《风铃回响》的顺序记忆玩法，为我做一个雨天音乐盒。用不同杯子的声音和亮光提示节奏，先给我一个能玩完一轮的版本。
 
+3D 创作案例：**《星野来信 · 迟到的春天》**，在三颗小星球之间收信、解谜与邀请朋友。[在线试玩](https://owngame.dev/play?game=star-letters) · [制作案例](docs/cases/star-letters.md) · [游戏源码](examples/star-letters/)。包含 Unity 正式故事版和 Three.js 教学原型；推荐电脑键鼠，首次加载约 54 MB。
+
 ## 快速开始
 
 ### 1. 接入你的 AI 助手
@@ -176,7 +178,7 @@ Unity 的首个目标是将已有项目经验整理成可安装、可复用的�
 - [安装与 Agent 接入](docs/install.md)：配置、连接检查、更新与卸载。
 - [第一个游戏](docs/quickstart.md)：创建、试玩、修改美术与验证存档。
 - [复刻使用说明](https://github.com/luka2chat/owngame/blob/main/docs/remix.md)：从网站参考进入自己的工作区。
-- [历史制作复盘](docs/cases/)：星图三连、潮光归位与窑火相融的实践记录。
+- [制作案例](docs/cases/)：星图三连、潮光归位、窑火相融，以及 [星野来信 3D 童话冒险](docs/cases/star-letters.md)。
 - [创作 Skill](skills/owngame/SKILL.md) 与 [风格配方](docs/style-recipes.json)：工作流程和视觉方向。
 - [贡献指南](CONTRIBUTING.md)、[发布流程](docs/releasing.md) 与 [变更记录](CHANGELOG.md)。
 - [安全说明](SECURITY.md) 与 [第三方声明](THIRD_PARTY_NOTICES.md)。

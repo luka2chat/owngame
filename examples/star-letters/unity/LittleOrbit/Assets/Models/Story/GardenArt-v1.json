@@ -1,0 +1,430 @@
+{
+  "meshObjects": 45,
+  "triangles": 408947,
+  "terrain": {
+    "revision": 1,
+    "replacedObjects": 197,
+    "upperLedges": 43,
+    "rootClusters": 16,
+    "world": "garden",
+    "pathSlabs": 33,
+    "snowOnRockSurface": true,
+    "walkingPlaneUnchangedWithinRadius": 7.8,
+    "source": "scripts/home-terrain-detail.py"
+  },
+  "masonry": {
+    "revision": 1,
+    "seed": 261018,
+    "wallStones": 481,
+    "copingStones": 67,
+    "originalWallTriangles": 51948,
+    "newWallTriangles": 90428,
+    "collisionCoresUnchanged": 6,
+    "redundantSnowCapsRemoved": 84,
+    "snow": "Existing CourtyardStone shader coats actual upward-facing stone surfaces."
+  },
+  "tree": {
+    "revision": 1,
+    "seed": 6142026,
+    "leaves": 2916,
+    "flowers": 1134,
+    "fineTwigs": 162,
+    "barkTexture": "Reuses existing original 256px tree bark color and normal maps.",
+    "growthAnchors": "Linear vertex RGB: (Unity world position - (-8,0,-8)) / (16,8,16).",
+    "opaqueGeometry": true,
+    "winter": "Connected bare branches remain visible; new flower/leaf geometry belongs to SpringCanopy."
+  },
+  "unityMaterials": [
+    {
+      "name": "V2_Meadow",
+      "color": [
+        0.38999998569488525,
+        0.5099999904632568,
+        0.23000000417232513,
+        1.0
+      ],
+      "texture": "V2_meadow.png"
+    },
+    {
+      "name": "V2_Earth",
+      "color": [
+        0.30000001192092896,
+        0.23999999463558197,
+        0.17000000178813934,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_Rock",
+      "color": [
+        0.4699999988079071,
+        0.4399999976158142,
+        0.36000001430511475,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_Stone",
+      "color": [
+        0.7300000190734863,
+        0.6600000262260437,
+        0.5,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_Plaster",
+      "color": [
+        0.9100000262260437,
+        0.8199999928474426,
+        0.6299999952316284,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_Timber",
+      "color": [
+        0.3700000047683716,
+        0.20000000298023224,
+        0.09000000357627869,
+        1.0
+      ],
+      "texture": "V2_wood.png"
+    },
+    {
+      "name": "V2_LightWood",
+      "color": [
+        0.6299999952316284,
+        0.38999998569488525,
+        0.18000000715255737,
+        1.0
+      ],
+      "texture": "V2_wood.png"
+    },
+    {
+      "name": "V2_Soil",
+      "color": [
+        0.23000000417232513,
+        0.1599999964237213,
+        0.09000000357627869,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_Teal",
+      "color": [
+        0.15000000596046448,
+        0.3700000047683716,
+        0.3400000035762787,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_TealLight",
+      "color": [
+        0.23000000417232513,
+        0.46000000834465027,
+        0.38999998569488525,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_TealDark",
+      "color": [
+        0.09000000357627869,
+        0.23999999463558197,
+        0.23000000417232513,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_Mailbox",
+      "color": [
+        0.8600000143051147,
+        0.28999999165534973,
+        0.10000000149011612,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_Cream",
+      "color": [
+        0.9900000095367432,
+        0.9300000071525574,
+        0.7300000190734863,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_Leaf",
+      "color": [
+        0.27000001072883606,
+        0.4300000071525574,
+        0.12999999523162842,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_LeafLight",
+      "color": [
+        0.49000000953674316,
+        0.5899999737739563,
+        0.1899999976158142,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_Grass",
+      "color": [
+        0.47999998927116394,
+        0.5699999928474426,
+        0.23000000417232513,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_GrassDark",
+      "color": [
+        0.25999999046325684,
+        0.38999998569488525,
+        0.14000000059604645,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_Pink",
+      "color": [
+        0.7699999809265137,
+        0.3199999928474426,
+        0.4099999964237213,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_Lavender",
+      "color": [
+        0.49000000953674316,
+        0.41999998688697815,
+        0.6700000166893005,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_Glass",
+      "color": [
+        0.9800000190734863,
+        0.6499999761581421,
+        0.20999999344348907,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_Brass",
+      "color": [
+        0.6100000143051147,
+        0.4000000059604645,
+        0.1599999964237213,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_Dark",
+      "color": [
+        0.10999999940395355,
+        0.17000000178813934,
+        0.17000000178813934,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_GardenGrass",
+      "color": [
+        0.47999998927116394,
+        0.5400000214576721,
+        0.5400000214576721,
+        1.0
+      ],
+      "texture": "V2_meadow.png"
+    },
+    {
+      "name": "V2_Snow",
+      "color": [
+        0.8600000143051147,
+        0.9100000262260437,
+        0.9599999785423279,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_Ice",
+      "color": [
+        0.5899999737739563,
+        0.75,
+        0.8199999928474426,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_Skin",
+      "color": [
+        0.7900000214576721,
+        0.5199999809265137,
+        0.3400000035762787,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_CliffSlate",
+      "color": [
+        0.4000000059604645,
+        0.4000000059604645,
+        0.3700000047683716,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_CliffWarm",
+      "color": [
+        0.5299999713897705,
+        0.47999998927116394,
+        0.38999998569488525,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_CliffPale",
+      "color": [
+        0.6299999952316284,
+        0.5899999737739563,
+        0.47999998927116394,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_RockMoss",
+      "color": [
+        0.30000001192092896,
+        0.38999998569488525,
+        0.12999999523162842,
+        1.0
+      ],
+      "texture": "V2_meadow.png"
+    },
+    {
+      "name": "V2_PathWarm",
+      "color": [
+        0.6600000262260437,
+        0.5699999928474426,
+        0.4300000071525574,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_PathPale",
+      "color": [
+        0.7799999713897705,
+        0.7099999785423279,
+        0.5699999928474426,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_CliffEarth",
+      "color": [
+        0.38999998569488525,
+        0.36000001430511475,
+        0.28999999165534973,
+        1.0
+      ],
+      "texture": "V2_plaster.png"
+    },
+    {
+      "name": "V2_GardenBark",
+      "color": [
+        0.3400000035762787,
+        0.23499999940395355,
+        0.14499999582767487,
+        1.0
+      ],
+      "texture": "V2_tree-bark.png"
+    },
+    {
+      "name": "V2_GardenLeafDeep",
+      "color": [
+        0.23000000417232513,
+        0.3400000035762787,
+        0.11999999731779099,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_GardenLeafSun",
+      "color": [
+        0.4000000059604645,
+        0.49000000953674316,
+        0.20000000298023224,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_GardenBlossomPink",
+      "color": [
+        0.8700000047683716,
+        0.5400000214576721,
+        0.5899999737739563,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_GardenBlossomIvory",
+      "color": [
+        0.9700000286102295,
+        0.800000011920929,
+        0.7200000286102295,
+        1.0
+      ],
+      "texture": null
+    },
+    {
+      "name": "V2_GardenPollen",
+      "color": [
+        0.7099999785423279,
+        0.46000000834465027,
+        0.14000000059604645,
+        1.0
+      ],
+      "texture": null
+    }
+  ],
+  "license": "Original Blender geometry and procedural textures; free tools only."
+}

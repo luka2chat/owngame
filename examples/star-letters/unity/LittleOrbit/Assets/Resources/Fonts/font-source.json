@@ -1,0 +1,10 @@
+{
+  "sourceURL": "https://github.com/google/fonts/tree/main/ofl/notosanssc",
+  "sourceSHA256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+  "outputSHA256": "0d4f94cd3056bc497b939cad615ba369c65d58230a19cb4a8d9e740adc35eeaf",
+  "fontVersion": "Version 2.004-H2;hotconv 1.0.118;makeotfexe 2.5.65603",
+  "characters": 628,
+  "bytes": 160568,
+  "license": "SIL Open Font License 1.1; see OFL.txt",
+  "note": "Subset and renamed for this game. Full input remains on NAS; re-run when story text changes."
+}

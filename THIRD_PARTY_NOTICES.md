@@ -33,3 +33,15 @@ workspace and its imported games are outside this release's licensing scope.
 
 REA inspired the packaging and workflow structure. No REA implementation code is
 copied into this toolkit. See https://github.com/morluto/rea .
+
+## Star Letters example
+
+The public repository additionally includes the reviewed game source under
+`examples/star-letters`; the npm toolkit does not bundle this game. Its authored
+code and procedural assets are MIT, its Noto Sans SC font subset remains OFL-1.1,
+and Unity template-derived configuration retains the Unity Companion License.
+Unity editor and runtime are not relicensed under MIT. See the example's
+THIRD_PARTY_NOTICES.md, LICENSES and SOURCE_MANIFEST.json for scope and provenance.
+Caches, private production records, concept art and original Blender working
+files are excluded from the public source. The hosted compiled game includes
+Unity Runtime under Unity Software Terms and carries its attribution notices.

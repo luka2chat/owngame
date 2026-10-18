@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>星野来信 · 迟到的春天</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#242f3c;color:#f3ebda;font-family:system-ui,sans-serif}canvas{display:block;width:100%;height:100%;outline:none}#loading{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:24px;background:radial-gradient(ellipse at top,#546178,#242f3c)}h1{font-size:clamp(26px,4vw,40px);font-weight:500;letter-spacing:6px;margin:0}p{line-height:1.8;color:#d3cbbc;margin:10px auto;max-width:34em}progress{width:min(280px,80vw);height:7px;margin:18px auto;accent-color:#e9bd7e}button,a{font:inherit;color:#f3ebda}button{background:#4b5a68;border:1px solid #ac9d87;padding:12px 24px;border-radius:5px;cursor:pointer;justify-self:center}button[hidden]{display:none}#error{color:#ffccbb;white-space:pre-wrap}.links{font-size:12px}.links a{margin:0 6px}#credits{position:absolute;bottom:4px;right:8px;font-size:11px;color:#fff;background:#242f3cd9;padding:3px 6px;border-radius:3px}#credits:focus{outline:2px solid #e9bd7e}
+</style></head><body>
+<canvas id="game" tabindex="0" aria-label="星野来信游戏画面"></canvas>
+<div id="loading"><h1>星野来信</h1><p>迟到的春天<br>一封没有署名的信，正等着你。</p><p>推荐电脑键鼠 · 首次加载约 54 MB<br>WASD 行走 · E 互动 · 右键环视</p><progress id="progress" max="1" value="0"></progress><p id="status" role="status">点击开始，前往第一颗星球。</p><p id="error" role="alert"></p><button id="start" disabled>开始旅程</button><button id="retry" hidden>重新加载</button><p class="links"><a href="https://github.com/luka2chat/owngame/tree/main/examples/star-letters" target="_blank" rel="noopener">查看源码</a><a href="licenses/THIRD_PARTY_NOTICES.md.txt" target="_blank" rel="noopener">授权说明</a></p></div>
+<a id="credits" href="licenses/THIRD_PARTY_NOTICES.md.txt" target="_blank" rel="noopener">源码与授权</a>
+<script src="Build/loader.js"></script><script type="module" src="launch.js"></script>
+</body></html>

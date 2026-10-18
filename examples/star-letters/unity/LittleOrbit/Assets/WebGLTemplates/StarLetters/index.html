@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>星野来信 · 迟到的春天</title>
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#242f3c;color:#f3ebda;font-family:system-ui,sans-serif}
+    canvas{display:block;width:100%;height:100%;outline:none}#loading{position:absolute;inset:0;display:grid;place-content:center;text-align:center;background:radial-gradient(ellipse at top,#546178,#242f3c)}
+    h1{font-size:32px;font-weight:500;letter-spacing:6px}p{line-height:1.9;color:#d3cbbc}progress{width:280px;height:6px;margin:20px auto;accent-color:#e9bd7e}button{font:inherit;color:#f3ebda;background:#4b5a68;border:1px solid #ac9d87;padding:10px 24px;border-radius:4px;cursor:pointer}#error{max-width:480px;white-space:pre-wrap}
+  </style>
+</head>
+<body>
+  <canvas id="game" tabindex="0" aria-label="星野来信游戏画面"></canvas>
+  <div id="loading"><h1>星野来信</h1><p>迟到的春天<br>一封没有署名的信，正等着你。</p><progress id="progress" max="1" value="0"></progress><p id="status" role="status">正在准备星光与来信……</p><p id="error" role="alert"></p></div>
+  <script src="Build/{{{ LOADER_FILENAME }}}"></script>
+  <script>
+    const canvas=document.getElementById('game'),loading=document.getElementById('loading');
+    canvas.addEventListener('contextmenu',event=>event.preventDefault());
+    createUnityInstance(canvas,{
+      dataUrl:'Build/{{{ DATA_FILENAME }}}',frameworkUrl:'Build/{{{ FRAMEWORK_FILENAME }}}',codeUrl:'Build/{{{ CODE_FILENAME }}}',
+      streamingAssetsUrl:'StreamingAssets',companyName:'{{{ COMPANY_NAME }}}',productName:'{{{ PRODUCT_NAME }}}',productVersion:'{{{ PRODUCT_VERSION }}}',
+      devicePixelRatio:Math.min(window.devicePixelRatio||1,1.5),
+      showBanner:(message,type)=>{if(type==='error')document.getElementById('error').textContent=message;else console.warn(message);}
+    },value=>{document.getElementById('progress').value=value;document.getElementById('status').textContent='正在准备来信 '+Math.round(value*100)+'%';}).then(()=>{
+      loading.remove();canvas.focus();
+      if(new URLSearchParams(location.search).get('profile')==='1'){
+        const engineReadyMs=Math.round(performance.now());
+        requestAnimationFrame(()=>requestAnimationFrame(()=>console.info('STAR_LETTERS_LOAD '+JSON.stringify({navigationToEngineReadyMs:engineReadyMs,width:canvas.width,height:canvas.height,devicePixelRatio:Math.min(window.devicePixelRatio||1,1.5)}))));
+      }
+    }).catch(error=>{document.getElementById('status').textContent='星光暂时没有连上';document.getElementById('error').textContent='请刷新页面重试。\n'+String(error);});
+  </script>
+</body></html>

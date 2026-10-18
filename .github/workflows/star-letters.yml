@@ -1,0 +1,25 @@
+name: Star Letters source checks
+on:
+  push:
+    paths: ['examples/star-letters/**', '.github/workflows/star-letters.yml']
+  pull_request:
+    paths: ['examples/star-letters/**', '.github/workflows/star-letters.yml']
+permissions:
+  contents: read
+jobs:
+  source-and-prototype:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: examples/star-letters
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: examples/star-letters/package-lock.json
+      - run: node scripts/verify-source.mjs
+      - run: npm ci
+      - run: npm test
+      - run: npm run build

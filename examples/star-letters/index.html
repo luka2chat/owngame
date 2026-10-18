@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d1928" />
+    <meta name="description" content="一颗可以散步的小星球，一次关于 3D 游戏的动手实验。" />
+    <title>星野来信 · Little Orbit Lab</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23142230'/%3E%3Ccircle cx='32' cy='34' r='18' fill='%239aaa79'/%3E%3Cpath d='M44 8l2 6 6 2-6 2-2 6-2-6-6-2 6-2z' fill='%23ecd5a1'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <canvas id="world" aria-label="可探索的三维小星球，使用 WASD 移动或点击地面行走" tabindex="0"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="masthead">
+      <a class="brand" href="./" aria-label="星野来信首页"><span class="brand-mark">✳</span><span>LITTLE ORBIT <b>LAB</b></span></a>
+      <div class="header-right"><span class="edition">A SMALL WORLD, A LITTLE WONDER</span><button id="learn-button" class="quiet-button" aria-expanded="false" aria-controls="lab">拆解工作台 <span>↗</span></button></div>
+    </header>
+
+    <main id="intro">
+      <p class="eyebrow"><span></span> 一次可以亲自走进去的实验</p>
+      <h1>星野<span>来信</span><i>Letters from<br>a little planet.</i></h1>
+      <p class="intro-copy">宇宙很大，先照顾好一朵花。<br>在这颗小小星球上，找回散落的星光，<br>让一封写给远方的信，重新亮起来。</p>
+      <div class="intro-actions"><button id="start-button" class="primary-button" disabled>正在搭建星球… <span>↗</span></button><button id="intro-learn" class="text-button">看看它是怎么做的 <span>→</span></button></div>
+      <div class="chapter-stamp"><span>01</span><div>一颗星球的诞生<small>EXPLORATION STUDY · 3–5 MIN</small></div></div>
+    </main>
+
+    <section id="hud" hidden aria-label="游戏状态">
+      <div class="chapter-label"><span class="tiny-label">CHAPTER 01</span><h2>给远方的一封信</h2><p>无人命名的星球 · 日落前</p></div>
+      <div class="quest-card"><span class="tiny-label">此刻的小事</span><div class="quest-title"><span id="quest-title">拾起 3 枚星光</span><span id="star-count">0 / 3</span></div><div class="progress-track"><i id="quest-progress"></i></div><p id="quest-hint">金色的光点，藏在草地和小屋之间。</p></div>
+      <nav id="waypoints" aria-label="星球上的目的地"><span class="tiny-label">星球漫步 <small>点击目的地自动行走</small></span><div id="waypoint-buttons"></div></nav>
+    </section>
+
+    <aside id="lab" hidden aria-label="技术拆解工作台">
+      <div class="lab-heading"><div><span class="tiny-label">UNDER THE LITTLE WORLD</span><h2>拆开一颗星球</h2></div><button id="close-lab" class="icon-button" aria-label="关闭工作台">×</button></div>
+      <div class="lab-tabs" role="tablist" aria-label="学习章节"><button role="tab" aria-selected="true" data-lesson="scene">01 场景</button><button role="tab" aria-selected="false" data-lesson="motion">02 移动</button><button role="tab" aria-selected="false" data-lesson="story">03 交互</button></div>
+      <div id="lesson-copy"></div>
+      <div class="lab-controls">
+        <label class="switch-row"><span>查看三角网格<small>模型是许多三角形的集合</small></span><input id="wireframe" type="checkbox" /></label>
+        <label class="switch-row"><span>显示局部坐标<small>青色箭头始终指向角色上方</small></span><input id="helpers" type="checkbox" /></label>
+        <label class="switch-row"><span>环绕观察镜头<small>拖拽旋转，滚轮缩放；暂停行走</small></span><input id="orbit-mode" type="checkbox" /></label>
+        <label class="range-row" for="sun">日照强度 <output id="sun-output">80%</output><input id="sun" type="range" min="15" max="100" value="80" /></label>
+      </div>
+      <div class="telemetry"><div><strong id="fps">—</strong><span>FPS</span></div><div><strong id="draws">—</strong><span>DRAW CALLS</span></div><div><strong id="triangles">—</strong><span>TRIANGLES</span></div></div>
+      <p class="lab-footnote">本 demo：程序化模型 + Three.js<br>原作流程：参考图 → Tripo → Blender → Unity</p>
+      <a class="source-link" href="https://x.com/Saccc_c/status/2110694725640474759" target="_blank" rel="noreferrer">阅读灵感来源的制作教程 ↗</a>
+    </aside>
+
+    <button id="interact" hidden><kbd>E</kbd><span>与花交谈</span></button>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <dialog id="story-dialog"><span class="tiny-label" id="dialog-label">来自星球的声音</span><h2 id="dialog-title"></h2><p id="dialog-copy"></p><button id="dialog-close" class="primary-button">继续散步 <span>→</span></button></dialog>
+    <div id="error" hidden role="alert"><h2>星球暂时没能亮起来</h2><p id="error-copy">请使用支持 WebGL 2 的浏览器，并开启硬件加速。</p><button onclick="location.reload()">重新加载</button></div>
+    <footer><div class="controls"><span><kbd>W A S D</kbd> 移动</span><span><kbd>⇧</kbd> 跑步</span><span><kbd>SPACE</kbd> 跳跃</span><span><kbd>E</kbd> 交互</span><span class="mouse-hint">拖拽看向四周 · 点击地面行走</span></div><span class="footer-note">MADE OF CODE & CURIOSITY <i>✧</i></span></footer>
+    <div id="touch-controls" hidden aria-label="触屏控制"><button data-move="KeyW" aria-label="向前走">↑</button><button data-move="KeyA" aria-label="向左走">←</button><button data-move="KeyS" aria-label="向后走">↓</button><button data-move="KeyD" aria-label="向右走">→</button></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
