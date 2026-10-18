@@ -1,0 +1,11 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const pkg=JSON.parse(await fs.readFile('package.json'));
+const report=JSON.parse(await fs.readFile(`artifacts/release/${pkg.version}/verification.json`));
+if(report.status!=='succeeded'||report.version!==pkg.version)throw Error('Package verification has not passed');
+const archive=path.join('artifacts/release',pkg.version,path.basename(report.tarball));
+if(createHash('sha256').update(await fs.readFile(archive)).digest('hex')!==report.sha256)throw Error('Archive differs from the verified bytes');
+const result=spawnSync('npm',['publish',archive,'--access','public'],{stdio:'inherit',shell:false});
+if(result.error)throw result.error;process.exitCode=result.status??1;

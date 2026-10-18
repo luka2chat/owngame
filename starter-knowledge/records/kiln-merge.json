@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "id": "case:kiln-merge",
+  "version": 1,
+  "type": "project_experiment",
+  "title": "窑火相融：区分已知数值与原创决定",
+  "summary": "任务是参考一个数字合并游戏的指定难度，同时使用原创陶瓷表现。研究记录中的中档出 4 概率约为 15%，因此不能直接用常见的 10% 并称为一致。其他档位的特殊策略没有足够依据，首版只承诺已核实的中档范围。",
+  "aliases": [
+    "kiln-merge"
+  ],
+  "tags": [
+    "数值",
+    "2048",
+    "合并",
+    "参考",
+    "研究",
+    "滑动",
+    "撤销"
+  ],
+  "status": "active",
+  "claim_kind": "reported",
+  "source_refs": [
+    {
+      "source_id": "case-source:kiln-merge",
+      "version": 1,
+      "relation": "supports",
+      "purpose": "Published retrospective summary"
+    }
+  ],
+  "relations": [],
+  "applicability": {
+    "scope": "Historical case; adapt to current task"
+  },
+  "unknowns": [
+    "Original device evidence is not bundled; historical outcomes were not rerun by this lookup."
+  ],
+  "validation": {
+    "state": "source_reviewed",
+    "basis": "Curated retrospective text; file hashes verify this text only."
+  },
+  "content": {
+    "case_document": "docs/cases/kiln-merge.md",
+    "lessons": "任务是参考一个数字合并游戏的指定难度，同时使用原创陶瓷表现。研究记录中的中档出 4 概率约为 15%，因此不能直接用常见的 10% 并称为一致。其他档位的特殊策略没有足够依据，首版只承诺已核实的中档范围。\n\n规则、撤销、随机状态和存档先独立检查，再用浏览器真实手势完成一局；手机只做输入、恢复与离线抽查。这两种覆盖不能混写。后续改为手绘陶坊时，长屏出现背景拼接断层，最终通过单一背景覆盖与前景分层修复。\n\n可复用：明确是否要求参数对齐；未知内容保留未知；区分模型与真实输入；核对真正稳定的画面；在目标比例复查背景连续性。\n\n不应泛化：这里的 15% 是该历史研究对象与档位的报告值，不是 2048 的通用规则，也不是本工具对原游戏的独立实时验证。"
+  }
+}

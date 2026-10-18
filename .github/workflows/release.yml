@@ -1,0 +1,42 @@
+name: Publish reviewed toolkit
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact package version to publish from this selected revision
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: npm-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm-release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://registry.npmjs.org
+      - name: Check release metadata
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: node scripts/release/check-metadata.mjs
+      - run: npm ci
+      - run: npm run test:release
+      - run: npx playwright install --with-deps chromium
+      - run: npm run verify:package
+      - name: Publish the verified archive
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: node scripts/release/publish.mjs
+      - name: Verify the registry package through CLI, MCP and actual play
+        run: npm run verify:package -- --published
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: release-verification
+          path: artifacts/release/

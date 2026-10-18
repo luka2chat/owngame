@@ -1,0 +1,14 @@
+node_modules/
+dist/
+artifacts/
+/release/
+.owngame/
+.codex/
+.cursor/
+.agents/
+.env
+.env.*
+.npmrc
+*.tgz
+.DS_Store
+my-game/

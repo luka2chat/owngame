@@ -1,0 +1,68 @@
+{
+  "name": "@owngame/cli",
+  "version": "0.8.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run test:release",
+    "test:release": "npm run build && node --test tests/release/*.test.mjs",
+    "verify:package": "node scripts/release/verify-package.mjs",
+    "release:prepare": "node scripts/release/prepare.mjs",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "playwright": "1.64.1",
+    "prettier": "3.9.10",
+    "typescript": "7.0.2"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "zod": "4.6.7"
+  },
+  "bin": {
+    "owngame": "dist/packages/cli/index.js",
+    "owngame-mcp": "dist/packages/mcp/index.js"
+  },
+  "description": "Art-first game authoring toolkit for existing AI agents: skills, CLI, MCP and playable Web starters",
+  "files": [
+    "dist/packages/",
+    "starter-knowledge/",
+    "skills/",
+    "templates/",
+    "scripts/toolkit/",
+    "docs/install.md",
+    "docs/quickstart.md",
+    "docs/cases/",
+    "docs/style-recipes.json",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "CHANGELOG.md",
+    "docs/images/",
+    "docs/releasing.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "homepage": "https://owngame.dev",
+  "keywords": [
+    "game-development",
+    "agent-skills",
+    "mcp",
+    "web-games",
+    "owngame"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luka2chat/owngame.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luka2chat/owngame/issues"
+  }
+}

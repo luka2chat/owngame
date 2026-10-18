@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "sources": [
+    {
+      "schema_version": "1.0.0",
+      "id": "case-source:star-triad",
+      "version": 1,
+      "alias": "owngame",
+      "path": "docs/cases/star-triad.md",
+      "source_version": "2026-10-18-retrospective",
+      "sha256": "5b48260ab34795d7941c09a40662335d1ad479ff733758616c2ed19f1f548e61",
+      "selector": {
+        "kind": "lines",
+        "start": 1,
+        "end": 11
+      },
+      "snapshot_sha256": "d7e8a8abfc194f5ce757a16d59abc7cabf6185a23147ee5c09e264c0c11b7255",
+      "captured_at": "2026-10-18T00:00:00Z",
+      "scope": "Public retrospective summary, not raw experiment evidence or current playtest"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "case-source:signal-harbor",
+      "version": 1,
+      "alias": "owngame",
+      "path": "docs/cases/signal-harbor.md",
+      "source_version": "2026-10-18-retrospective",
+      "sha256": "3b3f15605e1a7fdaac12ecb4c91c9663b873de40619ae76d6a2bd39714d6b5dd",
+      "selector": {
+        "kind": "lines",
+        "start": 1,
+        "end": 11
+      },
+      "snapshot_sha256": "3dce5327f4a169032f5c310eb7f30eaa12bfea92a019f9b60ebac90433ce6aff",
+      "captured_at": "2026-10-18T00:00:00Z",
+      "scope": "Public retrospective summary, not raw experiment evidence or current playtest"
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "case-source:kiln-merge",
+      "version": 1,
+      "alias": "owngame",
+      "path": "docs/cases/kiln-merge.md",
+      "source_version": "2026-10-18-retrospective",
+      "sha256": "98c1967f1e7d8f0fac4c6ad5abb5dc2dc56050561f7025ae3fb2490ab70aa90c",
+      "selector": {
+        "kind": "lines",
+        "start": 1,
+        "end": 11
+      },
+      "snapshot_sha256": "b8eff7331c7fdefaf5ac1d3ffdfb2c8531a4e1f2608103a4c1117364364b8ebd",
+      "captured_at": "2026-10-18T00:00:00Z",
+      "scope": "Public retrospective summary, not raw experiment evidence or current playtest"
+    }
+  ]
+}

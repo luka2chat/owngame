@@ -1,0 +1,9 @@
+{
+  "name": "@owngame/replace-me-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node scripts/build.mjs" },
+  "dependencies": { "phaser": "3.90.0" },
+  "devDependencies": { "esbuild": "0.25.12" }
+}

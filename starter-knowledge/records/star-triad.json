@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "id": "case:star-triad",
+  "version": 1,
+  "type": "project_experiment",
+  "title": "星图三连：视觉选择如何落到真实入口",
+  "summary": "任务是改进已有游戏的美术，同时保留玩法与玩家进度。先在同一棋盘局面比较三种视觉方向，选择月光珐琅，再拆分背景、棋盘与棋子并落实到可玩的 Web 版本。",
+  "aliases": [
+    "star-triad"
+  ],
+  "tags": [
+    "美术",
+    "重设计",
+    "井字棋",
+    "视觉",
+    "竖屏",
+    "存档"
+  ],
+  "status": "active",
+  "claim_kind": "reported",
+  "source_refs": [
+    {
+      "source_id": "case-source:star-triad",
+      "version": 1,
+      "relation": "supports",
+      "purpose": "Published retrospective summary"
+    }
+  ],
+  "relations": [],
+  "applicability": {
+    "scope": "Historical case; adapt to current task"
+  },
+  "unknowns": [
+    "Original device evidence is not bundled; historical outcomes were not rerun by this lookup."
+  ],
+  "validation": {
+    "state": "source_reviewed",
+    "basis": "Curated retrospective text; file hashes verify this text only."
+  },
+  "content": {
+    "case_document": "docs/cases/star-triad.md",
+    "lessons": "任务是改进已有游戏的美术，同时保留玩法与玩家进度。先在同一棋盘局面比较三种视觉方向，选择月光珐琅，再拆分背景、棋盘与棋子并落实到可玩的 Web 版本。\n\n浏览器候选完成后，正式 App 仍显示旧版。接入玩家入口又暴露按钮缩小、上下留白、安全区顶带和旧封面，分别修正游戏布局、播放器与目录封面，验证旧存档后才完成体验反馈闭环。\n\n可复用：让概念稿与实际运行画面对应；覆盖最终容器；保留存档身份；将概念选择、候选可玩、正式可用和用户认可分开。\n\n不应泛化：每款必须三方案、每款必须 Phaser、所有游戏共用一种美术。这里记录的是历史项目的经验，不随工具重演手机测试。"
+  }
+}

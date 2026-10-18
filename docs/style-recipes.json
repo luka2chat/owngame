@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "scope": "Optional game art recipes, not mandatory platform skins or bundled asset packs",
+  "platform_boundary": "Unify owngame brand, library, cover specs and platform feedback; each game may choose its own art style.",
+  "styles": [
+    {
+      "id": "cartoon-arcade",
+      "name": "手绘街机",
+      "use_for": "适合轻松益智、派对和动作小游戏",
+      "palette": [
+        "奶油白",
+        "朱红",
+        "钴蓝",
+        "金黄"
+      ],
+      "asset_recipe": "粗黑描边、平面色块、少量纸纹，角色与机关形状清楚",
+      "feedback": "弹性压下、短促弹回、纸片胜利标识",
+      "checks": [
+        "小屏轮廓不糊",
+        "文字不叠在复杂纹理上"
+      ],
+      "assets_included": false
+    },
+    {
+      "id": "pixel-adventure",
+      "name": "像素冒险",
+      "use_for": "适合平台动作、探索、复古解谜",
+      "palette": [
+        "深靛蓝",
+        "暖灰",
+        "草绿",
+        "橙黄"
+      ],
+      "asset_recipe": "统一像素网格与比例，有限调色板，禁用混乱的平滑缩放",
+      "feedback": "逐帧动作与短闪光；避免持续闪烁",
+      "checks": [
+        "像素单位一致",
+        "前景和背景层次清楚"
+      ],
+      "assets_included": false
+    },
+    {
+      "id": "clean-geometric",
+      "name": "清爽几何",
+      "use_for": "适合分类、逻辑、拼图及机制原型",
+      "palette": [
+        "米白",
+        "蓝绿",
+        "橘红",
+        "深灰"
+      ],
+      "asset_recipe": "简单几何、清楚留白，用纹样或数字辅助颜色",
+      "feedback": "干净的位移和高亮，非法动作微抖并说明原因",
+      "checks": [
+        "不用颜色作为唯一提示",
+        "交互区域至少44 CSS px"
+      ],
+      "assets_included": false
+    },
+    {
+      "id": "paper-garden",
+      "name": "纸艺花园",
+      "use_for": "适合经营、种植、温和探索",
+      "palette": [
+        "纸白",
+        "叶绿",
+        "陶土橘",
+        "浅蓝"
+      ],
+      "asset_recipe": "剪纸层叠、轻微纸张阴影和柔和手绘植物",
+      "feedback": "轻微翘边、摆动和收获散落；减少动态模式保留状态",
+      "checks": [
+        "层叠不遮挡交互",
+        "不过度使用纹理影响读数"
+      ],
+      "assets_included": false
+    },
+    {
+      "id": "industrial-space",
+      "name": "工业科幻",
+      "use_for": "适合太空、策略、机械解谜",
+      "palette": [
+        "石墨灰",
+        "冰白",
+        "安全橙",
+        "低饱和青"
+      ],
+      "asset_recipe": "硬朗面板、工程标记、有限发光，避免泛滥霓虹渐变",
+      "feedback": "机械卡扣、轨道滑动、清晰警告指示",
+      "checks": [
+        "小尺寸标记可读",
+        "暗部交互仍有对比"
+      ],
+      "assets_included": false
+    }
+  ]
+}
