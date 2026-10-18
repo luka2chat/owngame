@@ -19,4 +19,6 @@ python3 -m http.server 5177 --directory web-release --bind 127.0.0.1
 
 运行 `node --test web/download.test.mjs` 检查下载超时、断流、损坏内容、缓存恢复和并发上限。
 
-站点外壳应避免首开时预下载其他游戏的大图。在部分 Chrome 网络路径上观察到 HTTP/3 大文件停滞，而相同资源通过 HTTPS / HTTP/2 正常；本修复限制并发、缩小分块并取消站点大图预取，以未禁用 QUIC 的默认浏览器验收。Pages 的 `_headers` 未能覆盖边缘生成的 `Alt-Svc`，因此不依赖该方法，也不宣称已禁用站点 HTTP/3。参见 [Cloudflare 协议排障说明](https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/)。
+站点外壳应避免首开时预下载其他游戏的大图。在部分 Chrome 网络路径上观察到 HTTP/3 大文件停滞，而相同资源通过 HTTPS / HTTP/2 正常。2026-10-19 已在 owngame.dev 的 Cloudflare 域名设置中关闭 HTTP/3，保持 HTTP/2 和 HTTPS；Pages 的 `_headers` 未能覆盖边缘生成的 `Alt-Svc`，不能用它代替域名设置。参见 [Cloudflare 协议排障说明](https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/)。
+
+调整后，默认 Chrome（未禁用 QUIC、每轮新进程与新缓存）连续三次冷启动通过，覆盖游戏直达和首页进入：游戏资源下载与 Unity 初始化分别为 5.516、5.365、5.631 秒，均使用 HTTP/2，无重试或脚本错误。测试额外等待启动画面结束，再检查真实 3D 场景与键盘操作。数据来自当前测试网络，不代表所有地区、设备或弱网速度；移动端完整触屏操作仍未实现。

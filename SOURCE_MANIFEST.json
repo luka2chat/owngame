@@ -44,8 +44,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 17819,
-      "sha256": "4cb84e11a7a74be979ab7c5d2bbc97b3531823a505037cbbd080ce2addb807cc"
+      "bytes": 17816,
+      "sha256": "bde58dac009de9252b6db855738543772d8ca48a6761ab8ea6e8b9b19ad2692f"
     },
     {
       "path": "SECURITY.md",
@@ -69,8 +69,8 @@
     },
     {
       "path": "docs/cases/star-letters.md",
-      "bytes": 3216,
-      "sha256": "ed67abf317a9601fc07c7d53e79e91a08a9f91b27e740ff7652481b2e7c240dc"
+      "bytes": 3622,
+      "sha256": "1aafd0c0a18178b0313f6326cb229c4f64728a42dcb1c6b5295b80a24f1e53eb"
     },
     {
       "path": "docs/cases/star-triad.md",
@@ -175,7 +175,7 @@
     {
       "path": "examples/star-letters/SOURCE_MANIFEST.json",
       "bytes": 236760,
-      "sha256": "502684560b1238827ab463d3717fa313f45de20d822441cae29960a0fc66ae3c"
+      "sha256": "fe2609af98187e24801c586a67fb5599b0668fafdb5535e246c57782b068c076"
     },
     {
       "path": "examples/star-letters/THIRD_PARTY_NOTICES.md",
@@ -5164,8 +5164,8 @@
     },
     {
       "path": "examples/star-letters/web/README.md",
-      "bytes": 2135,
-      "sha256": "d131b019550685b17826acb49d392f3e90b1f83c77c70a67cbbf80ab036162b7"
+      "bytes": 2564,
+      "sha256": "c10b0cc9742966d0e29a43d7ab6430a17c10a07230001abe883a2d48584b1a9c"
     },
     {
       "path": "examples/star-letters/web/download.mjs",
