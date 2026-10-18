@@ -15,8 +15,8 @@ for(const [key,relative] of Object.entries(paths)){
  const raw=await fs.readFile(path.join(input,relative));
  const compressed=gzipSync(raw,{level:9});
  const chunks=[];
- for(let offset=0,index=0;offset<compressed.length;offset+=16*1024*1024,index++){
-  const bytes=compressed.subarray(offset,offset+16*1024*1024),file=`Build/${key}-${index}.bin`;
+ for(let offset=0,index=0;offset<compressed.length;offset+=1024*1024,index++){
+  const bytes=compressed.subarray(offset,offset+1024*1024),file=`Build/${key}-${index}.bin`;
   await fs.writeFile(path.join(output,file),bytes);chunks.push({path:file,bytes:bytes.length,sha256:sha(bytes)});
  }
  if(sha(gunzipSync(Buffer.concat(await Promise.all(chunks.map(c=>fs.readFile(path.join(output,c.path)))))))!==sha(raw))throw Error('Roundtrip mismatch');
@@ -24,7 +24,7 @@ for(const [key,relative] of Object.entries(paths)){
 }
 await fs.copyFile(path.join(input,loader),path.join(output,'Build/loader.js'));
 await fs.writeFile(path.join(output,'assets.json'),JSON.stringify({schema:'star-letters.web.v1',assets},null,2)+'\n');
-for(const file of ['index.html','launch.js'])await fs.copyFile(path.join(import.meta.dirname,file),path.join(output,file));
+for(const file of ['index.html','launch.js','download.mjs'])await fs.copyFile(path.join(import.meta.dirname,file),path.join(output,file));
 await fs.mkdir(path.join(output,'licenses'));
 for(const file of ['LICENSE','THIRD_PARTY_NOTICES.md'])await fs.copyFile(path.join(notices,file),path.join(output,'licenses',file+'.txt'));
 for(const file of await fs.readdir(path.join(notices,'LICENSES')))await fs.copyFile(path.join(notices,'LICENSES',file),path.join(output,'licenses',file.replace(/\.md$/,'.txt')));

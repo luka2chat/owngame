@@ -20,6 +20,7 @@ jobs:
           cache: npm
           cache-dependency-path: examples/star-letters/package-lock.json
       - run: node scripts/verify-source.mjs
+      - run: node --test web/download.test.mjs
       - run: npm ci
       - run: npm test
       - run: npm run build

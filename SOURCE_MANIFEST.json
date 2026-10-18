@@ -24,8 +24,8 @@
     },
     {
       "path": ".github/workflows/star-letters.yml",
-      "bytes": 707,
-      "sha256": "8c136576f014f23cb6c9455c9f38398d337138aa970d3609a861beba44fd5e21"
+      "bytes": 754,
+      "sha256": "b562bc7d945b25951593051a7f8427536867c70c6f3acc1de72491eed58b6832"
     },
     {
       "path": "CHANGELOG.md",
@@ -69,8 +69,8 @@
     },
     {
       "path": "docs/cases/star-letters.md",
-      "bytes": 3217,
-      "sha256": "7247a134e18fbbfbb88edd574b3ae2a3f82ae74bb98e48e3d149a8c74063e8e1"
+      "bytes": 3216,
+      "sha256": "ed67abf317a9601fc07c7d53e79e91a08a9f91b27e740ff7652481b2e7c240dc"
     },
     {
       "path": "docs/cases/star-triad.md",
@@ -174,8 +174,8 @@
     },
     {
       "path": "examples/star-letters/SOURCE_MANIFEST.json",
-      "bytes": 236405,
-      "sha256": "d09b38f286837a0e3c19b8c697ec76d6cbe2859a529df494f06d3f62caf69a57"
+      "bytes": 236760,
+      "sha256": "502684560b1238827ab463d3717fa313f45de20d822441cae29960a0fc66ae3c"
     },
     {
       "path": "examples/star-letters/THIRD_PARTY_NOTICES.md",
@@ -5164,8 +5164,18 @@
     },
     {
       "path": "examples/star-letters/web/README.md",
-      "bytes": 1057,
-      "sha256": "690a17f9afb95bb9b8276500f76013d73af3bdf2d4754e47895f87e4a26b82ad"
+      "bytes": 2135,
+      "sha256": "d131b019550685b17826acb49d392f3e90b1f83c77c70a67cbbf80ab036162b7"
+    },
+    {
+      "path": "examples/star-letters/web/download.mjs",
+      "bytes": 4815,
+      "sha256": "65a77bb25abb4e78bb3d69140987fef8e3314590545c970634787931668b18f4"
+    },
+    {
+      "path": "examples/star-letters/web/download.test.mjs",
+      "bytes": 4058,
+      "sha256": "959ef47da699611300561b5ee5d13e531cf922b5181b3fc64add7568396e8553"
     },
     {
       "path": "examples/star-letters/web/index.html",
@@ -5174,13 +5184,13 @@
     },
     {
       "path": "examples/star-letters/web/launch.js",
-      "bytes": 3479,
-      "sha256": "d78c80a0a34a43db101a001a615520eb13e4300fff050a1dcacdc85e4426b1fb"
+      "bytes": 4390,
+      "sha256": "00cb88402cca8145c1aff9909e4ec04fa8d49123b80a12c874823517e9df27bb"
     },
     {
       "path": "examples/star-letters/web/pack.mjs",
-      "bytes": 3130,
-      "sha256": "85fad3f224be35f600fe2771ff1d3614624548305205485601d9bc83f6d9337b"
+      "bytes": 3139,
+      "sha256": "970842ac5de7ab1e9c9d44ad4400fe053aae31ece0ddf95435f239286c5a1dc2"
     },
     {
       "path": "packages/cli/index.ts",
