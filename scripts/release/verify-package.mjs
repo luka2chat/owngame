@@ -26,7 +26,7 @@ try{
  const files=info.files.map(f=>f.path);
  const allowed=/^(dist\/packages\/|starter-knowledge\/|skills\/|templates\/|scripts\/toolkit\/|docs\/(cases|images)\/|docs\/(install|quickstart|releasing)\.md$|docs\/style-recipes\.json$|package\.json$|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|CHANGELOG\.md$|CONTRIBUTING\.md$|SECURITY\.md$)/;
  for(const file of files){assert(allowed.test(file),`Unexpected packaged path: ${file}`);assert(!/(^|\/)(node_modules|\.env|\.git|\.local|\.owngame|\.DS_Store)(\/|$)/.test(file));}
- for(const needed of ['skills/owngame/SKILL.md','templates/web-canvas/LICENSE','templates/web-canvas/src/main.js','starter-knowledge/sources.json','docs/cases/star-triad.md'])assert(files.includes(needed),needed);
+ for(const needed of ['skills/owngame/SKILL.md','templates/web-canvas/LICENSE','templates/web-canvas/src/main.js','starter-knowledge/sources.json','docs/cases/star-triad.md','templates/unity-home/Assets/Scenes/HomeArt.unity','templates/unity-home/Assets/Models/Story/HomeArt-v2.fbx','templates/unity-home/Assets/Resources/Fonts/StarLettersUI.ttf','templates/unity-home/Packages/packages-lock.json','templates/unity-home/LICENSES/NotoSansSC-OFL.txt'])assert(files.includes(needed),needed);
  const tar=path.join(reportDir,info.filename);
  if(published){const prior=JSON.parse(await fs.readFile(path.join(root,'artifacts/release',pkg.version,'verification.json')));assert.equal(prior.status,'succeeded');assert.equal(createHash('sha256').update(await fs.readFile(tar)).digest('hex'),prior.sha256,'Registry archive differs from verified candidate');}
  await fs.writeFile(path.join(workspace,'package.json'),'{"private":true,"type":"module"}\n');
@@ -45,6 +45,29 @@ try{
  for(const [op,input] of [['capabilities',{}],['research.prepare',{query:'美术'}],['research.prepare',{query:'容量',mode:'snapshot'}],['style.list',{}],['guidance.get',{topic:'web'}]]){
   const c=cli(op,input),m=await client.callTool({name:'owngame_'+op.replaceAll('.','_'),arguments:input});assert.deepEqual(normalized(c),normalized(m.structuredContent));
  }
+ const unityTool=tools.tools.find(t=>t.name==='owngame_project_create');
+ assert(unityTool.inputSchema.properties.template.enum.includes('unity-home'));
+ async function verifyUnity(result,directory,name){
+  assert.equal(result.status,'succeeded');assert.equal(result.data.template,'unity-home');
+  assert.equal(result.data.scene,'Assets/Scenes/HomeArt.unity');assert.equal(result.data.preview,undefined);assert.equal(result.data.build,undefined);
+  const inventory=JSON.parse(await fs.readFile(path.join(installed,'templates/unity-home/SOURCE_MANIFEST.json')));
+  for(const file of inventory.files){
+   if(file.path==='ProjectSettings/ProjectSettings.asset')continue;
+   const bytes=await fs.readFile(path.join(directory,file.path));
+   assert.equal(createHash('sha256').update(bytes).digest('hex'),file.sha256,`Unity asset changed or missing: ${file.path}`);
+  }
+  const settings=await fs.readFile(path.join(directory,'ProjectSettings/ProjectSettings.asset'),'utf8');
+  assert(settings.includes(`productName: ${name}`));
+  const id=settings.match(/productGUID: ([a-f0-9]{32})/)[1];
+  assert(settings.includes(`Standalone: dev.owngame.g${id}`));
+  assert((await fs.readFile(path.join(directory,'.gitignore'),'utf8')).includes('/[Ll]ibrary/'));
+  for(const excluded of ['Library','Temp','UserSettings','Assets/Scenes/StoryAdventure.unity'])
+   await assert.rejects(fs.access(path.join(directory,excluded)),{code:'ENOENT'});
+  return id;
+ }
+ const unityCLI=cli('project.create',{directory:'unity-cli',name:'unity-starter',template:'unity-home'});
+ const unityMCP=await client.callTool({name:'owngame_project_create',arguments:{directory:'unity-mcp',name:'unity-starter',template:'unity-home'}});
+ assert.notEqual(await verifyUnity(unityCLI,path.join(workspace,'unity-cli'),'unity-starter'),await verifyUnity(unityMCP.structuredContent,path.join(workspace,'unity-mcp'),'unity-starter'));
  const create=await client.callTool({name:'owngame_project_create',arguments:{directory:'my-game',name:'my-game'}});assert.equal(create.structuredContent.status,'succeeded');
  const game=path.join(workspace,'my-game');
  run(process.execPath,['--test','rules.test.mjs'],game);run(process.execPath,['scripts/build.mjs'],game);
@@ -81,6 +104,9 @@ try{
  if(published){
   const consumer=await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(),'owngame-npx-consumer-')));let consumerClient;
   try{
+   assert.equal(run(npm,['exec','--yes','--',pkg.name+'@latest','--version'],consumer).trim(),pkg.version,'npm latest is not the release candidate');
+   const latestUnity=JSON.parse(run(npm,['exec','--yes','--',pkg.name+'@latest','project.create',JSON.stringify({directory:'unity-latest',name:'unity-latest',template:'unity-home'})],consumer));
+   await verifyUnity(latestUnity,path.join(consumer,'unity-latest'),'unity-latest');
    const configured=JSON.parse(run(npm,['exec','--yes','--',pkg.name+'@'+pkg.version,'setup','--agent','generic','--apply','--workspace',consumer],consumer));
    assert.equal(configured.applied,true);assert.equal(configured.runtime,path.join(consumer,'.owngame/toolkit/node_modules/@owngame/cli'));
    const config=JSON.parse(await fs.readFile(path.join(consumer,'.owngame/mcp.json'))).mcpServers.owngame;
@@ -89,7 +115,7 @@ try{
    assert.equal(await fs.readFile(path.join(consumer,'.agents/skills/owngame/SKILL.md'),'utf8'),await fs.readFile(path.join(installed,'skills/owngame/SKILL.md'),'utf8'));
   }finally{await consumerClient?.close();await fs.rm(consumer,{recursive:true,force:true});}
  }
- const report={status:'succeeded',version:pkg.version,tarball:info.filename,sha256:createHash('sha256').update(await fs.readFile(tar)).digest('hex'),bytes:info.size,files:files.length,operations:tools.tools.length,npx_default_entry:true,npx_project_install:published?'verified':'requires_registry',cli_mcp_parity:true,installed_creation:true,rules_positions:5478,real_input:['win','terminal-input-disabled','undo','restart','draw','keyboard','save-reload'],viewports:['1280x900','360x640','390x844'],art_revision_preserves_save:true,build_changed:before.data.build_sha256!==after.data.build_sha256,browser:await browser.version(),page_errors:errors,external_requests:external,physical_phone:'not_run',offline_cold_start:'not_run',human_art_and_feel:'not_evaluated',public_npm:published?'verified_registry_install':'not_published',github_ci:'not_run'};
+ const report={status:'succeeded',version:pkg.version,tarball:info.filename,sha256:createHash('sha256').update(await fs.readFile(tar)).digest('hex'),bytes:info.size,files:files.length,operations:tools.tools.length,npx_default_entry:true,npx_project_install:published?'verified':'requires_registry',cli_mcp_parity:true,installed_creation:true,unity_template:{cli:true,mcp:true,asset_manifest:true,independent_identity:true,npx_latest:published?'verified':'requires_registry',editor_playmode:'not_run_by_this_package_check'},rules_positions:5478,real_input:['win','terminal-input-disabled','undo','restart','draw','keyboard','save-reload'],viewports:['1280x900','360x640','390x844'],art_revision_preserves_save:true,build_changed:before.data.build_sha256!==after.data.build_sha256,browser:await browser.version(),page_errors:errors,external_requests:external,physical_phone:'not_run',offline_cold_start:'not_run',human_art_and_feel:'not_evaluated',public_npm:published?'verified_registry_install':'not_published',github_ci:'not_run'};
  await fs.writeFile(path.join(reportDir,'verification.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
 }catch(error){
  await fs.writeFile(path.join(reportDir,'verification.json'),JSON.stringify({status:'failed',version:pkg.version,error:String(error)},null,2)+'\n');throw error;

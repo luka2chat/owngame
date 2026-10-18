@@ -13,13 +13,15 @@
 
 ## 通过 owngame 创建
 
-`unity-home` 已接入仓库源码中的 CLI / MCP，尚未发布到 npm。先在 owngame 仓库根目录安装依赖并构建，再创建独立项目：
+从 **@owngame/cli 0.9.0** 起支持此模板。无需克隆仓库，在你的工作目录运行：
 
 ```sh
-npm ci
-npm run build
-node dist/packages/cli/index.js project.create '{"directory":"my-unity-game","name":"my-unity-game","template":"unity-home"}'
+npx @owngame/cli@latest project.create '{"directory":"my-unity-game","name":"my-unity-game","template":"unity-home"}'
 ```
+
+需要 Node.js 22+ 与 npm。将生成的 `my-unity-game` 目录添加到 Unity Hub，打开 `Assets/Scenes/HomeArt.unity`，点击 Play。使用 `@latest` 获取最新稳定版工具包；Unity 编辑器仍需单独安装。
+
+仓库开发者也可以先执行 `npm ci`、`npm run build`，再用 `node dist/packages/cli/index.js project.create` 调用相同入口。
 
 创建器会复制模板、设置项目名称并生成独立的 Unity 产品 GUID 和应用标识，不覆盖已有目录。也可以直接复制此目录后在 Player Settings 修改产品名称和标识。Unity 项目通过 Unity Editor 运行和构建，不使用 `npm run preview`。
 

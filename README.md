@@ -127,7 +127,15 @@ npx @owngame/cli@latest capabilities
 | `web-canvas`（默认） | 可玩的「月下连星」双人小游戏 | Node.js 22+ 与现代浏览器 |
 | `web-phaser` | Phaser 项目脚手架，需继续实现规则、美术和内容 | 创建后安装项目依赖 |
 | `cocos-minimal` | Cocos 项目脚手架，需继续实现游戏 | 单独安装 Cocos Creator 3.8.8 |
-| [`unity-home`](templates/unity-home)（源码版） | 家园探索：角色移动、镜头、四步互动任务与信标 | Unity 6000.3.26f1、URP；从仓库创建，npm 发布待后续版本 |
+| [`unity-home`](templates/unity-home)（0.9.0+） | 家园探索：角色移动、镜头、四步互动任务与信标 | Unity 6000.3.26f1、URP；使用最新版 CLI 创建 |
+
+创建 Unity 游戏（无需先克隆仓库）：
+
+```sh
+npx @owngame/cli@latest project.create '{"directory":"my-unity-game","name":"my-unity-game","template":"unity-home"}'
+```
+
+在 Unity Hub 中添加生成的目录，打开 `Assets/Scenes/HomeArt.unity` 并点击 Play。需要 Node.js 22+ 和 Unity 6000.3.26f1；首次使用会安装工具包与 Unity 项目依赖。
 
 Cocos 构建适配器目前只在特定 macOS 环境验证过；浏览器、图片生成和发布能力取决于所用助手与本机环境。详见 [安装说明](docs/install.md)。
 
@@ -141,12 +149,12 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 | --- | --- | --- |
 | **Web / Phaser** | 已提供可玩 Web 起点与 Phaser 脚手架 | 丰富玩法模板、触屏适配与可复用案例，完善离线交付指导 |
 | **Cocos Creator** | 已提供脚手架与有限环境验证的构建适配器 | 扩大环境覆盖，补充场景、资源与构建诊断流程 |
-| **Unity** | 已提供 `unity-home` 单场景 3D 模板（仓库源码）与完整游戏案例 | 发布模板到后续 npm 版本，逐步接入编辑器反馈、场景与资源操作及构建检查 |
+| **Unity** | 已提供 `unity-home` 单场景 3D 模板（CLI / MCP）与完整游戏案例 | 逐步接入编辑器反馈、场景与资源操作及构建检查 |
 | **Three.js** | 计划中；已公开独立教学原型 | 提供轻量 Web 3D 起点，整理角色、镜头、交互和加载优化的创作指导 |
 | **Godot** | 计划中 | 探索项目模板、场景与脚本迭代、资源导入及导出检查 |
 | **Unreal Engine** | 调研中 | 评估编辑器接入、蓝图与代码协作、资源管理和打包成本，再确定适配范围 |
 
-仓库源码中的 `project.create` 已支持 `unity-home`：从《星野来信》的 HomeArt 场景提取，保留独立探索循环，移除完整旅程的剧情依赖。[打开与创建方法](templates/unity-home/README.md)。当前 npm 版本仍提供原有三种模板；Unity 编辑器与目标平台模块需单独安装，通用 Unity 构建适配器仍在计划中。Three.js、Godot 与 Unreal 项目创建尚未提供。
+从 0.9.0 起，`project.create` 支持 `unity-home`：从《星野来信》的 HomeArt 场景提取，保留独立探索循环，移除完整旅程的剧情依赖。[打开与创建方法](templates/unity-home/README.md)。四种模板均通过同一 CLI / MCP 入口创建；Unity 编辑器与目标平台模块需单独安装，通用 Unity 构建适配器仍在计划中。Three.js、Godot 与 Unreal 项目创建尚未提供。
 
 ### 游玩与发布平台
 
@@ -235,6 +243,6 @@ Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use
 
 Requires **Node.js 22+** and npm. Run the setup command in the quick start section in your game project, reload your assistant, and verify the connection. Codex and Cursor have project setup options; other local MCP clients can use the generic configuration. The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
 
-**Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone HomeArt exploration scene with character controls, camera and a four-step quest. Create it with the source CLI; npm availability awaits a later release. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the Android client remains an internal alpha. See the [support roadmap](#支持路线图) for scope and status.
+**Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone HomeArt exploration scene with character controls, camera and a four-step quest. Available through CLI/MCP in 0.9.0+: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the Android client remains an internal alpha. See the [support roadmap](#支持路线图) for scope and status.
 
 [Get started](#快速开始) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)

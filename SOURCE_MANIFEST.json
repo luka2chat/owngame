@@ -1,5 +1,5 @@
 {
-  "version": "0.8.0",
+  "version": "0.9.0",
   "scope": "Explicit public toolkit and reviewed Star Letters game source; private production files excluded",
   "files": [
     {
@@ -29,8 +29,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 1326,
-      "sha256": "e65c463d0a29dcf724e94146a0659a0528f81d2d6521eb1aad165e5f70b8e4b7"
+      "bytes": 2074,
+      "sha256": "b03d29c2f4546a584649737a64c903b4b0daac6d5bfc040001fa8acb96545d75"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -44,8 +44,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 17816,
-      "sha256": "bde58dac009de9252b6db855738543772d8ca48a6761ab8ea6e8b9b19ad2692f"
+      "bytes": 18213,
+      "sha256": "6daf7d431cfda5af16e1ab4eedacfee64db77dd122c25da94667090d0aa12c62"
     },
     {
       "path": "SECURITY.md",
@@ -94,8 +94,8 @@
     },
     {
       "path": "docs/install.md",
-      "bytes": 3919,
-      "sha256": "1833f56e28946f0575ebda0e24529b7b09ef240a234624dc90a8354f714f4e41"
+      "bytes": 4723,
+      "sha256": "091a07de145b120277ca9989d06ddad36a993b90a2918140895860f8f23a9fd0"
     },
     {
       "path": "docs/quickstart.md",
@@ -5193,6 +5193,16 @@
       "sha256": "970842ac5de7ab1e9c9d44ad4400fe053aae31ece0ddf95435f239286c5a1dc2"
     },
     {
+      "path": "package-lock.json",
+      "bytes": 57581,
+      "sha256": "be41bcebb9d1b4ed07cf713bdb41d5a56bda18afca269bed9b97118af8395531"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1674,
+      "sha256": "c5917815318271cdce06ed7a869ab94b5baab63da5e7440e554dc215709155b2"
+    },
+    {
       "path": "packages/cli/index.ts",
       "bytes": 2961,
       "sha256": "61e98f768083266d9ce77d2c32a67dac96824bdf5af4963cc4b4f905bfe6477e"
@@ -5264,8 +5274,8 @@
     },
     {
       "path": "scripts/release/verify-package.mjs",
-      "bytes": 11588,
-      "sha256": "959dd3375d2b72d7a9decdc4eb5040a834f87fb027e2e92310e834c030dbe731"
+      "bytes": 14359,
+      "sha256": "c4f238b318637597cebeed366014972fb7671d68b6d4e597d6a39f12f8d845eb"
     },
     {
       "path": "scripts/toolkit/build-cocos.mjs",
@@ -6429,13 +6439,13 @@
     },
     {
       "path": "templates/unity-home/README.md",
-      "bytes": 3927,
-      "sha256": "487c1aae25ac61c91801638bd9d6e4a4019bc67903de4bdc65d53d5c14f77271"
+      "bytes": 4213,
+      "sha256": "dde526c18c19f1fb9594c04366efd67ca067d3f8bf5e1919bbd36466b582ccc5"
     },
     {
       "path": "templates/unity-home/SOURCE_MANIFEST.json",
       "bytes": 58997,
-      "sha256": "fba1ad1a171eca6b1abe2fdc9258c0819c8f4263874d49d77bcd4ece1f5d71b8"
+      "sha256": "0b48bb0d269aa372d02a2ddd94edc9ab97f6b47bc156651eaf3119f30b966de1"
     },
     {
       "path": "templates/unity-home/THIRD_PARTY_NOTICES.md",

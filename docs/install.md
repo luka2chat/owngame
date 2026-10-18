@@ -57,3 +57,19 @@ CLI/MCP 共用核心，CLI 的 knowledge.search 对应 owngame_knowledge_search�
 默认 Web 起点无需运行库。Phaser 模板需 npm install；Cocos 需外部 Creator 3.8.8，构建适配器只验证过特定 macOS 路径。图片生成、浏览器输入、手机和发布由宿主提供。doctor 不下载外部引擎、不测试物理手机，也不宣称 MCP 已连接。
 
 卸载前停止宿主连接。手动删除配置中的 owngame 管理块/条目与对应 Skill；保留其他服务器。然后可以删除项目 .owngame/toolkit 与 setup 清单。不要为卸载工具删除游戏源码、存档或整个 .owngame：其中可能包含用户的交付清单。当前没有自动卸载命令。
+
+## 创建 Unity 项目
+
+需要 @owngame/cli 0.9.0+、Node.js 22+ 和单独安装的 Unity 6000.3.26f1。在工作目录运行：
+
+```sh
+npx @owngame/cli@latest project.create '{"directory":"my-unity-game","name":"my-unity-game","template":"unity-home"}'
+```
+
+随后在 Unity Hub 添加 `my-unity-game`，打开 `Assets/Scenes/HomeArt.unity` 并点击 Play。
+首次导入时 Unity Package Manager 会获取项目依赖。规则、美术和验证入口见
+[模板说明](https://github.com/luka2chat/owngame/tree/main/templates/unity-home)。
+
+如果已经通过 `setup` 接入 AI 助手，再用 `npx @owngame/cli@latest setup --agent codex --apply`
+更新项目内的工具包，然后重载助手；Cursor 用户将 `codex` 改为 `cursor`。
+更新工具包不会迁移已经创建的游戏项目。

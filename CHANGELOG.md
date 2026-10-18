@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.9.0 — 2026-10-19
+
+- Add `unity-home`, a standalone HomeArt exploration starter with character movement,
+  camera controls, a four-step quest, bundled art and Chinese UI font.
+- Expose the Unity template through the shared CLI/MCP `project.create` operation;
+  generate independent product and application identities and ignore Unity caches.
+- Verify Unity scene/resource integrity from the packed and published npm package,
+  including creation through the `@latest` command in a fresh consumer directory.
+- Keep the default Web starter and existing project files unchanged. Unity Editor
+  6000.3.26f1 is installed separately; a general Unity build adapter, touch controls,
+  and platform builds are outside this release's validated scope.
+
 ## 0.8.0 — 2026-10-18
 
 First complete public toolkit candidate after the npm 0.0.1 scope smoke test.
