@@ -4,13 +4,13 @@
   "files": [
     {
       "path": "packages/cli/index.ts",
-      "bytes": 2804,
-      "sha256": "1f790f6a4d73e938dbbc3f1e8187d78e77cc9a6115a1200403dbf8649911d228"
+      "bytes": 2949,
+      "sha256": "993c7e11a5ce00fe37c1603f9b6ad82c69c6f00477bcd5f39da237d35271230e"
     },
     {
       "path": "packages/cli/setup.ts",
-      "bytes": 10057,
-      "sha256": "641af985afd2d2a29d320150da84674c38e16e3d9d734e3f0984773b8ab5f648"
+      "bytes": 10286,
+      "sha256": "a2e9aeec7a8bf263b7c34f2486e9feb2936e8ff4a4d7e75b8a3b318b85311a9e"
     },
     {
       "path": "packages/core/contracts.ts",
@@ -319,8 +319,8 @@
     },
     {
       "path": "scripts/release/verify-package.mjs",
-      "bytes": 10033,
-      "sha256": "bc21963368b593c589b6d1adb95cc6a4c2bb3fbb3a6fba38e80e284956626d1b"
+      "bytes": 10354,
+      "sha256": "88c8fcf21fcc6e46cef4add58055f9c1ec0eaa8c861b86b4ed0200dd07df34e3"
     },
     {
       "path": "tests/release/toolkit.test.mjs",
@@ -355,7 +355,7 @@
     {
       "path": "README.md",
       "bytes": 3677,
-      "sha256": "1cd0a72a4c9c93018233349f438a6553fb5da4fc7847b7b57a9e506dd9ebde85"
+      "sha256": "5844fb2c5ad5aec467abbb65020211f6480b6551f012387046b3eb45f49093b3"
     },
     {
       "path": "LICENSE",
@@ -379,13 +379,13 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 1352,
-      "sha256": "919ff8e691d0c429de193eedf42c0805f07eb64fbfa37f1b496d4bec12126c98"
+      "bytes": 1326,
+      "sha256": "e65c463d0a29dcf724e94146a0659a0528f81d2d6521eb1aad165e5f70b8e4b7"
     },
     {
       "path": "docs/install.md",
-      "bytes": 3731,
-      "sha256": "a2a000fd25541e1f35eb56032af7d4796e9e56c79a2623794833511fa8d6a76a"
+      "bytes": 3868,
+      "sha256": "da44df295895997c5a338f46b22f8d7ed3b66baa8ee4ddc9c943a58830210311"
     },
     {
       "path": "docs/quickstart.md",
@@ -394,8 +394,8 @@
     },
     {
       "path": "docs/releasing.md",
-      "bytes": 3714,
-      "sha256": "8fc1e989b307433e949e2fa21f77984dc2d28cc9466ada1a0aab39b0a6c88415"
+      "bytes": 3712,
+      "sha256": "3d0ba42077beede67f3ea035b4af3c0c9edc56e7008ae77b2f57014d58cf6a00"
     },
     {
       "path": "docs/style-recipes.json",
