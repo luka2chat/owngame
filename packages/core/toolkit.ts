@@ -22,7 +22,7 @@ export const ToolkitOperations = {
   "project.create": z.strictObject({
     directory: text,
     name: z.string().regex(/^[a-z][a-z0-9-]{0,63}$/),
-    template: z.enum(["web-canvas", "web-phaser", "cocos-minimal"]).default("web-canvas"),
+    template: z.enum(["web-canvas", "web-phaser", "cocos-minimal", "unity-home"]).default("web-canvas"),
   }),
   "cocos.build": z.strictObject({
     project: text,
@@ -87,6 +87,26 @@ export class Toolkit {
         force: false,
         errorOnExist: true,
       });
+    }
+    if (a.template === "unity-home") {
+      const settingsPath = path.join(dest, "ProjectSettings/ProjectSettings.asset");
+      const identity = randomUUID().replaceAll("-", "");
+      const settings = (await fs.readFile(settingsPath, "utf8"))
+        .replace(/^  productName:.*$/m, `  productName: ${a.name}`)
+        .replace(/^  productGUID:.*$/m, `  productGUID: ${identity}`)
+        .replace(/dev\.owngame\.unityhome/g, `dev.owngame.g${identity}`);
+      await fs.writeFile(settingsPath, settings);
+      // npm omits .gitignore from packed templates; generated Unity caches must stay untracked.
+      await fs.writeFile(path.join(dest, ".gitignore"), "/[Ll]ibrary/\n/[Tt]emp/\n/[Oo]bj/\n/[Bb]uilds/\n/[Ll]ogs/\n/[Uu]ser[Ss]ettings/\n/.vs/\n*.csproj\n*.sln\n.DS_Store\n");
+      return {
+        project: dest,
+        template: a.template,
+        engine: "unity@6000.3.26f1",
+        scene: "Assets/Scenes/HomeArt.unity",
+        editor: "Open this project directory in Unity Hub, then open the scene and press Play.",
+        validation: "owngame > Validate Home Template in the Unity Editor",
+        state: "single-scene exploration starter; customize tasks and art, then verify input in Unity",
+      };
     }
     const pkg = await readJson(path.join(dest, "package.json"));
     pkg.name = a.name;

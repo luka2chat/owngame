@@ -51,7 +51,7 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 
 *配图为游戏实拍。推荐电脑键鼠，首次加载约 54 MB；线上首次下载仍可能较慢或超时，手机尚无完整触屏操作。*
 
-原创代码、对白与程序化素材采用 MIT；字体、Unity 衍生配置与运行时分别遵循其许可，详见[授权说明](examples/star-letters/THIRD_PARTY_NOTICES.md)。这个案例可独立阅读和修改；Unity / Three.js 的通用项目创建适配仍在计划中。
+原创代码、对白与程序化素材采用 MIT；字体、Unity 衍生配置与运行时分别遵循其许可，详见[授权说明](examples/star-letters/THIRD_PARTY_NOTICES.md)。这个案例可独立阅读和修改；家园场景另已提取为 [`unity-home` 模板](templates/unity-home)。通用 Unity 构建适配与 Three.js 项目创建仍在计划中。
 
 ## 快速开始
 
@@ -110,7 +110,7 @@ owngame 提供参考、模板和检查接口；规划、代码实现、图片生
 | 创作指导 | 美术、Web、Cocos、测试与迭代的任务指导 | `guidance.get` / [Skill](skills/owngame/SKILL.md) |
 | 参考研究 | 检索公开案例摘要，整理任务相关的研究材料 | `research.prepare` / `knowledge.search` |
 | 风格配方 | 查询视觉方向，为实际游戏画面提供设计依据 | `style.list` / `style.get` |
-| 项目创建 | 创建独立游戏目录，选择 Web、Phaser 或 Cocos 起点 | `project.create` |
+| 项目创建 | 创建独立游戏目录，选择 Web、Phaser、Cocos 或 Unity 起点 | `project.create` |
 | 构建检查 | 检查 Web 产物并生成内容指纹；调用外部 Cocos 构建 | `web.inspect` / `cocos.build` |
 | 交付记录 | 登记交付版本，记录与查询评估结果 | `delivery.register` / `assessment.record` |
 
@@ -127,6 +127,7 @@ npx @owngame/cli@latest capabilities
 | `web-canvas`（默认） | 可玩的「月下连星」双人小游戏 | Node.js 22+ 与现代浏览器 |
 | `web-phaser` | Phaser 项目脚手架，需继续实现规则、美术和内容 | 创建后安装项目依赖 |
 | `cocos-minimal` | Cocos 项目脚手架，需继续实现游戏 | 单独安装 Cocos Creator 3.8.8 |
+| [`unity-home`](templates/unity-home)（源码版） | 家园探索：角色移动、镜头、四步互动任务与信标 | Unity 6000.3.26f1、URP；从仓库创建，npm 发布待后续版本 |
 
 Cocos 构建适配器目前只在特定 macOS 环境验证过；浏览器、图片生成和发布能力取决于所用助手与本机环境。详见 [安装说明](docs/install.md)。
 
@@ -140,12 +141,12 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 | --- | --- | --- |
 | **Web / Phaser** | 已提供可玩 Web 起点与 Phaser 脚手架 | 丰富玩法模板、触屏适配与可复用案例，完善离线交付指导 |
 | **Cocos Creator** | 已提供脚手架与有限环境验证的构建适配器 | 扩大环境覆盖，补充场景、资源与构建诊断流程 |
-| **Unity** | **优先计划**；已公开《星野来信》3D 案例源码 | 整理可公开复用的 2D / 3D 起点，接入场景与资源操作、编辑器反馈和构建检查；先完成一条可验证的创作与交付流程 |
+| **Unity** | 已提供 `unity-home` 单场景 3D 模板（仓库源码）与完整游戏案例 | 发布模板到后续 npm 版本，逐步接入编辑器反馈、场景与资源操作及构建检查 |
 | **Three.js** | 计划中；已公开独立教学原型 | 提供轻量 Web 3D 起点，整理角色、镜头、交互和加载优化的创作指导 |
 | **Godot** | 计划中 | 探索项目模板、场景与脚本迭代、资源导入及导出检查 |
 | **Unreal Engine** | 调研中 | 评估编辑器接入、蓝图与代码协作、资源管理和打包成本，再确定适配范围 |
 
-Unity 的首个目标是将已有项目经验整理成可安装、可复用的工具能力。现阶段 `project.create` 仍只提供上表前两项对应的三种模板，尚不能直接创建 Unity、Three.js、Godot 或 Unreal 项目。
+仓库源码中的 `project.create` 已支持 `unity-home`：从《星野来信》的 HomeArt 场景提取，保留独立探索循环，移除完整旅程的剧情依赖。[打开与创建方法](templates/unity-home/README.md)。当前 npm 版本仍提供原有三种模板；Unity 编辑器与目标平台模块需单独安装，通用 Unity 构建适配器仍在计划中。Three.js、Godot 与 Unreal 项目创建尚未提供。
 
 ### 游玩与发布平台
 
@@ -234,6 +235,6 @@ Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use
 
 Requires **Node.js 22+** and npm. Run the setup command in the quick start section in your game project, reload your assistant, and verify the connection. Codex and Cursor have project setup options; other local MCP clients can use the generic configuration. The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
 
-**Roadmap:** Unity integration is the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the Android client remains an internal alpha. See the [support roadmap](#支持路线图) for scope and status.
+**Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone HomeArt exploration scene with character controls, camera and a four-step quest. Create it with the source CLI; npm availability awaits a later release. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the Android client remains an internal alpha. See the [support roadmap](#支持路线图) for scope and status.
 
 [Get started](#快速开始) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)

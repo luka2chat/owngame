@@ -23,6 +23,12 @@ modified or bundled copies; the root MIT license does not replace those notices.
 - cocos-minimal: authored scene and script scaffold. Cocos Creator is separately
   installed under its vendor terms; the editor and engine binaries are not bundled.
 
+- unity-home: authored HomeArt exploration scene and scripts extracted from the
+  Star Letters example. Includes a Noto Sans SC subset (OFL-1.1), Unity
+  template-derived settings (Unity Companion License), and retained vendor
+  notices. Unity packages and Editor are installed separately. See
+  templates/unity-home/THIRD_PARTY_NOTICES.md and LICENSES.
+
 ## Reference cases and exclusions
 
 The three starter cases are authored retrospective summaries, marked reported.

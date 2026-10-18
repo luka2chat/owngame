@@ -44,8 +44,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 17103,
-      "sha256": "a4a2e2b12a1ea891bccd4a47f379d14a6a3065e2392259cb9f4dc3e38887c389"
+      "bytes": 17819,
+      "sha256": "4cb84e11a7a74be979ab7c5d2bbc97b3531823a505037cbbd080ce2addb807cc"
     },
     {
       "path": "SECURITY.md",
@@ -54,8 +54,8 @@
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "bytes": 2599,
-      "sha256": "3f72b7f1b6e628a51d0c1c5b67e527ca0742711fd61f5a341b640e5c9a9e66fb"
+      "bytes": 2954,
+      "sha256": "4d51b72b84a998f082d2ab859d3de0ff65a04c2e9925d03a5d18417333eb2b26"
     },
     {
       "path": "docs/cases/kiln-merge.md",
@@ -5184,8 +5184,8 @@
     },
     {
       "path": "packages/cli/index.ts",
-      "bytes": 2949,
-      "sha256": "993c7e11a5ce00fe37c1603f9b6ad82c69c6f00477bcd5f39da237d35271230e"
+      "bytes": 2961,
+      "sha256": "61e98f768083266d9ce77d2c32a67dac96824bdf5af4963cc4b4f905bfe6477e"
     },
     {
       "path": "packages/cli/setup.ts",
@@ -5219,8 +5219,8 @@
     },
     {
       "path": "packages/core/toolkit.ts",
-      "bytes": 8419,
-      "sha256": "4a132785b4c05ac4132af3f74911a75afe11bd683291a3037be06f6780e67cf6"
+      "bytes": 9658,
+      "sha256": "ff66e6eefad583bb01f594fc7dcc4880f1849253348fb0c6ea6afdd71db9385a"
     },
     {
       "path": "packages/library/index.ts",
@@ -5408,6 +5408,1036 @@
       "sha256": "5b905d615fb49c5214cb704126fd885f1f1c1f17f23426b084f32c7881b640fc"
     },
     {
+      "path": "templates/unity-home/.gitignore",
+      "bytes": 106,
+      "sha256": "95dd8ca63e58722dc7508a23f7ef814638c3eb7af78201f6ff46a95d243c5669"
+    },
+    {
+      "path": "templates/unity-home/Assets/Editor.meta",
+      "bytes": 172,
+      "sha256": "fd5e803e3d03205dfe8277ac4f8fc8020ab1cba2a2f8f67d5157c05284bcfad2"
+    },
+    {
+      "path": "templates/unity-home/Assets/Editor/UnityHomeValidation.cs",
+      "bytes": 7934,
+      "sha256": "cba4986516e254590c8a25df5698158290c70ab4b4ce443a559e54f0c19b2951"
+    },
+    {
+      "path": "templates/unity-home/Assets/Editor/UnityHomeValidation.cs.meta",
+      "bytes": 243,
+      "sha256": "acdda876ceb3f11654fad84422f05c2f13adf618465cd0427c4ab60a7ce06673"
+    },
+    {
+      "path": "templates/unity-home/Assets/InputSystem_Actions.inputactions",
+      "bytes": 41005,
+      "sha256": "1c6cbb519d65ecfe19a29231735b7f54741a20ac1a8ad4f46a18e1bfb28a3c39"
+    },
+    {
+      "path": "templates/unity-home/Assets/InputSystem_Actions.inputactions.meta",
+      "bytes": 376,
+      "sha256": "3b4e424a80f5b4fa76b6abd774884a24285eaa61f22ff9bb20e5ad505fd8b569"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials.meta",
+      "bytes": 172,
+      "sha256": "05ee772dacb7123bac8be56713f9484aeffeeced627772e35a17d7711bc2fbbe"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story.meta",
+      "bytes": 172,
+      "sha256": "625f47aee49a7b71db57c0971b97cbcd31b0e8b2110a07e14ce783bb94a7321f"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/Traveler coat.mat",
+      "bytes": 3826,
+      "sha256": "7b02b5c6ee9f1d11e6f92118175860476c27ecb5d6ad4019406a2d51db232b6e"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/Traveler coat.mat.meta",
+      "bytes": 188,
+      "sha256": "10a3ec7d7665e894c8083066522ea6cd208f7db032b20190e497b35099ff1888"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/Traveler leather.mat",
+      "bytes": 3847,
+      "sha256": "37489b72b2f462c71d6edf1e0f77f73d06c96b2e87db665b8cb2b44c963edfe8"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/Traveler leather.mat.meta",
+      "bytes": 188,
+      "sha256": "bf27675ed50a4de0a42f24467fcf4a5eaf776eddb38992931eda3346b645bb25"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/Traveler skin.mat",
+      "bytes": 3838,
+      "sha256": "be2d0324f53ae3587c17f120d759c05e84adf4a777b354a29665135b2817ccfe"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/Traveler skin.mat.meta",
+      "bytes": 188,
+      "sha256": "d4cf61fb83b60796b6b53a4d577d7c47cfff09d78eba64d9088b63e5930ce302"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Brass.mat",
+      "bytes": 3834,
+      "sha256": "a3b7c804684e377e4c515d69cffb32fd6f86968acdd6981f8e42981243251685"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Brass.mat.meta",
+      "bytes": 188,
+      "sha256": "5079868ff838d0da911b058af530d2dbbd9ecda3af9a09d529c44b0c0eb9d5be"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CliffEarth.mat",
+      "bytes": 3934,
+      "sha256": "19a55c533f310efc084ff5ef42e4d40193949af747d4f7d88654e2d27f75b432"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CliffEarth.mat.meta",
+      "bytes": 188,
+      "sha256": "4d7513aaf80f7c1f3f91a31370c56204e0986aaae76bbe81ac3eee32d64435d4"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CliffPale.mat",
+      "bytes": 3920,
+      "sha256": "38cc5efad6b84ad2982c07e0acb6b1c1d5f6f60fed3df74b923b4ab300faacc6"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CliffPale.mat.meta",
+      "bytes": 188,
+      "sha256": "339d519ae70de4e83fabea56ac9521c34d1b494cf508ef6f44a5161563312872"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CliffSlate.mat",
+      "bytes": 3930,
+      "sha256": "ac711f0598f018c3d5636f5b4d8aa1cad60beffda75e7e55bf9c86896c0a1cfb"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CliffSlate.mat.meta",
+      "bytes": 188,
+      "sha256": "e40ddaeedb1f97270a421e717f04ee6aed0f92fa77fa59ce461ddccae09d5d4c"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CliffWarm.mat",
+      "bytes": 3927,
+      "sha256": "e11d83d90826f2b93322775c33cbfe87afea1a739f1cb3ac75f968cbb59a92d6"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CliffWarm.mat.meta",
+      "bytes": 188,
+      "sha256": "01defcb4eb389bf8091e65de302005a572d062725c61fd8b529757f03bfa3a28"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CloudCream.mat",
+      "bytes": 3882,
+      "sha256": "2ddcb02566566c94f6d850ce3e45e85ff2c2ce37fcf417950c9610469ac87dbf"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CloudCream.mat.meta",
+      "bytes": 188,
+      "sha256": "b5046ce8885065673a2c19039d700b42a9cd753f6535fa302cb084e5c21aadd8"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CloudLavender.mat",
+      "bytes": 3874,
+      "sha256": "ebfcc2568aa40189a703efea02265b1dcb836f77f71ed20e7bf18477f8ace90a"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CloudLavender.mat.meta",
+      "bytes": 188,
+      "sha256": "fc592cb10e78720ab6914bfff568a46d0cd264613ae5b4713c4e5d0dbbcb736d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CloudRose.mat",
+      "bytes": 3864,
+      "sha256": "061f66e287591a1d6f899ad4425fc6bd192222d62463c846c9a4970fd9527e6f"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_CloudRose.mat.meta",
+      "bytes": 188,
+      "sha256": "53851ec4763d91472813dbb8f2e3270cba63440c6954073dfbc65bdad7667f45"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Cream.mat",
+      "bytes": 3827,
+      "sha256": "570844fb2a25cc96dbf9d0be51b367bf141bae704fd372995c8e49b40e2a7bd4"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Cream.mat.meta",
+      "bytes": 188,
+      "sha256": "914060898f808a7a3c685aedc21e18921471affa1b32c4e3a2b150c90aaab4e4"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Dark.mat",
+      "bytes": 3837,
+      "sha256": "0249cea8450aa9f8fe6ac45b0c5044c458f2eeea9043092e139478843ca8f38d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Dark.mat.meta",
+      "bytes": 188,
+      "sha256": "89b7827640e1954606bd8a72f65deb4ade98916647a7c45040536927f5e1ddec"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Earth.mat",
+      "bytes": 3947,
+      "sha256": "fd03c2d267de7beac3f96c7cf9bf487de8e371191c544af9edfeb7a6979ef6a2"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Earth.mat.meta",
+      "bytes": 188,
+      "sha256": "eec50a6a56d8073880d7bc70b064beff317d816d2a09b6f23c3a30b01a15a7cd"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_GardenGrass.mat",
+      "bytes": 3955,
+      "sha256": "f9fef29128b06bb5be588dab29a3d1070b711907965b06031fca6c0c7995b489"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_GardenGrass.mat.meta",
+      "bytes": 188,
+      "sha256": "3ec085b8d084c8571e29f3c8c4a510b216eecc01145a6477bb35be1fc92c33ab"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Glass.mat",
+      "bytes": 3858,
+      "sha256": "1d87a14ce69b918a52278ea691ef1bf43d728c37a6d44bfc4a9cbb8ec2231896"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Glass.mat.meta",
+      "bytes": 188,
+      "sha256": "b7f0b2abff8f4b56d20c1e8a9b012001409dcea6a2c345bb50f74fef6a06043c"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Grass.mat",
+      "bytes": 3838,
+      "sha256": "78382b20f9dc91dd8d9d3b6d2f1c9e4903f3ee8e2158c635ae92da8e8f4f334a"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Grass.mat.meta",
+      "bytes": 188,
+      "sha256": "fd5ec197e76833194d960727061aec1102d5cb9f1b73c095a3486640173c6438"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_GrassDark.mat",
+      "bytes": 3842,
+      "sha256": "b9d30d799e5fbe5d1050299dcd0f6aa7ffc4974f39b55a79b66e34aac6695061"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_GrassDark.mat.meta",
+      "bytes": 188,
+      "sha256": "70f5fae0b8f7d394ed5b5b412575d0b87feae9a24c4e075a37e15aec904a684c"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_HomeLight.asset",
+      "bytes": 3461,
+      "sha256": "737cd0051c88a3e314ea1fbb5f657224be82496f5c14022f9aa09d8e4705113a"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_HomeLight.asset.meta",
+      "bytes": 189,
+      "sha256": "52d04c0eecd34ca133c5e0be1b0cd0dda351e708a701246c2cac072441e622d3"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Ice.mat",
+      "bytes": 3819,
+      "sha256": "b77ccb1c3b17e075b05fc2a3726eb9f5e6be6b9ab7ec94d27f042f7a5409dd7d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Ice.mat.meta",
+      "bytes": 188,
+      "sha256": "0d10274dfda7e7fccc3429ab967185cda2d6e8e1ffa88a9de70d222d956df2f9"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Lavender.mat",
+      "bytes": 3830,
+      "sha256": "b22045cc3cc240c63e0c0c19258773dc19f4e434fe0f8a8d609dcdcce1addf79"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Lavender.mat.meta",
+      "bytes": 188,
+      "sha256": "31d5eb773c370b425df2b5eff2a62fe03caa93d0809b1efeff9ab93cc1f76855"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Leaf.mat",
+      "bytes": 3838,
+      "sha256": "6ae991783ace09d4f0d22a10d6f980a264662cf69bdaa386b626945c1c8c759b"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Leaf.mat.meta",
+      "bytes": 188,
+      "sha256": "27b67d23cfdf619a14b9b06f8d544dbf1a4a66f4acfa3d551662fe64132d7c83"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_LeafLight.mat",
+      "bytes": 3831,
+      "sha256": "2362f8fc8bd31940bb0f903273a80431a2737b97296db0ee0b0946aec5c35a9f"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_LeafLight.mat.meta",
+      "bytes": 188,
+      "sha256": "fd4bcb07efc05b73aa66a8da32b93fa2bb82638bf128eb48fae8a0ba2bd62070"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_LightWood.mat",
+      "bytes": 3946,
+      "sha256": "0a678da0d04d2bbee1390c3ac08dad99701b43261a92c6daf5328fcc4d651845"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_LightWood.mat.meta",
+      "bytes": 188,
+      "sha256": "54929589da5328140cdef82c8f3401e8c3936183b539120336b45f02a6468182"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Mailbox.mat",
+      "bytes": 3943,
+      "sha256": "9dcf2f69a659745e1fc4e6b876cad5e70a6b821e5bdfaa4c4f0c63c156efb677"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Mailbox.mat.meta",
+      "bytes": 188,
+      "sha256": "2ac2b58ebb3370662c79d1257dc348122d47dea88372a968d36d2f0cda38e762"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Meadow.mat",
+      "bytes": 3949,
+      "sha256": "24b89e114d5f1f94a01688035940b37fb31b16438f13185bdd8323629a63ab75"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Meadow.mat.meta",
+      "bytes": 188,
+      "sha256": "5516d7981ebde8b6a6f6db97616d67a60e9fa057f8520a8f03aa9bd92016ec81"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_PathPale.mat",
+      "bytes": 3939,
+      "sha256": "cb2ca487bf73b3f76e1f434880cd6dfbe4378a1d91c830ff54de1a6dcedb11fa"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_PathPale.mat.meta",
+      "bytes": 188,
+      "sha256": "b11b73acdbfa6deb81984e24b482a7c084179554857fc5ecdaf7c8fe9e8fc454"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_PathWarm.mat",
+      "bytes": 3951,
+      "sha256": "caa9dfa9578d8b2c38a2c9af506f764526dc5e77bf7de40e96bccf3008d8204a"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_PathWarm.mat.meta",
+      "bytes": 188,
+      "sha256": "49fd6e91cbf38711dfce17472a7f7cf6701cf03a130409384d1882f86dbd2367"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Pink.mat",
+      "bytes": 3832,
+      "sha256": "918a7a012bbfeb44f9547160550e59da0be141a0233a172930a9ee012943e0c9"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Pink.mat.meta",
+      "bytes": 188,
+      "sha256": "b2bb906536c3df61ec83608d60137d28048b5975d91529dbc9b953bf1c40cb88"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Plaster.mat",
+      "bytes": 3932,
+      "sha256": "a559efe9406e863d2ea4d9249757b666088ff218cd7c3d8329cd4c43944a4384"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Plaster.mat.meta",
+      "bytes": 188,
+      "sha256": "72702d26b58089710ddfb77046bb7c4571b0b052a640872b3c73f695b7902494"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Rock.mat",
+      "bytes": 3947,
+      "sha256": "62d0612fa0d32124c54c2e3b7c4de204327226623af030e49c74c84987e90e02"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Rock.mat.meta",
+      "bytes": 188,
+      "sha256": "10078ba11ce9d3efd7851a80a376725b49440c2ff6a4310f61086f60ddcab6b0"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_RockMoss.mat",
+      "bytes": 3951,
+      "sha256": "5f95a076f57f20d5a92c50ded9aa669178b7c58e0c38ee551223e0082ed8bc1e"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_RockMoss.mat.meta",
+      "bytes": 188,
+      "sha256": "ba1f7bd49a4e52dbed6ec916c7de6a1f1ee49d4f687339a41e992328070e8ac0"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Skin.mat",
+      "bytes": 3832,
+      "sha256": "0614fc8811127b0d33baaa39cfd83b8c65d443d3a12890a8f7623fa3f6ecff72"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Skin.mat.meta",
+      "bytes": 188,
+      "sha256": "4ffc029ce368cf96f3aeb2f6da977d11a08ee47eba4a33b2bd716671dca8b6e5"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Snow.mat",
+      "bytes": 3911,
+      "sha256": "0011e40f989d6118e73fddb2b4e2ab1145db4f38474daf7dfa9e1b87a3a9eda7"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Snow.mat.meta",
+      "bytes": 188,
+      "sha256": "cef336c53ec1d8ca5205e355709bf311260ae02d587ace1f538d4ffd7e72bb60"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Soil.mat",
+      "bytes": 3949,
+      "sha256": "dcaa35ac9cab9be6fdd21fd7ade7a62e7af489ef7c204d57ca0f2af06903de3a"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Soil.mat.meta",
+      "bytes": 188,
+      "sha256": "402ea62f92239d908182f86ea49948885db8c03e523c77c6b551be2cc7bf5354"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Stone.mat",
+      "bytes": 3935,
+      "sha256": "382b5a1d053d02bc9745f739cfc3b7b18580483f2bb0e9e40d89e3d3d55da5a7"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Stone.mat.meta",
+      "bytes": 188,
+      "sha256": "961d7b137a0ab79c6501b7140be105d749eef773da73038668088a772f79852e"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_StorySky.mat",
+      "bytes": 1013,
+      "sha256": "7ba851f35f32e681b9c782ee3be3d7cebec2779055dd33f4b4dcfe5c6adfe04d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_StorySky.mat.meta",
+      "bytes": 188,
+      "sha256": "1a6c4ead6f768cb096ec41a612d1b5ccc5c508a941a847c81caed8e4415965d7"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Teal.mat",
+      "bytes": 3948,
+      "sha256": "fef0de03c13c11472a65e69a52f14e591349a50b699603b6964f8348280e26f0"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Teal.mat.meta",
+      "bytes": 188,
+      "sha256": "78c5566b369158edd52593c81c1c69ead633ac130daa54154da7e95acc67947e"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TealDark.mat",
+      "bytes": 3953,
+      "sha256": "1d41ae2cc4adf046ae27b1d0ec29ff86980b914adf28a4e60e50f25370f4f41a"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TealDark.mat.meta",
+      "bytes": 188,
+      "sha256": "697c834789d296d87940865bb4a93ea5d513e28281d0a62b0c76db0610d2f175"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TealLight.mat",
+      "bytes": 3952,
+      "sha256": "9c41799efb17990d474937a717e9ef94af5d4560169b0edb76118193e4622690"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TealLight.mat.meta",
+      "bytes": 188,
+      "sha256": "4c548b762e2da6b544efdd05d061876784164a39cd9550f4a9cea6bf054f5868"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Timber.mat",
+      "bytes": 3949,
+      "sha256": "59484e10acfa1288af59fa281967335cfed40e30075a3d8eba68fa2de5f86c3e"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Timber.mat.meta",
+      "bytes": 188,
+      "sha256": "480ccde0ec2be3945fbd9ea8cdf0328eeaf05d16dfe51401416aae415c58eb99"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TravelerCap.mat",
+      "bytes": 3844,
+      "sha256": "acc5fd8349b9f87b1b7765172569de18adcdadedccd275f17580618be78f0643"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TravelerCap.mat.meta",
+      "bytes": 188,
+      "sha256": "0edda8463550a77df743fefd020226f4e150effbe69b8b4cab9c89977a3d2f1a"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TravelerScarf.mat",
+      "bytes": 3841,
+      "sha256": "020b7036e0980a99fe549ce2f7168b657356962078f122095e53c1cb2eb06eef"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TravelerScarf.mat.meta",
+      "bytes": 188,
+      "sha256": "9ed82a0ae792e96ef81b57cc4e074eaf2be4f71c0c902796fb67b022ae7a002a"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeBark.mat",
+      "bytes": 4023,
+      "sha256": "988e1a7d84a6b2a520ce158b19016bb3880afbab7287cc46142faf5faf93d68e"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeBark.mat.meta",
+      "bytes": 188,
+      "sha256": "0f6936b8c9c760ea51d3bd645f7fdff000b77f7f5fdb3d48fa42f1dea5491ab9"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeFruit.mat",
+      "bytes": 3836,
+      "sha256": "3a48893ec5f6362235580bd65d8a8d02b3cd72046018421ded1fce5bcf10857d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeFruit.mat.meta",
+      "bytes": 188,
+      "sha256": "0a8fad7ee6f79541c48e2b6f66e21b641a791f08c7202584d42502752b973608"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeLeafDeep.mat",
+      "bytes": 3845,
+      "sha256": "f9f110a4bf8cb53525c23373c7a181343450970fd997d4694117930d7d06ce42"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeLeafDeep.mat.meta",
+      "bytes": 188,
+      "sha256": "d20d337db9476d765805a06c22fc63b8a3a78da9dfe8e3a30930c5624a2eea5b"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeLeafMid.mat",
+      "bytes": 3845,
+      "sha256": "1f0dafb5f40dae5aa7a05d007503252174c65db7b336ae7758b90c3ca0e62e50"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeLeafMid.mat.meta",
+      "bytes": 188,
+      "sha256": "2d93489196da4eceefabbf4d275167207c71d9f6d02d3b7f8376f53074ae57f1"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeLeafSun.mat",
+      "bytes": 3844,
+      "sha256": "8b49735c7556d8a731748feaf27474d9a83a93dd7025524cdcb5e34477bddb32"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeLeafSun.mat.meta",
+      "bytes": 188,
+      "sha256": "cbd5b8824b66ac002d91fa1f086a6eb6d4805b1b10081e240b86ea29583c0217"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeTwig.mat",
+      "bytes": 4021,
+      "sha256": "7f3f1b135cf19fb9c891740c4ddeeec29cbb04652d0f224f8ed6477293b51cb6"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_TreeTwig.mat.meta",
+      "bytes": 188,
+      "sha256": "b5aad50b3bbeca75086709cc14c39ccf0d56a2f30b73468812ae4d475a720dd0"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Water.mat",
+      "bytes": 3826,
+      "sha256": "df305421cce488656175028cb73a93385350e48349d892236b2f83241751af8b"
+    },
+    {
+      "path": "templates/unity-home/Assets/Materials/Story/V2_Water.mat.meta",
+      "bytes": 188,
+      "sha256": "56b28711da397612bfbdba702a1081f9548366e608716995117ed2c895c45a4c"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models.meta",
+      "bytes": 172,
+      "sha256": "433f4af6f0fffbb599359bc377bc7c18b11db7d8587fe9760028c7f316669e74"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models/Story.meta",
+      "bytes": 172,
+      "sha256": "afdd02851c83d110ae02a25422ee601b918614c0c917bb04f70d2bff71d4c5af"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models/Story/Clouds.meta",
+      "bytes": 172,
+      "sha256": "78518a874c1b5c8285d2c5ad8edc79a3ba370c560c3b23eca8caa168b997c5cd"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models/Story/Clouds/V2_CloudCream.asset",
+      "bytes": 362934,
+      "sha256": "8478d2f0d24a4ec87732052740c2ee50999eb5038a4e325606183f433920d650"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models/Story/Clouds/V2_CloudCream.asset.meta",
+      "bytes": 188,
+      "sha256": "e5abafbad4149c447034ee7b6b21893f58f98cdab6ba7fa64083f8d818f61f4d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models/Story/Clouds/V2_CloudLavender.asset",
+      "bytes": 362941,
+      "sha256": "5f1ee2158bc91879406971018695a66484be8571d2ccf1993ecaa8759ec63a4b"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models/Story/Clouds/V2_CloudLavender.asset.meta",
+      "bytes": 188,
+      "sha256": "4ea215dfeedce2b23ac0470deafd2614a36dfc41e4edf69530e2b3489b49982d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models/Story/Clouds/V2_CloudRose.asset",
+      "bytes": 362941,
+      "sha256": "4d6b7f1d10b764195c740cc311f90bc578a09b73e5913cdea257a616634b3f2e"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models/Story/Clouds/V2_CloudRose.asset.meta",
+      "bytes": 188,
+      "sha256": "2bbc9d318f52e5e1ef3f7001675f5df3aacef45399313e96effbb91d384ada67"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models/Story/HomeArt-v2.fbx",
+      "bytes": 6001804,
+      "sha256": "ea834c8449ed127c0ac81e7d357f1ac2be5bf9355b8f41a81d87bbbe1d1c0ac2"
+    },
+    {
+      "path": "templates/unity-home/Assets/Models/Story/HomeArt-v2.fbx.meta",
+      "bytes": 11420,
+      "sha256": "ccab88b834fe46e2d987bdfacd782f620ac949b40d45784213a048b90793a63d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Resources.meta",
+      "bytes": 172,
+      "sha256": "91110a157eeaea11541cee7ca9838842fc9602fb1e81b704a01f23777840b48d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Resources/Fonts.meta",
+      "bytes": 172,
+      "sha256": "dd423e27b92d86690695977ebf8fb60be4372e7069537b46ef75fb4fc9286219"
+    },
+    {
+      "path": "templates/unity-home/Assets/Resources/Fonts/StarLettersUI.ttf",
+      "bytes": 160568,
+      "sha256": "0d4f94cd3056bc497b939cad615ba369c65d58230a19cb4a8d9e740adc35eeaf"
+    },
+    {
+      "path": "templates/unity-home/Assets/Resources/Fonts/StarLettersUI.ttf.meta",
+      "bytes": 480,
+      "sha256": "72cae781ae02d94e59cb0376392ea3761da5ab694b094561b9ed6271a8ec5573"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scenes.meta",
+      "bytes": 172,
+      "sha256": "d4fde3f2f01fa5edbb0ba24afd7518ca531973f9f43b6b63fc10b7d788e41d05"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scenes/HomeArt.unity",
+      "bytes": 102871,
+      "sha256": "ca16e0c89c3acccd1c12e7bec72278c9ce42ea6f9b8d5b8f4a1585653b8d19c1"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scenes/HomeArt.unity.meta",
+      "bytes": 155,
+      "sha256": "92448150f94a7141dc1985d3af9ce200ca145ca9886868ddc63e2571249edbec"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scripts.meta",
+      "bytes": 172,
+      "sha256": "c666bed9013003e93e2f92c6e0fa803b1c6403c659bf326c77e25620689f05db"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scripts/Story.meta",
+      "bytes": 172,
+      "sha256": "14b406408b461be5a8c78c9b1ed3bc3bd3382bcb9c2bb7a76717322cad7b2b56"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scripts/Story/HomeAdventure.cs",
+      "bytes": 16503,
+      "sha256": "b1b18bdbac4ff1ef91ae29a0560a4bf5b2ea1364b6a9d27add6f5b971c5c4f70"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scripts/Story/HomeAdventure.cs.meta",
+      "bytes": 59,
+      "sha256": "da65344f1e2907a30a6b7de3ccf70c4a886ebd8f61b41f71b7f96009b8b57d57"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scripts/Story/HomeInteraction.cs",
+      "bytes": 217,
+      "sha256": "dfa68b29a53c94ae2b930672c66fb83f1fd29212dd3d803ce68a89a0abb32301"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scripts/Story/HomeInteraction.cs.meta",
+      "bytes": 59,
+      "sha256": "de1bf3c43418130e27dbab0fb69ec2e5f57f9d0310abad67dd5e07355bd71ffb"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scripts/Story/HomeQuest.cs",
+      "bytes": 1074,
+      "sha256": "e55ae143371afca2d8f77a6c027973f1c40cccfa2c6b7761af1b543f05e30b4d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scripts/Story/HomeQuest.cs.meta",
+      "bytes": 59,
+      "sha256": "f2a3d9bd508c472929d03628638fcc0313b5e159cd3d86053a6b414fb1fc29ae"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scripts/Story/TravelerIdle.cs",
+      "bytes": 547,
+      "sha256": "f36b3d299e674e451344d9871511744204d4d077cb86395d7caf379ef7a1018b"
+    },
+    {
+      "path": "templates/unity-home/Assets/Scripts/Story/TravelerIdle.cs.meta",
+      "bytes": 59,
+      "sha256": "ba8ab923c175f504b2a931b8c2191c7fa763131a50d926bf130800f31983d0fc"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings.meta",
+      "bytes": 172,
+      "sha256": "73c8e19843240273facb0af6bdbf430d719e397aded705629594060ce25ce7ad"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/DefaultVolumeProfile.asset",
+      "bytes": 24035,
+      "sha256": "463776c51ae49d4fef980e8fd268081b2f505610d79315003faae1acff8f4115"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/DefaultVolumeProfile.asset.meta",
+      "bytes": 189,
+      "sha256": "efbcb026cee6b8e32fdf27018c06b0515296a6ccbb43969e792fea270310700a"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/Mobile_RPAsset.asset",
+      "bytes": 4651,
+      "sha256": "ed751ff08029f4cac685108777ab6a3cba5600867da54caaa9d7d1ead41eb18b"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/Mobile_RPAsset.asset.meta",
+      "bytes": 189,
+      "sha256": "53ea46647712c615fd1a3f2e0dddfa8559eeedc649e9a1dbf93ff913de28544c"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/Mobile_Renderer.asset",
+      "bytes": 1713,
+      "sha256": "aa93274c9521fa941170becec9e87c5fa36b8587eefd5eeb5c0eed0d1d4b1dbe"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/Mobile_Renderer.asset.meta",
+      "bytes": 189,
+      "sha256": "a148ee2b4987b05b8ff7ae5f9bf84916184f77aefddc821dceb551f5a69f8179"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/PC_RPAsset.asset",
+      "bytes": 4669,
+      "sha256": "70b76a59fb5b3ee0bbc0269df512833053efb96fd7abd681fd0b064a6c5cb564"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/PC_RPAsset.asset.meta",
+      "bytes": 189,
+      "sha256": "bb469b9b6f318e9e9bed29c3b2e73e79371c04743c6f95dd6603941f1cd3e53e"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/PC_Renderer.asset",
+      "bytes": 3439,
+      "sha256": "3d0b01d8ded3327263b6690be128a3de58d17c514943ae42fe743a3e084a9c79"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/PC_Renderer.asset.meta",
+      "bytes": 189,
+      "sha256": "b5df8ddb2708c6ed4c133a5ff9ee95a75cc20e4ee3ed6181366a61aedbaf31ec"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/SampleSceneProfile.asset",
+      "bytes": 3703,
+      "sha256": "a8677d4bac051d24caa11cd622e39f968155ee277bfce132274f1de225692fe9"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/SampleSceneProfile.asset.meta",
+      "bytes": 182,
+      "sha256": "2e23abc214069f0adbf2b2207f1db54be7876629ec2a3681d0f4aa5b61622ef0"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset",
+      "bytes": 26104,
+      "sha256": "52199b26d411029f236e15a4504c8eb467febcce579ab48ff502f6de8e593261"
+    },
+    {
+      "path": "templates/unity-home/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset.meta",
+      "bytes": 189,
+      "sha256": "f61661d8bc8dbe531daf09f6211ef978c7ba145c9207c8e76524396ae0722d7c"
+    },
+    {
+      "path": "templates/unity-home/Assets/Shaders.meta",
+      "bytes": 172,
+      "sha256": "c1e1b8c2fe64b85f627f81fbd399167014fae2d4becb00982b6c25e0c4373891"
+    },
+    {
+      "path": "templates/unity-home/Assets/Shaders/StorySky.shader",
+      "bytes": 3848,
+      "sha256": "0bcba55cdf521bf0da54f9d22c100f12766ad45f6a9d77cd0be4a9128309be3a"
+    },
+    {
+      "path": "templates/unity-home/Assets/Shaders/StorySky.shader.meta",
+      "bytes": 204,
+      "sha256": "b0b20c5d559a9b5e94e6ced27c691107109efe32836cdd221ca2fdc0ed07120d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Shaders/WeatheredRock.shader",
+      "bytes": 4807,
+      "sha256": "64c15a6a719a20b6b744d46c738ee56062b74b5e1e2cd9c496ed76c6572785b1"
+    },
+    {
+      "path": "templates/unity-home/Assets/Shaders/WeatheredRock.shader.meta",
+      "bytes": 204,
+      "sha256": "c9460a88fcafe50e92199cfae057e928b1d4db48b41c388073711aae88da66c4"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures.meta",
+      "bytes": 172,
+      "sha256": "80a048948283ab86c5331da16dba2341874759422865286911b28ef0967ee71e"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story.meta",
+      "bytes": 172,
+      "sha256": "2ec02634322a37fc3ba46915fddba00c2d9ceef2fd20b03999a8747877e50cc0"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story/V2_meadow.png",
+      "bytes": 64127,
+      "sha256": "a4d608bd9ac57b75a5e2a3b6247a53acd4b83f8df9863919863fb996898f865d"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story/V2_meadow.png.meta",
+      "bytes": 3005,
+      "sha256": "1f718207174a0969691924a6c96fdc01d59de534f0b79e388e82d181c327cd5c"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story/V2_plaster.png",
+      "bytes": 64061,
+      "sha256": "2a88be92e9504c721570f80324ffcc908d424b0035a96cab95d965e8716b2a68"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story/V2_plaster.png.meta",
+      "bytes": 3005,
+      "sha256": "6259d4122c6a6c657dcba159b65abb2951c5f89d7ee05790b3c2d5dcf18d7475"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story/V2_tree-bark-normal.png",
+      "bytes": 55779,
+      "sha256": "b04aa090cfedc63dd2981615f8a7e983124e27015419cc3edf2f06c89b5e04e0"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story/V2_tree-bark-normal.png.meta",
+      "bytes": 3006,
+      "sha256": "1ce9cb132a75fbe4b4f926a0f69eaef2e3e1473597dc32096a78f2b03b79b0f9"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story/V2_tree-bark.png",
+      "bytes": 32821,
+      "sha256": "4e0b1f3f4ba3714303af68ec0670e68b656872c33ae758f113e886bbb3ea5851"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story/V2_tree-bark.png.meta",
+      "bytes": 3006,
+      "sha256": "9171552676ce47ac4c9697a568a49db8124015b7663a8ec4ed01d2397ee19373"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story/V2_wood.png",
+      "bytes": 47946,
+      "sha256": "45f2c66d95c646eb6202dd304586ca59500b0a24530ac0c9fd61e49b5c5bfe28"
+    },
+    {
+      "path": "templates/unity-home/Assets/Textures/Story/V2_wood.png.meta",
+      "bytes": 2651,
+      "sha256": "4772df8f5f5f93c157f0cbb6edd76745e7ee8fbcb4a6fa99d20fdc7cc4866b47"
+    },
+    {
+      "path": "templates/unity-home/LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "templates/unity-home/LICENSES/NotoSansSC-OFL.txt",
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    },
+    {
+      "path": "templates/unity-home/LICENSES/Unity-Companion-License.txt",
+      "bytes": 5937,
+      "sha256": "33167e236b83ff0c25547731e21ace257015127955c2283879df47929ca14361"
+    },
+    {
+      "path": "templates/unity-home/LICENSES/Unity-URP-notice.md",
+      "bytes": 496,
+      "sha256": "4be520a425e06c8de56fa8aee1ce957cfe610406456278172a2d18b7c388c2cf"
+    },
+    {
+      "path": "templates/unity-home/LICENSES/Unity-URP-third-party.md",
+      "bytes": 1794,
+      "sha256": "0652509dfc81a1a3d9e037e59bd047b305155fc5c4abeef69e2fc078488035fd"
+    },
+    {
+      "path": "templates/unity-home/LICENSES/Unity-template-notice.md",
+      "bytes": 489,
+      "sha256": "94c376b80089c431eeb674518c5a10dfc67e4b93171c059c7736f50bb90ee146"
+    },
+    {
+      "path": "templates/unity-home/LICENSES/Unity-template-third-party.md",
+      "bytes": 502,
+      "sha256": "c804d96f8c137e5d6ed52a9711e249917792af786b3960dfef108ca0800baff6"
+    },
+    {
+      "path": "templates/unity-home/Packages/manifest.json",
+      "bytes": 358,
+      "sha256": "31862db10a2fe4e5f76bc23c5261bf990b2a0901c3985527f797b4784b52cdd5"
+    },
+    {
+      "path": "templates/unity-home/Packages/packages-lock.json",
+      "bytes": 4978,
+      "sha256": "c51d1f7fc2b3990b9bffc13547e53ee293cdfa83260319e2c32b1f56682c704d"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/AudioManager.asset",
+      "bytes": 413,
+      "sha256": "aeedeb3243f07b61dbbe854aa08b5ef6f0b5274dd9852ad9f6129dde3e105a31"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/ClusterInputManager.asset",
+      "bytes": 114,
+      "sha256": "40e65dd214bf254955d2c8829ca8ce2130fd3510485560ce012e9a1ddd93e623"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/DynamicsManager.asset",
+      "bytes": 1254,
+      "sha256": "b7c9a9dc08b98990109d4346f68745e15e238de400f96c583e53e1c83c743a78"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/EditorBuildSettings.asset",
+      "bytes": 397,
+      "sha256": "057a2a2cb43be912d700d12acf529d7e827f13dcf0092e0441af59534728710b"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/EditorSettings.asset",
+      "bytes": 1585,
+      "sha256": "32d6a9be4c9aa9795a96bd951820a2d9be1bfefab82ed05a5db111af0863938f"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/GraphicsSettings.asset",
+      "bytes": 2615,
+      "sha256": "6736f33dc62c35b0e7a88e275242080bc7a1d94c91154d18fceb332b661a6bce"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/InputManager.asset",
+      "bytes": 9731,
+      "sha256": "7a1bb836a1008d26d0860d143e9d9df7ca41731d30a72901b518063819c62df2"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/MemorySettings.asset",
+      "bytes": 1192,
+      "sha256": "1e8379a461b10ae09f3f696911088c16875d63e87ed5f2d95df9e1892703f9fd"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/MultiplayerManager.asset",
+      "bytes": 157,
+      "sha256": "aba89fd1a1ddad182727ad82727e536d27372e90328a8196da2a4560398983dd"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/NavMeshAreas.asset",
+      "bytes": 1308,
+      "sha256": "80106cfa7e6181a1928b142c075f3e510d527441e3d79bc83590e4ac91e7cd66"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/PackageManagerSettings.asset",
+      "bytes": 1003,
+      "sha256": "a7dabba589abe7fc2b45bd3d3fba3fe9be97043492703f716da2d9131c13a807"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/Physics2DSettings.asset",
+      "bytes": 2028,
+      "sha256": "e3cbdbf0be15244b7b67d2f07bdb8e8981911c11a8c7fe8035f5261272fec658"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/PresetManager.asset",
+      "bytes": 146,
+      "sha256": "29c125923fe6e29f90190d4fce1c82d660e7051546e2c9d02908d18c9cf2436c"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/ProjectSettings.asset",
+      "bytes": 25507,
+      "sha256": "315948a2b5050bb1a8117937eb3dbd3aee727439f5f8e8bba5b575b1b095fdf4"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/ProjectVersion.txt",
+      "bytes": 85,
+      "sha256": "1ba9ef2a17d110f732474ce61ba26e26395986dfcd828200cb53f29cab2c944c"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/QualitySettings.asset",
+      "bytes": 3723,
+      "sha256": "d25421ad309db79ff99e189218ef93f55a68e3a2608bb0d051767bab4f0a7def"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/SceneTemplateSettings.json",
+      "bytes": 3535,
+      "sha256": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/ShaderGraphSettings.asset",
+      "bytes": 556,
+      "sha256": "cdba1e5d65bcf6e3269d76ed3e60b6c21f98322002996642c9d74f1eb89f6b91"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/TagManager.asset",
+      "bytes": 657,
+      "sha256": "23fc56b484aa3d7edf5914cd3591f7a823ccef5e3f3496f8a51f30388ead63dc"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/TimeManager.asset",
+      "bytes": 202,
+      "sha256": "1a83e54adbbda7c9f4851103a0c6ab7f6448a3343d4ea5b7620452fa08416ecd"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/URPProjectSettings.asset",
+      "bytes": 461,
+      "sha256": "c317fe22b9488785c0611f0642429922e5d324430d929bffb41648130f30c218"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/UnityConnectSettings.asset",
+      "bytes": 1063,
+      "sha256": "b7dd1e8290598f5ce86919ba1c98b42b766c8c42191a30fa2c4d12195c4ecd00"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/VFXManager.asset",
+      "bytes": 308,
+      "sha256": "f066c6483919961332415ee64204f74fe52f38c02e82892eb02b7a5b2e381f0e"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/VersionControlSettings.asset",
+      "bytes": 188,
+      "sha256": "e7bda45bf7a394745fee1316e6c71fa676004d591ad1f3aa247fd3e4ceb86071"
+    },
+    {
+      "path": "templates/unity-home/ProjectSettings/XRSettings.asset",
+      "bytes": 158,
+      "sha256": "edd2beb4a2e388312b4b7da241aa51070434005d82c59363f1237dd2e567585f"
+    },
+    {
+      "path": "templates/unity-home/README.md",
+      "bytes": 3927,
+      "sha256": "487c1aae25ac61c91801638bd9d6e4a4019bc67903de4bdc65d53d5c14f77271"
+    },
+    {
+      "path": "templates/unity-home/SOURCE_MANIFEST.json",
+      "bytes": 58997,
+      "sha256": "fba1ad1a171eca6b1abe2fdc9258c0819c8f4263874d49d77bcd4ece1f5d71b8"
+    },
+    {
+      "path": "templates/unity-home/THIRD_PARTY_NOTICES.md",
+      "bytes": 1558,
+      "sha256": "0a432b23d0acc0730870dfd90f2c847b2e4a5b2f1c5260acc1f6f1726b490dce"
+    },
+    {
+      "path": "templates/unity-home/VALIDATION.md",
+      "bytes": 1177,
+      "sha256": "ca4efed52d70e851f15ecc92fab49959dcf4694c6fc51b97e9e55cd76ccee2b5"
+    },
+    {
       "path": "templates/web-canvas/LICENSE",
       "bytes": 1077,
       "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
@@ -5506,6 +6536,11 @@
       "path": "tests/release/toolkit.test.mjs",
       "bytes": 6562,
       "sha256": "0a545774b714fb5fae3e3dab49d085c0098352b55d0cdf3e3360a7ce7d6963fa"
+    },
+    {
+      "path": "tests/release/unity-template.test.mjs",
+      "bytes": 2678,
+      "sha256": "034d157edd3701c69f86bf2c1e98786b7abd319b81d2d2238e4b40b3c10434eb"
     },
     {
       "path": "tsconfig.json",
