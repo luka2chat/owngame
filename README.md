@@ -1,6 +1,6 @@
 <div align="center">
 
-# owngame
+<a href="https://owngame.dev"><img src="docs/images/owngame-brand.png" alt="owngame · 做属于自己的游戏，网站原版字标与吉祥物" width="800" /></a>
 
 ### 用 AI，把游戏做成你想要的样子。
 
@@ -8,21 +8,30 @@
 
 [![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A5%2022-339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-[试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [工作原理](#工作原理) · [制作案例](#制作案例) · [文档](#文档) · [English](#english)
+[试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [工作原理](#工作原理) · [创意案例](#创意案例) · [文档](#文档) · [English](#english)
 
 </div>
 
-```sh
-npx @owngame/cli@0.8.0 setup --agent codex --apply
-```
+[![owngame：霓虹突围、法恩探险、风铃回响与山城来信的四种创意世界](docs/images/owngame-creative-worlds.png)](https://owngame.dev)
 
-owngame 把游戏制作中的参考研究、视觉设计、项目创建与交付检查，接入你已有的 AI 助手。你可以从一句想法开始，也可以在 [owngame.dev](https://owngame.dev) 试玩游戏，通过 **Remix** 把具体的玩法和视觉参考交给 AI，再逐步做出自己的版本。
+<p align="center"><strong>玩你喜欢的，复刻属于你的。</strong><br>射击、冒险、音乐、拼图——从一种乐趣，开始你的游戏。</p>
 
-工具包包含创作 Skill、共用核心的 CLI / MCP 接口、可玩的 Web 起点，以及真实项目的制作复盘。你负责创意与体验判断，AI 负责调用工具、实现和迭代。
+owngame 把参考研究、视觉设计、项目创建与交付检查，接入你已有的 AI 助手。在 [owngame.dev](https://owngame.dev) 找到喜欢的游戏，点击 **复刻**，把具体的玩法与视觉参考交给 AI，换一个主题、改一条规则，做出自己的版本。你也可以直接从一句想法开始。
 
-[![霓虹突围：owngame 网站上的可玩游戏](docs/images/neon-defender.png)](https://owngame.dev/play?game=neon-shooter)
+## 创意案例
 
-<p align="center">霓虹突围 · 躲避弹幕、收集强化、迎战首领。<a href="https://owngame.dev/play?game=neon-shooter">试玩与 Remix ↗</a></p>
+四款可玩的游戏，四种创作起点。点击试玩体验原作，或打开参考说明，把你的想法交给 AI。
+
+| 游戏与类型 | 体验什么 | 可以怎样复刻 | 开始探索 |
+| --- | --- | --- | --- |
+| **01 · 霓虹突围**<br>太空射击 | 躲开弹幕、收集强化，迎战每三波出现的首领 | 做成深海潜航：用声呐寻找强化，在暗流中躲避机械水母 | [试玩 ↗](https://owngame.dev/play?game=neon-shooter) · [复刻参考](https://owngame.dev/remix/neon-shooter.json) |
+| **02 · 法恩探险**<br>地牢冒险 | 穿过地牢，找到三只宝箱，再带着宝藏回到出发点 | 做成森林寻宝：寻找遗失的星星，沿萤火小径回到树屋 | [试玩 ↗](https://owngame.dev/play?game=faune-dungeon) · [复刻参考](https://owngame.dev/remix/faune-dungeon.json) |
+| **03 · 风铃回响**<br>音乐记忆 | 听一段风铃，再敲回旋律；静音时也可跟随视觉提示 | 做成雨天音乐盒：记住雨滴落在不同杯子上的顺序 | [试玩 ↗](https://owngame.dev/play?game=wind-chime-memory) · [复刻参考](https://owngame.dev/remix/wind-chime-memory.json) |
+| **04 · 山城来信**<br>滑块拼图 | 滑动纸片，拼回落日里的山城 | 做成旅行纪念册：用自己的照片拼回一段旅程 | [试玩 ↗](https://owngame.dev/play?game=postcard-slide) · [复刻参考](https://owngame.dev/remix/postcard-slide.json) |
+
+*上方海报由 AI 绘制，用于呈现创意方向；实际画面与玩法以试玩为准。「可以怎样复刻」是创作灵感，可交给助手继续实现。*
+
+> 试着告诉 AI：参考《风铃回响》的顺序记忆玩法，为我做一个雨天音乐盒。用不同杯子的声音和亮光提示节奏，先给我一个能玩完一轮的版本。
 
 ## 快速开始
 
@@ -48,9 +57,9 @@ npx @owngame/cli@0.8.0 setup --agent codex --apply
 
 > 用 owngame 做一个夜空主题的双人小游戏。先实现可以玩完一局的核心玩法，把美术放进实际运行画面，再检查胜负、悔棋、重开和刷新后的续玩。
 
-也可以打开 [owngame.dev](https://owngame.dev)，选择喜欢的游戏，点击 **Remix**，补充修改方向后将生成的任务交给助手：
+也可以打开 [owngame.dev](https://owngame.dev)，选择喜欢的游戏，点击 **复刻**，补充修改方向后将生成的任务交给助手：
 
-> 参考《潮光归位》的分类与周转玩法，做一个雨天咖啡馆版本。把灯塔换成杯架、灯光换成不同口味的咖啡。先给我一个可玩的版本，再一起调整规则和关卡。
+> 参考《霓虹突围》，做一个深海潜航游戏。保留移动、躲避和逐波挑战，把飞船换成潜艇，敌人换成机械水母。先给我一个可玩的版本，再一起调整规则和难度。
 
 ### 3. 或者直接使用命令行
 
@@ -69,7 +78,7 @@ npm run preview
 ## 工作原理
 
 ```text
-你的想法 / 网站 Remix
+你的想法 / 网站复刻
           ↓
       AI 助手 + 创作 Skill
           ↓
@@ -111,22 +120,12 @@ npx @owngame/cli@0.8.0 capabilities
 
 Cocos 构建适配器目前只在特定 macOS 环境验证过；浏览器、图片生成和发布能力取决于所用助手与本机环境。详见 [安装说明](docs/install.md)。
 
-## 制作案例
-
-这些复盘来自实际游戏迭代，记录设计选择、实现问题与验证范围。网站可玩版本与工具包中的案例摘要分别维护。
-
-| 案例 | 关注的问题 | 入口 |
-| --- | --- | --- |
-| **星图三连** | 将视觉方案落实到正式游玩入口，同时保留规则与玩家进度 | [制作复盘](docs/cases/star-triad.md) · [试玩](https://owngame.dev/play?game=star-triad) |
-| **潮光归位** | 用可重复的塔身结构适应不同容量，修复灯与塔顶的遮挡 | [制作复盘](docs/cases/signal-harbor.md) · [试玩](https://owngame.dev/play?game=signal-harbor) |
-| **窑火相融** | 明确参考规则与原创设计的范围，验证手势、存档和长屏画面 | [制作复盘](docs/cases/kiln-merge.md) · [试玩](https://owngame.dev/play?game=kiln-merge) |
-
 ## 常见问题
 
 <details>
-<summary><strong>Remix 会提供什么？</strong></summary>
+<summary><strong>复刻会提供什么？</strong></summary>
 
-Remix 生成一段可交给 AI 的创作任务，包含游戏链接、玩法、视觉方向、公开参考说明与工具接入信息。助手据此在你的工作区实现新版本。它不在网站后台生成游戏，也不直接导出网站游戏源码。详见 [Remix 使用说明](https://github.com/luka2chat/owngame/blob/main/docs/remix.md)。
+复刻生成一段可交给 AI 的创作任务，包含游戏链接、玩法、视觉方向、公开参考说明与工具接入信息。助手据此在你的工作区实现新版本。它不在网站后台生成游戏，也不直接导出网站游戏源码。详见 [复刻使用说明](https://github.com/luka2chat/owngame/blob/main/docs/remix.md)。
 
 </details>
 
@@ -147,7 +146,7 @@ Remix 生成一段可交给 AI 的创作任务，包含游戏链接、玩法、�
 <details>
 <summary><strong>参考研究会自动搜索互联网吗？</strong></summary>
 
-当前内置研究基于关键词匹配，公开包包含三个历史案例摘要。网站游戏另有各自的 Remix 参考说明。扩大研究范围需要助手自己的检索能力，或接入符合格式的自有案例库。
+当前内置研究基于关键词匹配，公开包包含三个历史案例摘要。网站游戏另有各自的复刻参考说明。扩大研究范围需要助手自己的检索能力，或接入符合格式的自有案例库。
 
 </details>
 
@@ -155,7 +154,8 @@ Remix 生成一段可交给 AI 的创作任务，包含游戏链接、玩法、�
 
 - [安装与 Agent 接入](docs/install.md)：配置、连接检查、更新与卸载。
 - [第一个游戏](docs/quickstart.md)：创建、试玩、修改美术与验证存档。
-- [Remix 使用说明](https://github.com/luka2chat/owngame/blob/main/docs/remix.md)：从网站参考进入自己的工作区。
+- [复刻使用说明](https://github.com/luka2chat/owngame/blob/main/docs/remix.md)：从网站参考进入自己的工作区。
+- [历史制作复盘](docs/cases/)：星图三连、潮光归位与窑火相融的实践记录。
 - [创作 Skill](skills/owngame/SKILL.md) 与 [风格配方](docs/style-recipes.json)：工作流程和视觉方向。
 - [贡献指南](CONTRIBUTING.md)、[发布流程](docs/releasing.md) 与 [变更记录](CHANGELOG.md)。
 - [安全说明](SECURITY.md) 与 [第三方声明](THIRD_PARTY_NOTICES.md)。
@@ -189,8 +189,8 @@ owngame 自有代码与文档采用 [MIT 许可](LICENSE)。网站展示游戏�
 
 owngame is an open-source game authoring toolkit that connects your existing AI assistant to practical workflows, playable Web starters, visual style recipes, and lessons from real game projects. Its CLI and MCP interfaces share the same core operations.
 
-Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use **Remix** to bring its rules and visual direction into your own workspace. Your agent implements and tests the new version with you; Remix provides a creative brief and references, rather than exporting the website game's source code.
+Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use **Recreate (复刻)** to bring its rules and visual direction into your own workspace. Your agent implements and tests the new version with you; the Recreate action provides a creative brief and references, rather than exporting the website game's source code.
 
-Requires **Node.js 22+** and npm. Run the setup command above in your game project, reload your assistant, and verify the connection. Codex and Cursor have project setup options; other local MCP clients can use the generic configuration. The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
+Requires **Node.js 22+** and npm. Run the setup command in the quick start section in your game project, reload your assistant, and verify the connection. Codex and Cursor have project setup options; other local MCP clients can use the generic configuration. The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
 
 [Get started](#快速开始) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)
