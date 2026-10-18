@@ -25,7 +25,7 @@
   },
   "bin": {
     "owngame": "dist/packages/cli/index.js",
-    "owngame-mcp": "dist/packages/mcp/index.js"
+    "owngame-mcp": "dist/packages/cli/index.js"
   },
   "description": "Art-first game authoring toolkit for existing AI agents: skills, CLI, MCP and playable Web starters",
   "files": [

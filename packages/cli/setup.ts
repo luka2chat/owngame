@@ -116,7 +116,9 @@ export async function setup(root: string, workspaceArg: string, argv: string[]) 
   try {
     if (install) {
       await fs.mkdir(prefix, { recursive: true });
-      const out = spawnSync(process.platform === "win32" ? "npm.cmd" : "npm", install, { encoding: "utf8", timeout: 120000, shell: process.platform === "win32" });
+      const npmCli = process.env.npm_execpath;
+      if (process.platform === "win32" && !npmCli) throw Error("On Windows, run setup through npm exec or install the package locally first");
+      const out = spawnSync(process.platform === "win32" ? process.execPath : "npm", process.platform === "win32" ? [npmCli!, ...install] : install, { encoding: "utf8", timeout: 120000, shell: false });
       if (out.error || out.status !== 0) throw Error(`Pinned runtime installation failed: ${out.error?.message ?? out.stderr}`);
     }
     const backup = `.owngame/setup-backups/${randomUUID()}`;

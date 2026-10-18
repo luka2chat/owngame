@@ -40,8 +40,8 @@ writes a separate <version>-published report. A failure is recorded, not a pass.
    archive. Point the tag at the workflow revision; do not tag a later change.
    Update public installation instructions only after that outcome is known.
 
-The first release currently requires account setup; no GitHub repository, npm
-publication, host connection or user art approval is implied by preparing files.
+Preparing files alone does not establish GitHub or npm publication, a host
+connection, or user art approval. Check the actual release and registry outcomes.
 The manual workflow is intentionally smaller than REA's mature release system.
 MCP Registry submission and automatic release PRs can follow after real users
 validate installation. Neither is a prerequisite for using the stdio server.

@@ -8,7 +8,9 @@ let core: Core | undefined;
 try {
   const parsed = options(process.argv.slice(2));
   const command = parsed.rest[0];
-  if (["--help", "help", "-h"].includes(command)) {
+  if (command === "mcp" || path.basename(process.argv[1]).replace(/\.cmd$/, "") === "owngame-mcp") {
+    await import("../mcp/index.js");
+  } else if (["--help", "help", "-h"].includes(command)) {
     console.log("owngame — game authoring tools for your existing agent\n\nsetup [--agent codex|cursor|generic] [--apply]  Preview/apply project integration\ndoctor                                      Read-only readiness report\n--version                                   Installed toolkit version\n<operation> [JSON | @file | -]               Call the shared CLI/MCP core\n\nOptions: --workspace <path>, --knowledge <path>, --config <file>\nStart: owngame project.create '{\"directory\":\"my-game\",\"name\":\"my-game\"}'\nTemplates: web-canvas (default), web-phaser, cocos-minimal");
   } else if (command === "--version") {
     console.log(JSON.parse(await readFile(path.join(parsed.options.root, "package.json"), "utf8")).version);

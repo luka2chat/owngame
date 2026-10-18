@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.8.0 — release candidate, not yet published
+## 0.8.0 — 2026-10-18
 
 First complete public toolkit candidate after the npm 0.0.1 scope smoke test.
 

@@ -1,8 +1,8 @@
 # 安装与 Agent 接入
 
-需要 Node.js >=22。0.8.0 是发布候选；npm 旧版 0.0.1 不具备本页的能力。正式发布前先用候选包。
+需要 Node.js >=22。本页适用于 0.8.0；旧版 0.0.1 不具备这些能力。发布状态以 GitHub Releases 和 npm 中的实际版本为准，未发布的版本可从源码打包安装。
 
-## 安装候选包
+## 从本地安装包开始
 
 源码目录执行 `npm ci` 和 `npm pack`。在另一个空目录安装输出的 tarball：
 
@@ -27,9 +27,9 @@ setup 默认只预览，--apply 才写入。所有写入限定当前项目，也
 
 依据：[Codex MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli)、[Skill](https://learn.chatgpt.com/docs/build-skills)、[Cursor MCP](https://cursor.com/docs/mcp)。
 
-## 正式发布后的入口
+## 按指定版本从 npm 安装
 
-以下命令需要 0.8.0 实际公开后才能使用：
+以下命令获取指定版本；若 registry 尚未提供该版本，使用上面的本地安装方式：
 
 ```sh
 npx @owngame/cli@0.8.0 setup --agent codex
