@@ -8,7 +8,7 @@
 
 [![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A5%2022-339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-[试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [工作原理](#工作原理) · [创意案例](#创意案例) · [路线图](#支持路线图) · [文档](#文档) · [English](#english)
+[试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [English](#english)
 
 </div>
 
@@ -33,7 +33,25 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 
 > 试着告诉 AI：参考《风铃回响》的顺序记忆玩法，为我做一个雨天音乐盒。用不同杯子的声音和亮光提示节奏，先给我一个能玩完一轮的版本。
 
-3D 创作案例：**《星野来信 · 迟到的春天》**，在三颗小星球之间收信、解谜与邀请朋友。[在线试玩](https://owngame.dev/play?game=star-letters) · [制作案例](docs/cases/star-letters.md) · [游戏源码](examples/star-letters/)。包含 Unity 正式故事版和 Three.js 教学原型；推荐电脑键鼠，首次加载约 54 MB。
+## 3D 推荐
+
+### 星野来信 · 迟到的春天
+
+**把一封信，送到春天里。** 一款可以在浏览器试玩的 3D 童话冒险：从云海上的小小家园出发，拜访邻星的朋友，最后为巨人的花园带来春天。
+
+[![星野来信实际游戏画面：小小旅人站在花圃与信标之间，身后是树木、石路和暖色云海](docs/images/star-letters-gameplay.jpg)](https://owngame.dev/play?game=star-letters)
+
+[**在线试玩 ↗**](https://owngame.dev/play?game=star-letters) · [案例页面](https://owngame.dev/cases/star-letters/) · [制作笔记](docs/cases/star-letters.md) · [完整案例源码](examples/star-letters/)
+
+- **玩一段温柔的冒险**：收信、照看花朵、调整风向与灌溉，把邀请送到朋友手中。剧情支持自动保存、回访和结局后的继续旅行。
+- **看看 3D 世界怎样做出来**：Unity 故事版公开场景、角色与环境资源、生成脚本，展示故事进度、角色交互、镜头避障和冬春变化怎样配合。
+- **从一个小实验开始**：附带独立的 Three.js 教学原型，可研究球面行走、程序化角色与镜头，再尝试自己的小星球主题。
+
+> 试着告诉 AI：参考《星野来信》，做一座漂浮在云海上的邮局小岛。先实现行走、环视和投递一封信，再为岛上的居民补充故事。
+
+*配图为游戏实拍。推荐电脑键鼠，首次加载约 54 MB；线上首次下载仍可能较慢或超时，手机尚无完整触屏操作。*
+
+原创代码、对白与程序化素材采用 MIT；字体、Unity 衍生配置与运行时分别遵循其许可，详见[授权说明](examples/star-letters/THIRD_PARTY_NOTICES.md)。这个案例可独立阅读和修改；Unity / Three.js 的通用项目创建适配仍在计划中。
 
 ## 快速开始
 
@@ -122,8 +140,8 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 | --- | --- | --- |
 | **Web / Phaser** | 已提供可玩 Web 起点与 Phaser 脚手架 | 丰富玩法模板、触屏适配与可复用案例，完善离线交付指导 |
 | **Cocos Creator** | 已提供脚手架与有限环境验证的构建适配器 | 扩大环境覆盖，补充场景、资源与构建诊断流程 |
-| **Unity** | **优先计划**；已有内部 3D 项目实践 | 整理可公开复用的 2D / 3D 起点，接入场景与资源操作、编辑器反馈和构建检查；先完成一条可验证的创作与交付流程 |
-| **Three.js** | 计划中；已有本地教学原型 | 提供轻量 Web 3D 起点，整理角色、镜头、交互和加载优化的创作指导 |
+| **Unity** | **优先计划**；已公开《星野来信》3D 案例源码 | 整理可公开复用的 2D / 3D 起点，接入场景与资源操作、编辑器反馈和构建检查；先完成一条可验证的创作与交付流程 |
+| **Three.js** | 计划中；已公开独立教学原型 | 提供轻量 Web 3D 起点，整理角色、镜头、交互和加载优化的创作指导 |
 | **Godot** | 计划中 | 探索项目模板、场景与脚本迭代、资源导入及导出检查 |
 | **Unreal Engine** | 调研中 | 评估编辑器接入、蓝图与代码协作、资源管理和打包成本，再确定适配范围 |
 

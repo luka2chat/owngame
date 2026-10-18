@@ -44,8 +44,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 15625,
-      "sha256": "ce56587e4ca503534c4e3380986924e37f42e1e52b1ceffaa0fd530e6cbc8f36"
+      "bytes": 17103,
+      "sha256": "a4a2e2b12a1ea891bccd4a47f379d14a6a3065e2392259cb9f4dc3e38887c389"
     },
     {
       "path": "SECURITY.md",
@@ -86,6 +86,11 @@
       "path": "docs/images/neon-defender.png",
       "bytes": 283348,
       "sha256": "8588f7a89df1c505e951c5684487bc2838259bff32b026bc1f8b7b17074410f7"
+    },
+    {
+      "path": "docs/images/star-letters-gameplay.jpg",
+      "bytes": 116321,
+      "sha256": "6c34747ee4a3239fdab6c721efbc39321c9c3912d8c17e0538619c0285668ad0"
     },
     {
       "path": "docs/install.md",
