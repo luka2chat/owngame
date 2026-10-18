@@ -94,8 +94,8 @@
     },
     {
       "path": "docs/install.md",
-      "bytes": 3868,
-      "sha256": "da44df295895997c5a338f46b22f8d7ed3b66baa8ee4ddc9c943a58830210311"
+      "bytes": 3919,
+      "sha256": "1833f56e28946f0575ebda0e24529b7b09ef240a234624dc90a8354f714f4e41"
     },
     {
       "path": "docs/quickstart.md",
@@ -109,8 +109,8 @@
     },
     {
       "path": "docs/remix.md",
-      "bytes": 2434,
-      "sha256": "309c28224ca0e8d534dd8a7d485e912120ca7685ed231964cae4f4d1526c7b7a"
+      "bytes": 2435,
+      "sha256": "e65c74e76f30bd711f72c0fcb7afcdf44ca91d21cb75eee6c739425e98ab7ee8"
     },
     {
       "path": "docs/style-recipes.json",
