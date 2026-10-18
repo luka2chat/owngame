@@ -1,10 +1,50 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>星野来信 · 迟到的春天</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#242f3c;color:#f3ebda;font-family:system-ui,sans-serif}canvas{display:block;width:100%;height:100%;outline:none}#loading{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:24px;background:radial-gradient(ellipse at top,#546178,#242f3c)}h1{font-size:clamp(26px,4vw,40px);font-weight:500;letter-spacing:6px;margin:0}p{line-height:1.8;color:#d3cbbc;margin:10px auto;max-width:34em}progress{width:min(280px,80vw);height:7px;margin:18px auto;accent-color:#e9bd7e}button,a{font:inherit;color:#f3ebda}button{background:#4b5a68;border:1px solid #ac9d87;padding:12px 24px;border-radius:5px;cursor:pointer;justify-self:center}button[hidden]{display:none}#error{color:#ffccbb;white-space:pre-wrap}.links{font-size:12px}.links a{margin:0 6px}#credits{position:absolute;bottom:4px;right:8px;font-size:11px;color:#fff;background:#242f3cd9;padding:3px 6px;border-radius:3px}#credits:focus{outline:2px solid #e9bd7e}
+:root{--paper:#faf5e8;--ink:#22251f;--red:#ee3d26;--blue:#075bb4;--yellow:#ffce27;font-family:Inter,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}canvas{display:block;width:100%;height:100%;outline:none}[hidden]{display:none!important}button,a{-webkit-tap-highlight-color:transparent}a{color:var(--blue)}:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+#loading{position:absolute;inset:0;overflow:auto;display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,40px);background-color:var(--paper);background-image:radial-gradient(#b7956320 .7px,transparent .8px);background-size:6px 6px}
+.postcard{width:min(800px,100%);display:grid;grid-template-columns:minmax(140px,.8fr) minmax(0,1.2fr);gap:clamp(18px,4vw,42px);align-items:center}
+.mail-art{width:100%;max-width:285px;justify-self:center;overflow:visible;transform:rotate(-5deg)}
+.copy{min-width:0}.label{display:inline-block;border:2px solid var(--ink);border-radius:5px;padding:5px 9px;background:var(--yellow);font-size:12px;font-weight:850;transform:rotate(-2deg);box-shadow:2px 2px var(--ink)}
+h1{font-size:clamp(28px,5vw,48px);font-weight:950;letter-spacing:-1px;line-height:1.2;margin:18px 0 7px}.subtitle{margin:0;color:var(--blue);font-weight:800;font-size:16px}.intro{font-size:15px;line-height:1.7;margin:14px 0 18px}.launch-actions{min-height:50px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}button{font:inherit;font-weight:800;font-size:16px;min-height:46px;border:2px solid var(--ink);border-radius:11px;background:var(--red);color:white;padding:11px 24px;box-shadow:0 4px var(--ink);cursor:pointer}button:active{transform:translateY(3px);box-shadow:0 1px var(--ink)}button:disabled{opacity:.6;cursor:wait}.hint{font-size:11px;color:#756851;margin:12px 0 0;line-height:1.6}
+.download{width:100%}progress{display:block;appearance:none;width:100%;height:15px;border:2px solid var(--ink);border-radius:12px;background:#fffdf5;overflow:hidden}progress::-webkit-progress-bar{background:#fffdf5}progress::-webkit-progress-value{background:var(--yellow);border-right:2px solid var(--ink)}progress::-moz-progress-bar{background:var(--yellow)}#status{font-size:12px;font-weight:750;color:var(--blue);line-height:1.6;margin:8px 0 0}#error{font-size:12px;line-height:1.6;color:#a62b1b;white-space:pre-wrap;margin:8px 0}#error:empty{display:none}
+.controls{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:16px;padding-top:17px;border-top:2px dashed #cec2a8;font-size:12px;flex-wrap:wrap}.controls span{white-space:nowrap}kbd{font:inherit;font-weight:800;background:#fffdf5;border:1.5px solid var(--ink);border-radius:4px;padding:3px 6px;box-shadow:0 2px #d9cfb8;margin-right:5px}.links{grid-column:1/-1;text-align:center;font-size:11px;margin:-8px 0 0}.links a{display:inline-block;padding:6px 8px;text-underline-offset:3px}#credits{position:absolute;bottom:4px;right:8px;font-size:11px;color:var(--ink);background:var(--paper);padding:5px 8px;border:1px solid var(--ink);border-radius:5px}
+@media(max-height:420px) and (min-width:520px){#loading{padding:16px 28px}.postcard{max-width:700px;column-gap:26px;row-gap:13px;grid-template-columns:minmax(130px,.7fr) minmax(0,1.3fr)}.mail-art{max-width:200px}h1{font-size:32px;margin:12px 0 5px}.intro{margin:10px 0 12px;font-size:13px}.controls{padding-top:12px}.links{margin:-8px 0 0}.hint{margin-top:8px}.label{font-size:11px}.subtitle{font-size:14px}}
+@media(max-width:519px){#loading{align-items:safe center;padding:28px 24px}.postcard{grid-template-columns:1fr;gap:20px;text-align:center}.mail-art{max-width:180px;grid-row:1}.copy{grid-row:2}h1{font-size:36px;margin-top:18px}.launch-actions{justify-content:center}.controls{gap:14px;font-size:11px}.links{margin-top:-10px}.intro{margin:12px 0 18px}}
+@media(max-height:520px) and (max-width:519px){.mail-art{display:none}.postcard{gap:16px}.copy{grid-row:1}h1{font-size:30px}}
 </style></head><body>
 <canvas id="game" tabindex="0" aria-label="星野来信游戏画面"></canvas>
-<div id="loading"><h1>星野来信</h1><p>迟到的春天<br>一封没有署名的信，正等着你。</p><p>推荐电脑键鼠 · 首次加载约 54 MB<br>WASD 行走 · E 互动 · 右键环视</p><progress id="progress" max="1" value="0"></progress><p id="status" role="status">点击开始，前往第一颗星球。</p><p id="error" role="alert"></p><button id="start" disabled>开始旅程</button><button id="retry" hidden>重新加载</button><p class="links"><a href="https://github.com/luka2chat/owngame/tree/main/examples/star-letters" target="_blank" rel="noopener">查看源码</a><a href="licenses/THIRD_PARTY_NOTICES.md.txt" target="_blank" rel="noopener">授权说明</a></p></div>
-<a id="credits" href="licenses/THIRD_PARTY_NOTICES.md.txt" target="_blank" rel="noopener">源码与授权</a>
+<div id="loading"><div class="postcard">
+<svg class="mail-art" viewBox="0 0 280 270" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+ <g stroke="#22251f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m32 37 5-14 5 14 14 5-14 5-5 14-5-14-14-5z" fill="#ffce27"/>
+  <path d="m238 78 4-11 4 11 11 4-11 4-4 11-4-11-11-4z" fill="#ee3d26"/>
+  <path d="M51 101Q12 157 58 205M218 129q45 39 14 84" fill="none" stroke="#075bb4" stroke-dasharray="4 10"/>
+  <ellipse cx="141" cy="215" rx="98" ry="14" fill="#eadfc7" stroke="none"/>
+  <circle cx="139" cy="171" r="63" fill="#ffce27"/>
+  <path d="M85 188q30 26 106-5M83 157q24 10 39 3m40 48 26-9" stroke="#d89b17" fill="none"/>
+  <path d="M64 183q-32 31 20 28 84-4 136-61 21-24-3-22" stroke="#22251f" stroke-width="10" fill="none"/>
+  <path d="M64 183q-32 31 20 28 84-4 136-61 21-24-3-22" stroke="#075bb4" stroke-width="5" fill="none"/>
+  <g transform="rotate(12 141 95)">
+   <rect x="61" y="48" width="161" height="105" rx="10" fill="#22251f"/>
+   <rect x="56" y="42" width="161" height="105" rx="10" fill="#fffdf5"/>
+   <path d="m60 139 58-50h37l57 50" fill="#faf5e8"/>
+   <path d="m58 48 68 51q11 9 21 0l68-51" fill="#fffdf5"/>
+   <circle cx="136" cy="105" r="17" fill="#ee3d26"/>
+   <path d="m136 95 3 7 8 1-6 5 1 8-6-4-6 4 1-8-6-5 8-1z" fill="#ffce27" stroke="none"/>
+   <path d="m189 51 14 0 0 17-14 0z" fill="#075bb4" stroke-width="2"/>
+  </g>
+  <path d="M119 175v5m27-9v5m-18 12q8 7 15-3" fill="none"/>
+  <path d="m195 28 4-12m12 20 12-3" stroke="#ee3d26"/>
+ </g>
+</svg>
+<section class="copy" aria-labelledby="title"><span class="label">✉ 你有一封星际来信</span><h1 id="title">星野来信</h1><p class="subtitle">迟到的春天</p><p class="intro">把一封信，送到春天里。<br>三颗小星球，等你来拜访。</p>
+<div class="launch-actions"><button id="start" disabled>拆开来信，出发！ ↗</button><div class="download" id="download-progress" hidden><progress id="progress" max="1" value="0" aria-label="游戏加载进度"></progress></div><button id="retry" hidden>再试一次 ↻</button></div>
+<p id="status" role="status" hidden>正在收集星光……</p><p id="error" role="alert"></p><p class="hint">推荐电脑键鼠 · 首次加载约 54 MB</p></section>
+<div class="controls" aria-label="游戏操作"><span><kbd>WASD</kbd> 散步</span><span><kbd>E</kbd> 打个招呼</span><span><kbd>右键</kbd> 看看四周</span></div>
+<p class="links"><a href="https://github.com/luka2chat/owngame/tree/main/examples/star-letters" target="_blank" rel="noopener">查看源码</a><a href="licenses/THIRD_PARTY_NOTICES.md.txt" target="_blank" rel="noopener">授权说明</a></p>
+</div></div>
+<a id="credits" href="licenses/THIRD_PARTY_NOTICES.md.txt" target="_blank" rel="noopener" hidden>源码与授权</a>
 <script src="Build/loader.js"></script><script type="module" src="launch.js"></script>
 </body></html>

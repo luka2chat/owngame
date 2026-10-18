@@ -4,6 +4,7 @@ const blobs=[];
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
 async function launch(){
  start.hidden=true;retry.hidden=true;error.textContent='';
+ document.getElementById('download-progress').hidden=false;status.hidden=false;
  const began=performance.now();
  try{
   if(!globalThis.DecompressionStream)throw Error('请使用支持解压缩功能的新版 Chrome、Edge、Firefox 或 Safari。');
@@ -28,7 +29,7 @@ async function launch(){
    const url=URL.createObjectURL(new Blob([raw],{type:asset.mime}));blobs.push(url);config[key]=url;
   }
   const instance=await createUnityInstance(canvas,{...config,streamingAssetsUrl:'StreamingAssets',companyName:'DefaultCompany',productName:'LittleOrbit',productVersion:'0.1.0',devicePixelRatio:Math.min(devicePixelRatio||1,1.5),showBanner:(message,type)=>{if(type==='error')error.textContent=message;else console.warn(message);}},value=>{progress.value=.75+value*.25;status.textContent='正在开启旅程 '+Math.round(value*100)+'%';});
-  loading.remove();canvas.focus();
+  loading.remove();document.getElementById('credits').hidden=false;canvas.focus();
   globalThis.starLetters={ready:true,loadedMs:Math.round(performance.now()-began)};
   // Unity owns the instance; keep blob URLs valid for its entire lifetime.
   addEventListener('pagehide',()=>{for(const url of blobs)URL.revokeObjectURL(url);},{once:true});

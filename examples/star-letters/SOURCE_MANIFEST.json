@@ -6059,14 +6059,14 @@
     },
     {
       "path": "web/index.html",
-      "bytes": 2226,
-      "sha256": "7eff55a5ec702d8f1ee247d5c25f24b15e8c20c6f5a681267b64d6b8983c97de",
+      "bytes": 7284,
+      "sha256": "ffceec3cc8c1595b6ff71d12f1514df43894a7af7f893a0f91d5f216c55f4b01",
       "license": "MIT"
     },
     {
       "path": "web/launch.js",
-      "bytes": 3351,
-      "sha256": "32a6ce93cc117f3b55cab7d63801801dc88645918a4920ffc01be74ed1091b8d",
+      "bytes": 3479,
+      "sha256": "d78c80a0a34a43db101a001a615520eb13e4300fff050a1dcacdc85e4426b1fb",
       "license": "MIT"
     },
     {
