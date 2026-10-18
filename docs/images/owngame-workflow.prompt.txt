@@ -1,0 +1,16 @@
+Use case: infographic-diagram.
+Asset type: professional workflow illustration for the owngame GitHub README, approximately 1536x1024 landscape. Create a polished clear diagram with accurate Chinese labels and perfectly unambiguous arrows. It replaces a plain ASCII flowchart. Warm ivory paper #faf5e8, near-black #22251f strokes and typography, restrained official red #ee3d26, blue #075bb4, yellow #ffce27 accents. Joyful arcade-club editorial style, clean flat shapes, subtle offset black shadows, extremely light paper grain. No logo and no mascot; do not invent brand characters.
+Exact title at top left: "从想法到可玩的游戏"
+Layout: top half contains three generously sized cards in one horizontal row, left to right:
+1. cream card with small red spark icon and exact label "你的想法 / 网站复刻"
+2. pale yellow card with a small simple conversation icon and exact label "AI 助手 + 创作 Skill"
+3. pale blue card with a small simple tool icon and exact label "owngame CLI / MCP"
+Connect these THREE cards with clear dark right-pointing arrows: 1 → 2 → 3.
+Below the third card, a connector goes down and then left across an open middle lane, then down into the first card of the lower row; its arrowhead points DOWN into lower card 01. No intersections with text or other cards. This connector represents moving into the creation workflow.
+Lower row: FOUR equal-width cards aligned in order left to right, with clear right-pointing arrows in the gaps:
+"01" small above main text "参考与风格" — simple palette/reference icon
+"02" small above main text "项目与实现" — simple blocks/code icon
+"03" small above main text "试玩与反馈" — simple gamepad icon
+"04" small above main text "构建与交付" — simple package/check icon
+Below these cards, a BLUE return connector starts at bottom center of card 04, goes DOWN, then LEFT underneath toward card 03, then UP with an arrowhead entering the BOTTOM of card 03. Exact label centered near the return arrow: "继续迭代". This is the only feedback loop; must clearly go FROM delivery BACK TO playtesting.
+All seven main labels must be large, crisp, precisely spelled and readable at a displayed width of 800 px. Generous spacing with no cramped words or tiny captions. Exact texts only, no explanatory paragraphs, no English title, no spurious text, no duplicated nodes. Keep line arrows away from text. Preserve semantic hierarchy of input → assistant → toolkit → research → implementation → playtest → delivery, then iterate delivery → playtest. Rounded rectangular cards, confident simple icon shapes. A finished publication figure, not a screenshot, not a rough sketch. Opaque background.
