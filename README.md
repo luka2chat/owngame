@@ -6,7 +6,7 @@
 
 面向 AI 助手的开源游戏创作工具包：从可玩参考出发，完成美术、玩法与交付迭代。
 
-[![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A5%2022-339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A5%2022-339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Discord 社区](https://img.shields.io/badge/Discord-%E5%8A%A0%E5%85%A5%E7%A4%BE%E5%8C%BA-5865F2?logo=discord&logoColor=white)](https://discord.gg/X5cYjTaD)
 
 [试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [Discord 社区](https://discord.gg/X5cYjTaD) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [English](#english)
 
