@@ -14,8 +14,8 @@
     },
     {
       "path": ".github/workflows/android.yml",
-      "bytes": 932,
-      "sha256": "dd0db684a30537b42bf805033f45418ce6e28f7965cae446e2e22636ca470eb6"
+      "bytes": 960,
+      "sha256": "6cba14f506cfde3e1a02b290aa8fbe4088eaa432d38b20e01a3f1bd3bc3e102b"
     },
     {
       "path": ".github/workflows/ci.yml",

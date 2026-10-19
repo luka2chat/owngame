@@ -1,9 +1,9 @@
 name: Android source checks
 on:
   push:
-    paths: ['apps/android/**', 'scripts/android/**', 'tests/android/**', '.github/workflows/android.yml', 'package.json']
+    paths: ['games.json', 'apps/android/**', 'scripts/android/**', 'tests/android/**', '.github/workflows/android.yml', 'package.json']
   pull_request:
-    paths: ['apps/android/**', 'scripts/android/**', 'tests/android/**', '.github/workflows/android.yml', 'package.json']
+    paths: ['games.json', 'apps/android/**', 'scripts/android/**', 'tests/android/**', '.github/workflows/android.yml', 'package.json']
 permissions:
   contents: read
 jobs:
