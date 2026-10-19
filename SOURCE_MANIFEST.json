@@ -324,8 +324,8 @@
     },
     {
       "path": "apps/web/public/style.css",
-      "bytes": 19879,
-      "sha256": "b3c5b477f354196179d94ed7db092f2ca2908f7a9ab33284762eee40acc315ff"
+      "bytes": 20132,
+      "sha256": "2c8af7dbbb583d194313769efe36fff07cecf796175c5baff740c02ad3d6ffd8"
     },
     {
       "path": "apps/web/public/sw.js",
@@ -564,8 +564,8 @@
     },
     {
       "path": "examples/bamboo-rally/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/bamboo-rally/game.json",
@@ -650,7 +650,7 @@
     {
       "path": "examples/bamboo-rally/SOURCE_MANIFEST.json",
       "bytes": 3908,
-      "sha256": "0131bb88208a9a352e0f5c2b1a1db2effeaf9c4ba81145a0388bb456dda7a0ae"
+      "sha256": "a161762023c64adee924e6df8ab88a1b60bebdcc58fdab5b1ce1e541c54cdaf9"
     },
     {
       "path": "examples/bamboo-rally/src/layout.ts",
@@ -689,8 +689,8 @@
     },
     {
       "path": "examples/civ-clicker/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/civ-clicker/game.json",
@@ -990,7 +990,7 @@
     {
       "path": "examples/civ-clicker/SOURCE_MANIFEST.json",
       "bytes": 10326,
-      "sha256": "cffdfa48369c87d3097a735bcf66f3ef40f41cba799fdae4aa5bb7a108a2ff47"
+      "sha256": "e8e03df0520454f0a0bfb1606aa8c511d94a441ea1f0d4430389e182521bed1d"
     },
     {
       "path": "examples/civ-clicker/THIRD_PARTY_NOTICES.md",
@@ -1099,8 +1099,8 @@
     },
     {
       "path": "examples/faune-dungeon/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/faune-dungeon/game.json",
@@ -1260,7 +1260,7 @@
     {
       "path": "examples/faune-dungeon/SOURCE_MANIFEST.json",
       "bytes": 7918,
-      "sha256": "008bc2e1d808fd3cbeea2d43e0e88139a62eb601653829bc58429f732d09d1e7"
+      "sha256": "5332493570efb10487a04dad735081eac1a117032f0abf75231fbb648a606a4e"
     },
     {
       "path": "examples/faune-dungeon/src/anims/CharacterAnims.ts",
@@ -1349,8 +1349,8 @@
     },
     {
       "path": "examples/firefly-four/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/firefly-four/game.json",
@@ -1420,7 +1420,7 @@
     {
       "path": "examples/firefly-four/SOURCE_MANIFEST.json",
       "bytes": 3101,
-      "sha256": "367d3d05eab19f706b4794b82f822b5235fec89e8422455b21867608d9226241"
+      "sha256": "6178001c552fab682d3d9f7d4667f8692838e9a24ae519ba32046ea34218a1c7"
     },
     {
       "path": "examples/firefly-four/src/layout.ts",
@@ -1449,8 +1449,8 @@
     },
     {
       "path": "examples/kiln-merge/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/kiln-merge/game.json",
@@ -1520,7 +1520,7 @@
     {
       "path": "examples/kiln-merge/SOURCE_MANIFEST.json",
       "bytes": 3588,
-      "sha256": "9403ff2b9236d536a17086f669c732a9ca1b504201c0b6f78df51715f4bca747"
+      "sha256": "3e5af57f2780ca25c87468141b2b164711f43aa5376df44b5015ff27f50cba8c"
     },
     {
       "path": "examples/kiln-merge/src/art.ts",
@@ -1564,8 +1564,8 @@
     },
     {
       "path": "examples/moss-reversi/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/moss-reversi/game.json",
@@ -1640,7 +1640,7 @@
     {
       "path": "examples/moss-reversi/SOURCE_MANIFEST.json",
       "bytes": 3307,
-      "sha256": "8715c847e69adfc744fdbb1aa38a36cffd5913287753e126379c726912635543"
+      "sha256": "e6949b2bd9c1bb04aede40077ef1583a19b2b024061419506d1c9edfa888a761"
     },
     {
       "path": "examples/moss-reversi/src/game.mjs",
@@ -1669,8 +1669,8 @@
     },
     {
       "path": "examples/neon-shooter/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/neon-shooter/game.json",
@@ -1755,7 +1755,7 @@
     {
       "path": "examples/neon-shooter/SOURCE_MANIFEST.json",
       "bytes": 3282,
-      "sha256": "e1eb62d4cb14db35b3ebc0a6d7a8d2faf78f508073026a772dab3c88a98b9b8c"
+      "sha256": "b13ae86619e67b5693314d7df3c624cb581a71cbef4365bf71dbbeef0a3ed6dd"
     },
     {
       "path": "examples/neon-shooter/THIRD_PARTY_NOTICES.md",
@@ -1774,8 +1774,8 @@
     },
     {
       "path": "examples/petal-memory/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/petal-memory/game.json",
@@ -1870,7 +1870,7 @@
     {
       "path": "examples/petal-memory/SOURCE_MANIFEST.json",
       "bytes": 4233,
-      "sha256": "25b4bed1697890c82cd3f02a1364e4ac7da9f9361663198409b08d6608fb7ced"
+      "sha256": "b0cf3d680204f4cd75bd3cfe1ca26d4b537e7fc031315931cc3c299e6a1a8d7e"
     },
     {
       "path": "examples/petal-memory/src/card-scene.ts",
@@ -1909,8 +1909,8 @@
     },
     {
       "path": "examples/postcard-slide/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/postcard-slide/game.json",
@@ -2000,7 +2000,7 @@
     {
       "path": "examples/postcard-slide/SOURCE_MANIFEST.json",
       "bytes": 4120,
-      "sha256": "f0093ba0cc34c49d29433485ea7fedc3a637f71d0a8807f4931012844f9b3263"
+      "sha256": "f609135ad66a47fd21d2736c3caab4e4493871ff4f000a2a75184a33984fff83"
     },
     {
       "path": "examples/postcard-slide/src/board-scene.ts",
@@ -2039,8 +2039,8 @@
     },
     {
       "path": "examples/rc-rally/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/rc-rally/game.json",
@@ -2140,7 +2140,7 @@
     {
       "path": "examples/rc-rally/SOURCE_MANIFEST.json",
       "bytes": 5628,
-      "sha256": "dff3cbabf4767858835e0310133935b067550b01bcf13ef6a205d8c39d4c7546"
+      "sha256": "35d94e2aea33afa2192e257120618bd8abbf7f94de1906530aa4e04e8baf6848"
     },
     {
       "path": "examples/rc-rally/src/assets/back-left.glb",
@@ -2224,8 +2224,8 @@
     },
     {
       "path": "examples/signal-harbor/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/signal-harbor/game.json",
@@ -2320,7 +2320,7 @@
     {
       "path": "examples/signal-harbor/SOURCE_MANIFEST.json",
       "bytes": 4879,
-      "sha256": "a1415260ef13dccef387b53c8cd76085d620b35f42955d5bf1b03e0043a08aa0"
+      "sha256": "bac1b8a8848a1d3cfabf8ba5c9b4d6c8d4e44fa7ba47e9481973154d033db140"
     },
     {
       "path": "examples/signal-harbor/src/core/layout.ts",
@@ -2379,8 +2379,8 @@
     },
     {
       "path": "examples/silk-serpent/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/silk-serpent/game.json",
@@ -2465,7 +2465,7 @@
     {
       "path": "examples/silk-serpent/SOURCE_MANIFEST.json",
       "bytes": 3903,
-      "sha256": "75077c514f777717a2e7024a1db766e5df42f42de3fd84416bd7fe956992c6b4"
+      "sha256": "1fa2492fdf834267b90f736e94680a9e4fde86cfd71223eda8a3cc963835064f"
     },
     {
       "path": "examples/silk-serpent/src/game-scene.ts",
@@ -7584,8 +7584,8 @@
     },
     {
       "path": "examples/star-triad/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/star-triad/game.json",
@@ -7660,7 +7660,7 @@
     {
       "path": "examples/star-triad/SOURCE_MANIFEST.json",
       "bytes": 3593,
-      "sha256": "04e34a00b10fcc34ca558533353674e353f6f521c856b38b4fbb75315a4bf006"
+      "sha256": "cf0b373380c8d7f0553488d9d7361de235737f507333d6ff7fd96d416029dbb1"
     },
     {
       "path": "examples/star-triad/src/board-scene.ts",
@@ -7699,8 +7699,8 @@
     },
     {
       "path": "examples/unlock-bolts-mobile/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/unlock-bolts-mobile/game.json",
@@ -7775,7 +7775,7 @@
     {
       "path": "examples/unlock-bolts-mobile/SOURCE_MANIFEST.json",
       "bytes": 3895,
-      "sha256": "08915c62700b9065eb5a1580dd1eb144b236214fd03eaaa91f5e537f57c63556"
+      "sha256": "a2616f7f1e65be3c158dd4cc7a96f711e02e6a6cf26ffb942f04a37b5b41e385"
     },
     {
       "path": "examples/unlock-bolts-mobile/src/controller.ts",
@@ -7824,8 +7824,8 @@
     },
     {
       "path": "examples/wind-chime-memory/build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "examples/wind-chime-memory/game.json",
@@ -7920,7 +7920,7 @@
     {
       "path": "examples/wind-chime-memory/SOURCE_MANIFEST.json",
       "bytes": 4407,
-      "sha256": "6bbf49c888014e901c035e2170ae270923ef0c03d0e359a926bb3bb849126431"
+      "sha256": "4c0ef06cef5a068c27508484a588ef9cbbba9f9a1db9d40d8f2915f210cd145c"
     },
     {
       "path": "examples/wind-chime-memory/src/audio.ts",
@@ -7960,7 +7960,7 @@
     {
       "path": "games.json",
       "bytes": 8193,
-      "sha256": "e567f0308b873f13842ec3d190edb8deeb3425282b5868c46b8a758a06186ad0"
+      "sha256": "22567a81723b4e7bb8a4093fa8989b168abb0657deb21a5872b45d26f559ad65"
     },
     {
       "path": "LICENSE",

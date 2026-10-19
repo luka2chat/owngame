@@ -11,8 +11,8 @@
     },
     {
       "path": "build.mjs",
-      "bytes": 2679,
-      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
     },
     {
       "path": "game.json",
