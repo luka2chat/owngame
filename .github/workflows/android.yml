@@ -1,0 +1,25 @@
+name: Android source checks
+on:
+  push:
+    paths: ['apps/android/**', 'scripts/android/**', 'tests/android/**', '.github/workflows/android.yml', 'package.json']
+  pull_request:
+    paths: ['apps/android/**', 'scripts/android/**', 'tests/android/**', '.github/workflows/android.yml', 'package.json']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - run: sdkmanager 'platforms;android-34' 'build-tools;34.0.0'
+      - run: npm run android:check
+      - run: npm run android:build
+      - run: npm run android:test:compile

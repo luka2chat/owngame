@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {createHash,randomUUID} from 'node:crypto';
+import {readPublicFiles} from '../android/public-source.mjs';
 const root=path.resolve(import.meta.dirname,'../..');
 const pkg=JSON.parse(await fs.readFile(path.join(root,'package.json')));
 const args=process.argv.slice(2);let out=path.join(root,'release',`owngame-${pkg.version}`),repository;
@@ -10,7 +11,7 @@ for(let i=0;i<args.length;i++){
  else throw Error('Usage: release:prepare [--out new-directory] [--repository https://github.com/owner/repo]');
 }
 if(out===root||root.startsWith(out+path.sep))throw Error('Output cannot replace source');
-if(['packages','starter-knowledge','skills','templates','scripts','tests','docs','.github'].some(p=>out===path.join(root,p)||out.startsWith(path.join(root,p)+path.sep)))throw Error('Output overlaps exported source');
+if(['apps','packages','starter-knowledge','skills','templates','scripts','tests','docs','.github'].some(p=>out===path.join(root,p)||out.startsWith(path.join(root,p)+path.sep)))throw Error('Output overlaps exported source');
 try {await fs.lstat(out);throw Error('Output already exists');}catch(e){if(e.code!=='ENOENT')throw e;}
 const destination=out;
 await fs.mkdir(path.dirname(out),{recursive:true});
@@ -30,12 +31,18 @@ async function copy(relative){
  manifest.push({path:relative,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')});
 }
 for(const entry of entries)await copy(entry);
+// Android is exported from an explicit reviewed file list, never the production tree.
+for(const [relative,bytes] of await readPublicFiles(root)) {
+ await fs.mkdir(path.dirname(path.join(out,relative)),{recursive:true});await fs.writeFile(path.join(out,relative),bytes);
+ manifest.push({path:relative,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')});
+}
 pkg.scripts={build:'tsc -p tsconfig.json',test:'npm run test:release','test:release':pkg.scripts['test:release'],'verify:package':pkg.scripts['verify:package'],'release:prepare':pkg.scripts['release:prepare'],prepack:'npm run build'};
+Object.assign(pkg.scripts,{'android:build':'node scripts/android/build.mjs','android:check':'node scripts/android/export-source.mjs && node --test tests/android/public-source.test.mjs','android:test:compile':'node scripts/android/test-repository.mjs --compile-only','test:android':'node scripts/android/test-repository.mjs'});
 if(repository){pkg.repository={type:'git',url:repository+'.git'};pkg.bugs={url:repository+'/issues'};}
 await fs.writeFile(path.join(out,'package.json'),JSON.stringify(pkg,null,2)+'\n');
 const lock=JSON.parse(await fs.readFile(path.join(root,'package-lock.json')));lock.version=pkg.version;lock.packages[''].version=pkg.version;lock.packages[''].license=pkg.license;
 await fs.writeFile(path.join(out,'package-lock.json'),JSON.stringify(lock,null,2)+'\n');
-await fs.writeFile(path.join(out,'.gitignore'),'node_modules/\ndist/\n/artifacts/\n/release/\n.owngame/\n.codex/\n.cursor/\n.agents/\n.env\n.env.*\n.npmrc\n*.tgz\n.DS_Store\nmy-game/\n');
+await fs.writeFile(path.join(out,'.gitignore'),'node_modules/\ndist/\n/artifacts/\n/release/\n.local/\n.gradle/\nlocal.properties\n*.jks\n*.keystore\n*.p12\n*.pfx\n*.apk\n*.aab\n.owngame/\n.codex/\n.cursor/\n.agents/\n.env\n.env.*\n.npmrc\n*.tgz\n.DS_Store\nmy-game/\n');
 await fs.writeFile(path.join(out,'SOURCE_MANIFEST.json'),JSON.stringify({version:pkg.version,scope:'Explicit public toolkit export; production workspace excluded',files:manifest},null,2)+'\n');
 await fs.rename(out,destination);
 console.log(JSON.stringify({directory:destination,version:pkg.version,source_files:manifest.length,repository:repository??'not configured',next:'npm ci; npm test; npm run verify:package in the exported directory before publishing'}));

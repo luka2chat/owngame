@@ -63,3 +63,18 @@ CLI/MCP contracts in the shared core and preserve existing game saves.
 ## Website game source
 
 Game source is indexed separately in games.json and examples/. Full games remain excluded from the npm tarball. Website game launches and updates must follow [joint source and website publication](game-publishing.md). The website builder refuses a selected delivery without a matching public source manifest at an immutable Git revision.
+
+## Android source
+
+The GitHub source export includes only the reviewed paths in
+`scripts/android/public-files.json`. Run `npm run android:check` before exporting;
+`node scripts/android/export-source.mjs --out NEW_DIRECTORY` creates a separate
+Android-only export without touching existing destinations. The toolkit exporter
+uses the same allowlist and privacy checks. Public PNG copies omit non-rendering
+text, EXIF and embedded provenance metadata; rendering chunks remain unchanged.
+
+Never upload `.local`, SDK settings, signing files, APKs, pairing adapters,
+device identifiers, personal paths, raw playtest records or caches. Build logs
+may contain local paths and belong only in ignored artifacts. Android source CI
+builds with a fresh test key and compiles instrumentation tests; it does not
+publish an APK or claim device/art acceptance. See apps/android/README.md.

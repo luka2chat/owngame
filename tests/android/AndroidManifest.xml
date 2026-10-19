@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.owngame.tests" android:versionCode="1" android:versionName="1.0">
+ <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34"/>
+ <application android:label="owngame repository tests"/>
+ <instrumentation android:name="dev.owngame.tests.RepositoryTests" android:targetPackage="dev.owngame.app"/>
+</manifest>

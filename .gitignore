@@ -15,3 +15,14 @@ my-game/
 
 # Also exclude dependency directory symlinks used by local verification.
 node_modules
+
+# Android local settings, signing material and generated packages
+.local/
+.gradle/
+local.properties
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.apk
+*.aab

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#faf5e8" />
+    <title>owngame · 做属于自己的游戏</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <svg class="svg-defs" aria-hidden="true">
+      <defs>
+        <symbol id="i-game" viewBox="0 0 24 24">
+          <path
+            d="M7 6h10c2 0 3 2 4 6l1 5c.5 3-2 4-4 2l-3-3H9l-3 3c-2 2-4.5 1-4-2l1-5c1-4 2-6 4-6Z"
+          />
+          <path d="M6 11h5M8.5 8.5v5M16 10h.1M18 13h.1" />
+        </symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24">
+          <path d="M12 21 3 12C-3 5 6-1 12 6c6-7 15-1 9 6Z" />
+        </symbol>
+        <symbol id="i-search" viewBox="0 0 24 24">
+          <circle cx="10" cy="10" r="7" />
+          <path d="m15 15 6 6" />
+        </symbol>
+        <symbol id="i-refresh" viewBox="0 0 24 24">
+          <path
+            d="M20 9A8 8 0 0 0 5 5L2 8m0-6v6h6M4 15a8 8 0 0 0 15 4l3-3m0 6v-6h-6"
+          />
+        </symbol>
+      </defs>
+    </svg>
+    <div class="page">
+      <header class="masthead">
+        <div class="brand-copy">
+          <div class="wordmark" aria-label="owngame">
+            <span>o</span><span>w</span><span>n</span><span>g</span
+            ><span>a</span><span>m</span><span>e</span>
+          </div>
+          <h1>做属于自己的游戏</h1>
+          <p class="promise">不充钱、不看广告、离线爽玩</p>
+        </div>
+        <img
+          class="mascot"
+          src="art/arcade-mascot.png"
+          alt="戴皇冠帽的 owngame 街机小伙伴"
+        />
+      </header>
+      <div class="search-box">
+        <svg aria-hidden="true"><use href="#i-search" /></svg
+        ><input
+          id="search"
+          type="search"
+          placeholder="搜索你喜欢的游戏"
+          aria-label="搜索游戏"
+          autocomplete="off"
+        /><button id="clear-search" class="clear" aria-label="清除搜索" hidden>
+          ×
+        </button>
+      </div>
+      <nav id="chips" class="chips" aria-label="游戏分类"></nav>
+      <main id="content" tabindex="-1"></main>
+      <div id="status" role="status" aria-live="polite"></div>
+      <footer class="foot">
+        <b>快乐，就这么简单。</b><span>联网挑选和更新，下载后没网络也能玩。</span
+        ><button id="sync" class="refresh">
+          <svg aria-hidden="true"><use href="#i-refresh" /></svg
+          ><span>刷新游戏库</span>
+        </button>
+      </footer>
+    </div>
+    <nav class="bottom-nav" aria-label="主要导航">
+      <button data-page="home" aria-current="page">
+        <svg aria-hidden="true"><use href="#i-game" /></svg
+        ><span>游戏库</span></button
+      ><button data-page="categories">
+        <svg aria-hidden="true"><use href="#i-grid" /></svg
+        ><span>分类</span></button
+      ><button data-page="mine">
+        <svg aria-hidden="true"><use href="#i-heart" /></svg
+        ><span>我的游戏</span>
+      </button>
+    </nav>
+    <script src="app.js"></script>
+  </body>
+</html>

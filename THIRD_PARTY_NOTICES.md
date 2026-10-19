@@ -55,3 +55,12 @@ Unity Runtime under Unity Software Terms and carries its attribution notices.
 ## Website game examples
 
 All currently hosted games are indexed in games.json with matching source and online delivery manifests. Each examples/<id> directory retains its own LICENSE and THIRD_PARTY_NOTICES.md. The root MIT license does not relicense these projects. In particular, examples/civ-clicker code is GPL-3.0-or-later, with CC BY icons, OFL fonts and separately licensed dependencies. Adapted games preserve upstream commit provenance and notices. Original ImageGen artwork is identified in the game notices. The npm toolkit does not bundle these full games.
+
+## Android client
+
+The public source also includes the Android client and its build/test scripts
+under apps/android, scripts/android and tests/android. Authored client code is
+MIT. Bundled covers retain per-game licenses (including CivClicker GPL-3.0-or-later,
+CC BY 3.0 icons and CC0 Faune assets). See apps/android/ART-PROVENANCE.md and
+apps/android/assets/THIRD_PARTY_NOTICES.md; full license texts travel with the APK.
+The Android client, APK and signing material are not included in the npm package.

@@ -1,6 +1,6 @@
 {
   "version": "0.9.0",
-  "scope": "Reviewed public toolkit, portable website game sources and their separate licenses; private production files and caches excluded",
+  "scope": "Reviewed public toolkit, Android client, portable website game sources and their separate licenses; private production files, signing material and caches excluded",
   "files": [
     {
       "path": ".github/ISSUE_TEMPLATE/bug.yml",
@@ -11,6 +11,11 @@
       "path": ".github/pull_request_template.md",
       "bytes": 147,
       "sha256": "b83d644ea8af16de8e9765dc3926bbc702ddee7cf83ab5bea7f5a2157765d7dc"
+    },
+    {
+      "path": ".github/workflows/android.yml",
+      "bytes": 832,
+      "sha256": "e524a00fba266efaf6ffe5406ec35942fbf311fb3548a07412a14cbe594f6534"
     },
     {
       "path": ".github/workflows/ci.yml",
@@ -34,13 +39,263 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 208,
-      "sha256": "00ed7aaaea5f786ca418ae1a29d11b590f20356dc869d41bf23128998959bbe6"
+      "bytes": 350,
+      "sha256": "49f34c0ef16d099822f747b5b2c92a96d6159237ab4baeefddfd5286ce09aad7"
     },
     {
       "path": "AGENTS.md",
       "bytes": 484,
       "sha256": "77316c11c1d4ccdf38c8496c3d0000bd5a5332d7a243bfc59d4b48bf1e60b53e"
+    },
+    {
+      "path": "apps/android/AndroidManifest.xml",
+      "bytes": 1214,
+      "sha256": "25e59e54b2db8221599a42577960b137f0efdb8e1979516cdf4535c56e87c691"
+    },
+    {
+      "path": "apps/android/ART-PROVENANCE.md",
+      "bytes": 2306,
+      "sha256": "13e11865b6400f863a3714063ef4156fb155c3f13509f28fa5ef39aa1d990586"
+    },
+    {
+      "path": "apps/android/assets/app.css",
+      "bytes": 15114,
+      "sha256": "bea10eb24e181bfacb5bfba56b1ad0b445512b1df87b164ebffd63bda735b9f7"
+    },
+    {
+      "path": "apps/android/assets/app.js",
+      "bytes": 15816,
+      "sha256": "696217fe45c877e9da698ee830ad7257baf36aa76bcdc8f1431b085c7233f6d8"
+    },
+    {
+      "path": "apps/android/assets/art/arcade-mascot.png",
+      "bytes": 1080548,
+      "sha256": "ba78e24f40dec55692080bbc9cc216619748eccfeabdcd3e6348f03bc17ca0f5"
+    },
+    {
+      "path": "apps/android/assets/art/bamboo-rally.png",
+      "bytes": 2936956,
+      "sha256": "f1c694ce252e8e8e68c54018008fe2877f5b3ab0a3fab28a637c47a2ec0c080b"
+    },
+    {
+      "path": "apps/android/assets/art/firefly-four-paper/atlas.png",
+      "bytes": 1225928,
+      "sha256": "211b1f45dfe46c6dee89903569d8bf70780e9596e901335c00e66d2c07cae231"
+    },
+    {
+      "path": "apps/android/assets/art/firefly-four-paper/bg.png",
+      "bytes": 2332128,
+      "sha256": "fadf254270da2e58789ace5420940e7b8f8bd9c10ac783a013ae40c44dd3d1be"
+    },
+    {
+      "path": "apps/android/assets/art/firefly-four-paper/board.png",
+      "bytes": 2551133,
+      "sha256": "9b5905876982964d0b8969a59a1e87d34c434500b892b678ac5dda6ba6dc28ae"
+    },
+    {
+      "path": "apps/android/assets/art/firefly-four.svg",
+      "bytes": 17557,
+      "sha256": "ecd2b113307aa76a113b25a95f057f009edd75ebca7c6f9cc55b01c4fc30c218"
+    },
+    {
+      "path": "apps/android/assets/art/harbor-background.png",
+      "bytes": 2345402,
+      "sha256": "4555be6280c5cb993982a3999e52557894c645ab803fe9ef4a08dd39c25c3f0a"
+    },
+    {
+      "path": "apps/android/assets/art/kiln-merge.png",
+      "bytes": 2428015,
+      "sha256": "d06bed83db0dbf845dc36ae7d5bfa6c8a8e3395b7b63c419134a5db123596949"
+    },
+    {
+      "path": "apps/android/assets/art/lighthouse.png",
+      "bytes": 1912117,
+      "sha256": "103bb544726a0e360eff09c6333a91f2f3e4e2af48d8596af3cfe86711a5e995"
+    },
+    {
+      "path": "apps/android/assets/art/moss-reversi.svg",
+      "bytes": 26099,
+      "sha256": "ae03dad72da13b9d5615949f6b889604d9099271bf185ab48230363d4cf4afa2"
+    },
+    {
+      "path": "apps/android/assets/art/petal-memory.png",
+      "bytes": 2940127,
+      "sha256": "6d4016fc1b8016d3d322432ff1c7c5a423510fbb4976694076c05aad1630be82"
+    },
+    {
+      "path": "apps/android/assets/art/postcard-slide.png",
+      "bytes": 3253936,
+      "sha256": "84ff0b1024bcf8313bd54eda6ebbf6bbd4dc6741f21cc4c93af6a61e0d91251f"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/bamboo-rally.png",
+      "bytes": 453447,
+      "sha256": "1bceb7dedb1713a33fe41d29bdd81edb53bff3380a71cc7b7e2333bca4616904"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/civ-clicker.png",
+      "bytes": 491721,
+      "sha256": "538e623c23c780f5dbe420f7103faa2ea752e7328aee5dcc8024399c3eac32d6"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/faune-dungeon.png",
+      "bytes": 656633,
+      "sha256": "92d51825489905ee7fff1ff810222b123121d9ac15d88cb9b764eaefce668570"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/kiln-merge.png",
+      "bytes": 1493990,
+      "sha256": "51dbbdfdf15fb735a14b054b5a92855d12d4c6d24cad5243c41ae769502fb24f"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/moss-reversi.png",
+      "bytes": 1356271,
+      "sha256": "be29b8d57293957e15910e1ba75be7e8d3e8104215a9c5e9d354b9fca1bcfb7c"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/neon-shooter.png",
+      "bytes": 581165,
+      "sha256": "28fbe34db4a16308792898343af93d00084d28ab7ca8b05821cc078d4fa0c3c5"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/petal-memory.png",
+      "bytes": 805073,
+      "sha256": "6159ec9293f48343512d7e135276d348f74a7b69e55a802db236ee5d544df07b"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/postcard-slide.png",
+      "bytes": 1561604,
+      "sha256": "6e293c66c292457f9267641236413633b3865ed2548076b4cda069c92e06783f"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/rc-rally.png",
+      "bytes": 520474,
+      "sha256": "9470ad98cfe732442d9fa24a2a25d1a00adf2bdfc6f3b459047d8b0881f4c0eb"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/signal-harbor.png",
+      "bytes": 1172736,
+      "sha256": "44f0530f06b41130fcaeeb16c7e1abd86f72dea0c11f58c0c646358ad29ac92d"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/silk-serpent.png",
+      "bytes": 1055690,
+      "sha256": "91ffea75612e60955a7a7f1fffc68767b6b5beeb81889b049b6bc67c492238ab"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/unlock-bolts-mobile.png",
+      "bytes": 1241760,
+      "sha256": "f153910626afb7ab87f33c66992b141f7bb88c0893aaf54346cced615589c07d"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/wind-chime-memory.png",
+      "bytes": 1656725,
+      "sha256": "8ce1f8926932e7c1ca5b7d71e91fe7b257da1644ca927751c45d00d475a2ebb0"
+    },
+    {
+      "path": "apps/android/assets/art/signal-a.png",
+      "bytes": 1751303,
+      "sha256": "726e99b45eb55d87547eac3a828b047342bbe7e5f95e76c8ee41068cfbbc4e0d"
+    },
+    {
+      "path": "apps/android/assets/art/signal-b.png",
+      "bytes": 1790905,
+      "sha256": "ac1ab22d07446b1ed28f857f91773094300f85ba1672ae3cf76798fc24095cf6"
+    },
+    {
+      "path": "apps/android/assets/art/signal-c.png",
+      "bytes": 1791781,
+      "sha256": "754651975d4f52bef3dc9460f3d6b9b3de9f49afb544522b4384063ab2f99e4e"
+    },
+    {
+      "path": "apps/android/assets/art/silk-serpent.png",
+      "bytes": 2420174,
+      "sha256": "2517be37d3aa7e76632418f0703cc562128b4dc0d931645a42a39281a29a50ce"
+    },
+    {
+      "path": "apps/android/assets/art/star-triad-moonlight/board.png",
+      "bytes": 1862024,
+      "sha256": "f711d6f2e5019f8f756e77d0197db9b115dad79dce3b6a38ba86b2ec81864709"
+    },
+    {
+      "path": "apps/android/assets/art/star-triad-moonlight/observatory.png",
+      "bytes": 2060635,
+      "sha256": "7456494d7c69304caaeae5cac727dc652b835366d325f1fca580e16c61ccdcfe"
+    },
+    {
+      "path": "apps/android/assets/art/star-triad-moonlight/pieces.png",
+      "bytes": 1176818,
+      "sha256": "9708a2d052359901e2b7c4346b7ddc2d1ac5f5b010b0cae96935ae9559974390"
+    },
+    {
+      "path": "apps/android/assets/art/star-triad.svg",
+      "bytes": 8154,
+      "sha256": "d9747e839ce298cc77e781bcca18c5a38564651a68f776542b66fd47eab2886b"
+    },
+    {
+      "path": "apps/android/assets/index.html",
+      "bytes": 3488,
+      "sha256": "83551e95efab03f8afd56bd5f5be47f93bb2fc4dc42c2ddb9f3cfee4f6ac0b7e"
+    },
+    {
+      "path": "apps/android/assets/LICENSES/CC-BY-3.0.txt",
+      "bytes": 19467,
+      "sha256": "e6bc9e9c474700b708f568bac9e5a8a9bcb2b1dad53442f5ba449fcb848b8e76"
+    },
+    {
+      "path": "apps/android/assets/LICENSES/CC0-1.0.txt",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "apps/android/assets/LICENSES/GPL-3.0.txt",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "apps/android/assets/LICENSES/owngame-MIT.txt",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "apps/android/assets/LICENSES/Raycast-Vehicle-MIT.txt",
+      "bytes": 1067,
+      "sha256": "9bbe609dee9a7c096d64dee1a97eebf3464ba3b615071c3fdff010ed5c8855cd"
+    },
+    {
+      "path": "apps/android/assets/THIRD_PARTY_NOTICES.md",
+      "bytes": 2064,
+      "sha256": "309fc023def75d5b83d8e820ea22e44eae51d08cbd0dfff57d9968100d0bd065"
+    },
+    {
+      "path": "apps/android/README.md",
+      "bytes": 5038,
+      "sha256": "3a1357db7c407a06f44fec1cfb02c609b84090b167f09ac07f771ee4269a4fb0"
+    },
+    {
+      "path": "apps/android/res/drawable-nodpi/arcade_mascot.png",
+      "bytes": 1080548,
+      "sha256": "ba78e24f40dec55692080bbc9cc216619748eccfeabdcd3e6348f03bc17ca0f5"
+    },
+    {
+      "path": "apps/android/res/mipmap-anydpi-v26/owngame.xml",
+      "bytes": 247,
+      "sha256": "1378c624830025be2903bbe44e2a631ef79be70cfa5fe9e5ebc83594b52e7ef7"
+    },
+    {
+      "path": "apps/android/src/dev/owngame/app/GameActivity.java",
+      "bytes": 243,
+      "sha256": "09e5b7ba090877e743550ccce65a380858f4c74ef5243378c72ae369600ba629"
+    },
+    {
+      "path": "apps/android/src/dev/owngame/app/GameRepository.java",
+      "bytes": 16500,
+      "sha256": "8b737896f631f62b89880152c7888d00a27c819651925f17e4b2d5761d0ddce4"
+    },
+    {
+      "path": "apps/android/src/dev/owngame/app/MainActivity.java",
+      "bytes": 27731,
+      "sha256": "a89fdef89486bf8cb3b35bc073a7d4b4ed42927939fbdce650f78f875b9dad0b"
     },
     {
       "path": "apps/web/public/_headers",
@@ -454,8 +709,8 @@
     },
     {
       "path": "docs/releasing.md",
-      "bytes": 4075,
-      "sha256": "c98355c386ae3be8b94febc7100bec78b74b9134cf2cd49d571050829b44ff7c"
+      "bytes": 4949,
+      "sha256": "7a1045e112ad1c59cb7747224ed71d8e6fd6f7d3b638d334f16117550bcc6bbe"
     },
     {
       "path": "docs/remix.md",
@@ -7974,8 +8229,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 1936,
-      "sha256": "c09569085d0dbca260cfb55713ed23f027784a24c9cf0ca98a2e45febd026688"
+      "bytes": 2257,
+      "sha256": "f6b113bac15a2dfdf180f7fe9c7d1e2c4000c799ca0276ae212b62a2d0514e8d"
     },
     {
       "path": "packages/cli/index.ts",
@@ -8029,8 +8284,38 @@
     },
     {
       "path": "README.md",
-      "bytes": 19475,
-      "sha256": "d176a2b109d0e77e8e4583df47b2da1fc11b3400882cdcf9fe55d8ceb0bf52e3"
+      "bytes": 19542,
+      "sha256": "e4310ea734bc5743f049e53e85c295e15ce8aabcbf019ef0b0b4954c056dd16d"
+    },
+    {
+      "path": "scripts/android/build.mjs",
+      "bytes": 4138,
+      "sha256": "940fdeb8faf4e8d43e4aea2c20cdfe073c98e65df03bb86d66b00f91960320ea"
+    },
+    {
+      "path": "scripts/android/export-source.mjs",
+      "bytes": 1042,
+      "sha256": "ee39d922ca1d4fd61a0f865eb898654200773d4a3695d52844f4351ff8bcfa26"
+    },
+    {
+      "path": "scripts/android/public-files.json",
+      "bytes": 2827,
+      "sha256": "084cdd3da26a0a22e626e564fb11bcc5544f0463f0f4c480d932390f21d18bd3"
+    },
+    {
+      "path": "scripts/android/public-source.mjs",
+      "bytes": 3564,
+      "sha256": "33777c1b439ff0968029416e9aea57cc9919f5b5ca941bc30caa8a3cc0c1dd0b"
+    },
+    {
+      "path": "scripts/android/test-repository.mjs",
+      "bytes": 3108,
+      "sha256": "578454fabed16118cf663dcd159313e1482ba713fd1a021d9e23a597111d523d"
+    },
+    {
+      "path": "scripts/android/toolchain.mjs",
+      "bytes": 1458,
+      "sha256": "c35f1305fc2789fccbf4f3645e29a8062e79a8fe259bea2452d0cbcdec5b60b1"
     },
     {
       "path": "scripts/arrow-escape/catalog.json",
@@ -8149,8 +8434,8 @@
     },
     {
       "path": "scripts/release/prepare.mjs",
-      "bytes": 4022,
-      "sha256": "653cc87db5267981c21d01c119f510ebc4c912c4a4860f74401ce281511c33ee"
+      "bytes": 4883,
+      "sha256": "648daf4d8374981002cb5eed6dda81a6295ebab0855b4ff1a27118ee9b433ec2"
     },
     {
       "path": "scripts/release/publish.mjs",
@@ -9478,6 +9763,21 @@
       "sha256": "06c31e3b221a80777cc85276fedbd754551a416d27d49b96fc8bc15cd7788ae0"
     },
     {
+      "path": "tests/android/AndroidManifest.xml",
+      "bytes": 396,
+      "sha256": "b6f034c5c2f09332da8918eb5a88f14f2b778e01503e954a1de812add1fcea01"
+    },
+    {
+      "path": "tests/android/public-source.test.mjs",
+      "bytes": 4609,
+      "sha256": "396eeaead2260cad3d614570a910dce62cfd34a0a8667ec46123c7207d581e6f"
+    },
+    {
+      "path": "tests/android/RepositoryTests.java",
+      "bytes": 11584,
+      "sha256": "851b49fdc6c9b703035e48671ac28a41c3e5d76d8dbe2f2cdf75c4ec8a2cbec0"
+    },
+    {
       "path": "tests/games/source-policy.test.mjs",
       "bytes": 1616,
       "sha256": "91aa24ac560f9942e551afe0d0911938849414ba21029b0a8b448df899dd8684"
@@ -9504,8 +9804,8 @@
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "bytes": 3538,
-      "sha256": "b09c756809c7903cce37e2d827e9e43a7114652d34ebd836775dafcb449b889e"
+      "bytes": 4044,
+      "sha256": "029ccbdbfa7b057d6530b548076b2dbbfd9472e8dfbd532d8d66d1761073c0d6"
     },
     {
       "path": "tsconfig.json",
