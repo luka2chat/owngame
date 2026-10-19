@@ -39,11 +39,11 @@ const legacyHtml = new Set([
   "wind-chime-memory/2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995/cover.html",
 ]);
 const covers = JSON.parse(await fs.readFile(path.join(root,"apps/web/public/art/rollout/catalog.json"),"utf8"));
-for (const entry of entries) {
+// Keep the selection that was checked against the public source revision.
+// A concurrent candidate registration must not switch versions midway through copying.
+for (const {version, ...entry} of planned) {
   const base = path.join(libraryRoot, entry.id);
-  const { build_sha256: version } = JSON.parse(
-    await fs.readFile(path.join(base, "current.json"), "utf8"),
-  );
+  if (sources.get(entry.id).online_build_sha256 !== version) throw Error("Source version changed during build");
   if (!/^[a-f0-9]{64}$/.test(version)) throw Error("Invalid version");
   const folder = path.join(base, version);
   const delivery = JSON.parse(

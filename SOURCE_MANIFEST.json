@@ -8184,8 +8184,8 @@
     },
     {
       "path": "scripts/web/build.mjs",
-      "bytes": 8348,
-      "sha256": "fe165e22664afb160a3175ee805d912effe9762158347cf0acb1ab7647f5a1d2"
+      "bytes": 8521,
+      "sha256": "016212f020db9bef2b062c9065f92fe24c7dfc175cbaea17f4ddc2c7a46e4d77"
     },
     {
       "path": "scripts/web/catalog.mjs",
