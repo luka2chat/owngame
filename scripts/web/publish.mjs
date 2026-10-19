@@ -19,10 +19,17 @@ const run=(command,args,env=process.env)=>new Promise((resolve,reject)=>{
 await run(process.execPath,['scripts/games/sync.mjs','--repository-dir',repo]);
 await run(process.execPath,['scripts/web/build.mjs'],{...process.env,OWNGAME_WEB_OUT:out});
 // Preserve older immutable URLs still held by browser bookmarks and offline manifests.
-const old=path.join(root,'apps/web/dist/games');
+const oldOutputs=[path.join(root,'apps/web/dist')];
+// Production may be built on the NAS without replacing the local dist directory.
+// Preserve that accepted release too, including immutable URLs held by old clients.
+if(process.env.OWNGAME_WEB_PREVIOUS_OUT)oldOutputs.push(path.resolve(process.env.OWNGAME_WEB_PREVIOUS_OUT));
+for(const previous of new Set(oldOutputs)) {
+if(previous===out)throw Error('Previous release must differ from the fresh output');
+const old=path.join(previous,'games');
 if(await fs.access(old).then(()=>true,()=>false))for(const id of await fs.readdir(old))for(const version of await fs.readdir(path.join(old,id))) {
   const dest=path.join(out,'games',id,version);
   if(!await fs.access(dest).then(()=>true,()=>false))await fs.cp(path.join(old,id,version),dest,{recursive:true});
+}
 }
 await run(path.join(root,'.local/cloudflare-tools/node_modules/.bin/wrangler'),['pages','deploy',out,'--project-name','owngame-web','--branch','main']);
 await run(process.execPath,['scripts/web/verify-deployment.mjs','https://owngame.dev',path.join(root,'artifacts/open-source/deployment.json')],{...process.env,OWNGAME_WEB_OUT:out});

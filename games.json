@@ -177,9 +177,9 @@
       "title": "箭径出逃",
       "kind": "native-ts",
       "path": "examples/arrow-escape",
-      "online_build_sha256": "dd7020f1d4917b60f21c8bc05228ae4c163a4e57e16a0e68e8a48d2592d431e1",
-      "input_sha256": "acc3a28b40f19e0ff751a048f5e29247e52ca6fb1e6d06381806babd3ded0479",
-      "source_manifest_sha256": "5f961663c30a5ad1e29db4331e2d02e6247ee53179c89d9e8321e8bae3432c0b",
+      "online_build_sha256": "b4e597c5402c2c087dfb75a45da103d0b2374b07f545413d8ab867ce64f9e6b0",
+      "input_sha256": "7c2d4527e345fbd1c7ff45152e4fa3889ceeae6542da32a333490449429b375f",
+      "source_manifest_sha256": "35bad1c6312e488dc83f22fd15fe0906f9f0591cea54cb734b8df50f1ddc76dc",
       "license": "MIT"
     }
   ]

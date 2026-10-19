@@ -1,22 +1,22 @@
 {
   "id": "arrow-escape",
-  "build_sha256": "dd7020f1d4917b60f21c8bc05228ae4c163a4e57e16a0e68e8a48d2592d431e1",
+  "build_sha256": "b4e597c5402c2c087dfb75a45da103d0b2374b07f545413d8ab867ce64f9e6b0",
   "entrypoint": "index.html",
   "files": [
     {
-      "bytes": 26440,
+      "bytes": 333546,
       "path": "cover.png",
-      "sha256": "fb61076110859264ae733f48c2899926b223908eeb7b68c2f03e7618ffe3dbd3"
+      "sha256": "14858618768580db5a55c4c4766b283ee33d2b44abb92ae3133ab03c4ffb3905"
     },
     {
-      "bytes": 13005,
+      "bytes": 14971,
       "path": "game.js",
-      "sha256": "740cf1710d0cd69175a37c5c20ad61c73b7db030b22b06c48c93bddc5f1f4004"
+      "sha256": "80b5eebea02ddd3e23a1834d1025a0134cea50d49c824174a1b5490eeeb70bfc"
     },
     {
-      "bytes": 2032,
+      "bytes": 2490,
       "path": "index.html",
-      "sha256": "a7c17265cd0a06381a584ab816b9e1aa963c04bc3ef3f81e1361257090fef6fb"
+      "sha256": "0ccf4956f65fc996ee6eae05beaa3cb9a53429bb30e130d05d2287d1a908eea9"
     },
     {
       "bytes": 1077,
@@ -29,14 +29,19 @@
       "sha256": "4cbbd594bb67e0469ed56a9a2e3b8df3001e1240e31ba18a353d75810f98bfcb"
     },
     {
-      "bytes": 818,
+      "bytes": 1158,
       "path": "SOURCE.json",
-      "sha256": "0768636ae55733294766b06eae2831ea309cf628df5714af7c9f38ff6a78bb01"
+      "sha256": "929527cace51599630e556ad5db74f562f59eed9a5e4494094a62170e038cab6"
     },
     {
-      "bytes": 5189,
+      "bytes": 8694,
       "path": "style.css",
-      "sha256": "be750242fb0b84911e066fb2d923cdbb217f96d79f3fe81acb45174762cba300"
+      "sha256": "fad115e2efa4095c5ff982cc392f0d73fa705e8b334e3ebbf0a9359750d3bfc7"
+    },
+    {
+      "bytes": 1235868,
+      "path": "title-arcade-v1.png",
+      "sha256": "10e012ac00031197e7260261ce2d0dd31b55d6e44a021aa0e787bfa55fa73d5e"
     }
   ]
 }

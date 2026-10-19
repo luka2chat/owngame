@@ -1,8 +1,8 @@
 {
   "schema": "owngame.game-source.v1",
   "id": "arrow-escape",
-  "online_build_sha256": "dd7020f1d4917b60f21c8bc05228ae4c163a4e57e16a0e68e8a48d2592d431e1",
-  "input_sha256": "acc3a28b40f19e0ff751a048f5e29247e52ca6fb1e6d06381806babd3ded0479",
+  "online_build_sha256": "b4e597c5402c2c087dfb75a45da103d0b2374b07f545413d8ab867ce64f9e6b0",
+  "input_sha256": "7c2d4527e345fbd1c7ff45152e4fa3889ceeae6542da32a333490449429b375f",
   "files": [
     {
       "path": ".gitignore",
@@ -17,7 +17,7 @@
     {
       "path": "game.json",
       "bytes": 327,
-      "sha256": "b209b34d9fbb13bfcdb39b21d3f1a1458600b2487ed32ac8bef11e5221a502fe"
+      "sha256": "390955fd6086ece13b7ca398da455861784650ac4f49cbce271dd023c2bbbe48"
     },
     {
       "path": "LICENSE",
@@ -26,8 +26,8 @@
     },
     {
       "path": "ONLINE_BUILD.json",
-      "bytes": 1171,
-      "sha256": "684f34d7e2d672cbcf2a9618a12695052ce531524da20b1676b8d53c1aec3c82"
+      "bytes": 1330,
+      "sha256": "e69f98bb5a9d604f1ecb591737f5389435431775831f74a3405fbe7cc0afa99f"
     },
     {
       "path": "package-lock.json",
@@ -41,13 +41,13 @@
     },
     {
       "path": "public/cover.png",
-      "bytes": 26440,
-      "sha256": "fb61076110859264ae733f48c2899926b223908eeb7b68c2f03e7618ffe3dbd3"
+      "bytes": 333546,
+      "sha256": "14858618768580db5a55c4c4766b283ee33d2b44abb92ae3133ab03c4ffb3905"
     },
     {
       "path": "public/index.html",
-      "bytes": 2032,
-      "sha256": "a7c17265cd0a06381a584ab816b9e1aa963c04bc3ef3f81e1361257090fef6fb"
+      "bytes": 2490,
+      "sha256": "0ccf4956f65fc996ee6eae05beaa3cb9a53429bb30e130d05d2287d1a908eea9"
     },
     {
       "path": "public/LICENSE.txt",
@@ -56,18 +56,23 @@
     },
     {
       "path": "public/SOURCE.json",
-      "bytes": 818,
-      "sha256": "0768636ae55733294766b06eae2831ea309cf628df5714af7c9f38ff6a78bb01"
+      "bytes": 1158,
+      "sha256": "929527cace51599630e556ad5db74f562f59eed9a5e4494094a62170e038cab6"
     },
     {
       "path": "public/style.css",
-      "bytes": 5189,
-      "sha256": "be750242fb0b84911e066fb2d923cdbb217f96d79f3fe81acb45174762cba300"
+      "bytes": 8694,
+      "sha256": "fad115e2efa4095c5ff982cc392f0d73fa705e8b334e3ebbf0a9359750d3bfc7"
+    },
+    {
+      "path": "public/title-arcade-v1.png",
+      "bytes": 1235868,
+      "sha256": "10e012ac00031197e7260261ce2d0dd31b55d6e44a021aa0e787bfa55fa73d5e"
     },
     {
       "path": "README.md",
       "bytes": 1382,
-      "sha256": "e5a50bf8a9ea8d212213f55dcccd810bdb9f73a2acda82f7320d1392f67725af"
+      "sha256": "6fce12796ff2c6ac74947763beab83cfcb1cc97dc1bc510d000b7846b3b80ea5"
     },
     {
       "path": "serve.mjs",
@@ -76,8 +81,8 @@
     },
     {
       "path": "src/game.ts",
-      "bytes": 13005,
-      "sha256": "8b3e6bc2277752d8a804d9be6b9a7a89283d27ee7aafad63926602dbd88327fa"
+      "bytes": 14971,
+      "sha256": "c5382234781799f227137095d1dd1c51c2cffb5d631e20d9a76adf7f749c2be3"
     },
     {
       "path": "src/rules.ts",
@@ -86,8 +91,8 @@
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "bytes": 2210,
-      "sha256": "04113ff286bf46c8f6bff61bd3c83536a87aa00ff15ae6ed72f1c895367ef4af"
+      "bytes": 2550,
+      "sha256": "2aa32f177cab9469f24e324d4136da5ecb3ee579e49e7ac39ede6f3940585a2b"
     }
   ]
 }

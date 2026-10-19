@@ -3,7 +3,7 @@
   "id": "arrow-escape",
   "title": "箭径出逃",
   "kind": "native-ts",
-  "online_build_sha256": "dd7020f1d4917b60f21c8bc05228ae4c163a4e57e16a0e68e8a48d2592d431e1",
+  "online_build_sha256": "b4e597c5402c2c087dfb75a45da103d0b2374b07f545413d8ab867ce64f9e6b0",
   "original_source_sha256": null,
   "license": "MIT",
   "description": "找出移除顺序，让所有箭头离开棋盘。"

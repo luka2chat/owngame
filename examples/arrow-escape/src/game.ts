@@ -1,6 +1,6 @@
 import {generate,available,blocker,dirs,fresh,parseSave,COUNT,type Cell,type Arrow,type Checkpoint} from './rules.js';
 const $=(id:string)=>document.getElementById(id)!;
-const canvas=$('board') as HTMLCanvasElement,ctx=canvas.getContext('2d',{alpha:false})!;
+const canvas=$('board') as HTMLCanvasElement,ctx=canvas.getContext('2d',{alpha:true})!;
 const storageKey='owngame:arrow-escape:v1';
 const progress=(()=>{try{return parseSave(localStorage.getItem(storageKey));}catch{return parseSave(null);}})();
 let board=generate(progress.level),state=progress.current||fresh(board),phase:'play'|'won'|'lost'='play';
@@ -10,21 +10,21 @@ let flight:{arrow:Arrow;start:number}|null=null;
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const pointers=new Map<number,Cell>();
 let gesture:{x:number;y:number;pan:Cell;distance:number;zoom:number;moved:boolean;pinched:boolean}|null=null;
-function say(message:string,bad=false){$('message').textContent=message;$('message').style.color=bad?'#d14731':'#2259d5';}
+function say(message:string,bad=false){$('message').textContent=message;$('message').style.color=bad?'#c63120':'#14262c';}
 function persist(){progress.current=phase==='play'?structuredClone(state):null;try{localStorage.setItem(storageKey,JSON.stringify(progress));}catch{say('本次可以正常玩，当前浏览器无法保存进度。');}}
 function tone(note:number){if(!progress.sound)return;try{audio??=new AudioContext();void audio.resume();const o=audio.createOscillator(),g=audio.createGain();o.frequency.setValueAtTime(note,audio.currentTime);o.frequency.exponentialRampToValueAtTime(note*.7,audio.currentTime+.13);g.gain.setValueAtTime(.035,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.15);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.16);}catch{}}
 function update(){
  $('level').textContent=String(board.level+1).padStart(2,'0');
  $('chapter').textContent=['基础','转弯','交错','挑战'][Math.floor(board.level/9)];
  $('hearts').textContent=Array.from({length:3},(_,i)=>i<state.hearts?'♥':'♡').join(' ');$('hearts').setAttribute('aria-label','剩余 '+state.hearts+' 次机会');
- $('remaining').textContent='剩余 '+state.ids.length+' 支';$('cleared').textContent='已移出 '+(board.arrows.length-state.ids.length);
+ $('remaining').innerHTML='剩余 <strong>'+state.ids.length+'</strong> 支';$('cleared').textContent='已移出 '+(board.arrows.length-state.ids.length);
  $('bar').style.width=(1-state.ids.length/board.arrows.length)*100+'%';
  ($('undo') as HTMLButtonElement).disabled=history.length===0||phase!=='play';
- $('sound').textContent=progress.sound?'♪':'♩';$('sound').setAttribute('aria-label',progress.sound?'关闭音效':'开启音效');
+ $('sound').innerHTML='<svg viewBox="0 0 28 28" aria-hidden="true"><path d="M3 10h5l7-6v20l-7-6H3Z"/>'+(progress.sound?'<path fill="none" d="M19 8q6 6 0 12M23 4q10 10 0 20"/>':'<path fill="none" d="m19 10 7 8m0-8-7 8"/>')+'</svg>';$('sound').setAttribute('aria-label',progress.sound?'关闭音效':'开启音效');
  dirty=true;
 }
 function center(){zoom=1;pan={x:0,y:0};layout();}
-function layout(){cell=Math.min((width-48)/board.size,(height-76)/board.size)*zoom;ox=(width-cell*(board.size-1))/2+pan.x;oy=(height-cell*(board.size-1))/2-10+pan.y;dirty=true;}
+function layout(){cell=Math.min((width-36)/board.size,(height-72)/board.size)*zoom;ox=(width-cell*(board.size-1))/2+pan.x;oy=(height-48-cell*(board.size-1))/2+pan.y;dirty=true;}
 function resize(){const ratio=Math.min(devicePixelRatio||1,2);width=canvas.clientWidth;height=canvas.clientHeight;canvas.width=Math.round(width*ratio);canvas.height=Math.round(height*ratio);ctx.setTransform(ratio,0,0,ratio,0,0);layout();draw(stamp);dirty=false;}
 function closeSheet(){$('sheet').hidden=true;overlay='';dirty=true;}
 function sheet(kind:string,title:string,copy:string,primary:string,action:()=>void,secondary='',cancel=closeSheet){
@@ -33,7 +33,7 @@ function sheet(kind:string,title:string,copy:string,primary:string,action:()=>vo
  const p=$('primary') as HTMLButtonElement;p.textContent=primary;p.onclick=action;
  const s=$('secondary') as HTMLButtonElement;s.hidden=!secondary;s.textContent=secondary;s.onclick=cancel;p.focus();
 }
-function load(level:number){board=generate(level);state=fresh(board);progress.level=level;phase='play';history=[];hint=-1;selected=-1;flight=null;flash=[];closeSheet();center();update();persist();say(level<2?'尖端到边缘没有阻挡的箭，可以移出。':'点击箭头，先移开前方的阻挡。');}
+function load(level:number){board=generate(level);state=fresh(board);progress.level=level;phase='play';history=[];hint=-1;selected=-1;flight=null;flash=[];closeSheet();center();update();persist();say('点击畅通的箭头，让它离开棋盘。');}
 function won(){
  phase='won';const stars=state.hearts;progress.stars[board.level]=Math.max(progress.stars[board.level],stars);
  progress.unlocked=Math.max(progress.unlocked,Math.min(COUNT-1,board.level+1));progress.level=Math.min(COUNT-1,board.level+1);persist();tone(880);update();
@@ -51,7 +51,7 @@ function extract(id:number){
  update();persist();
 }
 function undo(){if(!history.length||overlay)return;state=history.pop()!;phase='play';progress.level=board.level;flight=null;hint=-1;flash=[];selected=-1;update();persist();say('已撤销上一步。');}
-function giveHint(){if(overlay||phase!=='play'||flight)return;hint=available(board,state.ids)[0]??-1;if(hint>=0){state.hints++;update();persist();say('蓝色箭头可以移出。');}}
+function giveHint(){if(overlay||phase!=='play'||flight)return;hint=available(board,state.ids)[0]??-1;if(hint>=0){state.hints++;update();persist();say('黄色箭头可以移出。');}}
 function levels(){
  sheet('levels','选择关卡','已完成的关卡可以随时重玩。','回到棋盘',closeSheet);
  const grid=$('level-grid');grid.replaceChildren();
@@ -86,22 +86,42 @@ function arrow(a:Arrow,color:string,travel=0){
   else points[0]={x:last.x+d.x*remaining,y:last.y+d.y*remaining};
   points.push({x:last.x+d.x*travel,y:last.y+d.y*travel});
  }
- const thickness=Math.max(2.5,Math.min(6.5,cell*.14)),head=points.at(-1)!,size=Math.max(5,Math.min(13,cell*.29));
- stroke(points,color,thickness);
- stroke([{x:head.x-d.x*size-d.y*size*.75,y:head.y-d.y*size+d.x*size*.75},head,{x:head.x-d.x*size+d.y*size*.75,y:head.y-d.y*size-d.x*size*.75}],color,thickness);
-}
-function draw(now:number){
- ctx.fillStyle='#ffffff';ctx.fillRect(0,0,width,height);
- ctx.save();ctx.beginPath();ctx.rect(10,10,width-20,height-20);ctx.clip();
- for(let y=0;y<board.size;y++)for(let x=0;x<board.size;x++){const p=point({x,y});ctx.beginPath();ctx.arc(p.x,p.y,Math.max(1,cell*.035),0,Math.PI*2);ctx.fillStyle='#e0e4e9';ctx.fill();}
- for(const id of state.ids){const a=board.arrows[id],highlight=id===hint||id===selected;const bad=flash.includes(id)&&now<flashUntil;
-  arrow(a,bad?'#e14b34':highlight?'#2259d5':'#182530');
+ const thickness=Math.max(2.4,Math.min(8,cell*.16)),head=points.at(-1)!,size=Math.max(4.5,Math.min(12,cell*.28)),edge=Math.max(.7,Math.min(1.6,cell*.045));
+ const tip=[{x:head.x-d.x*size-d.y*size*.72,y:head.y-d.y*size+d.x*size*.72},head,{x:head.x-d.x*size+d.y*size*.72,y:head.y-d.y*size-d.x*size*.72}];
+ const tail=points[0];
+ function silhouette(paint:string,padding:number){
+  stroke(points,paint,thickness+padding*2);
+  ctx.beginPath();ctx.arc(tail.x,tail.y,thickness*.8+padding,0,Math.PI*2);ctx.fillStyle=paint;ctx.fill();
+  ctx.beginPath();tip.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fillStyle=paint;ctx.strokeStyle=paint;ctx.lineWidth=padding*2+.5;ctx.lineJoin='round';ctx.fill();ctx.stroke();
  }
- if(flight){const t=Math.min(1,(now-flight.start)/(reduced?40:350));ctx.globalAlpha=1-t*.3;arrow(flight.arrow,'#2259d5',(1-(1-t)**2)*(width+height));ctx.globalAlpha=1;}
+ ctx.save();ctx.translate(0,Math.min(2,cell*.06));silhouette('#c6b68e',edge*2.2);ctx.restore();
+ silhouette('#14262c',edge*2);silhouette('#fff8de',edge*1.05);silhouette(color,0);
+ // The same continuous path stays readable around bends; highlights never replace geometry.
+ stroke(points,color==='#0878d9'?'#159cf0':color,Math.max(1,thickness*.36));
+}
+const grain=document.createElement('canvas');grain.width=96;grain.height=96;
+const grainContext=grain.getContext('2d')!;grainContext.fillStyle='#f8efd8';grainContext.fillRect(0,0,96,96);
+let grainSeed=139;for(let i=0;i<600;i++){grainSeed=(Math.imul(grainSeed,1664525)+1013904223)>>>0;const x=grainSeed%96;grainSeed=(Math.imul(grainSeed,1664525)+1013904223)>>>0;grainContext.fillStyle=i%2?'#c0ad7e16':'#ffffff55';grainContext.fillRect(x,grainSeed%96,1,1);}
+const paper=ctx.createPattern(grain,'repeat')!;
+function draw(now:number){
+ ctx.clearRect(0,0,width,height);ctx.fillStyle=paper;ctx.fillRect(0,0,width,height);
+ ctx.save();ctx.beginPath();ctx.rect(8,8,width-16,height-16);ctx.clip();
+ for(let y=0;y<board.size;y++)for(let x=0;x<board.size;x++){const p=point({x,y});ctx.beginPath();ctx.arc(p.x,p.y,Math.max(1,Math.min(3.2,cell*.055)),0,Math.PI*2);ctx.fillStyle='#c9bfa7';ctx.fill();}
+ for(const id of state.ids){const a=board.arrows[id],highlight=id===hint||id===selected;const bad=flash.includes(id)&&now<flashUntil;
+  arrow(a,bad?'#ee3d26':highlight?'#f5b817':'#0878d9');
+ }
+ if(flight){const t=Math.min(1,(now-flight.start)/(reduced?40:350));ctx.globalAlpha=1-t*.3;arrow(flight.arrow,'#0878d9',(1-(1-t)**2)*(width+height));ctx.globalAlpha=1;}
  ctx.restore();
 }
 function frame(now:number){stamp=now;if(flight&&now-flight.start>(reduced?50:360)){flight=null;dirty=true;if(phase==='won')winSheet();}if(flashUntil&&now>flashUntil){flashUntil=0;flash=[];dirty=true;}
  if(dirty||flight||flashUntil){draw(now);dirty=false;}requestAnimationFrame(frame);}
-new ResizeObserver(resize).observe(canvas);resize();update();requestAnimationFrame(frame);
+function syncHostCapsule(){
+ let hosted=false;try{const capsule=window.parent.document.querySelector('.capsule');hosted=window.parent!==window&&!!capsule&&window.parent.getComputedStyle(capsule).display!=='none';}catch{}
+ // Android's native game shell also owns a top-right capsule.
+ hosted ||= /; wv\)/.test(navigator.userAgent);
+ document.body.classList.toggle('host-capsule',hosted);
+}
+syncHostCapsule();addEventListener('resize',syncHostCapsule);
+new ResizeObserver(resize).observe(canvas);resize();update();say('点击畅通的箭头，让它离开棋盘。');requestAnimationFrame(frame);
 // Read-only geometry/state for delivery checks. Tests use real pointer/keyboard input.
 Object.defineProperty(window,'__arrowEscape',{value:{snapshot:()=>({phase,overlay,level:board.level,board:structuredClone(board),state:structuredClone(state),unlocked:progress.unlocked,stars:[...progress.stars],available:available(board,state.ids),blocked:state.ids.filter(id=>blocker(board,state.ids,id)!==null),zoom,pan:{...pan},history:history.length,flight:!!flight,geometry:{cell,ox,oy,width,height},hint,selected})}});

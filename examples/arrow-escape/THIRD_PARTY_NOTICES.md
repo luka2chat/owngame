@@ -39,6 +39,7 @@ SOFTWARE.
     {"url":"https://play.google.com/store/apps/details?id=com.ecffri.arrows","scope":"Arrow extraction puzzle concept and rule reference only. No commercial code, level layouts, screenshots, branding or assets reused."},
     {"url":"https://github.com/JasonDistler/arrows-escape-web","scope":"Compared a minimal Web implementation and its reverse-construction approach. README and package identify MIT, but no complete LICENSE notice was found during review. No source files copied."}
   ],
-  "assets":"Original runtime Canvas arrow paths and synthesized Web Audio; no external image, font, analytics or network runtime dependencies",
+  "assets":"Original runtime Canvas arrow paths, paper grain, SVG controls and synthesized Web Audio. title-arcade-v1.png extracted with built-in ImageGen from the user-selected original owngame arcade-cartridge concept on 2026-10-20. Bundled locally; no external image, font, analytics or network runtime dependencies.",
+  "art_direction":"User selected A / arcade cartridge on 2026-10-20. Cream paper, blue cartridge frame, yellow trim, layered blue arrows and red control icons.",
   "license":"MIT for this original implementation"
 }
