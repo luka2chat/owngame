@@ -353,6 +353,11 @@
       "sha256": "23b4a7706674eaaf8a6a0d39d38a8a51d83350be1ff4da4814428de16bb1ee97"
     },
     {
+      "path": "docs/agent-setup.md",
+      "bytes": 3741,
+      "sha256": "f3595fa09881347a27f178a5958dfe66e2e5c1199a4b443409abd4d542fcaa3a"
+    },
+    {
       "path": "docs/cases/kiln-merge.md",
       "bytes": 1195,
       "sha256": "98c1967f1e7d8f0fac4c6ad5abb5dc2dc56050561f7025ae3fb2490ab70aa90c"
@@ -439,8 +444,8 @@
     },
     {
       "path": "docs/install.md",
-      "bytes": 4723,
-      "sha256": "091a07de145b120277ca9989d06ddad36a993b90a2918140895860f8f23a9fd0"
+      "bytes": 5244,
+      "sha256": "6b71bdf00d0aad07ec87f18f9de70e068aca419678be477f0a01ff5273e20521"
     },
     {
       "path": "docs/open-source-games.md",
@@ -7974,8 +7979,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 1936,
-      "sha256": "c09569085d0dbca260cfb55713ed23f027784a24c9cf0ca98a2e45febd026688"
+      "bytes": 1963,
+      "sha256": "a979054d4601936ff935cb273275f085dbe84a232c5fd29cde1b52da7af2a6ed"
     },
     {
       "path": "packages/cli/index.ts",
@@ -8029,8 +8034,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 19475,
-      "sha256": "d176a2b109d0e77e8e4583df47b2da1fc11b3400882cdcf9fe55d8ceb0bf52e3"
+      "bytes": 19733,
+      "sha256": "c2cd1b6e6b48dccc45fa288d0cf6469acfdbbdf1a38b131c149ab9190160628c"
     },
     {
       "path": "scripts/arrow-escape/catalog.json",
@@ -8149,8 +8154,8 @@
     },
     {
       "path": "scripts/release/prepare.mjs",
-      "bytes": 4022,
-      "sha256": "653cc87db5267981c21d01c119f510ebc4c912c4a4860f74401ce281511c33ee"
+      "bytes": 4044,
+      "sha256": "05f1b1779edf787300633e37f016ca61fe9aeaf94ebb3364de94d85ebb0068ba"
     },
     {
       "path": "scripts/release/publish.mjs",
