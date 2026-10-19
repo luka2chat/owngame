@@ -1,7 +1,7 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.owngame.app" android:versionCode="17" android:versionName="0.4.12-alpha">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.owngame.app" android:versionCode="18" android:versionName="0.4.13-alpha">
   <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34"/>
   <uses-permission android:name="android.permission.INTERNET"/>
-  <application android:icon="@mipmap/owngame" android:label="owngame" android:theme="@android:style/Theme.Material.Light.NoActionBar" android:allowBackup="false" android:debuggable="false" android:usesCleartextTraffic="false" android:supportsRtl="true">
+  <application android:name=".OwngameApplication" android:icon="@mipmap/owngame" android:label="owngame" android:theme="@android:style/Theme.Material.Light.NoActionBar" android:allowBackup="false" android:debuggable="false" android:usesCleartextTraffic="false" android:supportsRtl="true">
     <activity android:name=".MainActivity" android:exported="true" android:screenOrientation="portrait" android:configChanges="orientation|screenSize|keyboardHidden">
       <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
     </activity>

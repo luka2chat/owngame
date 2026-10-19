@@ -24,5 +24,6 @@ jobs:
           log-accepted-android-sdk-licenses: false
       - run: sdkmanager 'platforms;android-34' 'build-tools;34.0.0'
       - run: npm run android:check
+      - run: npm run android:test:updates
       - run: npm run android:build
       - run: npm run android:test:compile

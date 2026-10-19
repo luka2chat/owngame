@@ -531,6 +531,10 @@ $("sync").onclick = () => {
   if (bridge) bridge.sync();
   else onStatus("请在手机 App 中刷新公网游戏库。");
 };
+$("app-update").onclick = () => {
+  if (bridge && bridge.checkAppUpdate) bridge.checkAppUpdate();
+  else onStatus("请在手机 App 中检查版本更新。");
+};
 document.querySelectorAll(".bottom-nav button").forEach(
   (b) =>
     (b.onclick = () => {

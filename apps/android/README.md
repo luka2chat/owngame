@@ -2,7 +2,7 @@
 
 面向玩家的 Android Alpha 客户端：从公开目录下载游戏、校验更新、离线游玩、恢复上一版、收藏和添加桌面快捷方式。创作仍由现有 AI 助手配合 CLI / MCP 完成。
 
-当前源码版本 **0.4.12-alpha（17）**，最低 Android 8.0（API 26），目标 API 34。客户端直接读取 `https://owngame.dev/catalog.json`，无需账号、配对令牌或电脑上的服务。源码已公开；[GitHub Alpha 测试包](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.12-alpha) 已提供下载，沿用内部测试签名。商店正式发行与 App 自身自动升级流程仍待完善。
+当前源码版本 **0.4.13-alpha（18）**，最低 Android 8.0（API 26），目标 API 34。客户端直接读取 `https://owngame.dev/catalog.json`，无需账号、配对令牌或电脑上的服务。源码已公开；[GitHub Alpha 测试包](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.13-alpha) 已提供下载，沿用内部测试签名。支持启动时检查 GitHub Android 新版本，由玩家选择是否更新；商店正式发行仍待完善。
 
 ## 从源码构建
 
@@ -57,3 +57,13 @@ CI 检查公开文件清单、隐私防护测试、客户端 APK 构建及测试
 客户端自有 Java、网页界面和构建/测试脚本采用仓库根目录的 [MIT 许可证](../../LICENSE)。封面与第三方素材保留各自许可，详见 [素材来源](ART-PROVENANCE.md) 和 [随包声明](assets/THIRD_PARTY_NOTICES.md)；根目录 MIT 不覆盖第三方或 GPL 素材。
 
 公开导出只读取 `scripts/android/public-files.json` 中逐项审核的文件，拒绝私钥、设备配置、符号链接、个人路径和内网地址。PNG 公开副本移除文字、EXIF 和嵌入式来源元数据，保持图像像素及渲染块不变；原始生产素材仍在本地。历史本机服务、配对/同步脚本、原始验收日志、设备截图及个人记录均不公开。
+
+## App 版本更新
+
+每次打开 App 回到前台时，后台读取本仓库的 GitHub Releases，只检查 `android-v…` 的公开 Android 发布（包括 Alpha），不使用 CLI 的 Latest 版本。按版本排序后核对随发布附带的 `release-manifest.json`，仅提示版本号更高且支持当前 Android 系统的安装包。
+
+发现新版时可以选择「去 GitHub 更新」或「暂不更新」。选择更新会打开对应 GitHub 发布页，查看说明、下载 APK 后仍由 Android 系统确认安装；不会自动下载或静默安装。同一轮使用中从游戏返回游戏库不会重复弹窗，点「暂不更新」继续玩，下次重新启动仍可检查。页面底部也提供「检查 App 更新」。离线、请求超时或 GitHub 限流时，自动检查安静失败，已下载的游戏照常可玩。
+
+后续 Android 发布应继续附带同名 APK 与 `release-manifest.json`（版本、递增的 versionCode、最低 SDK、包名及 APK 校验信息），保持既有签名。检查代码只读取公开 GitHub 信息，不需要账号或令牌。
+
+运行 `npm run android:test:updates` 可执行本机版本筛选、错误元数据、网络失败及可信来源测试；加 `-- --live` 可连接真实公开 Releases 检查元数据。测试使用固定版本且校验 SHA-256 的 JSON-java 测试库，下载在忽略的 `.local/`，不会进入 APK。旧版客户端需要先手动安装一次 0.4.13-alpha 才会获得版本检查功能。

@@ -37,7 +37,7 @@ for(const [relative,bytes] of await readPublicFiles(root)) {
  manifest.push({path:relative,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')});
 }
 pkg.scripts={build:'tsc -p tsconfig.json',test:'npm run test:release','test:release':pkg.scripts['test:release'],'verify:package':pkg.scripts['verify:package'],'release:prepare':pkg.scripts['release:prepare'],prepack:'npm run build'};
-Object.assign(pkg.scripts,{'android:build':'node scripts/android/build.mjs','android:check':'node scripts/android/export-source.mjs && node --test tests/android/public-source.test.mjs','android:test:compile':'node scripts/android/test-repository.mjs --compile-only','test:android':'node scripts/android/test-repository.mjs'});
+Object.assign(pkg.scripts,{'android:test:updates':'node scripts/android/test-updates.mjs','android:build':'node scripts/android/build.mjs','android:check':'node scripts/android/export-source.mjs && node --test tests/android/public-source.test.mjs','android:test:compile':'node scripts/android/test-repository.mjs --compile-only','test:android':'node scripts/android/test-repository.mjs'});
 if(repository){pkg.repository={type:'git',url:repository+'.git'};pkg.bugs={url:repository+'/issues'};}
 await fs.writeFile(path.join(out,'package.json'),JSON.stringify(pkg,null,2)+'\n');
 const lock=JSON.parse(await fs.readFile(path.join(root,'package-lock.json')));lock.version=pkg.version;lock.packages[''].version=pkg.version;lock.packages[''].license=pkg.license;

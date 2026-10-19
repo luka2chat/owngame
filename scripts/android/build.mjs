@@ -51,6 +51,8 @@ try {
     path.join(root, "apps/android/src/dev/owngame/app/MainActivity.java"),
     path.join(root, "apps/android/src/dev/owngame/app/GameActivity.java"),
     path.join(root, "apps/android/src/dev/owngame/app/GameRepository.java"),
+    path.join(root, "apps/android/src/dev/owngame/app/AppUpdateChecker.java"),
+    path.join(root, "apps/android/src/dev/owngame/app/OwngameApplication.java"),
   ]);
   run(path.join(java, "bin/jar"), [
     "cf",

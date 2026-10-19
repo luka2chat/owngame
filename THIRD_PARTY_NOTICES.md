@@ -64,3 +64,12 @@ MIT. Bundled covers retain per-game licenses (including CivClicker GPL-3.0-or-la
 CC BY 3.0 icons and CC0 Faune assets). See apps/android/ART-PROVENANCE.md and
 apps/android/assets/THIRD_PARTY_NOTICES.md; full license texts travel with the APK.
 The Android client, APK and signing material are not included in the npm package.
+
+## Android updater host tests
+
+
+`scripts/android/test-updates.mjs` uses a SHA-256-pinned JSON-java 20240303
+JAR from Maven Central for host-only tests. It is stored in ignored `.local/`
+and is never bundled in the APK or npm package. Android runtime uses the
+platform's org.json classes. Upstream source and license:
+https://github.com/stleary/JSON-java/tree/20240303

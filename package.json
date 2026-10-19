@@ -20,7 +20,8 @@
     "android:build": "node scripts/android/build.mjs",
     "android:check": "node scripts/android/export-source.mjs && node --test tests/android/public-source.test.mjs",
     "android:test:compile": "node scripts/android/test-repository.mjs --compile-only",
-    "test:android": "node scripts/android/test-repository.mjs"
+    "test:android": "node scripts/android/test-repository.mjs",
+    "android:test:updates": "node scripts/android/test-updates.mjs"
   },
   "devDependencies": {
     "@types/node": "22.20.5",

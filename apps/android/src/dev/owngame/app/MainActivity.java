@@ -35,6 +35,11 @@ public class MainActivity extends Activity {
   private WebView library, game;
   private JSONObject playing;
   private final ExecutorService io=Executors.newSingleThreadExecutor();
+  private final ExecutorService updateIo=Executors.newSingleThreadExecutor();
+  private boolean updateChecking=false, updateResumed=false;
+  private long checkedUpdateSession=-1;
+  private AppUpdateChecker.Update pendingUpdate;
+  private AlertDialog updateDialog;
   private GameRepository repository;
   private volatile String downloadingId="";
   private volatile int downloadPercent=0;
@@ -59,6 +64,41 @@ public class MainActivity extends Activity {
     if(standalone()){String id=gameId(getIntent());if(id==null||!hasGame(id)){Toast.makeText(this,"游戏尚未下载，请在游戏库中获取",Toast.LENGTH_LONG).show();returnHome();}else open(id);return;}
     library=new WebView(this);configure(library,true);library.addJavascriptInterface(new LibraryBridge(),"Owngame");
     root.addView(library,new FrameLayout.LayoutParams(-1,-1));library.loadUrl(APP+"index.html");
+  }
+  private void checkAppUpdate(boolean manual){
+    if(standalone()||isFinishing()||isDestroyed())return;
+    if(updateChecking){if(manual)Toast.makeText(this,"正在检查 App 更新…",Toast.LENGTH_SHORT).show();return;}
+    if(updateDialog!=null)return;
+    pendingUpdate=null;updateChecking=true;
+    if(manual)Toast.makeText(this,"正在检查 App 更新…",Toast.LENGTH_SHORT).show();
+    updateIo.execute(()->{
+      AppUpdateChecker.Update available=null;boolean failed=false;
+      try{
+        android.content.pm.PackageInfo info=getPackageManager().getPackageInfo(getPackageName(),0);
+        long code=Build.VERSION.SDK_INT>=28?info.getLongVersionCode():info.versionCode;
+        available=new AppUpdateChecker().findUpdate(code,Build.VERSION.SDK_INT);
+      }catch(Exception e){failed=true;android.util.Log.w("Owngame","App update check unavailable");}
+      final AppUpdateChecker.Update result=available;final boolean unavailable=failed;
+      runOnUiThread(()->{
+        updateChecking=false;if(isFinishing()||isDestroyed())return;
+        if(result!=null){pendingUpdate=result;showPendingUpdate();}
+        else if(manual)Toast.makeText(this,unavailable?"暂时无法检查，请稍后重试":"当前没有可用的 App 更新",Toast.LENGTH_LONG).show();
+      });
+    });
+  }
+  private void showPendingUpdate(){
+    if(!updateResumed||standalone()||playing!=null||pendingUpdate==null||updateDialog!=null||isFinishing()||isDestroyed())return;
+    final AppUpdateChecker.Update update=pendingUpdate;String current="";
+    try{current=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){}
+    updateDialog=new AlertDialog.Builder(this).setTitle("发现 App 新版本")
+      .setMessage("新版本："+update.versionName+"\n当前版本："+current+"\n\n可以前往 GitHub 查看说明并下载更新，也可以暂不更新，继续玩已下载的游戏。")
+      .setNegativeButton("暂不更新",null)
+      .setPositiveButton("去 GitHub 更新",(dialog,which)->{
+        try{startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(update.releaseUrl)).addCategory(Intent.CATEGORY_BROWSABLE));}
+        catch(Exception e){Toast.makeText(this,"无法打开浏览器，请稍后再试",Toast.LENGTH_LONG).show();}
+      }).create();
+    showImmersiveDialog(updateDialog);
+    updateDialog.setOnDismissListener(dialog->{pendingUpdate=null;updateDialog=null;immersive(getWindow());});
   }
   private String gameId(Intent intent){
     Uri u=intent.getData();if(u==null||!"owngame".equals(u.getScheme())||!"game".equals(u.getHost())||u.getQuery()!=null||u.getFragment()!=null)return null;
@@ -213,9 +253,9 @@ public class MainActivity extends Activity {
   private void closeGame(){if(standalone()){dismissMenu();returnHome();return;}dismissMenu();if(game!=null){game.stopLoading();root.removeView(game);game.destroy();game=null;}if(capsule!=null){root.removeView(capsule);capsule=null;}playing=null;if(library!=null){library.setVisibility(View.VISIBLE);library.evaluateJavascript("window.goHome&&window.goHome()",null);}immersive(getWindow());}
   @Override public void onBackPressed(){if(gameMenu!=null)dismissMenu();else if(game!=null)closeGame();else if(library!=null)library.evaluateJavascript("window.backToHome&&window.backToHome()",result->{if(!"true".equals(result))MainActivity.super.onBackPressed();});else super.onBackPressed();}
   @Override public void onWindowFocusChanged(boolean hasFocus){super.onWindowFocusChanged(hasFocus);if(hasFocus)immersive(getWindow());}
-  @Override public void onPause(){super.onPause();if(game!=null)game.onPause();}
-  @Override public void onResume(){super.onResume();immersive(getWindow());if(game!=null)game.onResume();if(library!=null)refreshLibrary();}
-  @Override public void onDestroy(){dismissMenu();io.shutdownNow();if(game!=null)game.destroy();if(library!=null)library.destroy();super.onDestroy();}
+  @Override public void onPause(){updateResumed=false;super.onPause();if(game!=null)game.onPause();}
+  @Override public void onResume(){super.onResume();updateResumed=true;immersive(getWindow());if(game!=null)game.onResume();if(library!=null){refreshLibrary();long session=((OwngameApplication)getApplication()).foregroundSession();if(session!=checkedUpdateSession){checkedUpdateSession=session;checkAppUpdate(false);}}showPendingUpdate();}
+  @Override public void onDestroy(){dismissMenu();if(updateDialog!=null)updateDialog.dismiss();updateIo.shutdownNow();io.shutdownNow();if(game!=null)game.destroy();if(library!=null)library.destroy();super.onDestroy();}
   private void styleButton(Button button){GradientDrawable bg=new GradientDrawable();bg.setColor(Color.rgb(255,252,243));bg.setCornerRadius(dp(12));bg.setStroke(dp(2),Color.rgb(32,34,30));button.setBackground(bg);button.setTextColor(Color.rgb(32,34,30));button.setStateListAnimator(null);}
   private int dp(int value){return Math.round(value*getResources().getDisplayMetrics().density);}
   private void review(){
@@ -238,6 +278,7 @@ public class MainActivity extends Activity {
     @JavascriptInterface public void download(String id){runOnUiThread(()->downloadGame(id));}
     @JavascriptInterface public void rollback(String id){runOnUiThread(()->rollbackGame(id));}
     @JavascriptInterface public void sync(){runOnUiThread(()->MainActivity.this.sync());}
+    @JavascriptInterface public void checkAppUpdate(){runOnUiThread(()->MainActivity.this.checkAppUpdate(true));}
     @JavascriptInterface public void play(String id){runOnUiThread(()->launchGame(id));}
     @JavascriptInterface public String reviews(){JSONArray all=new JSONArray();File[] files=new File(getFilesDir(),"reviews").listFiles();if(files!=null)for(File f:files)try{if(f.getName().endsWith(".json"))all.put(new JSONObject(new String(readAll(new FileInputStream(f),32768),"UTF-8")));}catch(Exception ignored){}return all.toString();}
   }
