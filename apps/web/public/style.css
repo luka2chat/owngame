@@ -150,6 +150,48 @@ button:active,
   padding: 10px 16px;
   font-weight: 750;
 }
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 5px 8px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: #fffdf6;
+  font-size: 14px;
+}
+.language-switch select {
+  min-width: 64px;
+  min-height: 30px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+main > .language-switch { float: right; margin: 0 0 16px 16px; }
+.menu-language { margin: 16px 0 8px; }
+.topbar > .language-switch { margin-left: auto; }
+#count { white-space: nowrap; flex-shrink: 0; }
+.topbar .search { min-width: 0; }
+:lang(en) .nav-button { font-size: 14px; }
+:lang(en) .nav-button .symbol { flex-shrink: 0; }
+:lang(en) .welcome h1 { line-height: 1.15; }
+:lang(en) .welcome p { max-width: 28em; }
+:lang(en) .community-link { font-size: 12px; }
+:lang(en) .card-foot { flex-wrap: wrap; }
+:lang(en) .card-info h3 { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .topbar { gap: 10px; }
+  .topbar .wordmark { font-size: 30px; }
+  .language-switch { font-size: 12px; padding: 2px 4px; gap: 0; }
+  .language-switch > span { display: none; }
+  .language-switch select { min-width: 64px; }
+  .topbar .search { margin-left: 0; }
+  :lang(en) .nav-button { font-size: 12px; }
+  :lang(en) .welcome h1 { font-size: 27px; }
+}
 .sidebar {
   position: fixed;
   top: 90px;

@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "kiln-merge",
   "online_build_sha256": "54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf",
-  "input_sha256": "9cdde5e2d18a573d121b71c6954985aa46f936f4f17902ea87af1077a631510d",
+  "input_sha256": "ac83dce71198f10097421017a423d73a2eb77d6d6dc708dc81934644c3f27686",
   "files": [
     {
       "path": ".gitignore",

@@ -52,6 +52,8 @@ self.addEventListener("fetch", (event) => {
       if (event.request.mode === "navigate") {
         if (key === "/" || key === "/index.html") key = "/index.html";
         else if (key === "/play" || key === "/play.html") key = "/play.html";
+        else if (key === "/privacy" || key === "/privacy.html") key = "/privacy.html";
+        else if (key.endsWith('/') && CORE_FILES.includes(key + 'index.html')) key += 'index.html';
       }
       try {
         const response = await fetch(event.request);
@@ -68,7 +70,7 @@ self.addEventListener("fetch", (event) => {
             headers: { "Content-Type": "image/svg+xml", "Cache-Control": "no-store" },
           });
         }
-        return new Response("离线内容尚未下载，请联网后重试。", {
+        return new Response("离线内容尚未下载，请联网后重试。 / This content is not downloaded. Reconnect and try again.", {
           status: 503,
           headers: { "Content-Type": "text/plain; charset=utf-8" },
         });

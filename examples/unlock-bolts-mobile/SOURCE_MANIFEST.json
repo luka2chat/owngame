@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "unlock-bolts-mobile",
   "online_build_sha256": "242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b",
-  "input_sha256": "f9eafe55f2ea84fa6f845371f1234ecc59fcb5f3112246f3498896059b7f7dde",
+  "input_sha256": "18cddde4811582250e517d6c0977b947f41c2e5277ace58c0436da22b87a2420",
   "files": [
     {
       "path": ".gitignore",

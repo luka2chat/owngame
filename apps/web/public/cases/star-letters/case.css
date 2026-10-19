@@ -36,3 +36,4 @@
 /* A case is a normal site page, including on phones; the player-only hiding rules do not apply. */
 .case-body .player-header,.case-body .player-breadcrumb { display:flex; }
 .case-body .case-footer { display:block; }
+@media(max-width:600px) { .case-body .top-mine { display:none; } }

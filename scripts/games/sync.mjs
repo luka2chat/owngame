@@ -6,6 +6,7 @@ const root=path.resolve(import.meta.dirname,'../..');
 const args=process.argv.slice(2);
 if(args.length!==2 || args[0]!=='--repository-dir') throw Error('Usage: node scripts/games/sync.mjs --repository-dir <clean public repository checkout>');
 const repo=path.resolve(args[1]);
+const libraryRoot=process.env.OWNGAME_LIBRARY_ROOT ? path.resolve(process.env.OWNGAME_LIBRARY_ROOT) : path.join(root,'.owngame/library');
 const git=(...args)=>execFileSync('git',args,{cwd:repo,encoding:'utf8'}).trim();
 if(repo===root || git('remote','get-url','origin').replace(/\.git$/,'').replace('git@github.com:','https://github.com/')!=='https://github.com/luka2chat/owngame') throw Error('Use a separate checkout of luka2chat/owngame');
 if(git('status','--porcelain')) throw Error('Public checkout has local changes; preserve/commit them before publishing');
@@ -19,13 +20,13 @@ git('fetch','origin','main');git('switch','--detach','origin/main');
 const branch='release/game-source-'+new Date().toISOString().replace(/[^0-9]/g,'');
 git('switch','-c',branch);
 const entries=await readGameEntries(root);
-const catalog=await Promise.all(entries.map(async e=>({...e,version:JSON.parse(await fs.readFile(path.join(root,'.owngame/library',e.id,'current.json'))).build_sha256})));
+const catalog=await Promise.all(entries.map(async e=>({...e,version:JSON.parse(await fs.readFile(path.join(libraryRoot,e.id,'current.json'))).build_sha256})));
 const evidence=path.join(root,'artifacts/open-source');await fs.mkdir(evidence,{recursive:true});
 const plan=path.join(evidence,'planned-catalog.json');await fs.writeFile(plan,JSON.stringify(catalog,null,2)+'\n');
-execFileSync('python3',[path.join(root,'scripts/games/export.py'),'--catalog',plan,'--out',repo],{cwd:root,stdio:'inherit'});
+execFileSync('python3',[path.join(root,'scripts/games/export.py'),'--catalog',plan,'--out',repo,'--library',libraryRoot],{cwd:root,stdio:'inherit'});
 const copy=async relative=>{const src=path.join(root,relative),dest=path.join(repo,relative);await fs.mkdir(path.dirname(dest),{recursive:true});await fs.cp(src,dest,{recursive:true,filter:p=>!p.includes('__pycache__')});};
 for(const relative of ['scripts/games','tests/games','tests/web','scripts/web/catalog.mjs','scripts/web/build.mjs','scripts/web/publish.mjs',
-  'scripts/web/verify-deployment.mjs','scripts/web/link-sources.mjs','scripts/lib/codex-browser-preflight.mjs','.github/workflows/games.yml',
+  'scripts/web/verify-deployment.mjs','scripts/web/verify-i18n.mjs','scripts/web/link-sources.mjs','scripts/lib/codex-browser-preflight.mjs','.github/workflows/games.yml',
   'docs/open-source-games.md','docs/game-publishing.md','apps/web/public','apps/web/README.md','apps/web/wrangler.jsonc']) await copy(relative);
 const catalogModule=await fs.readFile(path.join(root,'scripts/web/catalog.mjs'),'utf8');
 for(const match of catalogModule.matchAll(/"(scripts\/[^"\n]+\/catalog\.json)"/g)) await copy(match[1]);

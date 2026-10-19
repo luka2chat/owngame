@@ -10,24 +10,34 @@
     <meta
       name="description"
       content="做属于自己的游戏。不充钱、不看广告，下载后离线爽玩。挑一款喜欢的，快乐就这么简单。"
+      data-i18n-content="做属于自己的游戏。不充钱、不看广告，下载后离线爽玩。挑一款喜欢的，快乐就这么简单。"
     />
-    <title>owngame · 做属于自己的游戏</title>
+    <title data-i18n="owngame · 做属于自己的游戏">
+      owngame · 做属于自己的游戏
+    </title>
     <link rel="icon" href="/art/arcade-mascot.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/remix.css" />
-  <link rel="stylesheet" href="/analytics.css">
+    <link rel="stylesheet" href="/analytics.css" />
     <link rel="modulepreload" href="/app.js" />
     <link rel="modulepreload" href="/data.js" />
     <link rel="modulepreload" href="/analytics.js" />
     <link rel="modulepreload" href="/analytics-config.js" />
     <link rel="modulepreload" href="/analytics-schema.js" />
     <link rel="modulepreload" href="/remix.js" />
+    <script type="module" src="/i18n.js"></script>
   </head>
   <body>
-    <a class="skip" href="#content">跳到游戏库</a>
+    <a class="skip" href="#content"
+      ><span data-i18n="跳到游戏库">跳到游戏库</span></a
+    >
     <header class="topbar">
-      <a class="wordmark" href="/" aria-label="owngame 首页"
+      <a
+        class="wordmark"
+        href="/"
+        aria-label="owngame 首页"
+        data-i18n-aria-label="owngame 首页"
         ><span>o</span><span>w</span><span>n</span><span>g</span><span>a</span
         ><span>m</span><span>e</span></a
       ><label class="search"
@@ -37,62 +47,164 @@
           id="search"
           placeholder="搜索你喜欢的游戏"
           aria-label="搜索游戏"
+          data-i18n-placeholder="搜索你喜欢的游戏"
+          data-i18n-aria-label="搜索游戏"
         /><kbd>/</kbd></label
-      ><button class="top-mine" data-view="favorites">☆ 我的收藏</button>
+      ><button class="top-mine" data-view="favorites">
+        <span data-i18n="☆ 我的收藏">☆ 我的收藏</span>
+      </button>
     </header>
     <aside class="sidebar">
-      <nav aria-label="主要导航" id="nav">
-        <a class="nav-button active" href="/?view=all"><span class="symbol">▦</span>全部游戏</a>
-        <a class="nav-button" href="/?view=favorites"><span class="symbol">☆</span>我的收藏</a>
-        <a class="nav-button" href="/?view=recent"><span class="symbol">◷</span>最近玩过</a>
-        <a class="nav-button" href="/?view=offline"><span class="symbol">↓</span>离线游戏</a>
+      <nav aria-label="主要导航" id="nav" data-i18n-aria-label="主要导航">
+        <a class="nav-button active" href="/?view=all"
+          ><span class="symbol">▦</span
+          ><span data-i18n="全部游戏">全部游戏</span></a
+        >
+        <a class="nav-button" href="/?view=favorites"
+          ><span class="symbol">☆</span
+          ><span data-i18n="我的收藏">我的收藏</span></a
+        >
+        <a class="nav-button" href="/?view=recent"
+          ><span class="symbol">◷</span
+          ><span data-i18n="最近玩过">最近玩过</span></a
+        >
+        <a class="nav-button" href="/?view=offline"
+          ><span class="symbol">↓</span
+          ><span data-i18n="离线游戏">离线游戏</span></a
+        >
       </nav>
-      <a class="community-link" href="https://discord.gg/X5cYjTaD" target="_blank" rel="noopener noreferrer">加入 Discord 社区 ↗</a>
+      <a
+        class="community-link"
+        href="https://discord.gg/X5cYjTaD"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><span data-i18n="加入 Discord 社区 ↗">加入 Discord 社区 ↗</span></a
+      >
       <div class="sidebar-note">
         <strong
-          >快乐，就这么简单。</strong
+          ><span data-i18n="快乐，就这么简单。"
+            >快乐，就这么简单。</span
+          ></strong
         >
-        <p>你的喜好，你的世界。</p>
-        <button id="install" hidden>安装 owngame ↗</button>
+        <p>
+          <span data-i18n="你的喜好，你的世界。">你的喜好，你的世界。</span>
+        </p>
+        <button id="install" hidden>
+          <span data-i18n="安装 owngame ↗">安装 owngame ↗</span>
+        </button>
       </div>
-      <a class="about-link" href="#about">关于 owngame ↗</a>
+      <a class="about-link" href="#about"
+        ><span data-i18n="关于 owngame ↗">关于 owngame ↗</span></a
+      >
     </aside>
     <main id="content" class="main" tabindex="-1">
       <section class="welcome">
         <div>
           <div class="eyebrow">WELCOME TO YOUR OWN WORLD</div>
-          <h1>做属于自己的游戏<span class="spark">✷</span></h1>
-          <p>不充钱、不看广告、离线爽玩</p>
+          <h1>
+            <span data-i18n="做属于自己的游戏">做属于自己的游戏</span
+            ><span class="spark">✷</span>
+          </h1>
+          <p>
+            <span data-i18n="不充钱、不看广告、离线爽玩"
+              >不充钱、不看广告、离线爽玩</span
+            >
+          </p>
         </div>
-        <img class="welcome-mascot" src="/art/arcade-mascot.png" alt="戴皇冠帽的 owngame 街机小伙伴" width="140" height="150" fetchpriority="high" />
+        <img
+          class="welcome-mascot"
+          src="/art/arcade-mascot.png"
+          alt="戴皇冠帽的 owngame 街机小伙伴"
+          width="140"
+          height="150"
+          fetchpriority="high"
+          data-i18n-alt="戴皇冠帽的 owngame 街机小伙伴"
+        />
       </section>
-      <div id="mobile-categories" aria-label="游戏分类"></div>
+      <div
+        id="mobile-categories"
+        aria-label="游戏分类"
+        data-i18n-aria-label="游戏分类"
+      ></div>
       <div class="section-heading">
         <div>
           <span class="red-slash">/</span>
-          <h2 id="section-title">挑一款，开始快乐</h2>
+          <h2 id="section-title">
+            <span data-i18n="挑一款，开始快乐">挑一款，开始快乐</span>
+          </h2>
         </div>
         <span id="count"></span>
       </div>
       <div id="catalog-status" class="catalog-status" role="status">
         <span class="loading-mark" aria-hidden="true">✷</span>
-        <span id="catalog-message">正在准备游戏库…</span>
-        <a id="catalog-retry" href="" hidden>重新加载 ↻</a>
+        <span id="catalog-message"
+          ><span data-i18n="正在准备游戏库…">正在准备游戏库…</span></span
+        >
+        <a id="catalog-retry" href="" hidden
+          ><span data-i18n="重新加载 ↻">重新加载 ↻</span></a
+        >
       </div>
       <div id="games" class="games" aria-busy="true" data-state="loading">
-        <div class="game-card skeleton-card" aria-hidden="true"><div class="cover skeleton-cover"><span>✷</span></div><div class="card-info"><div class="skeleton-line skeleton-title"></div><div class="skeleton-line"></div><div class="skeleton-line skeleton-short"></div><div class="skeleton-action"></div></div></div>
-        <div class="game-card skeleton-card" aria-hidden="true"><div class="cover skeleton-cover"><span>✷</span></div><div class="card-info"><div class="skeleton-line skeleton-title"></div><div class="skeleton-line"></div><div class="skeleton-line skeleton-short"></div><div class="skeleton-action"></div></div></div>
-        <div class="game-card skeleton-card" aria-hidden="true"><div class="cover skeleton-cover"><span>✷</span></div><div class="card-info"><div class="skeleton-line skeleton-title"></div><div class="skeleton-line"></div><div class="skeleton-line skeleton-short"></div><div class="skeleton-action"></div></div></div>
-        <div class="game-card skeleton-card" aria-hidden="true"><div class="cover skeleton-cover"><span>✷</span></div><div class="card-info"><div class="skeleton-line skeleton-title"></div><div class="skeleton-line"></div><div class="skeleton-line skeleton-short"></div><div class="skeleton-action"></div></div></div>
+        <div class="game-card skeleton-card" aria-hidden="true">
+          <div class="cover skeleton-cover"><span>✷</span></div>
+          <div class="card-info">
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line skeleton-short"></div>
+            <div class="skeleton-action"></div>
+          </div>
+        </div>
+        <div class="game-card skeleton-card" aria-hidden="true">
+          <div class="cover skeleton-cover"><span>✷</span></div>
+          <div class="card-info">
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line skeleton-short"></div>
+            <div class="skeleton-action"></div>
+          </div>
+        </div>
+        <div class="game-card skeleton-card" aria-hidden="true">
+          <div class="cover skeleton-cover"><span>✷</span></div>
+          <div class="card-info">
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line skeleton-short"></div>
+            <div class="skeleton-action"></div>
+          </div>
+        </div>
+        <div class="game-card skeleton-card" aria-hidden="true">
+          <div class="cover skeleton-cover"><span>✷</span></div>
+          <div class="card-info">
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line skeleton-short"></div>
+            <div class="skeleton-action"></div>
+          </div>
+        </div>
       </div>
       <noscript><p>请开启 JavaScript 来浏览和游玩游戏。</p></noscript>
       <section id="about" class="about">
-        <div class="about-number">∞<small>种属于你的可能</small></div>
+        <div class="about-number">
+          ∞<small><span data-i18n="种属于你的可能">种属于你的可能</span></small>
+        </div>
         <div>
-          <span class="eyebrow">少一点打扰，多一点快乐</span>
-          <h2>还记得打开游戏机的那一刻吗？</h2>
+          <span class="eyebrow"
+            ><span data-i18n="少一点打扰，多一点快乐"
+              >少一点打扰，多一点快乐</span
+            ></span
+          >
+          <h2>
+            <span data-i18n="还记得打开游戏机的那一刻吗？"
+              >还记得打开游戏机的那一刻吗？</span
+            >
+          </h2>
           <p>
-            不用等广告播完，也不用为快乐充值。<br />挑一个喜欢的世界，想玩就玩。今天，从这里开始。
+            <span data-i18n="不用等广告播完，也不用为快乐充值。"
+              >不用等广告播完，也不用为快乐充值。</span
+            ><br /><span
+              data-i18n="挑一个喜欢的世界，想玩就玩。今天，从这里开始。"
+              >挑一个喜欢的世界，想玩就玩。今天，从这里开始。</span
+            >
           </p>
         </div>
         <div class="about-stamp">
@@ -100,41 +212,73 @@
         </div>
       </section>
       <footer>
-        <b>owngame</b><span>做属于自己的游戏</span
-        ><a class="footer-community" href="https://discord.gg/X5cYjTaD" target="_blank" rel="noopener noreferrer">Discord 社区 ↗</a
-        ><button id="offline-help">关于离线游玩</button
+        <b>owngame</b
+        ><span><span data-i18n="做属于自己的游戏">做属于自己的游戏</span></span
+        ><a
+          class="footer-community"
+          href="https://discord.gg/X5cYjTaD"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><span data-i18n="Discord 社区 ↗">Discord 社区 ↗</span></a
+        ><button id="offline-help">
+          <span data-i18n="关于离线游玩">关于离线游玩</span></button
         ><span>© 2026 owngame</span>
       </footer>
     </main>
     <div id="toast" role="status" aria-live="polite" hidden></div>
     <dialog id="info">
-      <button class="dialog-close" aria-label="关闭说明">×</button>
-      <h2>把快乐带在身边</h2>
-      <p>点击游戏卡上的「下载离线包」，完成后就可以在当前浏览器里断网游玩。</p>
+      <button
+        class="dialog-close"
+        aria-label="关闭说明"
+        data-i18n-aria-label="关闭说明"
+      >
+        ×
+      </button>
+      <h2><span data-i18n="把快乐带在身边">把快乐带在身边</span></h2>
       <p>
-        浏览器可能清理网站数据；清理缓存或更换浏览器后需要重新下载。收藏和最近玩过只保存在这台设备上。
+        <span
+          data-i18n="点击游戏卡上的「下载离线包」，完成后就可以在当前浏览器里断网游玩。"
+          >点击游戏卡上的「下载离线包」，完成后就可以在当前浏览器里断网游玩。</span
+        >
       </p>
-      <button class="primary dialog-close">知道了</button>
+      <p>
+        <span
+          data-i18n="浏览器可能清理网站数据；清理缓存或更换浏览器后需要重新下载。收藏和最近玩过只保存在这台设备上。"
+          >浏览器可能清理网站数据；清理缓存或更换浏览器后需要重新下载。收藏和最近玩过只保存在这台设备上。</span
+        >
+      </p>
+      <button class="primary dialog-close">
+        <span data-i18n="知道了">知道了</span>
+      </button>
     </dialog>
     <script>
       // Runs before module downloads: slow or failed JavaScript still gets feedback.
       (() => {
-        const grid = document.getElementById('games');
-        const message = document.getElementById('catalog-message');
-        const retry = document.getElementById('catalog-retry');
+        const grid = document.getElementById("games");
+        const message = document.getElementById("catalog-message");
+        const retry = document.getElementById("catalog-retry");
         const slow = setTimeout(() => {
-          if (grid.dataset.state !== 'loading') return;
-          message.textContent = '网络有点慢，游戏正在赶来…';
+          if (grid.dataset.state !== "loading") return;
+          const key = "网络有点慢，游戏正在赶来…";
+          message.dataset.i18n = key;
+          message.textContent = window.owngameI18n?.t(key) || key;
           retry.hidden = false;
         }, 7000);
         const stalled = setTimeout(() => {
-          if (grid.dataset.state !== 'loading') return;
-          message.textContent = '加载时间较长，可以重新试试。';
+          if (grid.dataset.state !== "loading") return;
+          const key = "加载时间较长，可以重新试试。";
+          message.dataset.i18n = key;
+          message.textContent = window.owngameI18n?.t(key) || key;
           retry.hidden = false;
         }, 25000);
-        window.addEventListener('owngame:catalog-settled', () => {
-          clearTimeout(slow); clearTimeout(stalled);
-        }, {once:true});
+        window.addEventListener(
+          "owngame:catalog-settled",
+          () => {
+            clearTimeout(slow);
+            clearTimeout(stalled);
+          },
+          { once: true },
+        );
       })();
     </script>
     <script type="module" src="/app.js"></script>

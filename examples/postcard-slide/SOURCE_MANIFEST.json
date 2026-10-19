@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "postcard-slide",
   "online_build_sha256": "cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a",
-  "input_sha256": "efa68adcad0296547f0bf950ab42019f809355bb7783d3b1d1c4256ab928cc5c",
+  "input_sha256": "2bd1e3f22b1942f522f0dd4fa52632d6d1b0dc302b1f8a0630e3c85b6a27e5c5",
   "files": [
     {
       "path": ".gitignore",

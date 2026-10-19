@@ -30,3 +30,9 @@
   Cache-Control: no-cache
 /privacy.html
   Cache-Control: no-cache
+/i18n.js
+  Cache-Control: no-cache
+/locales/*
+  Cache-Control: no-cache
+/manifest*.webmanifest
+  Cache-Control: no-cache

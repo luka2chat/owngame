@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "neon-shooter",
   "online_build_sha256": "a4771608c65d51937134248f018755ced00c9f28f5164f88cede7cf029d5f5e3",
-  "input_sha256": "3505a6c0f9d31b7f76bdbb6a2045f2d942d85ca6d85b97f58102c832b6f6ea93",
+  "input_sha256": "294f83590a4a46e4186c74098c1f54169eb71bf43727e963952a9ee57235aba3",
   "files": [
     {
       "path": ".gitignore",

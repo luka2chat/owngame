@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "faune-dungeon",
   "online_build_sha256": "ddcc9d6275d3905add62d3171e51e1eef83058c25c9dd38e0316923a6224f168",
-  "input_sha256": "d28742e7fa9c7de68bfd5e2061e25d046be41c5c72be8c999f323778f1776f51",
+  "input_sha256": "eeea0ecc95d4f638ac088e8ae77e69be41f624aaf25a733f09269da603015919",
   "files": [
     {
       "path": ".gitignore",

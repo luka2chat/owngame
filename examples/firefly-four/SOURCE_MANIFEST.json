@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "firefly-four",
   "online_build_sha256": "290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d",
-  "input_sha256": "31d6804a22345e6b871a07f087a50b844d435848e1b478d0cc57c694b7a43cd0",
+  "input_sha256": "21f9935b673b982525148eecc0b1f0871be944b5f24f69c226d78f74543fa345",
   "files": [
     {
       "path": ".gitignore",

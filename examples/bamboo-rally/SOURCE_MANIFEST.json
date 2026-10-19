@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "bamboo-rally",
   "online_build_sha256": "fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0",
-  "input_sha256": "404d866a265c379d582b1e6686c41a61c3e678fa5b6896c26f695c40530e60cc",
+  "input_sha256": "904035af7d56ac77feb13ac6e685ef3f5ea510754fae83ed2d571fe82a500f38",
   "files": [
     {
       "path": ".gitignore",

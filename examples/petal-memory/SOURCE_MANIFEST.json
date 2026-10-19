@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "petal-memory",
   "online_build_sha256": "bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c",
-  "input_sha256": "c576809d99769c66f4691d792d4c38a409b60286349793dea842a1c1f4c101c3",
+  "input_sha256": "99513777d00da0c2239055d8f56f4cfdbfae31b0c52ab0ed0288f4f7ca5c5db3",
   "files": [
     {
       "path": ".gitignore",
