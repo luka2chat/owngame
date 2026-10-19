@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
   private boolean updateChecking=false, updateResumed=false;
   private long checkedUpdateSession=-1;
   private AppUpdateChecker.Update pendingUpdate;
-  private AlertDialog updateDialog;
+  private AlertDialog updateDialog, documentDialog;
   private GameRepository repository;
   private volatile String downloadingId="";
   private volatile int downloadPercent=0;
@@ -136,11 +136,30 @@ public class MainActivity extends Activity {
   }
   private void configure(WebView view, boolean trusted) {
     view.setBackgroundColor(Color.rgb(250,245,232));
-    WebSettings s=view.getSettings();s.setJavaScriptEnabled(true);s.setDomStorageEnabled(true);s.setAllowFileAccess(false);s.setAllowContentAccess(false);s.setMediaPlaybackRequiresUserGesture(true);s.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
-    view.setWebChromeClient(new WebChromeClient(){@Override public boolean onConsoleMessage(ConsoleMessage m){android.util.Log.i("OwngameWeb",m.message());return false;}});
+    WebSettings s=view.getSettings();s.setJavaScriptEnabled(true);s.setDomStorageEnabled(true);s.setAllowFileAccess(false);s.setAllowContentAccess(false);s.setMediaPlaybackRequiresUserGesture(true);s.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);s.setSupportMultipleWindows(true);
+    view.setWebChromeClient(new WebChromeClient(){
+      @Override public boolean onConsoleMessage(ConsoleMessage m){android.util.Log.i("OwngameWeb",m.message());return false;}
+      @Override public boolean onCreateWindow(WebView source,boolean dialog,boolean gesture,Message result){
+        if(!gesture)return false;
+        // Capture the destination without loading it or giving the new window a native bridge.
+        WebView popup=new WebView(MainActivity.this);
+        boolean[] released={false};Runnable release=()->{if(!released[0]){released[0]=true;popup.destroy();}};
+        popup.setWebViewClient(new WebViewClient(){
+          private boolean handled=false;
+          @Override public boolean shouldOverrideUrlLoading(WebView v,WebResourceRequest r){
+            if(!handled){handled=true;if(!handleNavigation(source,r.getUrl(),trusted,true))source.loadUrl(r.getUrl().toString());source.post(release);}
+            return true;
+          }
+          @Override public WebResourceResponse shouldInterceptRequest(WebView v,WebResourceRequest r){return response(403,"text/plain",new byte[0]);}
+        });
+        ((WebView.WebViewTransport)result.obj).setWebView(popup);result.sendToTarget();
+        // Also release windows that never navigate.
+        source.postDelayed(release,10000);return true;
+      }
+    });
     view.setWebViewClient(new WebViewClient(){
       @Override public void onPageFinished(WebView v,String url){if(trusted){updateSafeArea();if(!initialRefresh){initialRefresh=true;sync();}}}
-      @Override public boolean shouldOverrideUrlLoading(WebView v,WebResourceRequest r){return !allowed(r.getUrl(),trusted);}
+      @Override public boolean shouldOverrideUrlLoading(WebView v,WebResourceRequest r){return handleNavigation(v,r.getUrl(),trusted,r.isForMainFrame()&&r.hasGesture());}
       @Override public WebResourceResponse shouldInterceptRequest(WebView v,WebResourceRequest r){
         try {
           Uri u=r.getUrl();if(!allowed(u,trusted))return response(403,"text/plain",new byte[0]);
@@ -154,9 +173,47 @@ public class MainActivity extends Activity {
     });
     view.setOnLongClickListener(v->true);
   }
-  private boolean allowed(Uri u,boolean trusted){return "https".equals(u.getScheme())&&(trusted?"app.owngame.invalid":"game.owngame.invalid").equals(u.getHost());}
+  private boolean allowed(Uri u,boolean trusted){return "https".equals(u.getScheme())&&u.getUserInfo()==null&&(u.getPort()==-1||u.getPort()==443)&&(trusted?"app.owngame.invalid":"game.owngame.invalid").equals(u.getHost());}
+  private boolean handleNavigation(WebView source,Uri target,boolean trusted,boolean gesture){
+    if(allowed(target,trusted)){
+      String path=target.getPath();
+      if(path!=null&&(path.endsWith(".txt")||path.endsWith(".md"))){if(gesture)showDocument(source,target,trusted);return true;}
+      return false;
+    }
+    // Only a deliberate HTTPS link can leave the offline game. Subresources stay local.
+    if(gesture&&"https".equals(target.getScheme())&&target.getHost()!=null&&target.getUserInfo()==null&&
+      !"app.owngame.invalid".equals(target.getHost())&&!"game.owngame.invalid".equals(target.getHost())){
+      try{startActivity(new Intent(Intent.ACTION_VIEW,target).addCategory(Intent.CATEGORY_BROWSABLE));}
+      catch(Exception e){Toast.makeText(this,"无法打开浏览器，请稍后再试",Toast.LENGTH_LONG).show();}
+    }
+    return true;
+  }
+  private void showDocument(WebView source,Uri target,boolean trusted){
+    final String current=source.getUrl();
+    io.execute(()->{
+      try{
+        String relative=target.getPath().substring(1);safe(relative);byte[] bytes;
+        if(trusted)bytes=readAll(getAssets().open(relative),1024*1024);
+        else{
+          String[] parts=relative.split("/",3);String[] origin=Uri.parse(current).getPath().substring(1).split("/",3);
+          if(parts.length!=3||origin.length!=3||!parts[0].equals(origin[0])||!parts[1].equals(origin[1])||
+            !parts[0].matches("[a-z0-9][a-z0-9-]{0,63}")||!parts[1].matches("[a-f0-9]{64}"))throw new IOException("Outside current game");
+          bytes=readAll(new FileInputStream(contained(new File(getFilesDir(),"games/"+parts[0]+"/"+parts[1]+"/files"),parts[2])),1024*1024);
+        }
+        final String text=new String(bytes,java.nio.charset.StandardCharsets.UTF_8);
+        runOnUiThread(()->{
+          if(isFinishing()||isDestroyed()||!current.equals(source.getUrl()))return;
+          if(documentDialog!=null)documentDialog.dismiss();
+          TextView content=new TextView(this);content.setText(text);content.setTextSize(14);content.setTextColor(Color.rgb(32,34,30));content.setTextIsSelectable(true);content.setPadding(dp(20),dp(12),dp(20),dp(12));
+          ScrollView scroll=new ScrollView(this);scroll.addView(content);
+          documentDialog=new AlertDialog.Builder(this).setTitle("授权与说明").setView(scroll).setPositiveButton("关闭",null).create();
+          showImmersiveDialog(documentDialog);
+        });
+      }catch(Exception e){runOnUiThread(()->Toast.makeText(this,"说明暂时无法打开，请重新下载游戏后重试",Toast.LENGTH_LONG).show());}
+    });
+  }
   private WebResourceResponse response(int code,String mime,byte[] bytes){return new WebResourceResponse(mime,"UTF-8",code,code==200?"OK":"Unavailable",Collections.singletonMap("Cache-Control","no-store"),new ByteArrayInputStream(bytes));}
-  private static String mime(String p){if(p.endsWith(".html"))return "text/html";if(p.endsWith(".js"))return "application/javascript";if(p.endsWith(".json"))return "application/json";if(p.endsWith(".css"))return "text/css";if(p.endsWith(".wasm"))return "application/wasm";if(p.endsWith(".png"))return "image/png";if(p.endsWith(".jpg")||p.endsWith(".jpeg"))return "image/jpeg";if(p.endsWith(".webp"))return "image/webp";if(p.endsWith(".svg"))return "image/svg+xml";if(p.endsWith(".ttf"))return "font/ttf";return "application/octet-stream";}
+  private static String mime(String p){if(p.endsWith(".html"))return "text/html";if(p.endsWith(".js")||p.endsWith(".mjs"))return "application/javascript";if(p.endsWith(".txt")||p.endsWith(".md"))return "text/plain";if(p.endsWith(".json"))return "application/json";if(p.endsWith(".css"))return "text/css";if(p.endsWith(".wasm"))return "application/wasm";if(p.endsWith(".png"))return "image/png";if(p.endsWith(".jpg")||p.endsWith(".jpeg"))return "image/jpeg";if(p.endsWith(".webp"))return "image/webp";if(p.endsWith(".svg"))return "image/svg+xml";if(p.endsWith(".ttf"))return "font/ttf";return "application/octet-stream";}
   private static void safe(String p)throws Exception{if(p.length()==0||p.startsWith("/")||p.contains("\\"))throw new Exception("Invalid path");for(String s:p.split("/",-1))if(s.isEmpty()||s.equals(".")||s.equals(".."))throw new Exception("Invalid path");}
   private static File contained(File base,String relative)throws Exception{safe(relative);File f=new File(base,relative);if(!f.getCanonicalPath().startsWith(base.getCanonicalPath()+File.separator))throw new Exception("Outside game");return f;}
   private static byte[] readAll(InputStream input,int max)throws Exception{try(InputStream in=input;ByteArrayOutputStream out=new ByteArrayOutputStream()){byte[] b=new byte[16384];int n;while((n=in.read(b))!=-1){if(out.size()+n>max)throw new Exception("Size limit");out.write(b,0,n);}return out.toByteArray();}}
@@ -255,7 +312,7 @@ public class MainActivity extends Activity {
   @Override public void onWindowFocusChanged(boolean hasFocus){super.onWindowFocusChanged(hasFocus);if(hasFocus)immersive(getWindow());}
   @Override public void onPause(){updateResumed=false;super.onPause();if(game!=null)game.onPause();}
   @Override public void onResume(){super.onResume();updateResumed=true;immersive(getWindow());if(game!=null)game.onResume();if(library!=null){refreshLibrary();long session=((OwngameApplication)getApplication()).foregroundSession();if(session!=checkedUpdateSession){checkedUpdateSession=session;checkAppUpdate(false);}}showPendingUpdate();}
-  @Override public void onDestroy(){dismissMenu();if(updateDialog!=null)updateDialog.dismiss();updateIo.shutdownNow();io.shutdownNow();if(game!=null)game.destroy();if(library!=null)library.destroy();super.onDestroy();}
+  @Override public void onDestroy(){dismissMenu();if(documentDialog!=null)documentDialog.dismiss();if(updateDialog!=null)updateDialog.dismiss();updateIo.shutdownNow();io.shutdownNow();if(game!=null)game.destroy();if(library!=null)library.destroy();super.onDestroy();}
   private void styleButton(Button button){GradientDrawable bg=new GradientDrawable();bg.setColor(Color.rgb(255,252,243));bg.setCornerRadius(dp(12));bg.setStroke(dp(2),Color.rgb(32,34,30));button.setBackground(bg);button.setTextColor(Color.rgb(32,34,30));button.setStateListAnimator(null);}
   private int dp(int value){return Math.round(value*getResources().getDisplayMetrics().density);}
   private void review(){

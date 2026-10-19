@@ -2,4 +2,5 @@
  <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34"/>
  <application android:label="owngame repository tests"/>
  <instrumentation android:name="dev.owngame.tests.RepositoryTests" android:targetPackage="dev.owngame.app"/>
+ <instrumentation android:name="dev.owngame.tests.WebViewTests" android:targetPackage="dev.owngame.app"/>
 </manifest>

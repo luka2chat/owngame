@@ -159,7 +159,7 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 | 平台 | 状态 | 计划覆盖 |
 | --- | --- | --- |
 | **浏览器 / Web** | 当前主要交付平台 | 持续完善电脑与手机浏览器体验、静态托管和离线验证 |
-| **Android** | [源码](apps/android)与[Alpha APK](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.13-alpha) 已公开 | 完善游戏下载、更新与离线体验，整理正式签名、安装和版本发布流程 |
+| **Android** | [源码](apps/android)与[Alpha APK](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.14-alpha) 已公开 | 完善游戏下载、更新与离线体验，整理正式签名、安装和版本发布流程 |
 | **iOS / iPadOS** | 计划中 | 评估原生容器与引擎导出方案，补充触控、安全区、存档和真机验收流程 |
 | **Windows / macOS / Linux** | 原生桌面发布计划中 | 探索独立安装包、输入适配、存档位置与分发流程；当前可通过浏览器游玩 Web 游戏 |
 | **微信等小游戏平台** | 调研中 | 评估运行环境、包体与资源限制、平台接口及审核要求，确定适合接入的游戏类型 |
@@ -243,6 +243,6 @@ Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use
 
 Open your game project in an AI coding assistant and send: **Follow https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md to set up owngame in this project, verify it works, then help me make a game.** The assistant checks Node.js 22+ and npm, installs the published toolkit, reads the creative Skill, and uses the shared CLI. No assistant selection or MCP configuration is required. This works with assistants that can read/write project files and run commands. See [manual installation and optional MCP](docs/install.md). The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
 
-**Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone HomeArt exploration scene with character controls, camera and a four-step quest. Available through CLI/MCP in 0.9.0+: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the [Android client source](apps/android) is public and an [Alpha APK](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.13-alpha) is available. See the [support roadmap](#支持路线图) for scope and status.
+**Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone HomeArt exploration scene with character controls, camera and a four-step quest. Available through CLI/MCP in 0.9.0+: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the [Android client source](apps/android) is public and an [Alpha APK](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.14-alpha) is available. See the [support roadmap](#支持路线图) for scope and status.
 
 [Get started](#快速开始) · [Discord community](https://discord.gg/X5cYjTaD) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)

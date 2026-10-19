@@ -64,5 +64,6 @@
   "tests/android/AndroidManifest.xml",
   "tests/android/AppUpdateCheckerTests.java",
   "tests/android/RepositoryTests.java",
+  "tests/android/WebViewTests.java",
   "tests/android/public-source.test.mjs"
 ]

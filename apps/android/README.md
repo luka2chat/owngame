@@ -2,7 +2,7 @@
 
 面向玩家的 Android Alpha 客户端：从公开目录下载游戏、校验更新、离线游玩、恢复上一版、收藏和添加桌面快捷方式。创作仍由现有 AI 助手配合 CLI / MCP 完成。
 
-当前源码版本 **0.4.13-alpha（18）**，最低 Android 8.0（API 26），目标 API 34。客户端直接读取 `https://owngame.dev/catalog.json`，无需账号、配对令牌或电脑上的服务。源码已公开；[GitHub Alpha 测试包](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.13-alpha) 已提供下载，沿用内部测试签名。支持启动时检查 GitHub Android 新版本，由玩家选择是否更新；商店正式发行仍待完善。
+当前源码版本 **0.4.14-alpha（19）**，最低 Android 8.0（API 26），目标 API 34。客户端直接读取 `https://owngame.dev/catalog.json`，无需账号、配对令牌或电脑上的服务。源码已公开；[GitHub Alpha 测试包](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.14-alpha) 已提供下载，沿用内部测试签名。支持启动时检查 GitHub Android 新版本，由玩家选择是否更新；商店正式发行仍待完善。
 
 ## 从源码构建
 
@@ -32,9 +32,10 @@ adb -s DEVICE_SERIAL install -r artifacts/android/owngame.apk
 adb -s DEVICE_SERIAL shell am start -n dev.owngame.app/.MainActivity
 npm run android:test:compile
 npm run test:android -- DEVICE_SERIAL
+npm run test:android -- DEVICE_SERIAL --webview
 ```
 
-最后一条会安装独立的测试 APK，并在应用缓存的临时目录执行目录校验、下载损坏、路径穿越、更新中断、断点续传及离线回滚测试；需要先安装使用本次本地测试密钥构建的客户端。测试不会自动选择设备，不读取真实游戏目录或提交评价。`android:test:compile` 只编译测试，不连接设备。
+仓库测试会安装独立的测试 APK，并在应用缓存的临时目录执行目录校验、下载损坏、路径穿越、更新中断、断点续传及离线回滚测试；需要先安装使用本次本地测试密钥构建的客户端。测试不会自动选择设备，不读取真实游戏目录或提交评价。`--webview` 使用隔离的临时游戏验证真实 WebView 的 ES 模块、触屏点击、新窗口源码链接、离线授权说明及外链拦截，不读取现有游戏或存档。若已有《星野来信》发布包的 `files` 目录，可追加 `--star-letters-dir GAME_FILES` 验证实际 Unity 启动；它只复制到测试专用临时目录并在结束后清理。`android:test:compile` 只编译测试，不连接设备。
 
 CI 检查公开文件清单、隐私防护测试、客户端 APK 构建及测试代码编译。CI 构建使用临时测试密钥，不发布 APK，也不代表真机、美术或操作手感验收。历史实测环境为 Android 14；其他系统版本仍需验证。
 
@@ -67,3 +68,7 @@ CI 检查公开文件清单、隐私防护测试、客户端 APK 构建及测试
 后续 Android 发布应继续附带同名 APK 与 `release-manifest.json`（版本、递增的 versionCode、最低 SDK、包名及 APK 校验信息），保持既有签名。检查代码只读取公开 GitHub 信息，不需要账号或令牌。
 
 运行 `npm run android:test:updates` 可执行本机版本筛选、错误元数据、网络失败及可信来源测试；加 `-- --live` 可连接真实公开 Releases 检查元数据。测试使用固定版本且校验 SHA-256 的 JSON-java 测试库，下载在忽略的 `.local/`，不会进入 APK。旧版客户端需要先手动安装一次 0.4.13-alpha 才会获得版本检查功能。
+
+## 0.4.14-alpha 修复
+
+为 `.mjs` 返回 JavaScript MIME 类型，修复模块游戏启动按钮始终禁用的问题。用户点击的 HTTPS 源码链接由系统浏览器打开，本地 `.txt` / `.md` 授权说明在可关闭的文本窗口阅读，保留游戏页面。支持 `target="_blank"`，同时继续阻止跨域资源、非用户点击的外跳和特殊协议。此修复不添加游戏的触屏操控；《星野来信》仍以键鼠为推荐操作。

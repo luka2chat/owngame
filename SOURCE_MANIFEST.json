@@ -50,7 +50,7 @@
     {
       "path": "apps/android/AndroidManifest.xml",
       "bytes": 1249,
-      "sha256": "d7d4b2a73e362f31f6ee0a495be0a1ed5726fd48d8df1aeac5f36af2c90d88db"
+      "sha256": "0201b19369279363252216e60e8058880bafc865fe7c2a9d9156c8f89242fa4a"
     },
     {
       "path": "apps/android/ART-PROVENANCE.md",
@@ -284,8 +284,8 @@
     },
     {
       "path": "apps/android/README.md",
-      "bytes": 6698,
-      "sha256": "99e50cccdb16753bf18fdb0334b4356be2472f7fde5f8fd478b567a22e0a3db6"
+      "bytes": 7587,
+      "sha256": "ec48472131a71c2a1da46b94658953ade3248afe7d61357ec0d03cd86759921b"
     },
     {
       "path": "apps/android/res/drawable-nodpi/arcade_mascot.png",
@@ -314,8 +314,8 @@
     },
     {
       "path": "apps/android/src/dev/owngame/app/MainActivity.java",
-      "bytes": 30841,
-      "sha256": "15d6a57805e344beca0ad822198b3863fd4ab8868446440d90229bdd54886fae"
+      "bytes": 34893,
+      "sha256": "3cb12b9d29c477b9a44207c21627e925eb30425cc7a8bfb99e17aff1960f59cd"
     },
     {
       "path": "apps/android/src/dev/owngame/app/OwngameApplication.java",
@@ -8335,7 +8335,7 @@
     {
       "path": "README.md",
       "bytes": 19915,
-      "sha256": "903841e2c56cdd60cb97a4ab4fbd0ef7db1cc2e2a4d6e9f83aacd53a95687147"
+      "sha256": "f079fa5c24c0e6c33630dcc2990171e509a20a536da6224d60784959e0ef1b3f"
     },
     {
       "path": "scripts/android/build.mjs",
@@ -8349,8 +8349,8 @@
     },
     {
       "path": "scripts/android/public-files.json",
-      "bytes": 3195,
-      "sha256": "6e5e9e5e8eb0a697bbd9365002061721d5127f8febbb954e3e2e3c94ec37565c"
+      "bytes": 3232,
+      "sha256": "51d7d05ea7f0fa34dbd3735f92c173140f9267fdc2be7c606dd5b0ede5a368f3"
     },
     {
       "path": "scripts/android/public-source.mjs",
@@ -8359,8 +8359,8 @@
     },
     {
       "path": "scripts/android/test-repository.mjs",
-      "bytes": 3108,
-      "sha256": "578454fabed16118cf663dcd159313e1482ba713fd1a021d9e23a597111d523d"
+      "bytes": 3880,
+      "sha256": "d03b7a25129b481e564afbb1e0419ec6109d542bf927347005254bda467973bc"
     },
     {
       "path": "scripts/android/test-updates.mjs",
@@ -9824,8 +9824,8 @@
     },
     {
       "path": "tests/android/AndroidManifest.xml",
-      "bytes": 396,
-      "sha256": "b6f034c5c2f09332da8918eb5a88f14f2b778e01503e954a1de812add1fcea01"
+      "bytes": 502,
+      "sha256": "c90251cd01f08b85de7bef2c121464e53d98ebbf1541d63cc9c68b481900bdf1"
     },
     {
       "path": "tests/android/AppUpdateCheckerTests.java",
@@ -9841,6 +9841,11 @@
       "path": "tests/android/RepositoryTests.java",
       "bytes": 11584,
       "sha256": "851b49fdc6c9b703035e48671ac28a41c3e5d76d8dbe2f2cdf75c4ec8a2cbec0"
+    },
+    {
+      "path": "tests/android/WebViewTests.java",
+      "bytes": 8899,
+      "sha256": "c20f1c4cc11ddc324267810ff8329e55a63e579072cf969a3e205a7b001f8448"
     },
     {
       "path": "tests/games/source-policy.test.mjs",
