@@ -2,6 +2,16 @@
 
 需要 Node.js >=22。日常安装使用 `@latest` 获取 npm 当前发布版本；未发布的开发版本可从源码打包安装。
 
+## 推荐：把接入交给助手
+
+在游戏项目中打开能读写文件、执行命令的 AI 编程助手，发送：
+
+```text
+请按照 https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md 在当前项目接入 owngame，完成安装和可用性检查，然后帮我做游戏。
+```
+
+助手按[通用接入说明](agent-setup.md)安装工具、读取 Skill 并验证 CLI。无需用户选择助手类型、配置 MCP 或重载宿主。下面保留手动安装与可选 MCP 的详细步骤。
+
 ## 从本地安装包开始
 
 源码目录执行 `npm ci` 和 `npm pack`。在另一个空目录安装输出的 tarball，将下方路径和 `<version>` 替换为实际生成的安装包路径与版本：

@@ -44,6 +44,7 @@
     "templates/",
     "scripts/toolkit/",
     "docs/install.md",
+    "docs/agent-setup.md",
     "docs/quickstart.md",
     "docs/cases/",
     "docs/style-recipes.json",

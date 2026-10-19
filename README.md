@@ -6,7 +6,7 @@
 
 面向 AI 助手的开源游戏创作工具包：从可玩参考出发，完成美术、玩法与交付迭代。
 
-[![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A5%2022-339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A5%2022-339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Discord 社区](https://img.shields.io/badge/Discord-%E5%8A%A0%E5%85%A5%E7%A4%BE%E5%8C%BA-5865F2?logo=discord&logoColor=white)](https://discord.gg/X5cYjTaD)
 
 [试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [Discord 社区](https://discord.gg/X5cYjTaD) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [English](#english)
 
@@ -63,21 +63,13 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 
 ### 1. 接入你的 AI 助手
 
-需要 **Node.js 22 或以上**及 npm。在你的游戏项目目录中执行：
+在游戏项目中打开你的 AI 编程助手，把下面这句话发给它：
 
-```sh
-npx @owngame/cli@latest setup --agent codex --apply
+```text
+请按照 https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md 在当前项目接入 owngame，完成安装和可用性检查，然后帮我做游戏。
 ```
 
-| 助手 | 接入方式 |
-| --- | --- |
-| Codex | 使用 `--agent codex`，写入项目 MCP 配置与 Skill |
-| Cursor | 使用 `--agent cursor`，写入项目 MCP 配置与 Skill |
-| 其他支持本地 MCP 的助手 | 使用 `--agent generic`，生成配置与 Skill，再按宿主要求手动导入 |
-
-`@latest` 获取 npm 当前发布版本。去掉 `--apply` 可预览配置变更。安装仅写入当前项目，保留其他配置，并对覆盖内容建立备份；已修改的 owngame 配置会触发冲突检查。
-
-完成后重载助手、信任项目配置，并让助手调用 `owngame_capabilities` 确认连接。详细步骤见 [安装与接入](docs/install.md)。
+助手会检查 Node.js 22+ 与 npm、安装当前发布版本、读取创作 Skill，并验证工具可用。统一通过 CLI 使用，**无需选择助手类型或配置 MCP**，适用于能读写项目并执行命令的 AI 编程助手。也可查看[接入说明](docs/agent-setup.md)；手动安装与可选 MCP 配置见[安装与接入](docs/install.md)。
 
 ### 2. 描述你想做的游戏
 
@@ -249,7 +241,7 @@ owngame is an open-source game authoring toolkit that connects your existing AI 
 
 Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use **Recreate (复刻)** to bring its rules and visual direction into your own workspace. Your agent implements and tests the new version with you; the Recreate action provides a creative brief and references, and links to the corresponding open-source game. All 18 hosted games have editable sources in `examples/`, with per-game licenses and version manifests.
 
-Requires **Node.js 22+** and npm. Run the setup command in the quick start section in your game project, reload your assistant, and verify the connection. Codex and Cursor have project setup options; other local MCP clients can use the generic configuration. The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
+Open your game project in an AI coding assistant and send: **Follow https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md to set up owngame in this project, verify it works, then help me make a game.** The assistant checks Node.js 22+ and npm, installs the published toolkit, reads the creative Skill, and uses the shared CLI. No assistant selection or MCP configuration is required. This works with assistants that can read/write project files and run commands. See [manual installation and optional MCP](docs/install.md). The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
 
 **Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone HomeArt exploration scene with character controls, camera and a four-step quest. Available through CLI/MCP in 0.9.0+: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the [Android client source](apps/android) is public and its APK remains an internal alpha. See the [support roadmap](#支持路线图) for scope and status.
 
