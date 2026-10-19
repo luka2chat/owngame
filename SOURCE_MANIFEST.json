@@ -279,8 +279,8 @@
     },
     {
       "path": "apps/web/public/index.html",
-      "bytes": 7309,
-      "sha256": "3a1ac79e851353caf043367c05c83c260f4ce0336d389063078b463d38ccdfd4"
+      "bytes": 7584,
+      "sha256": "ab7c541148d907068aada49e003f3f5ed2edad9cd7011bf02a4de90dfcedc0b8"
     },
     {
       "path": "apps/web/public/manifest.webmanifest",
@@ -324,8 +324,8 @@
     },
     {
       "path": "apps/web/public/style.css",
-      "bytes": 19228,
-      "sha256": "eee0e0b296889d6b67bfe2707bdf48401780a2368070a954f3e738d3e252ddb0"
+      "bytes": 19879,
+      "sha256": "b3c5b477f354196179d94ed7db092f2ca2908f7a9ab33284762eee40acc315ff"
     },
     {
       "path": "apps/web/public/sw.js",
@@ -8029,8 +8029,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 19087,
-      "sha256": "078772290293786ed7793f1338bd471b9c89bd735738b22cb1865243b90e5d66"
+      "bytes": 19475,
+      "sha256": "d176a2b109d0e77e8e4583df47b2da1fc11b3400882cdcf9fe55d8ceb0bf52e3"
     },
     {
       "path": "scripts/arrow-escape/catalog.json",

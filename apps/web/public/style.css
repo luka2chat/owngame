@@ -164,6 +164,9 @@ button:active,
 .sidebar nav {
   display: grid;
   gap: 7px;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .nav-label {
   font-size: 11px;
@@ -200,6 +203,24 @@ button:active,
   margin-top: auto;
   text-align: center;
   padding-top: 25px;
+}
+.community-link {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: 16px;
+  padding: 10px 8px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: var(--yellow);
+  box-shadow: 0 3px var(--ink);
+  font-size: 13px;
+  font-weight: 750;
+}
+.community-link:hover {
+  background: #ffe16b;
 }
 .sidebar-note img {
   display: block;
@@ -575,6 +596,16 @@ footer b {
   font-size: 18px;
   color: var(--ink);
 }
+footer .footer-community {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--blue);
+  font-weight: 750;
+}
+footer .footer-community:hover {
+  text-decoration: underline;
+}
 footer button {
   border: 0;
   background: transparent;
@@ -708,6 +739,7 @@ dialog p {
   .search kbd,
   .top-mine,
   .sidebar-note,
+  .community-link,
   .about-link {
     display: none;
   }

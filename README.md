@@ -8,7 +8,7 @@
 
 [![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A5%2022-339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-[试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [English](#english)
+[试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [Discord 社区](https://discord.gg/X5cYjTaD) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [English](#english)
 
 </div>
 
@@ -218,6 +218,8 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 
 ## 参与贡献
 
+加入 [owngame Discord 社区](https://discord.gg/X5cYjTaD)，分享你的游戏、寻找试玩伙伴，交流 AI 创作与工具使用心得。中文与 English 都欢迎；需要持续跟踪的 Bug 和功能需求请提交到 [Issues](https://github.com/luka2chat/owngame/issues)。
+
 欢迎贡献可复现的问题修复、可移植的游戏模板、制作案例与风格配方。提交问题时，请附上工具版本、复现步骤、预期行为和实际结果。
 
 本地开发从以下命令开始：
@@ -251,4 +253,4 @@ Requires **Node.js 22+** and npm. Run the setup command in the quick start secti
 
 **Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone HomeArt exploration scene with character controls, camera and a four-step quest. Available through CLI/MCP in 0.9.0+: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the Android client remains an internal alpha. See the [support roadmap](#支持路线图) for scope and status.
 
-[Get started](#快速开始) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)
+[Get started](#快速开始) · [Discord community](https://discord.gg/X5cYjTaD) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)
