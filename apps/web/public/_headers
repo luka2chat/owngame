@@ -1,0 +1,32 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: SAMEORIGIN
+/sw.js
+  Cache-Control: no-cache
+/catalog.json
+  Cache-Control: no-cache
+/app.js
+  Cache-Control: no-cache
+/play.js
+  Cache-Control: no-cache
+/data.js
+  Cache-Control: no-cache
+/remix.js
+  Cache-Control: no-cache
+/style.css
+  Cache-Control: no-cache
+/remix.css
+  Cache-Control: no-cache
+/remix/*
+  Cache-Control: no-cache
+/games/*
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/analytics*.js
+  Cache-Control: no-cache
+/analytics.css
+  Cache-Control: no-cache
+/privacy.html
+  Cache-Control: no-cache

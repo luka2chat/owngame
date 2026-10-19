@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "bamboo-rally",
+  "title": "竹影回珠",
+  "kind": "phaser",
+  "online_build_sha256": "fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0",
+  "original_source_sha256": "5fbaf2e2de60527fcaf32e6a5348e328e3f3bb9f61dd4efa7f10e138f0c4152e",
+  "license": "MIT",
+  "description": "在晨光竹庭里拖拍回珠，单人陪练或与朋友同屏对打。"
+}

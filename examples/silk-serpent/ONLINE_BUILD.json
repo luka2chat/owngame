@@ -1,0 +1,62 @@
+{
+  "id": "silk-serpent",
+  "build_sha256": "5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 809862,
+      "path": "assets/bend.png",
+      "sha256": "1d7cb44c852a763869cf8c8ffa32aaa6090fdcfc4e8fb3b69629380d9d673e31"
+    },
+    {
+      "bytes": 3007288,
+      "path": "assets/courtyard.png",
+      "sha256": "9c8fa0be55330b359d149265d65b76dbf5e7299110d4130084a1770519b5ae2c"
+    },
+    {
+      "bytes": 1077354,
+      "path": "assets/dragon.png",
+      "sha256": "734098c6154ba310e74188350cd754854ccc4068bd92c6a3a866d574631e3669"
+    },
+    {
+      "bytes": 2556178,
+      "path": "assets/title.png",
+      "sha256": "6b9ac338dddfba9452e078dcc4022064891b4738e87b204606eaba7bdde279b5"
+    },
+    {
+      "bytes": 2782,
+      "path": "cover.html",
+      "sha256": "3791247784355651ea75b5fd00f0455ac6fcf77754aaba4918e22bffa8167045"
+    },
+    {
+      "bytes": 1234294,
+      "path": "game.js",
+      "sha256": "5762dad87abc21feea71094b8dd49b7e2aa9cc2250d2fde94d6c835c78099ce7"
+    },
+    {
+      "bytes": 5853,
+      "path": "game.js.LEGAL.txt",
+      "sha256": "710ec19e3afb47afc876f5236f2ca04065c51fa10ccf3252e4d04b442d6a8361"
+    },
+    {
+      "bytes": 2625,
+      "path": "index.html",
+      "sha256": "39c3526031352b869b6b50e72c9482322e5ce38ac741b67d5e0a98ce4454a9c2"
+    },
+    {
+      "bytes": 1082,
+      "path": "licenses/eventemitter3.txt",
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "bytes": 1120,
+      "path": "licenses/phaser.txt",
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "bytes": 4194,
+      "path": "style.css",
+      "sha256": "d453d19503f616ef1b77a322f46abe80b8a85b23287bafb3ab05211e3919745f"
+    }
+  ]
+}

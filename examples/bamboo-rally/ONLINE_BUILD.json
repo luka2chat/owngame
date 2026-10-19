@@ -1,0 +1,62 @@
+{
+  "id": "bamboo-rally",
+  "build_sha256": "fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 2940917,
+      "path": "assets/courtyard.png",
+      "sha256": "71920e3b082234621302112dccd5721886d8b36ce6e962af1fcf5d7be4c292b0"
+    },
+    {
+      "bytes": 2481619,
+      "path": "assets/lacquer.png",
+      "sha256": "bc6dd1804e93e4d6fb65d21ec7280afca0543120432548add2b98074dd93f053"
+    },
+    {
+      "bytes": 1506664,
+      "path": "assets/paddles.png",
+      "sha256": "2c67e38293872222a65ce15d4279f52c829f6c72c077836315b557a8bb9f7f8b"
+    },
+    {
+      "bytes": 934258,
+      "path": "assets/title.png",
+      "sha256": "83134754857b46043957f4a4573df6368facf64ea89a644d0f9319bbc87cb1de"
+    },
+    {
+      "bytes": 1944,
+      "path": "cover.html",
+      "sha256": "4e7b2cc65d6e5d0b37efcc1fd79ae9ab082d07db5335716cc5d632de95795918"
+    },
+    {
+      "bytes": 1235578,
+      "path": "game.js",
+      "sha256": "716b212dd28c94098f752aeec6e89ad50d04d956af6895886d4e87a73f8e5a97"
+    },
+    {
+      "bytes": 5853,
+      "path": "game.js.LEGAL.txt",
+      "sha256": "710ec19e3afb47afc876f5236f2ca04065c51fa10ccf3252e4d04b442d6a8361"
+    },
+    {
+      "bytes": 2253,
+      "path": "index.html",
+      "sha256": "476e27ad7d7452fd477da76985cf86328e9e8fb03ce4b6886747fc8d0a2ade91"
+    },
+    {
+      "bytes": 1082,
+      "path": "licenses/eventemitter3.txt",
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "bytes": 1120,
+      "path": "licenses/phaser.txt",
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "bytes": 5770,
+      "path": "style.css",
+      "sha256": "0d00229a3e61f13235ae4c6b5e7cbed8d5a18001117562325a57d006a6a71143"
+    }
+  ]
+}

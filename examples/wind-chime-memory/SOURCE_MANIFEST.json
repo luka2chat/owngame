@@ -1,0 +1,143 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "wind-chime-memory",
+  "online_build_sha256": "2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995",
+  "input_sha256": "21978e904768019e67f33f1ccd2d19c9a54a80a3d5825b00c4425ed71161cd8c",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 436,
+      "sha256": "45b4983b064f6db3401876a7a5af2f0cc01d7b3fb7dfc63f62f9e4a1b7c97e5a"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 2167,
+      "sha256": "5aa82cb75db8a870c5637c2a82ad2c91cee8f46662ee1d55399aa912fc1e0406"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 15376,
+      "sha256": "41eb881c246c544b49a336b13466d0fae6036ceab1c0b4075baa431fb2173a0c"
+    },
+    {
+      "path": "package.json",
+      "bytes": 403,
+      "sha256": "fd9b4688e9333ab34e34b91a6f762a6f9c7747aeb174d1f27755a374383ba7aa"
+    },
+    {
+      "path": "public/assets/chime-leaf.png",
+      "bytes": 909202,
+      "sha256": "ac0cb46a0f03bf36a3cd6b12654bed14cee3dc7d10f5e13ae2cf7e190f81832f"
+    },
+    {
+      "path": "public/assets/chime-moon.png",
+      "bytes": 881505,
+      "sha256": "a2df94eb97576d906c10f2a3499c5fe6156162e34de8c68c1dfd1c46f3cdbd87"
+    },
+    {
+      "path": "public/assets/chime-stream.png",
+      "bytes": 936679,
+      "sha256": "1555ade265bb58de2fca7a86188672f77fcb7e3ccea4c65d8295141c36e301d5"
+    },
+    {
+      "path": "public/assets/chime-sun.png",
+      "bytes": 877993,
+      "sha256": "dec4d438130c07b07118ec78638f59d5f14ce46329ba52212b8d3a7cb9540151"
+    },
+    {
+      "path": "public/assets/garden-c.png",
+      "bytes": 2436928,
+      "sha256": "738f314a0077b28154b6a1443935d67fc1a14c383a2d9eedfd3c388b7f4b5278"
+    },
+    {
+      "path": "public/assets/porcelain-control.png",
+      "bytes": 1478511,
+      "sha256": "f48739c2c1bd3d4ef45ec0ce74bc66630e1e2f4469bd5132f5c13fe9b73bb4c8"
+    },
+    {
+      "path": "public/cover.html",
+      "bytes": 1358,
+      "sha256": "953845a26347fc64400ed09b1bb3570e5c7987c0f41fe2401c0aa6556325ed95"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 1675,
+      "sha256": "b7c386593944b4342ae7ebd8c9e4ce4edb67149410ebc5ad716a71ac804a7391"
+    },
+    {
+      "path": "public/licenses/eventemitter3.txt",
+      "bytes": 1082,
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "path": "public/licenses/phaser.txt",
+      "bytes": 1120,
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 4674,
+      "sha256": "d3b9aed52f3c20cea4fb516fb2f934430b7ce5f72db8f2d52bbf0755db46ffa9"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1251,
+      "sha256": "6753a9e0f431f4284d0997a7d3d9cb33239bd65499785392f91b76c446ed0c83"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/audio.ts",
+      "bytes": 1110,
+      "sha256": "ce65f5bcecd6e59a3bb75191f5fcb26c8b73239eab95255f60a7479afa007466"
+    },
+    {
+      "path": "src/garden-scene.ts",
+      "bytes": 2724,
+      "sha256": "88ee726981bffcbe589f8c163a4837f02916fae894bc5096094b68241233950f"
+    },
+    {
+      "path": "src/layout.ts",
+      "bytes": 951,
+      "sha256": "6db0caffdc59554fb8f52839129496fb2d5f32cc049239a0de93227cb56bfb25"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 12419,
+      "sha256": "3d4cdc98b08ae75e87893be2a3e36abf1fa914a9929548e675fc9bccffd45248"
+    },
+    {
+      "path": "src/rules.ts",
+      "bytes": 4773,
+      "sha256": "ddd3839ae0bf8ed37794dd4290ffa669d8660579b3a20ce4cb8031095ae1a128"
+    },
+    {
+      "path": "src/storage.ts",
+      "bytes": 1577,
+      "sha256": "f453e49613010545bc79c476bb3e16aad82ddd40bee2a14867dcfe5d9f24416b"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 2520,
+      "sha256": "922917cb3553acf0d1966be6bba5e748876c11e222e5dd156758a7b83c0c47d1"
+    }
+  ]
+}

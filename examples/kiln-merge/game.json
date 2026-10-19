@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "kiln-merge",
+  "title": "窑火相融",
+  "kind": "phaser",
+  "online_build_sha256": "54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf",
+  "original_source_sha256": "b2a4884e4c9382f22f28cdb164a3535ecebdb29c39f5994532031ce67bae9bd3",
+  "license": "MIT",
+  "description": "让青釉瓷片相融，慢慢烧出一枚2048。"
+}

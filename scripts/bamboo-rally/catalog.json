@@ -1,0 +1,14 @@
+[
+  {
+    "id": "bamboo-rally",
+    "title": "竹影回珠",
+    "subtitle": "BAMBOO RALLY",
+    "tag": "竹庭水墨 · 拖拍对打",
+    "art": "bamboo-rally",
+    "category": "街机",
+    "viewportHeight": 800,
+    "description": "在晨光竹庭里拖拍回珠，单人陪练或与朋友同屏对打。",
+    "instructions": "在己方半场拖动球拍回珠，先得 7 分获胜，每两分换发。回球需先落台；单人三档或同屏双人，支持暂停、简动、静音和自动存档。",
+    "responsiveViewport": true
+  }
+]

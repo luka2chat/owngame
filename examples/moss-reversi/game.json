@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "moss-reversi",
+  "title": "苔庭翻面",
+  "kind": "moss",
+  "online_build_sha256": "f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e",
+  "original_source_sha256": null,
+  "license": "MIT",
+  "description": "墨石与白瓷，在纸上的苔庭里翻转局势。"
+}

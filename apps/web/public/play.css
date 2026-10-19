@@ -1,0 +1,153 @@
+.player-root { background:var(--paper); }
+.player-body { color:var(--ink); }
+#player-safe-area { position:fixed;inset:0;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px); }
+.player-header { position:relative; }
+.player-header .search input { margin:0; }
+.player-header .top-mine { white-space:nowrap; }
+.detail-main { max-width:1240px;margin:0 auto;padding:28px 36px 38px; }
+.player-breadcrumb { display:flex;align-items:center;flex-wrap:wrap;gap:15px;font-size:13px;color:#7b705b;margin-bottom:23px; }
+.player-breadcrumb a { color:var(--blue);font-weight:700; }
+.player-breadcrumb b { color:var(--ink); }
+.player-layout { display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:70px;align-items:start; }
+.player-info { padding-top:26px;min-width:0; }
+.player-info h1 { font-size:clamp(36px,4.2vw,60px);letter-spacing:-2px;margin:20px 0 18px;overflow-wrap:anywhere; }
+#game-description { font-size:20px;line-height:1.8;color:#756851;margin:18px 0;max-width:25em; }
+.player-actions { display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:26px 0; }
+.player-button { width:100%;padding:13px 16px;border:2px solid var(--ink);border-radius:10px;background:#fffdf5;font-size:14px;font-weight:750;box-shadow:0 3px var(--ink);cursor:pointer; }
+.primary-action { grid-column:1/-1;background:var(--red);color:white; }
+.download-action { background:var(--yellow); }
+.player-button:disabled { cursor:wait;opacity:.65; }
+.player-button:hover:not(:disabled) { filter:brightness(.97); }
+.instructions { border-top:2px dashed #cec2a8;padding-top:20px;margin-top:24px; }
+.instructions h2,.player-recommend h2 { display:flex;gap:10px;align-items:center;font-size:19px;margin:0 0 16px; }
+.instructions .red-slash,.player-recommend .red-slash { font-size:27px; }
+.instructions p { font-size:13px;line-height:1.9;color:#7b705b; }
+#keyboard-help { margin:0; }
+#keyboard-help > div { display:flex;align-items:center;justify-content:space-between;gap:12px;margin:15px 0;font-size:13px; }
+#keyboard-help dt { font-weight:750; }
+#keyboard-help dd { margin:0;color:#756851; }
+#keyboard-help kbd { font:inherit;border:1.5px solid #b6aa91;border-radius:4px;background:#fffdf6;padding:3px 7px;box-shadow:0 2px #ded4bd; }
+.player-panel { min-width:0;display:flex;flex-direction:column;align-items:center;background:#efe5cf;border:3px solid var(--ink);border-radius:18px;padding:22px 26px 18px;box-shadow:0 5px var(--ink); }
+#stage { position:relative;height:clamp(440px,65dvh,680px);aspect-ratio:var(--stage-ratio,450 / 1000);max-width:100%;background:#06141b;border-radius:12px;overflow:hidden;outline:3px solid var(--ink);flex:none; }
+#stage iframe { border:0;width:450px;height:1000px;max-width:none;display:block;position:absolute;left:50%;top:50%;transform-origin:center; }
+#loading { position:absolute;inset:0;display:grid;place-items:center;padding:20px;text-align:center;font-size:13px;color:#fff8e8; }
+#loading[hidden] { display:none; }
+.player-tools { display:flex;width:100%;max-width:430px;justify-content:space-between;align-items:center;gap:12px;font-size:12px;padding:20px 2px 0; }
+.player-tools > span { display:flex;gap:8px;align-items:center; }
+.player-tools i { width:7px;height:7px;flex:none;background:var(--red);border-radius:50%; }
+.player-tools > div { display:flex;gap:14px;white-space:nowrap; }
+.player-tools button { border:0;background:transparent;padding:0;font-size:12px;font-weight:700; }
+.player-tools a { color:var(--blue);font-weight:700; }
+.player-recommend { margin-top:35px;border-top:2px dashed #cec2a8;padding-top:22px; }
+#recommend-games { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px; }
+.recommend-game { display:flex;align-items:center;gap:14px;background:#fffdf5;border:2px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:0 3px var(--ink);min-height:84px; }
+.recommend-art { width:110px;height:84px;position:relative;overflow:hidden;flex:none;border-right:2px solid var(--ink); }
+.recommend-art > .art { position:absolute;inset:0; }
+.recommend-art img { width:100%;height:100%;object-fit:cover; }
+.recommend-copy { min-width:0;flex:1;padding:10px 0; }
+.recommend-copy b { display:block;font-size:15px; }
+.recommend-copy small { display:block;font-size:11px;margin-top:7px;color:#8a7861; }
+.recommend-arrow { padding-right:15px;color:var(--red); }
+.capsule {
+  position: fixed;
+  top: max(20px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
+  display: flex;
+  align-items: center;
+  background: #162024b8;
+  border: 1px solid #ffffff65;
+  border-radius: 28px;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+.capsule button,
+.capsule a {
+  border: 0;
+  background: none;
+  color: white;
+  font-size: 24px;
+  width: 53px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  line-height: 1;
+  padding: 0;
+  flex: 0 0 53px;
+  overflow: hidden;
+}
+.capsule svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  pointer-events: none;
+}
+.capsule span {
+  height: 20px;
+  width: 1px;
+  background: #ffffff40;
+  flex: 0 0 1px;
+}
+#menu {
+  width: 360px;
+}
+.menu-row {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border: 2px solid #242820;
+  border-radius: 9px;
+  background: #fffdf5;
+  color: #242820;
+  font-size: 14px;
+  cursor: pointer;
+}
+#confirm .player-button {
+  color: #35372d;
+  border-color: #35372d;
+}
+
+/* Desktop controls live under the game; the compact capsule remains for phone/fullscreen. */
+.capsule { display:none; }
+@media (min-width:761px) {
+ .landscape-player .player-layout { grid-template-columns:1fr;gap:28px; }
+ .landscape-player .player-panel { grid-row:1; }
+ .landscape-player #stage { width:100%;height:auto;aspect-ratio:16 / 9; }
+ .landscape-player .player-tools { max-width:none; }
+ .landscape-player .player-info { padding-top:0; }
+ .landscape-player #game-description { max-width:50em; }
+ .landscape-player .player-actions { max-width:680px; }
+}
+.player-body:fullscreen { background:#081b24; }
+.player-body:fullscreen .player-header,.player-body:fullscreen .player-info,.player-body:fullscreen .player-breadcrumb,.player-body:fullscreen .player-recommend,.player-body:fullscreen .player-tools { display:none; }
+.player-body:fullscreen .detail-main { max-width:none;margin:0;padding:0; }
+.player-body:fullscreen .player-layout { display:flex;justify-content:center;height:100dvh;padding:0;gap:0; }
+.player-body:fullscreen .player-panel { width:100%;height:100%;padding:0;border:0;border-radius:0;box-shadow:none;background:#081b24; }
+.player-body:fullscreen #stage { height:100%;max-width:100%;border-radius:0;outline:0; }
+.landscape-player:fullscreen #stage { width:100%;aspect-ratio:auto; }
+.player-body:fullscreen .capsule { display:flex; }
+@media (min-width:761px) and (max-width:1100px) {
+ .player-layout { gap:30px;grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+ .detail-main { padding:24px; }
+ .player-header { gap:20px; }
+ .player-header .search { margin-left:0; }
+ .player-panel { padding:20px 14px 16px; }
+ .player-actions { grid-template-columns:1fr; }
+ .recommend-art { width:72px; }
+ .recommend-game { gap:10px; }
+}
+@media (max-width:760px), (pointer:coarse) and (max-height:650px) {
+ .player-root,.player-body { background:#081b24;color:#fff8e8; }
+ .player-header,.player-info,.player-breadcrumb,.player-recommend,.player-tools { display:none; }
+ .detail-main { max-width:none;margin:0;padding:0; }
+ .player-layout { display:flex;justify-content:center;height:100dvh;min-height:0;padding:0;gap:0; }
+ .player-panel { width:100%;height:100%;padding:0;border:0;border-radius:0;box-shadow:none;background:#081b24; }
+ #stage { height:100%;max-width:100%;width:100%;border-radius:0;outline:0;box-shadow:none; }
+ .capsule { display:flex;right:12px;top:max(14px,env(safe-area-inset-top)); }
+ .harbor-player .player-layout,.board-player .player-layout { padding-top:64px; }
+ .responsive-player .player-layout { padding-top:0; }
+ .responsive-player .capsule { top:max(4px,env(safe-area-inset-top)); }
+}

@@ -1,0 +1,128 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "unlock-bolts-mobile",
+  "online_build_sha256": "242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b",
+  "input_sha256": "f9eafe55f2ea84fa6f845371f1234ecc59fcb5f3112246f3498896059b7f7dde",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 396,
+      "sha256": "082e382432c208277603442f6b545adb90ad55fdf880c1142c5b02419c6b74f6"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 1535,
+      "sha256": "28768decb8cb207a2745f59c5570326a149ed43ced7343fd10609c3af0990ea6"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 15380,
+      "sha256": "7f1427f64ca3cb1220f0e246abb2806421c5cdeb839903388259cb1f92da6e32"
+    },
+    {
+      "path": "package.json",
+      "bytes": 405,
+      "sha256": "2329858cbc5200a35511026e485ac13c22d02f308aae5268e2137e1ae4d29c94"
+    },
+    {
+      "path": "public/assets/hardware.png",
+      "bytes": 954697,
+      "sha256": "a4720cccd690d6e6f77ae2713e6b1bbccf89d5df6145c76e776a3f97b6162536"
+    },
+    {
+      "path": "public/assets/shaft.png",
+      "bytes": 1394319,
+      "sha256": "c886d67c95fd0e7f3bc9f3db4dde5f5fd5d38e948a456e18b6b11e48647ce3b5"
+    },
+    {
+      "path": "public/assets/workshop.png",
+      "bytes": 2717211,
+      "sha256": "4b6618207229d4d37f44b9a8f85dc0e6640caee44f649eceefebdb6e12f039a9"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 2164,
+      "sha256": "974db7ec1b4739e1a6046b784ab8f7cf26464c752aa5e21e891180dd8fbe10f6"
+    },
+    {
+      "path": "public/licenses/eventemitter3.txt",
+      "bytes": 1082,
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "path": "public/licenses/phaser.txt",
+      "bytes": 1120,
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 4376,
+      "sha256": "a59f9f7ea60390d72c6a0c82a0a05d10e49b5d4132302c4a0b57ae99fa6cd6a3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1220,
+      "sha256": "3b4ec18b3291206087dafb9ea7ecced94325c5688f176bfd242cbcf2627ac288"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/controller.ts",
+      "bytes": 5446,
+      "sha256": "a2598b7329f360c1be724a76b0634375db898704606fd94cc6a68b8537c8d878"
+    },
+    {
+      "path": "src/layout.ts",
+      "bytes": 2382,
+      "sha256": "b45ddfd9406d1a4215e76dce39986c097805a3e2df5c1c71898f929200a0238f"
+    },
+    {
+      "path": "src/levels.ts",
+      "bytes": 1704,
+      "sha256": "e78256f365fae334d67225cba72933dbf03e417ad0310155ff6db6b5e50d128b"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 12047,
+      "sha256": "c8f1e384cdd8f701257fd2e32628de850abe1fbd1d2c9f5102846b46c0fdc8fa"
+    },
+    {
+      "path": "src/rules.ts",
+      "bytes": 4325,
+      "sha256": "7d15e3a9d37abfae027832ec8d601bf8c4a46913e63ae95dd68b95fd5a74d698"
+    },
+    {
+      "path": "src/scene.ts",
+      "bytes": 10024,
+      "sha256": "18bd78b4d30e873c3c3a2e6fe6d5e24c2ec100b779725468d84424847abe608e"
+    },
+    {
+      "path": "src/storage.ts",
+      "bytes": 3791,
+      "sha256": "6bcebe049a6809cad3b2a89348e0d7cc844a2ed404aa55ed2f3a21fdfae5fbda"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 2520,
+      "sha256": "09aa75989548773e713d3957030f1cdb53f5e4a1f7e9aac3b988710ce19a190f"
+    }
+  ]
+}

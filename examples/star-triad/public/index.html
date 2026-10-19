@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#555e92">
+  <title>星图三连 · 月光珐琅</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./game.js"></script>
+</head>
+<body>
+  <main id="viewport" aria-label="星图三连">
+    <div id="frame">
+      <div id="scene" aria-hidden="true"></div>
+      <div id="play" class="surface">
+        <header>
+          <h1>星图三连</h1>
+          <p class="english"><span>✦</span> THE LITTLE OBSERVATORY <span>✦</span></p>
+          <div class="score glass" aria-label="当前棋子数量">
+            <span class="mini-piece star" aria-hidden="true"></span><span id="star-count">星 0</span>
+            <span class="dot">·</span>
+            <span class="mini-piece moon" aria-hidden="true"></span><span id="moon-count">月 0</span>
+          </div>
+        </header>
+        <div id="board-input" role="group" aria-label="三行三列棋盘"></div>
+        <div id="result" class="glass" role="status" aria-live="polite"><span class="result-spark">✦</span><span id="status-text">正在点亮观测室…</span><span class="result-spark">✦</span></div>
+        <p id="notice" aria-live="polite">每手自动保存，随时接续</p>
+        <nav id="main-controls" aria-label="棋局操作">
+          <button id="undo" class="glass" type="button"><svg viewBox="0 0 24 24"><path d="M8 5 3 10l5 5M4 10h10a6 6 0 0 1 0 12"/></svg><span>悔一步</span></button>
+          <button id="new" class="glass primary" type="button"><svg viewBox="0 0 24 24"><path d="M20 9a8 8 0 0 0-14-4L3 8m0-5v5h5M4 15a8 8 0 0 0 14 4l3-3m0 5v-5h-5"/></svg><span>新一局</span></button>
+          <button id="help" class="glass" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 8a2.7 2.7 0 0 1 5 1.3c0 2-2.5 2-2.5 4M12 17v.1"/></svg><span>玩法</span></button>
+        </nav>
+        <nav id="settings" aria-label="对局设置">
+          <button id="mode" class="glass" type="button"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M2 21v-3a7 7 0 0 1 14 0v3M17 4a3 3 0 0 1 0 6m2 4a6 6 0 0 1 3 5v2"/></svg><span id="mode-text">单人陪练</span><span class="switch-mark">⇄</span></button>
+          <button id="simple" class="glass" type="button" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="m13 2-8 12h6l-1 8 9-13h-6z"/></svg><span id="simple-text">简动：关</span><span class="toggle" aria-hidden="true"></span></button>
+        </nav>
+      </div>
+      <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="dialog glass">
+          <div class="dialog-emblem" aria-hidden="true"><span class="mini-piece star"></span><span>✦</span><span class="mini-piece moon"></span></div>
+          <h2 id="modal-title"></h2>
+          <div id="modal-body"></div>
+          <div id="modal-actions"></div>
+        </div>
+      </div>
+      <div id="loading" role="status"><span class="loading-star">✦</span><p>正在点亮观测室…</p><button id="retry" class="glass" type="button" hidden>重新打开</button></div>
+    </div>
+  </main>
+</body>
+</html>

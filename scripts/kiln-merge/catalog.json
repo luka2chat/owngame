@@ -1,0 +1,14 @@
+[
+  {
+    "id": "kiln-merge",
+    "title": "窑火相融",
+    "subtitle": "KILN MERGE",
+    "tag": "手绘陶坊 · 滑动合成",
+    "art": "kiln-merge",
+    "category": "益智",
+    "viewportHeight": 720,
+    "description": "让青釉瓷片相融，慢慢烧出一枚2048。",
+    "instructions": "沿横向或竖向滑动，相同数字相遇会合并。每次有效移动后出现2或4；合成2048完成，每局一次撤销，进度和最高分自动保存。",
+    "responsiveViewport": true
+  }
+]

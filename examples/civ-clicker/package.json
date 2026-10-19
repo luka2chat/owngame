@@ -1,0 +1,17 @@
+{
+  "name": "@owngame-example/civ-clicker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node serve.mjs",
+    "start": "npm run build && npm run serve"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

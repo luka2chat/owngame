@@ -1,0 +1,54 @@
+{
+  "signal-harbor": {
+    "cover": "/art/rollout/signal-harbor.png",
+    "coverTitleBaked": true
+  },
+  "unlock-bolts-mobile": {
+    "cover": "/art/rollout/unlock-bolts-mobile.png",
+    "coverTitleBaked": true
+  },
+  "moss-reversi": {
+    "cover": "/art/rollout/moss-reversi.png",
+    "coverTitleBaked": true
+  },
+  "postcard-slide": {
+    "cover": "/art/rollout/postcard-slide.png",
+    "coverTitleBaked": true
+  },
+  "silk-serpent": {
+    "cover": "/art/rollout/silk-serpent.png",
+    "coverTitleBaked": true
+  },
+  "kiln-merge": {
+    "cover": "/art/rollout/kiln-merge.png",
+    "coverTitleBaked": true
+  },
+  "petal-memory": {
+    "cover": "/art/rollout/petal-memory.png",
+    "coverTitleBaked": false
+  },
+  "bamboo-rally": {
+    "cover": "/art/rollout/bamboo-rally.png",
+    "coverTitleBaked": true
+  },
+  "wind-chime-memory": {
+    "cover": "/art/rollout/wind-chime-memory.png",
+    "coverTitleBaked": true
+  },
+  "rc-rally": {
+    "cover": "/art/rollout/rc-rally.png",
+    "coverTitleBaked": false
+  },
+  "faune-dungeon": {
+    "cover": "/art/rollout/faune-dungeon.png",
+    "coverTitleBaked": false
+  },
+  "civ-clicker": {
+    "cover": "/art/rollout/civ-clicker.png",
+    "coverTitleBaked": false
+  },
+  "neon-shooter": {
+    "cover": "/art/rollout/neon-shooter.png",
+    "coverTitleBaked": false
+  }
+}

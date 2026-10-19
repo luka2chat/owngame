@@ -1,0 +1,14 @@
+[
+  {
+    "id": "postcard-slide",
+    "title": "山城来信",
+    "subtitle": "POSTCARDS FROM THE HILLS",
+    "tag": "旅途水彩 · 三种尺寸",
+    "art": "postcard-slide",
+    "category": "益智",
+    "viewportHeight": 720,
+    "description": "滑动一枚枚纸片，拼回落日里的山城。",
+    "instructions": "点击空位同行或同列的拼片，整排向空位移动。按数字从左到右、从上到下还原图片，空位留在右下角。支持 3×3、4×4、5×5、看原图、撤销和自动保存。",
+    "responsiveViewport": true
+  }
+]

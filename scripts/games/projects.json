@@ -1,0 +1,20 @@
+{
+  "signal-harbor": {"project":"examples/web/signal-harbor", "kind":"phaser", "extra":"examples/signal-harbor/assets/scripts"},
+  "unlock-bolts-mobile": {"project":"examples/web/unlock-bolts-mobile", "kind":"phaser"},
+  "star-triad": {"project":"examples/web/star-triad", "kind":"phaser"},
+  "firefly-four": {"project":"examples/firefly-four/web", "kind":"canvas"},
+  "moss-reversi": {"project":"examples/web/moss-reversi", "kind":"moss"},
+  "postcard-slide": {"project":"examples/web/postcard-slide", "kind":"phaser"},
+  "kiln-merge": {"project":"examples/web/kiln-merge", "kind":"phaser"},
+  "petal-memory": {"project":"examples/web/petal-memory", "kind":"phaser"},
+  "silk-serpent": {"project":"examples/web/silk-serpent", "kind":"phaser"},
+  "bamboo-rally": {"project":"examples/web/bamboo-rally", "kind":"phaser"},
+  "wind-chime-memory": {"project":"examples/web/wind-chime-memory", "kind":"phaser"},
+  "neon-shooter": {"project":"examples/imported/neon-shooter", "kind":"static", "upstream":true},
+  "faune-dungeon": {"project":"examples/imported/faune-dungeon", "kind":"faune", "upstream":true},
+  "rc-rally": {"project":"examples/imported/rc-rally", "kind":"vite", "upstream":true},
+  "civ-clicker": {"project":"examples/imported/civ-clicker", "kind":"static", "upstream":true, "license":"GPL-3.0-or-later"},
+  "crowd-runner": {"project":"examples/web/crowd-runner", "kind":"native-js"},
+  "arrow-escape": {"project":"examples/web/arrow-escape", "kind":"native-js"},
+  "star-letters": {"project":"examples/star-letters", "kind":"unity", "license":"MIT; see THIRD_PARTY_NOTICES.md for fonts and Unity-derived files"}
+}

@@ -1,0 +1,57 @@
+{
+  "id": "moss-reversi",
+  "build_sha256": "f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 2027781,
+      "path": "assets/inkstone.png",
+      "sha256": "9faf31671ff1146afbf5d9c5925382e1fb797d2873f959a7aa7b5dc9fdf46a43"
+    },
+    {
+      "bytes": 68612,
+      "path": "assets/paper-font.ttf",
+      "sha256": "449a77ded980cc6cac59c479c0c4e1550ab11b91b97505de11bd3eb179b72d13"
+    },
+    {
+      "bytes": 2974496,
+      "path": "assets/paper-garden.png",
+      "sha256": "3c5793056d929d82b020ae77530e508c0a9b14bb76c89a80eeebb5351c19e8cb"
+    },
+    {
+      "bytes": 1577214,
+      "path": "assets/porcelain.png",
+      "sha256": "43cb02e59f30b6688bedb2d23838dc698a5185e122af7ca200e1644689785093"
+    },
+    {
+      "bytes": 13773,
+      "path": "game.js",
+      "sha256": "3f7c727021eaaf9c1e071721bef3bd048a8ac24a2842fa8a598d4a8b677dbc49"
+    },
+    {
+      "bytes": 2454,
+      "path": "index.html",
+      "sha256": "36e286865a55cf08a859aa1f55e93da8d0f06edb60b45d60ceb04190e2c05c15"
+    },
+    {
+      "bytes": 1254,
+      "path": "layout.js",
+      "sha256": "f5123e8b7ac7334bc001b19aa39bb76238a9fbb579ceaa07205e7dad2921904f"
+    },
+    {
+      "bytes": 4350,
+      "path": "licenses/NotoSerifSC-OFL.txt",
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
+    },
+    {
+      "bytes": 6327,
+      "path": "rules.js",
+      "sha256": "06f616ab06df1a5e192929bf1987c25404d328e31da6667c5c94af19f2249f42"
+    },
+    {
+      "bytes": 6317,
+      "path": "style.css",
+      "sha256": "5f22f88d5a3b2f74fbc310f6e014e155400a807ade16031c21e6dda71006224a"
+    }
+  ]
+}

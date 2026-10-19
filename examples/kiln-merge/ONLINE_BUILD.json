@@ -1,0 +1,47 @@
+{
+  "id": "kiln-merge",
+  "build_sha256": "54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 2202066,
+      "path": "assets/painted-atlas.png",
+      "sha256": "1dcbe54385ad22757d4f1f57e0a5ad143285c91da93ca21c0685c04aea26a156"
+    },
+    {
+      "bytes": 2915174,
+      "path": "assets/painted-workshop.png",
+      "sha256": "c060cb5009441e87e84bbb554e24a9b936cfe68f3831b971f12e3e2b16d2390d"
+    },
+    {
+      "bytes": 1231423,
+      "path": "game.js",
+      "sha256": "7e60d3eae4a9cc9ea369b84a294b99d745e6c1dce613bceadbc6771c601bd252"
+    },
+    {
+      "bytes": 5853,
+      "path": "game.js.LEGAL.txt",
+      "sha256": "710ec19e3afb47afc876f5236f2ca04065c51fa10ccf3252e4d04b442d6a8361"
+    },
+    {
+      "bytes": 2087,
+      "path": "index.html",
+      "sha256": "da0136df86686242062fdeaf3af628a62e49ed8d31ea28b871dcd63aab6d475e"
+    },
+    {
+      "bytes": 1082,
+      "path": "licenses/eventemitter3.txt",
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "bytes": 1120,
+      "path": "licenses/phaser.txt",
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "bytes": 4341,
+      "path": "style.css",
+      "sha256": "adfea8f00310747fa4cb22d80a33c1deea799824b9640d2cd4ab195ca77bbff0"
+    }
+  ]
+}

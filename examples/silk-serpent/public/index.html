@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"><meta name="theme-color" content="#a83222"><title>绢龙逐珠 · 绢本灯庭</title><link rel="stylesheet" href="./style.css"><script defer src="./game.js"></script></head>
+<body><main id="viewport" aria-label="绢龙逐珠"><div id="frame"><div id="scene" aria-hidden="true"></div><div id="play" class="surface">
+ <header id="header"><img id="title" src="./assets/title.png" alt="绢龙逐珠"><p id="score" aria-label="长度与最高记录"></p><p id="direction"></p></header>
+ <div id="board-input" role="application" tabindex="0" aria-label="游龙棋盘。滑动或使用方向键与WASD转向，空格暂停或继续。"></div>
+ <p id="status" class="plaque" role="status" aria-live="polite"></p>
+ <nav id="main-controls" aria-label="游龙操作">
+  <button id="pause" type="button" class="plaque primary"><svg id="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4 12 8-12 8Z"/></svg><span id="pause-label">开始</span></button>
+  <button id="new" type="button" class="plaque"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8A9 9 0 1 0 21 14M20 3v6h-6"/></svg><span>重开</span></button>
+  <button id="mode" type="button" class="plaque"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20v-6h3v6m4 0V9h3v11m4 0V3h3v17"/></svg><span>难度</span></button>
+ </nav>
+ <nav id="settings" aria-label="设置与玩法">
+  <button id="help" type="button" class="plaque"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 5-10-3v17l10 3 10-3V2Zm0 0v17"/></svg><span>玩法</span></button>
+  <button id="simple" type="button" class="plaque" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20M2 12h20M2 19h20"/><circle cx="7" cy="5" r="2"/><circle cx="17" cy="12" r="2"/><circle cx="7" cy="19" r="2"/></svg><span id="simple-label">简动：关</span></button>
+  <button id="sound" type="button" class="plaque" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8h5l6-5v18l-6-5H2Zm15-2q9 6 0 12m0-8q3 2 0 4"/></svg><span id="sound-label">声音：开</span></button>
+ </nav></div>
+ <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden><section class="dialog plaque"><h2 id="modal-title"></h2><div id="modal-body"></div><div id="modal-actions"></div></section></div>
+ <div id="loading" role="status"><p>正在点亮庭院…</p><button id="retry" class="plaque primary" hidden>重新打开</button></div>
+ </div></main></body></html>

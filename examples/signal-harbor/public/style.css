@@ -1,0 +1,34 @@
+:root{color-scheme:dark;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;color:#fff0d0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b2535}
+body::before{content:"";position:fixed;inset:0;background:#0b2535 url('./assets/harbor-background.png') center/cover no-repeat;pointer-events:none}
+[hidden]{display:none!important}
+#viewport{position:fixed;inset:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);overflow:hidden}
+#frame{position:absolute;width:720px;height:1280px;transform-origin:top left;background:transparent}
+#scene,#play,#map,#columns{position:absolute;inset:0;pointer-events:none}
+#scene canvas{display:block;pointer-events:none}
+#heading{pointer-events:none}h1,p{margin:0}
+#title,#subtitle,#stats,#rule,#status,#lesson,button,.column-label{position:absolute}
+#title{display:flex;align-items:center;justify-content:center;font-family:"Songti SC","Noto Serif CJK SC",serif;font-size:64px;line-height:1.1;font-weight:400;letter-spacing:3px;color:#f4cb80;text-shadow:0 2px 6px #071c2b}
+#subtitle{text-align:center;font-family:Georgia,serif;font-size:17px;letter-spacing:2px;text-shadow:0 1px 3px #071c2b}
+button{pointer-events:auto;font:inherit;color:inherit;cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none;border:0;padding:8px 14px;background:none}
+button:focus-visible{outline:4px solid #b1ffec;outline-offset:3px}
+button:disabled{cursor:default}
+.panel{border:1.6px solid #a3824d;border-radius:14px;background:#071b26e6;box-shadow:0 2px 8px #06121a33}
+button.panel{font-size:27px;color:#f4cb80}
+#stats{display:flex;align-items:center;justify-content:center;gap:18px;text-align:center;padding:7px 10px;font-size:25px;line-height:1.25;white-space:nowrap}
+#stats small{font-size:21px;color:#d1ccb9}
+#rule,#status,#lesson{display:flex;align-items:center;justify-content:center;text-align:center;padding:3px 12px;font-size:25px;line-height:1.4;text-shadow:0 1px 2px #061c2a}
+#rule{font-size:25px;border-color:#92764680}#status{padding:8px 20px}
+.plaque{background:url('./assets/button-plaque.png') center/103% 136% no-repeat;color:#382b20;font-family:"Songti SC",serif;font-size:31px;font-weight:500;text-shadow:none}
+.plaque:disabled{opacity:.57;color:#645c4f}
+.pressed{filter:brightness(1.15)}
+.column-input{border-radius:20px;opacity:1;padding:0;background:transparent}
+.column-label{height:36px;text-align:center;font-size:25px;line-height:36px;color:#fff0d0;text-shadow:0 2px 5px #06131f,0 0 5px #06131f;pointer-events:none;white-space:nowrap}
+.column-label.active{color:#f4cb80}
+.chapter{font-size:28px}.chapter[aria-pressed=true]{filter:brightness(1.1);font-weight:700}
+.level{padding:10px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;line-height:1.3;font-size:27px;text-align:center;color:#fff0d0}
+.level small{font-size:23px;color:#d1ccb9}.level.completed{color:#f4cb80}
+#loading{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;gap:28px;align-items:center;justify-content:center;background:#0b2535e8}
+#loading p{font-size:32px}#retry{position:static;width:320px;min-height:88px;font-size:30px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}

@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"><meta name="theme-color" content="#46684e"><title>风铃回响 · 掌心陶庭</title><link rel="stylesheet" href="./style.css"><script defer src="./game.js"></script></head><body>
+<main id="viewport" aria-label="风铃回响"><div id="frame">
+<div id="scene" aria-hidden="true"></div>
+<div id="play"><header><h1>风铃回响</h1><p id="score" class="score">已奏 0 轮 · 最佳 0</p><p id="mode" class="porcelain">轻风 · 第 1 轮</p></header>
+<div id="bell-input" role="group" aria-label="可敲响的风铃"></div>
+<div id="status" class="porcelain" role="status" aria-live="polite">庭院载入中…</div>
+<nav id="controls" aria-label="游戏操作"><button id="pause" class="porcelain" type="button">Ⅱ 暂停</button><button id="new" class="porcelain" type="button">↻ 新一局</button><button id="help" class="porcelain" type="button">♧ 玩法</button></nav>
+<nav id="settings" aria-label="声音与动作"><button id="mute" class="porcelain" type="button">声音：开</button><button id="simple" class="porcelain" type="button">简动：关</button></nav></div>
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden><div class="dialog"><p class="emblem" aria-hidden="true">❧</p><h2 id="modal-title"></h2><div id="modal-body"></div><div id="modal-actions"></div></div></div>
+<div id="loading" role="status"><p>正在听见庭院里的风…</p><button id="retry" class="porcelain" hidden type="button">重新打开</button></div>
+</div></main></body></html>

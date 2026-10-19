@@ -1,0 +1,8 @@
+{
+  "title": "霓虹突围",
+  "upstream": "https://github.com/alfredang/spaceship-shooter-game",
+  "commit": "64408260e2310d0bee419830bdbdef04e0c68dd3",
+  "license": "MIT, declared in upstream README",
+  "assets": "Original Canvas graphics and synthesized Web Audio; no external runtime assets",
+  "adaptation": "owngame: Chinese UI, safe-area layout, touch input, pause/resume/save, fixed tick and wave repair"
+}

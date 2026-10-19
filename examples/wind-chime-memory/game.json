@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "wind-chime-memory",
+  "title": "风铃回响",
+  "kind": "phaser",
+  "online_build_sha256": "2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995",
+  "original_source_sha256": "e5a7412c5c03849897598858017af5ccf03255f9327f52bf39918b317d5875c7",
+  "license": "MIT",
+  "description": "听一段风铃，再把旋律轻轻敲回来。三档挑战，自动保存，静音也能玩。"
+}

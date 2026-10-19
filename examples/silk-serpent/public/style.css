@@ -1,0 +1,30 @@
+:root{color-scheme:light;--ink:#572b19;--muted:#795a36;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#a8ad95}
+body::before{content:"";position:fixed;inset:0;background:#a8ad95 url('./assets/courtyard.png') center/cover no-repeat;pointer-events:none}
+[hidden]{display:none!important}button{font:inherit;color:var(--ink);cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:none}
+button:focus-visible,#board-input:focus-visible{outline:3px solid #a42e21;outline-offset:4px}button svg{width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+#viewport{position:fixed;inset:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+#frame{position:absolute;width:720px;transform-origin:top left;isolation:isolate;background:transparent;overflow:hidden}
+#scene,#scene canvas,.surface{position:absolute;inset:0;width:720px;height:100%}#scene{pointer-events:none}.surface{z-index:1}
+header{position:absolute;left:0;top:var(--header-top);width:720px;height:var(--header-height);pointer-events:none}
+#title{position:absolute;left:10px;top:0;width:700px;height:var(--header-height);object-fit:fill}
+header p{position:absolute;margin:0;text-align:center;left:110px;width:500px;white-space:nowrap;line-height:36px}
+#score{top:var(--score-top);font-size:27px;color:#51341e;letter-spacing:1px}#direction{top:var(--direction-top);font-size:23px;color:#6b4e2f}
+#board-input{position:absolute;touch-action:none;outline-offset:-5px}
+.plaque{border:2px solid #b78b53;border-radius:14px;background:repeating-linear-gradient(0deg,#bc9c5e07 0,#bc9c5e07 1px,transparent 1px,transparent 4px),linear-gradient(145deg,#fbefd5,#f0dfb8);box-shadow:inset 0 0 0 4px #f9efd9,inset 0 0 0 5px #d5b681,0 4px 0 #4c3d2e77}
+.primary{background:repeating-linear-gradient(0deg,#ffbd6409 0,#ffbd6409 1px,transparent 1px,transparent 4px),linear-gradient(145deg,#b83b29,#a32e21);color:#fff1ce;border-color:#d2ac68;box-shadow:inset 0 0 0 4px #a83222,inset 0 0 0 5px #e6bc7b,0 4px 0 #4c3d2e77}
+#status{position:absolute;left:65px;top:var(--status-top);width:590px;height:44px;line-height:40px;margin:0;text-align:center;font-size:23px;color:#603c23;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 14px}
+#status.error{color:#a0261c;font-weight:650}
+nav{position:absolute;left:18px;width:684px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;height:var(--control-height)}
+#main-controls{top:var(--row1-top)}#settings{top:var(--row2-top)}
+nav button{height:100%;min-width:0;display:flex;justify-content:center;align-items:center;gap:12px;font-size:29px;white-space:nowrap;padding:0 12px}
+#settings button{font-size:27px;gap:9px}#pause-icon{fill:currentColor;stroke:none;width:25px}
+button.pressed{filter:brightness(.92);transform:translateY(2px)}button:disabled{opacity:.6;cursor:default}
+#modal{position:absolute;inset:0;z-index:3;background:#342517b0;display:flex;align-items:center;justify-content:center}
+.dialog{width:650px;max-height:calc(100% - 28px);overflow:auto;overscroll-behavior:contain;padding:32px;color:var(--ink);text-align:center}
+.dialog h2{font-size:42px;line-height:1.4;margin:8px 0 24px}.dialog h3{font-size:28px;margin:25px 0 8px}.dialog p{font-size:25px;line-height:1.7;margin:12px 0}.dialog .quiet{font-size:23px;color:var(--muted)}
+#modal-actions{display:flex;flex-direction:column;gap:16px;margin-top:24px}#modal-actions button{width:100%;min-height:var(--control-height);font-size:29px;flex:none}
+.mode-choices{display:flex;flex-direction:column;gap:16px;margin:20px 0}.mode-choices button{min-height:var(--control-height);font-size:29px;width:100%;flex:none}
+#loading{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;flex-direction:column;background:#f2e2c5ee;color:var(--ink)}#loading p{font-size:32px}#retry{height:var(--control-height);width:360px;font-size:30px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none!important}}

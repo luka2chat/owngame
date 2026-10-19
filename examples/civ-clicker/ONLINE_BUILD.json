@@ -1,0 +1,277 @@
+{
+  "id": "civ-clicker",
+  "build_sha256": "441e2c1e2b5fd8de0f896aa1b410e8b0b149eaf873bf4fb8d57323ae644b2c4c",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 2257474,
+      "path": "art/civ-icons.png",
+      "sha256": "a5cf39122ed7df92451aa73340e2a31098aed64043e83ecc907926ae48694265"
+    },
+    {
+      "bytes": 3868392,
+      "path": "art/civ-valley.png",
+      "sha256": "4a1893ccb19cc7d7f48f17542738d1ad6e23fe8a4d5380c4f7e47c3dc91de12f"
+    },
+    {
+      "bytes": 203,
+      "path": "ARTWORK.json",
+      "sha256": "0f79e43e8e1a8ecaa91c994a7f2df9c37ae78a52808c51f72ed7774e6ed1289f"
+    },
+    {
+      "bytes": 89,
+      "path": "AUTHORS",
+      "sha256": "45f3cdf85ad61be6a551c8c77f8512bf4dcdb931b1fa3888fd971df03d7f0670"
+    },
+    {
+      "bytes": 6594,
+      "path": "faq/index.html",
+      "sha256": "712fc7c6f430fd8ad6a82c9de1ca91c633a547da7c8fa2c5d8338caf035232d8"
+    },
+    {
+      "bytes": 114588,
+      "path": "fonts/Lato/Lato-Black.ttf",
+      "sha256": "8b32bc539ca95dda2d2206a43234b5f3b0fe964bd25966c860bc80ec7f06d702"
+    },
+    {
+      "bytes": 111616,
+      "path": "fonts/Lato/Lato-BlackItalic.ttf",
+      "sha256": "09660c19f1773a761b2e56a05b666813dfd6e6196b4ad9d85ff881f29a30e839"
+    },
+    {
+      "bytes": 121788,
+      "path": "fonts/Lato/Lato-Bold.ttf",
+      "sha256": "14f7de6b616950395062902eb8f70f01c0a901223db5d40f2a05728ac4a830f6"
+    },
+    {
+      "bytes": 120312,
+      "path": "fonts/Lato/Lato-BoldItalic.ttf",
+      "sha256": "2101c00b9c973a666bf128b3a776a45df7107bd29116079ee00541a8863d50ce"
+    },
+    {
+      "bytes": 115316,
+      "path": "fonts/Lato/Lato-Hairline.ttf",
+      "sha256": "01ef8d755f412a945aa0b1221bfe98852200b549c4f16aad377e49937a30bd2f"
+    },
+    {
+      "bytes": 91460,
+      "path": "fonts/Lato/Lato-HairlineItalic.ttf",
+      "sha256": "95a84782e0797d27d079d9cc6ab9bb24ea67558953099bf4481c08e95b2ae70a"
+    },
+    {
+      "bytes": 118352,
+      "path": "fonts/Lato/Lato-Italic.ttf",
+      "sha256": "1a63dda1d2f019336e934e41d7ffa8f3e5f4cee0eb6a0c4734827dbe09ce5015"
+    },
+    {
+      "bytes": 122524,
+      "path": "fonts/Lato/Lato-Light.ttf",
+      "sha256": "05903540a0675491fda9015a78c05bb589769951befab12a58a5568175566b49"
+    },
+    {
+      "bytes": 91600,
+      "path": "fonts/Lato/Lato-LightItalic.ttf",
+      "sha256": "b1af3a551a7e2d9fb640773197a00f6970a2b9c6699b0c786059a37453d5d12c"
+    },
+    {
+      "bytes": 120196,
+      "path": "fonts/Lato/Lato-Regular.ttf",
+      "sha256": "7ae714b63c2c8b940bdd211a0cc678f01168a34eea8aa13c0df25364f29238a7"
+    },
+    {
+      "bytes": 4406,
+      "path": "fonts/Lato/OFL.txt",
+      "sha256": "6d630d98fda1874d0795ff995aeaa7a6ab57cc0f67a44eff0183fa4061440206"
+    },
+    {
+      "bytes": 4302,
+      "path": "fonts/Suez_One/OFL.txt",
+      "sha256": "e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602"
+    },
+    {
+      "bytes": 70884,
+      "path": "fonts/Suez_One/SuezOne-Regular.ttf",
+      "sha256": "22181a43009c4887b28a186215237a20136a275482256c9f8bd81c79e3e0f2ef"
+    },
+    {
+      "bytes": 18502,
+      "path": "images/achLocked.jpg",
+      "sha256": "cd71e2af1b29d3b5b78b72dfa794d604b7bcee02eac187c11aa34772805ef67f"
+    },
+    {
+      "bytes": 18796,
+      "path": "images/backup.png",
+      "sha256": "fa4bd3943270ac5d491d4b3533967191f92935b0123e1ba59e806a443f0e48d9"
+    },
+    {
+      "bytes": 24965,
+      "path": "images/carrion.png",
+      "sha256": "68ee224c4cb3cfc62d46055b45dcee68d3a6be4c3a55715b12386f17d15f851b"
+    },
+    {
+      "bytes": 25880,
+      "path": "images/food.png",
+      "sha256": "205ba7eeaa51d4b5a624e38358808b0e60bfdef48e1bb896d32e1d391bb8f449"
+    },
+    {
+      "bytes": 15049,
+      "path": "images/gold.png",
+      "sha256": "8ab6481167d5f82e4a59d0f6984490860307ae20d043ceb737bab7afcdf53392"
+    },
+    {
+      "bytes": 17112,
+      "path": "images/herbs.png",
+      "sha256": "ad9b00541a98cbc540f2c29154601ad8f1fc1aa6e24567f563d1f25636d1fab2"
+    },
+    {
+      "bytes": 7385,
+      "path": "images/leather.png",
+      "sha256": "86394f7032c14f3687553494133ef73e541b898fc8862aab81193c21dc1600f5"
+    },
+    {
+      "bytes": 10658,
+      "path": "images/metal.png",
+      "sha256": "11858f42931ed6a840d011e901c5b2a2eb0ce46fbb5aec74dd2aa30860b9781d"
+    },
+    {
+      "bytes": 13179,
+      "path": "images/ore.png",
+      "sha256": "397b864c2e312d115c685e5a0e30372551d19a781773d7e912799f8993129ba1"
+    },
+    {
+      "bytes": 12860,
+      "path": "images/piety.png",
+      "sha256": "653ef91e56681ff9b7c28d26f9d446e62e45d102028f75527294d620076a3569"
+    },
+    {
+      "bytes": 20622,
+      "path": "images/shambling-zombie.png",
+      "sha256": "b563598287bca72630bcc68517df0dd387ef16e25023a449c1414a6c138e4810"
+    },
+    {
+      "bytes": 8530,
+      "path": "images/skins.png",
+      "sha256": "8ddb5e9afb7cc2469ab07a8ef6f92f032b1d1c34958ff5bbf84a41db57c107bb"
+    },
+    {
+      "bytes": 18898,
+      "path": "images/smitten.png",
+      "sha256": "5b82370351d4c800d49022a1da47ed73e94346394d0e278362c30c7f98b42d03"
+    },
+    {
+      "bytes": 8720,
+      "path": "images/stone.png",
+      "sha256": "9820ca4596d1a7a507d846410fa70f5a6525795e75aa4f0da925ec8d76d177e4"
+    },
+    {
+      "bytes": 13817,
+      "path": "images/wood.png",
+      "sha256": "5392586fc14f3449b204a690a8fc2ad1909e1666d2c9447637b5a456ee684dda"
+    },
+    {
+      "bytes": 23451,
+      "path": "index.html",
+      "sha256": "f87942d1af0e8b88d5945740ca12fa99dafe129b1a0563e29e5b01e3873e5403"
+    },
+    {
+      "bytes": 35147,
+      "path": "LICENSE",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "bytes": 12306,
+      "path": "owngame.css",
+      "sha256": "c553ba7508b5c7cfc21081bb124f2b53232408c923c42bd4d9a6d2ed2a138eb5"
+    },
+    {
+      "bytes": 1423,
+      "path": "README.md",
+      "sha256": "784387e6dc2181cbfb921ec1f81040b99ba8e5d6f3ef08d6c66996c491850cce"
+    },
+    {
+      "bytes": 625,
+      "path": "scripts/ajax.js",
+      "sha256": "07e553c7087593dd454c72e142883f1e44c7acd557a374a55643872e45c13985"
+    },
+    {
+      "bytes": 10407,
+      "path": "scripts/civclicker-classes.js",
+      "sha256": "8be0bc00515d29c679e7a7cc57d035eb3b1465c3f6cf43654023e28bd21fd0f5"
+    },
+    {
+      "bytes": 39078,
+      "path": "scripts/civclicker-data.js",
+      "sha256": "e5f16c65db2a300d63d6bbb162ea2ddcd15260e865ebd1e3aec85b9785a01665"
+    },
+    {
+      "bytes": 27360,
+      "path": "scripts/civclicker-update.js",
+      "sha256": "0e2eba14426d63b680fcd1ddca6d4a4a6c070849c00746f237f717fe2c170adb"
+    },
+    {
+      "bytes": 120114,
+      "path": "scripts/civclicker.js",
+      "sha256": "bb5018208abe56089c365d014d601757dfd3ced10b86df171d59603a031347db"
+    },
+    {
+      "bytes": 6674,
+      "path": "scripts/jsutils.js",
+      "sha256": "e965a6456b769d1a9b21a04c0f954f0a0618c2d4ccb1b9443884d43efd82444d"
+    },
+    {
+      "bytes": 18989,
+      "path": "scripts/libs/lz-string.js",
+      "sha256": "1ca20abb905c1b77b3908580c5ba16ff5884433b44f8183ef20f7708558b82db"
+    },
+    {
+      "bytes": 1003,
+      "path": "scripts/number-formatters.js",
+      "sha256": "843c53a4b671e73337a9e601c7b1cda2d6657e0f9fefbc03a54b84c08a5a80cb"
+    },
+    {
+      "bytes": 6844,
+      "path": "scripts/owngame-zh.js",
+      "sha256": "e7c910de55bc3fdf97f4fade8fb87b42c52fd14c2f8fb20715ea6df349b950ce"
+    },
+    {
+      "bytes": 3987,
+      "path": "scripts/ui.js",
+      "sha256": "b311166c4ca7aab9690343010544048b200989120c702ab4a361ab664a10f72d"
+    },
+    {
+      "bytes": 894,
+      "path": "scripts/updates.js",
+      "sha256": "fe507000db0133e2a1f89f4da83e57b66ea6f9c885a74cab992d247dbea9de5d"
+    },
+    {
+      "bytes": 336,
+      "path": "SOURCE.json",
+      "sha256": "e1606d23f46f2a6039740ef0dcfcd711d0b470fd0e81bdb7179b874db5cb4c21"
+    },
+    {
+      "bytes": 6873068,
+      "path": "source.tar.gz",
+      "sha256": "267bfcbd0a8729358b6b5f24a232c58dfeac82177572b5074491869fe37052f2"
+    },
+    {
+      "bytes": 14991,
+      "path": "styles/civclicker.css",
+      "sha256": "22b109dca5618909f72581dce33739db39ce6e944058698dda99cea775bcf5c6"
+    },
+    {
+      "bytes": 262,
+      "path": "styles/fonts.css",
+      "sha256": "fdab47f2f80dc7272a8ac78bf424acaa76c3a0f1f59e347e0bb347873fc4c2af"
+    },
+    {
+      "bytes": 1053,
+      "path": "styles/info.css",
+      "sha256": "87824a81e65adb48d16f67712b34e2627db0bb92e025c0ee8ad93cbc24eda5a6"
+    },
+    {
+      "bytes": 970,
+      "path": "THIRD_PARTY.txt",
+      "sha256": "f71955cf7a38279afbd77ca0bf80fb1d4f238a6447cbae4a4c55cf5c06aecaad"
+    }
+  ]
+}

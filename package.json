@@ -11,7 +11,10 @@
     "test:release": "npm run build && node --test tests/release/*.test.mjs",
     "verify:package": "node scripts/release/verify-package.mjs",
     "release:prepare": "node scripts/release/prepare.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "games:verify": "node scripts/games/verify.mjs",
+    "games:build": "node scripts/games/build-all.mjs",
+    "test:games": "node --test tests/games/*.test.mjs"
   },
   "devDependencies": {
     "@types/node": "22.20.5",

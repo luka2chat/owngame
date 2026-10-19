@@ -1,0 +1,15 @@
+:root{color-scheme:dark;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111c38;color:#fff0bf}
+body::before{content:"";position:fixed;inset:0;background:#111c38 url('./art/bg.png') center/cover no-repeat;pointer-events:none}
+#viewport{position:fixed;inset:var(--safe-top,env(safe-area-inset-top)) var(--safe-right,env(safe-area-inset-right)) var(--safe-bottom,env(safe-area-inset-bottom)) var(--safe-left,env(safe-area-inset-left))}
+#frame{position:absolute;transform-origin:top left;background:transparent;isolation:isolate}
+canvas,#controls{position:absolute;inset:0;width:100%;height:100%;background:transparent}
+canvas{display:block;pointer-events:none}
+#controls{touch-action:none;user-select:none;-webkit-user-select:none}
+.hit{position:absolute;border:0;padding:0;margin:0;background:transparent;color:transparent;cursor:pointer;touch-action:none;border-radius:14px}
+.hit:disabled{cursor:default}.hit:focus-visible{outline:4px solid #fff0bf;outline-offset:1px;background:#fff0bf0c}
+#accessible{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+#load{position:fixed;inset:0;display:grid;align-content:center;justify-items:center;font-size:18px;text-align:center;background:#111c38a8}
+#retry{min-width:120px;min-height:48px;border:1px solid #e2c379;border-radius:16px;background:#374b78;color:#fff0bf;font:inherit}
+[hidden]{display:none!important}

@@ -53,6 +53,12 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 
 原创代码、对白与程序化素材采用 MIT；字体、Unity 衍生配置与运行时分别遵循其许可，详见[授权说明](examples/star-letters/THIRD_PARTY_NOTICES.md)。这个案例可独立阅读和修改；家园场景另已提取为 [`unity-home` 模板](templates/unity-home)。通用 Unity 构建适配与 Three.js 项目创建仍在计划中。
 
+## 网站游戏源码
+
+[owngame.dev](https://owngame.dev) 当前上架的 **18 款游戏均提供可编辑源码**，按游戏 ID 整理在 [examples](examples/)。包括《人潮冲线》《箭径出逃》《霓虹突围》《法恩探险》与《星野来信》等。
+
+每款附有运行说明、锁定依赖、运行素材、许可及线上版本指纹。查看[完整清单与运行方法](docs/open-source-games.md)及机器可读的 [games.json](games.json)。新增或更新游戏通过[源码与网站联合发布](docs/game-publishing.md)，先公开匹配源码并通过检查，再上线。各子项目保留自己的许可；《小小文明》代码沿用 GPL-3.0-or-later。
+
 ## 快速开始
 
 ### 1. 接入你的 AI 助手
@@ -175,7 +181,7 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 <details>
 <summary><strong>复刻会提供什么？</strong></summary>
 
-复刻生成一段可交给 AI 的创作任务，包含游戏链接、玩法、视觉方向、公开参考说明与工具接入信息。助手据此在你的工作区实现新版本。它不在网站后台生成游戏，也不直接导出网站游戏源码。详见 [复刻使用说明](https://github.com/luka2chat/owngame/blob/main/docs/remix.md)。
+复刻生成一段可交给 AI 的创作任务，包含游戏链接、玩法、视觉方向、公开参考说明与工具接入信息。助手据此在你的工作区实现新版本。每款网站游戏的对应源码已在 GitHub 公开，复刻说明包含源码链接；按钮仍负责生成创作任务，完整游戏按各自许可使用。详见 [复刻使用说明](https://github.com/luka2chat/owngame/blob/main/docs/remix.md)。
 
 </details>
 
@@ -239,7 +245,7 @@ owngame 自有代码与文档采用 [MIT 许可](LICENSE)。网站展示游戏�
 
 owngame is an open-source game authoring toolkit that connects your existing AI assistant to practical workflows, playable Web starters, visual style recipes, and lessons from real game projects. Its CLI and MCP interfaces share the same core operations.
 
-Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use **Recreate (复刻)** to bring its rules and visual direction into your own workspace. Your agent implements and tests the new version with you; the Recreate action provides a creative brief and references, rather than exporting the website game's source code.
+Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use **Recreate (复刻)** to bring its rules and visual direction into your own workspace. Your agent implements and tests the new version with you; the Recreate action provides a creative brief and references, and links to the corresponding open-source game. All 18 hosted games have editable sources in `examples/`, with per-game licenses and version manifests.
 
 Requires **Node.js 22+** and npm. Run the setup command in the quick start section in your game project, reload your assistant, and verify the connection. Codex and Cursor have project setup options; other local MCP clients can use the generic configuration. The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
 

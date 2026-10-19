@@ -1,0 +1,98 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "crowd-runner",
+  "online_build_sha256": "567aaff7a80158d89ad0eece2d91bcbb45aac79729e7288af003bd5fddedbf3c",
+  "input_sha256": "567aaff7a80158d89ad0eece2d91bcbb45aac79729e7288af003bd5fddedbf3c",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
+    },
+    {
+      "path": "game.json",
+      "bytes": 354,
+      "sha256": "c82143cf81333ebf23492f360fca9ff76b1363cec67c97079b0153e63047b167"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 1325,
+      "sha256": "a1dc62b64a842ee36f4dcda596f3a8ee5f68d46f2a720c9386d2a283fb9c0508"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 328,
+      "sha256": "35022c9112184cdf7552cbf12d9c87a3f0a3945a64e9cf1089fe8673e6fec0bf"
+    },
+    {
+      "path": "package.json",
+      "bytes": 344,
+      "sha256": "0da203d1882219ec73b29ab6adfefb0dd8f4869dafc7a512f8416d62b2235e7f"
+    },
+    {
+      "path": "public/cover.png",
+      "bytes": 322886,
+      "sha256": "fcf56c559b15b4fec33e295c15a7cf20a96fec02f75947d7a7f27c799e6dc942"
+    },
+    {
+      "path": "public/crowd-atlas.png",
+      "bytes": 1500009,
+      "sha256": "199d98998495efc6dc8a2001dd98c30176e2cb2c8e583fd7cfb0b1dabed93675"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 2076,
+      "sha256": "76a126291790b7959c65da928267ab2ba7b1aac8cbdde6b33f578b478f5f44df"
+    },
+    {
+      "path": "public/LICENSE.txt",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "public/SOURCE.json",
+      "bytes": 807,
+      "sha256": "7c464f56363ff2d543eb3f316d71d02bc4f9a10fdb0786ff169de89de30b53c3"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 5325,
+      "sha256": "2a4f2447aff9833f0239958818e51fd78b0df1281f9f2095c5871c98858cb28a"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1577,
+      "sha256": "cefae483143918644c0521f62ab34fa9142cf53bcbefe94832ab399bd77b4965"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/game.js",
+      "bytes": 20420,
+      "sha256": "46667c9d7d2c21d93ac53c4c46c0cddb75e8e301f3be923d79da8da669dab768"
+    },
+    {
+      "path": "src/rules.js",
+      "bytes": 3582,
+      "sha256": "76dcf1b0db1371981344d53c325f826812ea2ea2131385a1535bc6af1302082b"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 2199,
+      "sha256": "7dc6f90995286d90ba1732dd2dc42c356385c18bf6118884f082a64e1088150a"
+    }
+  ]
+}

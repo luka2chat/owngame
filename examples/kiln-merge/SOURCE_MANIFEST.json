@@ -1,0 +1,118 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "kiln-merge",
+  "online_build_sha256": "54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf",
+  "input_sha256": "9cdde5e2d18a573d121b71c6954985aa46f936f4f17902ea87af1077a631510d",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 382,
+      "sha256": "a156736fb4290a6a64c19769ebbe746e1976d7abd61a3a9806ac1f3c09de4702"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 1386,
+      "sha256": "cb8cc3f9baef8da42ff1fe42d22d91b2d66940a4588f0818d672cbfd1cd3d6b9"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 15362,
+      "sha256": "a4151c00bf21ef61286c916eff3f92741aa385d30db277b74429b4ae92cddcc7"
+    },
+    {
+      "path": "package.json",
+      "bytes": 396,
+      "sha256": "d553e211f88df104f878e6eff20f7272ee5caab970fea8feb89ff299d3ea1274"
+    },
+    {
+      "path": "public/assets/painted-atlas.png",
+      "bytes": 2202066,
+      "sha256": "1dcbe54385ad22757d4f1f57e0a5ad143285c91da93ca21c0685c04aea26a156"
+    },
+    {
+      "path": "public/assets/painted-workshop.png",
+      "bytes": 2915174,
+      "sha256": "c060cb5009441e87e84bbb554e24a9b936cfe68f3831b971f12e3e2b16d2390d"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 2087,
+      "sha256": "da0136df86686242062fdeaf3af628a62e49ed8d31ea28b871dcd63aab6d475e"
+    },
+    {
+      "path": "public/licenses/eventemitter3.txt",
+      "bytes": 1082,
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "path": "public/licenses/phaser.txt",
+      "bytes": 1120,
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 4341,
+      "sha256": "adfea8f00310747fa4cb22d80a33c1deea799824b9640d2cd4ab195ca77bbff0"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1227,
+      "sha256": "8a15f4e9c7ced4cd158937d349c5220e587f03917fab8aa60f7851ba00f88253"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/art.ts",
+      "bytes": 453,
+      "sha256": "f835a258dcefc68a415a2579290a2d77f47a1758f007143fc529604a80d5c735"
+    },
+    {
+      "path": "src/board-scene.ts",
+      "bytes": 8930,
+      "sha256": "560b4b79f1e079fade4f7aebbae85eeac9d218ac0c833758ca6ccc9932321862"
+    },
+    {
+      "path": "src/layout.ts",
+      "bytes": 2113,
+      "sha256": "7be3ac3dfb19979e7fad42a733dc0208e3c2eed1bc3b3c4c5a4f4fc842029d1b"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 12795,
+      "sha256": "40f7bbb9d78a90c2ad860522cf075c0eac289674f82c93929b8c506f054ebd0f"
+    },
+    {
+      "path": "src/rules.ts",
+      "bytes": 3558,
+      "sha256": "427237fb524d7c6497f3273c9ec5616f16bbff111e92bc40d44e0fcc832b884a"
+    },
+    {
+      "path": "src/storage.ts",
+      "bytes": 1651,
+      "sha256": "0178ddbd0c691c8768ef7f187190ec57861f4dd0e657b1fb21899554a6de833b"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 2520,
+      "sha256": "3d3a02a1737ee3d8a8c196e8362b04afbf24e1f9693010b05be1bf5687e9dea5"
+    }
+  ]
+}

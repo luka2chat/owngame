@@ -1,0 +1,138 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "petal-memory",
+  "online_build_sha256": "bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c",
+  "input_sha256": "c576809d99769c66f4691d792d4c38a409b60286349793dea842a1c1f4c101c3",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 395,
+      "sha256": "2994708ad43e9304632fa23eef1080afa9139355d0b327774cd45ca00f238b8e"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 2141,
+      "sha256": "5b3eff913b5595c7880947308f3ad23e9fca89f8fb234ff2097af04041a4d404"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 15366,
+      "sha256": "c2eb0908945ea28e2cf3e27bfc1c58532cc6a006b5385811a80ec0af8ea863b1"
+    },
+    {
+      "path": "package.json",
+      "bytes": 398,
+      "sha256": "da97d36b1f572b47485ae1ba87d0fcaa4e28ef32c42abc8115704f870b11b7b5"
+    },
+    {
+      "path": "public/assets/card-back.png",
+      "bytes": 273454,
+      "sha256": "393eeda7251014ec84abec2db0f0e1c322789d96182fece628f0a7a0a1b86580"
+    },
+    {
+      "path": "public/assets/desk.jpg",
+      "bytes": 654110,
+      "sha256": "f9b732434e9931d4abfd0b944b57d7c461522f2960c35b95950457779b1f8a7c"
+    },
+    {
+      "path": "public/assets/paper.png",
+      "bytes": 430970,
+      "sha256": "040be02df5fb99c0724502932e1fd39f23a4d6a4df0993fcebc450d964ea8266"
+    },
+    {
+      "path": "public/assets/petal-serif.ttf",
+      "bytes": 142000,
+      "sha256": "98b299034723bc9c3e84fd9638e778c8100e6920ad579893be67800cd50eaacd"
+    },
+    {
+      "path": "public/assets/specimens.png",
+      "bytes": 1031241,
+      "sha256": "4e7aa72b8f87d70206b53fc2437113f48dc3f4f398a205d868a4766ed1ee92f9"
+    },
+    {
+      "path": "public/cover.html",
+      "bytes": 1491,
+      "sha256": "d8e4987eec4376eb509bb6fe8e5ef5afcff74ae4d3f28dd8280b5a2e383275cb"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 2064,
+      "sha256": "4ebd4e437cc7e2a453ce497edb945d81563ed775c862017dab243fc704104e0e"
+    },
+    {
+      "path": "public/licenses/eventemitter3.txt",
+      "bytes": 1082,
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "path": "public/licenses/font-OFL.txt",
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    {
+      "path": "public/licenses/phaser.txt",
+      "bytes": 1120,
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 6403,
+      "sha256": "ff5c6eb35e10d1448d3527dc26aef5f56ebb9012cff959030db7a3d673445af1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1222,
+      "sha256": "bb401c2f02f921de65e40022429f09d1622bf6769adbbf932eabe8832e13766f"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/card-scene.ts",
+      "bytes": 2638,
+      "sha256": "26cf3ed0fc878ae7398954c5579526857df5132159e2205ba29010fa7990c8f4"
+    },
+    {
+      "path": "src/layout.ts",
+      "bytes": 1912,
+      "sha256": "8ccf65f3f834c6d9253ff076bf71e9af1db843c23b7ec2ec2b56ff8f4cf1effc"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 12014,
+      "sha256": "248c76ed05c5414b66094225ac26383c10974e8febcc45d61db514ebecd8da30"
+    },
+    {
+      "path": "src/rules.ts",
+      "bytes": 3855,
+      "sha256": "449beba9f523724b4558996ba0558111336d8171c973f11c000a9c14b7427f21"
+    },
+    {
+      "path": "src/storage.ts",
+      "bytes": 1285,
+      "sha256": "4593afa7e0c01b58eed78ccb88e447ce96662abd8d19671c86c3e646a5af38bd"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 6856,
+      "sha256": "787a46f8364060bf7dbc9b407e08f173596a247809703096e6b59914ab38fd31"
+    }
+  ]
+}

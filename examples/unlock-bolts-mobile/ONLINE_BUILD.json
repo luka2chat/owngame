@@ -1,0 +1,52 @@
+{
+  "id": "unlock-bolts-mobile",
+  "build_sha256": "242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 954697,
+      "path": "assets/hardware.png",
+      "sha256": "a4720cccd690d6e6f77ae2713e6b1bbccf89d5df6145c76e776a3f97b6162536"
+    },
+    {
+      "bytes": 1394319,
+      "path": "assets/shaft.png",
+      "sha256": "c886d67c95fd0e7f3bc9f3db4dde5f5fd5d38e948a456e18b6b11e48647ce3b5"
+    },
+    {
+      "bytes": 2717211,
+      "path": "assets/workshop.png",
+      "sha256": "4b6618207229d4d37f44b9a8f85dc0e6640caee44f649eceefebdb6e12f039a9"
+    },
+    {
+      "bytes": 1231511,
+      "path": "game.js",
+      "sha256": "642f23e42e0ba3f9ba73bc68acb7ebcc20d238c8704891294be3bf08ef402461"
+    },
+    {
+      "bytes": 5853,
+      "path": "game.js.LEGAL.txt",
+      "sha256": "710ec19e3afb47afc876f5236f2ca04065c51fa10ccf3252e4d04b442d6a8361"
+    },
+    {
+      "bytes": 2164,
+      "path": "index.html",
+      "sha256": "974db7ec1b4739e1a6046b784ab8f7cf26464c752aa5e21e891180dd8fbe10f6"
+    },
+    {
+      "bytes": 1082,
+      "path": "licenses/eventemitter3.txt",
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "bytes": 1120,
+      "path": "licenses/phaser.txt",
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "bytes": 4376,
+      "path": "style.css",
+      "sha256": "a59f9f7ea60390d72c6a0c82a0a05d10e49b5d4132302c4a0b57ae99fa6cd6a3"
+    }
+  ]
+}

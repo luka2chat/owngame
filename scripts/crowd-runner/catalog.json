@@ -1,0 +1,16 @@
+[
+  {
+    "id": "crowd-runner",
+    "title": "人潮冲线",
+    "subtitle": "CROWD RUSH",
+    "tag": "选门跑酷 · 8 关",
+    "art": "crowd-runner",
+    "category": "街机",
+    "responsiveViewport": true,
+    "viewportHeight": 800,
+    "description": "选对数字门，集结队伍，冲过终点。",
+    "instructions": "按住跑道左右拖动，或使用方向键／A、D，选择加法、乘法门壮大队伍；减法和除法门要看清当前人数。避开旋转障碍，带足伙伴战胜终点对手。支持暂停、8 关选关和独立存档续玩。",
+    "cover": "/art/rollout/crowd-runner.png",
+    "coverTitleBaked": true
+  }
+]

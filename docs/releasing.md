@@ -59,3 +59,7 @@ For this pre-1.0 toolkit, document behavior changes explicitly. 0.8.0 changes th
 default template and public starter knowledge relative to internal 0.7.0; see
 CHANGELOG.md. Keep skill and runtime versions matched through setup. Maintain
 CLI/MCP contracts in the shared core and preserve existing game saves.
+
+## Website game source
+
+Game source is indexed separately in games.json and examples/. Full games remain excluded from the npm tarball. Website game launches and updates must follow [joint source and website publication](game-publishing.md). The website builder refuses a selected delivery without a matching public source manifest at an immutable Git revision.

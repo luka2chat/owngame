@@ -1,0 +1,57 @@
+{
+  "id": "neon-shooter",
+  "build_sha256": "a4771608c65d51937134248f018755ced00c9f28f5164f88cede7cf029d5f5e3",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 1259095,
+      "path": "art/neon-enemies.png",
+      "sha256": "dbacde1190b9f263ba05f5ded0735eeda7ff4c793cf8026120387cdfda62b474"
+    },
+    {
+      "bytes": 1352253,
+      "path": "art/neon-player.png",
+      "sha256": "72e21241c29510861cb496223d8755fef34c0df3a154eceea7b3634b5bfdf51a"
+    },
+    {
+      "bytes": 2613778,
+      "path": "art/neon-space.png",
+      "sha256": "8d6ca3b2ba5283636c5b46a5bd6a16db47f48c4741576d5115557923d63cff0d"
+    },
+    {
+      "bytes": 203,
+      "path": "ARTWORK.json",
+      "sha256": "0f79e43e8e1a8ecaa91c994a7f2df9c37ae78a52808c51f72ed7774e6ed1289f"
+    },
+    {
+      "bytes": 36898,
+      "path": "index.html",
+      "sha256": "3bba809ec8a776f0befa554c830761c9a62548de869efdc00f3c91dcfb213172"
+    },
+    {
+      "bytes": 1334,
+      "path": "LICENSE.txt",
+      "sha256": "bf65688e08b87bbcfb27eba55c36b1c8bb57635defdc76eb0f6a2f5dc3f18e6c"
+    },
+    {
+      "bytes": 7024,
+      "path": "owngame.css",
+      "sha256": "83e2037e3756f607f432bec4c0478309e8ace69c6b01a8d4c938fd0e7c993ed1"
+    },
+    {
+      "bytes": 8369,
+      "path": "owngame.js",
+      "sha256": "d1b089054447709da38c818b24ec3657541154eacea4818cafe0e338eaf52012"
+    },
+    {
+      "bytes": 2247,
+      "path": "README.md",
+      "sha256": "27ac2cec3948324e1025f56d026a643f2debc2cd09419a6dac654d8ad5bd988c"
+    },
+    {
+      "bytes": 415,
+      "path": "SOURCE.json",
+      "sha256": "1e6b2a55eb7d39d9ab59dbcc8ed6c17f9df5b7990e946c7805f2137907442849"
+    }
+  ]
+}

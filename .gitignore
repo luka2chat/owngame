@@ -12,3 +12,6 @@ artifacts/
 *.tgz
 .DS_Store
 my-game/
+
+# Also exclude dependency directory symlinks used by local verification.
+node_modules

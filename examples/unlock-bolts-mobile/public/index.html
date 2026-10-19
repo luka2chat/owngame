@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#e9d4b4" />
+    <title>螺帽之间 · 珐琅工坊</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./game.js"></script>
+  </head>
+  <body>
+    <div id="scene" aria-hidden="true"></div>
+    <main id="viewport" aria-label="螺帽之间">
+      <div id="play">
+        <header>
+          <h1>螺帽之间</h1>
+          <p id="subtitle">初见</p>
+        </header>
+        <nav id="levels" aria-label="关卡选择"></nav>
+        <p id="goal" class="plaque"></p>
+        <div id="board-input" role="group" aria-label="颜色整理棋盘"></div>
+        <p id="feedback" class="plaque" role="status" aria-live="polite"></p>
+        <nav aria-label="游戏操作">
+          <button id="undo" class="wood" type="button">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 5 3 10l5 5M4 10h10a6 6 0 0 1 0 12" /></svg
+            ><span>撤销</span></button
+          ><button id="reset" class="wood" type="button">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 8a8 8 0 1 0 1 7M20 3v5h-5" /></svg
+            ><span>重来</span></button
+          ><button id="next" class="plaque" type="button" hidden>下一关</button
+          ><span id="progress" class="plaque"></span>
+        </nav>
+      </div>
+    </main>
+    <div
+      id="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      hidden
+    >
+      <div class="dialog plaque">
+        <h2 id="modal-title">重新整理这一关？</h2>
+        <p>当前这一关会回到开局。</p>
+        <button id="cancel" class="plaque" type="button">继续本局</button
+        ><button id="confirm" class="wood" type="button">重新开始</button>
+      </div>
+    </div>
+    <div id="loading" role="status">
+      <p>正在布置工坊…</p>
+      <button id="retry" class="wood" type="button" hidden>重新打开</button>
+    </div>
+  </body>
+</html>

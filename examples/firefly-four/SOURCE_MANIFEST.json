@@ -1,0 +1,103 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "firefly-four",
+  "online_build_sha256": "290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d",
+  "input_sha256": "31d6804a22345e6b871a07f087a50b844d435848e1b478d0cc57c694b7a43cd0",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 386,
+      "sha256": "2d2639e3346f0636bebce394f9dae832ee268e6e2442196c760eb31a81f2666f"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 1192,
+      "sha256": "a30e7c77898a85360917653018a2f3e3996da43150e483da9d600eeb5e3dac82"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 14662,
+      "sha256": "d93c8f476db5ed65b90a2cce0eaa43ab501a5f590aa1a74208e60bec67ca2ec6"
+    },
+    {
+      "path": "package.json",
+      "bytes": 372,
+      "sha256": "c0b5c198e1f4a58d23bd593178f2189789baade795ed31fde81331bc434c65e3"
+    },
+    {
+      "path": "public/art/atlas.png",
+      "bytes": 1249594,
+      "sha256": "06a5197b4409ceaa6937f31bf9f436ba7646193b93b6053ddcb314e02a130fd5"
+    },
+    {
+      "path": "public/art/bg.png",
+      "bytes": 2355794,
+      "sha256": "2f1f6026a8350687a5de4d75d40c8b11bb59424b9ddf69eca1ba80d239e8b58c"
+    },
+    {
+      "path": "public/art/board.png",
+      "bytes": 2574799,
+      "sha256": "a70ee03e15285680067bb446477b0cd9ca10145b43e42db9cec0b105005dc7d0"
+    },
+    {
+      "path": "public/art/title.png",
+      "bytes": 1317604,
+      "sha256": "576718af6af42b839cbf67a700f039a0af2a567dbbe62166c3904e6bf698bbfd"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 739,
+      "sha256": "b623522d19d4dfc9fa93bc23a775aa4d7f77db0586c1bf1f92529542081f1e8e"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 1532,
+      "sha256": "15d8c49cbfd18d4cee5093cc3106269bc9fab15fa0434f914833dfd6781c1367"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1213,
+      "sha256": "252e91fcb028ed2c287f6b31c0bfede8666efa732c6a3ae71585b2e2e28306ce"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/layout.ts",
+      "bytes": 3203,
+      "sha256": "da6e7347aca2abe4a9a87801fd9ff07050cf06501b4d94e1db5bb932ca180954"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 21380,
+      "sha256": "24a4bf9e6c9991d14d76b4391fbfe906b4b714b504ffe63fd4087cdfa37a315e"
+    },
+    {
+      "path": "src/rules.ts",
+      "bytes": 4700,
+      "sha256": "60b9f343749c86b3062350c700eac0b08684483c97e3c511c77232a7f826101b"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 265,
+      "sha256": "902dacd1d00a0d0fd12d79cb9459a618311dde59f646112d1dc99d9714c2cd4d"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "id": "signal-harbor",
+  "build_sha256": "7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 1695979,
+      "path": "assets/buoy.png",
+      "sha256": "45c3eec177210aa1586193f03504ec6e119906849493ed3dded995bca4c1989f"
+    },
+    {
+      "bytes": 1445206,
+      "path": "assets/button-plaque.png",
+      "sha256": "1ac3cc9e0d866182679bafb1b4b23324c8e37deac144fd8ad10fb29a608cb3ec"
+    },
+    {
+      "bytes": 2367295,
+      "path": "assets/harbor-background.png",
+      "sha256": "77951c1b487ae01a1df519216b4ee2c998415f441b4c332bd970fdeb2a3e303f"
+    },
+    {
+      "bytes": 1934010,
+      "path": "assets/lighthouse.png",
+      "sha256": "051705bd653e590323de7e25006ee6766bf5b810913ae076dc71a39e32360f76"
+    },
+    {
+      "bytes": 1774969,
+      "path": "assets/signal-a.png",
+      "sha256": "f08b98de117cc854a4f2e6b84dff155f609f2daee188c81e0149c9385b12d12b"
+    },
+    {
+      "bytes": 1814571,
+      "path": "assets/signal-b.png",
+      "sha256": "972869dce2480c3f303d9d1e93773553b61bede24f83c2ae9570fdb50d5b6269"
+    },
+    {
+      "bytes": 1815447,
+      "path": "assets/signal-c.png",
+      "sha256": "8184a36dbf68bb2fc342b98ec6fa33854c9fd2500c59b2a07d63bad3d8623962"
+    },
+    {
+      "bytes": 1236971,
+      "path": "game.js",
+      "sha256": "2f236fe85dd3df718d30afdf5a5cdddde11153469c7786013742bd702e4a9a25"
+    },
+    {
+      "bytes": 5853,
+      "path": "game.js.LEGAL.txt",
+      "sha256": "710ec19e3afb47afc876f5236f2ca04065c51fa10ccf3252e4d04b442d6a8361"
+    },
+    {
+      "bytes": 2042,
+      "path": "index.html",
+      "sha256": "a0e88976f40a25a1a5b44d26fd934a70f1c8c1feb632ed7c19fcdb4cd6919ab3"
+    },
+    {
+      "bytes": 1082,
+      "path": "licenses/eventemitter3.txt",
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "bytes": 1120,
+      "path": "licenses/phaser.txt",
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "bytes": 3382,
+      "path": "style.css",
+      "sha256": "4c72edddbaeb460df1fc114a50219cedbe4afa1071e807b991129a94e6e3ee4e"
+    }
+  ]
+}

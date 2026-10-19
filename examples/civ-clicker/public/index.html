@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<!--
+	CivClicker
+	Copyright (C) 2014; see the AUTHORS file for authorship.
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program in the LICENSE file.
+	If it is not there, see <http://www.gnu.org/licenses/>.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+	<title>小小文明 · owngame</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="styles/civclicker.css" />
+	<meta name="description" content="CivClicker: Build a Civilisation In Your Browser" />
+	<script type="module" src="scripts/civclicker.js" defer="defer"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="owngame.css"></head>
+<body class="hasBackground"><div id="viewport"><div id="civ-ready">正在载入城邦…</div><div id="civ-toolbar"><button id="civ-pause">暂停</button><button id="civ-help">玩法说明</button></div><p id="civ-guide">先收获粮食和毛皮，再伐木搭建帐篷；招募农夫后开始自动生产。</p>
+
+<div id="strip">
+	<div id="header"><img id="village-art" src="art/civ-valley.png" alt="群山环抱的村落，麦田、林场与采石场" />
+        <div id="village-sites" aria-label="村落采集点"><button class="village-site" data-resource="food" aria-label="在麦田收获粮食">麦田</button><button class="village-site" data-resource="wood" aria-label="在林场采集木材">林场</button><button class="village-site" data-resource="stone" aria-label="在采石场开采石料">石场</button></div>
+        <div id="village-feedback" aria-live="polite"></div>
+		<h1><span id="civName">青禾村</span> · <span id="civType">聚落</span></h1>
+		<div id="ruler">领主 <span id="rulerName">旅人</span><span id="appellation" hidden>mighty</span></div>
+	</div>
+	<div id="stripInner">
+		<span class="title">CivClicker</span>
+		<span class="version">v1.4.0</span>
+		<a href="faq/index.html" target="_blank">FAQ &amp; Instructions</a>
+		<a href="updates.html" target="_blank">Game Updates Log</a>
+		<a href="https://www.reddit.com/r/CivClicker/" target="_blank">Reddit</a>
+		<a href="#" class="openSettings">Settings</a>
+	</div>
+</div>
+
+<section id="settings" class="drawer">
+	<div class="columns">
+		<div class="column left">
+			<h2>Naming</h2>
+			<button onclick="renameCiv()" title="Rename your civilisation">Rename Civilisation</button><br />
+			<button id="renameRuler" onclick="renameRuler()" title="Rename yourself">Rename Yourself</button><br />
+			<button id="renameDeity" onclick="renameDeity()" title="Rename your deity" disabled="disabled">Rename Current Deity</button>
+			<br />
+			<h2>Display</h2>
+			<span id="textSize"><button id="smallerText" onclick="textSize(-1)" title="Smaller Text">&minus;</button>Text Size
+			<button id="largerText" onclick="textSize(1)" title="Larger Text">+</button></span><br />
+			<br />
+			<label><input id="toggleCustomQuantities" type="checkbox" onclick="onToggleCustomQuantities(this)" title="Custom Quantity"/>Use Custom Quantities</label><br />
+			<label><input id="toggleDelimiters" type="checkbox" onclick="onToggleDelimiters(this)" title="Toggle Delimiters"/>Number Delimiters</label><br />
+			<label><input id="toggleDarkMode" type="checkbox" onclick="onToggleDarkMode(this)" title="Toggle Dark Mode"/>Dark Mode</label><br />
+			<label><input id="toggleShadow" type="checkbox" onclick="onToggleShadow(this)" title="Toggle Text Shadow"/>Text Shadows</label><br />
+			<label><input id="toggleNotes" type="checkbox" onclick="onToggleNotes(this)" title="Toggle Notes"/>Show Notes</label><br />
+			<label><input id="toggleWorksafe" type="checkbox" onclick="onToggleWorksafe(this)" title="Toggle Worksafe Mode"/>Worksafe Mode</label><br />
+			<label><input id="toggleIcons" type="checkbox" onclick="onToggleIcons(this)" title="Toggle Icons"/>Use Icons</label><br />
+		</div>
+
+		<div class="column right">
+			<h2>Save &amp; Load Controls</h2>
+			<button onclick="save('manual')" title="Save your current stats">Manual Save</button><br />
+			<label><input id="toggleAutosave" type="checkbox" onclick="onToggleAutosave(this)" title="Autosave"/>Autosave</label><br />
+			<button onclick="reset()" title="Reset your game">Reset Game</button>
+			<span class="note">
+				<span id="resetNote">Resetting allows you to </span>
+				<span id="resetDeity">gain another deity</span>
+				<span id="resetBoth"><br/> and </span>
+				<span id="resetWonder">build another Wonder</span>
+			</span>
+			<br />
+			<br />
+			<button onclick="deleteSave()" title="Delete your saved stats">Delete Save File</button><br />
+			<br />
+			<label>Save game data:</label>
+			<textarea id="impexpField"></textarea>
+			<button id="expButton" onclick="save('export')">Export</button>
+			<button id="expSelect" onclick="document.getElementById('impexpField').select();">Select All</button>
+			<button id="impButton" onclick="load('import')">Import</button>
+		</div>
+	</div>
+</section>
+
+
+<div id="main" class="columns">
+<div id="leftColumn" class="column left">
+	<div id="basicResourcesContainer" class="civSection">
+		<table id="basicResources" class="resources">
+			<!-- populated by javascript -->
+		</table>
+	</div>
+	<div id="populationContainer" class="civSection">
+		<div id="populationNumbers">
+			<table class="resources">
+				<tbody>
+					<tr>
+						<td>
+							<img src="images/backup.png" class="icon icon-lg" alt="Population"/>
+							<label>Population:</label>
+						</td>
+						<td class="number"><span data-action="display_pop" data-target="living">...</span></td>
+						<td class="number maxNumber">
+							/ max: <span data-action="display_pop" data-target="limit">...</span>
+						</td>
+						<td class="note">
+							Build more housing to grow your civilization
+						</td>
+					</tr>
+					<tr id="zombieWorkers">
+						<td>
+							<img src="images/shambling-zombie.png" class="icon icon-lg" alt="Zombies"/>
+							<label>Zombies:</label>
+						</td>
+						<td class="number"><span data-action="display" data-target="zombie">...</span></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<img src="images/smitten.png" class="icon icon-lg" alt="Happiness"/>
+							<label>Happiness:</label>
+						</td>
+						<td colspan="3" id="morale">
+							<ol class="happinessRanks">
+								<li class="happy-1">Blissful</li>
+								<li class="happy-2">Happy</li>
+								<li class="happy-3">Content</li>
+								<li class="happy-4">Unhappy</li>
+								<li class="happy-5">Angry</li>
+							</ol>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div id="jobsContainer" class="civSection">
+		<div id="populationBar" class="bar" title="Population">
+			<!-- populated by javascript -->
+		</div>
+		<div id="populationCreate">
+			<div>
+				Recruit new citizens as
+				<select type="dropdown" id="newSpawnJobSelection">
+					<option value="unemployed">Idle Citizens</option>
+					<option value="farmer">Farmers</option>
+					<option value="woodcutter">Woodcutters</option>
+					<option value="miner">Miners</option>
+				</select>
+				<span class="cost">for <span id="workerCost">...</span> food</span><span class="note">.</span>
+				<button class="unit1" id="spawn1button" onclick="spawn(1)">+1</button>
+				<button class="unit10" id="spawn10button" onclick="spawn(10)">+10</button>
+				<button class="unit100" id="spawn100button" onclick="spawn(100)">+100</button>
+				<button class="unit1000" id="spawn1000button" onclick="spawn(1000)">+1k</button>
+				<button class="unitInfinity" id="spawnMaxbutton" onclick="spawn(Infinity)">+<span id="workerNumMax">Max</span></button>
+			</div>
+			<div id="customSpawnQuantity">
+				<button id="spawnCustomButton" onclick="spawn('custom')">Recruit Citizens</button><input id="spawnCustomQty" type="number" min="1" step="1" value="1" />
+			</div>
+		</div>
+		<p id="customJobQuantity">
+			Custom Quantity <input id="homeCustomQty" type="number" min="1" step="1" value="1" />
+		</p>
+		<table id="jobs">
+			<!-- populated by javascript -->
+		</table>
+	</div>
+	<div id="eventsContainer" class="civSection">
+		<h3>Events</h3>
+		<table id="logTable">
+			<tr id="log0"><td id="logT"></td><td id="logL"></td><td id="logR"></td></tr>
+			<tr id="log1"><td colspan="3"></td></tr>
+			<tr id="log2"><td colspan="3"></td></tr>
+			<tr id="log3"><td colspan="3"></td></tr>
+			<tr id="log4"><td colspan="3"></td></tr>
+			<tr id="log5"><td colspan="3"></td></tr>
+			<tr id="log6"><td colspan="3"></td></tr>
+			<!-- 
+			<tr id="log7"><td colspan="3"></td></tr>
+			<tr id="log8"><td colspan="3"></td></tr>
+			<tr id="log9"><td colspan="3"></td></tr> -->
+		</table>
+	</div>
+</div>
+
+<div id="rightColumn" class="column right">
+	<div id="specialResourcesContainer" class="civSection">
+		<table class="resources">
+			<tbody>
+				<tr>
+					<td>
+						<img src="images/skins.png" class="icon icon-lg" alt="Skins"/>
+						<label>Skins:</label>
+					</td>
+					<td>
+						<span class="number" data-action="display" data-target="skins">0</span>
+					</td>
+					<td>
+						<span class="number net" data-action="displayNet" data-target="skins">0</span><span class="perSecond">/s</span>
+					</td>
+					<td>
+						<img src="images/leather.png" class="icon icon-lg" alt="Leather"/>
+						<label>Leather:</label>
+					</td>
+					<td>
+						<span class="number" data-action="display" data-target="leather">0</span>
+					</td>
+					<td>
+						<span class="number net" data-action="displayNet" data-target="leather">0</span><span class="perSecond">/s</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="images/herbs.png" class="icon icon-lg" alt="Herbs"/>
+						<label>Herbs:</label>
+					</td>
+					<td>
+						<span class="number" data-action="display" data-target="herbs">0</span>
+					</td>
+					<td>
+						<span class="number net" data-action="displayNet" data-target="herbs">0</span><span class="perSecond">/s</span>
+					</td>
+					<td>
+						<img src="images/piety.png" class="icon icon-lg" alt="Piety"/>
+						<label>Piety:</label>
+					</td>
+					<td>
+						<span class="number" data-action="display" data-target="piety">0</span>
+					</td>
+					<td>
+						<span class="number net" data-action="displayNet" data-target="piety">0</span><span class="perSecond">/s</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="images/ore.png" class="icon icon-lg" alt="Ore"/>
+						<label>Ore:</label>
+					</td>
+					<td>
+						<span class="number" data-action="display" data-target="ore">0</span>
+					</td>
+					<td>
+						<span class="number net" data-action="displayNet" data-target="ore">0</span><span class="perSecond">/s</span>
+					</td>
+					<td>
+						<img src="images/metal.png" class="icon icon-lg" alt="Metal"/>
+						<label>Metal:</label>
+					</td>
+					<td>
+						<span class="number" data-action="display" data-target="metal">0</span>
+					</td>
+					<td>
+						<span class="number net" data-action="displayNet" data-target="metal">0</span><span class="perSecond">/s</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="images/gold.png" class="icon icon-lg" alt="Gold" />
+						<label>Gold:</label>
+					</td>
+					<td colspan="2">
+						<span class="number" data-action="display" data-target="gold">0</span>
+					</td>
+					<td>
+						<img src="images/carrion.png" class="icon icon-lg" alt="Corpses">
+						<label>Corpses:</label>
+					</td>
+					<td colspan="2">
+						<span class="number" data-action="display" data-target="corpses">0</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<div id="panesSelectors" class="civSection">
+		<div id="selectors" class="panesTabs">
+			<div id="buildingsSelect" class="paneSelector selected" data-target="buildingsPane" onclick="paneSelect(this)">
+				Buildings
+				<div class="alert">!</div>
+			</div>
+			<div id="upgradesSelect" class="paneSelector" data-target="upgradesPane" onclick="paneSelect(this)">
+				Upgrades
+				<div class="alert">!</div>
+			</div>
+			<div id="deitySelect" class="paneSelector" data-target="deityPane" onclick="paneSelect(this)">
+				Deity
+				<div class="alert">!</div>
+			</div>
+			<div id="conquestSelect" class="paneSelector" data-target="conquestPane" onclick="paneSelect(this)">
+				Conquest
+				<div class="alert">!</div>
+			</div>
+			<div id="tradeSelect" class="paneSelector" data-target="tradePane" onclick="paneSelect(this)">
+				Trade
+				<div class="alert">!</div>
+			</div>
+			<div id="achievementsSelect" class="paneSelector" data-target="achievementsPane" onclick="paneSelect(this)">
+				Achievements
+				<div class="alert">!</div>
+			</div>
+		</div>
+		
+		<div id="buildingsPane" class="selectPane selected">
+			<div class="landCols cols">
+				<div class="col">
+					Total Buildings: <span id="totalBuildings">...</span><br />
+				</div>
+				<div class="col">
+					Total Land: <span id="totalLand">...</span><br />
+				</div>
+			</div>
+			<div id="landBar" class="bar" title="Land usage">
+				<!-- populated by javascript -->
+			</div>
+			<p id="customBuildQuantity">
+				Custom Quantity <input id="buildingCustomQty" type="number" min="1" step="1" value="1" />
+			</p>
+			<table id="buildings">
+				<!-- populated by javascript -->
+			</table>
+			<div id="graveTotal">
+				Unfilled Graves: <span data-action="display" data-target="grave">...</span>
+			</div>
+		</div>
+		
+		<div id="upgradesPane" class="selectPane">
+			<div id="wondersContainer">
+				<h3>Wonders</h3>
+				<span id="startWonderLine"><button id="startWonder" onclick="startWonder()">Start Building Wonder</button></span>
+				<div id="wonderInProgress">
+					<span class="wonderTitle">Progress on <span id="wonderNameP">Wonder</span> - <span id="progressNumber">0</span>%</span> - <button id="renameWonder" onclick="renameWonder()">Rename</button>
+					<div id="progressContainer"><div id="progressBar"></div></div>
+					<div id="lowResources">Limited<span id="limited"> by low resources</span></div>
+					<div id="speedWonderGroup"><br /><button id="speedWonder" onclick="speedWonder()">Speed Wonder</button>
+					<span id="speedWonderCost" class="cost">100 gold</span><span class="note">: Increase wonder progress</span></div>
+				</div>
+				<div id="wonderCompleted">
+					<div class="wonderTitle"><span id="wonderNameC">Wonder</span> Completed! Choose Bonus:</div>
+				</div>
+				<table id="pastWonders"><tr><td></td></tr></table>
+			</div>
+			<table id="upgrades"></table>
+		</div>
+		
+		<div id="deityPane" class="selectPane">
+			<div class="notYet">
+				Your civilization does not yet worship a deity. 
+				<span class="tip">You need to increase piety by assigning clerics at a temple.</span>
+			</div>
+			<div id="deityContainer">
+				<h3>Current Deity</h3>
+				<table id="activeDeity">
+					<!-- populated by javascript -->
+				</table>
+			</div>
+			<span id="walkGroup"><br />Walk: <span id="walkStat">...</span> workers per second<br /></span>
+			<div id="worshipRow">
+				<!-- populated by updatePurchaseRow -->
+			</div>
+			<div id="deityDomains">
+				<p>
+					You may select only one domain for your deity:
+				</p>
+				<ul>
+					<li id="battleRow" class="purchaseRow" data-target="battle"> 
+						<span class="upgradetrue" data-quantity="true">
+							<button id="battleDeity" class="xtrue purchaseFor500Piety" onclick="selectDeity('battle')">Battle</button>
+						</span>
+						<span id="battleCost" class="cost">500 piety</span>
+					</li>
+					<li id="fieldsRow" class="purchaseRow" data-target="fields">
+						<span class="upgradetrue" data-quantity="true">
+							<button id="fieldsDeity" class="xtrue purchaseFor500Piety" onclick="selectDeity('fields')">Fields</button>
+						</span>
+						<span id="fieldsCost" class="cost">500 piety</span>
+					</li>		
+					<li id="underworldRow" class="purchaseRow" data-target="underworld">
+						<span class="upgradetrue" data-quantity="true">
+							<button id="underworldDeity" class="xtrue purchaseFor500Piety" onclick="selectDeity('underworld')">Underworld</button>
+						</span>
+						<span id="underworldCost" class="cost">500 piety</span>
+					</li>
+					<li id="catsRow" class="purchaseRow" data-target="cats">
+						<span class="upgradetrue" data-quantity="true">
+							<button id="catsDeity" class="xtrue purchaseFor500Piety" onclick="selectDeity('cats')">Cats</button>
+						</span>
+						<span id="catsCost" class="cost">500 piety</span>
+					</li>
+				</ul>
+			</div>
+			<div id="battleUpgrades">
+				<h3>The Strength of Battle</h3>
+				<table>
+					<tr id="battleAltarRow"><td></td></tr>
+					<tr id="riddleRow"><td></td></tr>
+					<tr id="smiteRow"><td></td></tr>
+					<tr id="throneRow"><td></td></tr>
+					<tr id="gloryRow"><td></td></tr>
+					<tr id="lamentRow"><td></td></tr>
+				</table>
+			</div>
+			<div id="fieldsUpgrades">
+				<h3>The Bounty of the Fields</h3>
+				<table>
+					<tr id="fieldsAltarRow"><td></td></tr>
+					<tr id="blessingRow"><td></td></tr>
+					<tr id="wickermanRow"><td></td></tr>
+					<tr id="wasteRow"><td></td></tr>
+					<tr id="walkRow"><td></td></tr>
+					<tr id="stayRow"><td></td></tr>
+				</table>
+			</div>
+			<div id="underworldUpgrades">
+				<h3>The Dread Power of the Underworld</h3>
+				<table>
+					<tr id="underworldAltarRow"><td></td></tr>
+					<tr id="bookRow"><td></td></tr>
+					<tr id="raiseDeadRow"><td></td></tr>
+					<tr id="feastRow"><td></td></tr>
+					<tr id="summonShadeRow"><td></td></tr>
+					<tr id="secretsRow"><td></td></tr>
+				</table>
+			</div>
+			<div id="catsUpgrades">
+				<h3>The Grace of Cats</h3>
+				<table>
+					<tr id="catAltarRow"><td></td></tr>
+					<tr id="lureRow"><td></td></tr>
+					<tr id="pestControlRow"><td></td></tr>
+					<tr id="companionRow"><td></td></tr>
+					<tr id="graceRow"><td></td></tr>
+					<tr id="comfortRow"><td></td></tr>
+				</table>
+			</div>
+			<div id="pantheonContainer">
+				<h3>Pantheon</h3>
+				<table id="oldDeities"><tr><td></td></tr></table>
+			</div>
+			<div id="iconoclasmGroup">
+				<button id="iconoclasm" onclick="iconoclasmList()">Iconoclasm</button>
+				<span id="iconoclasmCost" class="cost">1,000 piety</span>
+				<span id="iconoclasmNote" class="note">: Remove an old deity to gain gold</span><br />
+				<div id="iconoclasmList"></div>
+			</div>
+			<div id="pantheonUpgrades">
+				<h3>Pantheon Upgrades</h3>
+				<div id="purchasedPantheon"></div>
+			</div>
+		</div>
+		<div id="conquestPane" class="selectPane">
+			<div class="notYet">
+				You cannot command an army yet because you don't own a battle standard.
+				<span class="tip">Try building a barracks first.</span>
+			</div>
+			<span id="standardRow">
+				<!--  -->
+			</span>
+			<div id="conquest">
+				<h3>Army</h3>
+				<p id="customPartyQuantity">
+					Custom Quantity <input id="partyCustomQty" type="number" min="1" step="1" value="1" />
+				</p>
+				<table id="party">
+					<!-- populated by javascript -->
+				</table>
+				<div id="raidNews">
+					<!-- -->
+				</div>
+				<div id="raidGroup">
+					<h3>To War!</h3>
+					<p id="gloryGroup">
+						Glory: <span id="gloryTimer">0</span> seconds remain
+					</p>
+				</div>
+				<div id="victoryGroup">
+					<h3>Victory!</h3>
+					<button id="plunder" onclick="plunder()">Plunder Resources</button><br />
+				</div>
+			</div>
+			<div class="stats">
+				Total Enemies Slain: <span data-action="display" data-target="enemySlain">...</span>
+			</div>
+		</div>
+		<div id="tradePane" class="selectPane">
+			<div class="notYet">
+				You do not yet own a trading post. <span class="tip">Try trading with a trader when they (randomly) appear.</span>
+			</div>
+			<div id="tradeContainer">
+				Trader offers 1 gold for <span id="tradeRequested">...</span> <span id="tradeType">...</span>
+				for the next <span id="traderTimer">...</span>.
+				<br />
+				<button id="tradeButton" onclick="trade()">Trade</button>
+			</div>
+			<div id="noTrader">
+				No trader visiting
+			</div>
+			<span id="tradeRow">
+				<!-- populated by javascript -->
+			</span>
+			<div id="tradeUpgradeContainer">
+				<span id="currencyRow"></span>
+				<span id="commerceRow"></span>
+				<h4>Buy Resources (1 gold)</h4>
+				<button class="tradeResource" onclick="buy('food')">Buy 5000 Food</button><br />
+				<button class="tradeResource" onclick="buy('wood')">Buy 5000 Wood</button><br />
+				<button class="tradeResource" onclick="buy('stone')">Buy 5000 Stone</button><br />
+				<button class="tradeResource" onclick="buy('skins')">Buy 500 Skins</button><br />
+				<button class="tradeResource" onclick="buy('herbs')">Buy 500 Herbs</button><br />
+				<button class="tradeResource" onclick="buy('ore')">Buy 500 Ore</button><br />
+				<button class="tradeResource" onclick="buy('leather')">Buy 250 Leather</button><br />
+				<button class="tradeResource" onclick="buy('metal')">Buy 250 Metal</button><br />
+			</div>
+		</div>
+		<div id="achievementsPane" class="selectPane">
+			<div id="achievements">
+				<!-- populated by javascript -->
+			</div>
+			<div class="stats">
+				Resource clicks: <span id="clicks">0</span>
+			</div>
+		</div>
+	</div>
+
+</div>
+</div>
+<footer>
+	<!--
+	<span class="title">CivClicker v1.2</span>
+	<a href="https://kastark.co.uk/games/civclicker/">Original 1.0 Game</a>
+	<a href="faq/index.html">FAQ</a>
+	<a href="updates.html">Updates</a>
+	<a href="https://github.com/deathraygames/civ-clicker/">Source</a>
+	<a href="https://www.reddit.com/r/CivClicker/">Reddit</a>
+	-->
+</footer>
+<div class="scripts">
+	<!-- Google Analytics. REMOVE this for your own forks. -->
+	<!-- <script src="../../js/ga.js"></script> -->
+</div>
+<div id="civ-paused" hidden><h2>城邦已暂停</h2><p>生产与粮食消耗已停止</p><button id="civ-continue">继续经营</button></div>
+<dialog id="credits-dialog"><h2>小小文明</h2><p>点击采集粮食、木材和石料，偶尔获得毛皮、草药与矿石。用木材和毛皮建造帐篷，再招募居民。农夫生产粮食，每位居民都会消耗粮食；安排足够的农夫后，再增加伐木工和矿工。</p><p>在建筑、科技、信仰和征服之间发展城邦。支持原作的自动存档与导入导出。切换到后台会暂停生产和消耗。</p><p>原作 CivClicker：Katherine Stark、Scott A. Colcord、Luke Nickerson，GPL-3.0-or-later。改版也按同一许可发布，完整未压缩源码随游戏包提供。</p><p>图标：game-icons.net 的 Lorc 及原作者名单中的贡献者，Katherine Stark 改编，CC BY 3.0。字体：Lato 与 Suez One，SIL OFL。沿用原作的文字经营界面。</p><p><a href="https://github.com/deathraygames/civ-clicker" target="_blank" rel="noopener">原项目</a> · <a href="LICENSE" target="_blank">GPL 许可</a> · <a href="THIRD_PARTY.txt" target="_blank">素材归属</a> · <a href="source.tar.gz" download>下载本版源码</a></p><button id="civ-close-help">返回城邦</button></dialog></div><script>document.getElementById('civ-help').onclick=()=>document.getElementById('credits-dialog').showModal();document.getElementById('civ-close-help').onclick=()=>document.getElementById('credits-dialog').close();</script></body>
+</html>

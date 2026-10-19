@@ -1,0 +1,133 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "postcard-slide",
+  "online_build_sha256": "cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a",
+  "input_sha256": "efa68adcad0296547f0bf950ab42019f809355bb7783d3b1d1c4256ab928cc5c",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 388,
+      "sha256": "15c44847ee8eb808a7a2d30e4fcecbe454d133177214fc673552b642e76f89c2"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 2034,
+      "sha256": "2823efb32321056224f619710a97e6c0872b1ab36654543cb461bcd02368f8b0"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 15370,
+      "sha256": "3d7ad2a700e7dd424e8472dfafc505ff1c62e767e69901dfca8bb61e6b35ac6f"
+    },
+    {
+      "path": "package.json",
+      "bytes": 400,
+      "sha256": "f6b014671dfa9b4e60092bbdd0a26904873b84637cf94937cc62fb24c8708be3"
+    },
+    {
+      "path": "public/assets/letter-background.png",
+      "bytes": 2552841,
+      "sha256": "0d06c8d3265a179dc61bdef0e1022f4b342494cda91a1f44a3112d34be6e6c5c"
+    },
+    {
+      "path": "public/assets/paper-panel.png",
+      "bytes": 1692416,
+      "sha256": "c34a03dda621808cbe6dfcdbaddc0344ecc2a43a544606d2467e7199b3807368"
+    },
+    {
+      "path": "public/assets/PostcardHand.ttf",
+      "bytes": 87632,
+      "sha256": "bf4fe3c6e93e835699f8348113995e983c03f287e6009c015c2ce7ec56881a1a"
+    },
+    {
+      "path": "public/assets/watercolor-town.png",
+      "bytes": 3847421,
+      "sha256": "523bdcfb2bb5cf7f27296d9bd2f2e4f88422852b6cb8282c8a74245869269a76"
+    },
+    {
+      "path": "public/assets/wood-tray.png",
+      "bytes": 2667142,
+      "sha256": "ddcc0321477cfb66ebf939cb7ffce45f7337fa18918e6fee4539a71347b54884"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 2649,
+      "sha256": "198c93e3fe73cf2b2d1f70960229a17df6c105b4c7c82cfdfb2ab1257c78db17"
+    },
+    {
+      "path": "public/licenses/eventemitter3.txt",
+      "bytes": 1082,
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "path": "public/licenses/phaser.txt",
+      "bytes": 1120,
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "path": "public/licenses/PostcardHand-OFL.txt",
+      "bytes": 5171,
+      "sha256": "1a25e35da1031c6c3436fde545bb9cb5aca954e9873afe510c834b8b79bd21a0"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 4624,
+      "sha256": "786a8e07f16e5ee6c1ce462b325deeb95b985fd3b7f31ef397f7da669c62032a"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1270,
+      "sha256": "ca0f229f10a511c7344ee80081945fd85b1abf497ec23bb1b0176ed3f1cd333b"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/board-scene.ts",
+      "bytes": 4265,
+      "sha256": "b99d81d39970258991be52e83f98ef91ae67cafb75da6a0aeed04146f3b241cc"
+    },
+    {
+      "path": "src/layout.ts",
+      "bytes": 2189,
+      "sha256": "75c60a06a5ff545bd9ba609136b18ebc3d76e73e43033b4e5f4cceb404a27f36"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 11709,
+      "sha256": "a496c712e731d892bb867ef263f473c13a028a3f0cc933bfda1bc3703df3df0f"
+    },
+    {
+      "path": "src/rules.ts",
+      "bytes": 2840,
+      "sha256": "7f14c984b62cb0dc51d8e5d20a272b8a29658672972dc8b6099f4257361243bb"
+    },
+    {
+      "path": "src/storage.ts",
+      "bytes": 1736,
+      "sha256": "9d3e7cef01bf0a2934810a93d3fbbb009fce0d6478dc1740db8972b59d94da4c"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 7734,
+      "sha256": "bdd7865d61de19f43ae2d816babf9ca95ae41a9631710e2707f4b51d3189c47d"
+    }
+  ]
+}

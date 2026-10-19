@@ -1,0 +1,253 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "faune-dungeon",
+  "online_build_sha256": "ddcc9d6275d3905add62d3171e51e1eef83058c25c9dd38e0316923a6224f168",
+  "input_sha256": "d28742e7fa9c7de68bfd5e2061e25d046be41c5c72be8c999f323778f1776f51",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 342,
+      "sha256": "2a5b8a59bc7b8cc02f1faf3c5712cab53759853cc9a001d67e30d7a68cd5f845"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1064,
+      "sha256": "efcb943c49321521e40f9bdd68ce5804c533dc7bba4be95360ffbf54db04d015"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 4151,
+      "sha256": "40e867d71d40b2b9c6f45bbe3011b7c6422bbda54cdd15a42ad7ded4dde07df0"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 15368,
+      "sha256": "2a78b61633b977fcf090e1786fd3fd82b91854078f28c963a09dbe4d3fcc79d9"
+    },
+    {
+      "path": "package.json",
+      "bytes": 399,
+      "sha256": "6dd17009d3da09b293e483d2f3d3cf8d3ff0789fe96ea27ce50c9de3a474de2f"
+    },
+    {
+      "path": "public/art/faune-decor.png",
+      "bytes": 1920678,
+      "sha256": "527d070806e54f7762a5259f978d7c9f13f771de2f54e786dea2250a48f3a93b"
+    },
+    {
+      "path": "public/art/faune-hero.png",
+      "bytes": 1280120,
+      "sha256": "401faa130cd41a97a00b53ceed009700d533c7028d287a1a58eb2c8aff18b1b3"
+    },
+    {
+      "path": "public/art/faune-objects.png",
+      "bytes": 1443107,
+      "sha256": "aaf7cac207937bd2f0c592af9c22baf9d6e9c525d8bb02aa76c82cbc2f8a94ec"
+    },
+    {
+      "path": "public/art/faune-stone.png",
+      "bytes": 3025966,
+      "sha256": "af974afb3410801b13c989e6772d7b14a5068a7fd6271f1465e18b086592d7f6"
+    },
+    {
+      "path": "public/ARTWORK.json",
+      "bytes": 203,
+      "sha256": "0f79e43e8e1a8ecaa91c994a7f2df9c37ae78a52808c51f72ed7774e6ed1289f"
+    },
+    {
+      "path": "public/character/fauna.json",
+      "bytes": 10287,
+      "sha256": "66414b713da87d7e9cd4501a67a1d7017e4b599dbfbce09e8c5e057d72ed6103"
+    },
+    {
+      "path": "public/character/fauna.png",
+      "bytes": 6453,
+      "sha256": "7bc11f1b881712286bee3d8297da7d90090b98d8065fc485312e1f3e490999cf"
+    },
+    {
+      "path": "public/dungeons/dungeon-01.json",
+      "bytes": 93976,
+      "sha256": "a8b5797f8594aef912f35a52e9469fa470adf5bb53fb6c418df7ac752f027228"
+    },
+    {
+      "path": "public/dungeons/dungeon-01.tmx",
+      "bytes": 54887,
+      "sha256": "b0964f728cfa3ece703088d127db062444b0b9c09f110963a9070c8acbfa2399"
+    },
+    {
+      "path": "public/enemies/lizard.json",
+      "bytes": 3883,
+      "sha256": "ad1a8478b4085864062034ed7873e781e17910837a11b496c0100eef680929c8"
+    },
+    {
+      "path": "public/enemies/lizard.png",
+      "bytes": 1214,
+      "sha256": "b85857664cb0ce8068acd88c74df5471458e19f1593621a97ba4c963c4f0631d"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 2054,
+      "sha256": "801de323f86e138b16fde720c42ab47ab659c6cd625263eed606f1c4e92f539c"
+    },
+    {
+      "path": "public/items/treasure.json",
+      "bytes": 3022,
+      "sha256": "bbed943f0db631f71e24c99904ff922d0c98f5ace46966329964ac207b48ef25"
+    },
+    {
+      "path": "public/items/treasure.png",
+      "bytes": 726,
+      "sha256": "2e7531c6e6088f4a9270964e153cf89a38331350ccb113d8974a67eadf212131"
+    },
+    {
+      "path": "public/LICENSE",
+      "bytes": 1064,
+      "sha256": "efcb943c49321521e40f9bdd68ce5804c533dc7bba4be95360ffbf54db04d015"
+    },
+    {
+      "path": "public/owngame.css",
+      "bytes": 6910,
+      "sha256": "26aa75f97562e79cd4f2ea5c41bb941fdb1f90d9ff258b533ec8dd6b8151b5b8"
+    },
+    {
+      "path": "public/SOURCE.json",
+      "bytes": 295,
+      "sha256": "c3dc1daffc405c43a6a51ba6998348811c78aaa12dadffdfb1d7355fb7c7de03"
+    },
+    {
+      "path": "public/THIRD_PARTY.txt",
+      "bytes": 1354,
+      "sha256": "8b9f110127697d4b5ca311aec2619d2a088b4388dcd0ce1b86a018a23c2201cf"
+    },
+    {
+      "path": "public/tiles/dungeon_tiles_extruded.png",
+      "bytes": 18799,
+      "sha256": "01036aec7ae73c0505c3a97fa124e4acce478a2d41311141a6b3e0462688130d"
+    },
+    {
+      "path": "public/tiles/dungeon_tiles.png",
+      "bytes": 8586,
+      "sha256": "b78161949ab28a5e1fd568178702eaefa8e46aea738f18f31796d6ad8928cde9"
+    },
+    {
+      "path": "public/tiles/dungeon-01.json",
+      "bytes": 101581,
+      "sha256": "9400d909b8d0611a2b9f6ec4df29b03ef488eb9888eab1edd5f960f34a1d870c"
+    },
+    {
+      "path": "public/ui/ui_heart_empty.png",
+      "bytes": 204,
+      "sha256": "1308cd154f306d44e5d5ca416d50298070d6808c9ddb31bffb3d92c5d3050874"
+    },
+    {
+      "path": "public/ui/ui_heart_full.png",
+      "bytes": 214,
+      "sha256": "0b9bcaf3548422c156d4e17d1176313ccc75e9da44f0a08d1a79ae424540db0b"
+    },
+    {
+      "path": "public/weapons/weapon_knife.png",
+      "bytes": 621,
+      "sha256": "238484ff64a61543d86bc808fa1c3b09cf07923c2293d1615b62d69bcb843228"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1253,
+      "sha256": "6337822a6b8e6cd50fa300e9354df463148bf2f6e8283940b695611872e8bca3"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/anims/CharacterAnims.ts",
+      "bytes": 1140,
+      "sha256": "6eebc6a25bea0c7d46dd865b46ec16cda1c3445cbc94931a1f7132b314f4dd7b"
+    },
+    {
+      "path": "src/anims/EnemyAnims.ts",
+      "bytes": 512,
+      "sha256": "865826096008fe62c28af0041e4b45843485ac168c735dacc30a163fee1210a9"
+    },
+    {
+      "path": "src/anims/TreasureAnims.ts",
+      "bytes": 427,
+      "sha256": "8b6355ccb404e8f318de8e09cb33520f6ed752265aa3451a29e3a27b2be2028f"
+    },
+    {
+      "path": "src/characters/Faune.ts",
+      "bytes": 4898,
+      "sha256": "1ca567147029a28fae4bc50d1342d4441fbeacd1f23df7558846f30155910477"
+    },
+    {
+      "path": "src/enemies/Lizard.ts",
+      "bytes": 1671,
+      "sha256": "ab5682a71a3468f2e5210a36cc3e71b0093e45fe8c0705847a06d4d4b743ff21"
+    },
+    {
+      "path": "src/events/EventsCenter.ts",
+      "bytes": 107,
+      "sha256": "51cbd4a148bf8512caf95cf7b9bf945079b1a40871867da8c805ff857d8a8025"
+    },
+    {
+      "path": "src/items/Chest.ts",
+      "bytes": 491,
+      "sha256": "0a754cc282a6a89500127ecee13046c89b6ee44e84b073284797924a40b15123"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 726,
+      "sha256": "382f3b17c8bfc14b50f0f698c78a837b6108c076c2ddd63f879e61d6e12c4ae6"
+    },
+    {
+      "path": "src/owngame.ts",
+      "bytes": 4645,
+      "sha256": "0f26e08b1c2a62e3daed21c700e6a823827748e06c28d13f57dc288037eaae54"
+    },
+    {
+      "path": "src/scenes/Game.ts",
+      "bytes": 8586,
+      "sha256": "d8f1f439310369377af833171e9bff2800ba92c7279c6ca96eae1f272f6d19e3"
+    },
+    {
+      "path": "src/scenes/GameUI.ts",
+      "bytes": 1246,
+      "sha256": "c3e4a6abd307aa21483aa572acc195c8483f8b34ab63ed946898197ca329741b"
+    },
+    {
+      "path": "src/scenes/Preloader.ts",
+      "bytes": 1652,
+      "sha256": "92252ec5cf3c27ee3d00bd9d2f00f86718b17555e78aa3b211463c08fcb6af04"
+    },
+    {
+      "path": "src/scenes/WoodlandArt.ts",
+      "bytes": 4276,
+      "sha256": "82bc069d83ffd6b89a0cf5ea5b328bf5614be14ffc5196f06c9c809829159dc7"
+    },
+    {
+      "path": "src/utils/debug.ts",
+      "bytes": 381,
+      "sha256": "3d23e3e49d60646281ef55ba8bbd07ded39787de88a2297e9ad79db5f3a88f56"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 2390,
+      "sha256": "4ba70890d4cb02c970f54d835e2459ccab55358c6e4de529ad5d48b0a7305c45"
+    },
+    {
+      "path": "UPSTREAM.json",
+      "bytes": 200,
+      "sha256": "efe430ac9df5d0678833dff4f8e19a20e15f73849e1a95f6cc7c05893e83b5b9"
+    }
+  ]
+}

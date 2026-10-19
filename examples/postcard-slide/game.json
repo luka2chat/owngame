@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "postcard-slide",
+  "title": "山城来信",
+  "kind": "phaser",
+  "online_build_sha256": "cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a",
+  "original_source_sha256": "ea7048e019ba6723796665811dffed628c8a8a637683bf7d1bc534efc544e8a9",
+  "license": "MIT",
+  "description": "滑动一枚枚纸片，拼回落日里的山城。"
+}

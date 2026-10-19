@@ -1,0 +1,128 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "silk-serpent",
+  "online_build_sha256": "5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a",
+  "input_sha256": "a9d35bd77a2f50a54c8b49c4499ef8bd216fa6878e718accea74a0ab6c2db220",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 395,
+      "sha256": "a3481e2e99f323cc50c0e381773ae9a31d3f10b979b30fa7351663f1e42e16e2"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 1825,
+      "sha256": "cac1eaeb7b788eaad8988dda8ccb15359d24c7821ce212d7584584185a1ed4dd"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 15366,
+      "sha256": "0595a6a0178dfa61bde7e4e503729b0ca440655da8b06dd31cb602afc19900aa"
+    },
+    {
+      "path": "package.json",
+      "bytes": 398,
+      "sha256": "cc0846d6b782ae2dfa007d2f0db0c5829f1702bd8c64cee321681ae4ce42df80"
+    },
+    {
+      "path": "public/assets/bend.png",
+      "bytes": 809862,
+      "sha256": "1d7cb44c852a763869cf8c8ffa32aaa6090fdcfc4e8fb3b69629380d9d673e31"
+    },
+    {
+      "path": "public/assets/courtyard.png",
+      "bytes": 3007288,
+      "sha256": "9c8fa0be55330b359d149265d65b76dbf5e7299110d4130084a1770519b5ae2c"
+    },
+    {
+      "path": "public/assets/dragon.png",
+      "bytes": 1077354,
+      "sha256": "734098c6154ba310e74188350cd754854ccc4068bd92c6a3a866d574631e3669"
+    },
+    {
+      "path": "public/assets/title.png",
+      "bytes": 2556178,
+      "sha256": "6b9ac338dddfba9452e078dcc4022064891b4738e87b204606eaba7bdde279b5"
+    },
+    {
+      "path": "public/cover.html",
+      "bytes": 2782,
+      "sha256": "3791247784355651ea75b5fd00f0455ac6fcf77754aaba4918e22bffa8167045"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 2625,
+      "sha256": "39c3526031352b869b6b50e72c9482322e5ce38ac741b67d5e0a98ce4454a9c2"
+    },
+    {
+      "path": "public/licenses/eventemitter3.txt",
+      "bytes": 1082,
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "path": "public/licenses/phaser.txt",
+      "bytes": 1120,
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 4194,
+      "sha256": "d453d19503f616ef1b77a322f46abe80b8a85b23287bafb3ab05211e3919745f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1254,
+      "sha256": "ec0c260eeaacd67fb3b26fe6762fd49dd13834bba695964d07b6277510227776"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/game-scene.ts",
+      "bytes": 6908,
+      "sha256": "8935577259ae985f5bb817f3ef35a5252921554605edd1ff56a9787e73df6fea"
+    },
+    {
+      "path": "src/layout.ts",
+      "bytes": 1213,
+      "sha256": "f698604e5ab61f45eb25639e4cfeca7e666d7ce02bc8900d012e498f04951897"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 14335,
+      "sha256": "f6fae276b1beea8fe2cca6e7251fa73d6c95a6995709e3d2d06ffd2c6357b359"
+    },
+    {
+      "path": "src/rules.ts",
+      "bytes": 9077,
+      "sha256": "0d6f7073f3fa27d5f1999c8a41d6ebf28f29d771c594b9b843c2c29848d54167"
+    },
+    {
+      "path": "src/storage.ts",
+      "bytes": 1964,
+      "sha256": "7bad92e7825ec4e61121ea3cf3b23b5444e77a90da051040580802f78f0582ab"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 2520,
+      "sha256": "178c3f91fe872baf54ecd73f74bc8d3cdfcc64e0dfcf07be3a1a5aa6e115d071"
+    }
+  ]
+}

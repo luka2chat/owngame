@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "silk-serpent",
+  "title": "绢龙逐珠",
+  "kind": "phaser",
+  "online_build_sha256": "5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a",
+  "original_source_sha256": "9226e89ea428730c4b6df011c4b5bae11b26f7b66d4c33715f9b778dbc37a2c6",
+  "license": "MIT",
+  "description": "滑动引领红绢游龙，在一庭灯火里拾珠长大。"
+}

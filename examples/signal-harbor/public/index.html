@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b2535">
+  <title>潮光归位 · 三章航程</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./game.js"></script>
+</head>
+<body>
+  <main id="viewport" aria-label="潮光归位">
+    <div id="frame">
+      <div id="scene" aria-hidden="true"></div>
+      <header id="heading"><h1 id="title">潮光归位</h1><p id="subtitle">S I G N A L &nbsp; H A R B O R</p></header>
+      <button id="nav" class="panel" type="button">航图</button>
+      <button id="mode" class="panel" type="button" aria-pressed="false">动效 ✓</button>
+      <div id="stats" class="panel" aria-label="关卡与步数"></div>
+      <p id="rule" class="panel">三塔各归其图案 · 泊位清空即过关</p>
+      <section id="play" aria-label="灯塔与泊位">
+        <div id="columns" role="group" aria-label="点击灯塔或泊位移动顶灯"></div>
+        <div id="status" class="panel" role="status" aria-live="polite"></div>
+        <button id="next" class="plaque" type="button" hidden>下一盏灯 →</button>
+        <nav aria-label="游戏操作">
+          <button id="undo" class="plaque" type="button">撤销</button>
+          <button id="restart" class="plaque" type="button">重来</button>
+          <button id="hint" class="plaque" type="button">提示</button>
+        </nav>
+      </section>
+      <section id="map" aria-label="三章航图" hidden>
+        <nav id="chapters" aria-label="章节"></nav>
+        <p id="lesson" class="panel"></p>
+        <div id="levels" role="group" aria-label="选择关卡"></div>
+        <button id="resume" class="plaque" type="button">继续当前航程</button>
+      </section>
+      <div id="loading" role="status"><p>正在点亮海港…</p><button id="retry" class="panel" type="button" hidden>重新打开</button></div>
+    </div>
+  </main>
+</body>
+</html>

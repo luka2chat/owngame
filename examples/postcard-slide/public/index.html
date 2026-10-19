@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"><link rel="icon" href="data:,"><meta name="theme-color" content="#f3ecdc"><title>山城来信 · 旅途水彩</title><link rel="stylesheet" href="./style.css"><script defer src="./game.js"></script></head><body>
+<canvas id="backdrop" aria-hidden="true"></canvas>
+<main id="viewport" aria-label="山城来信"><div id="frame">
+<div id="scene" aria-hidden="true"></div>
+<div id="play"><header id="letterhead"><h1>山城来信</h1><p>POSTCARDS FROM THE HILLS</p><span class="postmark" aria-hidden="true">山城<br>来信</span></header>
+<nav id="difficulty" aria-label="拼图尺寸"><button data-size="3" class="paper" type="button">初见 3×3</button><button data-size="4" class="paper" type="button">漫游 4×4</button><button data-size="5" class="paper" type="button">远行 5×5</button></nav>
+<div id="board-input" role="group" aria-label="滑块拼图"></div>
+<p id="stats" aria-live="polite"></p><p id="notice" role="status" aria-live="polite"></p>
+<nav id="primary" aria-label="拼图操作"><button id="undo" class="paper" type="button"><svg viewBox="0 0 24 24"><path d="m8 5-5 5 5 5M4 10h10a6 6 0 0 1 0 12"/></svg>退一步</button><button id="peek" class="paper" type="button"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16"/><path d="m4 18 6-7 5 6 3-3 3 4"/><circle cx="16" cy="8" r="1"/></svg>看原图</button><button id="new" class="paper" type="button"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14"/><path d="m3 6 9 7 9-7"/></svg>再寄一封</button></nav>
+<nav id="secondary" aria-label="拼图设置"><button id="restart" class="paper quiet" type="button"><svg viewBox="0 0 24 24"><path d="M20 9a8 8 0 0 0-14-4L3 8m0-5v5h5M4 15a8 8 0 0 0 14 4l3-3m0 5v-5h-5"/></svg>重来</button><button id="help" class="paper quiet" type="button"><svg viewBox="0 0 24 24"><path d="M12 21V5L3 3v16l9 2 9-2V3l-9 2"/></svg>玩法</button><button id="simple" class="paper quiet" type="button" aria-pressed="false"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 7 5 5-5 5"/></svg><span id="simple-text">简动：关</span></button></nav></div>
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden><section class="dialog"><h2 id="modal-title"></h2><div id="modal-body"></div><div id="modal-actions"></div></section></div>
+<div id="loading" role="status"><p>正在展开明信片…</p><button id="retry" class="paper" type="button" hidden>重新打开</button></div>
+</div></main></body></html>

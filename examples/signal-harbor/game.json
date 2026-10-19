@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "signal-harbor",
+  "title": "潮光归位",
+  "kind": "phaser",
+  "online_build_sha256": "7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99",
+  "original_source_sha256": "d4145b9342f7cd6a19e039c2fca39475155e1c83f33fff65ddf8357a115c05b0",
+  "license": "MIT",
+  "description": "借一处泊位，让灯光慢慢归航。24 个谜题，随时选关。"
+}

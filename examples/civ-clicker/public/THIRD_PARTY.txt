@@ -1,0 +1,14 @@
+CivClicker — Katherine Stark, Scott A. Colcord, Luke Nickerson
+https://github.com/deathraygames/civ-clicker
+Code and owngame modifications: GPL-3.0-or-later. Full editable source is included in this package and source.tar.gz.
+
+Icons: game-icons.net, Lorc and contributors; adapted by Katherine Stark. CC BY 3.0 as stated in upstream faq.html.
+Original authors: https://game-icons.net/about.html#authors
+Backup icon: Lorc, https://game-icons.net/1x1/lorc/backup.html
+License: https://creativecommons.org/licenses/by/3.0/
+Original icons retained for secondary systems. Main village illustration and four resource icons: generated for owngame with OpenAI ImageGen, 2026-10-18. Original authors have not endorsed these changes.
+
+Fonts: Lato and Suez One, SIL Open Font License. See fonts/Lato/OFL.txt and fonts/Suez_One/OFL.txt.
+The optional upstream painting collection is not used or shipped.
+
+LZ-String: Pieroxy, WTFPL v2, original notice in scripts/libs/lz-string.js.

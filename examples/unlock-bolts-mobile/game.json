@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "unlock-bolts-mobile",
+  "title": "螺帽之间",
+  "kind": "phaser",
+  "online_build_sha256": "242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b",
+  "original_source_sha256": "8b68d11cbb77d8549db6174d2173e3907033701ab837ff44b9c9f704cbfcb803",
+  "license": "MIT",
+  "description": "转个念头，把每一种颜色放回它的位置。"
+}

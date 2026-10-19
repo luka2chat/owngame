@@ -1,0 +1,158 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "signal-harbor",
+  "online_build_sha256": "7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99",
+  "input_sha256": "7829e2f304eac84091f250d28cb7f893d9c683b89dd0b353d48232be0e34622e",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 408,
+      "sha256": "507cd54ce244183ce599b38916215bdbbb2ef5446f962417933be6450abe86b1"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 2173,
+      "sha256": "92b2c47888d48d6b32493cd6dd0c3953598e02c6445d271afc6f88c511843528"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 15368,
+      "sha256": "d99c51f5abd62a8381ccafb6743e7534462761f267dcc43abdb142b57796731e"
+    },
+    {
+      "path": "package.json",
+      "bytes": 399,
+      "sha256": "f6e97b78d53150f24bab4aa7c7cb79383b4091a38f622b5f9f718d4d1fcf916a"
+    },
+    {
+      "path": "public/assets/buoy.png",
+      "bytes": 1695979,
+      "sha256": "45c3eec177210aa1586193f03504ec6e119906849493ed3dded995bca4c1989f"
+    },
+    {
+      "path": "public/assets/button-plaque.png",
+      "bytes": 1445206,
+      "sha256": "1ac3cc9e0d866182679bafb1b4b23324c8e37deac144fd8ad10fb29a608cb3ec"
+    },
+    {
+      "path": "public/assets/harbor-background.png",
+      "bytes": 2367295,
+      "sha256": "77951c1b487ae01a1df519216b4ee2c998415f441b4c332bd970fdeb2a3e303f"
+    },
+    {
+      "path": "public/assets/lighthouse.png",
+      "bytes": 1934010,
+      "sha256": "051705bd653e590323de7e25006ee6766bf5b810913ae076dc71a39e32360f76"
+    },
+    {
+      "path": "public/assets/signal-a.png",
+      "bytes": 1774969,
+      "sha256": "f08b98de117cc854a4f2e6b84dff155f609f2daee188c81e0149c9385b12d12b"
+    },
+    {
+      "path": "public/assets/signal-b.png",
+      "bytes": 1814571,
+      "sha256": "972869dce2480c3f303d9d1e93773553b61bede24f83c2ae9570fdb50d5b6269"
+    },
+    {
+      "path": "public/assets/signal-c.png",
+      "bytes": 1815447,
+      "sha256": "8184a36dbf68bb2fc342b98ec6fa33854c9fd2500c59b2a07d63bad3d8623962"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 2042,
+      "sha256": "a0e88976f40a25a1a5b44d26fd934a70f1c8c1feb632ed7c19fcdb4cd6919ab3"
+    },
+    {
+      "path": "public/licenses/eventemitter3.txt",
+      "bytes": 1082,
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "path": "public/licenses/phaser.txt",
+      "bytes": 1120,
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 3382,
+      "sha256": "4c72edddbaeb460df1fc114a50219cedbe4afa1071e807b991129a94e6e3ee4e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1274,
+      "sha256": "1ecbdb63a2969c2f831a111544f2c94323f6c7532fabccaa4594d5df6d19fbce"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/core/layout.ts",
+      "bytes": 2452,
+      "sha256": "a24b934c397450e67ac260538f3e93e956b4b12a0d658cf15ac8427f0d3a6f26"
+    },
+    {
+      "path": "src/core/levels.ts",
+      "bytes": 20067,
+      "sha256": "a056de85051a50c910bd863ac545d4f2932451f28c292f6ac0a657ed2442a03c"
+    },
+    {
+      "path": "src/core/progress.ts",
+      "bytes": 2806,
+      "sha256": "e073d27136e838fe4b65e435bdec1744d8c96973810e8d1c2d72b16192e7868e"
+    },
+    {
+      "path": "src/core/rules.ts",
+      "bytes": 4918,
+      "sha256": "feb88786298cddded5aec878433aba27d48ab42eee2cb039c870a40a80f8669d"
+    },
+    {
+      "path": "src/harbor-scene.ts",
+      "bytes": 4273,
+      "sha256": "cf8961c28e2e75fa8033b7190b9d47d4b8c38c378679e3d81649bc3d82a7f2ea"
+    },
+    {
+      "path": "src/layout.ts",
+      "bytes": 3719,
+      "sha256": "c7548cd6197615fa28bd1d5c84a63b76347d23c855086166ab3a55f6a9a3f611"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 14787,
+      "sha256": "2458f53618bba2b321dff610bd594a16de2d93536b8eb89c5317656d2b61e735"
+    },
+    {
+      "path": "src/rules.ts",
+      "bytes": 149,
+      "sha256": "bb9ddd4c4de9fba96417a283078145096d1e051a485fa1026479ae0aeee5948d"
+    },
+    {
+      "path": "src/storage.ts",
+      "bytes": 969,
+      "sha256": "203229b45b1650adf50698965acf2d58fe5dacbf6639be655046eaf3a1ee20b5"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 2520,
+      "sha256": "d410845f2bd1c4a5aada938b1987e4c986fb3e84a98b493cc458e2785948de29"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "petal-memory",
+    "title": "花笺拾忆",
+    "subtitle": "PETAL MEMORY",
+    "tag": "纸本植物志 · 翻牌配对",
+    "art": "petal-memory",
+    "category": "益智",
+    "viewportHeight": 800,
+    "description": "翻开手绘花笺，与标本师或朋友比一比记忆。",
+    "instructions": "每次翻两张，配对得一分并继续，失配换人。三档14、22、30张；支持与标本师对战或同屏双人，进度自动保存。",
+    "responsiveViewport": true
+  }
+]

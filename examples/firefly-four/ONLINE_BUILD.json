@@ -1,0 +1,42 @@
+{
+  "id": "firefly-four",
+  "build_sha256": "290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 1249594,
+      "path": "art/atlas.png",
+      "sha256": "06a5197b4409ceaa6937f31bf9f436ba7646193b93b6053ddcb314e02a130fd5"
+    },
+    {
+      "bytes": 2355794,
+      "path": "art/bg.png",
+      "sha256": "2f1f6026a8350687a5de4d75d40c8b11bb59424b9ddf69eca1ba80d239e8b58c"
+    },
+    {
+      "bytes": 2574799,
+      "path": "art/board.png",
+      "sha256": "a70ee03e15285680067bb446477b0cd9ca10145b43e42db9cec0b105005dc7d0"
+    },
+    {
+      "bytes": 1317604,
+      "path": "art/title.png",
+      "sha256": "576718af6af42b839cbf67a700f039a0af2a567dbbe62166c3904e6bf698bbfd"
+    },
+    {
+      "bytes": 17212,
+      "path": "game.js",
+      "sha256": "837dd7205fa9523a12a3459f8c24943d516fe284694a5995514f96a467e4bfa6"
+    },
+    {
+      "bytes": 739,
+      "path": "index.html",
+      "sha256": "b623522d19d4dfc9fa93bc23a775aa4d7f77db0586c1bf1f92529542081f1e8e"
+    },
+    {
+      "bytes": 1532,
+      "path": "style.css",
+      "sha256": "15d8c49cbfd18d4cee5093cc3106269bc9fab15fa0434f914833dfd6781c1367"
+    }
+  ]
+}

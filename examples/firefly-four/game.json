@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "firefly-four",
+  "title": "萤灯四连",
+  "kind": "canvas",
+  "online_build_sha256": "290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d",
+  "original_source_sha256": "0f746973c8335d59d9429ac960876decaa9c754ce11adeca9b6c5a2fc5339570",
+  "license": "MIT",
+  "description": "竹亭渐暗，先点亮属于你的四盏萤灯。"
+}

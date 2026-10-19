@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>遥控冲线 · owngame</title>
+    <meta
+      name="description"
+      content="Drive a physics-based RC car around a three.js playground with jumps, loops, boost, and touch controls."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://raycast-rc-car.netlify.app/" />
+    <meta property="og:title" content="Raycast RC Car" />
+    <meta
+      property="og:description"
+      content="Drive a physics-based RC car around a three.js playground with jumps, loops, boost, and touch controls."
+    />
+    <meta property="og:image" content="https://raycast-rc-car.netlify.app/og-image.jpg" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="614" />
+    <meta property="og:image:alt" content="An RC car on a colorful three.js stunt course." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Raycast RC Car" />
+    <meta
+      name="twitter:description"
+      content="Drive a physics-based RC car around a three.js playground with jumps, loops, boost, and touch controls."
+    />
+    <meta name="twitter:image" content="https://raycast-rc-car.netlify.app/og-image.jpg" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+        font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+        background: #1b1b2a;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      #app {
+        position: fixed;
+        inset: 0;
+      }
+
+      canvas {
+        display: block;
+        touch-action: none;
+      }
+
+      .hud {
+        position: fixed;
+        pointer-events: none;
+        color: #fff;
+        user-select: none;
+      }
+
+      #speed {
+        right: 24px;
+        bottom: 24px;
+        text-align: center;
+        padding: 9px 12px 10px;
+        width: 108px;
+        background: rgba(8, 10, 18, 0.34);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        backdrop-filter: blur(12px);
+      }
+
+      #speed .value {
+        font-size: 37px;
+        font-weight: 800;
+        line-height: 0.95;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -1px;
+      }
+
+      #speed .unit {
+        margin-top: 1px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.3px;
+        opacity: 0.62;
+        text-transform: uppercase;
+      }
+
+      #ui-buttons {
+        position: fixed;
+        left: 24px;
+        bottom: 24px;
+        display: flex;
+        gap: 10px;
+        z-index: 20;
+      }
+
+      .ui-btn {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.88);
+        background: rgba(8, 10, 18, 0.32);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        backdrop-filter: blur(12px);
+        font: inherit;
+        font-size: 17px;
+        font-weight: 700;
+        transition: background 0.15s, transform 0.1s;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .ui-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .ui-btn:active {
+        transform: scale(0.94);
+      }
+
+      .ui-btn svg {
+        width: 17px;
+        height: 17px;
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.88);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      #fullscreen-toggle .icon-compress {
+        display: none;
+      }
+
+      #fullscreen-toggle.is-fullscreen .icon-expand {
+        display: none;
+      }
+
+      #fullscreen-toggle.is-fullscreen .icon-compress {
+        display: block;
+      }
+
+      #help {
+        left: 24px;
+        bottom: 78px;
+        display: none;
+        grid-template-columns: repeat(2, max-content);
+        gap: 7px 12px;
+        font-size: 11px;
+        line-height: 1.2;
+        background: rgba(8, 10, 18, 0.32);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 16px;
+        padding: 11px 13px;
+        opacity: 0.86;
+      }
+
+      #help.open {
+        display: grid;
+      }
+
+      #help b {
+        display: block;
+        min-width: auto;
+        margin-bottom: 2px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      #help span {
+        color: rgba(255, 255, 255, 0.58);
+      }
+
+      /* Wrappers stay invisible to the grid; their children become grid items */
+      #help .keyboard-controls {
+        display: contents;
+      }
+
+      #help .touch-controls {
+        display: none;
+      }
+
+      #title {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        opacity: 0.55;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      #mobile-controls {
+        display: none;
+      }
+
+      @media (pointer: coarse) {
+        .lil-gui {
+          display: none !important;
+        }
+
+        #ui-buttons {
+          display: none;
+        }
+
+        #help {
+          display: none !important;
+        }
+
+        #help .keyboard-controls {
+          display: none;
+        }
+
+        #help .touch-controls {
+          display: contents;
+        }
+
+        #speed {
+          top: 16px;
+          right: 16px;
+          bottom: auto;
+        }
+
+        #title {
+          display: none;
+        }
+
+        #mobile-controls {
+          position: fixed;
+          inset: 0;
+          z-index: 10;
+          display: block;
+          pointer-events: none;
+          touch-action: none;
+          user-select: none;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+        }
+
+        #mobile-controls * {
+          user-select: none;
+          -webkit-user-select: none;
+          -webkit-touch-callout: none;
+        }
+
+        #mobile-reset {
+          position: absolute;
+          left: 16px;
+          top: 16px;
+          min-width: 68px;
+          height: 38px;
+          padding: 0 14px;
+          pointer-events: auto;
+          touch-action: none;
+          color: rgba(255, 255, 255, 0.9);
+          background: rgba(8, 10, 18, 0.34);
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          border-radius: 999px;
+          backdrop-filter: blur(12px);
+          font: inherit;
+          font-size: 13px;
+          font-weight: 800;
+          letter-spacing: 0.4px;
+          text-transform: uppercase;
+        }
+
+        #mobile-reset:active {
+          transform: scale(0.96);
+          background: rgba(255, 255, 255, 0.14);
+        }
+
+        #mobile-joystick {
+          position: absolute;
+          right: 24px;
+          bottom: 24px;
+          width: 144px;
+          height: 144px;
+          pointer-events: auto;
+          touch-action: none;
+          border-radius: 999px;
+          background:
+            radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0 2px, transparent 3px),
+            rgba(8, 10, 18, 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          box-shadow: inset 0 0 28px rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(14px);
+        }
+
+        #mobile-joystick .stick {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 60px;
+          height: 60px;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.58);
+          border: 1px solid rgba(255, 255, 255, 0.28);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+          transform: translate(
+            calc(-50% + var(--stick-x, 0px)),
+            calc(-50% + var(--stick-y, 0px))
+          );
+        }
+
+        #mobile-boost {
+          position: absolute;
+          left: 28px;
+          bottom: 42px;
+          display: grid;
+          place-items: center;
+          width: 88px;
+          height: 88px;
+          pointer-events: auto;
+          touch-action: none;
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          border-radius: 999px;
+          color: #fff;
+          background: rgba(255, 255, 255, 0.1);
+          box-shadow:
+            inset 0 0 24px rgba(255, 255, 255, 0.08),
+            0 12px 30px rgba(0, 0, 0, 0.2);
+          backdrop-filter: blur(16px);
+          font: inherit;
+        }
+
+        #mobile-boost svg {
+          width: 34px;
+          height: 34px;
+          fill: rgba(255, 255, 255, 0.88);
+        }
+
+        #mobile-boost:active,
+        #mobile-boost.is-active {
+          background: rgba(56, 189, 248, 0.34);
+          border-color: rgba(125, 211, 252, 0.5);
+          transform: scale(0.97);
+        }
+      }
+    </style>  
+  
+<link rel="stylesheet" href="./ui-cleanup.css">
+<link rel="stylesheet" href="./owngame.css"></head>
+  <body><div id="viewport">
+    <div id="app"></div>
+
+    <div id="title" class="hud">three.js raycast vehicle</div>
+
+    <div id="help" class="hud">
+      <div class="keyboard-controls">
+        <div><b>WASD</b><span>Drive</span></div>
+        <div><b>Shift</b><span>Boost</span></div>
+        <div><b>Space</b><span>Jump</span></div>
+        <div><b>R</b><span>Reset</span></div>
+        <div><b>Drag</b><span>Camera</span></div>
+        <div><b>.</b><span>Tuning panel</span></div>
+      </div>
+      <div class="touch-controls">
+        <div><b>Joystick</b><span>Drive</span></div>
+        <div><b>⚡ Button</b><span>Boost</span></div>
+      </div>
+    </div>
+
+    <div id="ui-buttons">
+      <button id="help-toggle" class="ui-btn" type="button" aria-label="Show controls">?</button>
+      <button id="fullscreen-toggle" class="ui-btn" type="button" aria-label="Toggle fullscreen">
+        <svg class="icon-expand" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" />
+        </svg>
+        <svg class="icon-compress" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="speed" class="hud">
+      <div class="value">0</div>
+      <div class="unit">公里 / 小时</div>
+    </div>
+
+    <div id="mobile-controls">
+      <button id="mobile-reset" type="button" aria-label="回到起点，加时五秒">回到起点 +5秒</button>
+      <div id="mobile-joystick">
+        <div class="stick"></div>
+      </div>
+      <button id="mobile-boost" type="button" aria-label="加速">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M13 2 4 14h6l-1 8 10-13h-6l0-7z" />
+        </svg>
+      </button>
+    </div>
+
+<div id="race-hud"><span id="race-progress"></span><strong id="race-time">0.0 秒</strong><span id="race-distance"></span></div>
+<canvas id="minimap" width="110" height="130" aria-label="检查点路线图"></canvas><button id="race-pause">暂停</button>
+<section id="race-modal"><h1 id="race-title">遥控冲线</h1><p id="race-description">正在载入赛车与场地…</p><p id="race-best"></p><button id="race-start">开始计时</button><button id="race-resume" hidden>继续上次比赛</button><small>键盘 WASD / 方向键 · Shift 加速 · R 回起点加时</small><button id="race-credits">作品来源</button></section>
+<dialog id="credits"><h2>作品来源</h2><p>基于 icurtis1 / Raycast Vehicle（MIT），保留原车模、车辆物理和触控摇杆。海岸赛场由 owngame 重建，天空、道路、海水、植被和建筑材质使用 ImageGen 生成。owngame 添加两圈计时赛、检查点、暂停与独立存档。</p><p><a href="https://github.com/icurtis1/raycast-vehicle" target="_blank" rel="noopener">原作者仓库</a> · <a href="LICENSE" target="_blank">原代码许可</a></p><button id="close-credits">返回</button></dialog><p id="save-warning" hidden>设备暂时无法保存进度</p></div>
+    <script>document.getElementById('race-start').disabled=true;window.addEventListener('error',()=>{document.getElementById('race-description').textContent='加载失败，请返回后重试。'});</script>
+  <script type="module" src="./src/main.js"></script></body>
+</html>

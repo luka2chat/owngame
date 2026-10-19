@@ -1,0 +1,183 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "rc-rally",
+  "online_build_sha256": "45c4d8caa12114314f38206170906dae067dea111574e6fffecb4817dfab14ee",
+  "input_sha256": "e644d53e4100355179c1646b0994be994000ace601bc35e7ea549eb6da8eb6a4",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 327,
+      "sha256": "b045c8d32cd40199daaac516b28a3fdbaf21fa9b5b52aaf32c41bb4c0ed69cd5"
+    },
+    {
+      "path": "index.html",
+      "bytes": 12549,
+      "sha256": "20c26d98b832f91e06fc5ad13c0398494caf17639832101c888af07b02b71ce6"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1067,
+      "sha256": "9bbe609dee9a7c096d64dee1a97eebf3464ba3b615071c3fdff010ed5c8855cd"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 3142,
+      "sha256": "cb6cf4b27209cdf4af347b5d9cc5092100ff3e831d474a22f84585bb94f2dea6"
+    },
+    {
+      "path": "owngame.css",
+      "bytes": 7986,
+      "sha256": "cedd2991e280e2685293d05ed85c2bc51b6c64d3641e7f3109e154d4d86b2294"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 28804,
+      "sha256": "a0d9bd391fe4ea1c20ec28ad75ecaabe9e34ddc3923e1f6c1199de26005bb372"
+    },
+    {
+      "path": "package.json",
+      "bytes": 441,
+      "sha256": "7d7fcb7c18fb4d46cd1d548abd0ffb4c8b90401cc4e4dd5415570e1f19cd33cb"
+    },
+    {
+      "path": "public/art/race-asphalt.png",
+      "bytes": 4438430,
+      "sha256": "fd58853ba9c9ae724bacaa16d2fe3fb625a7e1224c3c97e988620c2dcbd33787"
+    },
+    {
+      "path": "public/art/race-foliage.png",
+      "bytes": 2192582,
+      "sha256": "b83ba338490da5923592f36343ceeaa0de6fbd23a9a42be128af634141f9371c"
+    },
+    {
+      "path": "public/art/race-materials.png",
+      "bytes": 3757916,
+      "sha256": "4b9581e13d489e8fcaa5be08ec14ac6d9ebec5f369949a01332a3ef583f9bd51"
+    },
+    {
+      "path": "public/art/race-sky.png",
+      "bytes": 2146503,
+      "sha256": "17175c2c3fae4f8d0f47bbe588b43dbf264cdb4016a7ca785e60d14375109364"
+    },
+    {
+      "path": "public/art/race-water.png",
+      "bytes": 2921979,
+      "sha256": "c28447086d9c31305a30b93272384f324d77f164239dd20c556974acd2af2806"
+    },
+    {
+      "path": "public/ARTWORK.json",
+      "bytes": 203,
+      "sha256": "0f79e43e8e1a8ecaa91c994a7f2df9c37ae78a52808c51f72ed7774e6ed1289f"
+    },
+    {
+      "path": "public/LICENSE",
+      "bytes": 1067,
+      "sha256": "9bbe609dee9a7c096d64dee1a97eebf3464ba3b615071c3fdff010ed5c8855cd"
+    },
+    {
+      "path": "public/og-image.jpg",
+      "bytes": 52926,
+      "sha256": "6fa834d99f284b6972298216c75b342a5a934eb89dcd44493d02a1007adc08df"
+    },
+    {
+      "path": "public/THIRD_PARTY.txt",
+      "bytes": 3526,
+      "sha256": "e19cecb3aeff66bb87a087894a7a4e8184adf26d46d645deab23d92cae1f2256"
+    },
+    {
+      "path": "public/ui-cleanup.css",
+      "bytes": 44,
+      "sha256": "2d055c1e8a093a8887dd4a42049a9fb2d5af40269ca45795d25092406a3f6911"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1251,
+      "sha256": "c97156177560c46ba15b89649b3fefae6c8255422094f6d45a8df6451a76ddab"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/assets/back-left.glb",
+      "bytes": 3505304,
+      "sha256": "2d833c9223419bfd44d4e4edae5c7957b0f830036966630488678756bcc1a536"
+    },
+    {
+      "path": "src/assets/back-right.glb",
+      "bytes": 3324088,
+      "sha256": "71ea7e2d736a2861b8479faad35f5c49837813df33f888fad5388b08e2e6b42e"
+    },
+    {
+      "path": "src/assets/base.glb",
+      "bytes": 6955588,
+      "sha256": "7ae31c787ec42e0660801728d8f53a3899da783252f10c213539da0ca0690336"
+    },
+    {
+      "path": "src/assets/demo.jpg",
+      "bytes": 52926,
+      "sha256": "6fa834d99f284b6972298216c75b342a5a934eb89dcd44493d02a1007adc08df"
+    },
+    {
+      "path": "src/assets/front-left.glb",
+      "bytes": 3324096,
+      "sha256": "05bc24c31132764749bcc678d391aba71416a97201cf7e6d036925b09188c5e2"
+    },
+    {
+      "path": "src/assets/front-right.glb",
+      "bytes": 3432524,
+      "sha256": "5eb77ef2853c087d91964c23dd7407826136d0ef5fb8953e95586495a15030e7"
+    },
+    {
+      "path": "src/assets/rc-level.glb",
+      "bytes": 190784,
+      "sha256": "e3133c7776dbed86f4eddb837df66f559ce1e88c4c7698730912d950f6766df0"
+    },
+    {
+      "path": "src/assets/reflection.jpg",
+      "bytes": 23775,
+      "sha256": "3759cb9185df66b18939197be383d5304074b204ff4f7ed2c3a6201fad0dbeac"
+    },
+    {
+      "path": "src/main.js",
+      "bytes": 48544,
+      "sha256": "9a328b731319be6aa6955cc79c96543f3e0ae815afce7e020b1797e960f327f9"
+    },
+    {
+      "path": "src/Race.js",
+      "bytes": 6425,
+      "sha256": "10d9103a24f390cc1b2a932172acecdcf78c68570f9a0d37d1c0d43cd14ab166"
+    },
+    {
+      "path": "src/Vehicle.js",
+      "bytes": 45116,
+      "sha256": "25d4a1afb5813d495e3b7670d66386b1acb8aaacdc12dd27e9ce4a29155a2658"
+    },
+    {
+      "path": "src/World.js",
+      "bytes": 9199,
+      "sha256": "a6fa4f62806d15b3894341c1cce37d03d8f9f1856da70248e45d65f7969a443f"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 4247,
+      "sha256": "8238bc8ecb03657d1db2cb983974eff63e8a7a2b29ac1c4fe8ea4a466c6e2189"
+    },
+    {
+      "path": "UPSTREAM.json",
+      "bytes": 185,
+      "sha256": "64871bdb3a9cfa9650612ef9add351911edab8978c3959378e21a1f6fd4f7b8e"
+    }
+  ]
+}

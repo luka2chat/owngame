@@ -1,0 +1,72 @@
+{
+  "id": "wind-chime-memory",
+  "build_sha256": "2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 909202,
+      "path": "assets/chime-leaf.png",
+      "sha256": "ac0cb46a0f03bf36a3cd6b12654bed14cee3dc7d10f5e13ae2cf7e190f81832f"
+    },
+    {
+      "bytes": 881505,
+      "path": "assets/chime-moon.png",
+      "sha256": "a2df94eb97576d906c10f2a3499c5fe6156162e34de8c68c1dfd1c46f3cdbd87"
+    },
+    {
+      "bytes": 936679,
+      "path": "assets/chime-stream.png",
+      "sha256": "1555ade265bb58de2fca7a86188672f77fcb7e3ccea4c65d8295141c36e301d5"
+    },
+    {
+      "bytes": 877993,
+      "path": "assets/chime-sun.png",
+      "sha256": "dec4d438130c07b07118ec78638f59d5f14ce46329ba52212b8d3a7cb9540151"
+    },
+    {
+      "bytes": 2436928,
+      "path": "assets/garden-c.png",
+      "sha256": "738f314a0077b28154b6a1443935d67fc1a14c383a2d9eedfd3c388b7f4b5278"
+    },
+    {
+      "bytes": 1478511,
+      "path": "assets/porcelain-control.png",
+      "sha256": "f48739c2c1bd3d4ef45ec0ce74bc66630e1e2f4469bd5132f5c13fe9b73bb4c8"
+    },
+    {
+      "bytes": 1358,
+      "path": "cover.html",
+      "sha256": "953845a26347fc64400ed09b1bb3570e5c7987c0f41fe2401c0aa6556325ed95"
+    },
+    {
+      "bytes": 1228342,
+      "path": "game.js",
+      "sha256": "7f6eb6774f689ed8806098f5e90a82fbcfd7524c5b0ba24fd996f10b1f2c787a"
+    },
+    {
+      "bytes": 5853,
+      "path": "game.js.LEGAL.txt",
+      "sha256": "710ec19e3afb47afc876f5236f2ca04065c51fa10ccf3252e4d04b442d6a8361"
+    },
+    {
+      "bytes": 1675,
+      "path": "index.html",
+      "sha256": "b7c386593944b4342ae7ebd8c9e4ce4edb67149410ebc5ad716a71ac804a7391"
+    },
+    {
+      "bytes": 1082,
+      "path": "licenses/eventemitter3.txt",
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "bytes": 1120,
+      "path": "licenses/phaser.txt",
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "bytes": 4674,
+      "path": "style.css",
+      "sha256": "d3b9aed52f3c20cea4fb516fb2f934430b7ce5f72db8f2d52bbf0755db46ffa9"
+    }
+  ]
+}

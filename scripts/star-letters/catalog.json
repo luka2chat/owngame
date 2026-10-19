@@ -1,0 +1,19 @@
+[
+  {
+    "id": "star-letters",
+    "title": "星野来信",
+    "subtitle": "THE LATE SPRING",
+    "tag": "3D 童话冒险 · 推荐电脑",
+    "art": "star-letters",
+    "cover": "/art/rollout/star-letters.jpg",
+    "coverTitleBaked": false,
+    "category": "冒险",
+    "responsiveViewport": true,
+    "wideViewport": true,
+    "viewportHeight": 800,
+    "description": "收信出发，拜访三颗星球上的朋友，让巨人的花园迎来迟到的春天。首次加载约 54 MB，推荐电脑键鼠。",
+    "instructions": "WASD／方向键行走，Shift 跑步，E 互动，右键环视，滚轮缩放，V 全景，C 恢复镜头。从家园信箱开始，解开邻星谜题，再带着邀请去巨人花园。进度自动保存在当前浏览器；手机尚无完整触屏操作。",
+    "sourceUrl": "https://github.com/luka2chat/owngame/tree/main/examples/star-letters",
+    "caseUrl": "/cases/star-letters/"
+  }
+]

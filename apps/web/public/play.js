@@ -1,0 +1,255 @@
+import { track, gameParams, selectGame, setPageGame } from "./analytics.js";
+import { openRemix } from "./remix.js";
+import {
+  $,
+  catalog,
+  getStore,
+  setStore,
+  toast,
+  playUrl,
+  download,
+  offlineReady,
+  serviceWorker,
+  element,
+  art,
+} from "./data.js";
+const id = new URLSearchParams(location.search).get("game");
+let game,
+  frame,
+  favorites = new Set(getStore("favorites", [])),
+  ready = false,
+  busy = false;
+function updateFavorite() {
+  const text = favorites.has(game.id) ? "★ 已收藏 · 取消收藏" : "☆ 收藏游戏";
+  $("favorite").textContent = text;
+  $("menu-favorite").textContent = text;
+  $("favorite").setAttribute("aria-pressed", String(favorites.has(game.id)));
+}
+function renderDetails(all) {
+  $("breadcrumb-title").textContent = game.title;
+  $("stage-title").textContent = game.title;
+  $("game-category").textContent = game.category;
+  $("game-category").href = "/?view=" + encodeURIComponent(game.category);
+  $("game-subtitle").textContent = game.subtitle + " · " + game.category;
+  if (game.caseUrl || game.sourceUrl) {
+    const links = element('p', 'game-source-links');
+    for (const [url, label] of [[game.caseUrl, '制作案例'], [game.sourceUrl, '游戏源码 ↗']]) {
+      if (!url) continue;
+      const link = element('a', '', label);
+      link.href = url;
+      if (url.startsWith('https://')) { link.target = '_blank'; link.rel = 'noopener'; }
+      links.append(link, '　');
+    }
+    $("game-description").after(links);
+  }
+  if (game.id === "neon-shooter") {
+    for (const [keys, description] of [[['←', '→'], '左右移动战机'], [['空格'], '按住持续开火'], [null, '移动并自动开火']]) {
+      const row = element('div'), term = element('dt'), detail = element('dd', '', description);
+      if (keys) keys.forEach(key => { term.append(element('kbd', '', key), ' '); });
+      else term.textContent = '鼠标拖动';
+      row.append(term, detail);
+      $('keyboard-help').append(row);
+    }
+    $('keyboard-help').hidden = false;
+  }
+  const others = all.filter(g => g.id !== game.id);
+  // Prefer related games, then offer other worlds from the existing catalog.
+  others.sort((a, b) => Number(b.category === game.category) - Number(a.category === game.category));
+  const selected = others.slice(0, 3);
+  for (const g of selected) {
+    const link = element('a', 'recommend-game');
+    link.href = playUrl(g);
+    link.onclick=()=>selectGame(g,{entry_point:'recommendation',position:selected.indexOf(g)+1});
+    const cover = element('div', 'recommend-art');
+    cover.append(art(g));
+    const copy = element('span', 'recommend-copy');
+    copy.append(element('b', '', g.title), element('small', '', g.category));
+    const arrow = element('strong', 'recommend-arrow', '↗');
+    arrow.setAttribute('aria-hidden', 'true');
+    link.append(cover, copy, arrow);
+    $('recommend-games').append(link);
+  }
+  document.querySelector('.player-recommend').hidden = !selected.length;
+}
+function toggleFavorite() {
+  favorites.has(game.id) ? favorites.delete(game.id) : favorites.add(game.id);
+  const saved=setStore("favorites", [...favorites]);
+  track("favorite_change",{is_favorite:Number(favorites.has(game.id)),storage_saved:Number(saved),entry_point:"player"});
+  updateFavorite();
+}
+async function downloadGame() {
+  if (busy) return;
+  if (ready) {
+    track("download_cached");
+    toast("游戏已下载，可在当前浏览器离线玩");
+    return;
+  }
+  busy = true;
+  $("menu").close();
+  try {
+    await download(game, (n) => {
+      $("download").textContent = "下载中 " + n + "%";
+      toast("下载中 " + n + "%");
+    });
+    ready = true;
+    $("download").textContent = "✓ 已下载 · 离线可玩";
+    $("menu-download").textContent = "✓ 已下载";
+    toast("下载完成，离线也能玩");
+  } catch (e) {
+    toast(e.message);
+    $("download").textContent = "↓ 重试下载";
+  } finally {
+    busy = false;
+  }
+}
+async function fullscreen() {
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await document.body.requestFullscreen();
+    track("player_fullscreen",{outcome:document.fullscreenElement?"entered":"exited"});
+  } catch {
+    track("player_fullscreen",{outcome:"failed"});
+    toast("当前浏览器不支持此全屏模式");
+  }
+}
+function wire() {
+  document.title = game.title + " · owngame";
+  $("game-title").textContent = game.title;
+  $("menu-title").textContent = game.title;
+  $("game-description").textContent = game.description;
+  $("instructions").textContent = game.instructions;
+  $("new-window").href = playUrl(game);
+  $("remix").disabled = false;
+  $("remix").onclick = () => openRemix(game);
+  $("menu-remix").onclick = () => { $("menu").close(); openRemix(game); };
+  $("favorite").disabled = false;
+  $("download").disabled = false;
+  $("enter-game").onclick = () => {
+    track("player_focus");
+    $("stage").scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' });
+    frame.focus();
+  };
+  $("favorite").onclick = toggleFavorite;
+  $("menu-favorite").onclick = toggleFavorite;
+  $("download").onclick = downloadGame;
+  $("menu-download").onclick = downloadGame;
+  $("fullscreen").onclick = fullscreen;
+  $("menu-fullscreen").onclick = () => {
+    $("menu").close();
+    fullscreen();
+  };
+  $("menu-new-window").onclick = () => {
+    window.open(playUrl(game), "_blank", "noopener");
+    $("menu").close();
+  };
+  $("more").onclick = () => $("menu").showModal();
+  $("continue").onclick = () => $("menu").close();
+  document.querySelector(".dialog-close").onclick = () => $("menu").close();
+  $("restart").onclick = () => {
+    $("menu").close();
+    $("confirm").showModal();
+  };
+  $("cancel-restart").onclick = () => $("confirm").close();
+  $("confirm-restart").onclick = () => {
+    track("player_restart");
+    frame.src = game.entry;
+    $("confirm").close();
+  };
+  updateFavorite();
+}
+try {
+  const all = await catalog();
+  game = all.find((g) => g.id === id);
+  if (!game) throw new Error("没有找到这款游戏，请回游戏库重新选择。");
+  setPageGame(game);
+  track("player_open");
+  wire();
+  renderDetails(all);
+  frame = document.createElement("iframe");
+  frame.title = game.title;
+  frame.allow = "autoplay; fullscreen";
+  frame.setAttribute("sandbox", "allow-scripts allow-same-origin");
+  const gameHeight = game.viewportHeight || (game.id === 'signal-harbor' ? 800 : 1000);
+  if (game.viewportHeight) document.body.classList.add('board-player');
+  if (game.wideViewport) document.body.classList.add('landscape-player');
+  $("stage").style.setProperty('--stage-ratio', '450 / ' + gameHeight);
+  frame.style.height = gameHeight + 'px';
+  if (game.id === 'signal-harbor') document.body.classList.add('harbor-player');
+  const responsive = game.responsiveViewport === true || game.id === 'star-triad';
+  if (responsive) document.body.classList.add('responsive-player');
+  frame.src = game.entry;
+  // Safe-area env() values are zero inside Chrome's iframe. Keep the full-size
+  // background, and pass only the intersecting system insets to the foreground.
+  const safeArea = $("player-safe-area");
+  const syncSafeArea = () => {
+    if (!responsive || !frame.contentDocument?.head) return;
+    const rect = frame.getBoundingClientRect(), outer = safeArea.getBoundingClientRect();
+    const css = getComputedStyle(safeArea);
+    const insets = [
+      Math.max(0, outer.top + parseFloat(css.paddingTop) - rect.top),
+      Math.max(0, rect.right - outer.right + parseFloat(css.paddingRight)),
+      Math.max(0, rect.bottom - outer.bottom + parseFloat(css.paddingBottom)),
+      Math.max(0, outer.left + parseFloat(css.paddingLeft) - rect.left),
+    ].map(n => `${n}px`);
+    const doc = frame.contentDocument;
+    let style = doc.getElementById('owngame-player-insets');
+    if (!style) { style = doc.createElement('style'); style.id = 'owngame-player-insets'; doc.head.append(style); }
+    const rule = `:root { --safe-top:${insets[0]}; --safe-right:${insets[1]}; --safe-bottom:${insets[2]}; --safe-left:${insets[3]}; }
+      #viewport { inset:${insets.join(' ')} !important; }
+      #safe-insets { padding:${insets.join(' ')} !important; }`;
+    if (style.textContent !== rule) {
+      style.textContent = rule;
+      frame.contentWindow.dispatchEvent(new frame.contentWindow.Event('resize'));
+    }
+  };
+  const frameStart=performance.now(); let loadNumber=0;
+  const loadTimeout=setTimeout(()=>track('player_load_timeout',{duration_ms:30000}),30000);
+  frame.onload = () => { clearTimeout(loadTimeout); track('player_frame_loaded',{...(loadNumber === 0 ? {duration_ms:performance.now()-frameStart} : {}),load_number:++loadNumber}); syncSafeArea(); $("loading").hidden = true; $("enter-game").disabled = false; };
+  frame.onerror=()=>{clearTimeout(loadTimeout);track('player_error',{error_type:'frame_error'});};
+  $("stage").append(frame);
+  // Responsive games receive the real stage; legacy packages keep their original viewport.
+  const resizeGame = () => {
+    const stage = $("stage");
+    if (responsive) {
+      // This responsive game must receive the real viewport, including tall phones.
+      const bounds = stage.getBoundingClientRect();
+      frame.style.width = bounds.width + 'px';
+      frame.style.height = bounds.height + 'px';
+      frame.style.transform = 'translate(-50%, -50%)';
+    } else {
+      const scale = Math.min(stage.clientWidth / 450, stage.clientHeight / gameHeight);
+      frame.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    }
+    syncSafeArea();
+  };
+  new ResizeObserver(resizeGame).observe($("stage"));
+  new ResizeObserver(syncSafeArea).observe(safeArea);
+  document.addEventListener("fullscreenchange", () =>
+    requestAnimationFrame(resizeGame),
+  );
+  resizeGame();
+  const recent = getStore("recent", {});
+  recent[id] = Date.now();
+  setStore("recent", recent);
+  ready = await offlineReady(game);
+  if (ready) {
+    $("download").textContent = "✓ 已下载 · 离线可玩";
+    $("menu-download").textContent = "✓ 已下载";
+  }
+  serviceWorker().catch(() => {});
+} catch (e) {
+  track("player_error",{error_type:game ? "player_initialization" : "game_unavailable"});
+  $("loading").textContent = e.message;
+  $("game-title").textContent = "游戏暂时无法打开";
+  $("more").disabled = true;
+}
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+    e.preventDefault();
+    document.querySelector('.player-header input').focus();
+  }
+});
+window.addEventListener('storage', () => {
+  favorites = new Set(getStore('favorites', []));
+  if (game) updateFavorite();
+});

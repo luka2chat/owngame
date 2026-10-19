@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "civ-clicker",
+  "title": "小小文明",
+  "kind": "static",
+  "online_build_sha256": "441e2c1e2b5fd8de0f896aa1b410e8b0b149eaf873bf4fb8d57323ae644b2c4c",
+  "original_source_sha256": null,
+  "license": "GPL-3.0-or-later",
+  "description": "从一顶帐篷开始，安排居民生产，建设自己的城邦。"
+}

@@ -1,0 +1,102 @@
+{
+  "id": "rc-rally",
+  "build_sha256": "45c4d8caa12114314f38206170906dae067dea111574e6fffecb4817dfab14ee",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 4438430,
+      "path": "art/race-asphalt.png",
+      "sha256": "fd58853ba9c9ae724bacaa16d2fe3fb625a7e1224c3c97e988620c2dcbd33787"
+    },
+    {
+      "bytes": 2192582,
+      "path": "art/race-foliage.png",
+      "sha256": "b83ba338490da5923592f36343ceeaa0de6fbd23a9a42be128af634141f9371c"
+    },
+    {
+      "bytes": 3757916,
+      "path": "art/race-materials.png",
+      "sha256": "4b9581e13d489e8fcaa5be08ec14ac6d9ebec5f369949a01332a3ef583f9bd51"
+    },
+    {
+      "bytes": 2146503,
+      "path": "art/race-sky.png",
+      "sha256": "17175c2c3fae4f8d0f47bbe588b43dbf264cdb4016a7ca785e60d14375109364"
+    },
+    {
+      "bytes": 2921979,
+      "path": "art/race-water.png",
+      "sha256": "c28447086d9c31305a30b93272384f324d77f164239dd20c556974acd2af2806"
+    },
+    {
+      "bytes": 203,
+      "path": "ARTWORK.json",
+      "sha256": "0f79e43e8e1a8ecaa91c994a7f2df9c37ae78a52808c51f72ed7774e6ed1289f"
+    },
+    {
+      "bytes": 3505304,
+      "path": "assets/back-left-DNGhmhNS.glb",
+      "sha256": "2d833c9223419bfd44d4e4edae5c7957b0f830036966630488678756bcc1a536"
+    },
+    {
+      "bytes": 3324088,
+      "path": "assets/back-right-4zm-vCVz.glb",
+      "sha256": "71ea7e2d736a2861b8479faad35f5c49837813df33f888fad5388b08e2e6b42e"
+    },
+    {
+      "bytes": 6955588,
+      "path": "assets/base-BlYWet-f.glb",
+      "sha256": "7ae31c787ec42e0660801728d8f53a3899da783252f10c213539da0ca0690336"
+    },
+    {
+      "bytes": 3324096,
+      "path": "assets/front-left-2Ye9sOCL.glb",
+      "sha256": "05bc24c31132764749bcc678d391aba71416a97201cf7e6d036925b09188c5e2"
+    },
+    {
+      "bytes": 3432524,
+      "path": "assets/front-right-DkVPYjqb.glb",
+      "sha256": "5eb77ef2853c087d91964c23dd7407826136d0ef5fb8953e95586495a15030e7"
+    },
+    {
+      "bytes": 865187,
+      "path": "assets/index-DiiFUIUD.js",
+      "sha256": "4715d9fd4ddfa11b9f3de009a988afd2e421914c4d616a21ef9717f51381d089"
+    },
+    {
+      "bytes": 7985,
+      "path": "assets/index-gr7fUYoT.css",
+      "sha256": "dfe650d845b88e0f8302a32623cb3aaeea15524ece3bb069b1fb056c531b9fd3"
+    },
+    {
+      "bytes": 23775,
+      "path": "assets/reflection-DgbVh1QW.jpg",
+      "sha256": "3759cb9185df66b18939197be383d5304074b204ff4f7ed2c3a6201fad0dbeac"
+    },
+    {
+      "bytes": 12600,
+      "path": "index.html",
+      "sha256": "ab0fe6e94f87775bcf9b7598acc87b1fe7a3746cd3affa15853c72a69d282d2e"
+    },
+    {
+      "bytes": 1067,
+      "path": "LICENSE",
+      "sha256": "9bbe609dee9a7c096d64dee1a97eebf3464ba3b615071c3fdff010ed5c8855cd"
+    },
+    {
+      "bytes": 52926,
+      "path": "og-image.jpg",
+      "sha256": "6fa834d99f284b6972298216c75b342a5a934eb89dcd44493d02a1007adc08df"
+    },
+    {
+      "bytes": 3526,
+      "path": "THIRD_PARTY.txt",
+      "sha256": "e19cecb3aeff66bb87a087894a7a4e8184adf26d46d645deab23d92cae1f2256"
+    },
+    {
+      "bytes": 44,
+      "path": "ui-cleanup.css",
+      "sha256": "2d055c1e8a093a8887dd4a42049a9fb2d5af40269ca45795d25092406a3f6911"
+    }
+  ]
+}

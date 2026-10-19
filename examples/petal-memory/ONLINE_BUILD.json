@@ -1,0 +1,72 @@
+{
+  "id": "petal-memory",
+  "build_sha256": "bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 273454,
+      "path": "assets/card-back.png",
+      "sha256": "393eeda7251014ec84abec2db0f0e1c322789d96182fece628f0a7a0a1b86580"
+    },
+    {
+      "bytes": 654110,
+      "path": "assets/desk.jpg",
+      "sha256": "f9b732434e9931d4abfd0b944b57d7c461522f2960c35b95950457779b1f8a7c"
+    },
+    {
+      "bytes": 430970,
+      "path": "assets/paper.png",
+      "sha256": "040be02df5fb99c0724502932e1fd39f23a4d6a4df0993fcebc450d964ea8266"
+    },
+    {
+      "bytes": 142000,
+      "path": "assets/petal-serif.ttf",
+      "sha256": "98b299034723bc9c3e84fd9638e778c8100e6920ad579893be67800cd50eaacd"
+    },
+    {
+      "bytes": 1031241,
+      "path": "assets/specimens.png",
+      "sha256": "4e7aa72b8f87d70206b53fc2437113f48dc3f4f398a205d868a4766ed1ee92f9"
+    },
+    {
+      "bytes": 1491,
+      "path": "cover.html",
+      "sha256": "d8e4987eec4376eb509bb6fe8e5ef5afcff74ae4d3f28dd8280b5a2e383275cb"
+    },
+    {
+      "bytes": 1226474,
+      "path": "game.js",
+      "sha256": "9277ce15adb2ca1a162849f1aa75f0e9d6868a5294ef4f7725f0b5af98a6d61a"
+    },
+    {
+      "bytes": 5853,
+      "path": "game.js.LEGAL.txt",
+      "sha256": "710ec19e3afb47afc876f5236f2ca04065c51fa10ccf3252e4d04b442d6a8361"
+    },
+    {
+      "bytes": 2064,
+      "path": "index.html",
+      "sha256": "4ebd4e437cc7e2a453ce497edb945d81563ed775c862017dab243fc704104e0e"
+    },
+    {
+      "bytes": 1082,
+      "path": "licenses/eventemitter3.txt",
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "bytes": 4301,
+      "path": "licenses/font-OFL.txt",
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    {
+      "bytes": 1120,
+      "path": "licenses/phaser.txt",
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "bytes": 6403,
+      "path": "style.css",
+      "sha256": "ff5c6eb35e10d1448d3527dc26aef5f56ebb9012cff959030db7a3d673445af1"
+    }
+  ]
+}

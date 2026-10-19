@@ -1,0 +1,7 @@
+{
+  "title": "小小文明",
+  "upstream": "https://github.com/deathraygames/civ-clicker",
+  "commit": "ca77c8514eb542912bad819add97ab0693eec52b",
+  "license": "GPL-3.0-or-later",
+  "changes": "Chinese core UI; mobile layout/click input; isolated save keys; pause on background; local font files only; original game systems retained"
+}

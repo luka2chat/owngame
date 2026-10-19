@@ -1,0 +1,14 @@
+[
+  {
+    "id": "silk-serpent",
+    "title": "绢龙逐珠",
+    "subtitle": "SILK SERPENT",
+    "tag": "绢本灯庭 · 三档逐珠",
+    "art": "silk-serpent",
+    "category": "街机",
+    "viewportHeight": 800,
+    "description": "滑动引领红绢游龙，在一庭灯火里拾珠长大。",
+    "instructions": "四向滑动或方向键 / WASD 转向，不能直接掉头。拾珠逐节增长，撞墙或自身结束；三档分别记最佳，支持暂停、简动、静音和自动存档。",
+    "responsiveViewport": true
+  }
+]

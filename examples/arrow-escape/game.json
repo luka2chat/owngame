@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "arrow-escape",
+  "title": "箭径出逃",
+  "kind": "native-js",
+  "online_build_sha256": "3561d59e0c5b9fb32a775617220c54ec2e28aaa751afbe52b585e12b64dffacc",
+  "original_source_sha256": null,
+  "license": "MIT",
+  "description": "顺着箭头，解开一页页线结。留一条路，让每支箭自由离开。"
+}

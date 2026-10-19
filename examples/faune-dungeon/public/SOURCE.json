@@ -1,0 +1,7 @@
+{
+  "upstream": "https://github.com/ourcade/phaser3-dungeon-crawler-starter",
+  "commit": "186705eb557af3d7042590fc61485a7cbed7b7f0",
+  "code": "MIT",
+  "assets": "Dungeon Tileset II and Legend of Faune: CC0",
+  "adaptation": "owngame touch, Chinese UI, save, expedition completion and retry"
+}

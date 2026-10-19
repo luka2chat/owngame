@@ -1,0 +1,93 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "arrow-escape",
+  "online_build_sha256": "3561d59e0c5b9fb32a775617220c54ec2e28aaa751afbe52b585e12b64dffacc",
+  "input_sha256": "3561d59e0c5b9fb32a775617220c54ec2e28aaa751afbe52b585e12b64dffacc",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
+    },
+    {
+      "path": "game.json",
+      "bytes": 357,
+      "sha256": "648766a78ca5438071a1c31df6a802c7cd2c5d59055ac45761921d2099a4fbea"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 1171,
+      "sha256": "bc841fde97747b22bdebca161d77d2a707903a6b6b81fa8e1a89c0e6af49a7be"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 328,
+      "sha256": "3142b91a0c35459cdfb97cd23d70a8b55d974a9b73e20ed36ad9e3f953016466"
+    },
+    {
+      "path": "package.json",
+      "bytes": 344,
+      "sha256": "668e7902be1f04509c0f89224a640b240b42052f47019224a357cdf387a0965b"
+    },
+    {
+      "path": "public/cover.png",
+      "bytes": 61872,
+      "sha256": "73c2f027c277aa287c4ee6e8f9d63b24c30c6c975b2bcb50ef9ec76853e4fa0c"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 2165,
+      "sha256": "278f5d13cddd1067751dfc6d93a17af342e775455b7cb740f3dcebfafbd40463"
+    },
+    {
+      "path": "public/LICENSE.txt",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "public/SOURCE.json",
+      "bytes": 818,
+      "sha256": "0768636ae55733294766b06eae2831ea309cf628df5714af7c9f38ff6a78bb01"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 5675,
+      "sha256": "bbe1af50dc496bc42cbd6cd9a8fab042f2a4db2e3cf16b8a57db1506afa8b303"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1655,
+      "sha256": "e61e0b8e14be368674ba19815f9acdbe35832fcdf7c9f1f7f19543393335c10e"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/game.js",
+      "bytes": 13462,
+      "sha256": "0de107bb802f7229b3bfb91ce80e54fb512f84e1bc531a994d8e8e02fe65de24"
+    },
+    {
+      "path": "src/rules.js",
+      "bytes": 4689,
+      "sha256": "4cbbd594bb67e0469ed56a9a2e3b8df3001e1240e31ba18a353d75810f98bfcb"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 2210,
+      "sha256": "04113ff286bf46c8f6bff61bd3c83536a87aa00ff15ae6ed72f1c895367ef4af"
+    }
+  ]
+}

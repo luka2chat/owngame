@@ -1,0 +1,10 @@
+{
+  "title":"箭径出逃",
+  "implementation":"Original owngame TypeScript / Canvas implementation, 2026-10-19",
+  "references":[
+    {"url":"https://play.google.com/store/apps/details?id=com.ecffri.arrows","scope":"Arrow extraction puzzle concept and rule reference only. No commercial code, level layouts, screenshots, branding or assets reused."},
+    {"url":"https://github.com/JasonDistler/arrows-escape-web","scope":"Compared a minimal Web implementation and its reverse-construction approach. README and package identify MIT, but no complete LICENSE notice was found during review. No source files copied."}
+  ],
+  "assets":"Original runtime Canvas arrow paths and synthesized Web Audio; no external image, font, analytics or network runtime dependencies",
+  "license":"MIT for this original implementation"
+}

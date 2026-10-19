@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN" class="player-root">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#faf5e8" />
+    <title>开玩 · owngame</title>
+    <link rel="icon" href="/art/arcade-mascot.png" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/remix.css" />
+    <link rel="stylesheet" href="/play.css?v=brand-c-2" />
+  <link rel="stylesheet" href="/analytics.css">
+  </head>
+  <body class="player-body">
+    <div id="player-safe-area" aria-hidden="true"></div>
+    <header class="topbar player-header">
+      <a class="wordmark" href="/" aria-label="owngame 首页"><span>o</span><span>w</span><span>n</span><span>g</span><span>a</span><span>m</span><span>e</span></a>
+      <form class="search" action="/" role="search"><span aria-hidden="true">⌕</span><input type="search" name="q" placeholder="搜索你喜欢的游戏" aria-label="搜索游戏"><kbd>/</kbd></form>
+      <a class="top-mine" href="/?view=favorites">☆ 我的收藏</a>
+    </header>
+    <main class="detail-main">
+      <nav class="player-breadcrumb" aria-label="当前位置"><a href="/">← 游戏库</a><span aria-hidden="true">/</span><a id="game-category" href="/">游戏</a><span aria-hidden="true">/</span><b id="breadcrumb-title">准备开玩</b></nav>
+      <div class="player-layout">
+        <section class="player-info" aria-labelledby="game-title">
+          <div class="eyebrow" id="game-subtitle">YOUR GAME, YOUR RULES</div>
+          <h1><span id="game-title">准备开玩</span><span class="spark" aria-hidden="true">✷</span></h1>
+          <p id="game-description"></p>
+          <div class="player-actions">
+            <button id="enter-game" class="player-button primary-action" disabled>▶ 进入游戏</button>
+            <button id="remix" class="player-button" disabled>↻ 复刻 · 做自己的版本</button>
+            <button id="favorite" class="player-button" disabled>☆ 收藏游戏</button>
+            <button id="download" class="player-button download-action" disabled>↓ 下载离线包</button>
+          </div>
+          <section class="instructions"><h2><span class="red-slash" aria-hidden="true">/</span> 怎么玩</h2><dl id="keyboard-help" hidden></dl><p id="instructions"></p></section>
+        </section>
+        <section class="player-panel" aria-label="游戏区域">
+          <div id="stage"><div id="loading" role="status">游戏准备中…</div></div>
+          <div class="player-tools"><span><i aria-hidden="true"></i><b id="stage-title">你的游戏</b></span><div><button id="fullscreen">⛶ 全屏</button><a id="new-window" target="_blank" rel="noopener">↗ 新窗口</a></div></div>
+        </section>
+      </div>
+      <section class="player-recommend" aria-labelledby="recommend-title" hidden><h2 id="recommend-title"><span class="red-slash" aria-hidden="true">/</span> 换个世界，接着玩</h2><div id="recommend-games"></div></section>
+    </main>
+    <div class="capsule">
+      <button id="more" aria-label="更多游戏操作"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button><span aria-hidden="true"></span
+      ><a href="/" aria-label="关闭游戏，返回首页"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3.5"/></svg></a>
+    </div>
+    <dialog id="menu">
+      <button class="dialog-close" aria-label="关闭菜单">×</button>
+      <h2 id="menu-title">你的游戏</h2>
+      <button class="menu-row" id="continue">继续游戏</button
+      ><button class="menu-row" id="menu-remix">复刻 · 复制给 AI</button
+      ><button class="menu-row" id="menu-favorite">收藏游戏</button
+      ><button class="menu-row" id="menu-download">下载离线包</button
+      ><button class="menu-row" id="menu-new-window">新窗口打开</button
+      ><button class="menu-row" id="menu-fullscreen">全屏游玩</button
+      ><button class="menu-row" id="restart">重新打开</button
+      ><a class="menu-row" href="/">回到 owngame 首页</a>
+    </dialog>
+    <dialog id="confirm">
+      <h2>重新打开游戏？</h2>
+      <p>当前这一局可能会重置，已下载的游戏会保留。</p>
+      <button id="cancel-restart" class="player-button">继续玩</button
+      ><button id="confirm-restart" class="primary">重新打开</button>
+    </dialog>
+    <div id="toast" role="status" hidden></div>
+    <script type="module" src="/play.js?v=brand-c-2"></script>
+  </body>
+</html>

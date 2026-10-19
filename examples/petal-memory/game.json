@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "petal-memory",
+  "title": "花笺拾忆",
+  "kind": "phaser",
+  "online_build_sha256": "bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c",
+  "original_source_sha256": "b5b62e0114564b5b0c301a1634df7176f230710089a4ddd8b3979315061f1122",
+  "license": "MIT",
+  "description": "翻开手绘花笺，与标本师或朋友比一比记忆。"
+}

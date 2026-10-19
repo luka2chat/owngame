@@ -1,0 +1,14 @@
+[
+  {
+    "id": "wind-chime-memory",
+    "title": "风铃回响",
+    "subtitle": "WIND CHIME MEMORY",
+    "tag": "掌心陶庭 · 音色记忆",
+    "art": "wind-chime-memory",
+    "category": "益智",
+    "responsiveViewport": true,
+    "viewportHeight": 800,
+    "description": "听一段风铃，再把旋律轻轻敲回来。三档挑战，自动保存，静音也能玩。",
+    "instructions": "听完旋律后按顺序轻触风铃；长音需要按住，合奏需要双指。支持难度选择、暂停、静音和自动续玩。"
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "id": "postcard-slide",
+  "build_sha256": "cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 2552841,
+      "path": "assets/letter-background.png",
+      "sha256": "0d06c8d3265a179dc61bdef0e1022f4b342494cda91a1f44a3112d34be6e6c5c"
+    },
+    {
+      "bytes": 1692416,
+      "path": "assets/paper-panel.png",
+      "sha256": "c34a03dda621808cbe6dfcdbaddc0344ecc2a43a544606d2467e7199b3807368"
+    },
+    {
+      "bytes": 87632,
+      "path": "assets/PostcardHand.ttf",
+      "sha256": "bf4fe3c6e93e835699f8348113995e983c03f287e6009c015c2ce7ec56881a1a"
+    },
+    {
+      "bytes": 3847421,
+      "path": "assets/watercolor-town.png",
+      "sha256": "523bdcfb2bb5cf7f27296d9bd2f2e4f88422852b6cb8282c8a74245869269a76"
+    },
+    {
+      "bytes": 2667142,
+      "path": "assets/wood-tray.png",
+      "sha256": "ddcc0321477cfb66ebf939cb7ffce45f7337fa18918e6fee4539a71347b54884"
+    },
+    {
+      "bytes": 1227403,
+      "path": "game.js",
+      "sha256": "dd04892067baa0ff005b9be66e760ae455b1ad7ed780f49b9da2897fc5088490"
+    },
+    {
+      "bytes": 5853,
+      "path": "game.js.LEGAL.txt",
+      "sha256": "710ec19e3afb47afc876f5236f2ca04065c51fa10ccf3252e4d04b442d6a8361"
+    },
+    {
+      "bytes": 2649,
+      "path": "index.html",
+      "sha256": "198c93e3fe73cf2b2d1f70960229a17df6c105b4c7c82cfdfb2ab1257c78db17"
+    },
+    {
+      "bytes": 1082,
+      "path": "licenses/eventemitter3.txt",
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "bytes": 1120,
+      "path": "licenses/phaser.txt",
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "bytes": 5171,
+      "path": "licenses/PostcardHand-OFL.txt",
+      "sha256": "1a25e35da1031c6c3436fde545bb9cb5aca954e9873afe510c834b8b79bd21a0"
+    },
+    {
+      "bytes": 4624,
+      "path": "style.css",
+      "sha256": "786a8e07f16e5ee6c1ce462b325deeb95b985fd3b7f31ef397f7da669c62032a"
+    }
+  ]
+}

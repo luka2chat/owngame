@@ -1,0 +1,23 @@
+{
+  "name": "@owngame-example/rc-rally",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node serve.mjs",
+    "start": "npm run build && npm run serve"
+  },
+  "dependencies": {
+    "three": "0.185.1",
+    "cannon-es": "0.20.0",
+    "lil-gui": "0.21.0"
+  },
+  "devDependencies": {
+    "vite": "8.1.3"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "id": "faune-dungeon",
+  "build_sha256": "ddcc9d6275d3905add62d3171e51e1eef83058c25c9dd38e0316923a6224f168",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 1920678,
+      "path": "art/faune-decor.png",
+      "sha256": "527d070806e54f7762a5259f978d7c9f13f771de2f54e786dea2250a48f3a93b"
+    },
+    {
+      "bytes": 1280120,
+      "path": "art/faune-hero.png",
+      "sha256": "401faa130cd41a97a00b53ceed009700d533c7028d287a1a58eb2c8aff18b1b3"
+    },
+    {
+      "bytes": 1443107,
+      "path": "art/faune-objects.png",
+      "sha256": "aaf7cac207937bd2f0c592af9c22baf9d6e9c525d8bb02aa76c82cbc2f8a94ec"
+    },
+    {
+      "bytes": 3025966,
+      "path": "art/faune-stone.png",
+      "sha256": "af974afb3410801b13c989e6772d7b14a5068a7fd6271f1465e18b086592d7f6"
+    },
+    {
+      "bytes": 203,
+      "path": "ARTWORK.json",
+      "sha256": "0f79e43e8e1a8ecaa91c994a7f2df9c37ae78a52808c51f72ed7774e6ed1289f"
+    },
+    {
+      "bytes": 10287,
+      "path": "character/fauna.json",
+      "sha256": "66414b713da87d7e9cd4501a67a1d7017e4b599dbfbce09e8c5e057d72ed6103"
+    },
+    {
+      "bytes": 6453,
+      "path": "character/fauna.png",
+      "sha256": "7bc11f1b881712286bee3d8297da7d90090b98d8065fc485312e1f3e490999cf"
+    },
+    {
+      "bytes": 93976,
+      "path": "dungeons/dungeon-01.json",
+      "sha256": "a8b5797f8594aef912f35a52e9469fa470adf5bb53fb6c418df7ac752f027228"
+    },
+    {
+      "bytes": 54887,
+      "path": "dungeons/dungeon-01.tmx",
+      "sha256": "b0964f728cfa3ece703088d127db062444b0b9c09f110963a9070c8acbfa2399"
+    },
+    {
+      "bytes": 3883,
+      "path": "enemies/lizard.json",
+      "sha256": "ad1a8478b4085864062034ed7873e781e17910837a11b496c0100eef680929c8"
+    },
+    {
+      "bytes": 1214,
+      "path": "enemies/lizard.png",
+      "sha256": "b85857664cb0ce8068acd88c74df5471458e19f1593621a97ba4c963c4f0631d"
+    },
+    {
+      "bytes": 18209,
+      "path": "game.js",
+      "sha256": "cbc308bc366c02ac133b500626d217dc2f266bee3399b4e67cdf628dc8ff80bb"
+    },
+    {
+      "bytes": 2054,
+      "path": "index.html",
+      "sha256": "801de323f86e138b16fde720c42ab47ab659c6cd625263eed606f1c4e92f539c"
+    },
+    {
+      "bytes": 3022,
+      "path": "items/treasure.json",
+      "sha256": "bbed943f0db631f71e24c99904ff922d0c98f5ace46966329964ac207b48ef25"
+    },
+    {
+      "bytes": 726,
+      "path": "items/treasure.png",
+      "sha256": "2e7531c6e6088f4a9270964e153cf89a38331350ccb113d8974a67eadf212131"
+    },
+    {
+      "bytes": 1064,
+      "path": "LICENSE",
+      "sha256": "efcb943c49321521e40f9bdd68ce5804c533dc7bba4be95360ffbf54db04d015"
+    },
+    {
+      "bytes": 6910,
+      "path": "owngame.css",
+      "sha256": "26aa75f97562e79cd4f2ea5c41bb941fdb1f90d9ff258b533ec8dd6b8151b5b8"
+    },
+    {
+      "bytes": 1196122,
+      "path": "phaser.min.js",
+      "sha256": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7"
+    },
+    {
+      "bytes": 295,
+      "path": "SOURCE.json",
+      "sha256": "c3dc1daffc405c43a6a51ba6998348811c78aaa12dadffdfb1d7355fb7c7de03"
+    },
+    {
+      "bytes": 1354,
+      "path": "THIRD_PARTY.txt",
+      "sha256": "8b9f110127697d4b5ca311aec2619d2a088b4388dcd0ce1b86a018a23c2201cf"
+    },
+    {
+      "bytes": 18799,
+      "path": "tiles/dungeon_tiles_extruded.png",
+      "sha256": "01036aec7ae73c0505c3a97fa124e4acce478a2d41311141a6b3e0462688130d"
+    },
+    {
+      "bytes": 8586,
+      "path": "tiles/dungeon_tiles.png",
+      "sha256": "b78161949ab28a5e1fd568178702eaefa8e46aea738f18f31796d6ad8928cde9"
+    },
+    {
+      "bytes": 101581,
+      "path": "tiles/dungeon-01.json",
+      "sha256": "9400d909b8d0611a2b9f6ec4df29b03ef488eb9888eab1edd5f960f34a1d870c"
+    },
+    {
+      "bytes": 204,
+      "path": "ui/ui_heart_empty.png",
+      "sha256": "1308cd154f306d44e5d5ca416d50298070d6808c9ddb31bffb3d92c5d3050874"
+    },
+    {
+      "bytes": 214,
+      "path": "ui/ui_heart_full.png",
+      "sha256": "0b9bcaf3548422c156d4e17d1176313ccc75e9da44f0a08d1a79ae424540db0b"
+    },
+    {
+      "bytes": 621,
+      "path": "weapons/weapon_knife.png",
+      "sha256": "238484ff64a61543d86bc808fa1c3b09cf07923c2293d1615b62d69bcb843228"
+    }
+  ]
+}

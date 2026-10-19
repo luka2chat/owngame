@@ -1,0 +1,56 @@
+html, body { width:100%; height:100%; background:#000010; }
+:root { --safe-top:env(safe-area-inset-top,0px); --safe-bottom:env(safe-area-inset-bottom,0px); --safe-left:env(safe-area-inset-left,0px); --safe-right:env(safe-area-inset-right,0px); }
+#viewport { position:fixed; inset:var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left); overflow:hidden; }
+[hidden] { display:none !important; }
+button { touch-action:none; }
+#hud { top:70px; font-size:14px; gap:12px; }
+#hud .score { font-size:18px; }
+#sound-toggle, #pause-btn { top:10px; left:12px; right:auto; width:44px; height:44px; }
+#pause-btn { position:absolute; left:66px; z-index:25; color:#0ff; border:1px solid #0ff6; border-radius:50%; background:#04242ddd; font-size:22px; }
+#mobile-controls { bottom:16px; padding:0 18px; align-items:end; }
+.health-bar { bottom:100px; }
+#start-screen, #game-over-screen { padding:64px 16px 40px; gap:6px; }
+#start-screen .subtitle { margin-bottom:12px; }
+#start-screen .controls-hint { margin-top:14px; color:#a1b3c5; font-size:13px; }
+.btn { min-height:48px; padding:12px 28px; letter-spacing:2px; margin:6px; }
+#best-score { color:#a1b3c5; margin:6px; }
+#pause-screen { position:absolute; inset:0; z-index:30; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; color:#bfffff; background:#000010e8; }
+#pause-screen p { color:#a1b3c5; }
+#credits-btn { position:absolute; bottom:0; left:50%; transform:translateX(-50%); padding:10px 16px; min-height:44px; color:#8eaabb; border:0; background:transparent; z-index:24; }
+#credits { margin:auto; max-width:min(90vw,560px); max-height:85%; padding:24px; color:#d4f9ff; border:1px solid #0ff6; background:#081423; line-height:1.7; }
+#credits p { margin:12px 0; }
+#credits a { color:#0ff; }
+#credits::backdrop { background:#000b; }
+#save-warning { position:absolute; bottom:0; left:0; right:0; z-index:50; background:#633b08; color:white; text-align:center; padding:5px; font-size:12px; pointer-events:none; }
+@media (max-height:500px) {
+ #start-screen, #game-over-screen { padding:58px 130px 30px; gap:0; }
+ #start-screen h1 { font-size:28px; margin-bottom:2px; }
+ #start-screen .subtitle { font-size:13px; margin-bottom:2px; }
+ #start-screen .controls-hint { margin-top:2px; font-size:11px; }
+ #best-score { margin:2px; font-size:12px; }
+ .btn { min-height:44px; padding:7px 24px; margin:3px; font-size:14px; }
+ #hud { top:15px; left:125px; right:180px; font-size:12px; }
+ #hud .score { font-size:14px; }
+ .health-bar { bottom:18px; width:120px; }
+ #mobile-controls { bottom:8px; }
+ #game-over-screen h2 { font-size:25px; }
+ #game-over-screen .final-level { margin-bottom:8px; }
+}
+
+/* Deep-space flight console. */
+#hud{padding:10px 12px;background:linear-gradient(100deg,#091b31ed,#14213ad9);border:1px solid #74c5e644;border-left:2px solid #6de6ef;border-radius:6px;text-shadow:none;font-variant-numeric:tabular-nums}#hud .score{color:#c8fcff;text-shadow:none}#hud .level{color:#c5baff;text-shadow:none}#hud .lives{color:#ffa6a1;text-shadow:none}#sound-toggle,#pause-btn{background:linear-gradient(#18384e,#0a2135);border:1px solid #81cbe777;border-radius:12px;color:#a7effb;box-shadow:inset 0 1px #fff2}#start-screen,#game-over-screen{background:linear-gradient(180deg,#040c1d40,#040c1dcb 50%,#040c1df5);overflow:auto}#start-screen h1{background:linear-gradient(110deg,#d6f6ff,#79d8ed 45%,#c9b7ff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;font-weight:850;letter-spacing:4px;font-size:38px}#start-screen .subtitle{color:#8aa9c6;letter-spacing:5px;font-size:11px}#start-screen:before{content:'✦';font-size:45px;color:#b3f4ff;line-height:1.2;text-shadow:0 0 24px #4dcfff66;margin-bottom:8px}.btn{border:1px solid #81d5eb;border-radius:6px;background:linear-gradient(120deg,#1d485c,#17314a);color:#dcfaff;box-shadow:inset 0 1px #fff2,0 5px 16px #0005;font-weight:650;letter-spacing:2px}#start-btn,#restart-btn{background:linear-gradient(115deg,#adf0f2,#70bdde);color:#102c40;border-color:#c2f6ff}.btn:hover{background:#28546d;color:#fff;box-shadow:0 0 14px #77dfff44}#mobile-controls .mobile-btn{background:radial-gradient(circle at 40% 25%,#274f65e8,#10273cde);border:1px solid #8ecfdf88;color:#bcf7ff;box-shadow:inset 0 1px #d1ffff33,0 4px 0 #071628aa}#mobile-controls #fire-btn{background:radial-gradient(circle at 40% 25%,#765671ed,#342b4be8);border-color:#f4c0d299;color:#ffe1e9;font-size:16px}#health-bar{height:5px;background:#35526988;border:1px solid #87cad444;box-shadow:0 0 0 3px #0b1a2b88}#health-fill{background:linear-gradient(90deg,#4eb9c7,#a4eee2);box-shadow:none}#pause-screen{background:linear-gradient(140deg,#112d42f5,#0a1428f5)}#credits-btn{color:#91a9bd}#credits{border-radius:10px}#start-screen .controls-hint{font-size:12px;line-height:1.8;color:#aac0d4}@media(max-height:500px){#start-screen:before{display:none}#start-screen h1{font-size:26px}#hud{padding:5px 8px}#start-screen .subtitle{font-size:9px;letter-spacing:3px}}
+
+/* ImageGen fleet and cinematic mission interface. */
+#start-screen{background:linear-gradient(#03102022,#031020cc 62%,#031020ef);justify-content:flex-end;padding-bottom:clamp(46px,9vh,110px)}
+#start-screen:before{content:'';display:block;width:190px;height:190px;background:url('art/neon-player.png') center/contain no-repeat;filter:drop-shadow(0 14px 28px #0ca6d377);margin:0 auto 16px}
+#start-screen h1{font-size:36px;letter-spacing:7px;font-weight:500;color:#ebf4ee;background:none;-webkit-text-fill-color:initial}
+#start-screen .subtitle{color:#a6cdd5;letter-spacing:6px;font-size:10px}#hud{top:68px;left:16px;right:16px;border:0;border-bottom:1px solid #89bbc877;background:linear-gradient(90deg,#071727dd,#0b2838aa);border-radius:0;padding:12px 10px;backdrop-filter:blur(8px);color:#dae8e9;font-size:12px}
+#hud .score{font-family:monospace;font-size:19px;letter-spacing:1px;color:#f3ead1}#hud .level{color:#a2d2d4}#hud .lives{color:#ffb69a}
+.btn{min-width:190px;clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);border-radius:0;letter-spacing:3px}
+#mobile-controls .mobile-btn{border-radius:18px;background:linear-gradient(140deg,#143547e8,#071b2aeb);border:1px solid #8bb6b688;box-shadow:inset 0 1px #e6f4e344,0 6px 0 #04131bcc;color:#e4efdc}
+#mobile-controls #fire-btn{border-radius:50%;background:radial-gradient(circle at 35% 25%,#a85e3e,#3c2931 75%);border:2px solid #dba77b;box-shadow:0 0 0 4px #0b233288,inset 0 2px #ffe3c444;color:#ffdfb3}
+#health-bar{height:6px;border-color:#80aaa977;background:#142b38}#health-fill{background:linear-gradient(90deg,#448b94,#b5e8db)}
+@media(max-height:500px){#start-screen{padding:50px 150px 20px;justify-content:center}#start-screen:before{position:absolute;left:30px;top:90px;width:140px;height:140px}#start-screen h1{font-size:25px}#hud{top:12px;left:124px;right:176px;padding:6px 8px}#hud .score{font-size:14px}}
+
+/* Keep provenance in the packaged license files, outside the play interface. */
+#credits-btn { display: none !important; }

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "arrow-escape",
+    "title": "箭径出逃",
+    "subtitle": "ARROW ESCAPE",
+    "tag": "箭头解谜 · 36 关",
+    "art": "arrow-escape",
+    "category": "益智",
+    "responsiveViewport": true,
+    "viewportHeight": 800,
+    "description": "找出移除顺序，让所有箭头离开棋盘。",
+    "instructions": "点击前方没有阻挡的箭头，让它沿尖端方向离开；先移开挡路的箭，清空棋盘即可过关。每关有三次容错，提示与撤销可自由使用。支持拖动、双指缩放、36 关渐进解谜和本地续玩。键盘方向键选箭，回车移出，H 提示，U 撤销，空格回中。",
+    "cover": "/art/rollout/arrow-escape.png",
+    "coverTitleBaked": true
+  }
+]

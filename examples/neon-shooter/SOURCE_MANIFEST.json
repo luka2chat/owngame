@@ -1,0 +1,108 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "neon-shooter",
+  "online_build_sha256": "a4771608c65d51937134248f018755ced00c9f28f5164f88cede7cf029d5f5e3",
+  "input_sha256": "3505a6c0f9d31b7f76bdbb6a2045f2d942d85ca6d85b97f58102c832b6f6ea93",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 336,
+      "sha256": "9c23594b50a122e313d6e2658e3a120d128307122afc277ddc5cd7fc9e23162b"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1334,
+      "sha256": "bf65688e08b87bbcfb27eba55c36b1c8bb57635defdc76eb0f6a2f5dc3f18e6c"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 1649,
+      "sha256": "528b51720f79a7c2774f45700b5fbd14ba2b216b055e4842a01129e822aa6b94"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 328,
+      "sha256": "64bd264650c554a9843d5b7578e061586a53775c49c5bb1697564e1ad0b197b3"
+    },
+    {
+      "path": "package.json",
+      "bytes": 344,
+      "sha256": "9210570f0d475c9125171bef81dc9b03e6c5df04f282270d0d438eeec69d030f"
+    },
+    {
+      "path": "public/art/neon-enemies.png",
+      "bytes": 1259095,
+      "sha256": "dbacde1190b9f263ba05f5ded0735eeda7ff4c793cf8026120387cdfda62b474"
+    },
+    {
+      "path": "public/art/neon-player.png",
+      "bytes": 1352253,
+      "sha256": "72e21241c29510861cb496223d8755fef34c0df3a154eceea7b3634b5bfdf51a"
+    },
+    {
+      "path": "public/art/neon-space.png",
+      "bytes": 2613778,
+      "sha256": "8d6ca3b2ba5283636c5b46a5bd6a16db47f48c4741576d5115557923d63cff0d"
+    },
+    {
+      "path": "public/ARTWORK.json",
+      "bytes": 203,
+      "sha256": "0f79e43e8e1a8ecaa91c994a7f2df9c37ae78a52808c51f72ed7774e6ed1289f"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 36898,
+      "sha256": "3bba809ec8a776f0befa554c830761c9a62548de869efdc00f3c91dcfb213172"
+    },
+    {
+      "path": "public/LICENSE.txt",
+      "bytes": 1334,
+      "sha256": "bf65688e08b87bbcfb27eba55c36b1c8bb57635defdc76eb0f6a2f5dc3f18e6c"
+    },
+    {
+      "path": "public/owngame.css",
+      "bytes": 7024,
+      "sha256": "83e2037e3756f607f432bec4c0478309e8ace69c6b01a8d4c938fd0e7c993ed1"
+    },
+    {
+      "path": "public/owngame.js",
+      "bytes": 8369,
+      "sha256": "d1b089054447709da38c818b24ec3657541154eacea4818cafe0e338eaf52012"
+    },
+    {
+      "path": "public/SOURCE.json",
+      "bytes": 415,
+      "sha256": "1e6b2a55eb7d39d9ab59dbcc8ed6c17f9df5b7990e946c7805f2137907442849"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1249,
+      "sha256": "fcdfcfb6b84aabf7833b76cb780404e6d153dc1fb0b2886c28dc955e80c77f73"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 2499,
+      "sha256": "7554203b18daa8256501ee7c87fc1dcc0f840afa2f7f0fae4e0ae0067921cf9d"
+    },
+    {
+      "path": "UPSTREAM.json",
+      "bytes": 193,
+      "sha256": "2df0ff95fe171aad32aeaef1deaa2e05e6266615f6bcccb68777fd58c3ee61e8"
+    }
+  ]
+}

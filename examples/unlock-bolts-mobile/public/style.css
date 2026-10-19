@@ -1,0 +1,251 @@
+:root {
+  color-scheme: light;
+  font-family: "Songti SC", "Noto Serif CJK SC", "STSong", serif;
+  color: #47230e;
+}
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #eedab7;
+  touch-action: none;
+}
+#scene {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+#scene canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+#viewport {
+  position: fixed;
+  inset: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+    env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+#play {
+  position: fixed;
+  inset: 0;
+}
+h1,
+#subtitle,
+#goal,
+#feedback {
+  position: fixed;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+h1 {
+  font-size: 39px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-shadow:
+    0 1.5px 0 #d1a66a,
+    0 3px 4px #f8e5c966;
+  color: #351907;
+}
+#subtitle {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+button {
+  font: inherit;
+  touch-action: none;
+  color: inherit;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  position: fixed;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+button:disabled {
+  cursor: default;
+  filter: saturate(0.6);
+  opacity: 0.65;
+}
+button:focus-visible {
+  outline: 3px solid #d67b0d;
+  outline-offset: 3px;
+}
+.plaque {
+  border: 1px solid #ac7335;
+  border-radius: 13px;
+  background: linear-gradient(140deg, #ffefd1ed, #ead1a8ee 60%, #ddba86ed);
+  box-shadow:
+    inset 0 0 0 2px #fff2d0,
+    inset 0 -3px 5px #b1804350,
+    0 2px 0 #794a244d;
+}
+.wood {
+  border: 2px solid #e3ba7d;
+  border-radius: 13px;
+  background:
+    repeating-linear-gradient(
+      2deg,
+      #754a2c24 0,
+      #754a2c24 1px,
+      transparent 2px,
+      transparent 5px
+    ),
+    linear-gradient(150deg, #49301f, #654025 45%, #3e291d);
+  color: #fff0cf;
+  box-shadow:
+    inset 0 0 0 2px #8a5b32,
+    inset 0 3px 5px #2412099a,
+    0 3px 0 #875625,
+    0 4px 8px #472a2340;
+  font-weight: 700;
+  font-size: 20px;
+}
+.wood svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pressed {
+  filter: brightness(0.92);
+  transform: translateY(1px);
+}
+.level {
+  font-size: 22px;
+}
+.level[aria-current="true"] {
+  background: linear-gradient(150deg, #1b5941, #123e2e);
+  color: #fff4cd;
+  border: 2px solid #dab27b;
+  box-shadow:
+    inset 0 0 0 2px #f4ddb0,
+    0 3px 0 #7d5a31;
+}
+.bolt {
+  border: 0;
+  border-radius: 18px;
+  background: transparent;
+  min-height: 44px;
+  min-width: 44px;
+}
+.bolt.pressed {
+  background: #fff2cb15;
+  outline: 1px solid #ffdf9d;
+}
+.bolt:focus-visible {
+  outline-offset: -3px;
+}
+#goal {
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+}
+#feedback {
+  font-size: 15px;
+  padding: 0 4px;
+  white-space: nowrap;
+}
+#progress {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+#next {
+  font-size: 16px;
+  font-weight: 700;
+}
+#modal {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background: #35200f66;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#modal[hidden],
+[hidden] {
+  display: none !important;
+}
+.dialog {
+  width: min(88vw, 370px);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+.dialog h2 {
+  font-size: 23px;
+  margin: 0 0 8px;
+}
+.dialog p {
+  font-size: 17px;
+  margin: 0 0 10px;
+}
+.dialog button {
+  position: static;
+  width: 100%;
+  height: 48px;
+  font-size: 18px;
+}
+#loading {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #ead4afd9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+}
+#retry {
+  position: static;
+  width: 180px;
+  height: 48px;
+}
+@media (max-height: 720px) {
+  h1 {
+    font-size: 31px;
+  }
+  #subtitle {
+    font-size: 14px;
+  }
+  #goal {
+    font-size: 14px;
+  }
+  #feedback {
+    font-size: 13px;
+  }
+  .wood {
+    font-size: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<meta name="theme-color" content="#edc89c">
+<title>窑火相融 · 手绘陶坊</title>
+<link rel="stylesheet" href="./style.css">
+<script defer src="./game.js"></script>
+</head>
+<body>
+<div id="safe-insets" aria-hidden="true"></div>
+<main id="viewport" aria-label="窑火相融">
+  <div id="scene" aria-hidden="true"></div>
+  <div id="play">
+    <header id="title-region"><h1 class="sr-only">窑火相融 · 合成 2048</h1></header>
+    <div id="score-current" class="score"><span>本局</span><strong id="current">0</strong></div>
+    <div id="score-best" class="score"><span>最高</span><strong id="best">0</strong></div>
+    <div id="turns"></div>
+    <div id="board-input" role="application" tabindex="0" aria-label="四行四列窑台，横向或竖向滑动，或使用键盘方向键">
+      <div id="board-description" class="sr-only" aria-live="off"></div>
+    </div>
+    <p id="status" role="status" aria-live="polite">正在铺好窑台…</p>
+    <nav aria-label="窑台操作">
+      <button id="undo" type="button"><span>退一手</span></button>
+      <button id="new" class="primary" type="button"><span>再开一炉</span></button>
+      <button id="help" type="button"><span>玩法</span></button>
+      <button id="simple" type="button" aria-pressed="false"><span id="simple-text">简动：关</span><span class="toggle" aria-hidden="true"></span></button>
+    </nav>
+  </div>
+  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <section class="dialog">
+      <div class="leaf" aria-hidden="true">❧</div>
+      <h2 id="modal-title"></h2>
+      <div id="modal-body"></div>
+      <div id="modal-actions"></div>
+    </section>
+  </div>
+  <div id="loading" role="status"><span aria-hidden="true">❧</span><p>正在铺好窑台…</p><button id="retry" type="button" hidden>重新打开</button></div>
+</main>
+</body>
+</html>

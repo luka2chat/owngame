@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7f2e6"><title>箭径出逃 · owngame</title><link rel="stylesheet" href="./style.css"></head>
+<body><main id="game">
+<header><button id="levels" class="level-button" aria-label="选择关卡"><span>ARROW ESCAPE</span><strong>第 <b id="level">01</b> 关 <i>⌄</i></strong></button><div class="hud-right"><button id="sound" aria-label="关闭音效">♪</button><span id="hearts" aria-label="剩余三次机会">♥ ♥ ♥</span></div></header>
+<section class="intro"><span class="eyebrow" id="chapter">第一章 / 松开线结</span><h1>箭径出逃<span>↗</span></h1><p id="instruction">点一支前方没有阻挡的箭，让它自由离开。</p></section>
+<div class="progress"><span id="remaining">剩余 0 支</span><div><i id="bar"></i></div><span id="cleared">已移出 0</span></div>
+<section id="board-wrap" aria-label="箭头解谜棋盘"><canvas id="board" tabindex="0" aria-label="点击箭头移出。方向键选择，回车移出，H 提示，U 撤销。"></canvas><div class="board-corner">✦</div><div class="zoom"><button id="zoom-out" aria-label="缩小棋盘">−</button><button id="center" aria-label="棋盘回中">⊙</button><button id="zoom-in" aria-label="放大棋盘">＋</button></div><span class="board-note">沿着箭头，找到出口</span></section>
+<div id="message" role="status" aria-live="polite">不必着急，一支一支来。</div>
+<footer><button id="undo"><b>↶</b>撤销</button><button id="hint"><b>✧</b>提示</button><button id="restart"><b>↻</b>重来</button></footer>
+<div id="sheet" hidden><section class="card" role="dialog" aria-modal="true" aria-labelledby="sheet-title"><span class="eyebrow" id="sheet-kicker"></span><h2 id="sheet-title"></h2><p id="sheet-copy"></p><div id="level-grid" hidden></div><div id="stars"></div><button id="primary" class="primary"></button><button id="secondary" class="secondary" hidden></button></section></div>
+</main><script type="module" src="./game.js"></script></body></html>

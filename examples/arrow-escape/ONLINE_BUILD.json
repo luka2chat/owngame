@@ -1,0 +1,42 @@
+{
+  "id": "arrow-escape",
+  "build_sha256": "3561d59e0c5b9fb32a775617220c54ec2e28aaa751afbe52b585e12b64dffacc",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 61872,
+      "path": "cover.png",
+      "sha256": "73c2f027c277aa287c4ee6e8f9d63b24c30c6c975b2bcb50ef9ec76853e4fa0c"
+    },
+    {
+      "bytes": 13462,
+      "path": "game.js",
+      "sha256": "0de107bb802f7229b3bfb91ce80e54fb512f84e1bc531a994d8e8e02fe65de24"
+    },
+    {
+      "bytes": 2165,
+      "path": "index.html",
+      "sha256": "278f5d13cddd1067751dfc6d93a17af342e775455b7cb740f3dcebfafbd40463"
+    },
+    {
+      "bytes": 1077,
+      "path": "LICENSE.txt",
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "bytes": 4689,
+      "path": "rules.js",
+      "sha256": "4cbbd594bb67e0469ed56a9a2e3b8df3001e1240e31ba18a353d75810f98bfcb"
+    },
+    {
+      "bytes": 818,
+      "path": "SOURCE.json",
+      "sha256": "0768636ae55733294766b06eae2831ea309cf628df5714af7c9f38ff6a78bb01"
+    },
+    {
+      "bytes": 5675,
+      "path": "style.css",
+      "sha256": "bbe1af50dc496bc42cbd6cd9a8fab042f2a4db2e3cf16b8a57db1506afa8b303"
+    }
+  ]
+}

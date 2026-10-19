@@ -34,8 +34,8 @@ modified or bundled copies; the root MIT license does not replace those notices.
 The three starter cases are authored retrospective summaries, marked reported.
 They are not a redistribution of the reference games, APKs, decompiled sources,
 level datasets, production artwork, private conversations or raw device captures.
-The public source export uses an explicit allowlist; the broader production
-workspace and its imported games are outside this release's licensing scope.
+The public source export uses an explicit allowlist. The broader production
+workspace remains excluded. Reviewed website game exports are separately described below.
 
 REA inspired the packaging and workflow structure. No REA implementation code is
 copied into this toolkit. See https://github.com/morluto/rea .
@@ -51,3 +51,7 @@ THIRD_PARTY_NOTICES.md, LICENSES and SOURCE_MANIFEST.json for scope and provenan
 Caches, private production records, concept art and original Blender working
 files are excluded from the public source. The hosted compiled game includes
 Unity Runtime under Unity Software Terms and carries its attribution notices.
+
+## Website game examples
+
+All currently hosted games are indexed in games.json with matching source and online delivery manifests. Each examples/<id> directory retains its own LICENSE and THIRD_PARTY_NOTICES.md. The root MIT license does not relicense these projects. In particular, examples/civ-clicker code is GPL-3.0-or-later, with CC BY icons, OFL fonts and separately licensed dependencies. Adapted games preserve upstream commit provenance and notices. Original ImageGen artwork is identified in the game notices. The npm toolkit does not bundle these full games.

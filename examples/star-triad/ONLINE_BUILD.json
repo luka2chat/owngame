@@ -1,0 +1,52 @@
+{
+  "id": "star-triad",
+  "build_sha256": "99684105299e28b82e55f7edf0c1289732c556a81ac586850f30b3dd5e46cc91",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 1883917,
+      "path": "assets/board.png",
+      "sha256": "814cf35a46eb5521f240d990cfd8431a346bcb0a0091eaacf69a68eeae3469f3"
+    },
+    {
+      "bytes": 2082528,
+      "path": "assets/observatory.png",
+      "sha256": "b95324555cd21b5feec929b5291262e54300784ccdf7e222b7763172b27978b4"
+    },
+    {
+      "bytes": 1198711,
+      "path": "assets/pieces.png",
+      "sha256": "f0c8224139333751a73c327fe7b05cc199f9d06a7c54c34344aa28e7e8f419ed"
+    },
+    {
+      "bytes": 1227341,
+      "path": "game.js",
+      "sha256": "815f468e1cca6987c82d6cb3ad9858faa8a0626f3d6f1f24a3cbd0022ed616ad"
+    },
+    {
+      "bytes": 5853,
+      "path": "game.js.LEGAL.txt",
+      "sha256": "710ec19e3afb47afc876f5236f2ca04065c51fa10ccf3252e4d04b442d6a8361"
+    },
+    {
+      "bytes": 3305,
+      "path": "index.html",
+      "sha256": "82775d679692da2beeafac83f1da5921d9d1506e5d311d1f0a9bd055f01d3b33"
+    },
+    {
+      "bytes": 1082,
+      "path": "licenses/eventemitter3.txt",
+      "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+    },
+    {
+      "bytes": 1120,
+      "path": "licenses/phaser.txt",
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "bytes": 6714,
+      "path": "style.css",
+      "sha256": "cc5dddde7d8327cb4d3737ef73f1bc55dc91eb0b44ec5d905b3d58be7c50e7ea"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@owngame-example/firefly-four",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node serve.mjs",
+    "start": "npm run build && npm run serve"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}

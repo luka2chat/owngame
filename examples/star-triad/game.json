@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "star-triad",
+  "title": "星图三连",
+  "kind": "phaser",
+  "online_build_sha256": "99684105299e28b82e55f7edf0c1289732c556a81ac586850f30b3dd5e46cc91",
+  "original_source_sha256": "5369d97b9f453f77b72364679c09c595dcf13b0838ea46d5aaea9d24318f9a2f",
+  "license": "MIT",
+  "description": "月光观测室里的星月三连。支持单人陪练与同屏双人，自动保存，随时继续。"
+}

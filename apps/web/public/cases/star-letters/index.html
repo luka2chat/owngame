@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#faf5e8">
+  <title>星野来信 · 制作案例 · owngame</title>
+  <meta name="description" content="一封信，三颗星球。试玩星野来信，探索童话冒险背后的公开源码。">
+  <link rel="icon" href="/art/arcade-mascot.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/play.css">
+  <link rel="stylesheet" href="/cases/star-letters/case.css">
+</head>
+<body class="case-body">
+  <a class="skip" href="#case-main">跳到案例内容</a>
+  <header class="topbar player-header">
+    <a class="wordmark" href="/" aria-label="owngame 首页"><span>o</span><span>w</span><span>n</span><span>g</span><span>a</span><span>m</span><span>e</span></a>
+    <form class="search" action="/" role="search"><span aria-hidden="true">⌕</span><input type="search" name="q" placeholder="搜索你喜欢的游戏" aria-label="搜索游戏"><kbd>/</kbd></form>
+    <a class="top-mine" href="/?view=favorites">☆ 我的收藏</a>
+  </header>
+  <main class="detail-main" id="case-main">
+    <nav class="player-breadcrumb" aria-label="当前位置"><a href="/">← 游戏库</a><span aria-hidden="true">/</span><a href="/play?game=star-letters">星野来信</a><span aria-hidden="true">/</span><b>制作案例</b></nav>
+    <section class="case-hero" aria-labelledby="case-title">
+      <div class="case-intro">
+        <span class="case-label">制作案例 · 3D 童话冒险</span>
+        <h1 id="case-title">星野来信<span class="spark" aria-hidden="true">✷</span></h1>
+        <p class="case-subtitle">迟到的春天</p>
+        <p class="case-description">一封信，把三颗小小星球连在一起。照看花朵，拜访朋友，再为巨人花园带来春天。</p>
+        <div class="player-actions">
+          <a class="player-button primary-action" href="/play?game=star-letters">▶ 开始旅程</a>
+          <a class="player-button" href="https://github.com/luka2chat/owngame/tree/main/examples/star-letters">↗ 查看源码</a>
+          <a class="player-button download-action" href="https://github.com/luka2chat/owngame/blob/main/docs/cases/star-letters.md">制作笔记</a>
+        </div>
+        <p class="case-hint">推荐电脑键鼠 · 首次加载约 54 MB<br>手机尚无完整触屏操作</p>
+      </div>
+      <figure class="case-preview">
+        <img src="/art/rollout/star-letters.jpg" alt="家园实机画面：小小旅人在花圃与信标之间，身后是树木、石路和暖色云海。" width="1280" height="720">
+        <figcaption><span class="case-dot" aria-hidden="true"></span>游戏实拍 · 美术与声音持续打磨中</figcaption>
+      </figure>
+    </section>
+    <section class="case-story" aria-labelledby="story-title">
+      <h2 id="story-title"><span class="red-slash" aria-hidden="true">/</span> 一封信，三段旅程</h2>
+      <div class="case-chapters">
+        <article><span class="chapter-number">01</span><h3>家园 · 收到来信</h3><p>照看花朵，修亮信标，从熟悉的小院出发。</p></article>
+        <article><span class="chapter-number">02</span><h3>邻星 · 拜访朋友</h3><p>调整风向，疏通灌溉，把邀请送到朋友手中。</p></article>
+        <article><span class="chapter-number">03</span><h3>花园 · 等待春天</h3><p>打开花园大门，播种与挂铃，最后等到回信。</p></article>
+      </div>
+    </section>
+    <section class="case-notes" aria-labelledby="notes-title">
+      <h2 id="notes-title"><span class="red-slash" aria-hidden="true">/</span> 从试玩，到自己的版本</h2>
+      <p>公开案例包含正式 Unity 场景、资源、生成脚本与早期 Three.js 教学原型。可以从故事进度与存档、角色交互、程序化美术和镜头避障入手，了解一段冒险怎样变成可玩的世界。</p>
+      <details>
+        <summary>源码与授权范围</summary>
+        <ul>
+          <li>原创游戏逻辑、对白、程序化模型、纹理与声音：MIT。</li>
+          <li>Noto Sans SC 中文字体子集：SIL OFL 1.1，需保留声明。</li>
+          <li>Unity 模板衍生配置：Unity Companion License。</li>
+          <li>Unity 引擎与编译运行时：适用 Unity 自有条款。</li>
+        </ul>
+        <p>缓存、机器配置、个人记录、概念图和原始 Blender 工作文件不在公开范围内。查看<a href="https://github.com/luka2chat/owngame/blob/main/examples/star-letters/AUDIT.md">源码审查记录</a>与<a href="https://github.com/luka2chat/owngame/blob/main/examples/star-letters/THIRD_PARTY_NOTICES.md">第三方授权说明</a>。</p>
+      </details>
+    </section>
+    <footer class="case-footer"><a href="/">← 回游戏库，换个世界</a><p>星野来信使用 Unity 制作。Unity 为 Unity Technologies 的商标或注册商标。Copyright © 2005–2026 Unity Technologies. All rights reserved.</p></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#efca86"><title>人潮冲线 · owngame</title><link rel="stylesheet" href="./style.css"></head>
+<body><main id="game" aria-label="人潮冲线数字门跑酷">
+ <canvas id="scene" aria-label="峡谷跑道，拖动蓝色队伍左右移动"></canvas>
+ <header class="hud"><div class="level-chip"><span id="level-number">01 / 08</span><strong id="level-name">峡谷入口</strong></div><div class="hud-actions"><button id="sound" aria-label="关闭音效">♪</button><button id="pause" aria-label="暂停游戏">Ⅱ</button></div></header>
+ <div class="run-hud"><div class="progress"><i id="progress"></i></div><span id="goal">终点对手 100</span></div>
+ <div id="feedback" role="status" aria-live="polite"></div>
+ <div id="controls"><button id="left" aria-label="向左移动">←</button><span>左右拖动 · 选更划算的门</span><button id="right" aria-label="向右移动">→</button></div>
+ <section id="panel" class="panel"><div class="panel-inner"><div class="panel-badge" aria-hidden="true"></div><span id="panel-kicker">集结出发 / CROWD RUSH</span><h1 id="panel-title">人潮冲线<span>越跑，越热闹。</span></h1><p id="panel-copy">选对数字门，让十个人变成一支大队伍。<br>躲开障碍，一起冲过终点！</p><div id="panel-stats"></div><button id="primary" class="primary">出发，冲向终点 →</button><button id="secondary" class="secondary" hidden>重新开始本关</button><button id="choose" class="text-button">选择关卡 · 8 关</button><small id="save-status">进度自动保存在当前设备</small></div></section>
+ <section id="levels" class="panel" hidden><div class="panel-inner"><span class="eyebrow">每一程，都有新朋友</span><h2>选择关卡</h2><div id="level-grid"></div><button id="back" class="secondary">返回</button></div></section>
+</main><script type="module" src="./game.js"></script></body></html>

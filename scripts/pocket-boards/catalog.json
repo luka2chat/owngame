@@ -1,0 +1,37 @@
+[
+  {
+    "id": "star-triad",
+    "title": "星图三连",
+    "subtitle": "STAR TRIAD",
+    "tag": "月光珐琅 · 单人 / 双人",
+    "art": "star-triad",
+    "category": "益智",
+    "viewportHeight": 800,
+    "description": "月光观测室里的星月三连。支持单人陪练与同屏双人，自动保存，随时继续。",
+    "instructions": "轮流在九格星图落子，横、竖或斜向三个连线获胜。支持单人陪练、同屏双人、悔棋和自动存档。"
+  },
+  {
+    "id": "firefly-four",
+    "title": "萤灯四连",
+    "subtitle": "FIREFLY FOUR",
+    "tag": "萤火纸灯 · 单人 / 双人",
+    "art": "firefly-four",
+    "category": "益智",
+    "viewportHeight": 720,
+    "description": "竹亭渐暗，先点亮属于你的四盏萤灯。",
+    "instructions": "点选一列，灯珠会落到最下方空位。横、竖或斜向连成四个获胜。支持单人陪练、同屏双人、悔棋和自动存档。",
+    "responsiveViewport": true
+  },
+  {
+    "id": "moss-reversi",
+    "title": "苔庭翻面",
+    "subtitle": "MOSS REVERSI",
+    "tag": "纸上苔庭 · 单人 / 双人",
+    "art": "moss-reversi",
+    "category": "益智",
+    "viewportHeight": 720,
+    "description": "墨石与白瓷，在纸上的苔庭里翻转局势。",
+    "instructions": "落子夹住对方棋子，夹住的棋子会翻为己方。浅色圆点表示可落点，无合法落点自动让行。双方都无处落子后，多者胜。",
+    "responsiveViewport": true
+  }
+]

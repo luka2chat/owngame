@@ -1,0 +1,108 @@
+{
+  "schema": "owngame.game-source.v1",
+  "id": "moss-reversi",
+  "online_build_sha256": "f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e",
+  "input_sha256": "cd68b0201df02364a7282a486a9300ed775118c42609c50e463333fca6862a3e",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "build.mjs",
+      "bytes": 2679,
+      "sha256": "822504ce533b727d6de76aef0cf8df8ce5b7bf4d32cf3bd4d1c6952b4642c958"
+    },
+    {
+      "path": "game.json",
+      "bytes": 325,
+      "sha256": "3061b52b9282726eaf4064681d9952832e2055e938d5713cfd7980f53f856d30"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "ONLINE_BUILD.json",
+      "bytes": 1675,
+      "sha256": "315d9bc5bf382be4c74791b778d7d7b4d75986e1a148ed1723888fcc43ce1e72"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 12610,
+      "sha256": "49b7cbc62df1f668743a84a07db69dbc8264615bc9568879d14ca56957e7d21f"
+    },
+    {
+      "path": "package.json",
+      "bytes": 373,
+      "sha256": "79b19d778e1c6e1347835f5010f144a8f64085766b24acc21cef7b56a74d8776"
+    },
+    {
+      "path": "public/assets/inkstone.png",
+      "bytes": 2027781,
+      "sha256": "9faf31671ff1146afbf5d9c5925382e1fb797d2873f959a7aa7b5dc9fdf46a43"
+    },
+    {
+      "path": "public/assets/paper-font.ttf",
+      "bytes": 68612,
+      "sha256": "449a77ded980cc6cac59c479c0c4e1550ab11b91b97505de11bd3eb179b72d13"
+    },
+    {
+      "path": "public/assets/paper-garden.png",
+      "bytes": 2974496,
+      "sha256": "3c5793056d929d82b020ae77530e508c0a9b14bb76c89a80eeebb5351c19e8cb"
+    },
+    {
+      "path": "public/assets/porcelain.png",
+      "bytes": 1577214,
+      "sha256": "43cb02e59f30b6688bedb2d23838dc698a5185e122af7ca200e1644689785093"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 2454,
+      "sha256": "36e286865a55cf08a859aa1f55e93da8d0f06edb60b45d60ceb04190e2c05c15"
+    },
+    {
+      "path": "public/licenses/NotoSerifSC-OFL.txt",
+      "bytes": 4350,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 6317,
+      "sha256": "5f22f88d5a3b2f74fbc310f6e014e155400a807ade16031c21e6dda71006224a"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1228,
+      "sha256": "4d2a0ce1d13992676ad9fffdb51c87dc3cf1f14fb023c91f68a1b4d3cf054851"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "src/game.mjs",
+      "bytes": 13774,
+      "sha256": "c23c24514b514bbf3f3a41d321fc3e9ea901f3febc8fb1da65b6b8470022e904"
+    },
+    {
+      "path": "src/layout.mjs",
+      "bytes": 1254,
+      "sha256": "f5123e8b7ac7334bc001b19aa39bb76238a9fbb579ceaa07205e7dad2921904f"
+    },
+    {
+      "path": "src/rules.ts",
+      "bytes": 4700,
+      "sha256": "60b9f343749c86b3062350c700eac0b08684483c97e3c511c77232a7f826101b"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 4657,
+      "sha256": "f9b12336b0291289dcba54061a61a8b569159759abd93dae13aaf1ce2df4f42b"
+    }
+  ]
+}
