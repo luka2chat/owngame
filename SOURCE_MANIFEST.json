@@ -269,8 +269,8 @@
     },
     {
       "path": "apps/android/README.md",
-      "bytes": 5038,
-      "sha256": "3a1357db7c407a06f44fec1cfb02c609b84090b167f09ac07f771ee4269a4fb0"
+      "bytes": 5159,
+      "sha256": "7d20fecc99a4443f3c60cf8e26d4d8486dc0d2e5bed1dc2ce3a7df0ccad09f94"
     },
     {
       "path": "apps/android/res/drawable-nodpi/arcade_mascot.png",
@@ -8294,8 +8294,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 19800,
-      "sha256": "8af225a1ac0e3a60afa3bb0ab98f2ed122a08253b3d21b886954de537cb9bfe7"
+      "bytes": 19915,
+      "sha256": "e134d6f99a6e7391e61c0c8e5451d6652030a83032c5e5b3954d5e68f2ef68ac"
     },
     {
       "path": "scripts/android/build.mjs",

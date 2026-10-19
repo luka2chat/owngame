@@ -2,7 +2,7 @@
 
 面向玩家的 Android Alpha 客户端：从公开目录下载游戏、校验更新、离线游玩、恢复上一版、收藏和添加桌面快捷方式。创作仍由现有 AI 助手配合 CLI / MCP 完成。
 
-当前源码版本 **0.4.11-alpha（16）**，最低 Android 8.0（API 26），目标 API 34。客户端直接读取 `https://owngame.dev/catalog.json`，无需账号、配对令牌或电脑上的服务。源码已公开；APK 尚未正式公开分发，也没有商店发布或 App 自身自动升级流程。
+当前源码版本 **0.4.11-alpha（16）**，最低 Android 8.0（API 26），目标 API 34。客户端直接读取 `https://owngame.dev/catalog.json`，无需账号、配对令牌或电脑上的服务。源码已公开；[GitHub Alpha 测试包](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.11-alpha) 已提供下载，沿用内部测试签名。商店正式发行与 App 自身自动升级流程仍待完善。
 
 ## 从源码构建
 
