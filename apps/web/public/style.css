@@ -163,10 +163,18 @@ button:active,
 }
 .sidebar nav {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 7px;
   min-height: 0;
+  /* Leave room for the tilted active item and its shadow inside the scroller. */
+  margin: -4px;
+  padding: 4px;
   overflow-x: hidden;
   overflow-y: auto;
+  scrollbar-width: none;
+}
+.sidebar nav::-webkit-scrollbar {
+  display: none;
 }
 .nav-label {
   font-size: 11px;
@@ -763,6 +771,7 @@ dialog p {
   }
   .nav-button {
     width: auto;
+    flex-shrink: 0;
     white-space: nowrap;
     font-size: 12px;
     padding: 8px 12px;

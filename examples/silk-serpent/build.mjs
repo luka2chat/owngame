@@ -27,6 +27,8 @@ if (config.kind === 'vite') {
     if (config.kind === 'faune') {
       await fs.copyFile(path.join(root, 'node_modules/phaser/dist/phaser.min.js'), path.join(out, 'phaser.min.js'));
     }
+  } else if (config.kind === 'native-js') {
+    for (const name of ['rules', 'game']) await fs.copyFile(path.join(root, 'src', name+'.js'), path.join(out, name+'.js'));
   } else if (config.kind === 'native-ts') {
     for (const name of ['rules', 'game']) {
       const source = await fs.readFile(path.join(root, 'src', name+'.ts'), 'utf8');
