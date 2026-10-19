@@ -34,3 +34,9 @@ The pixel data is retained. Original production files are not uploaded.
 Full notices and license texts are bundled in `assets/THIRD_PARTY_NOTICES.md`
 and `assets/LICENSES/` so they also travel with a locally built APK. Android SDK,
 JDK and external games are installed/downloaded separately under their own terms.
+
+The Android library also bundles the existing website covers for Star Letters
+(`star-letters.jpg`), Crowd Runner and Arrow Escape. They are the same game-cover
+images already published under `apps/web/public/art/rollout`, from the authored
+games in `examples/star-letters`, `examples/crowd-runner` and `examples/arrow-escape`.
+They are reused unchanged in appearance; no private photo or new artwork is added.

@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import path from "node:path";
 import os from "node:os";
+import vm from "node:vm";
 import {assertPublicSource, publicPng, readPublicFiles} from "../../scripts/android/public-source.mjs";
 
 const root = path.resolve(import.meta.dirname, "../..");
@@ -76,4 +77,65 @@ test("PNG public copy retains rendering bytes and excludes embedded metadata", (
   assert.throws(() => assertPublicSource("apps/android/assets/example.png", original), /metadata/);
   assert.deepEqual(publicPng(original), Buffer.concat([header, ...render]));
   assert.throws(() => publicPng(original.subarray(0, original.length - 2)), /Truncated|length/);
+});
+
+test("every published game renders its bundled cover instead of the generic icon", async () => {
+  class Element {
+    constructor(tag) { this.tagName = tag.toUpperCase(); this.children = []; this.value = ""; this.style = {setProperty() {}}; }
+    append(...nodes) { this.children.push(...nodes); }
+    replaceChildren(...nodes) { this.children = [...nodes]; }
+    setAttribute() {}
+    addEventListener() {}
+  }
+  const nodes = new Map();
+  const context = {document: {
+    getElementById(id) { if (!nodes.has(id)) nodes.set(id, new Element("div")); return nodes.get(id); },
+    querySelectorAll() { return []; },
+    createElement(tag) { return new Element(tag); },
+    createElementNS(_namespace, tag) { return new Element(tag); },
+  }};
+  context.window = context;
+  vm.createContext(context);
+  vm.runInContext(await fs.readFile(path.join(root, "apps/android/assets/app.js"), "utf8"), context);
+  const known = JSON.parse(vm.runInContext("JSON.stringify(known)", context));
+  let games;
+  try { games = JSON.parse(await fs.readFile(path.join(root, "games.json"), "utf8")).games; }
+  catch (error) {
+    if (error.code !== "ENOENT") throw error;
+    try {
+      await fs.access(path.join(root, "scripts/web/catalog.mjs"));
+      games = await (await import("../../scripts/web/catalog.mjs")).readGameEntries(root);
+    } catch (missing) {
+      if (missing.code !== "ENOENT") throw missing;
+      games = Object.keys(known).map(id => ({id}));
+    }
+  }
+  const files = await readPublicFiles(root);
+  assert(games.length > 0);
+  for (const game of games) {
+    assert(known[game.id], "Published game has no Android artwork: " + game.id);
+    const rendered = vm.runInContext("art(" + JSON.stringify(game) + ")", context);
+    assert(rendered.children.length > 0, game.id);
+    assert(!rendered.children.some(node => node.tagName === "SVG"), "Generic artwork for " + game.id);
+    if (known[game.id].cover) {
+      const image = rendered.children.find(node => node.tagName === "IMG");
+      assert(image, "Missing cover image for " + game.id);
+      assert(files.has("apps/android/assets/" + image.src), "Cover absent from public export: " + image.src);
+    }
+  }
+  const css = await fs.readFile(path.join(root, "apps/android/assets/app.css"), "utf8");
+  for (const match of css.matchAll(/url\(["']?(art\/[^"')]+)["']?\)/g)) {
+    assert(files.has("apps/android/assets/" + match[1]), "CSS artwork absent from export: " + match[1]);
+  }
+});
+
+test("JPEG covers allow the reviewed image and reject embedded private metadata", async () => {
+  const name = "apps/android/assets/art/rollout/star-letters.jpg";
+  assert.doesNotThrow(() => assertPublicSource(name, null));
+  assert.doesNotThrow(() => assertPublicSource(name, Buffer.from([255,216,255,217])));
+  assert.throws(() => assertPublicSource(name, Buffer.from([255,216,255,225,0,4,1,2,255,217])), /metadata/);
+  assert.throws(() => assertPublicSource(name, Buffer.from([255,216,255,254,0,4,1,2,255,217])), /metadata/);
+  assert.throws(() => assertPublicSource(name, Buffer.from([255,216,255,217,1])), /Trailing/);
+  assert.throws(() => assertPublicSource(name, Buffer.from([255,216,255,219,0,6,1])), /length/);
+  assertPublicSource(name, await fs.readFile(path.join(root, name)));
 });

@@ -9,6 +9,26 @@ export function assertPublicSource(relative, bytes) {
     throw Error("Private file type in Android export: " + relative);
   }
   if (bytes === null) return;
+  if (/\.jpe?g$/.test(relative)) {
+    if (bytes[0] !== 255 || bytes[1] !== 216) throw Error("Invalid JPEG: " + relative);
+    let offset = 2;
+    while (offset < bytes.length) {
+      if (bytes[offset++] !== 255) continue;
+      while (bytes[offset] === 255) offset++;
+      const marker = bytes[offset++];
+      if (marker === 0 || (marker >= 208 && marker <= 215)) continue;
+      if (marker === 217) {
+        if (offset !== bytes.length) throw Error("Trailing JPEG data: " + relative);
+        return;
+      }
+      if ((marker >= 225 && marker <= 239) || marker === 254) throw Error("Review/remove JPEG metadata before export: " + relative);
+      if (offset + 2 > bytes.length) throw Error("Truncated JPEG: " + relative);
+      const length = bytes.readUInt16BE(offset);
+      if (length < 2 || offset + length > bytes.length) throw Error("Invalid JPEG length: " + relative);
+      offset += length;
+    }
+    throw Error("Incomplete JPEG: " + relative);
+  }
   if (relative.endsWith(".png")) {
     if (!bytes.subarray(0, 8).equals(Buffer.from([137,80,78,71,13,10,26,10]))) throw Error("Invalid PNG: " + relative);
     let offset = 8;

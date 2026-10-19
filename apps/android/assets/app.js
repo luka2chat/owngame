@@ -130,6 +130,30 @@ const known = {
     "kind": "neon-shooter",
     "cover": "art/rollout/neon-shooter.png",
     "coverTitleBaked": false
+  },
+  "star-letters": {
+    "title": "星野来信",
+    "subtitle": "星球来信 · 3D 童话冒险",
+    "category": "冒险",
+    "kind": "star-letters",
+    "cover": "art/rollout/star-letters.jpg",
+    "coverTitleBaked": false
+  },
+  "crowd-runner": {
+    "title": "人潮冲线",
+    "subtitle": "选门跑酷 · 8 关",
+    "category": "街机",
+    "kind": "crowd-runner",
+    "cover": "art/rollout/crowd-runner.png",
+    "coverTitleBaked": true
+  },
+  "arrow-escape": {
+    "title": "箭径出逃",
+    "subtitle": "箭头解谜 · 36 关",
+    "category": "益智",
+    "kind": "arrow-escape",
+    "cover": "art/rollout/arrow-escape.png",
+    "coverTitleBaked": true
   }
 };
 const info = (g) =>

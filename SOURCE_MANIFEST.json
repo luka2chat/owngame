@@ -50,12 +50,12 @@
     {
       "path": "apps/android/AndroidManifest.xml",
       "bytes": 1214,
-      "sha256": "25e59e54b2db8221599a42577960b137f0efdb8e1979516cdf4535c56e87c691"
+      "sha256": "2ee3a0bae78158cb6c02fbd4514addedca38da5f3f31f06311e0002a7ef4f27f"
     },
     {
       "path": "apps/android/ART-PROVENANCE.md",
-      "bytes": 2306,
-      "sha256": "13e11865b6400f863a3714063ef4156fb155c3f13509f28fa5ef39aa1d990586"
+      "bytes": 2717,
+      "sha256": "b4e0dd22eb18d1e256fe5eb8be218b887b66ae93fde6bd61578b00cbe2deae4f"
     },
     {
       "path": "apps/android/assets/app.css",
@@ -64,8 +64,8 @@
     },
     {
       "path": "apps/android/assets/app.js",
-      "bytes": 15816,
-      "sha256": "696217fe45c877e9da698ee830ad7257baf36aa76bcdc8f1431b085c7233f6d8"
+      "bytes": 16494,
+      "sha256": "2d75e58ab9858af2b3eb714c34d57b59ab75f076018a35f6f8218e4284dba186"
     },
     {
       "path": "apps/android/assets/art/arcade-mascot.png",
@@ -128,6 +128,11 @@
       "sha256": "84ff0b1024bcf8313bd54eda6ebbf6bbd4dc6741f21cc4c93af6a61e0d91251f"
     },
     {
+      "path": "apps/android/assets/art/rollout/arrow-escape.png",
+      "bytes": 333546,
+      "sha256": "14858618768580db5a55c4c4766b283ee33d2b44abb92ae3133ab03c4ffb3905"
+    },
+    {
       "path": "apps/android/assets/art/rollout/bamboo-rally.png",
       "bytes": 453447,
       "sha256": "1bceb7dedb1713a33fe41d29bdd81edb53bff3380a71cc7b7e2333bca4616904"
@@ -136,6 +141,11 @@
       "path": "apps/android/assets/art/rollout/civ-clicker.png",
       "bytes": 491721,
       "sha256": "538e623c23c780f5dbe420f7103faa2ea752e7328aee5dcc8024399c3eac32d6"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/crowd-runner.png",
+      "bytes": 135937,
+      "sha256": "84496723886c9812463fb8fc62798c85c2c2f515ee3d8eccc008fd33088d70fe"
     },
     {
       "path": "apps/android/assets/art/rollout/faune-dungeon.png",
@@ -181,6 +191,11 @@
       "path": "apps/android/assets/art/rollout/silk-serpent.png",
       "bytes": 1055690,
       "sha256": "91ffea75612e60955a7a7f1fffc68767b6b5beeb81889b049b6bc67c492238ab"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/star-letters.jpg",
+      "bytes": 116321,
+      "sha256": "6c34747ee4a3239fdab6c721efbc39321c9c3912d8c17e0538619c0285668ad0"
     },
     {
       "path": "apps/android/assets/art/rollout/unlock-bolts-mobile.png",
@@ -270,7 +285,7 @@
     {
       "path": "apps/android/README.md",
       "bytes": 5159,
-      "sha256": "7d20fecc99a4443f3c60cf8e26d4d8486dc0d2e5bed1dc2ce3a7df0ccad09f94"
+      "sha256": "2a93f78f372fb4f476db1a7bc80e3e5cf8229761bf61b6425ad44a611a7c0799"
     },
     {
       "path": "apps/android/res/drawable-nodpi/arcade_mascot.png",
@@ -8295,7 +8310,7 @@
     {
       "path": "README.md",
       "bytes": 19915,
-      "sha256": "e134d6f99a6e7391e61c0c8e5451d6652030a83032c5e5b3954d5e68f2ef68ac"
+      "sha256": "2c4f16d98ecbcc7a16efec2f43252cd6b3b08080aa4930112d44f77dd927e23c"
     },
     {
       "path": "scripts/android/build.mjs",
@@ -8309,13 +8324,13 @@
     },
     {
       "path": "scripts/android/public-files.json",
-      "bytes": 2827,
-      "sha256": "084cdd3da26a0a22e626e564fb11bcc5544f0463f0f4c480d932390f21d18bd3"
+      "bytes": 2989,
+      "sha256": "1bb8c7e1f06ea0ad07462bec664b14b2867dd4cb9e86c78fe4d09f6778f4bd3e"
     },
     {
       "path": "scripts/android/public-source.mjs",
-      "bytes": 3564,
-      "sha256": "33777c1b439ff0968029416e9aea57cc9919f5b5ca941bc30caa8a3cc0c1dd0b"
+      "bytes": 4530,
+      "sha256": "3e5117a63a652e4a4fae4e3fb6bb90965b1c4cd009178ff2a4bdbf73bdc24147"
     },
     {
       "path": "scripts/android/test-repository.mjs",
@@ -9779,8 +9794,8 @@
     },
     {
       "path": "tests/android/public-source.test.mjs",
-      "bytes": 4609,
-      "sha256": "396eeaead2260cad3d614570a910dce62cfd34a0a8667ec46123c7207d581e6f"
+      "bytes": 7873,
+      "sha256": "9a796abe9563678ce0efe5509c3b9db8ce6099fbd841562d84d1b22e58884a98"
     },
     {
       "path": "tests/android/RepositoryTests.java",
