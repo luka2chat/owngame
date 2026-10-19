@@ -8449,8 +8449,8 @@
     },
     {
       "path": "scripts/release/verify-package.mjs",
-      "bytes": 14359,
-      "sha256": "c4f238b318637597cebeed366014972fb7671d68b6d4e597d6a39f12f8d845eb"
+      "bytes": 14371,
+      "sha256": "cc04689e0116ae8c029944e63dd7e4999899fc7b045c85e450af9941d0e1ee58"
     },
     {
       "path": "scripts/silk-serpent/catalog.json",

@@ -24,7 +24,7 @@ await fs.writeFile(path.join(reportDir,'verification.json'),JSON.stringify({stat
 try{
  const info=JSON.parse(run(npm,['pack',...(published?[pkg.name+'@'+pkg.version]:[]),'--json','--pack-destination',reportDir]))[0];
  const files=info.files.map(f=>f.path);
- const allowed=/^(dist\/packages\/|starter-knowledge\/|skills\/|templates\/|scripts\/toolkit\/|docs\/(cases|images)\/|docs\/(install|quickstart|releasing)\.md$|docs\/style-recipes\.json$|package\.json$|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|CHANGELOG\.md$|CONTRIBUTING\.md$|SECURITY\.md$)/;
+ const allowed=/^(dist\/packages\/|starter-knowledge\/|skills\/|templates\/|scripts\/toolkit\/|docs\/(cases|images)\/|docs\/(install|agent-setup|quickstart|releasing)\.md$|docs\/style-recipes\.json$|package\.json$|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|CHANGELOG\.md$|CONTRIBUTING\.md$|SECURITY\.md$)/;
  for(const file of files){assert(allowed.test(file),`Unexpected packaged path: ${file}`);assert(!/(^|\/)(node_modules|\.env|\.git|\.local|\.owngame|\.DS_Store)(\/|$)/.test(file));}
  for(const needed of ['skills/owngame/SKILL.md','templates/web-canvas/LICENSE','templates/web-canvas/src/main.js','starter-knowledge/sources.json','docs/cases/star-triad.md','templates/unity-home/Assets/Scenes/HomeArt.unity','templates/unity-home/Assets/Models/Story/HomeArt-v2.fbx','templates/unity-home/Assets/Resources/Fonts/StarLettersUI.ttf','templates/unity-home/Packages/packages-lock.json','templates/unity-home/LICENSES/NotoSansSC-OFL.txt'])assert(files.includes(needed),needed);
  const tar=path.join(reportDir,info.filename);
