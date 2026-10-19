@@ -37,7 +37,8 @@ SOFTWARE.
   "implementation": "Original owngame TypeScript and Canvas implementation, 2026-10-19",
   "reference": "https://github.com/allenliu/mobile-game-ads/tree/main/games/crowd-runner",
   "reference_scope": "Number-gate crowd-running mechanic only. The reference repository describes itself as unlicensed prototype work; no source, level data, branding, images or audio were copied.",
-  "assets": "Original ImageGen 3D toy character atlas; original runtime canyon/arena Canvas artwork and synthesized Web Audio",
+  "assets": "Original code-drawn athletics runner sprite atlas generated at runtime, flat Canvas sports-ground artwork and synthesized Web Audio. No generated bitmap assets used in this version.",
   "license": "MIT for this original implementation",
-  "visual_reference": "Mob Control store screenshots: saturated blue/red crowd readability, toy volume, multiplier gate hierarchy and compact battle framing. No commercial model, texture, screenshot or logo reused."
+  "visual_reference": "Mob Control mechanics/readability research only; no commercial code, model, texture, screenshot or branding copied.",
+  "visual_direction": "Athletics club: numbered jerseys, outlined characters, tartan lanes, flat scoreboard gates and restricted ink/yellow/blue/coral palette."
 }

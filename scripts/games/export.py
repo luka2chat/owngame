@@ -4,7 +4,7 @@ Only allowlisted inputs are read. Caches, private evidence, credentials and
 machine-specific upstream download paths are never copied.
 """
 from pathlib import Path
-import argparse, hashlib, json, re, shutil
+import argparse, hashlib, json, re, shutil, subprocess
 from concurrent.futures import ThreadPoolExecutor
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -14,9 +14,16 @@ def dump(p, value):
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
 
-def export(catalog, destination, library=None):
+def export(catalog, destination, library=None, only=None):
     projects = json.loads((ROOT/'scripts/games/projects.json').read_text())
     library = library or ROOT/'.owngame/library'
+    planned = catalog
+    prior_index = json.loads((destination/'games.json').read_text())['games'] if only else []
+    if only:
+        wanted = set(only.split(','))
+        catalog = [g for g in catalog if g['id'] in wanted]
+        if {g['id'] for g in catalog} != wanted:
+            raise ValueError('Unknown game in --only')
     games = []
     for game in catalog:
         ident = game['id']
@@ -91,6 +98,7 @@ def export(catalog, destination, library=None):
                 shutil.rmtree(target)
             target.mkdir(parents=True)
             kind = spec['kind']
+            typed = {}
             excluded = {'source.tar.gz','README.md','UPSTREAM.json'}
             if kind in ['phaser','canvas','faune','moss','native-ts','native-js']:
                 excluded |= {'game.js','game.js.LEGAL.txt','layout.js','rules.js','phaser.min.js'}
@@ -104,13 +112,21 @@ def export(catalog, destination, library=None):
             if kind in ['phaser','canvas','faune','moss']:
                 tree(source/'src', 'src', {'.ts','.js','.mjs','.json'})
             if kind == 'native-js':
-                # These selected deliveries contain the full readable modules, not bundled/minified output.
-                # Use them instead of copying an in-progress TypeScript candidate from the production workspace.
-                for name in ['game.js','rules.js']:
-                    copy(base/'files'/name, 'src/'+name)
+                # Retain original types only when those exact inputs produce the selected release.
+                # Otherwise keep the complete readable modules, rather than an in-progress candidate.
+                typed = {name:(source/(name+'.ts')).read_text() for name in ['game','rules']}
+                check = "import{stripTypeScriptTypes}from'node:module';import{createHash}from'node:crypto';import fs from'node:fs';const v=JSON.parse(fs.readFileSync(0,'utf8'));console.log(JSON.stringify(Object.fromEntries(Object.entries(v).map(([k,s])=>[k,createHash('sha256').update(stripTypeScriptTypes(s,{mode:'strip'})).digest('hex')]))));"
+                emitted = json.loads(subprocess.check_output(['node','--input-type=module','-e',check], input=json.dumps(typed).encode()))
+                if all(emitted[name] == SHA((base/'files'/(name+'.js')).read_bytes()) for name in typed):
+                    kind = 'native-ts'
+                else:
+                    for name in ['game.js','rules.js']:
+                        copy(base/'files'/name, 'src/'+name)
             if kind == 'native-ts':
                 for name in ['game.ts','rules.ts']:
-                    copy(source/name, 'src/'+name)
+                    b = typed[name[:-3]].encode() if typed else (source/name).read_bytes()
+                    inputs[(Path(spec['project'])/name).as_posix()] = SHA(b)
+                    put('src/'+name, b)
             if ident == 'signal-harbor':
                 for name in ['rules','progress','levels','layout']:
                     copy(ROOT/spec['extra']/(name+'.ts'), 'src/core/'+name+'.ts')
@@ -210,11 +226,15 @@ def export(catalog, destination, library=None):
             b = (target/'ONLINE_BUILD.json').read_bytes()
             manifest['files'].append({'path':'ONLINE_BUILD.json','bytes':len(b),'sha256':SHA(b),'license':'MIT'})
             dump(target/'SOURCE_MANIFEST.json', manifest)
-        games.append({'id':ident,'title':game['title'],'kind':spec['kind'],
+        games.append({'id':ident,'title':game['title'],'kind':('unity' if spec['kind']=='unity' else config['kind']),
             'path':'examples/'+ident,'online_build_sha256':version,'input_sha256':digest,
             'source_manifest_sha256':SHA((target/'SOURCE_MANIFEST.json').read_bytes()),
             'license':spec.get('license','MIT')})
         print(json.dumps({'exported':ident,'files':len(files),'bytes':sum(f['bytes'] for f in files)}),flush=True)
+    if only:
+        merged = {g['id']:g for g in prior_index}
+        merged.update({g['id']:g for g in games})
+        games = [merged[g['id']] for g in planned]
     dump(destination/'games.json', {'schema':'owngame.open-games.v1','repository':'luka2chat/owngame','games':games})
     rows = '\n'.join(f"| [{g['title']}]({g['id']}/) | `{g['id']}` | {g['license']} |" for g in games)
     (destination/'examples/README.md').write_text('# 网站游戏源码\n\n'+f'共 {len(games)} 款，与 [games.json](../games.json) 中的线上版本对应。\n\n| 游戏 | ID | 代码许可 |\n|---|---|---|\n'+rows+'\n\n在目标目录执行 `npm ci` 与 `npm start`；Unity 游戏另见其 README。第三方素材按各目录声明使用。\n')
@@ -224,5 +244,6 @@ if __name__ == '__main__':
     parser.add_argument('--catalog', required=True, type=Path)
     parser.add_argument('--out', required=True, type=Path)
     parser.add_argument('--library', type=Path)
+    parser.add_argument('--only', help='Comma-separated IDs to refresh while preserving other reviewed exports')
     args = parser.parse_args()
-    export(json.loads(args.catalog.read_text()), args.out.resolve(), args.library)
+    export(json.loads(args.catalog.read_text()), args.out.resolve(), args.library, args.only)

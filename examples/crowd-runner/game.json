@@ -2,9 +2,9 @@
   "managed_export": "owngame",
   "id": "crowd-runner",
   "title": "人潮冲线",
-  "kind": "native-js",
-  "online_build_sha256": "567aaff7a80158d89ad0eece2d91bcbb45aac79729e7288af003bd5fddedbf3c",
+  "kind": "native-ts",
+  "online_build_sha256": "2a062aaa2d95a6e294b262e30b38524cf6e01f898c98e2cb7d809ee68bada10e",
   "original_source_sha256": null,
   "license": "MIT",
-  "description": "左右拖动，选对数字门，带着越来越热闹的队伍冲向终点。"
+  "description": "选对数字门，集结队伍，冲过终点。"
 }

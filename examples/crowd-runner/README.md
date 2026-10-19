@@ -1,6 +1,6 @@
 # 人潮冲线
 
-左右拖动，选对数字门，带着越来越热闹的队伍冲向终点。
+选对数字门，集结队伍，冲过终点。
 
 [在线试玩](https://owngame.dev/play?game=crowd-runner) · [授权与来源](THIRD_PARTY_NOTICES.md)
 
@@ -21,8 +21,6 @@ npm start
 
 ## 线上版本与源码
 
-对应线上交付：`567aaff7a80158d89ad0eece2d91bcbb45aac79729e7288af003bd5fddedbf3c`。`ONLINE_BUILD.json` 记录原交付文件指纹，`SOURCE_MANIFEST.json` 记录这里的可编辑源码、构建脚本与素材。依赖通过 npm 恢复，构建脚本已移除开发机和 NAS 路径。打包路径、源码诊断标记或压缩器可能改变输出字节；重建结果和原交付的逐文件比较另见仓库检查结果。
+对应线上交付：`2a062aaa2d95a6e294b262e30b38524cf6e01f898c98e2cb7d809ee68bada10e`。`ONLINE_BUILD.json` 记录原交付文件指纹，`SOURCE_MANIFEST.json` 记录这里的可编辑源码、构建脚本与素材。依赖通过 npm 恢复，构建脚本已移除开发机和 NAS 路径。打包路径、源码诊断标记或压缩器可能改变输出字节；重建结果和原交付的逐文件比较另见仓库检查结果。
 
 代码许可：**MIT**。字体、引擎与上游素材依照各自声明；见 [授权与来源](THIRD_PARTY_NOTICES.md)。
-
-本版本的 src/game.js 与 src/rules.js 为线上交付使用的完整、未压缩 ES modules，包含原注释与全部玩法逻辑；TypeScript 类型已在发布时移除。工作区内尚未上线的后续改版不混入这个版本。

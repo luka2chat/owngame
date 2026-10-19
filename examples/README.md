@@ -23,4 +23,4 @@
 | [人潮冲线](crowd-runner/) | `crowd-runner` | MIT |
 | [箭径出逃](arrow-escape/) | `arrow-escape` | MIT |
 
-在目标目录执行 `npm ci` 与 `npm start`；Unity 游戏另见其 README。素材按各目录许可使用。
+在目标目录执行 `npm ci` 与 `npm start`；Unity 游戏另见其 README。第三方素材按各目录声明使用。

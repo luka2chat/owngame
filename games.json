@@ -165,21 +165,21 @@
     {
       "id": "crowd-runner",
       "title": "人潮冲线",
-      "kind": "native-js",
+      "kind": "native-ts",
       "path": "examples/crowd-runner",
-      "online_build_sha256": "567aaff7a80158d89ad0eece2d91bcbb45aac79729e7288af003bd5fddedbf3c",
-      "input_sha256": "567aaff7a80158d89ad0eece2d91bcbb45aac79729e7288af003bd5fddedbf3c",
-      "source_manifest_sha256": "b200b2273ecbb844ffd27a212ed860ec1b3e1f4c0b91f4312a2bce0664d0cf7d",
+      "online_build_sha256": "2a062aaa2d95a6e294b262e30b38524cf6e01f898c98e2cb7d809ee68bada10e",
+      "input_sha256": "6ab9e76754e17fffbd3d4ecd744343ea105ab44fe09757ad7409523a1ed472d0",
+      "source_manifest_sha256": "c03a075d1eda0b1444434106600e353d0cfee519ff56a6e2fe877dd1d4bef84f",
       "license": "MIT"
     },
     {
       "id": "arrow-escape",
       "title": "箭径出逃",
-      "kind": "native-js",
+      "kind": "native-ts",
       "path": "examples/arrow-escape",
-      "online_build_sha256": "3561d59e0c5b9fb32a775617220c54ec2e28aaa751afbe52b585e12b64dffacc",
-      "input_sha256": "3561d59e0c5b9fb32a775617220c54ec2e28aaa751afbe52b585e12b64dffacc",
-      "source_manifest_sha256": "fb8b0dc9969ffac78317e8227a460d2b044c63f5044f1999fd346c020e7fef67",
+      "online_build_sha256": "dd7020f1d4917b60f21c8bc05228ae4c163a4e57e16a0e68e8a48d2592d431e1",
+      "input_sha256": "acc3a28b40f19e0ff751a048f5e29247e52ca6fb1e6d06381806babd3ded0479",
+      "source_manifest_sha256": "5f961663c30a5ad1e29db4331e2d02e6247ee53179c89d9e8321e8bae3432c0b",
       "license": "MIT"
     }
   ]

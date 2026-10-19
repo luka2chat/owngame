@@ -1,22 +1,22 @@
 {
   "id": "arrow-escape",
-  "build_sha256": "3561d59e0c5b9fb32a775617220c54ec2e28aaa751afbe52b585e12b64dffacc",
+  "build_sha256": "dd7020f1d4917b60f21c8bc05228ae4c163a4e57e16a0e68e8a48d2592d431e1",
   "entrypoint": "index.html",
   "files": [
     {
-      "bytes": 61872,
+      "bytes": 26440,
       "path": "cover.png",
-      "sha256": "73c2f027c277aa287c4ee6e8f9d63b24c30c6c975b2bcb50ef9ec76853e4fa0c"
+      "sha256": "fb61076110859264ae733f48c2899926b223908eeb7b68c2f03e7618ffe3dbd3"
     },
     {
-      "bytes": 13462,
+      "bytes": 13005,
       "path": "game.js",
-      "sha256": "0de107bb802f7229b3bfb91ce80e54fb512f84e1bc531a994d8e8e02fe65de24"
+      "sha256": "740cf1710d0cd69175a37c5c20ad61c73b7db030b22b06c48c93bddc5f1f4004"
     },
     {
-      "bytes": 2165,
+      "bytes": 2032,
       "path": "index.html",
-      "sha256": "278f5d13cddd1067751dfc6d93a17af342e775455b7cb740f3dcebfafbd40463"
+      "sha256": "a7c17265cd0a06381a584ab816b9e1aa963c04bc3ef3f81e1361257090fef6fb"
     },
     {
       "bytes": 1077,
@@ -34,9 +34,9 @@
       "sha256": "0768636ae55733294766b06eae2831ea309cf628df5714af7c9f38ff6a78bb01"
     },
     {
-      "bytes": 5675,
+      "bytes": 5189,
       "path": "style.css",
-      "sha256": "bbe1af50dc496bc42cbd6cd9a8fab042f2a4db2e3cf16b8a57db1506afa8b303"
+      "sha256": "be750242fb0b84911e066fb2d923cdbb217f96d79f3fe81acb45174762cba300"
     }
   ]
 }

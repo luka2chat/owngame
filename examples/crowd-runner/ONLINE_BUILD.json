@@ -1,27 +1,22 @@
 {
   "id": "crowd-runner",
-  "build_sha256": "567aaff7a80158d89ad0eece2d91bcbb45aac79729e7288af003bd5fddedbf3c",
+  "build_sha256": "2a062aaa2d95a6e294b262e30b38524cf6e01f898c98e2cb7d809ee68bada10e",
   "entrypoint": "index.html",
   "files": [
     {
-      "bytes": 322886,
+      "bytes": 135937,
       "path": "cover.png",
-      "sha256": "fcf56c559b15b4fec33e295c15a7cf20a96fec02f75947d7a7f27c799e6dc942"
+      "sha256": "84496723886c9812463fb8fc62798c85c2c2f515ee3d8eccc008fd33088d70fe"
     },
     {
-      "bytes": 1500009,
-      "path": "crowd-atlas.png",
-      "sha256": "199d98998495efc6dc8a2001dd98c30176e2cb2c8e583fd7cfb0b1dabed93675"
-    },
-    {
-      "bytes": 20420,
+      "bytes": 19381,
       "path": "game.js",
-      "sha256": "46667c9d7d2c21d93ac53c4c46c0cddb75e8e301f3be923d79da8da669dab768"
+      "sha256": "59166b1089b701c35cd884e70cceb7f08ff9a360aac57f1c5613b06622953f56"
     },
     {
-      "bytes": 2076,
+      "bytes": 2062,
       "path": "index.html",
-      "sha256": "76a126291790b7959c65da928267ab2ba7b1aac8cbdde6b33f578b478f5f44df"
+      "sha256": "d77bf9cb2709d46d4f74b1c2a7e508f4fbea72988f55ec1e570117958f71b17e"
     },
     {
       "bytes": 1077,
@@ -29,19 +24,19 @@
       "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
     },
     {
-      "bytes": 3582,
+      "bytes": 3576,
       "path": "rules.js",
-      "sha256": "76dcf1b0db1371981344d53c325f826812ea2ea2131385a1535bc6af1302082b"
+      "sha256": "c68455c8b7a8b032ac6844728cb5f82ced9ee39d2a06178d9f53456fe2a2aee3"
     },
     {
-      "bytes": 807,
+      "bytes": 962,
       "path": "SOURCE.json",
-      "sha256": "7c464f56363ff2d543eb3f316d71d02bc4f9a10fdb0786ff169de89de30b53c3"
+      "sha256": "c1a6d8756fa7c26e518c2133b49b7cbde32ade876e792c9e5c324d6b3db53563"
     },
     {
-      "bytes": 5325,
+      "bytes": 4941,
       "path": "style.css",
-      "sha256": "2a4f2447aff9833f0239958818e51fd78b0df1281f9f2095c5871c98858cb28a"
+      "sha256": "dc3cf16adeefbce1c0e1703d28f03d02fbd9183713fc98fdbb89e633715c3257"
     }
   ]
 }

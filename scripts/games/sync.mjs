@@ -30,13 +30,21 @@ for(const relative of ['scripts/games','tests/games','tests/web','scripts/web/ca
 const catalogModule=await fs.readFile(path.join(root,'scripts/web/catalog.mjs'),'utf8');
 for(const match of catalogModule.matchAll(/"(scripts\/[^"\n]+\/catalog\.json)"/g)) await copy(match[1]);
 const index=JSON.parse(await fs.readFile(path.join(repo,'games.json')));
+const packagePath=path.join(repo,'package.json');
+const publicPackage=JSON.parse(await fs.readFile(packagePath));
+Object.assign(publicPackage.scripts,{'web:build':'node scripts/web/build.mjs','web:publish':'node scripts/web/publish.mjs'});
+await fs.writeFile(packagePath,JSON.stringify(publicPackage,null,2)+'\n');
+const readmePath=path.join(repo,'README.md');
+let readme=await fs.readFile(readmePath,'utf8');
+readme=readme.replace(/\*\*\d+ 款游戏均提供可编辑源码\*\*/, '**'+index.games.length+' 款游戏均提供可编辑源码**').replace(/All \d+ hosted games have editable sources/, 'All '+index.games.length+' hosted games have editable sources');
+await fs.writeFile(readmePath,readme);
 for(const game of index.games.filter(g=>g.kind!=='unity')) {
   execFileSync('npm',['install','--package-lock-only','--ignore-scripts','--no-audit','--no-fund'],{cwd:path.join(repo,game.path),stdio:'inherit'});
 }
 execFileSync(process.execPath,[path.join(root,'scripts/games/refresh-manifests.mjs'),repo],{stdio:'inherit'});
 execFileSync(process.execPath,[path.join(root,'scripts/games/verify.mjs'),repo],{stdio:'inherit'});
 git('add','examples','games.json','scripts/games','tests/games','tests/web','scripts/web','scripts/lib/codex-browser-preflight.mjs',
-  '.github/workflows/games.yml','docs/open-source-games.md','docs/game-publishing.md','apps/web');
+  '.github/workflows/games.yml','docs/open-source-games.md','docs/game-publishing.md','apps/web','package.json','README.md');
 execFileSync(process.execPath,[path.join(root,'scripts/games/refresh-root-manifest.mjs'),repo],{stdio:'inherit'});
 git('add','SOURCE_MANIFEST.json');
 if(git('diff','--cached','--name-only')) git('commit','-m','games: synchronize source for selected website releases');

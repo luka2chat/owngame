@@ -2,9 +2,9 @@
   "managed_export": "owngame",
   "id": "arrow-escape",
   "title": "箭径出逃",
-  "kind": "native-js",
-  "online_build_sha256": "3561d59e0c5b9fb32a775617220c54ec2e28aaa751afbe52b585e12b64dffacc",
+  "kind": "native-ts",
+  "online_build_sha256": "dd7020f1d4917b60f21c8bc05228ae4c163a4e57e16a0e68e8a48d2592d431e1",
   "original_source_sha256": null,
   "license": "MIT",
-  "description": "顺着箭头，解开一页页线结。留一条路，让每支箭自由离开。"
+  "description": "找出移除顺序，让所有箭头离开棋盘。"
 }

@@ -444,8 +444,8 @@
     },
     {
       "path": "docs/open-source-games.md",
-      "bytes": 2023,
-      "sha256": "584952000ad6aa438a881ccb18b34e7c1ac755a8901daeb01c9c752338d788b3"
+      "bytes": 2017,
+      "sha256": "d3a87d97d6baaf7d64cd594d469e10494cb0b415350e5d779f765be73320661a"
     },
     {
       "path": "docs/quickstart.md",
@@ -479,8 +479,8 @@
     },
     {
       "path": "examples/arrow-escape/game.json",
-      "bytes": 357,
-      "sha256": "648766a78ca5438071a1c31df6a802c7cd2c5d59055ac45761921d2099a4fbea"
+      "bytes": 327,
+      "sha256": "b209b34d9fbb13bfcdb39b21d3f1a1458600b2487ed32ac8bef11e5221a502fe"
     },
     {
       "path": "examples/arrow-escape/LICENSE",
@@ -490,7 +490,7 @@
     {
       "path": "examples/arrow-escape/ONLINE_BUILD.json",
       "bytes": 1171,
-      "sha256": "bc841fde97747b22bdebca161d77d2a707903a6b6b81fa8e1a89c0e6af49a7be"
+      "sha256": "684f34d7e2d672cbcf2a9618a12695052ce531524da20b1676b8d53c1aec3c82"
     },
     {
       "path": "examples/arrow-escape/package-lock.json",
@@ -504,13 +504,13 @@
     },
     {
       "path": "examples/arrow-escape/public/cover.png",
-      "bytes": 61872,
-      "sha256": "73c2f027c277aa287c4ee6e8f9d63b24c30c6c975b2bcb50ef9ec76853e4fa0c"
+      "bytes": 26440,
+      "sha256": "fb61076110859264ae733f48c2899926b223908eeb7b68c2f03e7618ffe3dbd3"
     },
     {
       "path": "examples/arrow-escape/public/index.html",
-      "bytes": 2165,
-      "sha256": "278f5d13cddd1067751dfc6d93a17af342e775455b7cb740f3dcebfafbd40463"
+      "bytes": 2032,
+      "sha256": "a7c17265cd0a06381a584ab816b9e1aa963c04bc3ef3f81e1361257090fef6fb"
     },
     {
       "path": "examples/arrow-escape/public/LICENSE.txt",
@@ -524,13 +524,13 @@
     },
     {
       "path": "examples/arrow-escape/public/style.css",
-      "bytes": 5675,
-      "sha256": "bbe1af50dc496bc42cbd6cd9a8fab042f2a4db2e3cf16b8a57db1506afa8b303"
+      "bytes": 5189,
+      "sha256": "be750242fb0b84911e066fb2d923cdbb217f96d79f3fe81acb45174762cba300"
     },
     {
       "path": "examples/arrow-escape/README.md",
-      "bytes": 1655,
-      "sha256": "e61e0b8e14be368674ba19815f9acdbe35832fcdf7c9f1f7f19543393335c10e"
+      "bytes": 1382,
+      "sha256": "e5a50bf8a9ea8d212213f55dcccd810bdb9f73a2acda82f7320d1392f67725af"
     },
     {
       "path": "examples/arrow-escape/serve.mjs",
@@ -540,17 +540,17 @@
     {
       "path": "examples/arrow-escape/SOURCE_MANIFEST.json",
       "bytes": 2781,
-      "sha256": "fb8b0dc9969ffac78317e8227a460d2b044c63f5044f1999fd346c020e7fef67"
+      "sha256": "5f961663c30a5ad1e29db4331e2d02e6247ee53179c89d9e8321e8bae3432c0b"
     },
     {
-      "path": "examples/arrow-escape/src/game.js",
-      "bytes": 13462,
-      "sha256": "0de107bb802f7229b3bfb91ce80e54fb512f84e1bc531a994d8e8e02fe65de24"
+      "path": "examples/arrow-escape/src/game.ts",
+      "bytes": 13005,
+      "sha256": "8b3e6bc2277752d8a804d9be6b9a7a89283d27ee7aafad63926602dbd88327fa"
     },
     {
-      "path": "examples/arrow-escape/src/rules.js",
+      "path": "examples/arrow-escape/src/rules.ts",
       "bytes": 4689,
-      "sha256": "4cbbd594bb67e0469ed56a9a2e3b8df3001e1240e31ba18a353d75810f98bfcb"
+      "sha256": "6f924d771f7abeafa1e6a978abd94e207834cb70f832381f5b30cc7330f98c32"
     },
     {
       "path": "examples/arrow-escape/THIRD_PARTY_NOTICES.md",
@@ -1014,8 +1014,8 @@
     },
     {
       "path": "examples/crowd-runner/game.json",
-      "bytes": 354,
-      "sha256": "c82143cf81333ebf23492f360fca9ff76b1363cec67c97079b0153e63047b167"
+      "bytes": 324,
+      "sha256": "8996091fd89f04a2b75d26a46fb201dc44ace9c1dd3621897fbbb337725263d6"
     },
     {
       "path": "examples/crowd-runner/LICENSE",
@@ -1024,8 +1024,8 @@
     },
     {
       "path": "examples/crowd-runner/ONLINE_BUILD.json",
-      "bytes": 1325,
-      "sha256": "a1dc62b64a842ee36f4dcda596f3a8ee5f68d46f2a720c9386d2a283fb9c0508"
+      "bytes": 1172,
+      "sha256": "9735940168509d9338fe949a5253b450d3279cbd3136f296f560e1c9d2fc9c62"
     },
     {
       "path": "examples/crowd-runner/package-lock.json",
@@ -1039,18 +1039,13 @@
     },
     {
       "path": "examples/crowd-runner/public/cover.png",
-      "bytes": 322886,
-      "sha256": "fcf56c559b15b4fec33e295c15a7cf20a96fec02f75947d7a7f27c799e6dc942"
-    },
-    {
-      "path": "examples/crowd-runner/public/crowd-atlas.png",
-      "bytes": 1500009,
-      "sha256": "199d98998495efc6dc8a2001dd98c30176e2cb2c8e583fd7cfb0b1dabed93675"
+      "bytes": 135937,
+      "sha256": "84496723886c9812463fb8fc62798c85c2c2f515ee3d8eccc008fd33088d70fe"
     },
     {
       "path": "examples/crowd-runner/public/index.html",
-      "bytes": 2076,
-      "sha256": "76a126291790b7959c65da928267ab2ba7b1aac8cbdde6b33f578b478f5f44df"
+      "bytes": 2062,
+      "sha256": "d77bf9cb2709d46d4f74b1c2a7e508f4fbea72988f55ec1e570117958f71b17e"
     },
     {
       "path": "examples/crowd-runner/public/LICENSE.txt",
@@ -1059,18 +1054,18 @@
     },
     {
       "path": "examples/crowd-runner/public/SOURCE.json",
-      "bytes": 807,
-      "sha256": "7c464f56363ff2d543eb3f316d71d02bc4f9a10fdb0786ff169de89de30b53c3"
+      "bytes": 962,
+      "sha256": "c1a6d8756fa7c26e518c2133b49b7cbde32ade876e792c9e5c324d6b3db53563"
     },
     {
       "path": "examples/crowd-runner/public/style.css",
-      "bytes": 5325,
-      "sha256": "2a4f2447aff9833f0239958818e51fd78b0df1281f9f2095c5871c98858cb28a"
+      "bytes": 4941,
+      "sha256": "dc3cf16adeefbce1c0e1703d28f03d02fbd9183713fc98fdbb89e633715c3257"
     },
     {
       "path": "examples/crowd-runner/README.md",
-      "bytes": 1577,
-      "sha256": "cefae483143918644c0521f62ab34fa9142cf53bcbefe94832ab399bd77b4965"
+      "bytes": 1304,
+      "sha256": "58de8aba8bd0ad6f3e79f15dba341f65a86153929c1482cccb15b90321ff1430"
     },
     {
       "path": "examples/crowd-runner/serve.mjs",
@@ -1079,23 +1074,23 @@
     },
     {
       "path": "examples/crowd-runner/SOURCE_MANIFEST.json",
-      "bytes": 2942,
-      "sha256": "b200b2273ecbb844ffd27a212ed860ec1b3e1f4c0b91f4312a2bce0664d0cf7d"
+      "bytes": 2782,
+      "sha256": "c03a075d1eda0b1444434106600e353d0cfee519ff56a6e2fe877dd1d4bef84f"
     },
     {
-      "path": "examples/crowd-runner/src/game.js",
-      "bytes": 20420,
-      "sha256": "46667c9d7d2c21d93ac53c4c46c0cddb75e8e301f3be923d79da8da669dab768"
+      "path": "examples/crowd-runner/src/game.ts",
+      "bytes": 19381,
+      "sha256": "b36357222d9c2fc9f80a0036d3d3b13fd0e9da2a04fbc17883db549e5e224473"
     },
     {
-      "path": "examples/crowd-runner/src/rules.js",
-      "bytes": 3582,
-      "sha256": "76dcf1b0db1371981344d53c325f826812ea2ea2131385a1535bc6af1302082b"
+      "path": "examples/crowd-runner/src/rules.ts",
+      "bytes": 3576,
+      "sha256": "96240bd63c2af1743c8e889c675dcd1eec8bdd347dcb1fa83b156ea5037bbd25"
     },
     {
       "path": "examples/crowd-runner/THIRD_PARTY_NOTICES.md",
-      "bytes": 2199,
-      "sha256": "7dc6f90995286d90ba1732dd2dc42c356385c18bf6118884f082a64e1088150a"
+      "bytes": 2354,
+      "sha256": "299d1ebe8b0f5354848afb89c6793e016ea9b417cd353ad2f25565d090643714"
     },
     {
       "path": "examples/faune-dungeon/.gitignore",
@@ -2219,8 +2214,8 @@
     },
     {
       "path": "examples/README.md",
-      "bytes": 1371,
-      "sha256": "b8b47d2b562bba35f903256b0c79dcc2bab7d1d71b52618390464dddbfa09afd"
+      "bytes": 1380,
+      "sha256": "23a70ee8e32884b5e5b75ffe21bca982903030db894b8c03df68fbc2ff651ae7"
     },
     {
       "path": "examples/signal-harbor/.gitignore",
@@ -7965,7 +7960,7 @@
     {
       "path": "games.json",
       "bytes": 8193,
-      "sha256": "acf693497ed4ddfe37915151c59498e968df1ea851e4e4be5d82b58a4403d8f0"
+      "sha256": "e567f0308b873f13842ec3d190edb8deeb3425282b5868c46b8a758a06186ad0"
     },
     {
       "path": "LICENSE",
@@ -7979,8 +7974,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 1838,
-      "sha256": "93781500fd80a60df6737f2ca08dbff9a7f185fa50e67a5833699d522d426d3e"
+      "bytes": 1936,
+      "sha256": "c09569085d0dbca260cfb55713ed23f027784a24c9cf0ca98a2e45febd026688"
     },
     {
       "path": "packages/cli/index.ts",
@@ -8069,8 +8064,8 @@
     },
     {
       "path": "scripts/games/export.py",
-      "bytes": 15488,
-      "sha256": "579c3bdf7e94a88e6ac69f4bfa5be474258bca0732390d08f4290fba77aa0afd"
+      "bytes": 17086,
+      "sha256": "eb94d36db4db7744cf7ba848abe5dde98e8fac8e8b85426f1ae88e0bd5602341"
     },
     {
       "path": "scripts/games/projects.json",
@@ -8109,8 +8104,8 @@
     },
     {
       "path": "scripts/games/sync.mjs",
-      "bytes": 4946,
-      "sha256": "8e31bbde51211d4cd62915d31d0c2df71e496867238322e6e2c4d3270bea2f3a"
+      "bytes": 5677,
+      "sha256": "740685171cb2535d9f39341d2c8716b82e980fa5317b052f6303b883c071c677"
     },
     {
       "path": "scripts/games/verify.mjs",
