@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import Chest from '../items/Chest'
 import type { MovementControls } from '../owngame'
+import {arrivalSpeed} from '../movement'
 
 import { sceneEvents } from '../events/EventsCenter'
 
@@ -176,7 +177,12 @@ export default class Faune extends Phaser.Physics.Arcade.Sprite
 	update(cursors: Phaser.Types.Input.Keyboard.CursorKeys, input: MovementControls, dt: number)
 	{
         this.knifeCooldown=Math.max(0,this.knifeCooldown-dt)
-        if(this.healthState===HealthState.DAMAGE||this.healthState===HealthState.DEAD)return
+        // Invulnerability lasts 800ms, but control returns after the brief knockback.
+        // Otherwise a hunter can pin the player against a wall for all three hearts.
+        if((this.healthState===HealthState.DAMAGE&&this.damageTime<160)||this.healthState===HealthState.DEAD){
+            if(input.dragging){input.targetX=this.x;input.targetY=this.y}
+            return
+        }
         const left=!!(cursors.left?.isDown||input.left),right=!!(cursors.right?.isDown||input.right)
         const up=!!(cursors.up?.isDown||input.up),down=!!(cursors.down?.isDown||input.down)
         let dx=Number(right)-Number(left),dy=Number(down)-Number(up),speed=100
@@ -189,7 +195,9 @@ export default class Faune extends Phaser.Physics.Arcade.Sprite
             if((dx<0&&this.body.blocked.left)||(dx>0&&this.body.blocked.right)){input.targetX=this.x;dx=0}
             if((dy<0&&this.body.blocked.up)||(dy>0&&this.body.blocked.down)){input.targetY=this.y;dy=0}
             const distance=Math.hypot(dx,dy)
-            speed=distance<.25?0:Math.min(100,distance/Math.max(.001,dt/1000))
+            // Render frames and fixed Arcade steps can run at different rates.
+            // A bounded arrival controller never crosses a stationary target.
+            speed=arrivalSpeed(distance,dt,this.scene.physics.world.fps)
         }
         const distance=Math.hypot(dx,dy)
         if(distance>0&&speed>0){

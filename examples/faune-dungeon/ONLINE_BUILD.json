@@ -1,6 +1,6 @@
 {
   "id": "faune-dungeon",
-  "build_sha256": "2b8068ef189c1b5b24c1c27a5216aa32a8beeb8d0276a9f9c6b86b1543bc8ba0",
+  "build_sha256": "baf4386ea9131ada28a2109444dc8e0aa9593da36ca89827f1eee29adab38efb",
   "entrypoint": "index.html",
   "files": [
     {
@@ -59,14 +59,14 @@
       "sha256": "b85857664cb0ce8068acd88c74df5471458e19f1593621a97ba4c963c4f0631d"
     },
     {
-      "bytes": 20605,
+      "bytes": 37043,
       "path": "game.js",
-      "sha256": "ec81b5689d86d30af84639b00f65a9e7d21d6e9c176a371c06286226926e8467"
+      "sha256": "8c381c814a7013587ac963c33023bdd75be2b70412cdb2404c28569c5d6ae50f"
     },
     {
-      "bytes": 1826,
+      "bytes": 2502,
       "path": "index.html",
-      "sha256": "2a1fa644fc2f7cf9b73f07083f2ec0af976fba5ebb79653165f0f86cfc9f8896"
+      "sha256": "8e283db0e4c7dce2fc0954c4566a56cf6a06e7572874688cad3dc7372c827d65"
     },
     {
       "bytes": 3022,
@@ -84,9 +84,9 @@
       "sha256": "efcb943c49321521e40f9bdd68ce5804c533dc7bba4be95360ffbf54db04d015"
     },
     {
-      "bytes": 5896,
+      "bytes": 8327,
       "path": "owngame.css",
-      "sha256": "b9f9f2757219c9f4cec894b385e41b4bd829403eb4863a8faeb8801b3fafd981"
+      "sha256": "c233582081279bc621577977264778d13b75f05be549e168d0ef614a4aa34075"
     },
     {
       "bytes": 1196122,
@@ -94,9 +94,9 @@
       "sha256": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7"
     },
     {
-      "bytes": 1759,
+      "bytes": 2855,
       "path": "README.md",
-      "sha256": "5814f21378c8e41df468b07ef032b44cba8502b287b2581af886730c24284089"
+      "sha256": "8d3c6abdb237934e2a9285ed49ecca9f8036aa3f8fb5d04ec6b83522834aca8f"
     },
     {
       "bytes": 295,

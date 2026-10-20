@@ -1,9 +1,10 @@
 import Phaser from 'phaser'
+import type {Level} from '../levels'
 
-// The original tile and sprite bodies remain authoritative. This layer only paints them.
+// Authored collision maps remain authoritative. This layer only paints them.
 export class WoodlandArt {
     private actors = new Map<any,{image:Phaser.GameObjects.Image,shadow:Phaser.GameObjects.Ellipse}>()
-    constructor(private scene:Phaser.Scene, map:Phaser.Tilemaps.Tilemap, ground:Phaser.Tilemaps.TilemapLayer, walls:Phaser.Tilemaps.TilemapLayer) {
+    constructor(private scene:Phaser.Scene, map:Phaser.Tilemaps.Tilemap, ground:Phaser.Tilemaps.TilemapLayer, walls:Phaser.Tilemaps.TilemapLayer,level:Level) {
         for(const key of ['painted-hero','painted-objects','painted-decor']){
             const texture=scene.textures.get(key),source=texture.getSourceImage() as HTMLImageElement
             const w=Math.floor(source.width/2),h=Math.floor(source.height/2)
@@ -20,7 +21,7 @@ export class WoodlandArt {
         ground.forEachTile(tile=>{if(tile.index>=0)c.fillRect(tile.pixelX,tile.pixelY,16,16)})
         // Wall footprints match the unchanged collision tiles exactly.
         walls.forEachTile(tile=>{if(tile.index<0)return;c.fillStyle=pattern;c.fillRect(tile.pixelX,tile.pixelY,16,16);c.fillStyle='#17352299';c.fillRect(tile.pixelX,tile.pixelY,16,16)})
-        texture.refresh();scene.add.image(0,0,key).setOrigin(0).setDisplaySize(map.widthInPixels,map.heightInPixels).setDepth(-2)
+        texture.refresh();scene.add.image(0,0,key).setOrigin(0).setDisplaySize(map.widthInPixels,map.heightInPixels).setTint(level.tint).setDepth(-2)
         walls.forEachTile(tile=>{
             if(tile.index<0)return
             const below=walls.getTileAt(tile.x,tile.y+1)
@@ -34,7 +35,7 @@ export class WoodlandArt {
                 scene.add.image(tile.pixelX+7,tile.pixelY+6,'painted-decor','1').setDisplaySize(28,28).setDepth(1000+tile.pixelY+16)
             }
         })
-        scene.add.image(128,135,'painted-decor','3').setDisplaySize(58,58).setDepth(-1)
+        scene.add.image(level.exit.x,level.exit.y+7,'painted-decor','3').setDisplaySize(58,58).setDepth(-1)
     }
     sync(hero:any,enemies:any[],chests:any[],time:number){
         const active=new Set([hero,...enemies,...chests])
@@ -50,10 +51,14 @@ export class WoodlandArt {
             if(isHero)frame=anim.includes('up')?1:anim.includes('side')?(actor.scaleX<0?3:2):0
             else frame=isChest?(actor.opened?3:2):(actor.body?.velocity?.y<0?1:0)
             const bob=moving?Math.sin(time*.018)*.8:Math.sin(time*.002)*.2
-            const size=isHero?44:isChest?38:34
+            const size=isHero?44:isChest?38:actor.kind==='warden'?72:actor.kind==='guardian'?42:34
             v.image.setFrame(String(frame)).setPosition(actor.x,actor.y-3-bob).setDisplaySize(size,size).setDepth(1000+actor.y+12)
             v.image.setAngle(moving?Math.sin(time*.018)*2:0)
-            if(actor.tintTopLeft===0xff0000)v.image.setTint(0xffaa88);else v.image.clearTint()
+            if(actor.tintTopLeft===0xff0000)v.image.setTint(0xffaa88)
+            else if(actor.kind==='warden')v.image.setTint(actor.warning?0xffedaa:actor.enraged?0xf1b49b:0xc9ddaa)
+            else if(actor.kind==='guardian')v.image.setTint(0xeac68a)
+            else if(actor.kind==='hunter')v.image.setTint(0xaad4d0)
+            else v.image.clearTint()
             v.shadow.setPosition(actor.x,actor.y+10).setDepth(2)
         }
     }

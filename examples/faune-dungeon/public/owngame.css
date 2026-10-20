@@ -20,3 +20,18 @@ canvas{image-rendering:auto}html,body{background:#273b2d}#game:after{background:
 #game,canvas{touch-action:none}
 @media(max-height:500px){#modal{padding:58px 14px 10px}#modal:before{position:static;width:60px;height:60px;margin:0}#modal small{font-size:11px}}
 @media(max-height:500px) and (min-width:650px){#modal{padding-left:140px;padding-right:140px}#modal:before{position:absolute;left:24px;top:95px;width:100px;height:100px}}
+
+/* Five woodland chapters, persistent field notes and an optional route map. */
+#chapter{color:#efdba6;font-size:11px;letter-spacing:1px;margin:7px 0 0}#objective{font-size:12px;margin-top:5px}
+#boss-health{position:absolute;z-index:4;top:164px;left:12px;right:12px;background:#193324ed;border:1px solid #bba073;padding:7px 12px;border-radius:5px;font-size:12px;color:#ffe1ac;pointer-events:none}
+#boss-meter{display:block;width:100%;height:8px;margin-top:5px;accent-color:#d9a85a}
+#map-toggle{position:absolute;right:12px;bottom:18px;z-index:5;font-size:12px;background:#263f32ed}
+#mini-panel{position:absolute;right:12px;bottom:72px;z-index:5;width:160px;background:#152e25ed;border:1px solid #a98e60;border-radius:7px;padding:6px;pointer-events:none}
+#mini-map{position:static!important;width:146px!important;height:116px!important}#mini-panel small{display:block;font-size:10px;color:#b7c6a6;text-align:center;line-height:1.6}
+#eyebrow{letter-spacing:2px;color:#c0cba0!important}#next-level{background:linear-gradient(#f1d89b,#bc9554);color:#293d2b;font-weight:700}
+#chapter-map{display:grid;grid-template-columns:1fr 1fr;gap:7px;width:min(100%,420px);text-align:left}
+#chapter-map .chapter-card{min-width:0;min-height:58px;padding:8px;text-align:left;border-color:#6c8560;background:#1b362a;box-shadow:none}
+.chapter-card strong,.chapter-card span{display:block;font-size:12px}.chapter-card span{margin-top:4px;font-size:10px;color:#d2c38d}.chapter-card.selected{border-color:#f1d28c!important}
+#modal:has(#chapter-map:not([hidden])):before{display:none}#modal:has(#chapter-map:not([hidden])){justify-content:flex-start;padding-top:32px;gap:8px}
+@media(max-width:330px){#chapter-map{grid-template-columns:1fr}#modal{padding-inline:14px}#modal h1{font-size:28px}header{padding:8px}}
+@media(max-height:500px){#chapter{font-size:10px;margin:3px 0 0}#objective{font-size:10px}header{right:12px}#boss-health{top:86px;left:70px;font-size:10px;padding:3px 8px}#modal:before{width:48px;height:48px}#modal{gap:4px;padding-top:16px}#modal h1{font-size:24px}#modal p{line-height:1.45}#modal:has(#chapter-map:not([hidden])){padding:12px 70px}#chapter-map{grid-template-columns:repeat(3,1fr);width:100%}#chapter-map .chapter-card{min-height:44px;padding:5px}.chapter-card strong{font-size:10px}.chapter-card span{font-size:9px}#mini-panel{width:130px}#mini-map{width:116px!important;height:90px!important}#mini-panel small{display:none}}

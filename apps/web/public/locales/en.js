@@ -272,11 +272,11 @@ export const games = {
   },
   "faune-dungeon": {
     title: "Faune Dungeon",
-    tag: "Pixel dungeon · Treasure hunt",
+    tag: "Five chapters · Woodland adventure",
     description:
-      "Explore a dungeon, find three treasure chests, and bring the loot back to where you started.",
+      "Explore five distinct ruins, collect ancient seals, avoid traps, and face the Heart Warden.",
     instructions:
-      "Drag your character in all four directions, or use the arrow keys or WASD. Release to stop; press Esc to pause or resume. Knives fire automatically in the direction you face, and nearby chests open automatically. Collect all three chests and return to the start to escape. Watch out for lizards. Supports saved progress.",
+      "Drag to move, or use the arrow keys or WASD. Release to stop; press Esc to pause or resume. Knives fire in the direction you face, and nearby treasure and seals are collected automatically. Unlock five chapters, finish each objective, avoid telegraphed traps, and defeat the Heart Warden. The map shows routes; the chapter journal keeps separate checkpoints and medals.",
   },
   "wind-chime-memory": {
     title: "Wind Chime Memory",

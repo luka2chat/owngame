@@ -1,8 +1,8 @@
 {
   "schema": "owngame.game-source.v1",
   "id": "faune-dungeon",
-  "online_build_sha256": "2b8068ef189c1b5b24c1c27a5216aa32a8beeb8d0276a9f9c6b86b1543bc8ba0",
-  "input_sha256": "7fd489f14c673a53b1303920f26b73817776ada661ac7ec1423da4899047f14a",
+  "online_build_sha256": "baf4386ea9131ada28a2109444dc8e0aa9593da36ca89827f1eee29adab38efb",
+  "input_sha256": "2a71b380dd2b67d6bf9c096e5539e6f0f799fb6738443624bd0e075b9316f344",
   "files": [
     {
       "path": ".gitignore",
@@ -16,8 +16,8 @@
     },
     {
       "path": "game.json",
-      "bytes": 342,
-      "sha256": "70af334a105f65ee6466fbf97b761e9457d9eb2a912f60126a9c328b024cbce3"
+      "bytes": 360,
+      "sha256": "39a2fc41396f636e4a90d4150d8f730adc9c8a5c314b1f7fa0bcfb01f43b55f9"
     },
     {
       "path": "LICENSE",
@@ -27,7 +27,7 @@
     {
       "path": "ONLINE_BUILD.json",
       "bytes": 4295,
-      "sha256": "3d49f2221261ba9e7f68fa3a66a2596ed889fbed977d8583f80f88fede626ab2"
+      "sha256": "380cb260fc84508e0adf3602028ab64b8b6f66f2bc47a68d1b98e2962e18bbd3"
     },
     {
       "path": "package-lock.json",
@@ -96,8 +96,8 @@
     },
     {
       "path": "public/index.html",
-      "bytes": 1826,
-      "sha256": "2a1fa644fc2f7cf9b73f07083f2ec0af976fba5ebb79653165f0f86cfc9f8896"
+      "bytes": 2502,
+      "sha256": "8e283db0e4c7dce2fc0954c4566a56cf6a06e7572874688cad3dc7372c827d65"
     },
     {
       "path": "public/items/treasure.json",
@@ -116,8 +116,8 @@
     },
     {
       "path": "public/owngame.css",
-      "bytes": 5896,
-      "sha256": "b9f9f2757219c9f4cec894b385e41b4bd829403eb4863a8faeb8801b3fafd981"
+      "bytes": 8327,
+      "sha256": "c233582081279bc621577977264778d13b75f05be549e168d0ef614a4aa34075"
     },
     {
       "path": "public/SOURCE.json",
@@ -161,8 +161,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1327,
-      "sha256": "698f25f9489f47c556538df89d5ac00356c766b212faf130c44981e08feaa700"
+      "bytes": 1441,
+      "sha256": "369d5ff32784f72ac5744f273cef684570153951ee39e9ffd2c84ccedda2e294"
     },
     {
       "path": "serve.mjs",
@@ -186,13 +186,13 @@
     },
     {
       "path": "src/characters/Faune.ts",
-      "bytes": 5625,
-      "sha256": "83db45bd326259948c2ba580a58911e72e875a4bd0de93a9b9b7fe1aa445905d"
+      "bytes": 6113,
+      "sha256": "9778b0e818c9f7741ddd0af157693ffd587c471461adda5b01305e946793ca52"
     },
     {
       "path": "src/enemies/Lizard.ts",
-      "bytes": 1671,
-      "sha256": "ab5682a71a3468f2e5210a36cc3e71b0093e45fe8c0705847a06d4d4b743ff21"
+      "bytes": 3224,
+      "sha256": "199775fac759a8dd08a41169a69b951bb75b7a9321a6c51cc11343a38309f0d0"
     },
     {
       "path": "src/events/EventsCenter.ts",
@@ -205,19 +205,34 @@
       "sha256": "0a754cc282a6a89500127ecee13046c89b6ee44e84b073284797924a40b15123"
     },
     {
+      "path": "src/levels.ts",
+      "bytes": 5846,
+      "sha256": "8a5511c0282c7df56cfa6cb8e52d1c361a78976d62e3e2aa0026b7daf2a87f86"
+    },
+    {
       "path": "src/main.ts",
       "bytes": 859,
       "sha256": "3d76638fb2bde8b080aabe0b86d06102ed865868ed2008c1371d7e13d6d1fac9"
     },
     {
+      "path": "src/movement.ts",
+      "bytes": 372,
+      "sha256": "0422dd691cf41416933b1a7a8775369c0bb9448b83f7ff5c658051112044bc9c"
+    },
+    {
       "path": "src/owngame.ts",
-      "bytes": 6169,
-      "sha256": "1889c5abc98b176295f75d23c9be7dbc19030115ce87fab1cc73db52b9eba38a"
+      "bytes": 9497,
+      "sha256": "ef2657acfd129f399d5b1bfd4ca5475a5eeb56439c85277d9b5e86668c6a08fd"
+    },
+    {
+      "path": "src/progress.ts",
+      "bytes": 2913,
+      "sha256": "47c94ff15dbc40262dc580b05db19e3a18c1b5dab07c9af0da5910d145cfc8d8"
     },
     {
       "path": "src/scenes/Game.ts",
-      "bytes": 10121,
-      "sha256": "604c33434483a3fc55818cfbe017d5be36c8882d4352cf0eec58133301251022"
+      "bytes": 14672,
+      "sha256": "3c1c7c1fb845ad2ff0b13df75d7b3e507e07aa118962e715b42e92af5f6649a6"
     },
     {
       "path": "src/scenes/GameUI.ts",
@@ -231,8 +246,8 @@
     },
     {
       "path": "src/scenes/WoodlandArt.ts",
-      "bytes": 4276,
-      "sha256": "82bc069d83ffd6b89a0cf5ea5b328bf5614be14ffc5196f06c9c809829159dc7"
+      "bytes": 4669,
+      "sha256": "e26e2eb7a3807acbfebb78a6490ccf3890e7ce22f6b20eb69d7bd51fea7d9f9f"
     },
     {
       "path": "src/utils/debug.ts",
