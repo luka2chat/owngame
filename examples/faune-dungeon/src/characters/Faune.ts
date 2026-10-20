@@ -1,7 +1,6 @@
 import Phaser from 'phaser'
 import Chest from '../items/Chest'
 import type { MovementControls } from '../owngame'
-import {arrivalSpeed} from '../movement'
 
 import { sceneEvents } from '../events/EventsCenter'
 
@@ -180,24 +179,15 @@ export default class Faune extends Phaser.Physics.Arcade.Sprite
         // Invulnerability lasts 800ms, but control returns after the brief knockback.
         // Otherwise a hunter can pin the player against a wall for all three hearts.
         if((this.healthState===HealthState.DAMAGE&&this.damageTime<160)||this.healthState===HealthState.DEAD){
-            if(input.dragging){input.targetX=this.x;input.targetY=this.y}
             return
         }
         const left=!!(cursors.left?.isDown||input.left),right=!!(cursors.right?.isDown||input.right)
         const up=!!(cursors.up?.isDown||input.up),down=!!(cursors.down?.isDown||input.down)
         let dx=Number(right)-Number(left),dy=Number(down)-Number(up),speed=100
-        if(left||right||up||down){
-            // Keyboard control takes priority without retaining an old drag destination.
-            if(input.dragging){input.targetX=this.x;input.targetY=this.y}
-        }else if(input.dragging){
-            dx=input.targetX-this.x;dy=input.targetY-this.y
-            // Drop blocked-axis offset so reversing a finger immediately moves away from a wall.
-            if((dx<0&&this.body.blocked.left)||(dx>0&&this.body.blocked.right)){input.targetX=this.x;dx=0}
-            if((dy<0&&this.body.blocked.up)||(dy>0&&this.body.blocked.down)){input.targetY=this.y;dy=0}
-            const distance=Math.hypot(dx,dy)
-            // Render frames and fixed Arcade steps can run at different rates.
-            // A bounded arrival controller never crosses a stationary target.
-            speed=arrivalSpeed(distance,dt,this.scene.physics.world.fps)
+        if(!left&&!right&&!up&&!down&&input.dragging){
+            dx=input.stickX;dy=input.stickY
+            // A held direction keeps driving at the same speed, even at the screen edge.
+            speed*=Math.min(1,Math.hypot(dx,dy))
         }
         const distance=Math.hypot(dx,dy)
         if(distance>0&&speed>0){

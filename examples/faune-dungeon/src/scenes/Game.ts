@@ -146,14 +146,9 @@ export default class Game extends Phaser.Scene {
       movement:{vx:this.faune.body?.velocity.x||0,vy:this.faune.body?.velocity.y||0},
       camera:{width:camera.width,height:camera.height,zoom:camera.zoom,worldX:camera.worldView.x,worldY:camera.worldView.y}}
   }
-  releaseMovement(){this.input.keyboard?.resetKeys();if(this.faune?.body)this.faune.setVelocity(0,0);this.cameras.main?.setLerp(0,0)}
+  releaseMovement(resetKeys=true){if(resetKeys)this.input.keyboard?.resetKeys();if(this.faune?.body)this.faune.setVelocity(0,0);this.cameras.main?.setLerp(0,0)}
   pausePlay(){this.physics.world.pause();this.sys.pause()}
   resumePlay(){this.awaitingStart=false;this.physics.world.resume();this.sys.resume()}
-  dragBy(dx:number,dy:number){
-    const rect=this.game.canvas.getBoundingClientRect(),zoom=this.cameras.main.zoom
-    controls.targetX=Phaser.Math.Clamp(controls.targetX+dx*this.scale.width/rect.width/zoom,8,this.physics.world.bounds.width-8)
-    controls.targetY=Phaser.Math.Clamp(controls.targetY+dy*this.scale.height/rect.height/zoom,13,this.physics.world.bounds.height-13)
-  }
   restoreAttempt(s:any){
     this.faune.setPosition(s.player.x,s.player.y);this.faune.restoreVitals(s.health,s.coins);this.elapsed=s.elapsed
     this.defeated=new Set(s.defeated);this.collected=new Set((s.runes||[]).filter((i:number)=>i>=0&&i<this.level.runes.length))

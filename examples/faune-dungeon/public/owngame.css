@@ -18,6 +18,9 @@ canvas{image-rendering:auto}html,body{background:#273b2d}#game:after{background:
 #credits-button { display: none !important; }
 
 #game,canvas{touch-action:none}
+#joystick{position:absolute;width:96px;height:96px;transform:translate(-50%,-50%);border:2px solid #e5ca83b3;border-radius:50%;background:radial-gradient(circle,#b1bf7726,#173b2c66);box-shadow:inset 0 0 0 5px #263e312e,0 2px 12px #10271b66;pointer-events:none;z-index:3}
+#joystick:before{content:'';position:absolute;left:50%;top:50%;width:16px;height:16px;transform:translate(-50%,-50%);border:1px solid #f1db9f66;border-radius:50%}
+#joystick i{position:absolute;left:50%;top:50%;width:38px;height:38px;border:2px solid #f5dfa2;border-radius:50%;background:radial-gradient(circle at 35% 30%,#b9c58ddd,#597b50ed);box-shadow:0 3px 8px #0b211b99,inset 0 0 0 3px #d5d29633;transform:translate(calc(-50% + var(--stick-x,0px)),calc(-50% + var(--stick-y,0px)))}
 @media(max-height:500px){#modal{padding:58px 14px 10px}#modal:before{position:static;width:60px;height:60px;margin:0}#modal small{font-size:11px}}
 @media(max-height:500px) and (min-width:650px){#modal{padding-left:140px;padding-right:140px}#modal:before{position:absolute;left:24px;top:95px;width:100px;height:100px}}
 

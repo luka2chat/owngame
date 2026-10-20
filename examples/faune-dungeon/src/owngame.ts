@@ -1,7 +1,8 @@
 import type Game from './scenes/Game'
 import {levels} from './levels'
+import {joystickVector} from './movement'
 import {loadProgress,recordCompletion,saveKey,legacyKey} from './progress'
-export const controls={left:false,right:false,up:false,down:false,dragging:false,targetX:0,targetY:0}
+export const controls={left:false,right:false,up:false,down:false,dragging:false,stickX:0,stickY:0}
 export type MovementControls=typeof controls
 const el=(id:string)=>document.getElementById(id)!
 let loaded:ReturnType<typeof loadProgress>
@@ -10,9 +11,9 @@ const progress=loaded.progress
 if(loaded.warning)el('save-warning').hidden=false
 export const activeLevelIndex=()=>Math.max(0,levels.findIndex(l=>l.id===progress.selectedLevel))
 export let savedAttempt:any=progress.attempts[progress.selectedLevel]||null
-let game:Game|undefined,lastFinished=false,dragPointer:number|null=null,lastPoint:{x:number,y:number}|null=null
-const surface=el('game')
-function clearDrag(){const pointer=dragPointer;dragPointer=null;lastPoint=null;controls.dragging=false;if(pointer!==null&&surface.hasPointerCapture(pointer))surface.releasePointerCapture(pointer)}
+let game:Game|undefined,lastFinished=false,dragPointer:number|null=null,stickOrigin:{x:number,y:number}|null=null
+const surface=el('game'),stick=el('joystick')
+function clearDrag(){const pointer=dragPointer;dragPointer=null;stickOrigin=null;controls.dragging=false;controls.stickX=controls.stickY=0;stick.hidden=true;game?.releaseMovement(false);if(pointer!==null&&surface.hasPointerCapture(pointer))surface.releasePointerCapture(pointer)}
 export function clearControls(){controls.left=controls.right=controls.up=controls.down=false;clearDrag();game?.releaseMovement()}
 function persist(){
  if(loaded.readOnly)return
@@ -88,10 +89,14 @@ el('chapters').addEventListener('click',()=>{renderChapters();el('chapter-map').
 el('map-toggle').addEventListener('click',()=>{const map=el('mini-panel');map.hidden=!map.hidden;el('map-toggle').setAttribute('aria-expanded',String(!map.hidden))})
 surface.addEventListener('pointerdown',e=>{
  if(!game||game.scene.isPaused()||game.complete||game.failed||dragPointer!==null||!e.isPrimary||e.button!==0)return
- e.preventDefault();surface.setPointerCapture(e.pointerId);dragPointer=e.pointerId;lastPoint={x:e.clientX,y:e.clientY};controls.dragging=true
- const p=game.snapshot().player;controls.targetX=p.x;controls.targetY=p.y
+ e.preventDefault();surface.setPointerCapture(e.pointerId);dragPointer=e.pointerId;stickOrigin={x:e.clientX,y:e.clientY};controls.dragging=true;controls.stickX=controls.stickY=0
+ const rect=surface.getBoundingClientRect();stick.style.left=(e.clientX-rect.left)+'px';stick.style.top=(e.clientY-rect.top)+'px';stick.style.setProperty('--stick-x','0px');stick.style.setProperty('--stick-y','0px');stick.hidden=false
 })
-surface.addEventListener('pointermove',e=>{if(e.pointerId!==dragPointer||!lastPoint||!game||game.scene.isPaused())return;e.preventDefault();game.dragBy(e.clientX-lastPoint.x,e.clientY-lastPoint.y);lastPoint={x:e.clientX,y:e.clientY}})
+surface.addEventListener('pointermove',e=>{
+ if(e.pointerId!==dragPointer||!stickOrigin||!game||game.scene.isPaused())return
+ e.preventDefault();const v=joystickVector(e.clientX-stickOrigin.x,e.clientY-stickOrigin.y)
+ controls.stickX=v.x;controls.stickY=v.y;stick.style.setProperty('--stick-x',v.thumbX+'px');stick.style.setProperty('--stick-y',v.thumbY+'px')
+})
 for(const name of ['pointerup','pointercancel','lostpointercapture'])surface.addEventListener(name,(e:Event)=>{if((e as PointerEvent).pointerId===dragPointer)clearDrag()})
 const movementCodes:Record<string,keyof Pick<MovementControls,'left'|'right'|'up'|'down'>>={KeyA:'left',KeyD:'right',KeyW:'up',KeyS:'down'}
 document.addEventListener('keydown',e=>{

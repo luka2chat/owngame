@@ -100,7 +100,7 @@ function renderDetails(all) {
   if (game.id === "faune-dungeon") {
     for (const [keys, description] of [
       [["↑", "↓", "←", "→", "/", "W", "A", "S", "D"], "上下左右移动角色"],
-      [null, "拖动移动，松手停下"],
+      [null, "按住摇杆持续移动，松手停下"],
       [["Esc"], "暂停或继续"],
     ]) {
       const row = element("div"), term = element("dt"), detail = element("dd", "", t(description));

@@ -126,7 +126,7 @@ export const messages = {
   暂停或继续: "Pause or resume",
   战斗中持续自动开火: "Your ship fires automatically during combat",
   上下左右移动角色: "Move your character in all four directions",
-  "拖动移动，松手停下": "Drag to move; release to stop",
+  "按住摇杆持续移动，松手停下": "Hold the stick to keep moving; release to stop",
   "自动投飞刀，靠近宝箱自动打开": "Throw knives automatically; nearby chests open automatically",
   空格: "Space",
   鼠标拖动: "Drag with the mouse",
@@ -276,7 +276,7 @@ export const games = {
     description:
       "Explore five distinct ruins, collect ancient seals, avoid traps, and face the Heart Warden.",
     instructions:
-      "Drag to move, or use the arrow keys or WASD. Release to stop; press Esc to pause or resume. Knives fire in the direction you face, and nearby treasure and seals are collected automatically. Unlock five chapters, finish each objective, avoid telegraphed traps, and defeat the Heart Warden. The map shows routes; the chapter journal keeps separate checkpoints and medals.",
+      "Press anywhere in the playfield to show a floating stick. Hold it in any direction to keep moving; push gently to walk slowly, or farther to run. Release to stop. You can also use the arrow keys or WASD; press Esc to pause or resume. Knives fire in the direction you face, and nearby treasure and seals are collected automatically. Unlock five chapters, finish each objective, avoid telegraphed traps, and defeat the Heart Warden. The map shows routes; the chapter journal keeps separate checkpoints and medals.",
   },
   "wind-chime-memory": {
     title: "Wind Chime Memory",
