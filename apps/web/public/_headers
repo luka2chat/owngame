@@ -9,6 +9,8 @@
   Cache-Control: no-cache
 /app.js
   Cache-Control: no-cache
+/footer.js
+  Cache-Control: no-cache
 /play.js
   Cache-Control: no-cache
 /data.js
@@ -42,3 +44,7 @@
   Cache-Control: no-cache
 /usage.css
   Cache-Control: no-cache
+/image-assets.js
+  Cache-Control: no-cache
+/art/optimized/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -11,6 +11,8 @@ const consentKey = "owngame:analytics-consent-v1";
 const production =
   analyticsHosts.includes(location.hostname) &&
   /^G-[A-Z0-9]+$/.test(measurementId);
+// Shared preferences do not expand collection beyond the gallery and player.
+const trackedPage = /^\/(?:index(?:\.html)?\/?|play(?:\.html)?\/?)?$/.test(location.pathname);
 const disabledByBrowser =
   navigator.globalPrivacyControl === true || navigator.doNotTrack === "1";
 // Site default is enabled. Persist only an explicit visitor choice, never an
@@ -48,7 +50,7 @@ function command() {
 }
 function allowed() {
   return (
-    production && !disabledByBrowser && consent === "granted" && !scriptFailed
+    production && trackedPage && !disabledByBrowser && consent === "granted" && !scriptFailed
   );
 }
 function safeLocation() {
@@ -221,17 +223,10 @@ function showChoice() {
 }
 function init() {
   if (!production) return;
-  const settings = document.createElement("button");
-  settings.className = "analytics-settings";
-  settings.textContent = t("隐私与统计");
-  settings.onclick = showChoice;
-  (
-    document.querySelector("footer") ||
-    document.querySelector(".player-info") ||
-    document.body
-  ).append(settings);
+  const settings = document.querySelector('[data-analytics-settings]');
+  if(settings) settings.onclick = event => { event.preventDefault(); showChoice(); };
   window.addEventListener("owngame:languagechange", () => {
-    settings.textContent = t("隐私与统计");
+    if(settings) settings.textContent = t("隐私与统计");
     if (document.getElementById("analytics-choice")) {
       document.getElementById("analytics-choice").remove();
       showChoice();

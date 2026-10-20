@@ -1,6 +1,6 @@
 {
   "id": "star-letters",
-  "build_sha256": "4868ae27e4f85cbae571943620644b804f2dbd5d33c527b081f274851d90aac1",
+  "build_sha256": "81acaed073b42fc834e30dff38d5c891e237a08b682feaa20085b6fb9c455f66",
   "entrypoint": "index.html",
   "files": [
     {
@@ -284,14 +284,14 @@
       "sha256": "65a77bb25abb4e78bb3d69140987fef8e3314590545c970634787931668b18f4"
     },
     {
-      "bytes": 7284,
+      "bytes": 7651,
       "path": "index.html",
-      "sha256": "ffceec3cc8c1595b6ff71d12f1514df43894a7af7f893a0f91d5f216c55f4b01"
+      "sha256": "951017391887288017418a73e11e78a3640055cfa4ad7dd17228cd922199c9b7"
     },
     {
-      "bytes": 4390,
+      "bytes": 4590,
       "path": "launch.js",
-      "sha256": "00cb88402cca8145c1aff9909e4ec04fa8d49123b80a12c874823517e9df27bb"
+      "sha256": "6768363f102ba32948cdb53b69298433f2128eb3cbb9f225b4348a2556ee5bd6"
     },
     {
       "bytes": 1077,
@@ -339,9 +339,24 @@
       "sha256": "0652509dfc81a1a3d9e037e59bd047b305155fc5c4abeef69e2fc078488035fd"
     },
     {
+      "bytes": 4329,
+      "path": "save.mjs",
+      "sha256": "086b87b066a23619acd7f27bcedcfb4b553617006a2dbba6f0d8b93cf00e0ce1"
+    },
+    {
       "bytes": 435,
       "path": "SOURCE.json",
       "sha256": "9258b25b7e8a063813e0a65ef982cb3b6eda163ca66ab036c270750ed1ac7ff2"
+    },
+    {
+      "bytes": 1893,
+      "path": "touch.css",
+      "sha256": "f3cbe066fccce420f436ff6c124b0e2962adcdfe0b608ead1c384eaaa975be7a"
+    },
+    {
+      "bytes": 5350,
+      "path": "touch.js",
+      "sha256": "f49775508590a186cdb8a290e0a65caa006b3c049bd5cb457a04ffd5921daa2d"
     }
   ]
 }

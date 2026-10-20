@@ -5,7 +5,7 @@ import vm from "node:vm";
 import { webcrypto, createHash } from "node:crypto";
 const source = (await readFile("apps/web/public/sw.js", "utf8"))
   .replace("__BUILD__", "test")
-  .replace("__CORE_FILES__", '["/index.html","/play.html","/catalog.json","/art/huge-cover.png"]');
+  .replace("__CORE_FILES__", '["/index.html","/play.html","/catalog.json","/art/huge-cover.png","/art/optimized/cover-abc123.webp"]');
 function harness({ corrupt = false, block = false } = {}) {
   const version = "a".repeat(64),
     id = "game",
@@ -158,4 +158,14 @@ test("unvisited artwork has a neutral offline fallback without weakening missing
   assert.equal(image.status, 200); assert.equal(image.headers.get("content-type"), "image/svg+xml");
   assert.ok((await image.text()).includes("#faf5e8"));
   await assert.rejects(h.request("/games/missing/index.html"), /offline/);
+});
+
+test("fingerprinted artwork reuses the cache and remains available offline", async () => {
+  const h = harness();
+  const url = "/art/optimized/cover-abc123.webp";
+  await h.request(url, "no-cors");
+  await h.request(url, "no-cors");
+  assert.equal(h.fetched.filter(p => p === url).length, 1);
+  h.offline();
+  assert.equal(await (await h.request(url, "no-cors")).text(), "shell");
 });

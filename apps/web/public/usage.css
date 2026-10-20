@@ -9,11 +9,8 @@
 .usage-card ul { padding-left:24px; }
 .usage-card li { margin:0 0 16px;padding-left:5px; }
 .usage-card li::marker { color:var(--red); }
-.usage-card a,.usage-entry a { color:var(--blue);text-decoration:underline;text-underline-offset:4px; }
+.usage-card a { color:var(--blue);text-decoration:underline;text-underline-offset:4px; }
 .usage-card code { background:#f0eadb;border-radius:4px;padding:2px 5px;font-size:.9em; }
-.usage-entry { margin:24px 0 0;font-size:13px; }
-.usage-entry a { display:inline-flex;align-items:center;min-height:44px; }
-.usage-main footer { flex-wrap:wrap; }
 @media(max-width:600px) {
   .usage-page .topbar { gap:10px;padding-inline:16px; }
   .usage-page .top-mine { padding:9px;font-size:12px; }
