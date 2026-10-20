@@ -14,8 +14,8 @@
     },
     {
       "path": ".github/workflows/android.yml",
-      "bytes": 1002,
-      "sha256": "a169c4dd2700bc40ff5ff50d70b0cf90b5990048a83a8bafbede6f698dd1b904"
+      "bytes": 1054,
+      "sha256": "890160a4304a85e461c7de4cd00e59b37b53a7ae948046feef14fe41f554ab18"
     },
     {
       "path": ".github/workflows/ci.yml",
@@ -8389,8 +8389,8 @@
     },
     {
       "path": "scripts/android/release-notes.mjs",
-      "bytes": 748,
-      "sha256": "a58363b640694cd0af08457d7af3fb94f16373c3b8f5d5825478be026549d3e9"
+      "bytes": 919,
+      "sha256": "8c671ac732fded380f0d384f5cfff1327e71397c8d263ccffe2f31104e15761b"
     },
     {
       "path": "scripts/android/test-repository.mjs",
