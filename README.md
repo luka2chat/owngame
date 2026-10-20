@@ -6,7 +6,7 @@
 
 面向 AI 助手的开源游戏创作工具包：从可玩参考出发，完成美术、玩法与交付迭代。
 
-[![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A5%2022-339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Discord 社区](https://img.shields.io/badge/Discord-%E5%8A%A0%E5%85%A5%E7%A4%BE%E5%8C%BA-5865F2?logo=discord&logoColor=white)](https://discord.gg/X5cYjTaD)
+[![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/node/v/%40owngame%2Fcli?label=Node.js&color=339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Discord 社区](https://img.shields.io/badge/Discord-%E5%8A%A0%E5%85%A5%E7%A4%BE%E5%8C%BA-5865F2?logo=discord&logoColor=white)](https://discord.gg/X5cYjTaD)
 
 [试玩游戏](https://owngame.dev) · [平台一览](#平台一览) · [快速开始](#快速开始) · [Discord 社区](https://discord.gg/X5cYjTaD) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [使用与授权](#使用与授权) · [English](#english)
 
@@ -31,12 +31,12 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 
 ## 创意案例
 
-四款可玩的游戏，四种创作起点。点击试玩体验原作，或打开参考说明，把你的想法交给 AI。
+从不同玩法与视觉风格出发，探索游戏创作的可能性。点击试玩体验原作，或打开参考说明，把你的想法交给 AI。
 
 | 游戏与类型 | 体验什么 | 可以怎样复刻 | 开始探索 |
 | --- | --- | --- | --- |
-| **01 · 霓虹突围**<br>太空射击 | 躲开弹幕、收集强化，迎战每三波出现的首领 | 做成深海潜航：用声呐寻找强化，在暗流中躲避机械水母 | [试玩 ↗](https://owngame.dev/play?game=neon-shooter) · [复刻参考](https://owngame.dev/remix/neon-shooter.json) |
-| **02 · 法恩探险**<br>地牢冒险 | 穿过地牢，找到三只宝箱，再带着宝藏回到出发点 | 做成森林寻宝：寻找遗失的星星，沿萤火小径回到树屋 | [试玩 ↗](https://owngame.dev/play?game=faune-dungeon) · [复刻参考](https://owngame.dev/remix/faune-dungeon.json) |
+| **01 · 霓虹突围**<br>太空射击 | 躲开弹幕、收集强化，迎战首领 | 做成深海潜航：用声呐寻找强化，在暗流中躲避机械水母 | [试玩 ↗](https://owngame.dev/play?game=neon-shooter) · [复刻参考](https://owngame.dev/remix/neon-shooter.json) |
+| **02 · 法恩探险**<br>地牢冒险 | 穿过地牢，寻找宝箱，再带着宝藏回到出发点 | 做成森林寻宝：寻找遗失的星星，沿萤火小径回到树屋 | [试玩 ↗](https://owngame.dev/play?game=faune-dungeon) · [复刻参考](https://owngame.dev/remix/faune-dungeon.json) |
 | **03 · 风铃回响**<br>音乐记忆 | 听一段风铃，再敲回旋律；静音时也可跟随视觉提示 | 做成雨天音乐盒：记住雨滴落在不同杯子上的顺序 | [试玩 ↗](https://owngame.dev/play?game=wind-chime-memory) · [复刻参考](https://owngame.dev/remix/wind-chime-memory.json) |
 | **04 · 山城来信**<br>滑块拼图 | 滑动纸片，拼回落日里的山城 | 做成旅行纪念册：用自己的照片拼回一段旅程 | [试玩 ↗](https://owngame.dev/play?game=postcard-slide) · [复刻参考](https://owngame.dev/remix/postcard-slide.json) |
 
@@ -60,15 +60,15 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 
 > 试着告诉 AI：参考《星野来信》，做一座漂浮在云海上的邮局小岛。先实现行走、环视和投递一封信，再为岛上的居民补充故事。
 
-*配图为游戏实拍。推荐电脑键鼠，首次加载约 54 MB，支持超时重试与完整分块缓存；手机尚无完整触屏操作。*
+*配图为游戏实拍。操作方式、加载要求与设备适配情况见[案例页面](https://owngame.dev/cases/star-letters/)。*
 
 原创代码、对白与程序化素材采用 MIT；字体、Unity 衍生配置与运行时分别遵循其许可，详见[授权说明](examples/star-letters/THIRD_PARTY_NOTICES.md)。这个案例可独立阅读和修改；家园场景另已提取为 [`unity-home` 模板](templates/unity-home)。通用 Unity 构建适配与 Three.js 项目创建仍在计划中。
 
 ## 网站游戏源码
 
-[owngame.dev](https://owngame.dev) 当前上架的 **18 款游戏均提供可编辑源码**，按游戏 ID 整理在 [examples](examples/)。包括《人潮冲线》《箭径出逃》《霓虹突围》《法恩探险》与《星野来信》等。
+[owngame.dev](https://owngame.dev) 上架游戏的可编辑源码按游戏 ID 整理在 [examples](examples/)，与对应线上版本保持一致。
 
-每款附有运行说明、锁定依赖、运行素材、许可及线上版本指纹。查看[完整清单与运行方法](docs/open-source-games.md)及机器可读的 [games.json](games.json)。新增或更新游戏通过[源码与网站联合发布](docs/game-publishing.md)，先公开匹配源码并通过检查，再上线。各子项目保留自己的许可；《小小文明》代码沿用 GPL-3.0-or-later。
+每款附有运行说明、锁定依赖、运行素材、许可及线上版本指纹。查看[完整清单与运行方法](docs/open-source-games.md)及机器可读的 [games.json](games.json)。新增或更新游戏通过[源码与网站联合发布](docs/game-publishing.md)，先公开匹配源码并通过检查，再上线。各项目及第三方素材保留各自许可，使用前请查看对应目录的 `LICENSE` 与 `THIRD_PARTY_NOTICES.md`。
 
 ## 快速开始
 
@@ -80,7 +80,7 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 请按照 https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md 在当前项目接入 owngame，完成安装和可用性检查，然后帮我做游戏。
 ```
 
-助手会检查 Node.js 22+ 与 npm、安装当前发布版本、读取创作 Skill，并验证工具可用。统一通过 CLI 使用，**无需选择助手类型或配置 MCP**，适用于能读写项目并执行命令的 AI 编程助手。也可查看[接入说明](docs/agent-setup.md)；手动安装与可选 MCP 配置见[安装与接入](docs/install.md)。
+助手会按照[安装要求](docs/install.md)检查 Node.js 与 npm、安装当前发布版本、读取创作 Skill，并验证工具可用。统一通过 CLI 使用，**无需选择助手类型或配置 MCP**，适用于能读写项目并执行命令的 AI 编程助手。也可查看[接入说明](docs/agent-setup.md)；手动安装与可选 MCP 配置见[安装与接入](docs/install.md)。
 
 ### 2. 描述你想做的游戏
 
@@ -102,7 +102,7 @@ npm run build
 npm run preview
 ```
 
-打开 <http://127.0.0.1:3215>，即可试玩「月下连星」。默认模板不需要额外安装游戏运行依赖，包含双人同屏规则、悔棋、重开和本地续玩。完整教程见 [做出并修改第一个游戏](docs/quickstart.md)。
+按终端提示打开本地预览地址，即可试玩生成的项目。默认 Web 模板提供可运行的游戏起点；玩法与运行要求见[模板说明](templates/web-canvas/README.md)。完整教程见 [做出并修改第一个游戏](docs/quickstart.md)。
 
 ## 工作原理
 
@@ -123,7 +123,7 @@ owngame 提供参考、模板和检查接口；规划、代码实现、图片生
 | 构建检查 | 检查 Web 产物并生成内容指纹；调用外部 Cocos 构建 | `web.inspect` / `cocos.build` |
 | 交付记录 | 登记交付版本，记录与查询评估结果 | `delivery.register` / `assessment.record` |
 
-当前 CLI / MCP 共享 **20 个操作**。运行以下命令查看本版本提供的能力：
+CLI 与 MCP 共享核心能力。运行以下命令查看所用版本提供的操作：
 
 ```sh
 npx @owngame/cli@latest capabilities
@@ -133,10 +133,10 @@ npx @owngame/cli@latest capabilities
 
 | 模板 | 初始内容 | 环境要求 |
 | --- | --- | --- |
-| `web-canvas`（默认） | 可玩的「月下连星」双人小游戏 | Node.js 22+ 与现代浏览器 |
+| `web-canvas`（默认） | 可直接试玩的 Web 游戏起点 | Node.js 与现代浏览器，详见[安装要求](docs/install.md) |
 | `web-phaser` | Phaser 项目脚手架，需继续实现规则、美术和内容 | 创建后安装项目依赖 |
-| `cocos-minimal` | Cocos 项目脚手架，需继续实现游戏 | 单独安装 Cocos Creator 3.8.8 |
-| [`unity-home`](templates/unity-home)（0.9.0+） | 家园探索：角色移动、镜头、四步互动任务与信标 | Unity 6000.3.26f1、URP；使用最新版 CLI 创建 |
+| `cocos-minimal` | Cocos 项目脚手架，需继续实现游戏 | 单独安装 Cocos Creator，版本要求见[安装说明](docs/install.md) |
+| [`unity-home`](templates/unity-home) | 家园探索：角色移动、镜头与互动任务 | 单独安装 Unity，编辑器与渲染管线要求见[模板说明](templates/unity-home/README.md) |
 
 创建 Unity 游戏（无需先克隆仓库）：
 
@@ -144,7 +144,7 @@ npx @owngame/cli@latest capabilities
 npx @owngame/cli@latest project.create '{"directory":"my-unity-game","name":"my-unity-game","template":"unity-home"}'
 ```
 
-在 Unity Hub 中添加生成的目录，打开 `Assets/Scenes/HomeArt.unity` 并点击 Play。需要 Node.js 22+ 和 Unity 6000.3.26f1；首次使用会安装工具包与 Unity 项目依赖。
+在 Unity Hub 中添加生成的目录，打开 `Assets/Scenes/HomeArt.unity` 并点击 Play。所需环境见[安装说明](docs/install.md)与[Unity 模板说明](templates/unity-home/README.md)；首次使用会安装工具包与 Unity 项目依赖。
 
 Cocos 构建适配器目前只在特定 macOS 环境验证过；浏览器、图片生成和发布能力取决于所用助手与本机环境。详见 [安装说明](docs/install.md)。
 
@@ -163,14 +163,14 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 | **Godot** | 计划中 | 探索项目模板、场景与脚本迭代、资源导入及导出检查 |
 | **Unreal Engine** | 调研中 | 评估编辑器接入、蓝图与代码协作、资源管理和打包成本，再确定适配范围 |
 
-从 0.9.0 起，`project.create` 支持 `unity-home`：从《星野来信》的 HomeArt 场景提取，保留独立探索循环，移除完整旅程的剧情依赖。[打开与创建方法](templates/unity-home/README.md)。四种模板均通过同一 CLI / MCP 入口创建；Unity 编辑器与目标平台模块需单独安装，通用 Unity 构建适配器仍在计划中。Three.js、Godot 与 Unreal 项目创建尚未提供。
+已提供的模板通过同一 CLI / MCP 入口创建；Unity 起点的[打开与创建方法](templates/unity-home/README.md)见模板说明。Unity 编辑器与目标平台模块需单独安装，通用 Unity 构建适配器仍在计划中。Three.js、Godot 与 Unreal 项目创建尚未提供。
 
 ### 游玩与发布平台
 
 | 平台 | 状态 | 计划覆盖 |
 | --- | --- | --- |
 | **浏览器 / Web** | 当前主要交付平台 | 持续完善电脑与手机浏览器体验、静态托管和离线验证 |
-| **Android** | [源码](apps/android)与[Alpha APK](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.16-alpha) 已公开 | 完善游戏下载、更新与离线体验，整理正式签名、安装和版本发布流程 |
+| **Android** | [源码](apps/android)与[APK 发布记录](https://github.com/luka2chat/owngame/releases) 已公开 | 完善游戏下载、更新与离线体验，整理正式签名、安装和版本发布流程 |
 | **iOS / iPadOS** | 计划中 | 评估原生容器与引擎导出方案，补充触控、安全区、存档和真机验收流程 |
 | **Windows / macOS / Linux** | 原生桌面发布计划中 | 探索独立安装包、输入适配、存档位置与分发流程；当前可通过浏览器游玩 Web 游戏 |
 | **微信等小游戏平台** | 调研中 | 评估运行环境、包体与资源限制、平台接口及审核要求，确定适合接入的游戏类型 |
@@ -205,7 +205,7 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 <details>
 <summary><strong>参考研究会自动搜索互联网吗？</strong></summary>
 
-当前内置研究基于关键词匹配，公开包包含三个历史案例摘要。网站游戏另有各自的复刻参考说明。扩大研究范围需要助手自己的检索能力，或接入符合格式的自有案例库。
+当前内置研究基于关键词匹配，公开包提供历史案例摘要，具体内容以所用版本为准。网站游戏另有各自的复刻参考说明。扩大研究范围需要助手自己的检索能力，或接入符合格式的自有案例库。
 
 </details>
 
@@ -214,7 +214,7 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 - [安装与 Agent 接入](docs/install.md)：配置、连接检查、更新与卸载。
 - [第一个游戏](docs/quickstart.md)：创建、试玩、修改美术与验证存档。
 - [复刻使用说明](https://github.com/luka2chat/owngame/blob/main/docs/remix.md)：从网站参考进入自己的工作区。
-- [制作案例](docs/cases/)：星图三连、潮光归位、窑火相融，以及 [星野来信 3D 童话冒险](docs/cases/star-letters.md)。
+- [制作案例](docs/cases/)：玩法实现、美术迭代与交付验证的实践记录。
 - [创作 Skill](skills/owngame/SKILL.md) 与 [风格配方](docs/style-recipes.json)：工作流程和视觉方向。
 - [贡献指南](CONTRIBUTING.md)、[发布流程](docs/releasing.md) 与 [变更记录](CHANGELOG.md)。
 - [安全说明](SECURITY.md) 与 [第三方声明](THIRD_PARTY_NOTICES.md)。
@@ -260,10 +260,10 @@ owngame 自有代码与文档采用 [MIT 许可](LICENSE)。网站展示游戏�
 
 owngame is an open-source game authoring toolkit that connects your existing AI assistant to practical workflows, playable Web starters, visual style recipes, and lessons from real game projects. Its CLI and MCP interfaces share the same core operations.
 
-Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use **Recreate (复刻)** to bring its rules and visual direction into your own workspace. Your agent implements and tests the new version with you; the Recreate action provides a creative brief and references, and links to the corresponding open-source game. All 18 hosted games have editable sources in `examples/`, with per-game licenses and version manifests.
+Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use **Recreate (复刻)** to bring its rules and visual direction into your own workspace. Your agent implements and tests the new version with you; the Recreate action provides a creative brief and references, and links to the corresponding open-source game. Hosted games have editable sources in [examples/](examples/), with per-project licenses and version manifests. See the [source index](docs/open-source-games.md) for the current catalogue.
 
-Open your game project in an AI coding assistant and send: **Follow https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md to set up owngame in this project, verify it works, then help me make a game.** The assistant checks Node.js 22+ and npm, installs the published toolkit, reads the creative Skill, and uses the shared CLI. No assistant selection or MCP configuration is required. This works with assistants that can read/write project files and run commands. See [manual installation and optional MCP](docs/install.md). The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
+Open your game project in an AI coding assistant and send: **Follow https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md to set up owngame in this project, verify it works, then help me make a game.** The assistant checks Node.js and npm against the [installation requirements](docs/install.md), installs the published toolkit, reads the creative Skill, and uses the shared CLI. No assistant selection or MCP configuration is required. This works with assistants that can read/write project files and run commands. See [manual installation and optional MCP](docs/install.md). The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
 
-**Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone HomeArt exploration scene with character controls, camera and a four-step quest. Available through CLI/MCP in 0.9.0+: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the [Android client source](apps/android) is public and an [Alpha APK](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.16-alpha) is available. See the [support roadmap](#支持路线图) for scope and status.
+**Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone exploration scene with character controls, camera and interactive tasks. Create it through CLI/MCP: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the [Android client source](apps/android) is public and APK builds are listed in [Releases](https://github.com/luka2chat/owngame/releases). See the [support roadmap](#支持路线图) for scope and status.
 
 [Get started](#快速开始) · [Discord community](https://discord.gg/X5cYjTaD) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)

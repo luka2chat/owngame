@@ -64,8 +64,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 21433,
-      "sha256": "9858d197c68d8ab10519b9d6d341141d5a6787d089723c002768f2fee0512765"
+      "bytes": 21500,
+      "sha256": "9c9edc825fe39f0f299a70f67e1460b4130d6331251449369a7e83aee533cf83"
     },
     {
       "path": "SECURITY.md",
@@ -8859,8 +8859,8 @@
     },
     {
       "path": "scripts/games/sync.mjs",
-      "bytes": 6862,
-      "sha256": "871e45dc722b9b7eb901a37b35db0948630a2f54b66013906b301e2890bdaa6f"
+      "bytes": 6473,
+      "sha256": "ea11e51af2f11e4ff52895b6c94f447477b410643a2c6dc8567ffcf8a6715b72"
     },
     {
       "path": "scripts/games/verify.mjs",

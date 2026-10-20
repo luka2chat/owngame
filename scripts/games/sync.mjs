@@ -45,10 +45,6 @@ const packagePath=path.join(repo,'package.json');
 const publicPackage=JSON.parse(await fs.readFile(packagePath));
 Object.assign(publicPackage.scripts,{'web:build':'node scripts/web/build.mjs','web:publish':'node scripts/web/publish.mjs'});
 await fs.writeFile(packagePath,JSON.stringify(publicPackage,null,2)+'\n');
-const readmePath=path.join(repo,'README.md');
-let readme=await fs.readFile(readmePath,'utf8');
-readme=readme.replace(/\*\*\d+ 款游戏均提供可编辑源码\*\*/, '**'+index.games.length+' 款游戏均提供可编辑源码**').replace(/All \d+ hosted games have editable sources/, 'All '+index.games.length+' hosted games have editable sources');
-await fs.writeFile(readmePath,readme);
 for(const game of index.games.filter(g=>g.kind!=='unity')) {
   execFileSync('npm',['install','--package-lock-only','--ignore-scripts','--no-audit','--no-fund'],{cwd:path.join(repo,game.path),stdio:'inherit'});
 }
