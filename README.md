@@ -1,35 +1,83 @@
 <div align="center">
 
-<a href="https://owngame.dev"><img src="docs/images/owngame-brand-v2.png" alt="owngame · 做属于自己的游戏，基于官方字标与吉祥物制作的品牌横幅" width="800" /></a>
+<a href="https://owngame.dev"><img src="docs/images/owngame-brand-v2.png" alt="owngame · 做属于自己的游戏" width="800" /></a>
 
 ### 用 AI，把游戏做成你想要的样子。
 
-面向 AI 助手的开源游戏创作工具包：从可玩参考出发，完成美术、玩法与交付迭代。
+面向 AI 助手的开源游戏创作工具包。
 
 [![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/node/v/%40owngame%2Fcli?label=Node.js&color=339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Discord 社区](https://img.shields.io/badge/Discord-%E5%8A%A0%E5%85%A5%E7%A4%BE%E5%8C%BA-5865F2?logo=discord&logoColor=white)](https://discord.gg/X5cYjTaD)
 
-[试玩游戏](https://owngame.dev) · [平台一览](#平台一览) · [快速开始](#快速开始) · [Discord 社区](https://discord.gg/X5cYjTaD) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [使用与授权](#使用与授权) · [English](#english)
+[**试玩游戏 ↗**](https://owngame.dev) · [**快速开始**](#开始创作) · [文档](#文档) · [Discord](https://discord.gg/X5cYjTaD)
 
 </div>
 
-[![owngame：霓虹突围、法恩探险、风铃回响与山城来信的四种创意世界](docs/images/owngame-creative-worlds.png)](https://owngame.dev)
+<a id="平台一览"></a>
 
-<p align="center"><strong>玩你喜欢的，复刻属于你的。</strong><br>射击、冒险、音乐、拼图——从一种乐趣，开始你的游戏。</p>
+## 在电脑与手机上，随时开玩
 
-owngame 把参考研究、视觉设计、项目创建与交付检查，接入你已有的 AI 助手。在 [owngame.dev](https://owngame.dev) 找到喜欢的游戏，点击 **复刻**，把具体的玩法与视觉参考交给 AI，换一个主题、改一条规则，做出自己的版本。你也可以直接从一句想法开始。
+[![owngame 电脑端与移动端展示，AI 设备效果图](docs/images/owngame-platform-devices-v1.png)](https://owngame.dev)
 
-## 平台一览
+浏览游戏、收藏喜欢的作品，在下载完成后离线游玩。想继续创作时，点击 **复刻**，把参考说明与源码链接交给 AI 助手。
 
-[![owngame 电脑端与移动端同框展示：基于实际网站界面生成的 AI 设备效果图](docs/images/owngame-platform-devices-v1.png)](https://owngame.dev)
+[**打开游戏库 ↗**](https://owngame.dev) · [查看游戏源码](docs/open-source-games.md)
 
-[owngame.dev](https://owngame.dev) 是面向电脑与手机的游戏库：浏览分类、收藏喜欢的游戏、查看最近玩过的内容，并在下载完成后离线游玩。
+<a id="快速开始"></a>
 
-想把喜欢的玩法变成自己的作品？点击 **复刻**，把参考说明和对应源码链接交给你的 AI 助手，继续调整主题、美术与规则。游戏体验与创作入口，在同一个平台衔接。
+## 开始创作
 
-[打开游戏库 ↗](https://owngame.dev) · [开始创作](#快速开始)
+在游戏项目中打开 AI 编程助手，把下面这句话发给它：
 
+```text
+请按照以下说明，在当前项目接入 owngame，完成安装和可用性检查，然后帮我做游戏：
+https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md
+```
 
-## 创意案例
+描述想法 → 试玩反馈 → 继续打磨。无需选择助手类型或配置 MCP。
+
+<details>
+<summary>接入说明、创作示例与命令行用法</summary>
+
+助手会按[接入说明](docs/agent-setup.md)检查环境、安装当前发布版本并验证可用性；需要能读写项目并执行命令的助手。
+
+描述你想做的游戏，或在[游戏库](https://owngame.dev)点击 **复刻**，把参考说明与自己的修改方向一起交给助手：
+
+> 用 owngame 做一个夜空主题的双人小游戏。先完成可玩的一局，再一起调整美术、规则和难度，并验证存档与重开。
+
+也可以直接使用命令行：
+
+```sh
+npx @owngame/cli@latest project.create '{"directory":"my-game","name":"my-game"}'
+cd my-game
+npm test
+npm run build
+npm run preview
+```
+
+按终端提示打开预览地址。[完整教程](docs/quickstart.md) · [安装与可选 MCP 配置](docs/install.md)
+
+</details>
+
+## 你可以用 owngame 做什么
+
+| 💡 找灵感 | 🎮 做游戏 | ✅ 验证交付 |
+| --- | --- | --- |
+| 从可玩的作品、案例与风格配方中找到方向 | 在现有 AI 助手里创建项目、调整玩法与美术 | 检查构建、记录反馈，验证试玩与存档 |
+
+owngame 提供参考、模板和检查接口；代码实现、图片生成及浏览器操作由助手和它可用的工具完成。
+
+<a id="创意案例"></a>
+
+## 从可玩的作品出发
+
+[![射击、冒险、音乐与拼图的创意海报](docs/images/owngame-creative-strip-v1.png)](https://owngame.dev)
+
+[太空射击 ↗](https://owngame.dev/play?game=neon-shooter) · [地牢冒险 ↗](https://owngame.dev/play?game=faune-dungeon) · [音乐记忆 ↗](https://owngame.dev/play?game=wind-chime-memory) · [滑块拼图 ↗](https://owngame.dev/play?game=postcard-slide)
+
+*AI 创意海报；实际画面与玩法以试玩为准。*
+
+<details>
+<summary><strong>查看案例玩法与复刻灵感</strong></summary>
 
 从不同玩法与视觉风格出发，探索游戏创作的可能性。点击试玩体验原作，或打开参考说明，把你的想法交给 AI。
 
@@ -40,11 +88,16 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 | **03 · 风铃回响**<br>音乐记忆 | 听一段风铃，再敲回旋律；静音时也可跟随视觉提示 | 做成雨天音乐盒：记住雨滴落在不同杯子上的顺序 | [试玩 ↗](https://owngame.dev/play?game=wind-chime-memory) · [复刻参考](https://owngame.dev/remix/wind-chime-memory.json) |
 | **04 · 山城来信**<br>滑块拼图 | 滑动纸片，拼回落日里的山城 | 做成旅行纪念册：用自己的照片拼回一段旅程 | [试玩 ↗](https://owngame.dev/play?game=postcard-slide) · [复刻参考](https://owngame.dev/remix/postcard-slide.json) |
 
-*上方海报由 AI 绘制，用于呈现创意方向；实际画面与玩法以试玩为准。「可以怎样复刻」是创作灵感，可交给助手继续实现。*
+*案例海报由 AI 绘制，用于呈现创意方向；实际画面与玩法以试玩为准。「可以怎样复刻」是创作灵感，可交给助手继续实现。*
 
 > 试着告诉 AI：参考《风铃回响》的顺序记忆玩法，为我做一个雨天音乐盒。用不同杯子的声音和亮光提示节奏，先给我一个能玩完一轮的版本。
 
-## 3D 推荐
+</details>
+
+<a id="3d-推荐"></a>
+
+<details>
+<summary><strong>探索 3D 游戏案例</strong></summary>
 
 ### 星野来信 · 迟到的春天
 
@@ -64,47 +117,12 @@ owngame 把参考研究、视觉设计、项目创建与交付检查，接入你
 
 原创代码、对白与程序化素材采用 MIT；字体、Unity 衍生配置与运行时分别遵循其许可，详见[授权说明](examples/star-letters/THIRD_PARTY_NOTICES.md)。这个案例可独立阅读和修改；家园场景另已提取为 [`unity-home` 模板](templates/unity-home)。通用 Unity 构建适配与 Three.js 项目创建仍在计划中。
 
-## 网站游戏源码
+</details>
 
-[owngame.dev](https://owngame.dev) 上架游戏的可编辑源码按游戏 ID 整理在 [examples](examples/)，与对应线上版本保持一致。
+<a id="工作原理"></a>
 
-每款附有运行说明、锁定依赖、运行素材、许可及线上版本指纹。查看[完整清单与运行方法](docs/open-source-games.md)及机器可读的 [games.json](games.json)。新增或更新游戏通过[源码与网站联合发布](docs/game-publishing.md)，先公开匹配源码并通过检查，再上线。各项目及第三方素材保留各自许可，使用前请查看对应目录的 `LICENSE` 与 `THIRD_PARTY_NOTICES.md`。
-
-## 快速开始
-
-### 1. 接入你的 AI 助手
-
-在游戏项目中打开你的 AI 编程助手，把下面这句话发给它：
-
-```text
-请按照 https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md 在当前项目接入 owngame，完成安装和可用性检查，然后帮我做游戏。
-```
-
-助手会按照[安装要求](docs/install.md)检查 Node.js 与 npm、安装当前发布版本、读取创作 Skill，并验证工具可用。统一通过 CLI 使用，**无需选择助手类型或配置 MCP**，适用于能读写项目并执行命令的 AI 编程助手。也可查看[接入说明](docs/agent-setup.md)；手动安装与可选 MCP 配置见[安装与接入](docs/install.md)。
-
-### 2. 描述你想做的游戏
-
-> 用 owngame 做一个夜空主题的双人小游戏。先实现可以玩完一局的核心玩法，把美术放进实际运行画面，再检查胜负、悔棋、重开和刷新后的续玩。
-
-也可以打开 [owngame.dev](https://owngame.dev)，选择喜欢的游戏，点击 **复刻**，补充修改方向后将生成的任务交给助手：
-
-> 参考《霓虹突围》，做一个深海潜航游戏。保留移动、躲避和逐波挑战，把飞船换成潜艇，敌人换成机械水母。先给我一个可玩的版本，再一起调整规则和难度。
-
-### 3. 或者直接使用命令行
-
-无需先配置助手，即可从默认 Web 模板创建游戏：
-
-```sh
-npx @owngame/cli@latest project.create '{"directory":"my-game","name":"my-game"}'
-cd my-game
-npm test
-npm run build
-npm run preview
-```
-
-按终端提示打开本地预览地址，即可试玩生成的项目。默认 Web 模板提供可运行的游戏起点；玩法与运行要求见[模板说明](templates/web-canvas/README.md)。完整教程见 [做出并修改第一个游戏](docs/quickstart.md)。
-
-## 工作原理
+<details>
+<summary><strong>查看工作原理</strong></summary>
 
 ![owngame 创作流程：想法或网站复刻 → AI 助手与创作 Skill → CLI / MCP → 参考与风格 → 项目与实现 → 试玩与反馈 → 构建与交付，并回到试玩继续迭代](docs/images/owngame-workflow.png)
 
@@ -112,7 +130,18 @@ Skill 帮助助手根据任务选择合适的步骤：新游戏从可玩核心�
 
 owngame 提供参考、模板和检查接口；规划、代码实现、图片生成及浏览器操作由助手和它可用的工具完成。试玩结果、测试覆盖与尚未验证的部分，应随每次交付一起说明。
 
-## 核心能力
+</details>
+
+## 网站游戏源码
+
+上架游戏的可编辑源码按游戏 ID 整理在 [examples](examples/)，与对应线上版本保持一致。运行方法、项目许可与版本信息见[源码清单](docs/open-source-games.md)及 [games.json](games.json)。新增或更新游戏遵循[源码与网站联合发布流程](docs/game-publishing.md)。
+
+<a id="核心能力"></a>
+
+## 工具与模板
+
+<details>
+<summary><strong>查看核心能力、模板与运行环境</strong></summary>
 
 | 能力 | 提供的内容 | 入口 |
 | --- | --- | --- |
@@ -148,7 +177,14 @@ npx @owngame/cli@latest project.create '{"directory":"my-unity-game","name":"my-
 
 Cocos 构建适配器目前只在特定 macOS 环境验证过；浏览器、图片生成和发布能力取决于所用助手与本机环境。详见 [安装说明](docs/install.md)。
 
+</details>
+
 ## 支持路线图
+
+Web 是当前主要交付平台；引擎与平台适配按实际项目需求推进。
+
+<details>
+<summary><strong>查看已提供、计划与调研中的支持</strong></summary>
 
 owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同一套创作方法服务于 2D、3D 和跨平台游戏。下面区分当前能力、计划与调研方向；尚未提供的适配器和发布流程不包含在现有安装包中，也暂不承诺发布日期。
 
@@ -179,12 +215,14 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 
 欢迎在 [Issues](https://github.com/luka2chat/owngame/issues) 提交你希望支持的引擎、目标平台和具体游戏需求，或通过 [贡献指南](CONTRIBUTING.md) 参与适配。
 
+</details>
+
 ## 常见问题
 
 <details>
 <summary><strong>复刻会提供什么？</strong></summary>
 
-复刻生成一段可交给 AI 的创作任务，包含游戏链接、玩法、视觉方向、公开参考说明与工具接入信息。助手据此在你的工作区实现新版本。每款网站游戏的对应源码已在 GitHub 公开，复刻说明包含源码链接；按钮仍负责生成创作任务，完整游戏按各自许可使用。详见 [复刻使用说明](https://github.com/luka2chat/owngame/blob/main/docs/remix.md)。
+复刻生成一段可交给 AI 的创作任务，包含游戏链接、玩法、视觉方向、公开参考说明与工具接入信息。助手据此在你的工作区实现新版本。每款网站游戏的对应源码已在 GitHub 公开，复刻说明包含源码链接；按钮仍负责生成创作任务，完整游戏按各自许可使用。详见 [复刻使用说明](docs/remix.md)。
 
 </details>
 
@@ -211,32 +249,11 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 
 ## 文档
 
-- [安装与 Agent 接入](docs/install.md)：配置、连接检查、更新与卸载。
-- [第一个游戏](docs/quickstart.md)：创建、试玩、修改美术与验证存档。
-- [复刻使用说明](https://github.com/luka2chat/owngame/blob/main/docs/remix.md)：从网站参考进入自己的工作区。
-- [制作案例](docs/cases/)：玩法实现、美术迭代与交付验证的实践记录。
-- [创作 Skill](skills/owngame/SKILL.md) 与 [风格配方](docs/style-recipes.json)：工作流程和视觉方向。
-- [贡献指南](CONTRIBUTING.md)、[发布流程](docs/releasing.md) 与 [变更记录](CHANGELOG.md)。
-- [安全说明](SECURITY.md) 与 [第三方声明](THIRD_PARTY_NOTICES.md)。
+[接入助手](docs/agent-setup.md) · [安装说明](docs/install.md) · [第一个游戏](docs/quickstart.md) · [游戏源码](docs/open-source-games.md) · [制作案例](docs/cases/) · [创作 Skill](skills/owngame/SKILL.md) · [变更记录](CHANGELOG.md)
 
 ## 参与贡献
 
-加入 [owngame Discord 社区](https://discord.gg/X5cYjTaD)，分享你的游戏、寻找试玩伙伴，交流 AI 创作与工具使用心得。中文与 English 都欢迎；需要持续跟踪的 Bug 和功能需求请提交到 [Issues](https://github.com/luka2chat/owngame/issues)。
-
-欢迎贡献可复现的问题修复、可移植的游戏模板、制作案例与风格配方。提交问题时，请附上工具版本、复现步骤、预期行为和实际结果。
-
-本地开发从以下命令开始：
-
-```sh
-git clone https://github.com/luka2chat/owngame.git
-cd owngame
-npm ci
-npm run test:release
-```
-
-完整的安装包验证使用 `npm run verify:package`，覆盖独立安装、CLI / MCP 调用、游戏构建及浏览器真实输入。浏览器依赖与运行要求见 [贡献指南](CONTRIBUTING.md)。
-
-[报告问题](https://github.com/luka2chat/owngame/issues) · [提交改进](https://github.com/luka2chat/owngame/pulls)
+在 [Discord](https://discord.gg/X5cYjTaD) 分享作品和试玩反馈；通过 [Issues](https://github.com/luka2chat/owngame/issues) 报告问题或提出需求。贡献代码、模板与案例前，请阅读[贡献指南](CONTRIBUTING.md)。
 
 ## 使用与授权
 

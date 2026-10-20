@@ -1,0 +1,5 @@
+Tool: built-in image_gen
+Source: docs/images/owngame-creative-worlds.png
+Purpose: horizontal artwork strip for the user-selected README layout.
+
+Use case: compositing. Edit the provided owngame creative poster into a compact panoramic contact sheet for an actual GitHub README. Source image is a 2-by-2 grid. Rearrange the SAME FOUR PANELS into ONE horizontal row: spaceship / dungeon explorer and treasure / ceramic wind chimes / postcard sliding puzzle. Preserve each original panel's composition, subject, distinct art style and color, crop only enough to fit equal square-ish upright panels. Very wide panoramic output, ideally about 2400x500 or 4:1 to 5:1 aspect. Thin white gutters, no external margin, flat straight-on image. Keep only short title labels embedded near bottom of each panel, EXACT Chinese “霓虹突围”, “法恩探险”, “风铃回响”, “山城来信”, black ink small brush label and yellow accent as original. No subtitle, no new characters, no device, no page screenshot, no logo or mascot. This is one compact strip of existing art for selected README layout, not a reinterpretation or new game scene. Quality and continuity with original art is essential.

@@ -64,8 +64,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 21500,
-      "sha256": "9c9edc825fe39f0f299a70f67e1460b4130d6331251449369a7e83aee533cf83"
+      "bytes": 19771,
+      "sha256": "e798b6f1ccbdc2fd9a49f064d8a846dc671b164422f66fc16e2ea3024cc2b5ab"
     },
     {
       "path": "SECURITY.md",
@@ -1086,6 +1086,16 @@
       "path": "docs/images/owngame-brand.png",
       "bytes": 21154,
       "sha256": "4e675084644b21651e17ae7a7bc70c70d0ad586a987372cc9673d9bb303b0717"
+    },
+    {
+      "path": "docs/images/owngame-creative-strip-v1.png",
+      "bytes": 2464704,
+      "sha256": "2ed1b7a06be5a534a0e4016c89dd4467d9b80897ba1049193346ea1cc5dd3034"
+    },
+    {
+      "path": "docs/images/owngame-creative-strip-v1.prompt.txt",
+      "bytes": 1200,
+      "sha256": "fdf129549b13951e4f7e632a41bd8a157260db3a23bca68833fb9047de0731bc"
     },
     {
       "path": "docs/images/owngame-creative-worlds.png",
