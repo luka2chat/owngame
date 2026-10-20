@@ -564,13 +564,13 @@
     },
     {
       "path": "apps/web/public/index.html",
-      "bytes": 11212,
-      "sha256": "9785f632c9e37439ff63b7ea3d4317140ae941d6a3ed27855d574de3d9b90732"
+      "bytes": 12599,
+      "sha256": "47bb7f25dbed691f0a1c43b37c1b4fa7952c0f4c319aaf47148028061dddc2fa"
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 27172,
-      "sha256": "e556e7521cc7b25f2c1b0bf6b5b7b75e4d619074cfb3efcb18b045e6fdd5fea5"
+      "bytes": 27561,
+      "sha256": "f3dd394359feeba9bb96293a48377e393df43eed0c673bbd5b5df79f658e0ab1"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -594,8 +594,8 @@
     },
     {
       "path": "apps/web/public/play.js",
-      "bytes": 13228,
-      "sha256": "56f8873c475ffd2b7536882b8f82c68445d7b0dd3798218a0a4a088cb8af03c8"
+      "bytes": 13934,
+      "sha256": "6cc35e047f046646723cb2f769f5d909d3e235b55e2d9a34cc53b6432d6aba78"
     },
     {
       "path": "apps/web/public/privacy.html",
@@ -619,8 +619,8 @@
     },
     {
       "path": "apps/web/public/style.css",
-      "bytes": 20875,
-      "sha256": "b7946799f4341719d7dd8e8b94268b36007bd62cec745aa726005777a1a3173c"
+      "bytes": 21629,
+      "sha256": "9708e088a3c8afbd09a8fface9d1c6325c222bbbec82c82a4cdc2d29bf9eeced"
     },
     {
       "path": "apps/web/public/sw.js",
@@ -1420,7 +1420,7 @@
     {
       "path": "examples/faune-dungeon/game.json",
       "bytes": 342,
-      "sha256": "2a5b8a59bc7b8cc02f1faf3c5712cab53759853cc9a001d67e30d7a68cd5f845"
+      "sha256": "70af334a105f65ee6466fbf97b761e9457d9eb2a912f60126a9c328b024cbce3"
     },
     {
       "path": "examples/faune-dungeon/LICENSE",
@@ -1429,8 +1429,8 @@
     },
     {
       "path": "examples/faune-dungeon/ONLINE_BUILD.json",
-      "bytes": 4151,
-      "sha256": "40e867d71d40b2b9c6f45bbe3011b7c6422bbda54cdd15a42ad7ded4dde07df0"
+      "bytes": 4295,
+      "sha256": "3d49f2221261ba9e7f68fa3a66a2596ed889fbed977d8583f80f88fede626ab2"
     },
     {
       "path": "examples/faune-dungeon/package-lock.json",
@@ -1499,8 +1499,8 @@
     },
     {
       "path": "examples/faune-dungeon/public/index.html",
-      "bytes": 2054,
-      "sha256": "801de323f86e138b16fde720c42ab47ab659c6cd625263eed606f1c4e92f539c"
+      "bytes": 1826,
+      "sha256": "2a1fa644fc2f7cf9b73f07083f2ec0af976fba5ebb79653165f0f86cfc9f8896"
     },
     {
       "path": "examples/faune-dungeon/public/items/treasure.json",
@@ -1519,8 +1519,8 @@
     },
     {
       "path": "examples/faune-dungeon/public/owngame.css",
-      "bytes": 6910,
-      "sha256": "26aa75f97562e79cd4f2ea5c41bb941fdb1f90d9ff258b533ec8dd6b8151b5b8"
+      "bytes": 5896,
+      "sha256": "b9f9f2757219c9f4cec894b385e41b4bd829403eb4863a8faeb8801b3fafd981"
     },
     {
       "path": "examples/faune-dungeon/public/SOURCE.json",
@@ -1564,8 +1564,8 @@
     },
     {
       "path": "examples/faune-dungeon/README.md",
-      "bytes": 1253,
-      "sha256": "6337822a6b8e6cd50fa300e9354df463148bf2f6e8283940b695611872e8bca3"
+      "bytes": 1327,
+      "sha256": "698f25f9489f47c556538df89d5ac00356c766b212faf130c44981e08feaa700"
     },
     {
       "path": "examples/faune-dungeon/serve.mjs",
@@ -1574,8 +1574,8 @@
     },
     {
       "path": "examples/faune-dungeon/SOURCE_MANIFEST.json",
-      "bytes": 7918,
-      "sha256": "72a24ee172819d786edcf3b026119bbf7d339252611a7930898264d47a87163f"
+      "bytes": 7919,
+      "sha256": "ad44cd48783efb52732c43336ffdd1d44e1bd7cec5d6cf3c42f0568601ab0b77"
     },
     {
       "path": "examples/faune-dungeon/src/anims/CharacterAnims.ts",
@@ -1594,8 +1594,8 @@
     },
     {
       "path": "examples/faune-dungeon/src/characters/Faune.ts",
-      "bytes": 4898,
-      "sha256": "1ca567147029a28fae4bc50d1342d4441fbeacd1f23df7558846f30155910477"
+      "bytes": 5625,
+      "sha256": "83db45bd326259948c2ba580a58911e72e875a4bd0de93a9b9b7fe1aa445905d"
     },
     {
       "path": "examples/faune-dungeon/src/enemies/Lizard.ts",
@@ -1614,18 +1614,18 @@
     },
     {
       "path": "examples/faune-dungeon/src/main.ts",
-      "bytes": 726,
-      "sha256": "382f3b17c8bfc14b50f0f698c78a837b6108c076c2ddd63f879e61d6e12c4ae6"
+      "bytes": 859,
+      "sha256": "3d76638fb2bde8b080aabe0b86d06102ed865868ed2008c1371d7e13d6d1fac9"
     },
     {
       "path": "examples/faune-dungeon/src/owngame.ts",
-      "bytes": 4645,
-      "sha256": "0f26e08b1c2a62e3daed21c700e6a823827748e06c28d13f57dc288037eaae54"
+      "bytes": 6169,
+      "sha256": "1889c5abc98b176295f75d23c9be7dbc19030115ce87fab1cc73db52b9eba38a"
     },
     {
       "path": "examples/faune-dungeon/src/scenes/Game.ts",
-      "bytes": 8586,
-      "sha256": "d8f1f439310369377af833171e9bff2800ba92c7279c6ca96eae1f272f6d19e3"
+      "bytes": 10121,
+      "sha256": "604c33434483a3fc55818cfbe017d5be36c8882d4352cf0eec58133301251022"
     },
     {
       "path": "examples/faune-dungeon/src/scenes/GameUI.ts",
@@ -8275,7 +8275,7 @@
     {
       "path": "games.json",
       "bytes": 8193,
-      "sha256": "42bfc5b86124f10619f732495cb3e446394fd01c55d3ef3369fd565dfa6450a5"
+      "sha256": "92e31be26e0cb7dc9791097df8303cd4b125eeb5fd083d6e5a67b4a795f97c26"
     },
     {
       "path": "LICENSE",
@@ -8454,8 +8454,8 @@
     },
     {
       "path": "scripts/games/sync.mjs",
-      "bytes": 5881,
-      "sha256": "35a7770d7ef211b1fd42ad272178efc31aac5c3dc034dd33ff29784bab98f51e"
+      "bytes": 5951,
+      "sha256": "f6c3bc3b8d26d2ae2958563a6912f97ecc9063ef6b711c743706c4b8dc4dcd0f"
     },
     {
       "path": "scripts/games/verify.mjs",
@@ -8474,8 +8474,8 @@
     },
     {
       "path": "scripts/open-source-expansion/catalog.json",
-      "bytes": 1950,
-      "sha256": "5bfe2a93096401371b6beec572bcc8e68bc0069dc44ce370f99293335094b2b9"
+      "bytes": 2024,
+      "sha256": "8174277641c77069cb528b45f53ccf1c54b9906deb7765cd9009dbf276224748"
     },
     {
       "path": "scripts/petal-memory/catalog.json",

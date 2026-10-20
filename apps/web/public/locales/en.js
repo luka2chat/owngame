@@ -2,6 +2,7 @@
 export const messages = {
   "网站链接": "Site links",
   "项目 GitHub 仓库": "Project GitHub repository",
+  "加入 Discord": "Join Discord",
   使用与授权: "Usage & licensing",
   "使用与授权 · owngame": "Usage & licensing · owngame",
   网站语言: "Website language",
@@ -124,6 +125,9 @@ export const messages = {
   拖动战机上下左右移动: "Drag your ship in all four directions",
   暂停或继续: "Pause or resume",
   战斗中持续自动开火: "Your ship fires automatically during combat",
+  上下左右移动角色: "Move your character in all four directions",
+  "拖动移动，松手停下": "Drag to move; release to stop",
+  "自动投飞刀，靠近宝箱自动打开": "Throw knives automatically; nearby chests open automatically",
   空格: "Space",
   鼠标拖动: "Drag with the mouse",
   "游戏已下载，可在当前浏览器离线玩":
@@ -272,7 +276,7 @@ export const games = {
     description:
       "Explore a dungeon, find three treasure chests, and bring the loot back to where you started.",
     instructions:
-      "Use the direction buttons to move. The action button throws a knife or opens a nearby chest. Collect all three chests and return to the starting point to escape. Watch out for lizards. Supports pause and saved progress.",
+      "Drag your character in all four directions, or use the arrow keys or WASD. Release to stop; press Esc to pause or resume. Knives fire automatically in the direction you face, and nearby chests open automatically. Collect all three chests and return to the start to escape. Watch out for lizards. Supports saved progress.",
   },
   "wind-chime-memory": {
     title: "Wind Chime Memory",

@@ -48,6 +48,7 @@ export default class Game extends Phaser.Scene
         this.failed = false
         this.elapsed = 0
         this.saveTimer = 0
+        clearControls()
 
 		createCharacterAnims(this.anims)
 		createLizardAnims(this.anims)
@@ -65,6 +66,8 @@ export default class Game extends Phaser.Scene
 
 		this.faune = this.add.faune(128, 128, 'faune')
 		this.faune.setKnives(this.knives)
+        this.physics.world.setBounds(0,0,map.widthInPixels,map.heightInPixels)
+        this.faune.setCollideWorldBounds(true)
 
 		const wallsLayer = map.createLayer('Walls', tileset)
 
@@ -171,6 +174,7 @@ export default class Game extends Phaser.Scene
 	}
 	
     snapshot() {
+        const camera=this.cameras.main
         return {
             ready: !!this.faune, complete:this.complete, failed:this.failed, elapsed:this.elapsed,
             health:this.faune.health, coins:this.faune.coins,
@@ -179,8 +183,23 @@ export default class Game extends Phaser.Scene
             defeated:[...this.defeated],
             enemies:this.lizards.getChildren().map(e=>({id:e.getData('id'),x:(e as Lizard).x,y:(e as Lizard).y})),
             chests:this.chests.getChildren().map(c=>({id:c.getData('id'),x:(c as Chest).x,y:(c as Chest).y,opened:(c as Chest).opened})),
-            exit:{x:128,y:128}, paused:this.scene.isPaused()
+            exit:{x:128,y:128}, paused:this.scene.isPaused(),
+            attacks:this.faune.shotsFired,
+            knives:(this.knives.getChildren() as Phaser.Physics.Arcade.Image[]).filter(k=>k.active).map(k=>({x:k.x,y:k.y,vx:k.body.velocity.x,vy:k.body.velocity.y})),
+            movement:{vx:this.faune.body?.velocity.x||0,vy:this.faune.body?.velocity.y||0},
+            camera:{width:camera.width,height:camera.height,zoom:camera.zoom,worldX:camera.worldView.x,worldY:camera.worldView.y}
         }
+    }
+
+    releaseMovement(){
+        this.input.keyboard?.resetKeys()
+        if(this.faune?.body)this.faune.setVelocity(0,0)
+    }
+
+    dragBy(dx:number,dy:number){
+        const rect=this.game.canvas.getBoundingClientRect(),zoom=this.cameras.main.zoom
+        controls.targetX=Phaser.Math.Clamp(controls.targetX+dx*this.scale.width/rect.width/zoom,8,this.physics.world.bounds.width-8)
+        controls.targetY=Phaser.Math.Clamp(controls.targetY+dy*this.scale.height/rect.height/zoom,12,this.physics.world.bounds.height-12)
     }
 
     restoreAttempt(s: any) {
@@ -201,7 +220,11 @@ export default class Game extends Phaser.Scene
         // Choose interaction by reach, so releasing movement beside a chest still opens it.
         const nearby = (this.chests.getChildren() as Chest[]).filter(c => !c.opened && Phaser.Math.Distance.Between(this.faune.x,this.faune.y,c.x,c.y)<35).sort((a,b)=>Phaser.Math.Distance.Between(this.faune.x,this.faune.y,a.x,a.y)-Phaser.Math.Distance.Between(this.faune.x,this.faune.y,b.x,b.y))[0]
         this.faune.setChest(nearby)
-        this.faune.update(this.cursors, controls)
+        this.faune.update(this.cursors, controls,dt)
+        // Continuous firing must recycle knives that leave the map, including long open corridors.
+        for(const knife of this.knives.getChildren() as Phaser.Physics.Arcade.Image[]){
+            if(knife.active&&(knife.x < -32 || knife.y < -32 || knife.x > this.physics.world.bounds.width+32 || knife.y > this.physics.world.bounds.height+32))knife.disableBody(true,true)
+        }
         this.woodland.sync(this.faune,this.lizards.getChildren(),this.chests.getChildren(),t)
         this.elapsed += dt
         const s = this.snapshot()
@@ -209,7 +232,7 @@ export default class Game extends Phaser.Scene
         else if (s.opened.length === 3 && Phaser.Math.Distance.Between(this.faune.x,this.faune.y,128,128)<20) this.complete = true
         this.saveTimer += dt
         if (this.complete || this.failed) {
-            clearControls(); this.faune.setVelocity(0,0); saveAttempt(this.snapshot()); paintHUD(this.snapshot()); this.scene.pause()
+            clearControls(); this.faune.setVelocity(0,0); saveAttempt(this.snapshot()); paintHUD(this.snapshot()); this.sys.pause()
         } else {
             paintHUD(s)
             if (this.saveTimer>2000) {saveAttempt(s); this.saveTimer=0}

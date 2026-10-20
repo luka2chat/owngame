@@ -97,6 +97,21 @@ function renderDetails(all) {
     $("keyboard-help").hidden = false;
     $("keyboard-help").append(element("p", "", t("战斗中持续自动开火")));
   }
+  if (game.id === "faune-dungeon") {
+    for (const [keys, description] of [
+      [["↑", "↓", "←", "→", "/", "W", "A", "S", "D"], "上下左右移动角色"],
+      [null, "拖动移动，松手停下"],
+      [["Esc"], "暂停或继续"],
+    ]) {
+      const row = element("div"), term = element("dt"), detail = element("dd", "", t(description));
+      if (keys) keys.forEach((key) => term.append(element("kbd", "", key), " "));
+      else term.textContent = t("鼠标拖动");
+      row.append(term, detail);
+      $("keyboard-help").append(row);
+    }
+    $("keyboard-help").hidden = false;
+    $("keyboard-help").append(element("p", "", t("自动投飞刀，靠近宝箱自动打开")));
+  }
   const others = all.filter((g) => g.id !== game.id);
   // Prefer related games, then offer other worlds from the existing catalog.
   others.sort(

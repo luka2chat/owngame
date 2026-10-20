@@ -3,7 +3,7 @@
   "id": "faune-dungeon",
   "title": "法恩探险",
   "kind": "faune",
-  "online_build_sha256": "ddcc9d6275d3905add62d3171e51e1eef83058c25c9dd38e0316923a6224f168",
+  "online_build_sha256": "2b8068ef189c1b5b24c1c27a5216aa32a8beeb8d0276a9f9c6b86b1543bc8ba0",
   "original_source_sha256": null,
   "license": "MIT",
   "description": "穿过地牢，找到三只宝箱，再带着宝藏回到出发点。"

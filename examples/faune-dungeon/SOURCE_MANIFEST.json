@@ -1,8 +1,8 @@
 {
   "schema": "owngame.game-source.v1",
   "id": "faune-dungeon",
-  "online_build_sha256": "ddcc9d6275d3905add62d3171e51e1eef83058c25c9dd38e0316923a6224f168",
-  "input_sha256": "0cacb1edd1f3b9b6dc2679b90f0042f79c8766b245a1967c709b64839622c3e5",
+  "online_build_sha256": "2b8068ef189c1b5b24c1c27a5216aa32a8beeb8d0276a9f9c6b86b1543bc8ba0",
+  "input_sha256": "7fd489f14c673a53b1303920f26b73817776ada661ac7ec1423da4899047f14a",
   "files": [
     {
       "path": ".gitignore",
@@ -17,7 +17,7 @@
     {
       "path": "game.json",
       "bytes": 342,
-      "sha256": "2a5b8a59bc7b8cc02f1faf3c5712cab53759853cc9a001d67e30d7a68cd5f845"
+      "sha256": "70af334a105f65ee6466fbf97b761e9457d9eb2a912f60126a9c328b024cbce3"
     },
     {
       "path": "LICENSE",
@@ -26,8 +26,8 @@
     },
     {
       "path": "ONLINE_BUILD.json",
-      "bytes": 4151,
-      "sha256": "40e867d71d40b2b9c6f45bbe3011b7c6422bbda54cdd15a42ad7ded4dde07df0"
+      "bytes": 4295,
+      "sha256": "3d49f2221261ba9e7f68fa3a66a2596ed889fbed977d8583f80f88fede626ab2"
     },
     {
       "path": "package-lock.json",
@@ -96,8 +96,8 @@
     },
     {
       "path": "public/index.html",
-      "bytes": 2054,
-      "sha256": "801de323f86e138b16fde720c42ab47ab659c6cd625263eed606f1c4e92f539c"
+      "bytes": 1826,
+      "sha256": "2a1fa644fc2f7cf9b73f07083f2ec0af976fba5ebb79653165f0f86cfc9f8896"
     },
     {
       "path": "public/items/treasure.json",
@@ -116,8 +116,8 @@
     },
     {
       "path": "public/owngame.css",
-      "bytes": 6910,
-      "sha256": "26aa75f97562e79cd4f2ea5c41bb941fdb1f90d9ff258b533ec8dd6b8151b5b8"
+      "bytes": 5896,
+      "sha256": "b9f9f2757219c9f4cec894b385e41b4bd829403eb4863a8faeb8801b3fafd981"
     },
     {
       "path": "public/SOURCE.json",
@@ -161,8 +161,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1253,
-      "sha256": "6337822a6b8e6cd50fa300e9354df463148bf2f6e8283940b695611872e8bca3"
+      "bytes": 1327,
+      "sha256": "698f25f9489f47c556538df89d5ac00356c766b212faf130c44981e08feaa700"
     },
     {
       "path": "serve.mjs",
@@ -186,8 +186,8 @@
     },
     {
       "path": "src/characters/Faune.ts",
-      "bytes": 4898,
-      "sha256": "1ca567147029a28fae4bc50d1342d4441fbeacd1f23df7558846f30155910477"
+      "bytes": 5625,
+      "sha256": "83db45bd326259948c2ba580a58911e72e875a4bd0de93a9b9b7fe1aa445905d"
     },
     {
       "path": "src/enemies/Lizard.ts",
@@ -206,18 +206,18 @@
     },
     {
       "path": "src/main.ts",
-      "bytes": 726,
-      "sha256": "382f3b17c8bfc14b50f0f698c78a837b6108c076c2ddd63f879e61d6e12c4ae6"
+      "bytes": 859,
+      "sha256": "3d76638fb2bde8b080aabe0b86d06102ed865868ed2008c1371d7e13d6d1fac9"
     },
     {
       "path": "src/owngame.ts",
-      "bytes": 4645,
-      "sha256": "0f26e08b1c2a62e3daed21c700e6a823827748e06c28d13f57dc288037eaae54"
+      "bytes": 6169,
+      "sha256": "1889c5abc98b176295f75d23c9be7dbc19030115ce87fab1cc73db52b9eba38a"
     },
     {
       "path": "src/scenes/Game.ts",
-      "bytes": 8586,
-      "sha256": "d8f1f439310369377af833171e9bff2800ba92c7279c6ca96eae1f272f6d19e3"
+      "bytes": 10121,
+      "sha256": "604c33434483a3fc55818cfbe017d5be36c8882d4352cf0eec58133301251022"
     },
     {
       "path": "src/scenes/GameUI.ts",

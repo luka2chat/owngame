@@ -17,9 +17,9 @@
       "title": "法恩探险",
       "kind": "faune",
       "path": "examples/faune-dungeon",
-      "online_build_sha256": "ddcc9d6275d3905add62d3171e51e1eef83058c25c9dd38e0316923a6224f168",
-      "input_sha256": "0cacb1edd1f3b9b6dc2679b90f0042f79c8766b245a1967c709b64839622c3e5",
-      "source_manifest_sha256": "72a24ee172819d786edcf3b026119bbf7d339252611a7930898264d47a87163f",
+      "online_build_sha256": "2b8068ef189c1b5b24c1c27a5216aa32a8beeb8d0276a9f9c6b86b1543bc8ba0",
+      "input_sha256": "7fd489f14c673a53b1303920f26b73817776ada661ac7ec1423da4899047f14a",
+      "source_manifest_sha256": "ad44cd48783efb52732c43336ffdd1d44e1bd7cec5d6cf3c42f0568601ab0b77",
       "license": "MIT"
     },
     {

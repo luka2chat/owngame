@@ -219,6 +219,45 @@ main > .language-switch { float: right; margin: 0 0 16px 16px; }
 .sidebar nav::-webkit-scrollbar {
   display: none;
 }
+.sidebar-social {
+  display: flex;
+  flex: none;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #d9cfb8;
+}
+.sidebar-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 44px;
+  border: 2px solid var(--ink);
+  border-radius: 11px;
+  box-shadow: 0 4px var(--ink);
+  color: var(--ink);
+}
+.sidebar-discord {
+  flex: 1;
+  gap: 5px;
+  padding: 0 6px;
+  background: var(--yellow);
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.sidebar-github {
+  flex: 0 0 44px;
+  background: var(--paper);
+}
+.sidebar-social a:hover {
+  transform: translateY(-2px);
+}
+.sidebar-social a:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px var(--ink);
+}
 .nav-label {
   font-size: 11px;
   letter-spacing: 3px;
@@ -760,7 +799,8 @@ dialog p {
     font-size: 12px;
   }
   .search kbd,
-  .top-mine {
+  .top-mine,
+  .sidebar-social {
     display: none;
   }
   .sidebar {

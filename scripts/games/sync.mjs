@@ -29,7 +29,8 @@ for(const relative of ['scripts/games','tests/games','tests/web','scripts/web/ca
   'scripts/web/verify-deployment.mjs','scripts/web/verify-i18n.mjs','scripts/web/link-sources.mjs','scripts/web/usage.mjs','scripts/lib/codex-browser-preflight.mjs','.github/workflows/games.yml',
   'docs/open-source-games.md','docs/game-publishing.md','apps/web/public','apps/web/README.md','apps/web/wrangler.jsonc']) await copy(relative);
 const catalogModule=await fs.readFile(path.join(root,'scripts/web/catalog.mjs'),'utf8');
-for(const match of catalogModule.matchAll(/"(scripts\/[^"\n]+\/catalog\.json)"/g)) await copy(match[1]);
+const catalogFiles=[...catalogModule.matchAll(/"(scripts\/[^"\n]+\/catalog\.json)"/g)].map(match=>match[1]);
+for(const file of catalogFiles) await copy(file);
 const index=JSON.parse(await fs.readFile(path.join(repo,'games.json')));
 const packagePath=path.join(repo,'package.json');
 const publicPackage=JSON.parse(await fs.readFile(packagePath));
@@ -44,7 +45,7 @@ for(const game of index.games.filter(g=>g.kind!=='unity')) {
 }
 execFileSync(process.execPath,[path.join(root,'scripts/games/refresh-manifests.mjs'),repo],{stdio:'inherit'});
 execFileSync(process.execPath,[path.join(root,'scripts/games/verify.mjs'),repo],{stdio:'inherit'});
-git('add','examples','games.json','scripts/games','tests/games','tests/web','scripts/web','scripts/lib/codex-browser-preflight.mjs',
+git('add',...catalogFiles,'examples','games.json','scripts/games','tests/games','tests/web','scripts/web','scripts/lib/codex-browser-preflight.mjs',
   '.github/workflows/games.yml','docs/open-source-games.md','docs/game-publishing.md','apps/web','package.json','README.md');
 execFileSync(process.execPath,[path.join(root,'scripts/games/refresh-root-manifest.mjs'),repo],{stdio:'inherit'});
 git('add','SOURCE_MANIFEST.json');

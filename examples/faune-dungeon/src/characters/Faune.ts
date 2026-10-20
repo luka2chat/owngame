@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import Chest from '../items/Chest'
+import type { MovementControls } from '../owngame'
 
 import { sceneEvents } from '../events/EventsCenter'
 
@@ -31,6 +32,9 @@ export default class Faune extends Phaser.Physics.Arcade.Sprite
 
 	private knives?: Phaser.Physics.Arcade.Group
 	private activeChest?: Chest
+	private knifeCooldown = 0
+    private shots = 0
+    get shotsFired(){ return this.shots }
 
 	get coins() { return this._coins }
 
@@ -137,6 +141,7 @@ export default class Faune extends Phaser.Physics.Arcade.Sprite
 		const angle = vec.angle()
 
 		knife.enableBody(true, this.x, this.y, true, true)
+        this.shots++
 		knife.setVisible(true)
 
 		knife.setRotation(angle)
@@ -168,83 +173,43 @@ export default class Faune extends Phaser.Physics.Arcade.Sprite
 		}
 	}
 
-	update(cursors: Phaser.Types.Input.Keyboard.CursorKeys, touch: {left:boolean,right:boolean,up:boolean,down:boolean,action:boolean})
+	update(cursors: Phaser.Types.Input.Keyboard.CursorKeys, input: MovementControls, dt: number)
 	{
-		if (this.healthState === HealthState.DAMAGE
-			|| this.healthState === HealthState.DEAD
-		)
-		{
-			return
-		}
-
-		if (!cursors)
-		{
-			return
-		}
-
-		if (Phaser.Input.Keyboard.JustDown(cursors.space!) || touch.action)
-		{
-			touch.action = false
-            if (this.activeChest && Phaser.Math.Distance.Between(this.x,this.y,this.activeChest.x,this.activeChest.y) < 35)
-			{
-				const coins = this.activeChest.open()
-				this._coins += coins
-
-				sceneEvents.emit('player-coins-changed', this._coins)
-			}
-			else
-			{
-				this.throwKnife()
-			}
-			return
-		}
-
-		const speed = 100
-
-		const leftDown = (cursors.left?.isDown || touch.left)
-		const rightDown = (cursors.right?.isDown || touch.right)
-		const upDown = (cursors.up?.isDown || touch.up)
-		const downDown = (cursors.down?.isDown || touch.down)
-
-		if (leftDown)
-		{
-			this.anims.play('faune-run-side', true)
-			this.setVelocity(-speed, 0)
-
-			this.scaleX = -1
-			this.body.offset.x = 24
-		}
-		else if (rightDown)
-		{
-			this.anims.play('faune-run-side', true)
-			this.setVelocity(speed, 0)
-
-			this.scaleX = 1
-			this.body.offset.x = 8
-		}
-		else if (upDown)
-		{
-			this.anims.play('faune-run-up', true)
-			this.setVelocity(0, -speed)
-		}
-		else if (downDown)
-		{
-			this.anims.play('faune-run-down', true)
-			this.setVelocity(0, speed)
-		}
-		else
-		{
-			const parts = this.anims.currentAnim.key.split('-')
-			parts[1] = 'idle'
-			this.anims.play(parts.join('-'))
-			this.setVelocity(0, 0)
-		}
-
-		if (leftDown || rightDown || upDown || downDown)
-		{
-			this.activeChest = undefined
-		}
+        this.knifeCooldown=Math.max(0,this.knifeCooldown-dt)
+        if(this.healthState===HealthState.DAMAGE||this.healthState===HealthState.DEAD)return
+        const left=!!(cursors.left?.isDown||input.left),right=!!(cursors.right?.isDown||input.right)
+        const up=!!(cursors.up?.isDown||input.up),down=!!(cursors.down?.isDown||input.down)
+        let dx=Number(right)-Number(left),dy=Number(down)-Number(up),speed=100
+        if(left||right||up||down){
+            // Keyboard control takes priority without retaining an old drag destination.
+            if(input.dragging){input.targetX=this.x;input.targetY=this.y}
+        }else if(input.dragging){
+            dx=input.targetX-this.x;dy=input.targetY-this.y
+            // Drop blocked-axis offset so reversing a finger immediately moves away from a wall.
+            if((dx<0&&this.body.blocked.left)||(dx>0&&this.body.blocked.right)){input.targetX=this.x;dx=0}
+            if((dy<0&&this.body.blocked.up)||(dy>0&&this.body.blocked.down)){input.targetY=this.y;dy=0}
+            const distance=Math.hypot(dx,dy)
+            speed=distance<.25?0:Math.min(100,distance/Math.max(.001,dt/1000))
+        }
+        const distance=Math.hypot(dx,dy)
+        if(distance>0&&speed>0){
+            this.setVelocity(dx/distance*speed,dy/distance*speed)
+            if(Math.abs(dx)>Math.abs(dy)){
+                this.anims.play('faune-run-side',true)
+                this.scaleX=dx<0?-1:1;this.body.offset.x=dx<0?24:8
+            }else this.anims.play(dy<0?'faune-run-up':'faune-run-down',true)
+        }else{
+            this.setVelocity(0,0)
+            const parts=this.anims.currentAnim.key.split('-');parts[1]='idle';this.anims.play(parts.join('-'),true)
+        }
+        if(this.activeChest&&Phaser.Math.Distance.Between(this.x,this.y,this.activeChest.x,this.activeChest.y)<35){
+            const coins=this.activeChest.open()
+            if(coins){this._coins+=coins;sceneEvents.emit('player-coins-changed',this._coins)}
+        }
+        // Preserve facing, knife speed, damage and the original three-knife pool.
+        if(this.knifeCooldown<=0){this.throwKnife();this.knifeCooldown=400}
 	}
+
 }
 
 Phaser.GameObjects.GameObjectFactory.register('faune', function (this: Phaser.GameObjects.GameObjectFactory, x: number, y: number, texture: string, frame?: string | number) {
