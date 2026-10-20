@@ -1,6 +1,6 @@
 {
   "id": "rc-rally",
-  "build_sha256": "45c4d8caa12114314f38206170906dae067dea111574e6fffecb4817dfab14ee",
+  "build_sha256": "ca6bd6ffc1bae7645592b9b61f4d5b1f1597eb9befc7d6feed84e335e6fd887a",
   "entrypoint": "index.html",
   "files": [
     {
@@ -59,14 +59,14 @@
       "sha256": "5eb77ef2853c087d91964c23dd7407826136d0ef5fb8953e95586495a15030e7"
     },
     {
-      "bytes": 865187,
-      "path": "assets/index-DiiFUIUD.js",
-      "sha256": "4715d9fd4ddfa11b9f3de009a988afd2e421914c4d616a21ef9717f51381d089"
+      "bytes": 8025,
+      "path": "assets/index-B8DVOhHy.css",
+      "sha256": "351a68de230ede7989980c80423e20b2058cb74c3daa77f273de6789f4626706"
     },
     {
-      "bytes": 7985,
-      "path": "assets/index-gr7fUYoT.css",
-      "sha256": "dfe650d845b88e0f8302a32623cb3aaeea15524ece3bb069b1fb056c531b9fd3"
+      "bytes": 865622,
+      "path": "assets/index-CM9W01mi.js",
+      "sha256": "6c08828a15fccf0218874fff5faaf108a39df9f563028a8049a3901c4f5a8663"
     },
     {
       "bytes": 23775,
@@ -74,9 +74,9 @@
       "sha256": "3759cb9185df66b18939197be383d5304074b204ff4f7ed2c3a6201fad0dbeac"
     },
     {
-      "bytes": 12600,
+      "bytes": 12552,
       "path": "index.html",
-      "sha256": "ab0fe6e94f87775bcf9b7598acc87b1fe7a3746cd3affa15853c72a69d282d2e"
+      "sha256": "12756f9f9df9646fd41002dd2ecd0d15d32802b57026459b4e3793149d789fb5"
     },
     {
       "bytes": 1067,

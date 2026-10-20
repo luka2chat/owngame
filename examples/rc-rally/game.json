@@ -3,7 +3,7 @@
   "id": "rc-rally",
   "title": "遥控冲线",
   "kind": "vite",
-  "online_build_sha256": "45c4d8caa12114314f38206170906dae067dea111574e6fffecb4817dfab14ee",
+  "online_build_sha256": "ca6bd6ffc1bae7645592b9b61f4d5b1f1597eb9befc7d6feed84e335e6fd887a",
   "original_source_sha256": null,
   "license": "MIT",
   "description": "驾驶遥控车穿过检查点，挑战两圈最快纪录。"

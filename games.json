@@ -147,9 +147,9 @@
       "title": "遥控冲线",
       "kind": "vite",
       "path": "examples/rc-rally",
-      "online_build_sha256": "45c4d8caa12114314f38206170906dae067dea111574e6fffecb4817dfab14ee",
-      "input_sha256": "b1f57272fa3b758ac8ba907e3765ccc7b456ef5373ede79b7df77326d1083d3f",
-      "source_manifest_sha256": "163d271a92d6043599815cc37b3dc526f4f882d58c233119be0838b93e145766",
+      "online_build_sha256": "ca6bd6ffc1bae7645592b9b61f4d5b1f1597eb9befc7d6feed84e335e6fd887a",
+      "input_sha256": "935dd909367dd072d8353d3164c951ec1381daba866a931045895ab0e98e000b",
+      "source_manifest_sha256": "7d16e8b6ff7969e83d597eb3a034be81f7dbb9db0109dac87e2a88071a241978",
       "license": "MIT"
     },
     {

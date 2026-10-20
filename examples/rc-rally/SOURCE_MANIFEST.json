@@ -1,8 +1,8 @@
 {
   "schema": "owngame.game-source.v1",
   "id": "rc-rally",
-  "online_build_sha256": "45c4d8caa12114314f38206170906dae067dea111574e6fffecb4817dfab14ee",
-  "input_sha256": "b1f57272fa3b758ac8ba907e3765ccc7b456ef5373ede79b7df77326d1083d3f",
+  "online_build_sha256": "ca6bd6ffc1bae7645592b9b61f4d5b1f1597eb9befc7d6feed84e335e6fd887a",
+  "input_sha256": "935dd909367dd072d8353d3164c951ec1381daba866a931045895ab0e98e000b",
   "files": [
     {
       "path": ".gitignore",
@@ -17,12 +17,12 @@
     {
       "path": "game.json",
       "bytes": 327,
-      "sha256": "b045c8d32cd40199daaac516b28a3fdbaf21fa9b5b52aaf32c41bb4c0ed69cd5"
+      "sha256": "3f75ad2a71346e30cf72dbdb62ee510ad92c03950dba8b68dadd7580c761b960"
     },
     {
       "path": "index.html",
-      "bytes": 12549,
-      "sha256": "20c26d98b832f91e06fc5ad13c0398494caf17639832101c888af07b02b71ce6"
+      "bytes": 12501,
+      "sha256": "4234fb959dfe52c0669da2c88f8baa53c66b978c5642e64f338a675e06ae6dd2"
     },
     {
       "path": "LICENSE",
@@ -32,12 +32,12 @@
     {
       "path": "ONLINE_BUILD.json",
       "bytes": 3142,
-      "sha256": "cb6cf4b27209cdf4af347b5d9cc5092100ff3e831d474a22f84585bb94f2dea6"
+      "sha256": "1d4749be9457c4f5a04c37e95e7f830c05298eba1c2ed2f0b73457d139568f36"
     },
     {
       "path": "owngame.css",
-      "bytes": 7986,
-      "sha256": "cedd2991e280e2685293d05ed85c2bc51b6c64d3641e7f3109e154d4d86b2294"
+      "bytes": 8025,
+      "sha256": "351a68de230ede7989980c80423e20b2058cb74c3daa77f273de6789f4626706"
     },
     {
       "path": "package-lock.json",
@@ -102,7 +102,7 @@
     {
       "path": "README.md",
       "bytes": 1251,
-      "sha256": "c97156177560c46ba15b89649b3fefae6c8255422094f6d45a8df6451a76ddab"
+      "sha256": "9b3780a1a5449a79e444ce63055e7cab6f2ee8d8f627c3bf39635e5b309ca8ee"
     },
     {
       "path": "serve.mjs",
@@ -151,8 +151,8 @@
     },
     {
       "path": "src/main.js",
-      "bytes": 48544,
-      "sha256": "9a328b731319be6aa6955cc79c96543f3e0ae815afce7e020b1797e960f327f9"
+      "bytes": 49401,
+      "sha256": "ffe55c9df1edd2a9c764e21159e6788b4a0c3979878b483937c25f6463faaca5"
     },
     {
       "path": "src/Race.js",
@@ -161,8 +161,8 @@
     },
     {
       "path": "src/Vehicle.js",
-      "bytes": 45116,
-      "sha256": "25d4a1afb5813d495e3b7670d66386b1acb8aaacdc12dd27e9ce4a29155a2658"
+      "bytes": 45257,
+      "sha256": "d1dde2c9c88fa40baeb6297982dd5b070a4b509fc315baee70e49b6618943f2f"
     },
     {
       "path": "src/World.js",

@@ -826,7 +826,9 @@ export class Vehicle {
     const steerInput = Math.abs(steerAxis) > 0.05
       ? steerAxis
       : (right ? 1 : 0) + (left ? -1 : 0)
-    const targetSteer = steerInput * p.maxSteer
+    // The car faces local +Z. With +Y up, the driver's right is -X;
+    // Cannon's positive steering turns toward +X (the driver's left).
+    const targetSteer = -steerInput * p.maxSteer
     const steerDelta = p.steerSpeed * delta
     this.currentSteer = clamp(
       targetSteer,

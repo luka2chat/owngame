@@ -480,9 +480,10 @@ physicsDebug.setVisible(vehicle.debugParams.physics)
 
 // --- Chase camera ------------------------------------------------------------
 
-const cameraOffset = new THREE.Vector3(22, 32, -32) // higher angle so more of the car is visible
+// A centered chase view keeps forward at the top of a phone's narrow screen.
+const cameraOffset = mobileDevice ? new THREE.Vector3(0, 28, -34) : new THREE.Vector3(22, 32, -32)
 const cameraLookOffset = new THREE.Vector3(0, 1.2, 11) // look slightly ahead
-const airborneCameraOffset = new THREE.Vector3(24, 35, -36)
+const airborneCameraOffset = mobileDevice ? new THREE.Vector3(0, 32, -38) : new THREE.Vector3(24, 35, -36)
 const airborneCameraLookOffset = new THREE.Vector3(0, 0.6, 9.5)
 const cameraOrbitPivotOffset = new THREE.Vector3(0, 1.2, 0) // center of the car for mouse orbit
 const cameraOrbitLocalOffset = new THREE.Vector3()
@@ -1242,6 +1243,7 @@ if (mobileJoystick) {
   }
 
   mobileJoystick.addEventListener('pointerdown', (event) => {
+    if (joystickPointerId !== null) return
     joystickPointerId = event.pointerId
     mobileJoystickActive = true
     mobileJoystick.setPointerCapture(event.pointerId)
@@ -1260,6 +1262,17 @@ if (mobileJoystick) {
   }
   mobileJoystick.addEventListener('pointerup', stopJoystick)
   mobileJoystick.addEventListener('pointercancel', stopJoystick)
+  mobileJoystick.addEventListener('lostpointercapture', stopJoystick)
+  const clearJoystick = () => {
+    const pointerId = joystickPointerId
+    joystickPointerId = null
+    mobileJoystickActive = false
+    if (pointerId !== null && mobileJoystick.hasPointerCapture(pointerId)) mobileJoystick.releasePointerCapture(pointerId)
+    resetMobileJoystick()
+  }
+  window.addEventListener('blur', clearJoystick)
+  window.addEventListener('pagehide', clearJoystick)
+  document.addEventListener('visibilitychange', () => { if (document.hidden) clearJoystick() })
 }
 
 if (mobileBoost) {
@@ -1280,6 +1293,8 @@ if (mobileBoost) {
     setBoost(false)
   })
   mobileBoost.addEventListener('pointercancel', () => setBoost(false))
+  mobileBoost.addEventListener('lostpointercapture', () => setBoost(false))
+  window.addEventListener('blur', () => setBoost(false))
 }
 
 if (mobileReset) {
