@@ -8,7 +8,7 @@
 
 [![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A5%2022-339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Discord 社区](https://img.shields.io/badge/Discord-%E5%8A%A0%E5%85%A5%E7%A4%BE%E5%8C%BA-5865F2?logo=discord&logoColor=white)](https://discord.gg/X5cYjTaD)
 
-[试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [Discord 社区](https://discord.gg/X5cYjTaD) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [English](#english)
+[试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [Discord 社区](https://discord.gg/X5cYjTaD) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [使用与授权](#使用与授权) · [English](#english)
 
 </div>
 
@@ -226,6 +226,16 @@ npm run test:release
 完整的安装包验证使用 `npm run verify:package`，覆盖独立安装、CLI / MCP 调用、游戏构建及浏览器真实输入。浏览器依赖与运行要求见 [贡献指南](CONTRIBUTING.md)。
 
 [报告问题](https://github.com/luka2chat/owngame/issues) · [提交改进](https://github.com/luka2chat/owngame/pulls)
+
+## 使用与授权
+
+**商用和再分发按具体项目及素材许可执行，根目录 MIT 不替代这些许可。**
+
+- **玩法参考**：可以从游戏的玩法与体验出发创作；参考玩法本身不构成原作代码或素材的复用授权。
+- **源码复用**：先查看具体游戏的 `LICENSE`。《小小文明》代码采用 GPL-3.0-or-later，允许商用；分发时仍须遵守相应的许可、版权声明及对应源码提供要求。其他项目按各自许可执行。
+- **素材复用**：图片、字体、音效、模型和引擎可能单独授权。复用前查看对应目录的 `THIRD_PARTY_NOTICES.md` 及素材许可，遵守署名、许可保留和使用范围等条件。
+
+查看[游戏源码授权说明](docs/open-source-games.md#授权)与[第三方声明](THIRD_PARTY_NOTICES.md)。
 
 ## 许可与致谢
 
