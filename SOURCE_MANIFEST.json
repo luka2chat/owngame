@@ -50,7 +50,7 @@
     {
       "path": "apps/android/AndroidManifest.xml",
       "bytes": 1249,
-      "sha256": "0201b19369279363252216e60e8058880bafc865fe7c2a9d9156c8f89242fa4a"
+      "sha256": "cda49db964e2e75ebc5224eb0ac8d9b1baeb67427c53c697f1adff1215a42886"
     },
     {
       "path": "apps/android/ART-PROVENANCE.md",
@@ -64,8 +64,8 @@
     },
     {
       "path": "apps/android/assets/app.js",
-      "bytes": 16657,
-      "sha256": "4d2633fd736ae382018f3a64336f9e9c3335334912f74edd202a4b5b8137fe3d"
+      "bytes": 16656,
+      "sha256": "c59d219f5fa7f3197896741f31b969cfeda089b7525686c3a6a148f4ec39d0e8"
     },
     {
       "path": "apps/android/assets/art/arcade-mascot.png",
@@ -284,8 +284,8 @@
     },
     {
       "path": "apps/android/README.md",
-      "bytes": 7587,
-      "sha256": "ec48472131a71c2a1da46b94658953ade3248afe7d61357ec0d03cd86759921b"
+      "bytes": 7714,
+      "sha256": "7729c94148d8b90afee2ba2d01a4c4b210a626af897ac6bbb157e73240ef968f"
     },
     {
       "path": "apps/android/res/drawable-nodpi/arcade_mascot.png",
@@ -8345,7 +8345,7 @@
     {
       "path": "README.md",
       "bytes": 20731,
-      "sha256": "1bd7c288e0c76a1f616c87cda855b78f6f5ff435afe56760c2459ed7d4b79fde"
+      "sha256": "ef0327223947df2c71871d5327d7e87339caef953c800d54a5a20027eafa0241"
     },
     {
       "path": "scripts/android/build.mjs",

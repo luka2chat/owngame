@@ -447,7 +447,7 @@ function render() {
   } else {
     if (!$("search").value.trim() && category === "全部" && games.length) {
       target.append(
-        feature(games.find((g) => g.id === "signal-harbor") || games[0]),
+        feature(games.find((g) => g.id === "neon-shooter") || games[0]),
       );
     }
     target.append(
