@@ -222,9 +222,9 @@ export const messages = {
   "▶ 开始旅程": "▶ Begin your journey",
   "↗ 查看源码": "↗ Explore the source",
   制作笔记: "Development notes",
-  "推荐电脑键鼠 · 首次加载约 54 MB":
-    "Keyboard and mouse recommended · About 54 MB on first load",
-  手机尚无完整触屏操作: "Full touch controls are not yet available on phones",
+  "支持手机触屏 · 首次加载约 54 MB":
+    "Phone touch controls supported · About 54 MB on first load",
+  "左侧摇杆移动，滑动环视；横屏视野更开阔": "Move with the left stick and swipe to look around; landscape gives a wider view",
   "家园实机画面：小小旅人在花圃与信标之间，身后是树木、石路和暖色云海。":
     "In-game view of home: a little traveler stands between flowers and a beacon, with trees, stone paths, and warm clouds behind.",
   "游戏实拍 · 美术与声音持续打磨中":
@@ -296,11 +296,11 @@ export const games = {
   },
   "star-letters": {
     title: "Star Letters",
-    tag: "3D fairy-tale adventure · Desktop recommended",
+    tag: "3D fairy-tale adventure · Touch supported",
     description:
-      "Follow a letter, visit friends on three planets, and bring a late spring to a giant’s garden. About 54 MB on first load. Keyboard and mouse recommended.",
+      "Follow a letter, visit friends on three planets, and bring a late spring to a giant’s garden. Phone touch controls supported. About 54 MB on first load.",
     instructions:
-      "Walk with WASD or arrow keys, run with Shift, interact with E, look around with the right mouse button, and zoom with the wheel. Press V for an overview and C to reset the camera. Start at the home mailbox, solve the neighboring planet’s puzzles, then take the invitation to the giant’s garden. Progress saves automatically in this browser. Full phone touch controls are not yet available.",
+      "Phone: move with the left stick, swipe empty space to look around, and use Interact, Continue, Close and Flip for conversations and keepsakes. Move and look with two fingers; landscape gives a wider view. Desktop: WASD or arrow keys to walk, Shift to run, E to interact, right mouse button to look, wheel to zoom, V for overview and C to reset the camera. Start at the home mailbox and visit three planets. Progress saves in this browser.",
   },
   "signal-harbor": {
     title: "Signal Harbor",
