@@ -2,7 +2,7 @@
 
 面向玩家的 Android Alpha 客户端：从公开目录下载游戏、校验更新、离线游玩、恢复上一版、收藏和添加桌面快捷方式。创作仍由现有 AI 助手配合 CLI / MCP 完成。
 
-当前源码版本 **0.4.15-alpha（20）**，最低 Android 8.0（API 26），目标 API 34。客户端直接读取 `https://owngame.dev/catalog.json`，无需账号、配对令牌或电脑上的服务。源码已公开；[GitHub Alpha 测试包](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.15-alpha) 已提供下载，沿用内部测试签名。支持启动时检查 GitHub Android 新版本，由玩家选择是否更新；商店正式发行仍待完善。
+当前源码版本 **0.4.16-alpha（21）**，最低 Android 8.0（API 26），目标 API 34。客户端直接读取 `https://owngame.dev/catalog.json`，无需账号、配对令牌或电脑上的服务。源码已公开；[GitHub Alpha 测试包](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.16-alpha) 已提供下载，沿用内部测试签名。支持启动时检查 GitHub Android 新版本，由玩家选择是否更新；商店正式发行仍待完善。
 
 ## 从源码构建
 
@@ -63,14 +63,24 @@ CI 检查公开文件清单、隐私防护测试、客户端 APK 构建及测试
 
 每次打开 App 回到前台时，后台读取本仓库的 GitHub Releases，只检查 `android-v…` 的公开 Android 发布（包括 Alpha），不使用 CLI 的 Latest 版本。按版本排序后核对随发布附带的 `release-manifest.json`，仅提示版本号更高且支持当前 Android 系统的安装包。
 
-发现新版时可以选择「去 GitHub 更新」或「暂不更新」。选择更新会打开对应 GitHub 发布页，查看说明、下载 APK 后仍由 Android 系统确认安装；不会自动下载或静默安装。同一轮使用中从游戏返回游戏库不会重复弹窗，点「暂不更新」继续玩，下次重新启动仍可检查。页面底部也提供「检查 App 更新」。离线、请求超时或 GitHub 限流时，自动检查安静失败，已下载的游戏照常可玩。
+发现新版时可以选择「下载并更新」或「暂不更新」，并在提示中阅读发布说明。选择更新后，App 内显示下载进度，并在私有缓存中核对大小、SHA-256、包名、版本和既有签名，再请求 Android 系统安装。取消下载会删除未完成文件，失败可重试；已下载的游戏不受影响。
+
+首次更新需按系统提示允许 owngame 安装应用；权限未允许或安装取消时保留已校验的 APK，下次可点「检查 App 更新」继续。Android 最后的安装确认仍由用户完成，没有静默安装或强制更新。已下载的更新在重启后可恢复提示，安装成功后清理旧更新缓存。游戏库和游戏网页都无法传入任意安装链接或文件路径。
+
+更新 APK 通过非导出、只读的 ContentProvider 临时授权给系统安装程序，只暴露单个更新文件。新增 `REQUEST_INSTALL_PACKAGES` 权限，仅供用户选择的 App 自身更新。离线、超时或 GitHub 限流时，自动检查安静失败；游戏库底部可手动重试。
 
 后续 Android 发布应继续附带同名 APK 与 `release-manifest.json`（版本、递增的 versionCode、最低 SDK、包名及 APK 校验信息），保持既有签名。检查代码只读取公开 GitHub 信息，不需要账号或令牌。
 
-运行 `npm run android:test:updates` 可执行本机版本筛选、错误元数据、网络失败及可信来源测试；加 `-- --live` 可连接真实公开 Releases 检查元数据。测试使用固定版本且校验 SHA-256 的 JSON-java 测试库，下载在忽略的 `.local/`，不会进入 APK。旧版客户端需要先手动安装一次 0.4.13-alpha 才会获得版本检查功能。
+运行 `npm run android:test:updates` 可执行本机版本筛选、错误元数据、网络失败及可信来源测试；加 `-- --live` 可连接真实公开 Releases 检查元数据。测试使用固定版本且校验 SHA-256 的 JSON-java 测试库，下载在忽略的 `.local/`，不会进入 APK。0.4.13–0.4.15 的客户端仍会打开 GitHub，需要先手动覆盖安装 0.4.16-alpha 一次，之后即可使用 App 内更新。
 
 ## 0.4.14-alpha 修复
 
 为 `.mjs` 返回 JavaScript MIME 类型，修复模块游戏启动按钮始终禁用的问题。用户点击的 HTTPS 源码链接由系统浏览器打开，本地 `.txt` / `.md` 授权说明在可关闭的文本窗口阅读，保留游戏页面。支持 `target="_blank"`，同时继续阻止跨域资源、非用户点击的外跳和特殊协议。此修复不添加游戏的触屏操控；《星野来信》仍以键鼠为推荐操作。
 
 0.4.15-alpha 将 Android 首页的首屏推荐游戏改为《霓虹突围》，沿用其现有封面与下载/开玩入口。
+
+## 发布说明
+
+每个 Android GitHub 发布都要同时包含中文和英文说明，维护在 [RELEASE_NOTES.md](RELEASE_NOTES.md)。发布前执行 `node scripts/android/release-notes.mjs VERSION` 输出对应正文；缺少任一语言时命令会失败。中英文必须描述相同变更和已完成的验证，保留 Alpha、签名与覆盖安装说明。
+
+`npm run android:test:updates` 同时运行更新策略与流式下载校验测试；追加 `-- --live --live-download` 可下载真实公开 APK 验证，须先将 `OWNGAME_UPDATE_TEST_OUTPUT` 设置到适合大文件的私有测试目录。`npm run test:android -- DEVICE_SERIAL --updates APK RELEASE_MANIFEST` 验证真实 APK 解析、签名和只读安装提供者，需要设备现有版本低于测试 APK；不会安装更新或修改游戏/存档。

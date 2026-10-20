@@ -78,3 +78,7 @@ device identifiers, personal paths, raw playtest records or caches. Build logs
 may contain local paths and belong only in ignored artifacts. Android source CI
 builds with a fresh test key and compiles instrumentation tests; it does not
 publish an APK or claim device/art acceptance. See apps/android/README.md.
+
+### Android release descriptions
+
+Every Android GitHub release must include equivalent Chinese and English descriptions. Maintain `apps/android/RELEASE_NOTES.md` and generate the selected version with `node scripts/android/release-notes.mjs VERSION` into a temporary notes file, then pass it via `gh release create --notes-file`. The generator rejects a missing language. State the optional in-app download and system confirmation flow accurately; never claim silent installation. Keep Android Alpha releases as prereleases with `--latest=false`, preserve the existing signing identity, and publish only the APK, SHA256SUMS, and public release manifest.

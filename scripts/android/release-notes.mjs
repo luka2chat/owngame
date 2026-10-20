@@ -1,0 +1,10 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+const version=process.argv[2];
+if(process.argv.length!==3||!/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(version||""))throw Error("Usage: node scripts/android/release-notes.mjs VERSION");
+const source=await fs.readFile(path.resolve(import.meta.dirname,"../../apps/android/RELEASE_NOTES.md"),"utf8");
+const section=source.split(/^## /m).slice(1).find(part=>part.startsWith(version+"\n"));
+if(!section)throw Error("Missing Android release notes");
+const body=section.slice(version.length).trim();
+if(!/^### 中文\s*\n\n\S/m.test(body)||!/^### English\s*\n\n[A-Za-z]/m.test(body))throw Error("Android releases require Chinese and English descriptions");
+process.stdout.write(body+"\n");

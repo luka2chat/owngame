@@ -39,7 +39,11 @@ public class MainActivity extends Activity {
   private boolean updateChecking=false, updateResumed=false;
   private long checkedUpdateSession=-1;
   private AppUpdateChecker.Update pendingUpdate;
-  private AlertDialog updateDialog, documentDialog;
+  private AlertDialog updateDialog, documentDialog, updateProgressDialog, updatePermissionDialog;
+  private AppUpdateChecker.Update readyUpdate;
+  private boolean updateDownloading=false,skipUpdateResume=false;
+  private java.util.concurrent.atomic.AtomicBoolean cancelUpdate;
+  private static final int UPDATE_PERMISSION=2101, UPDATE_INSTALL=2102;
   private GameRepository repository;
   private volatile String downloadingId="";
   private volatile int downloadPercent=0;
@@ -55,6 +59,7 @@ public class MainActivity extends Activity {
     immersive(getWindow());
     WebView.setWebContentsDebuggingEnabled(false);
     repository=new GameRepository(getFilesDir());
+    if(!standalone())restoreAppUpdate();
     root=new FrameLayout(this);root.setBackgroundColor(Color.rgb(250,245,232));setContentView(root);
     root.setOnApplyWindowInsetsListener((v,insets)->{
       safeTop=0;safeRight=0;safeBottom=0;
@@ -67,8 +72,10 @@ public class MainActivity extends Activity {
   }
   private void checkAppUpdate(boolean manual){
     if(standalone()||isFinishing()||isDestroyed())return;
+    if(updateDownloading){if(manual)Toast.makeText(this,"正在处理 App 更新…",Toast.LENGTH_SHORT).show();return;}
     if(updateChecking){if(manual)Toast.makeText(this,"正在检查 App 更新…",Toast.LENGTH_SHORT).show();return;}
     if(updateDialog!=null)return;
+    if(manual&&readyUpdate!=null&&appUpdateFile().isFile()){pendingUpdate=readyUpdate;showPendingUpdate();return;}
     pendingUpdate=null;updateChecking=true;
     if(manual)Toast.makeText(this,"正在检查 App 更新…",Toast.LENGTH_SHORT).show();
     updateIo.execute(()->{
@@ -87,18 +94,86 @@ public class MainActivity extends Activity {
     });
   }
   private void showPendingUpdate(){
-    if(!updateResumed||standalone()||playing!=null||pendingUpdate==null||updateDialog!=null||isFinishing()||isDestroyed())return;
+    if(!updateResumed||standalone()||playing!=null||pendingUpdate==null||updateDialog!=null||updateDownloading||isFinishing()||isDestroyed())return;
     final AppUpdateChecker.Update update=pendingUpdate;String current="";
     try{current=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){}
-    updateDialog=new AlertDialog.Builder(this).setTitle("发现 App 新版本")
-      .setMessage("新版本："+update.versionName+"\n当前版本："+current+"\n\n可以前往 GitHub 查看说明并下载更新，也可以暂不更新，继续玩已下载的游戏。")
-      .setNegativeButton("暂不更新",null)
-      .setPositiveButton("去 GitHub 更新",(dialog,which)->{
-        try{startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(update.releaseUrl)).addCategory(Intent.CATEGORY_BROWSABLE));}
-        catch(Exception e){Toast.makeText(this,"无法打开浏览器，请稍后再试",Toast.LENGTH_LONG).show();}
-      }).create();
+    String notes=AppUpdateChecker.notesForLanguage(update.releaseNotes,Locale.getDefault().getLanguage()).replace("### ","").replace("## ","").replace("**","").trim();
+    boolean downloaded=readyUpdate!=null&&readyUpdate.versionCode==update.versionCode;
+    updateDialog=new AlertDialog.Builder(this).setTitle(downloaded?"更新已下载":"发现 App 新版本")
+      .setMessage("新版本："+update.versionName+"\n当前版本："+current+"\n大小："+String.format(Locale.CHINA,"%.1f MB",update.bytes/1048576.0)+
+        "\n\n"+(downloaded?"安装包已保留，可继续安装。":"点击更新后将在 App 内下载并校验，最后由 Android 确认安装。可暂不更新，继续玩已下载的游戏。")+(notes.isEmpty()?"":"\n\n"+notes))
+      .setNegativeButton("暂不更新",null).setPositiveButton(downloaded?"继续安装":"下载并更新",(dialog,which)->downloadAppUpdate(update)).create();
     showImmersiveDialog(updateDialog);
     updateDialog.setOnDismissListener(dialog->{pendingUpdate=null;updateDialog=null;immersive(getWindow());});
+  }
+  private File appUpdateFile(){return new File(getCacheDir(),"app-updates/update.apk");}
+  private void rememberAppUpdate(AppUpdateChecker.Update u)throws Exception{
+    JSONObject row=new JSONObject().put("version",u.versionName).put("code",u.versionCode).put("page",u.releaseUrl).put("apk",u.apkUrl).put("bytes",u.bytes).put("sha256",u.sha256).put("notes",u.releaseNotes);
+    getSharedPreferences("app-updates",MODE_PRIVATE).edit().putString("ready",row.toString()).commit();
+  }
+  private void restoreAppUpdate(){
+    try{
+      String value=getSharedPreferences("app-updates",MODE_PRIVATE).getString("ready",null);if(value==null)return;JSONObject r=new JSONObject(value);
+      AppUpdateChecker.Update u=new AppUpdateChecker.Update(r.getString("version"),r.getLong("code"),r.getString("page"),r.getString("apk"),r.getLong("bytes"),r.getString("sha256"),r.optString("notes"));
+      android.content.pm.PackageInfo installed=getPackageManager().getPackageInfo(getPackageName(),0);long code=Build.VERSION.SDK_INT>=28?installed.getLongVersionCode():installed.versionCode;
+      if(!AppUpdateChecker.allowedApk(u)||u.versionCode<=code||!appUpdateFile().isFile())throw new IOException("No pending update");readyUpdate=u;pendingUpdate=u;
+    }catch(Exception ignored){getSharedPreferences("app-updates",MODE_PRIVATE).edit().remove("ready").apply();appUpdateFile().delete();}
+  }
+  private void downloadAppUpdate(AppUpdateChecker.Update update){
+    if(updateDownloading||isFinishing()||isDestroyed())return;updateDownloading=true;cancelUpdate=new java.util.concurrent.atomic.AtomicBoolean(false);
+    final java.util.concurrent.atomic.AtomicBoolean cancellation=cancelUpdate;
+    LinearLayout content=new LinearLayout(this);content.setOrientation(LinearLayout.VERTICAL);content.setPadding(dp(22),dp(14),dp(22),dp(8));
+    TextView label=new TextView(this);label.setText("准备下载…");label.setPadding(0,0,0,dp(12));content.addView(label);
+    ProgressBar progress=new ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal);progress.setMax(100);content.addView(progress,new LinearLayout.LayoutParams(-1,dp(16)));
+    updateProgressDialog=new AlertDialog.Builder(this).setTitle("更新 App · "+update.versionName).setView(content)
+      .setNegativeButton("取消下载",(d,w)->cancellation.set(true)).create();updateProgressDialog.setCancelable(false);showImmersiveDialog(updateProgressDialog);
+    updateIo.execute(()->{
+      Exception failure=null;
+      try{
+        final int[] last={-1};
+        File apk=new AppUpdateDownload().download(update,appUpdateFile().getParentFile(),(received,total)->{
+          int percent=(int)(received*100/total);if(percent==last[0])return;last[0]=percent;
+          runOnUiThread(()->{if(isFinishing()||isDestroyed())return;progress.setProgress(percent);label.setText(percent>=100?"正在校验安装包…":String.format(Locale.CHINA,"下载中 %d%% · %.1f / %.1f MB",percent,received/1048576.0,total/1048576.0));});
+        },cancellation::get);
+        if(cancellation.get())throw new InterruptedIOException("Cancelled");
+        AppUpdateInstaller.validate(this,apk,update);
+        if(cancellation.get())throw new InterruptedIOException("Cancelled");rememberAppUpdate(update);
+      }catch(Exception e){failure=e;}
+      final Exception error=failure;
+      runOnUiThread(()->{
+        updateDownloading=false;if(updateProgressDialog!=null){updateProgressDialog.dismiss();updateProgressDialog=null;}
+        if(isFinishing()||isDestroyed())return;
+        if(cancellation.get()){Toast.makeText(this,"已取消更新，已有游戏不受影响",Toast.LENGTH_SHORT).show();return;}
+        if(error!=null){
+          appUpdateFile().delete();readyUpdate=null;getSharedPreferences("app-updates",MODE_PRIVATE).edit().remove("ready").apply();
+          AlertDialog retry=new AlertDialog.Builder(this).setTitle("更新未完成").setMessage("网络中断、空间不足或安装包校验未通过。可以稍后重试，现有 App 和游戏仍可使用。")
+            .setNegativeButton("稍后再说",null).setPositiveButton("重试",(d,w)->downloadAppUpdate(update)).create();showImmersiveDialog(retry);return;
+        }
+        readyUpdate=update;
+        if(!updateResumed||playing!=null){pendingUpdate=update;return;}
+        installPreparedAppUpdate();
+      });
+    });
+  }
+  private void installPreparedAppUpdate(){
+    if(readyUpdate==null)return;
+    if(!getPackageManager().canRequestPackageInstalls()){
+      updatePermissionDialog=new AlertDialog.Builder(this).setTitle("允许安装 App 更新")
+        .setMessage("首次更新需在下一页允许 owngame 安装应用。允许后返回，将继续打开 Android 安装确认；也可以取消，安装包会保留。")
+        .setNegativeButton("暂不安装",null).setPositiveButton("去允许",(d,w)->{
+          try{skipUpdateResume=true;startActivityForResult(new Intent(android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,Uri.parse("package:"+getPackageName())),UPDATE_PERMISSION);}
+          catch(Exception e){Toast.makeText(this,"无法打开安装设置，可稍后点检查 App 更新重试",Toast.LENGTH_LONG).show();}
+        }).create();showImmersiveDialog(updatePermissionDialog);return;
+    }
+    try{skipUpdateResume=true;startActivityForResult(AppUpdateInstaller.intent(this).putExtra(Intent.EXTRA_RETURN_RESULT,true),UPDATE_INSTALL);}
+    catch(Exception e){Toast.makeText(this,"无法打开系统安装界面，请稍后重试",Toast.LENGTH_LONG).show();}
+  }
+  @Override protected void onActivityResult(int request,int result,Intent data){
+    super.onActivityResult(request,result,data);
+    if(request==UPDATE_PERMISSION&&readyUpdate!=null){
+      if(getPackageManager().canRequestPackageInstalls())downloadAppUpdate(readyUpdate);
+      else Toast.makeText(this,"尚未允许安装，安装包已保留，可稍后重试",Toast.LENGTH_LONG).show();
+    }else if(request==UPDATE_INSTALL&&result!=RESULT_OK)Toast.makeText(this,"未完成安装，可稍后点检查 App 更新继续",Toast.LENGTH_LONG).show();
   }
   private String gameId(Intent intent){
     Uri u=intent.getData();if(u==null||!"owngame".equals(u.getScheme())||!"game".equals(u.getHost())||u.getQuery()!=null||u.getFragment()!=null)return null;
@@ -311,8 +386,8 @@ public class MainActivity extends Activity {
   @Override public void onBackPressed(){if(gameMenu!=null)dismissMenu();else if(game!=null)closeGame();else if(library!=null)library.evaluateJavascript("window.backToHome&&window.backToHome()",result->{if(!"true".equals(result))MainActivity.super.onBackPressed();});else super.onBackPressed();}
   @Override public void onWindowFocusChanged(boolean hasFocus){super.onWindowFocusChanged(hasFocus);if(hasFocus)immersive(getWindow());}
   @Override public void onPause(){updateResumed=false;super.onPause();if(game!=null)game.onPause();}
-  @Override public void onResume(){super.onResume();updateResumed=true;immersive(getWindow());if(game!=null)game.onResume();if(library!=null){refreshLibrary();long session=((OwngameApplication)getApplication()).foregroundSession();if(session!=checkedUpdateSession){checkedUpdateSession=session;checkAppUpdate(false);}}showPendingUpdate();}
-  @Override public void onDestroy(){dismissMenu();if(documentDialog!=null)documentDialog.dismiss();if(updateDialog!=null)updateDialog.dismiss();updateIo.shutdownNow();io.shutdownNow();if(game!=null)game.destroy();if(library!=null)library.destroy();super.onDestroy();}
+  @Override public void onResume(){super.onResume();updateResumed=true;immersive(getWindow());if(game!=null)game.onResume();if(library!=null){refreshLibrary();long session=((OwngameApplication)getApplication()).foregroundSession();if(session!=checkedUpdateSession){checkedUpdateSession=session;if(!skipUpdateResume&&pendingUpdate==null)checkAppUpdate(false);}}skipUpdateResume=false;showPendingUpdate();}
+  @Override public void onDestroy(){dismissMenu();if(cancelUpdate!=null)cancelUpdate.set(true);if(updateProgressDialog!=null)updateProgressDialog.dismiss();if(updatePermissionDialog!=null)updatePermissionDialog.dismiss();if(documentDialog!=null)documentDialog.dismiss();if(updateDialog!=null)updateDialog.dismiss();updateIo.shutdownNow();io.shutdownNow();if(game!=null)game.destroy();if(library!=null)library.destroy();super.onDestroy();}
   private void styleButton(Button button){GradientDrawable bg=new GradientDrawable();bg.setColor(Color.rgb(255,252,243));bg.setCornerRadius(dp(12));bg.setStroke(dp(2),Color.rgb(32,34,30));button.setBackground(bg);button.setTextColor(Color.rgb(32,34,30));button.setStateListAnimator(null);}
   private int dp(int value){return Math.round(value*getResources().getDisplayMetrics().density);}
   private void review(){

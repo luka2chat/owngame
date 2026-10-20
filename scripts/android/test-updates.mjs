@@ -5,7 +5,7 @@ import {execFileSync} from "node:child_process";
 import {toolchain} from "./toolchain.mjs";
 
 const root=path.resolve(import.meta.dirname,"../.."),{java}=toolchain();
-if(process.argv.slice(2).some(arg=>arg!=="--live"))throw Error("Usage: node scripts/android/test-updates.mjs [--live]");
+if(process.argv.slice(2).some(arg=>! ["--live","--live-download"].includes(arg)))throw Error("Usage: node scripts/android/test-updates.mjs [--live] [--live-download]");
 const local=path.join(root,".local");await fs.mkdir(local,{recursive:true});
 const jar=path.join(local,"json-20240303.jar");
 const expected="3cf6cd6892e32e2b4c1c39e0f52f5248a2f5b37646fdfbb79a66b46b618414ed";
@@ -20,6 +20,7 @@ await fs.writeFile(jar,bytes);
 const out=await fs.mkdtemp(path.join(local,"app-update-tests-"));
 try{
   execFileSync(path.join(java,"bin/javac"),["--release","8","-encoding","UTF-8","-classpath",jar,"-d",out,
-    path.join(root,"apps/android/src/dev/owngame/app/AppUpdateChecker.java"),path.join(root,"tests/android/AppUpdateCheckerTests.java")],{stdio:"inherit"});
-  execFileSync(path.join(java,"bin/java"),["-ea","-classpath",out+path.delimiter+jar,"dev.owngame.tests.AppUpdateCheckerTests",...process.argv.slice(2)],{stdio:"inherit",timeout:90000});
+    path.join(root,"apps/android/src/dev/owngame/app/AppUpdateChecker.java"),path.join(root,"apps/android/src/dev/owngame/app/AppUpdateDownload.java"),path.join(root,"tests/android/AppUpdateCheckerTests.java"),path.join(root,"tests/android/AppUpdateDownloadTests.java")],{stdio:"inherit"});
+  execFileSync(path.join(java,"bin/java"),["-ea","-classpath",out+path.delimiter+jar,"dev.owngame.tests.AppUpdateCheckerTests",...process.argv.slice(2).filter(a=>a==="--live")],{stdio:"inherit",timeout:90000});
+  execFileSync(path.join(java,"bin/java"),["-ea","-classpath",out+path.delimiter+jar,"dev.owngame.tests.AppUpdateDownloadTests",...process.argv.slice(2)],{stdio:"inherit",timeout:300000});
 }finally{await fs.rm(out,{recursive:true,force:true});}

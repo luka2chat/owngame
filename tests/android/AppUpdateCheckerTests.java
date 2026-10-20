@@ -40,9 +40,10 @@ public final class AppUpdateCheckerTests {
   public static void main(String[] args)throws Exception{
     test("Android Alpha is selected numerically; CLI and drafts are ignored",()->{
       Release old=new Release("0.4.9-alpha",14,26),next=new Release("0.4.14-alpha",19,26),draft=new Release("9.0.0",999,26);draft.release.put("draft",true);
-      Fake f=new Fake(old,next,draft);JSONArray releases=new JSONArray(new String(f.responses.get(AppUpdateChecker.RELEASES_URL),StandardCharsets.UTF_8));
+      next.release.put("body","中文说明\nEnglish release notes");Fake f=new Fake(old,next,draft);JSONArray releases=new JSONArray(new String(f.responses.get(AppUpdateChecker.RELEASES_URL),StandardCharsets.UTF_8));
       releases.put(new JSONObject().put("tag_name","v99.0.0").put("draft",false).put("html_url",BASE+"/tag/v99.0.0"));f.responses.put(AppUpdateChecker.RELEASES_URL,bytes(releases.toString()));
       AppUpdateChecker.Update result=new AppUpdateChecker(f).findUpdate(17,34);yes(result.versionCode==19&&result.versionName.equals("0.4.14-alpha")&&result.releaseUrl.equals(BASE+"/tag/android-v0.4.14-alpha"));
+      yes(AppUpdateChecker.allowedApk(result)&&result.bytes==100&&result.sha256.equals(SHA)&&result.releaseNotes.contains("English"));
       yes(f.calls.size()==2);for(String url:f.calls)yes(!url.endsWith(".apk"));
     });
     test("equal and older version codes never prompt or downgrade",()->{
@@ -73,6 +74,10 @@ public final class AppUpdateCheckerTests {
     });
     test("semantic version ordering handles numeric patches and Alpha identifiers",()->{
       yes(AppUpdateChecker.compareVersions("0.4.12-alpha","0.4.9-alpha")>0);yes(AppUpdateChecker.compareVersions("0.4.14","0.4.14-alpha")>0);yes(AppUpdateChecker.compareVersions("0.4.14-alpha.10","0.4.14-alpha.2")>0);
+    });
+    test("bilingual release notes use the device language with a plain-text fallback",()->{
+      String notes="### 中文\n\n更新说明\n\n### English\n\nUpdate notes";
+      yes(AppUpdateChecker.notesForLanguage(notes,"zh").equals("更新说明"));yes(AppUpdateChecker.notesForLanguage(notes,"en").equals("Update notes"));yes(AppUpdateChecker.notesForLanguage("Legacy notes","zh").equals("Legacy notes"));
     });
     if(args.length>0&&args[0].equals("--live")){
       AppUpdateChecker.Update live=new AppUpdateChecker().findUpdate(0,34);yes(live!=null);System.out.println("LIVE public Android release: "+live.versionName+" ("+live.versionCode+")");

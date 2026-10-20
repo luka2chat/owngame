@@ -14,14 +14,14 @@ public final class AppUpdateChecker {
   private static final String VERSION="[0-9]{1,9}\\.[0-9]{1,9}\\.[0-9]{1,9}(?:-[0-9A-Za-z]+(?:[.-][0-9A-Za-z]+)*)?";
   public interface Transport { byte[] get(String url,int limit) throws Exception; }
   public static final class Update {
-    public final String versionName, releaseUrl;
-    public final long versionCode;
-    Update(String version,long code,String url){versionName=version;versionCode=code;releaseUrl=url;}
+    public final String versionName, releaseUrl, apkUrl, sha256, releaseNotes;
+    public final long versionCode, bytes;
+    public Update(String version,long code,String page,String apk,long size,String hash,String notes){versionName=version;versionCode=code;releaseUrl=page;apkUrl=apk;bytes=size;sha256=hash;releaseNotes=notes;}
   }
   private static final class Candidate {
-    final String version, page, manifest;
+    final String version, page, manifest, notes;
     final JSONObject apk, metadata;
-    Candidate(String version,String page,String manifest,JSONObject apk,JSONObject metadata){this.version=version;this.page=page;this.manifest=manifest;this.apk=apk;this.metadata=metadata;}
+    Candidate(String version,String page,String manifest,JSONObject apk,JSONObject metadata,String notes){this.notes=notes.length()>8000?notes.substring(0,8000):notes;this.version=version;this.page=page;this.manifest=manifest;this.apk=apk;this.metadata=metadata;}
   }
   private final Transport transport;
   public AppUpdateChecker(){this(new HttpsTransport());}
@@ -38,7 +38,7 @@ public final class AppUpdateChecker {
       if(!page.equals(release.optString("html_url")))continue;
       JSONObject apk=asset(release,"owngame-android-"+version+".apk",tag),metadata=asset(release,"release-manifest.json",tag);
       if(apk==null||metadata==null||apk.optLong("size")>512L*1024*1024||metadata.optLong("size")>65536)continue;
-      candidates.add(new Candidate(version,page,metadata.optString("browser_download_url"),apk,metadata));
+      candidates.add(new Candidate(version,page,metadata.optString("browser_download_url"),apk,metadata,release.optString("body")));
     }
     candidates.sort((a,b)->compareVersions(b.version,a.version));
     Exception invalid=null;boolean valid=false;
@@ -52,17 +52,17 @@ public final class AppUpdateChecker {
         if(!"owngame.android-release.v1".equals(manifest.optString("schema"))||!"dev.owngame.app".equals(manifest.optString("package"))||!c.version.equals(manifest.optString("version")))throw new IOException("Invalid Android release manifest");
         long code=manifest.getLong("version_code");int minimum=manifest.getInt("min_sdk");
         if(code<=0||minimum<26)throw new IOException("Invalid Android version");
-        JSONArray files=manifest.getJSONArray("assets");boolean matches=false;
+        JSONArray files=manifest.getJSONArray("assets");boolean matches=false;String apkHash="";
         for(int j=0;j<files.length();j++){
           JSONObject file=files.getJSONObject(j);String hash=file.optString("sha256");
           if(c.apk.optString("name").equals(file.optString("name"))&&file.optLong("bytes")==c.apk.optLong("size")&&hash.matches("[a-f0-9]{64}")){
             String apkDigest=c.apk.optString("digest");
-            matches=apkDigest.isEmpty()||apkDigest.equals("sha256:"+hash);if(matches)break;
+            matches=apkDigest.isEmpty()||apkDigest.equals("sha256:"+hash);if(matches){apkHash=hash;break;}
           }
         }
         if(!matches)throw new IOException("APK metadata mismatch");
         valid=true;if(minimum>deviceSdk)continue;
-        return code>installedCode?new Update(c.version,code,c.page):null;
+        return code>installedCode?new Update(c.version,code,c.page,c.apk.optString("browser_download_url"),c.apk.optLong("size"),apkHash,c.notes):null;
       }catch(InterruptedIOException e){throw e;}catch(Exception e){invalid=e;}
     }
     if(!valid&&invalid!=null)throw new IOException("Android update metadata unavailable",invalid);
@@ -75,6 +75,17 @@ public final class AppUpdateChecker {
       if(item!=null&&name.equals(item.optString("name"))&&"uploaded".equals(item.optString("state"))&&item.optLong("size")>0&&(BASE+"/download/"+tag+"/"+name).equals(item.optString("browser_download_url")))return item;
     }
     return null;
+  }
+  public static String notesForLanguage(String notes,String language){
+    String wanted="zh".equals(language)?"中文":"English";java.util.regex.Matcher headings=java.util.regex.Pattern.compile("(?m)^#{2,3} (中文|English)\\s*$").matcher(notes);
+    int begin=-1;
+    while(headings.find()){if(begin>=0)return notes.substring(begin,headings.start()).trim();if(wanted.equals(headings.group(1)))begin=headings.end();}
+    return (begin>=0?notes.substring(begin):notes).trim();
+  }
+  public static boolean allowedApk(Update update){
+    return update.versionName!=null&&update.versionName.matches(VERSION)&&update.versionName.length()<=64&&
+      (BASE+"/download/android-v"+update.versionName+"/owngame-android-"+update.versionName+".apk").equals(update.apkUrl)&&
+      update.bytes>0&&update.bytes<=512L*1024*1024&&update.sha256!=null&&update.sha256.matches("[a-f0-9]{64}")&&update.versionCode>0;
   }
   public static int compareVersions(String a,String b){
     String[] aa=a.split("-",2),bb=b.split("-",2),av=aa[0].split("\\."),bv=bb[0].split("\\.");
