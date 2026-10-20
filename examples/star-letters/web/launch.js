@@ -1,4 +1,5 @@
 import { sha256, fetchBytes, downloadChunks } from './download.mjs';
+import { installTouchControls } from './touch.js';
 const canvas=document.getElementById('game'),loading=document.getElementById('loading'),progress=document.getElementById('progress'),status=document.getElementById('status'),error=document.getElementById('error'),start=document.getElementById('start'),retry=document.getElementById('retry');
 canvas.addEventListener('contextmenu',e=>e.preventDefault());
 const blobs=[];
@@ -38,6 +39,7 @@ async function launch(){
   diagnostics.phase='engine';engineStarted=true;
   await createUnityInstance(canvas,{...config,streamingAssetsUrl:'StreamingAssets',companyName:'DefaultCompany',productName:'LittleOrbit',productVersion:'0.1.0',devicePixelRatio:Math.min(devicePixelRatio||1,1.5),showBanner:(message,type)=>{if(type==='error')error.textContent=message;else console.warn(message);}},value=>{progress.value=.75+value*.25;status.textContent='正在开启旅程 '+Math.round(value*100)+'%';});
   loading.remove();document.getElementById('credits').hidden=false;canvas.focus();
+  installTouchControls(canvas);
   globalThis.starLetters={ready:true,loadedMs:Math.round(performance.now()-began),retries:diagnostics.retries};
   // Bound our own verified cache to the current game's chunks; never touch site/offline caches.
   if(cache){const keep=new Set(allChunks.map(c=>new URL('/__star-letters-chunks/'+c.sha256,location.href).href));cache.keys().then(keys=>Promise.all(keys.filter(k=>!keep.has(k.url)).map(k=>cache.delete(k)))).catch(()=>{});}

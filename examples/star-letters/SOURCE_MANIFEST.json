@@ -1,6 +1,6 @@
 {
   "schema": "star-letters.source-audit.v1",
-  "reviewed": "2026-10-19",
+  "reviewed": "2026-10-20",
   "scope": "Authored story game and Three.js prototype; no engine binaries, caches, private logs, concept images or original blend files",
   "files": [
     {
@@ -65,8 +65,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3251,
-      "sha256": "d90f73adae9e4bd3a3ed3504d6bd423368ecb756a1ebeefd9dbee87444725611",
+      "bytes": 3514,
+      "sha256": "6d06b0a1b58b36a99cec260be0ff8f009fd6a827cfa02cf3c40f0c051ae78212",
       "license": "MIT"
     },
     {
@@ -6053,8 +6053,8 @@
     },
     {
       "path": "web/README.md",
-      "bytes": 2564,
-      "sha256": "c10b0cc9742966d0e29a43d7ab6430a17c10a07230001abe883a2d48584b1a9c",
+      "bytes": 3392,
+      "sha256": "a16259b9e8c5f875ac9309a2939f99fa3dad9b601b5994ed3ac7c414d1e43699",
       "license": "MIT"
     },
     {
@@ -6071,26 +6071,38 @@
     },
     {
       "path": "web/index.html",
-      "bytes": 7284,
-      "sha256": "ffceec3cc8c1595b6ff71d12f1514df43894a7af7f893a0f91d5f216c55f4b01",
+      "bytes": 7651,
+      "sha256": "951017391887288017418a73e11e78a3640055cfa4ad7dd17228cd922199c9b7",
       "license": "MIT"
     },
     {
       "path": "web/launch.js",
-      "bytes": 4390,
-      "sha256": "00cb88402cca8145c1aff9909e4ec04fa8d49123b80a12c874823517e9df27bb",
+      "bytes": 4473,
+      "sha256": "7a818d5332956bf0ab8787d65718e56eb9ecf78ba0038771df6b2b8c22c9ff1d",
       "license": "MIT"
     },
     {
       "path": "web/pack.mjs",
-      "bytes": 3139,
-      "sha256": "970842ac5de7ab1e9c9d44ad4400fe053aae31ece0ddf95435f239286c5a1dc2",
+      "bytes": 3162,
+      "sha256": "d63ecdf9866b7d45443a41df73f784ef156570a6cc5f044c55db3af92a00baa7",
+      "license": "MIT"
+    },
+    {
+      "path": "web/touch.css",
+      "bytes": 1893,
+      "sha256": "f3cbe066fccce420f436ff6c124b0e2962adcdfe0b608ead1c384eaaa975be7a",
+      "license": "MIT"
+    },
+    {
+      "path": "web/touch.js",
+      "bytes": 5350,
+      "sha256": "f49775508590a186cdb8a290e0a65caa006b3c049bd5cb457a04ffd5921daa2d",
       "license": "MIT"
     },
     {
       "path": "ONLINE_BUILD.json",
-      "bytes": 10881,
-      "sha256": "583530df04c8db0d20165f0eacbb2a0fb1eb67acaf8237289ec0dba6c5b18c62",
+      "bytes": 11168,
+      "sha256": "f52fb2a064d3dfb80ceebce9017a0ee1ebd281a1e609193d4203709b43460d88",
       "license": "MIT"
     }
   ]

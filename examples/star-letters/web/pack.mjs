@@ -24,7 +24,7 @@ for(const [key,relative] of Object.entries(paths)){
 }
 await fs.copyFile(path.join(input,loader),path.join(output,'Build/loader.js'));
 await fs.writeFile(path.join(output,'assets.json'),JSON.stringify({schema:'star-letters.web.v1',assets},null,2)+'\n');
-for(const file of ['index.html','launch.js','download.mjs'])await fs.copyFile(path.join(import.meta.dirname,file),path.join(output,file));
+for(const file of ['index.html','launch.js','download.mjs','touch.js','touch.css'])await fs.copyFile(path.join(import.meta.dirname,file),path.join(output,file));
 await fs.mkdir(path.join(output,'licenses'));
 for(const file of ['LICENSE','THIRD_PARTY_NOTICES.md'])await fs.copyFile(path.join(notices,file),path.join(output,'licenses',file+'.txt'));
 for(const file of await fs.readdir(path.join(notices,'LICENSES')))await fs.copyFile(path.join(notices,'LICENSES',file),path.join(output,'licenses',file.replace(/\.md$/,'.txt')));

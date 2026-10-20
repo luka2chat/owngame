@@ -47,9 +47,9 @@
       "title": "星野来信",
       "kind": "unity",
       "path": "examples/star-letters",
-      "online_build_sha256": "4868ae27e4f85cbae571943620644b804f2dbd5d33c527b081f274851d90aac1",
-      "input_sha256": "323d38d0db40ff834958e4f08ce59ae2fc4ef6b645f4d68025e20210d0f95795",
-      "source_manifest_sha256": "4fd1b3791847b899309e5b801c35092df7744adef62dedeba32faefe70b20255",
+      "online_build_sha256": "ad8210869bee1c50aefe0e15115e05d41225b644bf2a3497264cdedc40883541",
+      "input_sha256": "5da851f0c458e3723cf1f015d1a0f2220fdd310699267844fea8a4f0c55d7be9",
+      "source_manifest_sha256": "bfffcfdd6fe4045be8349fe6c7d415c693821f2df09381497ad8fd98ae3a21c9",
       "license": "MIT; see THIRD_PARTY_NOTICES.md for fonts and Unity-derived files"
     },
     {

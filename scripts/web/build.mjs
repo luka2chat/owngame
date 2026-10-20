@@ -4,6 +4,8 @@ import { createHash } from "node:crypto";
 import {readGameEntries} from "./catalog.mjs";
 import {loadPublishedSources} from "../games/source-policy.mjs";
 import {writeUsagePage} from "./usage.mjs";
+import {imageHtml, imageCss} from "./image-delivery.mjs";
+import {imageAssets, imageIcons} from "../../apps/web/public/image-assets.js";
 const root = path.resolve(import.meta.dirname, "../.."),
   out = process.env.OWNGAME_WEB_OUT ? path.resolve(process.env.OWNGAME_WEB_OUT) : path.join(root, "apps/web/dist");
 // A separate candidate library supports batch acceptance without changing the live selection.
@@ -18,6 +20,16 @@ await fs.rm(out, { recursive: true, force: true });
 await fs.mkdir(out, { recursive: true });
 await fs.cp(path.join(root, "apps/web/public"), out, { recursive: true });
 await writeUsagePage(root, out);
+for (const name of await fs.readdir(out)) {
+  const file = path.join(out, name);
+  if (name.endsWith(".html")) await fs.writeFile(file, imageHtml(await fs.readFile(file, "utf8"), imageAssets, imageIcons));
+  if (name.endsWith(".css")) await fs.writeFile(file, imageCss(await fs.readFile(file, "utf8"), imageAssets));
+  if (name.endsWith(".webmanifest")) {
+    const manifest = JSON.parse(await fs.readFile(file, "utf8"));
+    manifest.icons = [192, 512].map(size => ({src: imageIcons[size], sizes: `${size}x${size}`, type: "image/png", purpose: "any"}));
+    await fs.writeFile(file, JSON.stringify(manifest));
+  }
+}
 // Pages visitors may still have the previous shell scripts in their HTTP cache.
 // Version only the gallery/player shell; frozen game files remain byte-identical.
 for (const page of ["index.html", "play.html", "usage.html"]) {

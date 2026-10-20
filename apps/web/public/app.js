@@ -46,6 +46,16 @@ let searchTimer,
   lastSearchKey = "",
   visibleCount = 0;
 const seenImpressions = new Set();
+const deferredArt = new WeakMap();
+const artworkObserver = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    const game = deferredArt.get(entry.target);
+    if (game) entry.target.replaceWith(art(game));
+    deferredArt.delete(entry.target);
+    artworkObserver.unobserve(entry.target);
+  }
+}, { rootMargin: "200px" });
 const impressionObserver = new IntersectionObserver(
   (entries) => {
     for (const entry of entries) {
@@ -111,6 +121,7 @@ function select(id) {
   if (query) searchTimer = setTimeout(recordSearch, 1500);
 }
 function render() {
+  artworkObserver.disconnect();
   const nav = $("nav");
   nav.replaceChildren();
   views.forEach(([id, mark, name], i) => {
@@ -186,7 +197,13 @@ function render() {
       "aria-label",
       t("开始游戏：{title}", { title: g.title }),
     );
-    cover.append(art(g, { priority: index < 2 }));
+    // Layered CSS art otherwise downloads its textures even far below the fold.
+    if (!g.cover && index >= 2) {
+      const placeholder = element("div", "art");
+      deferredArt.set(placeholder, g);
+      cover.append(placeholder);
+      artworkObserver.observe(placeholder);
+    } else cover.append(art(g, { priority: index < 2 }));
     const image = cover.querySelector(".board-cover");
     if (image && !(image.complete && image.naturalWidth > 0)) {
       cover.classList.add("cover-pending");

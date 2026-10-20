@@ -49,6 +49,11 @@ self.addEventListener("fetch", (event) => {
       }
       const cache = await caches.open(CORE);
       let key = url.pathname;
+      // Content hashes make these images safe to reuse without a network round trip.
+      if (key.startsWith("/art/optimized/")) {
+        const cached = await cache.match(key);
+        if (cached) return cached;
+      }
       if (event.request.mode === "navigate") {
         if (key === "/" || key === "/index.html") key = "/index.html";
         else if (key === "/play" || key === "/play.html") key = "/play.html";
