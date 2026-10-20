@@ -64,8 +64,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 19771,
-      "sha256": "e798b6f1ccbdc2fd9a49f064d8a846dc671b164422f66fc16e2ea3024cc2b5ab"
+      "bytes": 19895,
+      "sha256": "dd82691963895e4765792931089e1d40a0d14665b05ee631ead911f15189db9d"
     },
     {
       "path": "SECURITY.md",
@@ -1023,9 +1023,14 @@
       "sha256": "81eced7aaea2694f9cc173736043356f37caaaa17e782eed9814da03551e9a28"
     },
     {
+      "path": "docs/README.md",
+      "bytes": 3158,
+      "sha256": "066f17ad31beb53275a5eb19c5dc9735723eb7b1502afa2da1be553530a671d1"
+    },
+    {
       "path": "docs/agent-setup.md",
-      "bytes": 3741,
-      "sha256": "f3595fa09881347a27f178a5958dfe66e2e5c1199a4b443409abd4d542fcaa3a"
+      "bytes": 4830,
+      "sha256": "086ffa103d095c4def674215c06abca7c6c581f7e51bbd38a24d4c7b71777604"
     },
     {
       "path": "docs/cases/kiln-merge.md",
@@ -1049,8 +1054,8 @@
     },
     {
       "path": "docs/game-publishing.md",
-      "bytes": 4181,
-      "sha256": "233f4849375379a4baa21527edc5fbd3d6ea0e52a0da5f442db175b8665ac4cc"
+      "bytes": 5107,
+      "sha256": "1d2383f3b34f5e6662fd319c4a62a383feb013fc81ba4211c3728b754f70e423"
     },
     {
       "path": "docs/images/arcade-mascot.png",
@@ -1129,18 +1134,18 @@
     },
     {
       "path": "docs/install.md",
-      "bytes": 5244,
-      "sha256": "6b71bdf00d0aad07ec87f18f9de70e068aca419678be477f0a01ff5273e20521"
+      "bytes": 7312,
+      "sha256": "6dfdd12a1de514693b3c3ffd5f09124ba1d92d68e99266cf893536934e69c0e5"
     },
     {
       "path": "docs/open-source-games.md",
-      "bytes": 2017,
-      "sha256": "d3a87d97d6baaf7d64cd594d469e10494cb0b415350e5d779f765be73320661a"
+      "bytes": 2653,
+      "sha256": "8dc75b6603e81fc22fb201142069a9dbb45cdb32c13b7dbc94ef44eca4ed38b6"
     },
     {
       "path": "docs/quickstart.md",
-      "bytes": 2305,
-      "sha256": "487109d20b0c522b78244e1fcb79982b8ca33caeab0443d88c60af2e6d943b63"
+      "bytes": 3287,
+      "sha256": "02b41d2b01cc7798a15c86439d860c539302dfecf80410746be0e147d9601a63"
     },
     {
       "path": "docs/releasing.md",
@@ -1149,13 +1154,18 @@
     },
     {
       "path": "docs/remix.md",
-      "bytes": 2474,
-      "sha256": "b3da38fb5d024b17730c1ebe6e5a2abea170a18c05d033c51d3a403d496a66ee"
+      "bytes": 3249,
+      "sha256": "f700a50ec7e3fb855e4bb6f09e4c03d820ddcb907f9bc96639ab4cb5187ee4ef"
     },
     {
       "path": "docs/style-recipes.json",
       "bytes": 2947,
       "sha256": "de6a46bf64d664101262d8a7e6dc7deff97500d067ccc17e5967c7c1d888b194"
+    },
+    {
+      "path": "docs/zh-CN/quickstart.md",
+      "bytes": 1830,
+      "sha256": "d84aecfbdf666ef88ec17224d6dc2e05fb9a16d2d7845c73b234630eab2275df"
     },
     {
       "path": "examples/README.md",
@@ -8699,8 +8709,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 2353,
-      "sha256": "fea0e0fc1ef0aa0544d37da608f64ab5ac948a9c271fc5c66cf7330beb92a802"
+      "bytes": 2492,
+      "sha256": "234af1571baa5e450a158b6e9d60ffcc7860461b4816ed16cf32a96cfe896f3c"
     },
     {
       "path": "packages/cli/index.ts",
@@ -8914,8 +8924,8 @@
     },
     {
       "path": "scripts/release/prepare.mjs",
-      "bytes": 4968,
-      "sha256": "d5258d9220fd0aefec155199107759923058f89e8ead1aed39ee29239156d6f6"
+      "bytes": 5082,
+      "sha256": "ea5e9f88b1e3c0dbc6a53bd9455cde8069f08faa2620c370cb023f3640fb498b"
     },
     {
       "path": "scripts/release/publish.mjs",
@@ -8924,8 +8934,8 @@
     },
     {
       "path": "scripts/release/verify-package.mjs",
-      "bytes": 14371,
-      "sha256": "cc04689e0116ae8c029944e63dd7e4999899fc7b045c85e450af9941d0e1ee58"
+      "bytes": 14561,
+      "sha256": "25e9a33bf75712d60441765e101b16e1e719f7c4a3ca0c2966bf8cb0a6159520"
     },
     {
       "path": "scripts/silk-serpent/catalog.json",

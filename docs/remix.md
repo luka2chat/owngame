@@ -1,35 +1,43 @@
-# 从喜欢的游戏，做到自己的版本
+# Recreate a game in your own workspace
 
-打开 [owngame.dev](https://owngame.dev)，试玩一款游戏，点击卡片或游戏页上的 **复刻**。
+[Documentation](README.md) · [中文入门](zh-CN/quickstart.md)
 
-按钮会生成并尝试复制一段可以直接交给 AI 的话。它带上游戏名称、游玩地址、玩法说明、视觉方向、该游戏的公开参考说明，以及 owngame 的接入入口。你还可以填写“想怎么改”，或直接编辑整段话，再复制。
+Open [owngame.dev](https://owngame.dev), play a game, and choose **复刻** (Recreate) on its card or detail page. The Chinese product label remains `复刻`; technical `remix` identifiers and URLs remain unchanged for compatibility.
 
-把它粘贴到 Codex、Cursor 或你使用的 AI 助手中。助手先按 [安装说明](install.md) 接入 owngame，再根据任务研究参考、确定视觉、实现玩法、实际试玩和迭代。
+The action generates a creative brief and attempts to copy it. The brief includes the game's name, play URL, rules, visual direction, public reference description and owngame setup entry point. Fill in how you want to change the game, or edit the whole brief before copying it.
 
-## 一款游戏，一份明确参考
+Paste it into your AI coding assistant. The assistant follows the [setup instructions](agent-setup.md), researches relevant references, selects a visual direction, implements the game, playtests it and iterates with you. Continue the conversation in your preferred language.
 
-每款上架游戏都有公开的参考说明，例如：
+<a id="一款游戏一份明确参考"></a>
 
-- [潮光归位](https://owngame.dev/remix/signal-harbor.json)
-- [星图三连](https://owngame.dev/remix/star-triad.json)
-- [窑火相融](https://owngame.dev/remix/kiln-merge.json)
+## Read the game's reference brief
 
-说明含规则与操作、视觉方向、当前展示版本的指纹、可玩的版本地址和验收目标。即使助手无法直接执行网站页面，也能读取这些文字信息；有浏览器工具时再试玩参考。若无法观察画面或操作，不应把它记作已试玩。
+Each listed game has a public reference description. Examples include:
 
-## 可以怎样改
+- [Signal Harbor / 潮光归位](https://owngame.dev/remix/signal-harbor.json)
+- [Star Triad / 星图三连](https://owngame.dev/remix/star-triad.json)
+- [Kiln Merge / 窑火相融](https://owngame.dev/remix/kiln-merge.json)
 
-> 保留《潮光归位》的分类与周转规则，把夜港换成雨天咖啡馆。先给我一个实际可玩的视觉版本，再补关卡。
+Descriptions include rules and controls, visual direction, fingerprints of the displayed version, a playable URL and acceptance goals. An assistant can read this information even when it cannot interact with the website; available browser tools can then be used to play the reference. Do not report a playtest if the assistant could not observe visuals or operate the game.
 
-> 我喜欢《星图三连》的单人陪练和双人玩法。做一个适合和孩子一起玩的动物主题版本，棋子更大，胜负反馈更明确。
+<a id="可以怎样改"></a>
 
-> 参考《窑火相融》的合并循环，做成一个植物温室。先确认合并规则和结束条件，再做生长动画。
+## Describe a transformation
 
-这些是给 AI 的创作任务，不是现成主题开关。先做出核心，再按你的反馈调整。
+> Keep Signal Harbor's sorting and staging rules, but replace the night harbor with a rainy-day café. Deliver an actually playable visual revision before adding more levels.
 
-## 当前提供到哪一步
+> I like Star Triad's solo practice and local two-player modes. Make an animal-themed version for playing with a child, with larger pieces and clearer win feedback.
 
-复刻把具体游戏的创作任务和源码链接交到你自己的 AI 工作区。网站游戏的完整可编辑源码按游戏 ID 放在仓库 examples/ 中，见[游戏源码](open-source-games.md)。工具包的默认 Web 模板仍是独立起点；完整游戏按各自许可使用，复刻按钮不会在网站后台生成新游戏。
+> Use Kiln Merge's merge loop as a reference for a plant greenhouse. Confirm merge rules and end conditions before adding growth animations.
 
-使用自制或已获许可的素材；第三方游戏与素材的许可不会因工具采用 MIT 而改变。模型、图片生成和浏览器能力取决于你使用的助手。
+These are tasks for an AI assistant, not built-in theme switches. Start with a playable core, then revise it using feedback.
 
-复制被浏览器拒绝时，弹窗会保留整段文字供手动复制。修改过内容后，要再次点击“复制给 AI”。
+<a id="当前提供到哪一步"></a>
+
+## What Recreate provides
+
+Recreate brings a game-specific task and source links into your own AI workspace. Full editable website-game sources are organized by game ID in the repository's `examples/`; see the [source catalogue](open-source-games.md). The toolkit's default Web template remains a separate starter. Use full games under their respective licenses. The button does not generate a new game on the website's backend.
+
+Mechanic inspiration does not grant permission to reuse source or assets. Use your own or appropriately licensed material. A toolkit's MIT license does not change third-party game or asset terms. Model access, image generation and browser capabilities depend on your assistant.
+
+If browser clipboard access fails, the dialog keeps the brief available for manual copying. After editing, choose “复制给 AI” (copy for AI) again to copy the updated text.

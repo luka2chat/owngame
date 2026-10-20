@@ -1,10 +1,14 @@
-# 做出并修改第一个游戏
+# Create and revise your first game
 
-本教程使用默认 web-canvas 起点：原创的“月下连星”双人同屏小游戏。它展示完整循环、可替换视觉、保存和真实输入验收，不包含电脑对手。无需外部字体、图像、CDN 或图片生成账号。
+[Documentation](README.md) · [中文入门](zh-CN/quickstart.md)
 
-## 1. 创建
+This tutorial uses the default `web-canvas` starter: an original local two-player three-in-a-row game, shown in the interface as “月下连星”. It demonstrates a complete loop, replaceable visuals, saves and real-input validation. It does not include a computer opponent or require external fonts, images, a CDN or an image-generation account.
 
-先按照 [安装说明](install.md) 安装候选包，在工作目录执行：
+<a id="1-创建"></a>
+
+## 1. Create a project
+
+Follow the [installation guide](install.md), then run these commands in the intended workspace:
 
 ```sh
 npx owngame research.prepare '{"query":"美术"}'
@@ -15,27 +19,40 @@ npm run build
 npm run preview
 ```
 
-打开 http://127.0.0.1:3215 。若端口已占用，用 `node scripts/serve.mjs dist 3217`。
-研究读取的是公开案例摘要；无需为了启动示例研究所有游戏。
+`美术` is an intentional search keyword in the bundled case metadata. Research reads public summaries; you do not need to research every game before starting the example.
 
-## 2. 真正玩一局
+Open the URL printed by the preview server (by default, <http://127.0.0.1:3215>). If that port is occupied, run `node scripts/serve.mjs dist 3217` and use the resulting URL.
 
-按九宫格从左到右、从上到下编号 1 到 9。依次点 1、4、2、5、3：星旅人应获胜。再点空格不应继续落子。点“悔一步”恢复到获胜前，重新落子可以再次获胜。
+<a id="2-真正玩一局"></a>
 
-“再开一局”后点 1、5，刷新网页：两颗棋子应该仍在。用键盘 Tab 到空格并按 Enter，也应该能落子。缩到 360×640，检查棋盘、状态和按钮是否都能正常使用。浏览器模拟小屏不代表手机已测试。
+## 2. Play a complete round
 
-## 3. 改一次美术，保留进度
+Number the board cells from 1 to 9, left to right and top to bottom. Click 1, 4, 2, 5, 3 in order: the player labeled “星旅人” should win. Clicking an empty cell after the win must not place another piece. Click “悔一步” (undo) to return to the state before the win; making the winning move again should work.
 
-在 src/theme.js 中把标题改成“青玉星河”，把 accent 改为 #8dd7c0。保持 src/project.js 的 gameId 不变。运行 npm run build，刷新同一地址：标题和色调改变，落子与续玩仍然存在。
+Click “再开一局” (restart), then cells 1 and 5, and reload the page. Both pieces should remain. Tab to an empty cell and press Enter to check keyboard input. At a 360×640 viewport, check that the board, status and buttons remain usable. A simulated small viewport does not establish physical-phone coverage.
 
-可以向 Agent 说：
+<a id="3-改一次美术保留进度"></a>
 
-> 保留规则与存档，把实际运行画面改成青玉色。修改后在桌面和 360×640 检查，不要只给一张概念图。
+## 3. Revise the art without losing progress
 
-若要增加电脑对手或改变棋盘，先明确规则和验收，再修改 rules.js 与界面。这是新的玩法任务，不是本教程已经提供的能力。
+In `src/theme.js`, change the title to “青玉星河” and `accent` to `#8dd7c0`. Keep `gameId` in `src/project.js` unchanged. Run `npm run build`, then reload the same address. The title and palette should change while existing moves and save continuity remain intact.
 
-## 4. 核对交付
+For example, tell the agent:
 
-回到工作目录执行 `npx owngame web.inspect '{"directory":"my-game/dist"}'`，获得本次包指纹。记录实际输入、运行画面、测试环境与未覆盖项。构建和静态检查不证明离线冷启动或用户认可美术。
+> Preserve the rules and saves. Change the actual running game to a jade-green visual direction. Check desktop and 360×640 layouts after editing; a concept image alone is not the deliverable.
 
-可以把 dist 交给静态托管服务；公开发布与本地预览是两个动作。默认示例没有 service worker，不承诺关掉服务器后仍可离线冷启。完成后停止自己的预览服务。
+A computer opponent or a different board is a new gameplay task. Define its rules and acceptance criteria before changing `rules.js` and the interface; the starter does not already provide those features.
+
+<a id="4-核对交付"></a>
+
+## 4. Verify the delivery
+
+Return to the workspace directory and run:
+
+```sh
+npx owngame web.inspect '{"directory":"my-game/dist"}'
+```
+
+Record the resulting build fingerprint together with actual input, runtime screenshots, the test environment and uncovered behavior. Build and static checks do not establish offline cold-start support or human approval of the art.
+
+You can deliver `dist` to a static hosting service. Public deployment and local preview are separate actions. The default starter has no Service Worker and does not promise an offline cold start after the server stops. Stop your own preview server when finished.

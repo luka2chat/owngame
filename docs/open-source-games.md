@@ -1,22 +1,21 @@
-# 网站游戏源码
+# Website game source
 
-owngame.dev 上架游戏的可编辑源码按游戏 ID 放在 `examples/<game-id>/`。
-完整清单、线上版本和源码指纹见根目录 [`games.json`](../games.json)。
-每款游戏的 `ONLINE_BUILD.json` 记录对应线上不可变交付文件的 SHA-256；
-`SOURCE_MANIFEST.json` 记录公开源码与素材，便于核对版本。
+[Documentation](README.md) · [中文入门](zh-CN/quickstart.md)
 
-## 游玩与修改
+Editable sources for games hosted on owngame.dev are organized by game ID in `examples/<game-id>/`. The root [`games.json`](../games.json) lists games, online versions and source fingerprints. Each game's `ONLINE_BUILD.json` records the SHA-256 of its matching immutable online delivery files; `SOURCE_MANIFEST.json` inventories public source and assets for version verification.
 
-先克隆仓库，在目标游戏目录运行：
+<a id="游玩与修改"></a>
+
+## Run and modify a game
+
+Clone the repository, choose a game from `games.json`, and enter its source directory. For the Web projects using the shared npm workflow, run:
 
 ```sh
 npm ci
 npm start
 ```
 
-需要 Node.js 22.18 或更新版本与 npm。打开 http://127.0.0.1:5173 。
-`npm run build` 生成 `dist/`；`npm run serve` 启动本地预览。
-例如：
+These projects require Node.js 22.18 or newer and npm. Open the address printed by the server (normally <http://127.0.0.1:5173>). `npm run build` produces `dist/`; `npm run serve` starts a local preview. For example:
 
 ```sh
 git clone https://github.com/luka2chat/owngame.git
@@ -25,23 +24,20 @@ npm ci
 npm start
 ```
 
-《星野来信》为 Unity 完整故事项目，也附有 Three.js 原型；打开方法见其 README。
-Unity 编辑器和目标平台模块需单独安装。`unity-home` 则是可通过 CLI 创建的独立家园模板。
+Follow the selected project's README for engine-specific requirements. Unity projects require a separately installed editor and target-platform modules; a Web prototype is not interchangeable with the full engine project. The [`unity-home`](../templates/unity-home/README.md) template is a separate starter that can be created through the CLI.
 
-## 授权
+## Licensing
 
-每个目录的 LICENSE 与 THIRD_PARTY_NOTICES.md 共同说明授权范围。
-《小小文明》的改编代码沿用 **GPL-3.0-or-later**；字体、图标及库保留各自许可。
-其他游戏的自有代码采用 MIT，但第三方引擎、字体、素材和 Unity 衍生配置仍按原声明分发。
-根目录 MIT 不替代子项目或第三方许可。
+<a id="授权"></a>
 
-源码包含运行所需的已发布素材与构建说明；依赖由 npm 或 Unity 包管理器恢复。
-缓存、私人记录、账号配置和本机工具路径不属于源码交付。
-游戏案例存放在 GitHub，npm 工具包继续分发创作工具与模板。
+Each project's `LICENSE` and `THIRD_PARTY_NOTICES.md` define its licensing scope. Source code may be subject to MIT, GPL or another stated license; engines, fonts, icons, models and other assets may have separate terms. Commercial use, modification and redistribution must follow the applicable project and asset licenses. The root MIT license does not replace them.
 
-## 更新
+The source delivery includes published runtime assets and build instructions. npm or the Unity package manager restores dependencies. Caches, private records, account settings and machine-specific tool paths are excluded. Game examples live in the GitHub repository; the npm package distributes authoring tools and templates.
 
-新增或更新游戏通过[源码与网站联合发布流程](game-publishing.md)发布。
-网站目录的源码链接指向与交付对应的 Git 提交，便于查看旧版本和复现问题。
-自动检查覆盖源码清单、依赖安装、轻量 Web 游戏重建与浏览器加载/输入；
-Unity 编辑器、真机、离线冷启动及完整玩法验收按各游戏的交付记录另行执行。
+<a id="更新"></a>
+
+## Updates and verification
+
+New games and updates use the [joint source and website publication workflow](game-publishing.md). Source links in the website catalogue point to the Git commit matching a delivery, supporting historical inspection and reproduction.
+
+Automated checks cover source inventories, dependency installation, lightweight Web rebuilds and browser loading/input. Unity editor behavior, physical devices, offline cold starts and complete gameplay acceptance require separate game-specific delivery evidence.

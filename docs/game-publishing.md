@@ -1,57 +1,56 @@
-# 游戏源码与网站联合发布
+# Publish game source and website together
 
-维护规则：**游戏上线时，同步公开对应源码。** 新增游戏、更新玩法或更换素材都适用。
-网站构建使用公开源码提交作为前置条件；源码缺失、版本不符或指纹损坏时停止，避免只上线成品。
+[Documentation](README.md) · [Source catalogue](open-source-games.md)
 
-## 一次性接入
+**Publish matching editable source whenever a game goes live.** This applies to new games, gameplay changes and asset updates. Website builds require a public source commit and stop if sources are missing, versions differ or fingerprints are invalid. A playable build alone is not a complete publication.
 
-生产工作区包含内部工程和 `.owngame/library` 中选定的不可变交付，
-与公开仓库检出目录分开。通过现有项目构建器登记成品，再维护
-`scripts/web/catalog.mjs` 引用的游戏清单。
+<a id="一次性接入"></a>
 
-在 `scripts/games/projects.json` 为游戏 ID 登记源目录、构建类型和许可。
-导出器支持 Phaser、Canvas、原生 JavaScript/TypeScript、静态网页、Vite 与已审计 Unity 源码清单。
-新类型应先实现导出与独立构建，不使用空目录或压缩后的脚本代替可编辑源码。
-第三方项目保留来源提交、LICENSE、字体/图片/模型声明；新增素材应在发布前完成来源记录。
+## Register a game
 
-## 正式发布
+Keep the production workspace, which contains internal projects and selected immutable deliveries in `.owngame/library`, separate from the public repository checkout. Register the completed delivery with the existing project builder, then maintain the game catalogues referenced by `scripts/web/catalog.mjs`.
 
-在生产工作区执行，指定干净的公开仓库检出目录和新的网站输出目录。
-大体积目录使用已核实挂载且可写的 NAS，按项目归类保存。
+For each game ID, register its source directory, build type and licensing in `scripts/games/projects.json`. The exporter supports Phaser, Canvas, plain JavaScript/TypeScript, static sites, Vite and reviewed Unity source allowlists. Add an editable export and an independent build path before supporting another type. Empty directories and minified scripts are not substitutes for editable source.
 
-```sh
-npm run web:publish -- --repository-dir <公开仓库检出目录> --out <新的web-输出目录>
-```
+Preserve upstream revisions, licenses and notices for third-party projects, fonts, images and models. Record the provenance of new assets before publication.
 
-单独更新游戏时可设置 `OWNGAME_SOURCE_IDS=<游戏ID>`（多个 ID 用逗号分隔）。流程只刷新指定游戏的源码；其他游戏必须已具有与本次冻结版本匹配的公开源码，并保留其已审定导出。这样不会把其他任务尚未验收的本地源码混入发布。源码覆盖检查与完整 CI 仍然执行。
+<a id="正式发布"></a>
 
-流程依次执行：
+## Publish a release
 
-1. 从当前冻结交付与审定源码生成 `examples/<id>`、运行说明、素材/许可、锁文件与源码指纹。
-2. 检查目录覆盖率、线上版本绑定、逐文件指纹，以及缓存/私人路径排除规则；随后在导出的公开检出目录运行 `tests/games` 与 `tests/web`。模块漏导出、翻译遗漏或测试失败时，在提交和推送前停止，不创建失败的远程发布记录。
-3. 推送源码发布分支；GitHub `Game source checks` 在全新环境安装依赖、重建轻量 Web 游戏，检查加载、资源和实际输入。
-4. 检查通过后，以快进方式更新公开主分支，记录确切源码提交；并发更新导致推送被拒绝时停止，保留分支供合并。
-5. 网站构建从该公开提交读取源码索引与清单。只要有游戏没有匹配公开源码，构建便失败。
-6. 生成网站目录、源码链接和复刻说明，再部署到现有 Cloudflare Pages，并校验线上文件。
-
-`artifacts/open-source/current.json` 为本机发布收据，不包含凭据。
-单独 `npm run web:build` 也检查该收据指向的公开提交；收据不能替代 GitHub 上真实存在的源码。
-候选玩法验证仍可使用各游戏独立构建器，不需要提前上线。
-
-## 失败与恢复
-
-源码导出、依赖安装、CI 或版本核对失败时，后续网站部署不会执行。
-GitHub 已成功但 Pages 失败时，公开源码保留；修复原因后复用已验证源码提交重建和部署，
-不要删除源码或强制覆盖主分支。网站继续使用上一次成功的生产部署。
-不要用单独的原始上传命令跳过联合发布流程。
-
-只修改网站界面或说明页、不更换游戏时，可以先用 `web:build` 生成新目录并完成界面检查，再发布该候选：
+Run in the production workspace. Select a clean public repository checkout and a new website output directory. Use a verified writable storage mount for large outputs and follow the user's storage preferences.
 
 ```sh
-OWNGAME_WEB_PREVIOUS_OUT=<当前已验收网站目录> npm run web:publish -- --shell-only --prepared --out <已检查的web-输出目录>
+npm run web:publish -- --repository-dir <clean-public-checkout> --out <new-web-output>
 ```
 
-此路径要求网站游戏目录与当前线上完全一致，并重新核对 GitHub 公开源码和版本指纹；部署前再次检查并发更新。游戏版本或元数据变化必须走完整联合发布流程。使用与授权页面正文由 `scripts/web/usage.mjs` 从 README 同名章节生成，修改 README 后重新构建与发布即可同步。
+For a scoped game update, set `OWNGAME_SOURCE_IDS=<game-id>` (comma-separated for multiple IDs). Only selected sources are refreshed. Other games must already have public sources matching their frozen deliveries and retain their reviewed exports. This prevents unrelated, unaccepted local changes from entering the release. Coverage checks and full source CI still run.
 
-仓库检查只证明其明确覆盖的内容。Unity 编辑器、完整玩法、用户美术/手感、手机或离线能力
-应在相应游戏交付中验证，不由源码同步自动认定通过。
+The workflow performs these steps:
+
+1. Export `examples/<id>`, run instructions, assets/licenses, lockfiles and source fingerprints from the frozen deliveries and reviewed source.
+2. Check coverage, online-version bindings, file fingerprints and exclusions for caches/private paths. Run `tests/games` and `tests/web` in the exported public checkout. Missing modules, missing translations or test failures stop the process before committing or pushing, without creating a failed remote release record.
+3. Push a source release branch. GitHub's `Game source checks` installs dependencies in a clean environment, rebuilds lightweight Web games and checks loading, resources and actual input.
+4. After checks pass, fast-forward the public main branch and record the exact source commit. Stop on a concurrent-update rejection and preserve the branch for merging.
+5. Read the source index and manifests from that public commit when building the website. Fail if any selected game lacks matching public source.
+6. Generate the website catalogue, source links and Recreate briefs, deploy to the existing Cloudflare Pages project and verify online files.
+
+`artifacts/open-source/current.json` is a local release receipt without credentials. A standalone `npm run web:build` also checks the public commit referenced by this receipt. A receipt is not a substitute for source that actually exists on GitHub. Candidate gameplay can still be validated with each game's independent builder before publication.
+
+<a id="失败与恢复"></a>
+
+## Failures and recovery
+
+If source export, dependency installation, CI or version checks fail, website deployment does not run. If GitHub publication succeeds but Pages deployment fails, keep the public source. Fix the cause, then rebuild/deploy using the verified source commit. Do not delete sources or force-overwrite main. The website retains its last successful production deployment. Do not bypass the joint workflow with a raw upload command.
+
+For site-shell or documentation changes that do not replace games, first generate a new output with `web:build`, inspect that interface, then publish the prepared candidate:
+
+```sh
+OWNGAME_WEB_PREVIOUS_OUT=<accepted-web-output> npm run web:publish -- --shell-only --prepared --out <reviewed-web-output>
+```
+
+This path requires a game catalogue identical to the current live site, rechecks public GitHub source/version fingerprints, and checks for concurrent changes again before deployment. Game version or metadata changes require the full joint workflow.
+
+`scripts/web/usage.mjs` generates the website's usage/licensing body from the README section named `使用与授权`. Keep that heading and the shared content intact. Rebuild and publish the website to synchronize changes to that section.
+
+Repository checks establish only their stated scope. Validate the Unity editor, complete gameplay, human art/feel feedback, phones and offline behavior in the corresponding game delivery. Source synchronization does not automatically mark those checks as passed.

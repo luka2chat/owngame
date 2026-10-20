@@ -249,6 +249,8 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 
 ## 文档
 
+[文档索引（English）](docs/README.md) · [中文入门](docs/zh-CN/quickstart.md)
+
 [接入助手](docs/agent-setup.md) · [安装说明](docs/install.md) · [第一个游戏](docs/quickstart.md) · [游戏源码](docs/open-source-games.md) · [制作案例](docs/cases/) · [创作 Skill](skills/owngame/SKILL.md) · [变更记录](CHANGELOG.md)
 
 ## 参与贡献
@@ -283,4 +285,4 @@ Open your game project in an AI coding assistant and send: **Follow https://raw.
 
 **Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone exploration scene with character controls, camera and interactive tasks. Create it through CLI/MCP: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the [Android client source](apps/android) is public and APK builds are listed in [Releases](https://github.com/luka2chat/owngame/releases). See the [support roadmap](#支持路线图) for scope and status.
 
-[Get started](#快速开始) · [Discord community](https://discord.gg/X5cYjTaD) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Get started](#快速开始) · [Discord community](https://discord.gg/X5cYjTaD) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)

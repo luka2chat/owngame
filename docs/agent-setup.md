@@ -1,53 +1,63 @@
-# 给 AI 助手的通用接入说明
+# Universal setup instructions for AI coding assistants
 
-用户将本文交给你，是希望在当前游戏项目使用 owngame。你负责完成下面的接入和检查，然后继续用户的游戏任务。采用统一 CLI，无需用户选择助手类型，也不要求宿主支持 MCP。
+[Documentation](README.md) · [中文入门](zh-CN/quickstart.md)
 
-## 1. 检查项目与环境
+When a user gives you this document, they want to use owngame in their current game project. Complete setup and verification, then continue their game task. Use the shared CLI: the user does not need to choose an assistant type, and the host does not need MCP support. Communicate with the user in their preferred language; English documentation does not require English game content or replies.
 
-- 在用户指定的游戏项目目录执行命令，不在工具包目录创建游戏。沿用项目现有规则和用户已经选定的引擎、风格与范围。
-- 检查 `node --version` 与 `npm --version`，需要 Node.js 22 或以上。缺失时明确报告环境问题；安装系统软件应遵循用户和宿主的授权规则。
-- 需要读取本文、读写项目文件和执行命令的能力。只能聊天的助手无法直接完成安装；不要声称已经安装。
-- 如果当前项目已有可用的 owngame，先读取已安装的 Skill 并调用 `capabilities`；保留项目已有版本，除非用户要求安装或更新。无需重复接入或更换已有 MCP 连接。
+<a id="1-检查项目与环境"></a>
 
-## 2. 安装当前发布版本
+## 1. Check the project and environment
 
-在项目目录执行：
+- Run commands in the game project selected by the user. Do not create a game inside the toolkit installation. Preserve existing project rules and the user's chosen engine, style and scope.
+- Check `node --version` and `npm --version`. Node.js 22 or newer is required. Report missing requirements accurately; follow the user's and host's authorization rules before installing system software.
+- You need to read this document, read and write project files, and execute commands. A chat-only assistant cannot complete installation; do not claim that it has.
+- If the project already has a working owngame installation, read its installed Skill and call `capabilities` first. Preserve its version unless the user asks to install or update. Do not repeat setup or replace an existing MCP connection unnecessarily.
+
+<a id="2-安装当前发布版本"></a>
+
+## 2. Install the published toolkit
+
+Run in the game project directory:
 
 ```sh
 npx --yes @owngame/cli@latest setup --agent generic --apply
 ```
 
-这是所有助手共用的命令。`generic` 表示生成通用项目文件，不是让用户判断自己的助手类型。`@latest` 选择 npm 当前发布版本，setup 会把同一版本保存在项目 `.owngame/toolkit`，避免依赖临时 npx 缓存。已有稳定本地安装会继续使用其安装位置。
+This is the common command for all assistants. `generic` generates portable project files; it is not a request for the user to identify their assistant. `@latest` selects npm's currently published version. When launched from the temporary npx cache, setup installs that same version in the project's `.owngame/toolkit` so subsequent calls do not depend on the cache. An existing stable local installation keeps its installation location.
 
-解析成功输出中的 `runtime` 与 `applied`。只有进程成功退出且 `applied` 为 `true` 才表示接入文件已写入。读取 `.agents/skills/owngame/SKILL.md`，按任务需要继续读取它链接的 `references/` 文件；无需宿主自动发现 Skill。
+Parse `runtime` and `applied` from the successful output. Setup files have been written only when the process exits successfully and `applied` is `true`. Read `.agents/skills/owngame/SKILL.md`, then follow its `references/` links as needed for the task. Automatic Skill discovery by the host is not required.
 
-安装保留其他配置，对覆盖内容建立备份。遇到本地修改冲突时保留用户内容，说明冲突文件，不删除配置后重试。`.owngame/mcp.json` 是可选 MCP 连接信息；本流程使用 CLI，无需导入它、重启助手或等待 MCP 连接。
+Setup preserves unrelated configuration and backs up overwritten content. If it reports a local modification conflict, preserve the user's changes and identify the conflicting files. Do not delete configuration to force a retry. `.owngame/mcp.json` contains optional MCP connection information; this CLI workflow does not require importing it, restarting the assistant, or waiting for an MCP connection.
 
-## 3. 验证并使用 CLI
+<a id="3-验证并使用-cli"></a>
 
-将 `<runtime>` 替换为 setup 返回的实际 `runtime` 路径，保留引号以兼容空格路径。在同一个游戏项目目录执行：
+## 3. Verify and use the CLI
+
+Replace `<runtime>` with the actual `runtime` returned by setup. Keep the quotes to support paths containing spaces. Run in the same game project:
 
 ```sh
 node "<runtime>/dist/packages/cli/index.js" capabilities
 node "<runtime>/dist/packages/cli/index.js" doctor
 ```
 
-确认 `capabilities` 结果为 `succeeded`，`doctor` 的 `node_supported` 为 `true`、`knowledge` 为 `succeeded`。`doctor` 中 MCP、浏览器、引擎等 `not_checked` 字段不代表 CLI 安装失败，也不证明这些能力已经可用。
+Confirm that `capabilities` returns `succeeded`, and that `doctor` reports `node_supported: true` and `knowledge: succeeded`. A `not_checked` field for MCP, browsers or engines is neither a CLI installation failure nor evidence that those external capabilities work.
 
-后续用这个稳定入口调用操作。操作名与参数以 `capabilities` 为准；复杂 JSON 写入项目临时参数文件，再以 `@文件路径` 传入，避免不同终端的引号差异。例如新建游戏时，先检查目标目录不存在，再将下面内容保存为参数文件：
+Use this stable entry point for subsequent operations. Discover operation names and parameters through `capabilities`. For complex JSON, write a temporary parameter file in the project and pass it with `@file` to avoid shell quoting differences. For example, when the user wants a new game, first verify that the destination does not exist, then save this as `create-game.json`:
 
 ```json
 {"directory":"my-game","name":"my-game"}
 ```
 
 ```sh
-node "<runtime>/dist/packages/cli/index.js" project.create @参数文件路径
+node "<runtime>/dist/packages/cli/index.js" project.create @create-game.json
 ```
 
-只有用户希望新建游戏时才创建项目；已有游戏直接按任务修改。不要为验证安装而改动已有游戏或覆盖同名目录。
+Create a project only when the user wants a new game. For an existing game, continue the requested edits. Do not modify a game or overwrite an existing directory merely to verify installation.
 
-## 4. 开始创作
+<a id="4-开始创作"></a>
 
-简短说明安装版本、CLI 检查结果和实际阻碍，然后继续用户任务；没有游戏需求时，请用户描述想做的游戏。遵循 Skill：尽早交付完整可玩的核心循环，检查实际画面与输入，保留已有规则和存档。图片生成、浏览器试玩与外部引擎使用助手已有的工具，分别报告验证范围。
+## 4. Continue the user's game task
 
-这里验证的是 CLI 可用，不是所有助手宿主的适配认证，也不是游戏玩法、视觉或设备验收。MCP 属于可选增强，只有用户需要时才按[安装与接入](install.md)配置。
+Briefly report the installed version, CLI verification results and actual blockers, then continue the task. If no game request has been given, ask what the user wants to make. Follow the Skill: deliver a complete playable core loop early, inspect actual visuals and input, and preserve existing rules and saves. Use the host's available tools for image generation, browser playtesting and external engines; report each verification scope separately.
+
+These checks establish CLI availability. They do not certify every assistant host, game behavior, visual quality or target device. MCP is an optional enhancement; configure it through [installation and integration](install.md) only when needed.

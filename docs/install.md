@@ -1,56 +1,84 @@
-# 安装与 Agent 接入
+# Installation and agent integration
 
-需要 Node.js >=22。日常安装使用 `@latest` 获取 npm 当前发布版本；未发布的开发版本可从源码打包安装。
+[Documentation](README.md) · [中文入门](zh-CN/quickstart.md)
 
-## 推荐：把接入交给助手
+Requires Node.js >=22 and npm. Use `@latest` for the currently published npm release. Unpublished development versions can be packed and installed from source.
 
-在游戏项目中打开能读写文件、执行命令的 AI 编程助手，发送：
+<a id="推荐把接入交给助手"></a>
+
+## Recommended: let your assistant handle setup
+
+Open the game project in an AI coding assistant that can read and write files and run commands. Send:
 
 ```text
-请按照 https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md 在当前项目接入 owngame，完成安装和可用性检查，然后帮我做游戏。
+Follow https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md
+Set up owngame in this project, verify it works, then help me make a game.
 ```
 
-助手按[通用接入说明](agent-setup.md)安装工具、读取 Skill 并验证 CLI。无需用户选择助手类型、配置 MCP 或重载宿主。下面保留手动安装与可选 MCP 的详细步骤。
+The assistant follows the [universal setup instructions](agent-setup.md), reads the Skill and verifies the CLI. No assistant selection, MCP configuration or host reload is required for this path. The remaining sections cover manual installation and optional MCP integration.
 
-## 从本地安装包开始
+<a id="从-npm-安装当前发布版本"></a>
 
-源码目录执行 `npm ci` 和 `npm pack`。在另一个空目录安装输出的 tarball，将下方路径和 `<version>` 替换为实际生成的安装包路径与版本：
+## Install the published version manually
+
+Run in the game project directory:
+
+```sh
+npx @owngame/cli@latest setup --agent generic
+npx @owngame/cli@latest setup --agent generic --apply
+```
+
+The first command previews changes; `--apply` writes them. `generic` is the shared CLI path for any assistant with file and command access. Read the generated `.agents/skills/owngame/SKILL.md`, then use the returned `runtime` as described in [agent setup](agent-setup.md#3-verify-and-use-the-cli).
+
+When launched from the temporary npx cache, apply installs the same version in `.owngame/toolkit` and registers its absolute entry point. This requires npm network access and disables dependency installation scripts. An existing stable local installation uses its current location. After moving or deleting that installation, run setup again.
+
+To update when requested, rerun the `@latest` commands, previewing before applying. Projects do not update themselves in the background. Updating the toolkit does not migrate games that have already been created.
+
+<a id="从本地安装包开始"></a>
+
+## Install a local package
+
+In the toolkit source directory, run `npm ci` and `npm pack`. Install the resulting tarball in a separate empty directory. Replace the path and `<version>` with the actual package location and version:
 
 ```sh
 npm install "/absolute/path/owngame-cli-<version>.tgz"
 npx owngame --version
 npx owngame capabilities
-npx owngame setup --agent codex
-npx owngame setup --agent codex --apply
+npx owngame setup --agent generic
+npx owngame setup --agent generic --apply
 npx owngame doctor
 ```
 
-setup 默认只预览，--apply 才写入。所有写入限定当前项目，也可用 `--workspace /absolute/path` 选择已有目录。不要把安装包解压目录当作游戏工作目录。
+Writes are scoped to the current project. `--workspace /absolute/path` selects another existing directory. Do not use the toolkit's extracted package directory as the game workspace.
 
-| 接入方式 | 项目配置 | Skill |
+## Optional: configure host-specific MCP
+
+The CLI workflow above does not require this section. If the user wants MCP, select the matching setup adapter:
+
+| Adapter | Project configuration | Skill location |
 | --- | --- | --- |
-| codex | .codex/config.toml 中 owngame MCP 表 | .agents/skills/owngame |
-| cursor | .cursor/mcp.json 中 owngame 条目 | .cursor/skills/owngame |
-| generic | .owngame/mcp.json，供宿主手动导入 | .agents/skills/owngame，供手动读取 |
+| `codex` | owngame MCP table in `.codex/config.toml` | `.agents/skills/owngame` |
+| `cursor` | owngame entry in `.cursor/mcp.json` | `.cursor/skills/owngame` |
+| `generic` | `.owngame/mcp.json`, for manual host import | `.agents/skills/owngame`, for explicit reading |
 
-已有其他配置保留；覆盖的配置备份到 .owngame/setup-backups；已编辑的 owngame 配置和 Skill 会报冲突，需先合并自己的修改。重复应用相同内容不写新备份。安装不会修改全局配置或证明宿主已连接。重启宿主、信任项目配置并调用 owngame_capabilities 核对版本。Codex 只在受信任项目加载项目配置。Cursor 生成配置已测试；独立 Agent 创作体验仍需另行验证。
-
-依据：[Codex MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli)、[Skill](https://learn.chatgpt.com/docs/build-skills)、[Cursor MCP](https://cursor.com/docs/mcp)。
-
-## 从 npm 安装当前发布版本
-
-以下命令使用 npm 的 `latest` 发布标签，避免文档中的固定版本过期：
+For example, to preview and apply the Codex adapter:
 
 ```sh
 npx @owngame/cli@latest setup --agent codex
 npx @owngame/cli@latest setup --agent codex --apply
 ```
 
-从 npx 临时缓存启动时，apply 会把同一版本安装到项目 .owngame/toolkit，再注册其绝对入口，以免缓存清理后连接失效。该步骤需要 npm 网络访问，并禁用依赖安装脚本。已有稳定本地安装直接使用安装位置；移动或删除安装目录后需重新 setup。更新时重新运行上述 `@latest` 命令，先预览再应用。已有项目不会在后台自动更新。
+Setup preserves unrelated configuration and backs up overwritten content in `.owngame/setup-backups`. Locally edited owngame configuration and Skills cause conflicts; merge those changes first. Reapplying identical content does not create another backup. Setup does not modify global configuration or prove that the host is connected.
 
-## Skill 与 MCP 可分别使用
+For MCP, reload the host, trust the project configuration and call `owngame_capabilities` to check the version. Codex loads project configuration only for trusted projects. Generated Cursor configuration has been tested; independent agent authoring in that host still needs separate validation.
 
-只读 Skill 不会安装 MCP、浏览器或引擎。CLI 可独立使用：
+Host references: [Codex MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli), [Skills](https://learn.chatgpt.com/docs/build-skills), [Cursor MCP](https://cursor.com/docs/mcp).
+
+<a id="skill-与-mcp-可分别使用"></a>
+
+## Skill, CLI and MCP boundaries
+
+Reading a Skill does not install MCP, a browser or an engine. The CLI can be used independently:
 
 ```sh
 npx owngame research.prepare '{"query":"美术"}'
@@ -58,28 +86,30 @@ npx owngame project.create '{"directory":"my-game","name":"my-game"}'
 npx owngame guidance.get '{"topic":"web"}'
 ```
 
-CLI/MCP 共用核心，CLI 的 knowledge.search 对应 owngame_knowledge_search。退出码 0 succeeded、1 failed、2 unknown；@file 或 - 支持文件/stdin 参数。help/setup/doctor 是 CLI-only。旧工作流仅 --legacy 可见，不是创建游戏的前提。
+The Chinese query `美术` is an intentional keyword matching the bundled case metadata; it is not a requirement to use Chinese instructions. Search is keyword-based. Use terms present in the case library rather than assuming automatic translation or semantic retrieval.
 
-默认库仅三个公开历史案例。检索是关键词匹配；snapshot 模式仍为 unknown。当前来源指纹只证明摘要文件完整，不等于验证原作或重跑历史实验。使用 --knowledge 指向自己的同格式库；外部来源映射可放项目 .owngame/local.json。不要提交这个机器配置。
+CLI and MCP share the same core: `knowledge.search` maps to `owngame_knowledge_search`. Exit codes are `0` for `succeeded`, `1` for `failed`, and `2` for `unknown`. Use `@file` or `-` for file/stdin JSON. `help`, `setup` and `doctor` are CLI-only helpers. Historical workflows are visible only with `--legacy`; they are not prerequisites for game creation.
 
-## 运行边界与恢复
+The bundled library contains public historical case summaries. Snapshot mode remains `unknown`. A source fingerprint establishes summary-file integrity; it does not validate an upstream game or rerun a historical experiment. `--knowledge` selects a library with the same format. External source mappings may be stored in the project's `.owngame/local.json`; do not commit this machine-specific configuration.
 
-默认 Web 起点无需运行库。Phaser 模板需 npm install；Cocos 需外部 Creator 3.8.8，构建适配器只验证过特定 macOS 路径。图片生成、浏览器输入、手机和发布由宿主提供。doctor 不下载外部引擎、不测试物理手机，也不宣称 MCP 已连接。
+<a id="运行边界与恢复"></a>
 
-卸载前停止宿主连接。手动删除配置中的 owngame 管理块/条目与对应 Skill；保留其他服务器。然后可以删除项目 .owngame/toolkit 与 setup 清单。不要为卸载工具删除游戏源码、存档或整个 .owngame：其中可能包含用户的交付清单。当前没有自动卸载命令。
+## Runtime requirements and recovery
 
-## 创建 Unity 项目
+The default Web starter has no external runtime dependencies. The Phaser scaffold requires `npm install`. Cocos requires a separately installed Creator 3.8.8; its build adapter has only been verified in a specific macOS environment. Image generation, browser input, phone access and publication are host capabilities. `doctor` does not download engines, test a physical phone or certify MCP connectivity.
 
-需要 @owngame/cli 0.9.0+、Node.js 22+ 和单独安装的 Unity 6000.3.26f1。在工作目录运行：
+Before uninstalling an MCP integration, stop the host connection. Remove only the managed owngame configuration block/entry and its Skill, preserving other servers. You may then remove the project's `.owngame/toolkit` and setup manifests. Do not delete game source, saves or the entire `.owngame` directory: it may contain user delivery records. There is no automatic uninstall command.
+
+<a id="创建-unity-项目"></a>
+
+## Create a Unity project
+
+Use the latest published CLI with a separately installed Unity editor. The `unity-home` starter was introduced in CLI 0.9.0; its editor and package requirements are documented in the [template README](../templates/unity-home/README.md). Run in the intended workspace:
 
 ```sh
 npx @owngame/cli@latest project.create '{"directory":"my-unity-game","name":"my-unity-game","template":"unity-home"}'
 ```
 
-随后在 Unity Hub 添加 `my-unity-game`，打开 `Assets/Scenes/HomeArt.unity` 并点击 Play。
-首次导入时 Unity Package Manager 会获取项目依赖。规则、美术和验证入口见
-[模板说明](https://github.com/luka2chat/owngame/tree/main/templates/unity-home)。
+Add `my-unity-game` in Unity Hub, open `Assets/Scenes/HomeArt.unity` and press Play. Unity Package Manager retrieves project dependencies on first import. The template README covers gameplay, art and validation entry points.
 
-如果已经通过 `setup` 接入 AI 助手，再用 `npx @owngame/cli@latest setup --agent codex --apply`
-更新项目内的工具包，然后重载助手；Cursor 用户将 `codex` 改为 `cursor`。
-更新工具包不会迁移已经创建的游戏项目。
+If the project already uses setup and needs an update, preview and apply the same adapter used for its installation. Reload the host only if using its MCP connection. Updating the toolkit does not migrate existing game projects.

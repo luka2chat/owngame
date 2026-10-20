@@ -18,7 +18,7 @@ await fs.mkdir(path.dirname(out),{recursive:true});
 out=path.join(path.dirname(out),'.owngame-export-'+randomUUID());
 await fs.mkdir(out);
 try {
-const entries=['packages','starter-knowledge','skills','templates','scripts/toolkit','scripts/lib/codex-browser-preflight.mjs','scripts/release','tests/release','.github','tsconfig.json','README.md','LICENSE','THIRD_PARTY_NOTICES.md','CONTRIBUTING.md','SECURITY.md','CHANGELOG.md','docs/install.md','docs/agent-setup.md','docs/quickstart.md','docs/releasing.md','docs/style-recipes.json','docs/cases','docs/images'];
+const entries=['packages','starter-knowledge','skills','templates','scripts/toolkit','scripts/lib/codex-browser-preflight.mjs','scripts/release','tests/release','.github','tsconfig.json','README.md','LICENSE','THIRD_PARTY_NOTICES.md','CONTRIBUTING.md','SECURITY.md','CHANGELOG.md','docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','docs/install.md','docs/agent-setup.md','docs/quickstart.md','docs/releasing.md','docs/style-recipes.json','docs/cases','docs/images'];
 const manifest=[];
 async function copy(relative){
  const file=path.join(root,relative),stat=await fs.lstat(file);

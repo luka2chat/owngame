@@ -55,7 +55,12 @@
     "docs/images/",
     "docs/releasing.md",
     "CONTRIBUTING.md",
-    "SECURITY.md"
+    "SECURITY.md",
+    "docs/README.md",
+    "docs/zh-CN/quickstart.md",
+    "docs/remix.md",
+    "docs/open-source-games.md",
+    "docs/game-publishing.md"
   ],
   "publishConfig": {
     "access": "public"
