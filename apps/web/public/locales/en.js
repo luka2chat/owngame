@@ -1,5 +1,7 @@
 // Site copy only. Immutable game packages and their save formats stay separate.
 export const messages = {
+  使用与授权: "Usage & licensing",
+  "使用与授权 · owngame": "Usage & licensing · owngame",
   网站语言: "Website language",
   "owngame 首页": "owngame home",
   "owngame · 做属于自己的游戏": "owngame · Make it your game",

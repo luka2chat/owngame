@@ -110,6 +110,7 @@ test("every static translation marker has English copy and every page loads the 
     "index.html",
     "play.html",
     "privacy.html",
+    "usage.html",
     "404.html",
     "cases/star-letters/index.html",
   ]) {

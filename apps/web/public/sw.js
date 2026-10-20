@@ -53,6 +53,7 @@ self.addEventListener("fetch", (event) => {
         if (key === "/" || key === "/index.html") key = "/index.html";
         else if (key === "/play" || key === "/play.html") key = "/play.html";
         else if (key === "/privacy" || key === "/privacy.html") key = "/privacy.html";
+        else if (key === "/usage" || key === "/usage.html") key = "/usage.html";
         else if (key.endsWith('/') && CORE_FILES.includes(key + 'index.html')) key += 'index.html';
       }
       try {

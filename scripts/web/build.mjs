@@ -3,6 +3,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import {readGameEntries} from "./catalog.mjs";
 import {loadPublishedSources} from "../games/source-policy.mjs";
+import {writeUsagePage} from "./usage.mjs";
 const root = path.resolve(import.meta.dirname, "../.."),
   out = process.env.OWNGAME_WEB_OUT ? path.resolve(process.env.OWNGAME_WEB_OUT) : path.join(root, "apps/web/dist");
 // A separate candidate library supports batch acceptance without changing the live selection.
@@ -16,9 +17,10 @@ const sources = await loadPublishedSources(process.env.OWNGAME_SOURCE_COMMIT || 
 await fs.rm(out, { recursive: true, force: true });
 await fs.mkdir(out, { recursive: true });
 await fs.cp(path.join(root, "apps/web/public"), out, { recursive: true });
+await writeUsagePage(root, out);
 // Pages visitors may still have the previous shell scripts in their HTTP cache.
 // Version only the gallery/player shell; frozen game files remain byte-identical.
-for (const page of ["index.html", "play.html"]) {
+for (const page of ["index.html", "play.html", "usage.html"]) {
   const file = path.join(out, page);
   let html = await fs.readFile(file, "utf8");
   const links = [...html.matchAll(/((?:src|href)=")\/(?!\/)([^"?]+\.(?:js|css))(?:\?[^"\s]*)?("\s*\/?>?)/g)];

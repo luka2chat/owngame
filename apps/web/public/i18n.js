@@ -65,7 +65,7 @@ export function localizeUrl(value, locale = language) {
   const url = new URL(value, base);
   if (
     url.origin !== new URL(base).origin ||
-    !/^\/(?:$|index(?:\.html)?\/?$|play(?:\.html)?\/?$|privacy(?:\.html)?\/?$|cases\/)/.test(
+    !/^\/(?:$|index(?:\.html)?\/?$|play(?:\.html)?\/?$|privacy(?:\.html)?\/?$|usage(?:\.html)?\/?$|cases\/)/.test(
       url.pathname,
     )
   )

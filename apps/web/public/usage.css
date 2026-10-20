@@ -1,0 +1,23 @@
+.usage-page .topbar { gap:24px; }
+.usage-page .top-mine { white-space:nowrap; }
+.usage-main { width:min(880px,100%); margin:48px auto 0; padding:0 28px; }
+.usage-main h1 { display:flex;align-items:center;gap:16px;font-size:clamp(30px,5vw,44px);margin:12px 0 28px; }
+.usage-card { background:#fffdf6;border:3px solid var(--ink);border-radius:22px;box-shadow:0 7px 0 var(--ink);padding:28px 34px;margin-bottom:42px;line-height:1.9;overflow-wrap:anywhere; }
+.usage-card p { margin:0 0 22px; }
+.usage-card p:first-child { background:var(--yellow);border:2px solid var(--ink);border-radius:10px;padding:14px 18px; }
+.usage-card p:last-child { margin-bottom:0; }
+.usage-card ul { padding-left:24px; }
+.usage-card li { margin:0 0 16px;padding-left:5px; }
+.usage-card li::marker { color:var(--red); }
+.usage-card a,.usage-entry a { color:var(--blue);text-decoration:underline;text-underline-offset:4px; }
+.usage-card code { background:#f0eadb;border-radius:4px;padding:2px 5px;font-size:.9em; }
+.usage-entry { margin:24px 0 0;font-size:13px; }
+.usage-entry a { display:inline-flex;align-items:center;min-height:44px; }
+.usage-main footer { flex-wrap:wrap; }
+@media(max-width:600px) {
+  .usage-page .topbar { gap:10px;padding-inline:16px; }
+  .usage-page .top-mine { padding:9px;font-size:12px; }
+  .usage-main { margin-top:30px;padding:0 18px; }
+  .usage-card { padding:20px 18px;font-size:14px;border-radius:16px; }
+  .usage-card p:first-child { padding:12px; }
+}

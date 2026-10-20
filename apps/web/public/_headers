@@ -36,3 +36,9 @@
   Cache-Control: no-cache
 /manifest*.webmanifest
   Cache-Control: no-cache
+/usage
+  Cache-Control: no-cache
+/usage.html
+  Cache-Control: no-cache
+/usage.css
+  Cache-Control: no-cache
