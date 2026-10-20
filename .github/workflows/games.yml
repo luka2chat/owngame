@@ -16,7 +16,7 @@ jobs:
       - run: node scripts/games/verify.mjs
       - run: node scripts/games/build-all.mjs
       - run: node scripts/games/rebuild-report.mjs
-      - run: node --test examples/star-letters/web/download.test.mjs
+      - run: node --test examples/star-letters/web/*.test.mjs
       - run: npx playwright install --with-deps chromium
       - run: node scripts/games/smoke.mjs
       - uses: actions/upload-artifact@v4

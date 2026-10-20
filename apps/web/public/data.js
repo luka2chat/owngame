@@ -1,5 +1,6 @@
 import { t, localizeUrl } from "./i18n.js";
 import { track, gameParams, eventId } from "./analytics.js";
+import { imageAssets } from "./image-assets.js";
 export const $ = (id) => document.getElementById(id);
 export function element(tag, cls, text) {
   const e = document.createElement(tag);
@@ -36,7 +37,14 @@ export function art(g, { priority = false } = {}) {
     img.loading = priority ? "eager" : "lazy";
     img.fetchPriority = priority ? "high" : "auto";
     img.decoding = "async";
-    img.src = g.cover;
+    const optimized = imageAssets[g.cover];
+    if (optimized) {
+      img.width = optimized.width;
+      img.height = optimized.height;
+      img.sizes = "(max-width: 760px) calc((100vw - 55px) / 2), (max-width: 1100px) calc((100vw - 258px) / 2), 580px";
+      img.srcset = optimized.srcset || "";
+    }
+    img.src = optimized?.src || g.cover;
     img.alt = "";
     a.append(img);
     return a;
