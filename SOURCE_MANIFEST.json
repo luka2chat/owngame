@@ -1029,8 +1029,8 @@
     },
     {
       "path": "docs/game-publishing.md",
-      "bytes": 3986,
-      "sha256": "d865fd5c0dfd6540bab1dfa0a56a3df2277cba9fbb8c5f366ee8781a2f7801f4"
+      "bytes": 4181,
+      "sha256": "233f4849375379a4baa21527edc5fbd3d6ea0e52a0da5f442db175b8665ac4cc"
     },
     {
       "path": "docs/images/arcade-mascot.png",
@@ -8803,6 +8803,11 @@
       "sha256": "eb94d36db4db7744cf7ba848abe5dde98e8fac8e8b85426f1ae88e0bd5602341"
     },
     {
+      "path": "scripts/games/preflight.mjs",
+      "bytes": 1206,
+      "sha256": "4731c65f57c8e699dc0f3817bed89da7d28db6374ed81b050f2e28fda48cdafd"
+    },
+    {
       "path": "scripts/games/projects.json",
       "bytes": 1627,
       "sha256": "3a6ecde41f4465b636988a760d8b5c74fef475988ee31133bc67c6b946a026a6"
@@ -8839,8 +8844,8 @@
     },
     {
       "path": "scripts/games/sync.mjs",
-      "bytes": 6683,
-      "sha256": "a9392a813164a81a49ac9d901b816bc1b1111c4a69739a4286d931609d894cfd"
+      "bytes": 6862,
+      "sha256": "871e45dc722b9b7eb901a37b35db0948630a2f54b66013906b301e2890bdaa6f"
     },
     {
       "path": "scripts/games/verify.mjs",
@@ -10266,6 +10271,11 @@
       "path": "tests/android/WebViewTests.java",
       "bytes": 8899,
       "sha256": "c20f1c4cc11ddc324267810ff8329e55a63e579072cf969a3e205a7b001f8448"
+    },
+    {
+      "path": "tests/games/preflight.test.mjs",
+      "bytes": 2108,
+      "sha256": "c97de8e4a6d7a70b57af1fb3cf1cea00afd47ae0c7714c4b3311a2a222ce3a0e"
     },
     {
       "path": "tests/games/source-policy.test.mjs",

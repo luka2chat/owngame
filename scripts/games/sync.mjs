@@ -3,6 +3,7 @@ import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {readGameEntries} from '../web/catalog.mjs';
 import {validateCoverage} from './source-policy.mjs';
+import {preflightSource} from './preflight.mjs';
 const root=path.resolve(import.meta.dirname,'../..');
 const args=process.argv.slice(2);
 if(args.length!==2 || args[0]!=='--repository-dir') throw Error('Usage: node scripts/games/sync.mjs --repository-dir <clean public repository checkout>');
@@ -53,6 +54,8 @@ for(const game of index.games.filter(g=>g.kind!=='unity')) {
 }
 execFileSync(process.execPath,[path.join(root,'scripts/games/refresh-manifests.mjs'),repo],{stdio:'inherit'});
 execFileSync(process.execPath,[path.join(root,'scripts/games/verify.mjs'),repo],{stdio:'inherit'});
+// Fail before a commit or push if copied tests reference missing modules or untranslated page copy.
+await preflightSource(repo);
 git('add',...catalogFiles,'examples','games.json','scripts/games','tests/games','tests/web','scripts/web','scripts/lib/codex-browser-preflight.mjs',
   '.github/workflows/games.yml','docs/open-source-games.md','docs/game-publishing.md','apps/web','package.json','README.md');
 execFileSync(process.execPath,[path.join(root,'scripts/games/refresh-root-manifest.mjs'),repo],{stdio:'inherit'});
