@@ -8,7 +8,7 @@
 
 [![npm](https://img.shields.io/npm/v/%40owngame%2Fcli?label=npm&color=2563eb)](https://www.npmjs.com/package/@owngame/cli) [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A5%2022-339933)](package.json) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Discord 社区](https://img.shields.io/badge/Discord-%E5%8A%A0%E5%85%A5%E7%A4%BE%E5%8C%BA-5865F2?logo=discord&logoColor=white)](https://discord.gg/X5cYjTaD)
 
-[试玩游戏](https://owngame.dev) · [快速开始](#快速开始) · [Discord 社区](https://discord.gg/X5cYjTaD) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [使用与授权](#使用与授权) · [English](#english)
+[试玩游戏](https://owngame.dev) · [平台一览](#平台一览) · [快速开始](#快速开始) · [Discord 社区](https://discord.gg/X5cYjTaD) · [工作原理](#工作原理) · [创意案例](#创意案例) · [3D 推荐](#3d-推荐) · [路线图](#支持路线图) · [文档](#文档) · [使用与授权](#使用与授权) · [English](#english)
 
 </div>
 
@@ -17,6 +17,17 @@
 <p align="center"><strong>玩你喜欢的，复刻属于你的。</strong><br>射击、冒险、音乐、拼图——从一种乐趣，开始你的游戏。</p>
 
 owngame 把参考研究、视觉设计、项目创建与交付检查，接入你已有的 AI 助手。在 [owngame.dev](https://owngame.dev) 找到喜欢的游戏，点击 **复刻**，把具体的玩法与视觉参考交给 AI，换一个主题、改一条规则，做出自己的版本。你也可以直接从一句想法开始。
+
+## 平台一览
+
+[![owngame 电脑端与移动端同框展示：基于实际网站界面生成的 AI 设备效果图](docs/images/owngame-platform-devices-v1.png)](https://owngame.dev)
+
+[owngame.dev](https://owngame.dev) 是面向电脑与手机的游戏库：浏览分类、收藏喜欢的游戏、查看最近玩过的内容，并在下载完成后离线游玩。
+
+想把喜欢的玩法变成自己的作品？点击 **复刻**，把参考说明和对应源码链接交给你的 AI 助手，继续调整主题、美术与规则。游戏体验与创作入口，在同一个平台衔接。
+
+[打开游戏库 ↗](https://owngame.dev) · [开始创作](#快速开始)
+
 
 ## 创意案例
 
