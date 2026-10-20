@@ -26,14 +26,14 @@
 .case-notes>p { max-width:62em; }
 .case-notes details { border:2px solid var(--ink);border-radius:10px;margin-top:22px;background:#fffdf5;padding:0 18px; }
 .case-notes summary { cursor:pointer;padding:15px 0;min-height:48px;font-weight:800; }
-.case-notes a,.case-footer>a { color:var(--blue);font-weight:750;text-decoration:underline;text-underline-offset:3px; }
+.case-notes a,.case-credits>a { color:var(--blue);font-weight:750;text-decoration:underline;text-underline-offset:3px; }
 .case-notes li { margin:6px 0; }
-.case-footer { padding-top:32px; }
-.case-footer>a { display:inline-flex;align-items:center;min-height:44px; }
-.case-footer p { color:#756851;font-size:12px;line-height:1.8;margin-top:24px; }
+.case-credits { padding-top:32px; }
+.case-credits>a { display:inline-flex;align-items:center;min-height:44px; }
+.case-credits p { color:#756851;font-size:12px;line-height:1.8;margin-top:24px; }
 @media(max-width:900px) { .case-hero { grid-template-columns:1fr;gap:16px; }.case-intro { padding:0; }.case-description { max-width:40em; }.case-chapters { gap:14px; } }
 @media(max-width:600px) { .case-body .detail-main { padding:20px 18px 32px; }.case-body .topbar { height:auto;min-height:76px;padding:16px 18px;gap:16px; }.case-body .search { display:none; }.case-body .top-mine { display:block;padding:10px;font-size:12px; }.case-body .wordmark { font-size:34px; }.case-chapters { grid-template-columns:1fr; }.case-body h2 { font-size:20px; }.case-preview figcaption { font-size:11px; }.case-intro h1 { margin-top:22px; }.case-notes ul { padding-left:20px; } }
 /* A case is a normal site page, including on phones; the player-only hiding rules do not apply. */
 .case-body .player-header,.case-body .player-breadcrumb { display:flex; }
-.case-body .case-footer { display:block; }
+.case-body .case-credits { display:block; }
 @media(max-width:600px) { .case-body .top-mine { display:none; } }

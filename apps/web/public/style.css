@@ -656,6 +656,7 @@ footer button {
   flex-wrap: wrap;
   gap: 8px 20px;
   padding: 14px 0;
+  margin-top: 32px;
 }
 .site-footer nav {
   display: flex;

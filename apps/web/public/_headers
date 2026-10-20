@@ -9,6 +9,8 @@
   Cache-Control: no-cache
 /app.js
   Cache-Control: no-cache
+/footer.js
+  Cache-Control: no-cache
 /play.js
   Cache-Control: no-cache
 /data.js

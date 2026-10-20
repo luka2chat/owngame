@@ -122,6 +122,7 @@
  .landscape-player .player-actions { max-width:680px; }
 }
 .player-body:fullscreen { background:#081b24; }
+.player-body:fullscreen .site-footer { display:none; }
 .player-body:fullscreen .player-header,.player-body:fullscreen .player-info,.player-body:fullscreen .player-breadcrumb,.player-body:fullscreen .player-recommend,.player-body:fullscreen .player-tools { display:none; }
 .player-body:fullscreen .detail-main { max-width:none;margin:0;padding:0; }
 .player-body:fullscreen .player-layout { display:flex;justify-content:center;height:100dvh;padding:0;gap:0; }
@@ -140,6 +141,7 @@
  .recommend-game { gap:10px; }
 }
 @media (max-width:760px), (pointer:coarse) and (max-height:650px) {
+ .player-body .site-footer { margin-top:0;padding:16px 20px;background:var(--paper);color:var(--ink); }
  .player-root,.player-body { background:#081b24;color:#fff8e8; }
  .player-header,.player-info,.player-breadcrumb,.player-recommend,.player-tools { display:none; }
  .detail-main { max-width:none;margin:0;padding:0; }

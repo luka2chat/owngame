@@ -339,29 +339,6 @@ document.addEventListener("keydown", (e) => {
     $("search").focus();
   }
 });
-$("offline-help").onclick = () => {
-  track("offline_help");
-  $("info").showModal();
-};
-document
-  .querySelectorAll(".dialog-close")
-  .forEach((b) => (b.onclick = () => $("info").close()));
-let installEvent;
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  installEvent = e;
-  $("install").hidden = false;
-});
-$("install").onclick = async () => {
-  if (installEvent) {
-    track("install_prompt");
-    await installEvent.prompt();
-    const choice = await installEvent.userChoice;
-    track("install_choice", { outcome: choice.outcome });
-    installEvent = null;
-    $("install").hidden = true;
-  }
-};
 window.addEventListener("storage", () => {
   favorites = new Set(getStore("favorites", []));
   recent = getStore("recent", {});
