@@ -1,5 +1,7 @@
 // Site copy only. Immutable game packages and their save formats stay separate.
 export const messages = {
+  "网站链接": "Site links",
+  "项目 GitHub 仓库": "Project GitHub repository",
   使用与授权: "Usage & licensing",
   "使用与授权 · owngame": "Usage & licensing · owngame",
   网站语言: "Website language",
@@ -118,9 +120,10 @@ export const messages = {
   继续玩: "Keep playing",
   制作案例: "Making of",
   "游戏源码 ↗": "Game source ↗",
-  左右移动战机: "Move your ship left and right",
-  按住持续开火: "Hold to keep firing",
-  移动并自动开火: "Move and fire automatically",
+  上下左右移动战机: "Move your ship in all four directions",
+  拖动战机上下左右移动: "Drag your ship in all four directions",
+  暂停或继续: "Pause or resume",
+  战斗中持续自动开火: "Your ship fires automatically during combat",
   空格: "Space",
   鼠标拖动: "Drag with the mouse",
   "游戏已下载，可在当前浏览器离线玩":
@@ -261,7 +264,7 @@ export const games = {
     description:
       "Dodge bullets, collect upgrades, and face a boss every three waves.",
     instructions:
-      "Use the left and right buttons to move and hold Fire to shoot, or drag the ship to move and fire automatically. Collect weapon, health, and repair pickups to reach higher waves. Supports pause and resume.",
+      "Your ship fires continuously during combat. Drag with your finger or mouse to move in all four directions, or use the arrow keys or WASD. Press Esc to pause or resume. Collect weapon, life, and repair pickups to reach higher waves. Supports saved progress.",
   },
   "faune-dungeon": {
     title: "Faune Dungeon",

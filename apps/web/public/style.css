@@ -179,7 +179,6 @@ main > .language-switch { float: right; margin: 0 0 16px 16px; }
 :lang(en) .nav-button .symbol { flex-shrink: 0; }
 :lang(en) .welcome h1 { line-height: 1.15; }
 :lang(en) .welcome p { max-width: 28em; }
-:lang(en) .community-link { font-size: 12px; }
 :lang(en) .card-foot { flex-wrap: wrap; }
 :lang(en) .card-info h3 { overflow-wrap: anywhere; }
 @media (max-width: 760px) {
@@ -205,6 +204,8 @@ main > .language-switch { float: right; margin: 0 0 16px 16px; }
 }
 .sidebar nav {
   display: grid;
+  flex: 1;
+  align-content: start;
   grid-template-columns: minmax(0, 1fr);
   gap: 7px;
   min-height: 0;
@@ -248,57 +249,6 @@ main > .language-switch { float: right; margin: 0 0 16px 16px; }
 }
 .nav-button:not(.active):hover {
   background: #e8dfca;
-}
-.sidebar-note {
-  margin-top: auto;
-  text-align: center;
-  padding-top: 25px;
-}
-.community-link {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  margin-top: 16px;
-  padding: 10px 8px;
-  border: 2px solid var(--ink);
-  border-radius: 12px;
-  background: var(--yellow);
-  box-shadow: 0 3px var(--ink);
-  font-size: 13px;
-  font-weight: 750;
-}
-.community-link:hover {
-  background: #ffe16b;
-}
-.sidebar-note img {
-  display: block;
-  width: 117px;
-  height: 117px;
-  object-fit: contain;
-  margin: 0 auto 10px;
-  transform: rotate(-5deg);
-}
-.sidebar-note strong {
-  font-size: 14px;
-}
-.sidebar-note p {
-  font-size: 12px;
-  color: #7b705b;
-}
-.sidebar-note button {
-  font-size: 12px;
-  border: 1px solid;
-  background: transparent;
-  border-radius: 6px;
-  padding: 8px;
-}
-.about-link {
-  font-size: 12px;
-  color: #7b705b;
-  text-align: center;
-  margin-top: 20px;
 }
 .main {
   margin-left: 224px;
@@ -663,6 +613,33 @@ footer button {
   font-size: 11px;
   color: inherit;
 }
+.site-footer {
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 14px 0;
+}
+.site-footer nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 18px;
+}
+.site-footer a,
+.site-footer button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 0;
+  margin: 0;
+  font: inherit;
+  color: var(--blue);
+}
+.site-footer a:hover,
+.site-footer button:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-footer .footer-copyright { margin-left: auto; }
 #mobile-categories {
   display: none;
 }
@@ -761,10 +738,6 @@ dialog p {
   .cover-label {
     font-size: 28px;
   }
-  .sidebar-note img {
-    width: 100px;
-    height: 100px;
-  }
 }
 @media (max-width: 760px) {
   .topbar {
@@ -787,10 +760,7 @@ dialog p {
     font-size: 12px;
   }
   .search kbd,
-  .top-mine,
-  .sidebar-note,
-  .community-link,
-  .about-link {
+  .top-mine {
     display: none;
   }
   .sidebar {
@@ -804,6 +774,7 @@ dialog p {
   }
   .sidebar nav {
     display: flex;
+    flex: none;
     overflow: auto;
     gap: 7px;
     scrollbar-width: none;
@@ -920,9 +891,6 @@ dialog p {
     gap: 10px;
     flex-wrap: wrap;
     font-size: 10px;
-  }
-  footer span:nth-child(2) {
-    display: none;
   }
   .search:focus-within {
     outline: 2px solid var(--blue);

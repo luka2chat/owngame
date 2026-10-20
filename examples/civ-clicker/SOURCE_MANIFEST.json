@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "civ-clicker",
   "online_build_sha256": "441e2c1e2b5fd8de0f896aa1b410e8b0b149eaf873bf4fb8d57323ae644b2c4c",
-  "input_sha256": "c5f9689fa93bbb369676a7daf9ab03656bede2fee35c4c0590485ff677014660",
+  "input_sha256": "f6cc5ef9a534a5bb81ce994df5584122483377d00cc42896064fd58722d25703",
   "files": [
     {
       "path": ".gitignore",

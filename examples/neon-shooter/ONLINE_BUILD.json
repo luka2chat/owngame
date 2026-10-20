@@ -1,6 +1,6 @@
 {
   "id": "neon-shooter",
-  "build_sha256": "a4771608c65d51937134248f018755ced00c9f28f5164f88cede7cf029d5f5e3",
+  "build_sha256": "14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4",
   "entrypoint": "index.html",
   "files": [
     {
@@ -24,9 +24,9 @@
       "sha256": "0f79e43e8e1a8ecaa91c994a7f2df9c37ae78a52808c51f72ed7774e6ed1289f"
     },
     {
-      "bytes": 36898,
+      "bytes": 35139,
       "path": "index.html",
-      "sha256": "3bba809ec8a776f0befa554c830761c9a62548de869efdc00f3c91dcfb213172"
+      "sha256": "7004896826c42bffd1ff48e3141c671105aba13ccc17550e96ad8527da36b80b"
     },
     {
       "bytes": 1334,
@@ -34,19 +34,19 @@
       "sha256": "bf65688e08b87bbcfb27eba55c36b1c8bb57635defdc76eb0f6a2f5dc3f18e6c"
     },
     {
-      "bytes": 7024,
+      "bytes": 6675,
       "path": "owngame.css",
-      "sha256": "83e2037e3756f607f432bec4c0478309e8ace69c6b01a8d4c938fd0e7c993ed1"
+      "sha256": "5d5e875b6badef2c0c4760db04ea72e16c4a73173cfd0fc482da2e3eaa4a0f14"
     },
     {
-      "bytes": 8369,
+      "bytes": 8740,
       "path": "owngame.js",
-      "sha256": "d1b089054447709da38c818b24ec3657541154eacea4818cafe0e338eaf52012"
+      "sha256": "664f0a1f92717859825546e03573ef9199901f4f860d0bcfa3c02443e0b6530a"
     },
     {
-      "bytes": 2247,
+      "bytes": 1864,
       "path": "README.md",
-      "sha256": "27ac2cec3948324e1025f56d026a643f2debc2cd09419a6dac654d8ad5bd988c"
+      "sha256": "ac5c7bf571456b59594d984e93e9fec25bff4fac7fd0ca09802fb83b4ecc950c"
     },
     {
       "bytes": 415,

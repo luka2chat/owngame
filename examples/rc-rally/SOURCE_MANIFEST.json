@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "rc-rally",
   "online_build_sha256": "45c4d8caa12114314f38206170906dae067dea111574e6fffecb4817dfab14ee",
-  "input_sha256": "18fe7c7c911a2f80f931f4f3408b14ea439c98f35fdf34e47486b096d4e2827e",
+  "input_sha256": "b1f57272fa3b758ac8ba907e3765ccc7b456ef5373ede79b7df77326d1083d3f",
   "files": [
     {
       "path": ".gitignore",

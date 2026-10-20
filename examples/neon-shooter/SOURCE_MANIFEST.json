@@ -1,8 +1,8 @@
 {
   "schema": "owngame.game-source.v1",
   "id": "neon-shooter",
-  "online_build_sha256": "a4771608c65d51937134248f018755ced00c9f28f5164f88cede7cf029d5f5e3",
-  "input_sha256": "294f83590a4a46e4186c74098c1f54169eb71bf43727e963952a9ee57235aba3",
+  "online_build_sha256": "14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4",
+  "input_sha256": "b2fe9f5fb8a32189eb3044e8eb21e084a91e7880e6fe4e3f3dabce3dfeaf678b",
   "files": [
     {
       "path": ".gitignore",
@@ -17,7 +17,7 @@
     {
       "path": "game.json",
       "bytes": 336,
-      "sha256": "9c23594b50a122e313d6e2658e3a120d128307122afc277ddc5cd7fc9e23162b"
+      "sha256": "2d16bb8b5f3bcc4d88d1b664cd365b11c8648aafa8268e9863f08d9ca2fb9fb8"
     },
     {
       "path": "LICENSE",
@@ -27,7 +27,7 @@
     {
       "path": "ONLINE_BUILD.json",
       "bytes": 1649,
-      "sha256": "528b51720f79a7c2774f45700b5fbd14ba2b216b055e4842a01129e822aa6b94"
+      "sha256": "5ea6cdb74cf04723efc0bdb92d777e111f65bc1badade6ec5c9373520336cb3b"
     },
     {
       "path": "package-lock.json",
@@ -61,8 +61,8 @@
     },
     {
       "path": "public/index.html",
-      "bytes": 36898,
-      "sha256": "3bba809ec8a776f0befa554c830761c9a62548de869efdc00f3c91dcfb213172"
+      "bytes": 35139,
+      "sha256": "7004896826c42bffd1ff48e3141c671105aba13ccc17550e96ad8527da36b80b"
     },
     {
       "path": "public/LICENSE.txt",
@@ -71,13 +71,13 @@
     },
     {
       "path": "public/owngame.css",
-      "bytes": 7024,
-      "sha256": "83e2037e3756f607f432bec4c0478309e8ace69c6b01a8d4c938fd0e7c993ed1"
+      "bytes": 6675,
+      "sha256": "5d5e875b6badef2c0c4760db04ea72e16c4a73173cfd0fc482da2e3eaa4a0f14"
     },
     {
       "path": "public/owngame.js",
-      "bytes": 8369,
-      "sha256": "d1b089054447709da38c818b24ec3657541154eacea4818cafe0e338eaf52012"
+      "bytes": 8740,
+      "sha256": "664f0a1f92717859825546e03573ef9199901f4f860d0bcfa3c02443e0b6530a"
     },
     {
       "path": "public/SOURCE.json",
@@ -86,8 +86,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1249,
-      "sha256": "fcdfcfb6b84aabf7833b76cb780404e6d153dc1fb0b2886c28dc955e80c77f73"
+      "bytes": 1294,
+      "sha256": "f6b725dd0db39fcf9af7dbeb20f8307fa7d299fa7b53b8fb07e506aedae84359"
     },
     {
       "path": "serve.mjs",

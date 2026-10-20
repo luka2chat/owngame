@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "wind-chime-memory",
   "online_build_sha256": "2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995",
-  "input_sha256": "541a09e7a2d0ee79d370d14dea6cf5a43f433373985ddd7e2540c9bbf8dccada",
+  "input_sha256": "443b4a0e8df633aeb5c726e81387a835a05d66d0ea4e7afdf11ebae0f17e8c69",
   "files": [
     {
       "path": ".gitignore",

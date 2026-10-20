@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "moss-reversi",
   "online_build_sha256": "f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e",
-  "input_sha256": "b90708d494b35d486e5b8ccda2c2d7d9886f0334762090182c07d1b441ad06b6",
+  "input_sha256": "ff64ed556d811cbe1fe0b4dd46a996246adfa2ab0a020fd3078a4aaa55ca5340",
   "files": [
     {
       "path": ".gitignore",

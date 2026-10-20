@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "signal-harbor",
   "online_build_sha256": "7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99",
-  "input_sha256": "f7d484aa0544976d084b2881197bfd2e1c6d0be24ae1c229875ccf30647f3286",
+  "input_sha256": "7f94b53c2fc96f2f162789004a9ea11fd2ed22ac78b98e114c2bb93ee74a5b6b",
   "files": [
     {
       "path": ".gitignore",

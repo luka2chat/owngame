@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "silk-serpent",
   "online_build_sha256": "5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a",
-  "input_sha256": "a3a4f5324c0693d0a25e784af49f149fba151eb214fde93a8364559d4a6615fb",
+  "input_sha256": "2fe1527468ab2186fdd35706e0f32ae6d961e8366b417ce6f78fd97ed2bcfb42",
   "files": [
     {
       "path": ".gitignore",

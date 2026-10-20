@@ -2,14 +2,25 @@
 const SAVE_KEY = 'owngame:neon-shooter:v1';
 let paused = false, bestScore = 0, savedFlight = null, incompatibleSave = false;
 const byId = id => document.getElementById(id);
-const isTouch = () => matchMedia('(pointer:coarse), (max-width:768px)').matches;
-function flightY() { return canvas.height - (isTouch() && canvas.height > 500 ? 155 : 80); }
+function flightY() { return Math.max(34, canvas.height - 80); }
+function clampPlayer() {
+    const marginX = Math.min(34, canvas.width / 2);
+    const top = Math.min(34, canvas.height / 2);
+    const bottom = Math.max(top, canvas.height - 46);
+    player.x = Math.max(marginX, Math.min(canvas.width - marginX, player.x));
+    player.y = Math.max(top, Math.min(bottom, player.y));
+}
+let dragPointer = null, lastDragPosition = null;
 function clearInput() {
     for (const key of Object.keys(keys)) delete keys[key];
-    mobileLeft = mobileRight = mobileFire = false;
-    dragPointer = null;
+    clearDrag();
 }
-let dragPointer = null, lastDragX = 0;
+function clearDrag() {
+    const pointer = dragPointer;
+    dragPointer = null;
+    lastDragPosition = null;
+    if (pointer !== null && canvas.hasPointerCapture(pointer)) canvas.releasePointerCapture(pointer);
+}
 function showFlightControls() {
     byId('pause-btn').hidden = false;
     byId('credits-btn').hidden = true;
@@ -75,49 +86,53 @@ function scalePositions(oldW, oldH) {
             if (entity.amplitude !== undefined) entity.amplitude *= sx;
         }
     }
-    player.x = Math.max(25, Math.min(canvas.width - 25, player.x * sx));
-    player.y = flightY();
+    player.x *= sx;
+    player.y *= sy;
+    clampPlayer();
 }
-let measuredWidth = canvas.width, measuredHeight = canvas.height;
-new ResizeObserver(() => {
-    const oldW = measuredWidth, oldH = measuredHeight;
+function resizeFlight() {
+    const oldW = canvas.width, oldH = canvas.height;
     resize();
-    measuredWidth = canvas.width; measuredHeight = canvas.height;
-    if (oldW !== measuredWidth || oldH !== measuredHeight) {
+    if (oldW !== canvas.width || oldH !== canvas.height) {
+        clearInput();
         scalePositions(oldW, oldH);
         initStars();
     }
-}).observe(byId('viewport'));
-function setupMobile(id, down, up) {
-    const button = byId(id);
-    button.addEventListener('pointerdown', event => {
-        event.preventDefault();
-        if (!game.running || paused) return;
-        button.setPointerCapture(event.pointerId); initAudio(); down();
-    });
-    for (const name of ['pointerup','pointercancel','lostpointercapture']) button.addEventListener(name, up);
 }
-setupMobile('left-btn', () => {mobileLeft = true;}, () => {mobileLeft = false;});
-setupMobile('right-btn', () => {mobileRight = true;}, () => {mobileRight = false;});
-setupMobile('fire-btn', () => {mobileFire = true;}, () => {mobileFire = false;});
+new ResizeObserver(resizeFlight).observe(byId('viewport'));
+window.addEventListener('resize', resizeFlight);
+function flightPoint(event) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+        x:(event.clientX - rect.left) * canvas.width / rect.width,
+        y:(event.clientY - rect.top) * canvas.height / rect.height
+    };
+}
 canvas.addEventListener('pointerdown', event => {
-    if (!game.running || paused) return;
+    if (!game.running || paused || dragPointer !== null || !event.isPrimary || event.button !== 0) return;
     event.preventDefault(); canvas.setPointerCapture(event.pointerId);
-    dragPointer = event.pointerId; lastDragX = event.clientX; mobileFire = true; initAudio();
+    dragPointer = event.pointerId; lastDragPosition = flightPoint(event); initAudio();
 });
 canvas.addEventListener('pointermove', event => {
-    if (event.pointerId !== dragPointer || paused) return;
-    player.x = Math.max(25, Math.min(canvas.width - 25, player.x + event.clientX - lastDragX));
-    lastDragX = event.clientX;
+    if (event.pointerId !== dragPointer || !game.running || paused) return;
+    event.preventDefault();
+    const point = flightPoint(event);
+    // Relative movement preserves the initial finger offset, including at a boundary.
+    player.x += point.x - lastDragPosition.x;
+    player.y += point.y - lastDragPosition.y;
+    clampPlayer();
+    lastDragPosition = point;
 });
 for (const name of ['pointerup','pointercancel','lostpointercapture']) canvas.addEventListener(name, event => {
-    if (event.pointerId === dragPointer) { dragPointer = null; mobileFire = false; }
+    if (event.pointerId === dragPointer) clearDrag();
 });
 document.addEventListener('keydown', event => {
-    if (['ArrowLeft','ArrowRight','KeyA','KeyD','Space'].includes(event.code) && game.running && !paused) {
+    if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','KeyA','KeyD','KeyW','KeyS'].includes(event.code) && game.running && !paused) {
         event.preventDefault(); keys[event.code] = true;
     }
-    if (event.code === 'Escape' && game.running) paused ? resumeFlight() : pauseFlight();
+    if (event.code === 'Escape' && game.running && !event.repeat) {
+        event.preventDefault(); paused ? resumeFlight() : pauseFlight();
+    }
 });
 document.addEventListener('keyup', event => { keys[event.code] = false; });
 byId('pause-btn').addEventListener('click', pauseFlight);
@@ -148,6 +163,9 @@ window.__owngameNeon = Object.freeze({snapshot:() => JSON.parse(JSON.stringify({
     ready:flightArtReady, running:game.running, paused, score:game.score, level:game.level, lives:game.lives, health:game.health,
     enemies:game.enemies.map(e=>({type:e.type,x:e.x,y:e.y,hp:e.hp})),
     bullets:game.bullets.length, kills:game.enemiesKilled, waveTransition:game.waveTransition,
+    projectiles:game.bullets.map(b=>({x:b.x,y:b.y})),
+    enemyBullets:game.enemyBullets.map(b=>({x:b.x,y:b.y})),
+    powerups:game.powerups.map(p=>({type:p.type,x:p.x,y:p.y})),
     player:{x:player.x,y:player.y,weapon:player.weaponLevel}, width:canvas.width,height:canvas.height,
     best:bestScore, resumable:!!savedFlight, saveKey:SAVE_KEY
 }))});

@@ -7,9 +7,9 @@
       "title": "霓虹突围",
       "kind": "static",
       "path": "examples/neon-shooter",
-      "online_build_sha256": "a4771608c65d51937134248f018755ced00c9f28f5164f88cede7cf029d5f5e3",
-      "input_sha256": "294f83590a4a46e4186c74098c1f54169eb71bf43727e963952a9ee57235aba3",
-      "source_manifest_sha256": "de1b01d3ffa9790280dce0999f5c6882d07f69ddfcdbba72568692943c933bc2",
+      "online_build_sha256": "14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4",
+      "input_sha256": "b2fe9f5fb8a32189eb3044e8eb21e084a91e7880e6fe4e3f3dabce3dfeaf678b",
+      "source_manifest_sha256": "1d76a6d45d4fd6ce745be35722ca5a15b7ebf1b85a26281c448740f479cb1f70",
       "license": "MIT"
     },
     {
@@ -18,8 +18,8 @@
       "kind": "faune",
       "path": "examples/faune-dungeon",
       "online_build_sha256": "ddcc9d6275d3905add62d3171e51e1eef83058c25c9dd38e0316923a6224f168",
-      "input_sha256": "eeea0ecc95d4f638ac088e8ae77e69be41f624aaf25a733f09269da603015919",
-      "source_manifest_sha256": "2467db5e804b79cf49e2b7c6401e2033bf14fabf362c1361550bc3e198479963",
+      "input_sha256": "0cacb1edd1f3b9b6dc2679b90f0042f79c8766b245a1967c709b64839622c3e5",
+      "source_manifest_sha256": "72a24ee172819d786edcf3b026119bbf7d339252611a7930898264d47a87163f",
       "license": "MIT"
     },
     {
@@ -28,8 +28,8 @@
       "kind": "phaser",
       "path": "examples/wind-chime-memory",
       "online_build_sha256": "2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995",
-      "input_sha256": "541a09e7a2d0ee79d370d14dea6cf5a43f433373985ddd7e2540c9bbf8dccada",
-      "source_manifest_sha256": "e1546c401b164c6a48c696f371a07795a92609de2a853a238a5ba979f1e45a9e",
+      "input_sha256": "443b4a0e8df633aeb5c726e81387a835a05d66d0ea4e7afdf11ebae0f17e8c69",
+      "source_manifest_sha256": "f20ecca31848888f153fda4a99f75a266748fd45bfedcc0a9a5851474d6b347c",
       "license": "MIT"
     },
     {
@@ -38,8 +38,8 @@
       "kind": "phaser",
       "path": "examples/postcard-slide",
       "online_build_sha256": "cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a",
-      "input_sha256": "2bd1e3f22b1942f522f0dd4fa52632d6d1b0dc302b1f8a0630e3c85b6a27e5c5",
-      "source_manifest_sha256": "2730982a03e1fc4f94df989dc1f83f1af4b003f2fb9066a63544fe4e311761d6",
+      "input_sha256": "b4fb9ae20203529e218e9a03c3a11a69468918f5c7595f4748ed04ccc9cb5516",
+      "source_manifest_sha256": "4624d85b72971d3479244f23a4770dc301ea17c214ae93d4d461b133a41b8e49",
       "license": "MIT"
     },
     {
@@ -58,8 +58,8 @@
       "kind": "phaser",
       "path": "examples/signal-harbor",
       "online_build_sha256": "7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99",
-      "input_sha256": "f7d484aa0544976d084b2881197bfd2e1c6d0be24ae1c229875ccf30647f3286",
-      "source_manifest_sha256": "066ce06711114aaf591573caea8d92f38232e062ed55d337393f52836fdc7033",
+      "input_sha256": "7f94b53c2fc96f2f162789004a9ea11fd2ed22ac78b98e114c2bb93ee74a5b6b",
+      "source_manifest_sha256": "007344e0ad0c26ea0c3134d59fb55081dd3a9036efdae983c11d335921da0f84",
       "license": "MIT"
     },
     {
@@ -68,8 +68,8 @@
       "kind": "phaser",
       "path": "examples/unlock-bolts-mobile",
       "online_build_sha256": "242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b",
-      "input_sha256": "18cddde4811582250e517d6c0977b947f41c2e5277ace58c0436da22b87a2420",
-      "source_manifest_sha256": "4f34ed72460fba668868281b0c61fdcf1192bf86e578fc62059042d62b632654",
+      "input_sha256": "0f253ebe1eea2e410521c0d9668ed78e75d38ecd1b95624333fab59b605ecca9",
+      "source_manifest_sha256": "657b08685936952fea519658aea085eed0e3d382ac0c24fbefd712c0b9208f85",
       "license": "MIT"
     },
     {
@@ -78,8 +78,8 @@
       "kind": "phaser",
       "path": "examples/star-triad",
       "online_build_sha256": "99684105299e28b82e55f7edf0c1289732c556a81ac586850f30b3dd5e46cc91",
-      "input_sha256": "074104fcac1a7c3c5d89477de14072eb6b23455309468dd6fb625d35e0b73842",
-      "source_manifest_sha256": "3409862105114f27ea59b8f3b8926419c4dd88f1412462451fc665f3961c1527",
+      "input_sha256": "24faf3c8596b0048a915a8f3e671b2292062f25b24385fc3d5d6877b6d859617",
+      "source_manifest_sha256": "8c30a9c54bcd28a6d805a8a3e172c41685abfb27b908bddc7d6d8fbfd743ecd1",
       "license": "MIT"
     },
     {
@@ -88,8 +88,8 @@
       "kind": "canvas",
       "path": "examples/firefly-four",
       "online_build_sha256": "290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d",
-      "input_sha256": "21f9935b673b982525148eecc0b1f0871be944b5f24f69c226d78f74543fa345",
-      "source_manifest_sha256": "4666a780c207cbcb539a7de24d497954c5e5df87bb34ad00a63276f1fe8d41af",
+      "input_sha256": "645246065db4123c1c6c0121ed06a0f9e4f7ce61d90ccd6578de21927ccb1ceb",
+      "source_manifest_sha256": "97ec1014c2577195666e1a713005151758930e680b57144d9ec85fba030df016",
       "license": "MIT"
     },
     {
@@ -98,8 +98,8 @@
       "kind": "moss",
       "path": "examples/moss-reversi",
       "online_build_sha256": "f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e",
-      "input_sha256": "b90708d494b35d486e5b8ccda2c2d7d9886f0334762090182c07d1b441ad06b6",
-      "source_manifest_sha256": "b40bdf7f731e66ac2a99c2e6a7e3e6250d6488b622f11ce93676988841b8c199",
+      "input_sha256": "ff64ed556d811cbe1fe0b4dd46a996246adfa2ab0a020fd3078a4aaa55ca5340",
+      "source_manifest_sha256": "a882d368587012133538ad58e8558f2c25ea794e80d681c0e29e3a4c206452fe",
       "license": "MIT"
     },
     {
@@ -108,8 +108,8 @@
       "kind": "phaser",
       "path": "examples/kiln-merge",
       "online_build_sha256": "54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf",
-      "input_sha256": "ac83dce71198f10097421017a423d73a2eb77d6d6dc708dc81934644c3f27686",
-      "source_manifest_sha256": "6c9c8ed36885e1cead9e0f8872921ba102f44522b8a4d633f9865ba7e8b73ca4",
+      "input_sha256": "76deae1c0b292992988fe07d704825274619560a0a169a2db1030b7c9bf05e2f",
+      "source_manifest_sha256": "f6d6d31e493fddd1b0f01984e6a3c6cc4d93d3025291e8b73c04da4dde2dc210",
       "license": "MIT"
     },
     {
@@ -118,8 +118,8 @@
       "kind": "phaser",
       "path": "examples/petal-memory",
       "online_build_sha256": "bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c",
-      "input_sha256": "99513777d00da0c2239055d8f56f4cfdbfae31b0c52ab0ed0288f4f7ca5c5db3",
-      "source_manifest_sha256": "f75985728fafebb6b048dc07c53766323038ea0e82b8750ab06de3bb172751de",
+      "input_sha256": "e38409e2fa2105365cc4b8bc8ff90be6203ad935b42247c0fde4710cf1e41fbe",
+      "source_manifest_sha256": "81b93eb387232e9962a6189116db464e84b73abeda427f20f9512dbf14f33bf5",
       "license": "MIT"
     },
     {
@@ -128,8 +128,8 @@
       "kind": "phaser",
       "path": "examples/silk-serpent",
       "online_build_sha256": "5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a",
-      "input_sha256": "a3a4f5324c0693d0a25e784af49f149fba151eb214fde93a8364559d4a6615fb",
-      "source_manifest_sha256": "09a11416076b5486c7edef8498033b48237c52900e6afae542a0addf686ed724",
+      "input_sha256": "2fe1527468ab2186fdd35706e0f32ae6d961e8366b417ce6f78fd97ed2bcfb42",
+      "source_manifest_sha256": "5b75bf605b7c5a0df12cf758142d321c5b9b04ecf959d40bb56e99f34e5b55b4",
       "license": "MIT"
     },
     {
@@ -138,8 +138,8 @@
       "kind": "phaser",
       "path": "examples/bamboo-rally",
       "online_build_sha256": "fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0",
-      "input_sha256": "904035af7d56ac77feb13ac6e685ef3f5ea510754fae83ed2d571fe82a500f38",
-      "source_manifest_sha256": "fcdf3c5f7a0ca8ae81aaea319e72500b51428cde3f0dcf3fa8fd2edfe66f988d",
+      "input_sha256": "ac103511e864cef390cda8d36e8f96c967ea99f199d6998d4737c8696cfff488",
+      "source_manifest_sha256": "7157d2bb6866373842bc597bdb7d8a7c7e6bd99c169b2597398216203183cb21",
       "license": "MIT"
     },
     {
@@ -148,8 +148,8 @@
       "kind": "vite",
       "path": "examples/rc-rally",
       "online_build_sha256": "45c4d8caa12114314f38206170906dae067dea111574e6fffecb4817dfab14ee",
-      "input_sha256": "18fe7c7c911a2f80f931f4f3408b14ea439c98f35fdf34e47486b096d4e2827e",
-      "source_manifest_sha256": "496c1d4327a8a3cd5f03d26ff6a8677ef2408f3d454d6d185052613923f6d8d8",
+      "input_sha256": "b1f57272fa3b758ac8ba907e3765ccc7b456ef5373ede79b7df77326d1083d3f",
+      "source_manifest_sha256": "163d271a92d6043599815cc37b3dc526f4f882d58c233119be0838b93e145766",
       "license": "MIT"
     },
     {
@@ -158,8 +158,8 @@
       "kind": "static",
       "path": "examples/civ-clicker",
       "online_build_sha256": "441e2c1e2b5fd8de0f896aa1b410e8b0b149eaf873bf4fb8d57323ae644b2c4c",
-      "input_sha256": "c5f9689fa93bbb369676a7daf9ab03656bede2fee35c4c0590485ff677014660",
-      "source_manifest_sha256": "85cfd8e34b321b44cfed0f0262a89caaba85bfccca9f3377bd33819704df9bbe",
+      "input_sha256": "f6cc5ef9a534a5bb81ce994df5584122483377d00cc42896064fd58722d25703",
+      "source_manifest_sha256": "0c0c8e803210bde30c2b5eb6aab24e71f4dac3a81fee3acf9c3d98bdf5457e7b",
       "license": "GPL-3.0-or-later"
     },
     {
@@ -168,8 +168,8 @@
       "kind": "native-ts",
       "path": "examples/crowd-runner",
       "online_build_sha256": "2a062aaa2d95a6e294b262e30b38524cf6e01f898c98e2cb7d809ee68bada10e",
-      "input_sha256": "40e7a363975a86e346e6258fe8f73a990c361515fd6564aeb884e5aa70535e6e",
-      "source_manifest_sha256": "95c62ca2575ae3c735cd7379908aea80217e1682016b56ab0abbe0330ab637c6",
+      "input_sha256": "2d48b761a3f96ee9cf231e32fec35f80987284816cd6bd6e69a0b1e1b1aeafa4",
+      "source_manifest_sha256": "3917020ce8f0be579eb75e5fb2c057c69aff0aa023f50cbdd21f5d26fa5add6d",
       "license": "MIT"
     },
     {
@@ -178,8 +178,8 @@
       "kind": "native-ts",
       "path": "examples/arrow-escape",
       "online_build_sha256": "b4e597c5402c2c087dfb75a45da103d0b2374b07f545413d8ab867ce64f9e6b0",
-      "input_sha256": "676ebc1126526f20be0e037dad3080482a520171d0960f30f790e8280bbcb849",
-      "source_manifest_sha256": "ac576108d35572cc9dbf94dbcba3a019b1937633d782ae3d0c03698cbcd1386d",
+      "input_sha256": "2331ae4266135ebaf66174162331a5820c50632fd4e7e675504843112721f60c",
+      "source_manifest_sha256": "815247d0924babcd774f4d111341a1752d8bd28cb0cc9e2ecb233abb100adaf8",
       "license": "MIT"
     }
   ]

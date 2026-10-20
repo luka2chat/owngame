@@ -79,9 +79,9 @@ function renderDetails(all) {
   }
   if (game.id === "neon-shooter") {
     for (const [keys, description] of [
-      [["←", "→"], "左右移动战机"],
-      [["空格"], "按住持续开火"],
-      [null, "移动并自动开火"],
+      [["↑", "↓", "←", "→", "/", "W", "A", "S", "D"], "上下左右移动战机"],
+      [null, "拖动战机上下左右移动"],
+      [["Esc"], "暂停或继续"],
     ]) {
       const row = element("div"),
         term = element("dt"),
@@ -95,6 +95,7 @@ function renderDetails(all) {
       $("keyboard-help").append(row);
     }
     $("keyboard-help").hidden = false;
+    $("keyboard-help").append(element("p", "", t("战斗中持续自动开火")));
   }
   const others = all.filter((g) => g.id !== game.id);
   // Prefer related games, then offer other worlds from the existing catalog.

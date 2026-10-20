@@ -3,7 +3,7 @@
   "id": "neon-shooter",
   "title": "霓虹突围",
   "kind": "static",
-  "online_build_sha256": "a4771608c65d51937134248f018755ced00c9f28f5164f88cede7cf029d5f5e3",
+  "online_build_sha256": "14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4",
   "original_source_sha256": null,
   "license": "MIT",
   "description": "躲开弹幕，收集强化，迎战每三波出现的首领。"

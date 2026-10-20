@@ -2,7 +2,7 @@
   "schema": "owngame.game-source.v1",
   "id": "star-triad",
   "online_build_sha256": "99684105299e28b82e55f7edf0c1289732c556a81ac586850f30b3dd5e46cc91",
-  "input_sha256": "074104fcac1a7c3c5d89477de14072eb6b23455309468dd6fb625d35e0b73842",
+  "input_sha256": "24faf3c8596b0048a915a8f3e671b2292062f25b24385fc3d5d6877b6d859617",
   "files": [
     {
       "path": ".gitignore",

@@ -156,62 +156,6 @@
             margin-bottom: 30px;
         }
 
-        #mobile-controls {
-            display: none;
-            position: absolute;
-            bottom: 40px;
-            left: 0; right: 0;
-            justify-content: space-between;
-            padding: 0 20px;
-            pointer-events: all;
-            z-index: 15;
-        }
-
-        .mobile-btn {
-            width: 60px; height: 60px;
-            border-radius: 50%;
-            border: 2px solid rgba(0,255,255,0.4);
-            background: rgba(0,255,255,0.1);
-            color: #0ff;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .mobile-btn:active {
-            background: rgba(0,255,255,0.3);
-        }
-
-        .mobile-btn-group {
-            display: flex;
-            gap: 15px;
-        }
-
-        #fire-btn {
-            width: 75px; height: 75px;
-            border-color: rgba(255,68,68,0.5);
-            background: rgba(255,68,68,0.15);
-            color: #f44;
-            font-size: 14px;
-            font-family: 'system-ui', monospace;
-        }
-
-        #fire-btn:active {
-            background: rgba(255,68,68,0.4);
-        }
-
-        @media (max-width: 768px) {
-            #mobile-controls { display: flex; }
-            .health-bar { bottom: 120px; }
-        }
-
-        @media (pointer: coarse) {
-            #mobile-controls { display: flex; }
-            .health-bar { bottom: 120px; }
-        }
-
         #sound-toggle {
             position: absolute;
             top: 15px; right: 15px;
@@ -256,13 +200,6 @@
             <div class="fill" id="health-fill" style="width:100%"></div>
         </div>
 
-        <div id="mobile-controls">
-            <div class="mobile-btn-group">
-                <button class="mobile-btn" id="left-btn" aria-label="向左移动">◀</button>
-                <button class="mobile-btn" id="right-btn" aria-label="向右移动">▶</button>
-            </div>
-            <button class="mobile-btn" id="fire-btn">开火</button>
-        </div>
     </div>
 
     <div id="start-screen">
@@ -272,7 +209,7 @@
         <button class="btn" id="load-btn" hidden>继续上次出击</button>
         <button class="btn" id="start-btn">开始出击</button>
         <div class="controls-hint">
-            按住左右按钮移动 · 按住开火射击<br>也可拖动战机，拖动时自动开火<br>键盘：← → / A D 移动，空格开火
+            战斗中持续自动开火<br>拖动战机上下左右移动<br>键盘：方向键 / WASD 移动，Esc 暂停
         </div>
     </div>
 
@@ -296,11 +233,12 @@
     // Resize
     function resize() {
         const rect = document.getElementById('viewport').getBoundingClientRect();
-        canvas.width = Math.max(1, Math.round(rect.width));
-        canvas.height = Math.max(1, Math.round(rect.height));
+        const width = Math.max(1, Math.round(rect.width));
+        const height = Math.max(1, Math.round(rect.height));
+        if (canvas.width !== width) canvas.width = width;
+        if (canvas.height !== height) canvas.height = height;
     }
     resize();
-    window.addEventListener('resize', resize);
 
     // Game state
     let game = {
@@ -353,7 +291,6 @@
 
     // Input
     const keys = {};
-    let mobileLeft = false, mobileRight = false, mobileFire = false;
 
     // Input is connected by owngame.js with pointer capture and pause handling.
     // Particles
@@ -488,14 +425,16 @@
         const W = canvas.width, H = canvas.height;
 
         // Player movement
-        let dx = 0;
-        if (keys['ArrowLeft'] || keys['KeyA'] || mobileLeft) dx = -player.speed;
-        if (keys['ArrowRight'] || keys['KeyD'] || mobileRight) dx = player.speed;
-        player.x = Math.max(25, Math.min(W - 25, player.x + dx));
+        const dx = Number(!!(keys['ArrowRight'] || keys['KeyD'])) - Number(!!(keys['ArrowLeft'] || keys['KeyA']));
+        const dy = Number(!!(keys['ArrowDown'] || keys['KeyS'])) - Number(!!(keys['ArrowUp'] || keys['KeyW']));
+        const distance = Math.hypot(dx, dy) || 1;
+        player.x += dx / distance * player.speed;
+        player.y += dy / distance * player.speed;
+        clampPlayer();
 
         // Firing
         player.fireTimer--;
-        if ((keys['Space'] || mobileFire) && player.fireTimer <= 0) {
+        if (player.fireTimer <= 0) {
             player.fireTimer = player.fireRate;
             const bx = player.x, by = player.y - 30;
             if (player.weaponLevel >= 3) {
@@ -524,9 +463,9 @@
 
         // Enemy bullets
         game.enemyBullets = game.enemyBullets.filter(b => {
-            b.x += b.vx || 0;
-            b.y += b.vy || 2;
-            return b.y < H + 10 && b.x > -10 && b.x < W + 10;
+            b.x += b.vx ?? 0;
+            b.y += b.vy ?? 2;
+            return b.y > -10 && b.y < H + 10 && b.x > -10 && b.x < W + 10;
         });
 
         // Enemies
