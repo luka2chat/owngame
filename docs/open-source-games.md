@@ -41,3 +41,9 @@ The source delivery includes published runtime assets and build instructions. np
 New games and updates use the [joint source and website publication workflow](game-publishing.md). Source links in the website catalogue point to the Git commit matching a delivery, supporting historical inspection and reproduction.
 
 Automated checks cover source inventories, dependency installation, lightweight Web rebuilds and browser loading/input. Unity editor behavior, physical devices, offline cold starts and complete gameplay acceptance require separate game-specific delivery evidence.
+
+## Tidal Reclaim / 潮汐回收站
+
+[Play](https://owngame.dev/play?game=tidal-reclaim&platform=pc) · [Editable source](../examples/tidal-reclaim/README.md)
+
+PC keyboard/mouse offshore FPS: activate three purification stations, hold their areas against mechanical guards, then remain at the dock for eight seconds to extract. Adapted from the owner’s paid Manus-generated Riftstrike project. The public edition replaces Mixamo-derived humanoids with paid Tripo-generated rigs/animations; source, generated assets, CC0 environment assets and font/library notices are included. See the example’s THIRD_PARTY_NOTICES.md and asset provenance records.

@@ -272,6 +272,12 @@ export const messages = {
 };
 
 export const games = {
+  "tidal-reclaim": {
+    title: "Tidal Reclaim",
+    tag: "Offshore FPS · Purify & extract",
+    description: "Reclaim a sea platform from mechanical guards, restart three purification stations, and escape at the dock.",
+    instructions: "PC keyboard and mouse. WASD to move, mouse to aim, left click to fire, right click to aim down sights, R to reload, Shift to sprint, Space to jump, and E to activate stations. Stay inside each blue field until all three stations finish, then remain at the dock for eight uninterrupted seconds. Esc pauses; number keys select unlocked weapons and G throws a grenade. Game interface is in Simplified Chinese.",
+  },
   "neon-shooter": {
     title: "Neon Defender",
     tag: "Space shooter · Waves & bosses",

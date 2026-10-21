@@ -42,10 +42,11 @@ entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/open-source
 entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/star-letters/catalog.json"),"utf8")));
 entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/crowd-runner/catalog.json"),"utf8")));
 entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/arrow-escape/catalog.json"),"utf8")));
+entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/tidal-reclaim/catalog.json"),"utf8")));
 // Lead with README's four creative examples, followed by its standalone 3D recommendation.
 // Stable sorting preserves the existing relative order of all remaining games.
 const featuredOrder = new Map([
-  "neon-shooter", "faune-dungeon", "wind-chime-memory", "postcard-slide", "star-letters",
+  "neon-shooter", "faune-dungeon", "wind-chime-memory", "postcard-slide", "star-letters", "tidal-reclaim",
 ].map((id, index) => [id, index]));
 entries.sort((a, b) =>
   (featuredOrder.get(a.id) ?? featuredOrder.size) -

@@ -1,6 +1,6 @@
 # 网站游戏源码
 
-共 18 款，与 [games.json](../games.json) 中的线上版本对应。
+共 19 款，与 [games.json](../games.json) 中的线上版本对应。
 
 | 游戏 | ID | 代码许可 |
 |---|---|---|
@@ -9,6 +9,7 @@
 | [风铃回响](wind-chime-memory/) | `wind-chime-memory` | MIT |
 | [山城来信](postcard-slide/) | `postcard-slide` | MIT |
 | [星野来信](star-letters/) | `star-letters` | MIT; see THIRD_PARTY_NOTICES.md for fonts and Unity-derived files |
+| [潮汐回收站](tidal-reclaim/) | `tidal-reclaim` | MIT |
 | [潮光归位](signal-harbor/) | `signal-harbor` | MIT |
 | [螺帽之间](unlock-bolts-mobile/) | `unlock-bolts-mobile` | MIT |
 | [星图三连](star-triad/) | `star-triad` | MIT |

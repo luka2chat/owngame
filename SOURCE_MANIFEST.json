@@ -24,8 +24,8 @@
     },
     {
       "path": ".github/workflows/games.yml",
-      "bytes": 830,
-      "sha256": "b725ef3ea243ae58127caef0ead9e09a99ca5ab39c7d07c529b9c9ec9d70b4e8"
+      "bytes": 937,
+      "sha256": "0561e99614fab0c4a08464a3004bf6c8506e97ada6623053c9ee7e4467f0dc32"
     },
     {
       "path": ".github/workflows/release.yml",
@@ -869,8 +869,8 @@
     },
     {
       "path": "apps/web/public/art/rollout/catalog.json",
-      "bytes": 1313,
-      "sha256": "70a54f7adec3a4bf618d967914bf2c9f9086750e28ca0b0a9c4ddacd24a65556"
+      "bytes": 1415,
+      "sha256": "8e650a0cb1d4ec836d1deba371fbc3fa65fc7ee050716f7fd2a56999c2b9c8ee"
     },
     {
       "path": "apps/web/public/art/rollout/civ-clicker.png",
@@ -931,6 +931,11 @@
       "path": "apps/web/public/art/rollout/star-letters.jpg",
       "bytes": 116321,
       "sha256": "6c34747ee4a3239fdab6c721efbc39321c9c3912d8c17e0538619c0285668ad0"
+    },
+    {
+      "path": "apps/web/public/art/rollout/tidal-reclaim.webp",
+      "bytes": 214160,
+      "sha256": "9703772ca1595d55b9e7d13ff7d8587bf4024d6cb8eefbdd8ed42c72d8f06e50"
     },
     {
       "path": "apps/web/public/art/rollout/unlock-bolts-mobile.png",
@@ -1019,8 +1024,8 @@
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 28359,
-      "sha256": "f92a4126f07177ca23ae89e48908a09104727faa969f76b090b9471e51cafc5f"
+      "bytes": 29014,
+      "sha256": "dac90938d3978957695f470de80f4abaf0583ad1bbcad44595a3be42968a426a"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -1034,8 +1039,8 @@
     },
     {
       "path": "apps/web/public/platforms.js",
-      "bytes": 1813,
-      "sha256": "5c602b90cfa8545b3b170bea0aaedcc4429fd1655fedb036fad2547e7283d41e"
+      "bytes": 2129,
+      "sha256": "9f848e4419b4a7c209086fd6b8a999814b64c997d8965d972b01ce5a1a5365b4"
     },
     {
       "path": "apps/web/public/play.css",
@@ -1049,8 +1054,8 @@
     },
     {
       "path": "apps/web/public/play.js",
-      "bytes": 14150,
-      "sha256": "7f70163cd21c4f7961e647c8988cd618fa09f64f20b43560c8c3a854b5bfcdec"
+      "bytes": 14151,
+      "sha256": "c7616d018769ad1f713a088edd457bfb2d8e3c2d995023c172418d92922f8227"
     },
     {
       "path": "apps/web/public/privacy.html",
@@ -1139,8 +1144,8 @@
     },
     {
       "path": "docs/game-publishing.md",
-      "bytes": 7824,
-      "sha256": "f211b1a44038d1ed87882504c7c1031df6d40257930de26acc8329efd0135052"
+      "bytes": 8109,
+      "sha256": "37d821e7d59ad59a65d59080b309f510f9223a12f470be071b789d8f010d1f72"
     },
     {
       "path": "docs/images/arcade-mascot.png",
@@ -1224,8 +1229,8 @@
     },
     {
       "path": "docs/open-source-games.md",
-      "bytes": 2653,
-      "sha256": "8dc75b6603e81fc22fb201142069a9dbb45cdb32c13b7dbc94ef44eca4ed38b6"
+      "bytes": 3306,
+      "sha256": "b9fff45a0ae6a54320a3f919d0027e6b952e1a64ee4556f58f1e5465c68c62ff"
     },
     {
       "path": "docs/quickstart.md",
@@ -1246,6 +1251,11 @@
       "path": "docs/remix.md",
       "bytes": 3516,
       "sha256": "fb3b0f5c4fac4f2ac71a301806caa1bfaa354f0a60373e195b3d6d368cb3e0d2"
+    },
+    {
+      "path": "docs/resource-search.md",
+      "bytes": 4485,
+      "sha256": "5c9cacdbe418de0cd7745ce7e8c907dadb1b4e0eda435bea534e59ccfbc1fccb"
     },
     {
       "path": "docs/style-recipes.json",
@@ -3024,8 +3034,8 @@
     },
     {
       "path": "examples/README.md",
-      "bytes": 1380,
-      "sha256": "23a70ee8e32884b5e5b75ffe21bca982903030db894b8c03df68fbc2ff651ae7"
+      "bytes": 1442,
+      "sha256": "d9cda26a4342a015b1f3460926972b37f37bb3e4957acb411e2857f10e452c08"
     },
     {
       "path": "examples/signal-harbor/.gitignore",
@@ -8523,6 +8533,1016 @@
       "sha256": "ec9907f8d5d6ee57d2da5a1270f36716c7706c644e0597dc4c8e75ecb5b122b9"
     },
     {
+      "path": "examples/tidal-reclaim/.gitignore",
+      "bytes": 29,
+      "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
+    },
+    {
+      "path": "examples/tidal-reclaim/asset-review.html",
+      "bytes": 2067,
+      "sha256": "239bd05ec326e32135d15d87e635b71b08c1a3e8d97476835bcab468bb27de9c"
+    },
+    {
+      "path": "examples/tidal-reclaim/build.mjs",
+      "bytes": 2848,
+      "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
+    },
+    {
+      "path": "examples/tidal-reclaim/game.json",
+      "bytes": 371,
+      "sha256": "42b9598695867d60c5db35b0628464744accba30fb2ce46fa898ab0b8522ce86"
+    },
+    {
+      "path": "examples/tidal-reclaim/generated-assets/patrol-robot.glb",
+      "bytes": 854736,
+      "sha256": "d6da6de9d0cb1966040006587a5c31ddd67a02d65900ac9aad20f5e41932b9c6"
+    },
+    {
+      "path": "examples/tidal-reclaim/generated-assets/purifier.glb",
+      "bytes": 433292,
+      "sha256": "928a4895ca7a0c67025de5279f77f9a1776cd5b315bf833aa6bd5427634fcad8"
+    },
+    {
+      "path": "examples/tidal-reclaim/index.html",
+      "bytes": 435,
+      "sha256": "7a952a0ffe7f96a42eed4585194fb5badb739eff1b297e7b13d7bca0d7f1f84d"
+    },
+    {
+      "path": "examples/tidal-reclaim/interface-art.provenance.json",
+      "bytes": 9986,
+      "sha256": "edede4210cf6a0f75abd7fcbc72bf3960190c62959da613aae2c40f198e1c95a"
+    },
+    {
+      "path": "examples/tidal-reclaim/LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "examples/tidal-reclaim/licenses/MESHOPTIMIZER-MIT.txt",
+      "bytes": 1079,
+      "sha256": "f03037ca7bad1e3eb7f4a63fa6084a8baabd5ba30d3c239a9a7f35705d873e26"
+    },
+    {
+      "path": "examples/tidal-reclaim/licenses/RAPIER-APACHE-2.0.txt",
+      "bytes": 11343,
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+    },
+    {
+      "path": "examples/tidal-reclaim/licenses/THREE-MIT.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "examples/tidal-reclaim/ONLINE_BUILD.json",
+      "bytes": 25037,
+      "sha256": "7ec655dd95649f7fa17fc50e9ecc937949e36489dd46c1ad63340084a758892a"
+    },
+    {
+      "path": "examples/tidal-reclaim/package-lock.json",
+      "bytes": 38754,
+      "sha256": "b338df05290d0cda7b0c83ca24420394d37e61dad59c27e8a6078fee5a9f32c7"
+    },
+    {
+      "path": "examples/tidal-reclaim/package.json",
+      "bytes": 577,
+      "sha256": "5ef0fbc470a7cab2bb9855a7816f61b40bd3d2b7c137cadda0c4353bdfa57cce"
+    },
+    {
+      "path": "examples/tidal-reclaim/public-assets.json",
+      "bytes": 31775,
+      "sha256": "1ca7f651ede636a0fecbe961a3a6464df1485ffe0c9abaae688bf6da8859c1a6"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/fx/additive.webp",
+      "bytes": 402764,
+      "sha256": "56f2775f1be185cda53ee5e65fda8b4aa31998d4750c260dc67503bd68153385"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/fx/decals.webp",
+      "bytes": 82098,
+      "sha256": "4da7025ff8efc7100e6eee586d54db577a5951a009b4028a3c71b166567dfbc9"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/fx/smoke.webp",
+      "bytes": 226508,
+      "sha256": "ea7f80096a92a9a0a3646933714d8738ac15816ef8c60cc1a78468b484f8be35"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/hdri/sky_1k.hdr",
+      "bytes": 394520,
+      "sha256": "761615523ee405afd9ddc7de1271b46094a61349baf699923ad20144e3199e07"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/hdri/sky_2k.webp",
+      "bytes": 111048,
+      "sha256": "5860539f1abd17893a1e682e55ee20f1f88e7ec7e870c79dcf9c2b5bad199be0"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/ammo_box.glb",
+      "bytes": 150684,
+      "sha256": "ce23014b6a462dac786fdd705708057d1c82e52f84344caaabe0bf3a258102c3"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/armor_plate.glb",
+      "bytes": 43704,
+      "sha256": "554631385f5bbb721224662c2f679103cdc7611755a4d419acc70c90c9c7bb13"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/barrel_03.glb",
+      "bytes": 106616,
+      "sha256": "4c58c36cea042f5ae09743fee79c20b95215e305046ab9473de15f4994aca76d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/frag_grenade.glb",
+      "bytes": 84160,
+      "sha256": "c004e08765eb71ce64185488e6d2dcf6e8d4376589736c072fda8c2985be7cb5"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/jersey_barrier.glb",
+      "bytes": 134624,
+      "sha256": "b3cd10e72889f92dc024b2e533b4eb48cbdeb9af236c9e927e01cfdb4e03816d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/medical_box.glb",
+      "bytes": 173356,
+      "sha256": "7cec969c563728656aec40c1d633cb6cd41e9175e4de0fffd0e707f893f2e238"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/old_military_crate.glb",
+      "bytes": 305068,
+      "sha256": "304dbd517e76a1b89f7f8264427ffb58e15b2bacf831ec6896e48928c1972daa"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/propane_tank.glb",
+      "bytes": 189752,
+      "sha256": "86cf854f6679486b98132abb7d04c5b05d5395d597828388931f188bb9682eb6"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/sandbags.glb",
+      "bytes": 175608,
+      "sha256": "92708e333970bb1c4a2f2fb18965cf21fa717bd70cbadc06aa35a124634b521a"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/security_light.glb",
+      "bytes": 212388,
+      "sha256": "502567e3a915642d175816e8f2a373f4938ca1be7fe0c5a69c602b6631d9d530"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/utility_box_02.glb",
+      "bytes": 203452,
+      "sha256": "a6535c1dde272b3f65702d3f13d865ff727663127794edeb91018142217ffaef"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/models/wooden_military_crate.glb",
+      "bytes": 582264,
+      "sha256": "825bb950a813f915b14d315f94dbc4ca182e5c4c8e2e21bb0a978574b0e73c4e"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/music/boss.mp3",
+      "bytes": 2365850,
+      "sha256": "4149d06cbd8c2a91c54ae8f9f7210bf6ba432e09bf50e5dd0a40c6e707a5f99c"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/music/combat.mp3",
+      "bytes": 2121918,
+      "sha256": "69f5eefeb82c0564f910e250eaf89a7667a98504d16d4d5cc3df42606311ec22"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/music/title.mp3",
+      "bytes": 1985873,
+      "sha256": "f87b4ce6dda03ec237ae28bfcbc76689f52d2d0d91c1caa7ec6d18c18aa16e63"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/ambience.mp3",
+      "bytes": 321036,
+      "sha256": "84c6c6ba7e8ba56e74eabd7a48fcc37ca751210c22dc5b0017a890a67e31ec74"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/armor_break.mp3",
+      "bytes": 12897,
+      "sha256": "9dcfe9fc489fb5c7a86269c916849df5946b09464d4318270a5246a037c9c1f0"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/armor_recharge.mp3",
+      "bytes": 31705,
+      "sha256": "62eaceae0e989441ff426cd0b974e50bf49034a6fefcaad408eba8402b91b822"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/boss_cannon.mp3",
+      "bytes": 18539,
+      "sha256": "ddacc6e67cf4b80e992f93c013b1c421b9aa63b9b0a3318fb6b131eabc4d14cd"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/boss_roar.mp3",
+      "bytes": 36720,
+      "sha256": "262b17ce0e59e4c1c2231f7125c6c3a0dfd5528b36a9416331072d4ea4cfdc1e"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/boss_slam.mp3",
+      "bytes": 30451,
+      "sha256": "f617daa58a96918665014b3b87de9e4a5c361ab739d6a39168f1fa7461f18663"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/bullet_flyby.mp3",
+      "bytes": 7881,
+      "sha256": "287648f3a4facadd9e453e1c989b8db9b0dbacfd707b7cd987e3651272d7a6d7"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/defeat.mp3",
+      "bytes": 48946,
+      "sha256": "6cc50d6f0974d13f52cf410974c082dfc98aabccf1fe7d1d4e1705fd7b3b91bd"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/drone_loop.mp3",
+      "bytes": 48946,
+      "sha256": "ba62bd9a09e1af246f48d1ce219879502736b8342b331d17f967ad12c75ac41d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/dry_fire.mp3",
+      "bytes": 6627,
+      "sha256": "a7260ebc8a7a9290cb6cb82ef5b9e39411b173fe5505af0f55fedeac576bfc0d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/enemy_shot.mp3",
+      "bytes": 11329,
+      "sha256": "3d584aee1ff05d69e3250c357cd8e8a1c019f1262551a9d82bb896ed44dec6c5"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/explosion.mp3",
+      "bytes": 36720,
+      "sha256": "4fa9d9bf8955b11ea9504aead34a3bfec840c6deb470cea399f8b126f4329fc0"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/footstep.mp3",
+      "bytes": 6627,
+      "sha256": "17c58bf76d64ad52edae9b2adfd7ed296642c67e2d97f3bc251090763c142cd8"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/grenade_bounce.mp3",
+      "bytes": 6627,
+      "sha256": "1a26e6bde38edd4395e45dc03cb28b94c43b598cd9db7313ec5c1f811e37839e"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/grenade_throw.mp3",
+      "bytes": 10389,
+      "sha256": "c52eaabecdf488629d003853ef747a49ce7f9e27ea657a502f1a8b807c269cc0"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/headshot.mp3",
+      "bytes": 9135,
+      "sha256": "356f193c6efdfcac3f96f423203d356a0b8904cf09959104ca7a2ef9dfc4d402"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/heartbeat.mp3",
+      "bytes": 12897,
+      "sha256": "07b326dac6c7987d25ec4c96c5cf1e10e30e028577ee162db3f808a04dda1c5e"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/hitmarker.mp3",
+      "bytes": 6627,
+      "sha256": "e54b4be4999efdd49356a2656b6c6658f2c4bdd2a573cd17208ba1642f91b4f4"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/hound_step.mp3",
+      "bytes": 6627,
+      "sha256": "6c7ac1af7bfb324b2de9e944a8207a8f88508b3e6725ef47d8d4c594a17f1d1a"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/human_death.mp3",
+      "bytes": 18539,
+      "sha256": "5da6cf3168a4f55a3cf87d4e6a77d59ca3bec618048c221dbe8325c8d87c4834"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/human_hit.mp3",
+      "bytes": 7881,
+      "sha256": "51ca0b0c960cdf3452602f73429d34c6e31fbad09dec306c83cbf97ba4933920"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/impact_concrete.mp3",
+      "bytes": 7881,
+      "sha256": "a12e5a64c238fbd18e26b38749f0cac1e5f5371b7d16b2103b227f143534213f"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/impact_metal.mp3",
+      "bytes": 7881,
+      "sha256": "bb7a22e0fb3d4e3d61e341ba24af9c64ce81839dcd81892fdd335246938c0b36"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/kill_confirm.mp3",
+      "bytes": 10389,
+      "sha256": "0748fd58048be0c2f6a2df93b266f411c5f51ba3c6be168de198e1cb558f9611"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/land.mp3",
+      "bytes": 7881,
+      "sha256": "50fd9140754ec5763ec311501cfd477c45c3e6fa839d6e4a5e79f3bff247189d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/match_start.mp3",
+      "bytes": 30451,
+      "sha256": "8d98ab2014171bc45f03818dfefbd3362dd696b14fcfe62db663503d5d4b0d43"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/mech_stomp.mp3",
+      "bytes": 10389,
+      "sha256": "8be5c722466561ccdab2f35917f6b4868c93f75a1b755b05ef0ecd674d79e3e9"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/minigun.mp3",
+      "bytes": 30451,
+      "sha256": "e001fa414d900d8da5f6d742ee0d4b94952d6de30e3839ce1066ef33e432b69d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/overdrive_on.mp3",
+      "bytes": 24809,
+      "sha256": "49ccbaf3483a8a63a002a4bf569380a5a1e846eeb6ac33353868ddf032a7b87d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/perk_pick.mp3",
+      "bytes": 12897,
+      "sha256": "65ede54692ffe5765f815b78af60fb4e45acd0b11cc2ebc3dc5a9ce7c90033ff"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/pickup_ammo.mp3",
+      "bytes": 10389,
+      "sha256": "59a8bee23c3841d9fce4161ec11e012c1914045aa65da4d5d83b3a80bb5754b2"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/pickup_armor.mp3",
+      "bytes": 12897,
+      "sha256": "88f2c75cdae4653dc6994f56bebbd26a0e90d957afa9ca913c05545184c45535"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/pickup_health.mp3",
+      "bytes": 12897,
+      "sha256": "689efd8c6004662463094d406f90d1ce5cdb14e59cb6152edcf647f6773230d9"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/plasma_shot.mp3",
+      "bytes": 7881,
+      "sha256": "cc7c5d8c7241646279dd1a308268da28b8e532076264d64ea8722080c5246dba"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/player_hurt.mp3",
+      "bytes": 9135,
+      "sha256": "76aab0d56f3789dc7db313b07645e37e24da06bb203a603b39119fb4fc793588"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/rank_up.mp3",
+      "bytes": 12897,
+      "sha256": "1bb0a644f621185ef6dd270fa0cbabf10bba83c77612142c205214b00effdb49"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/rifle_reload.mp3",
+      "bytes": 24809,
+      "sha256": "6ed24800952ebda493cfbb315a69fe207adef4bef2095c32307108c579283ad7"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/rifle_shot.mp3",
+      "bytes": 15091,
+      "sha256": "53e5029ab120533e0ca305fe46907b4037f5233258153ce95a106df9785f7c94"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/robot_death.mp3",
+      "bytes": 24809,
+      "sha256": "3c8fe60d299845d624d16355adc26a129fdfc6439256304424fcb97db9d79b68"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/robot_hit.mp3",
+      "bytes": 7881,
+      "sha256": "d998f414c547d1b9749b021f46531f2d33ae1191d3cc9dbc335c2cddda689688"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/robot_step.mp3",
+      "bytes": 5060,
+      "sha256": "67c53fc2be1f7b3353793eae8f5dbb695038549d6667189b1416ada2252588b3"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/rocket_launch.mp3",
+      "bytes": 21987,
+      "sha256": "2013939a21b1d5fcb8a69e6ee39170ce12ed5f1e43b90b503109c175d597099e"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/rocket_loop.mp3",
+      "bytes": 36720,
+      "sha256": "8c21615563e1a8fd69b9fe5c40e7870ccd19012f043230b66456be61157d187e"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/rocket_reload.mp3",
+      "bytes": 24809,
+      "sha256": "50893a37e31619a679754b8b145393f24c0e0fc19692ac90e0324e7c390465f9"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/shard_pickup.mp3",
+      "bytes": 6627,
+      "sha256": "37c1e280a5b60b9e7b1ee114d19de461d5c8bddb05ff4090e8a36b45a59a60dd"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/shell_casing.mp3",
+      "bytes": 7881,
+      "sha256": "8faa03ffeaacbf0ff3e97c153605aae6a2d2355ca8178acadfbf2fdb31fadaa5"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/shell_insert.mp3",
+      "bytes": 6627,
+      "sha256": "4ab6a86881235adcce2c6b9bbd2cdebbf8949fa4c8c216198924df01bba88e48"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/shotgun_pump.mp3",
+      "bytes": 8508,
+      "sha256": "406bc7437b68181938584dfa1976ace2948718390fcdf177395b19669e046680"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/shotgun_shot.mp3",
+      "bytes": 20107,
+      "sha256": "a96bd3c460fb3ef0ff90024123fda653cfed532f6a97df30b11a31b01cef1715"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/slide.mp3",
+      "bytes": 11329,
+      "sha256": "053f4bb53362209dff06b6baff648a47cd29e6173321db8fc4032885dcca1e6d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/spawn_in.mp3",
+      "bytes": 18539,
+      "sha256": "a3ad012faac8ffc79748f1bc3af790184e619e7a4deefc93fe6989a6692d51a4"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/ui_confirm.mp3",
+      "bytes": 11329,
+      "sha256": "d32e343eaeb2cb7b29656aca92ce23623e1d1ff694200767f37dc3234cf529f6"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/ui_hover.mp3",
+      "bytes": 6627,
+      "sha256": "fede85083213655c5792b5e5a139903844fd22076fb5b314b07fddd0f85d483c"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/victory.mp3",
+      "bytes": 48946,
+      "sha256": "1078c18defa8ffe749208abc69bd36b0758033111e11978717c949887084423a"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/wave_clear.mp3",
+      "bytes": 30451,
+      "sha256": "cbe53fdb5359956cbfbaff00ad86faaf43fcdc84e68e5aaf50aaa5a942e55601"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/wave_start.mp3",
+      "bytes": 36720,
+      "sha256": "6ab39dd681b2bdea98f943209ff5fb25b050fe11ff0ed626d7e171496df5a996"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/sfx/weapon_switch.mp3",
+      "bytes": 9135,
+      "sha256": "7635cb14900368e4e46f7a2f020032c2b082ba34c76a8507f348a55edd9a3424"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/concrete_floor_03_arm.webp",
+      "bytes": 131578,
+      "sha256": "d617bb5c9c27d46a57b2b7f07a0040e465ee2fa3325807f49b45245db05ecaf7"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/concrete_floor_03_diff.webp",
+      "bytes": 266552,
+      "sha256": "b9ed56c6d868474dc745566d9e7fa54c7f6347a4030d858d30445a206079fd1c"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/concrete_floor_03_nor.webp",
+      "bytes": 228654,
+      "sha256": "86b9d96051a4c54d80cfac18fc534262c3dde8b5b200c320f4a29743896d5f3c"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/concrete_floor_worn_001_arm.webp",
+      "bytes": 53896,
+      "sha256": "eb5fe620e1647533b978c8f02712243caebad1927789c58a73f3b1890a419121"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/concrete_floor_worn_001_diff.webp",
+      "bytes": 36172,
+      "sha256": "3860bd80bd4c9be6178450745a7c65be70fdd83e5170d6e954a34d305994d40c"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/concrete_floor_worn_001_nor.webp",
+      "bytes": 68154,
+      "sha256": "f0723f4e97ee430658def9cef9b248062c46a6b9476c8d14569008c870a2bacf"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/concrete_wall_008_arm.webp",
+      "bytes": 44768,
+      "sha256": "ed083df0c35625e49e06ff9c5a57354d1f11964a38b810fb7f43d322ece2d7d4"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/concrete_wall_008_diff.webp",
+      "bytes": 69614,
+      "sha256": "af7c266282741d255a85abfb857c31bbfae28bd6b5f446beb13f88f6b620968b"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/concrete_wall_008_nor.webp",
+      "bytes": 36916,
+      "sha256": "a1db2a25de0fdb8c402a473e4967e9bf920109b0f6b4155d79c2748e5a1ce75c"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/corrugated_iron_02_arm.webp",
+      "bytes": 136272,
+      "sha256": "1fa944e7856757671ddc89a0acde68e6a7dd679f012fba2919f630b6e5e6b18f"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/corrugated_iron_02_diff.webp",
+      "bytes": 35330,
+      "sha256": "4ccfab99fab1361d264f8b6827530489acbcd640a1137b1de86c566a0693f4b2"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/corrugated_iron_02_nor.webp",
+      "bytes": 24830,
+      "sha256": "c05016ac1e50db967cdc23c0d554b7351116fa1b7b66e946a5449d684a73951d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/metal_plate_arm.webp",
+      "bytes": 177068,
+      "sha256": "cb1097cb7cd931163389220018485e740ea1823d713ba9eb49ae0a511975c351"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/metal_plate_diff.webp",
+      "bytes": 78142,
+      "sha256": "e9b7a454247e6d843bfa4dc9c6721a8b6e6207e5205ce94cda0efca1903b11fa"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/metal_plate_nor.webp",
+      "bytes": 156652,
+      "sha256": "79341aaad6ba749a6ba21226e2a714e7ddcb93039cfaa0dcb59b66314c477a59"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/rusty_metal_02_arm.webp",
+      "bytes": 58960,
+      "sha256": "b635d52ddacf6c885e5f17f32d386466268047e7567cbdcb3cac575e4e6d6cac"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/rusty_metal_02_diff.webp",
+      "bytes": 134826,
+      "sha256": "5023d7ee27a7f54b77ed87d00a27deed0f46638b98e7d07657f6751f7f0fa9ce"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/tex/rusty_metal_02_nor.webp",
+      "bytes": 90558,
+      "sha256": "877b0d8503657bf454d5ecffa72f39aa78334d0c2a3cde6c779f066cbb27a38d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_choke.webp",
+      "bytes": 6060,
+      "sha256": "1bb2082aeb951d838468685b204ad71333d918686c6440200e1f7e7ad5d85a49"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_demolitions.webp",
+      "bytes": 8732,
+      "sha256": "112ef6dadc9d2f91b095814366601448139b345d5bf8c8aae8fa7aa129482dc7"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_grenade.webp",
+      "bytes": 4418,
+      "sha256": "05e03a7dfee6d8318206553d1b66a80984d485ce2a1f304aff8fb843e4fd779a"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_hollow.webp",
+      "bytes": 7698,
+      "sha256": "deeebbb3bb7326ae4417c3da8e7f58ef82d9ecf35180907f4d19055327e29605"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_overclock.webp",
+      "bytes": 6036,
+      "sha256": "495377cb64917233b6831d5b8beb31c8a58b12d1d7cabf32152b902e4581c0b1"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_plated.webp",
+      "bytes": 5164,
+      "sha256": "2ede773c87526f25dc5d66074bd2529c29cf6e8d086269dd6f77da63b8193b4e"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_quick.webp",
+      "bytes": 5894,
+      "sha256": "e44d670ce247b9d629b45aeb1c0ee3e50502275c681efe98188b0ba8fc40b8c1"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_rifle.webp",
+      "bytes": 7390,
+      "sha256": "e67249452f5005cc706c4b05f98dab02da782d7016bf3420ee2be6f5e38a7160"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_rocket.webp",
+      "bytes": 5576,
+      "sha256": "eeca6d84b009dd57af55c41c678dae8ae35d860561d9c2313f94d85a3df039b8"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_scavenger.webp",
+      "bytes": 6736,
+      "sha256": "293addb67a7ed82bea277820cdcd06ee972802a3929c5989a68dde4d2bff8d09"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_shotgun.webp",
+      "bytes": 4748,
+      "sha256": "9f25be42f0a0a58ac0db0f6d2d92c67d4a391c820cefadcb9dd0221e5a6c7f3f"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_skull.webp",
+      "bytes": 5830,
+      "sha256": "b5a29e87b4ceec86f322562507326afb7f7613e2d9979a7b512213f284896aee"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/ui/icon_vampire.webp",
+      "bytes": 6538,
+      "sha256": "304be2612f70cc00a199768d071d580e1176824a0116baf3d88389a5a287ccf4"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/v4chars/hound.glb",
+      "bytes": 850664,
+      "sha256": "dd4bef089f0d228ffd204c820c35e821165c1d957e1b38ec840f7bd3fe4c9a93"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/vm/arm_l.glb",
+      "bytes": 548428,
+      "sha256": "5831915804f809ac665d64278b3506cd3919340f795155a0726a5d48ea6d39c0"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/vm/arm_r.glb",
+      "bytes": 494244,
+      "sha256": "acacef2d78857d0cf5541710926d24320bf6681c0abcff06b7fb06c86cf86b96"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/vm/launcher.glb",
+      "bytes": 796860,
+      "sha256": "3177f25b640292e54ec6f15757d90518406db651979d0dd3c779c5e4c40da558"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/vm/rifle.glb",
+      "bytes": 748540,
+      "sha256": "10d51ef14dc44103a54cfc359ca39358efa8dfeef0c120892bf167fad6aef839"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/vm/rocket.glb",
+      "bytes": 158888,
+      "sha256": "fdd1c1bf26c46a5537aa91ad2f6121d7ecf89bea023b1380757d07459c0cbab7"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/assets/vm/shotgun.glb",
+      "bytes": 798464,
+      "sha256": "de3ed7a372d3a33af33a963e1448ee0eb7e96f3c78f30575997b9a980d4d8d00"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/fonts/ChakraPetch-500.latin.woff2",
+      "bytes": 9956,
+      "sha256": "36ad966cb653de70ba37355c41003b02de8940b2df6cbcd46480a6ad8cadd65d"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/fonts/ChakraPetch-700.latin.woff2",
+      "bytes": 9900,
+      "sha256": "ce5095dc1cb200aaa939e38067a0677018d10e9f26ec38cdcf1557ac524fc775"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/fonts/ChakraPetch-OFL.txt",
+      "bytes": 4396,
+      "sha256": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/fonts/Figtree-OFL.txt",
+      "bytes": 4388,
+      "sha256": "140d37233e7f3ce7313798befa9600893bcceaf41a55fa0fa5ad52f7f657a268"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/fonts/Figtree-VF.subset.woff2",
+      "bytes": 23660,
+      "sha256": "b3976c5969c8b1afd81dc3e314b61d8ffe3f3f58cf40906443105d330e6e0bdf"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/fonts/ManusCC0-LICENSE.txt",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/fonts/ManusCJK-subset.woff2",
+      "bytes": 68576,
+      "sha256": "9bac68ce5b4adaee716159d14d8b3d0d0685324de2426924742827c357a43888"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/licenses/MESHOPTIMIZER-MIT.txt",
+      "bytes": 1079,
+      "sha256": "f03037ca7bad1e3eb7f4a63fa6084a8baabd5ba30d3c239a9a7f35705d873e26"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/licenses/RAPIER-APACHE-2.0.txt",
+      "bytes": 11343,
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/licenses/THREE-MIT.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "examples/tidal-reclaim/public/THIRD_PARTY_NOTICES.md",
+      "bytes": 4462,
+      "sha256": "79832d11417437fd7adfea425843c7bd932375ae3e369a8a4769e307620f4594"
+    },
+    {
+      "path": "examples/tidal-reclaim/README.md",
+      "bytes": 2887,
+      "sha256": "60c7090ee8ef6430714e9bf22d5f84c3ad43dee9ca85666387402d8c990a4328"
+    },
+    {
+      "path": "examples/tidal-reclaim/serve.mjs",
+      "bytes": 1257,
+      "sha256": "bd23f0110c6dfdf383646c036bf8f7739aedae42acf80d47dfc3d23873e52a3c"
+    },
+    {
+      "path": "examples/tidal-reclaim/SOURCE_MANIFEST.json",
+      "bytes": 33312,
+      "sha256": "3a660f7052320385be77fe4144e8278bbabaeea68bfbcf655c5be04e0d8b7cd9"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/art/platform-menu-v1.webp",
+      "bytes": 195440,
+      "sha256": "b16b02f03d0392f2dc75050af660319527bc4d48e454b1371d1fb1f8d34abe7b"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/art/platform-menu-v2.webp",
+      "bytes": 214160,
+      "sha256": "9703772ca1595d55b9e7d13ff7d8587bf4024d6cb8eefbdd8ed42c72d8f06e50"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/art/robot-loading-v1.webp",
+      "bytes": 127952,
+      "sha256": "ff374b7a0a39734f8bd940017e70c77dae39741bf043bf5efb4b659dfb886530"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/art/robot-loading-v2.webp",
+      "bytes": 148912,
+      "sha256": "ad1259fee800723f97d041039fc33984ff6c205227ba92e6d8c655fcd7d55d46"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/art/title-lettering-v3.webp",
+      "bytes": 202704,
+      "sha256": "ef6e8c7fca0988bf58b7fe0787877fb01c37c16fc874c5c71a05d64fb0ba161d"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/asset-review.ts",
+      "bytes": 4444,
+      "sha256": "2cf91c828112511d9ac7fe9f2306b2414a2bc58cde5efb473e386a7885f52100"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/engine/assets.ts",
+      "bytes": 2305,
+      "sha256": "9437a6339e754c8b2ee221564af2475e3c65310e49a8c321bc1745a6c4751662"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/engine/audio.ts",
+      "bytes": 21249,
+      "sha256": "c10d3b0c27b2eef92b1b4119a1f2d51931665f319d740c874fa8f88c16b78965"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/engine/i18n.ts",
+      "bytes": 949,
+      "sha256": "f661810a76e2534ca93e4c6904c270fb65a1428e05a25842e8ee5af9b41d79dc"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/engine/input.ts",
+      "bytes": 7654,
+      "sha256": "9b34ab8113f102cb5b6e7a883642d03e2073a134c6e62186cc2142fff18a6be6"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/engine/loop.ts",
+      "bytes": 2144,
+      "sha256": "0e4ae47f168d600e18779fa80c550ec78404029b30aab5f53635e1cdd5cbc7ff"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/engine/physics.ts",
+      "bytes": 4663,
+      "sha256": "9ccebc41eb8e2f50d7527d0ecbd21ef464a590a95f288848f288c9a81a08fd71"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/engine/renderer.ts",
+      "bytes": 11475,
+      "sha256": "4e5f71c6e99ef6f438ca240bb76bf463ada7141c3b729b39364daf3fc2692980"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/engine/save.ts",
+      "bytes": 4095,
+      "sha256": "7cedc137a6c53249b49ee1069b48ff8517152641d42f6e400bbc904fb9308bcc"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/arena.ts",
+      "bytes": 12329,
+      "sha256": "6c6d58de1dba0d5b061446f02e283316cd8057371371d46e49f427d94bf5afc4"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/bots.ts",
+      "bytes": 34984,
+      "sha256": "e7e9c634f5d4bb07d9d61bf6c0aabd8d6d1444898cb48ec1b668905dcac1a84d"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/combat.ts",
+      "bytes": 2607,
+      "sha256": "9ef7acdc04b88922637d3632083bbb461df94b0aa642d26e7290c85a8a343e55"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/config.ts",
+      "bytes": 4893,
+      "sha256": "91bdda1e55bd90d60c7bb2adeccca71c8245180528571b5262970accd8a7e0bc"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/containers.ts",
+      "bytes": 12020,
+      "sha256": "0f9b06b895e38e1fed87a4f53570414f29079089dfe4599b1ab8935ddfe56e3d"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/fx.ts",
+      "bytes": 54686,
+      "sha256": "f538b2356639ab11f349281ac468d0d795029e5965962b83d2bf08d7e08d710f"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/game.ts",
+      "bytes": 88547,
+      "sha256": "e2d94b2dbf0dcf6c1b09f02ea4f65c15fef67fa6a9682db9beda3b256de10b13"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/guns.ts",
+      "bytes": 18464,
+      "sha256": "c4a9858993b5c6e5c8f9901cb112bba3eed61d622ac0cce3ae7665b6c111fe7c"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/hound.ts",
+      "bytes": 19203,
+      "sha256": "709a6fada062ecd8616925a65d9cd8098780e392666f308920294c380f0c8ce4"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/library.ts",
+      "bytes": 9203,
+      "sha256": "aa3ae98e73fd28a3e67cce2caf86bc747201316cfd2f4b1f2a7c567e184fa720"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/nav.ts",
+      "bytes": 8002,
+      "sha256": "12f0a6499bec06ac178c7b83dc92880b87b67eca60d227386462b57bc0a333bb"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/onslaught.ts",
+      "bytes": 7525,
+      "sha256": "f98cbe627d7c31462e33ed4c69617a80fa0c91076d786f4dae9cbfb26f4e1600"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/player.ts",
+      "bytes": 10925,
+      "sha256": "3483a5ada60e27404b528a1227cc8191087bc0c6ad086fa12e0b60cbebcd36f8"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/playerbody.ts",
+      "bytes": 2298,
+      "sha256": "ebea52aada29eabe2f3587bcb0d540f9ba11276fae2504712f2e4038e26f513f"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/props.ts",
+      "bytes": 10722,
+      "sha256": "b849053020e1b886230de4b073ff8dec74f7ff9373db50685822687f606ddbb8"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/robot.ts",
+      "bytes": 30021,
+      "sha256": "d67eeaddac9aab6a034f588f751744077c0cc7b0b4711e1549d89314e3bcf00d"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/rules.ts",
+      "bytes": 6614,
+      "sha256": "c91991f883dbdcae0bd1f63ff15239e5dea77c1bc355d79d10d7d6201dbf61b2"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/stages.ts",
+      "bytes": 6831,
+      "sha256": "e4a0f0742aca127b989f168adc2f346ed8d6d0782d72f0b9a16284cac9c940c4"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/tidal-assets.ts",
+      "bytes": 287,
+      "sha256": "14255678f246af41572e66bb36fbcf8de5a081ce901a19ecad4df21c828372c1"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/tidal-mission.ts",
+      "bytes": 2634,
+      "sha256": "b26cd81b61f3ee4ab540db280cacd5cae0417e2d1c878239040eaf03a95822bd"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/tripoguns.ts",
+      "bytes": 14393,
+      "sha256": "f71d0da3e72f3733eba404a582ab0db7cf7a76b96911dd26300ba6748b0eb7ed"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/tuning.ts",
+      "bytes": 4918,
+      "sha256": "c0cd0df18b3d408ee82d756ebe2df79c4bc970c017ab101c24dc1d84b1d45363"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/game/weapons.ts",
+      "bytes": 25599,
+      "sha256": "dbab1c1b02c0519bacb1a6e130778ce3b8b5011056ac7d6c1385c9016affc31e"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/i18n/zh-CN.json",
+      "bytes": 11181,
+      "sha256": "afd9a753e70eb02117d543f03f56b3ca587815b38eff52282a97cae17281457e"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/main.ts",
+      "bytes": 8383,
+      "sha256": "ed0574b5ff6202b90a65135971add23c4a8858edb71fe3b541f45903a38d80a3"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/styles/main.css",
+      "bytes": 46675,
+      "sha256": "d286bfbbe02e4d90d73e56e60a34ecc9d00001057eeed04e053f78be6e5edebd"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/styles/presentation.css",
+      "bytes": 3731,
+      "sha256": "0a233c43421c79d582f366c723ebc08bd1b54247ac44c4a25308c3dbf12a2804"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/ui/sparks.ts",
+      "bytes": 6373,
+      "sha256": "7b24d537ddbe555f180706e5dcdb087b26037e141548d2d4f53049e4e8d4e8a4"
+    },
+    {
+      "path": "examples/tidal-reclaim/src/ui/ui.ts",
+      "bytes": 46446,
+      "sha256": "69ebfb9e7635980b2ca83767038cc8ca315cf3c9b449f91ede226334a6fd8a1d"
+    },
+    {
+      "path": "examples/tidal-reclaim/tests/director.test.ts",
+      "bytes": 3178,
+      "sha256": "632f1cee9aa1917434bce8fb0a52cdaf3d944e2d28d1ca886c94db7011bb80f9"
+    },
+    {
+      "path": "examples/tidal-reclaim/tests/i18n.test.ts",
+      "bytes": 1518,
+      "sha256": "b712b38f59111b3860c1d77f2e31fdb7edb6695f6fbb27ec411ce727d85d9d8c"
+    },
+    {
+      "path": "examples/tidal-reclaim/tests/onslaught.test.ts",
+      "bytes": 4293,
+      "sha256": "27897dc6f7e1d392713963a644ea61e23a8b28689480aeea9726894d23242812"
+    },
+    {
+      "path": "examples/tidal-reclaim/tests/preview.test.mjs",
+      "bytes": 1236,
+      "sha256": "933ed13fb67b3ae0ead2249087338789d022853c63f862c61b1951ebd6714d04"
+    },
+    {
+      "path": "examples/tidal-reclaim/tests/rules.test.ts",
+      "bytes": 3408,
+      "sha256": "119ecda95235b8cde1126ec6827b270fd4132a063157a9fa8507c020d7961aa7"
+    },
+    {
+      "path": "examples/tidal-reclaim/tests/save.test.ts",
+      "bytes": 2250,
+      "sha256": "9e8ddad4f5be549181535486996ee3e0a6288d0651d8188e6ce8a65a7f2def94"
+    },
+    {
+      "path": "examples/tidal-reclaim/tests/stages.test.ts",
+      "bytes": 1123,
+      "sha256": "d97fb3d9f8b010ddbd9e3092c724fde3dc99ba3f90fabbbe9c3c94326736d0ab"
+    },
+    {
+      "path": "examples/tidal-reclaim/tests/tidal-mission.test.ts",
+      "bytes": 2466,
+      "sha256": "a724f727877f888c297732700cd006393125b8bc4c15326c96484351c13a97dc"
+    },
+    {
+      "path": "examples/tidal-reclaim/THIRD_PARTY_NOTICES.md",
+      "bytes": 20678,
+      "sha256": "d703b7bb05b02df1c30958e33968b3b4337ceb5a7961c90ab0b8f4479fe06e7b"
+    },
+    {
+      "path": "examples/tidal-reclaim/tripo-asset-plan.json",
+      "bytes": 3289,
+      "sha256": "9dadbfa4ce84e2477fc8a9009199b32f7716c37d983472c7c06a28f6d2bc9312"
+    },
+    {
+      "path": "examples/tidal-reclaim/tripo-assets.provenance.json",
+      "bytes": 1868,
+      "sha256": "ac9e4030d5e1f6e534b1b6f0f96aa03d4a45b12a83e0fd5a60671db92ffb2a8e"
+    },
+    {
+      "path": "examples/tidal-reclaim/tsconfig.json",
+      "bytes": 444,
+      "sha256": "3580e2762d2df9748475b64010e57ac9d7f6b8427b5c40b46df161625b32dbd1"
+    },
+    {
+      "path": "examples/tidal-reclaim/vite.config.ts",
+      "bytes": 635,
+      "sha256": "2ba433c525e047f644772a76d3822b1141af60cacdc547f70e41f6af57662039"
+    },
+    {
       "path": "examples/unlock-bolts-mobile/.gitignore",
       "bytes": 29,
       "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
@@ -8789,8 +9809,8 @@
     },
     {
       "path": "games.json",
-      "bytes": 8193,
-      "sha256": "6a784f0644517351b9dc85cb93ffd8ea27eb07397695eba4fd3c12bf97614b86"
+      "bytes": 8641,
+      "sha256": "841b4f98e4088dbbc3ad080cf4751b53a70870c57b797ca94790059450e6912d"
     },
     {
       "path": "LICENSE",
@@ -8799,13 +9819,13 @@
     },
     {
       "path": "package-lock.json",
-      "bytes": 57581,
-      "sha256": "be41bcebb9d1b4ed07cf713bdb41d5a56bda18afca269bed9b97118af8395531"
+      "bytes": 57583,
+      "sha256": "724b300d53d44d33a2455a1196fa5231d4064ce464ec48e9b59446bf7e100b81"
     },
     {
       "path": "package.json",
-      "bytes": 2774,
-      "sha256": "c4e4b7bdfd5487059b3fab86564ddb4f96838a80628acfa627a84ce514397a72"
+      "bytes": 2806,
+      "sha256": "221ed509484ed243ba0e77a8954b1ceb25de16d0dc9bd38f716b9c86e9eb64f1"
     },
     {
       "path": "packages/cli/index.ts",
@@ -8836,6 +9856,11 @@
       "path": "packages/core/options.ts",
       "bytes": 776,
       "sha256": "42f26dbcaf698e5009d962a8be9d5b29687de4afa0b9662418a0ca391df4f518"
+    },
+    {
+      "path": "packages/core/resources.ts",
+      "bytes": 18489,
+      "sha256": "295006c840db2b18e437a03a742a00a15b02b8c5ffc57e271863c285a77e8362"
     },
     {
       "path": "packages/core/storage.ts",
@@ -8923,6 +9948,11 @@
       "sha256": "9baea28cf13291a01983c76a796baa22f676a705d2265731ef5b18561ec9e8a2"
     },
     {
+      "path": "scripts/games/__pycache__/export.cpython-315.pyc",
+      "bytes": 29119,
+      "sha256": "c9384a1864d9c6651536bff464590eac9822bc7d1eb4219f28b0e83da1c2c3fe"
+    },
+    {
       "path": "scripts/games/build-all.mjs",
       "bytes": 733,
       "sha256": "b98e9d10d4c6959781bb7862fad2cc4c41bde2e18c84aaa40b04edcf59568a6d"
@@ -8934,13 +9964,13 @@
     },
     {
       "path": "scripts/games/export.py",
-      "bytes": 17086,
-      "sha256": "eb94d36db4db7744cf7ba848abe5dde98e8fac8e8b85426f1ae88e0bd5602341"
+      "bytes": 19406,
+      "sha256": "b0243415c22ea3cf3a72d031f2af3021ade13b302d0fd744724fced5358af417"
     },
     {
       "path": "scripts/games/platforms.json",
-      "bytes": 690,
-      "sha256": "3f8ebae85751cc9d958b23ae3d6d063f64534ac7d04c0001f060bfc465877186"
+      "bytes": 725,
+      "sha256": "cd8c3098970439b6cee66ccab99557c78a75e39f4c23a1e3b109cff98dfaba1e"
     },
     {
       "path": "scripts/games/preflight.mjs",
@@ -8949,8 +9979,8 @@
     },
     {
       "path": "scripts/games/projects.json",
-      "bytes": 1627,
-      "sha256": "3a6ecde41f4465b636988a760d8b5c74fef475988ee31133bc67c6b946a026a6"
+      "bytes": 2927,
+      "sha256": "dc449325f71149f5fd66d75b93bcc760a77c1c5796a74b50141806c4e8547cfd"
     },
     {
       "path": "scripts/games/rebuild-report.mjs",
@@ -8974,8 +10004,8 @@
     },
     {
       "path": "scripts/games/smoke.mjs",
-      "bytes": 4033,
-      "sha256": "7f64b62faada74b32d83c4abb580041ae8a0ce9f89adeccde21e20a50141e602"
+      "bytes": 4964,
+      "sha256": "a4c11412531f4b2333333ffac8427863d0e0d10151ee6aadc7db76639ec6f105"
     },
     {
       "path": "scripts/games/source-policy.mjs",
@@ -9108,6 +10138,11 @@
       "sha256": "cf78447fa0fd3600d3594288d3ed9624413a0951f3a4e37bd3f6249e24b90ff2"
     },
     {
+      "path": "scripts/tidal-reclaim/catalog.json",
+      "bytes": 715,
+      "sha256": "a86dc1c1cd002ea82bf3d617e452051c7a9ddecc2aa4594bb352e8f969e1ec42"
+    },
+    {
       "path": "scripts/toolkit/build-cocos.mjs",
       "bytes": 13158,
       "sha256": "8b05167b191da8d447130711f5bac68ffc5747bd998883ac82f6e13f6a24e91f"
@@ -9124,8 +10159,8 @@
     },
     {
       "path": "scripts/web/catalog.mjs",
-      "bytes": 3383,
-      "sha256": "d1e256338ca8c6577a0d4e2135c9127a264c505293d5cd343e4563a30baeaba5"
+      "bytes": 3509,
+      "sha256": "54694b685cbe6113f044c9a4770f6068408d33823d0537a3a315030817103646"
     },
     {
       "path": "scripts/web/footer.mjs",
@@ -10488,6 +11523,11 @@
       "sha256": "91aa24ac560f9942e551afe0d0911938849414ba21029b0a8b448df899dd8684"
     },
     {
+      "path": "tests/games/vite-export.test.mjs",
+      "bytes": 3244,
+      "sha256": "b6123170ebaebf5f96bf68b85ab2a3796cbc0528b36ae7ae238de81680932708"
+    },
+    {
       "path": "tests/ios/source.test.mjs",
       "bytes": 2293,
       "sha256": "d04a794ecb9b3f090f0a0daa46fa3ba5d4c9fb2671fca7af72665badf8c8add5"
@@ -10496,6 +11536,11 @@
       "path": "tests/mobile/localization.test.mjs",
       "bytes": 3255,
       "sha256": "1b46425e75da82b146593bf842587902219838e8be8e7cc35153c83084eb2b19"
+    },
+    {
+      "path": "tests/release/resources.test.mjs",
+      "bytes": 12337,
+      "sha256": "e343ba3e9da900100909a1965d834efa7575794b13318aa3dfdb9e8930e70948"
     },
     {
       "path": "tests/release/toolkit.test.mjs",
@@ -10539,8 +11584,8 @@
     },
     {
       "path": "tests/web/platforms.test.mjs",
-      "bytes": 4112,
-      "sha256": "db8104c90d64c54c3eaf9c9b7d1e3c02712b3a3f5b162c7dc5bbdf46ae859355"
+      "bytes": 4532,
+      "sha256": "0b1f7d3ad98467291a2a037e38c1636a95de61eef531a496da3ac60dbd906650"
     },
     {
       "path": "tests/web/usage.test.mjs",
@@ -10556,21 +11601,6 @@
       "path": "tsconfig.json",
       "bytes": 286,
       "sha256": "d96bb08c27d62dfc7c6f3a8564faf9dd4e1104b8208f8676ce5e1abd761d77c2"
-    },
-    {
-      "path": "docs/resource-search.md",
-      "bytes": 4485,
-      "sha256": "5c9cacdbe418de0cd7745ce7e8c907dadb1b4e0eda435bea534e59ccfbc1fccb"
-    },
-    {
-      "path": "packages/core/resources.ts",
-      "bytes": 18489,
-      "sha256": "295006c840db2b18e437a03a742a00a15b02b8c5ffc57e271863c285a77e8362"
-    },
-    {
-      "path": "tests/release/resources.test.mjs",
-      "bytes": 12337,
-      "sha256": "e343ba3e9da900100909a1965d834efa7575794b13318aa3dfdb9e8930e70948"
     }
   ]
 }

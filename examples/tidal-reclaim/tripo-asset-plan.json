@@ -1,0 +1,41 @@
+{
+  "game": "tidal-reclaim",
+  "provider": "Tripo",
+  "region": "cn",
+  "status": "generated-and-integrated-locally",
+  "workflow": {
+    "initialCandidatesPerAsset": 1,
+    "maximumCandidatesPerAsset": 3,
+    "requirements": [
+      "Inspect a dry-run before each paid operation; account for generation and all processing costs within the total budget.",
+      "Inspect the first candidate before generating variations or paying for rigging.",
+      "Keep originals, generated models and receipts on a verified NAS mount; never modify upstream Riftstrike assets in place.",
+      "Record model version, prompt, task ID, actual credits, license evidence and file hashes before integrating assets.",
+      "Keep credentials and account receipts private; export only reviewed game assets and their required provenance.",
+      "Validate appearance, scale, orientation, materials, collision, loading size and gameplay in the actual game."
+    ],
+    "budgetPolicy": "Use the private task budget ledger; no further paid operations without a bounded plan."
+  },
+  "assets": [
+    {
+      "id": "purifier-unit",
+      "purpose": "Interactive objective prop at each of three purification stations",
+      "prompt": "One freestanding seawater purification machine for a stylized first-person game on an abandoned offshore industrial platform. A readable chunky silhouette, a tall cream enamel cylindrical pressure tank held by a rust-red steel frame, teal pipe joints, two thick external pipes, a small front control console with a cyan circular status lens, and a broad stable rectangular base. Used maritime machinery, restrained salt corrosion and chipped paint, attractive simplified hard-surface shapes. Entire object visible, isolated single object, no environment, no water, no people, no text, no logos, no floating parts. Physically plausible PBR materials, opaque surfaces, game-ready prop.",
+      "integration": {
+        "approximateHeightMeters": 2.6,
+        "animation": "Game-controlled status light and purification effects",
+        "collision": "Simple separately authored collider"
+      }
+    },
+    {
+      "id": "offshore-patrol-robot",
+      "purpose": "New enemy silhouette for offshore platform defenders",
+      "prompt": "One stylized bipedal offshore maintenance robot repurposed as a patrol guard, full body in a symmetrical neutral A-pose, arms slightly away from torso and feet apart. Chunky cream enamel torso, rust-red protective shoulder panels, dark articulated metal joints, broad stable industrial feet, a compact head with one large teal camera lens, and a small sealed battery backpack. Two separate arms with simple mechanical grippers, two separate legs, clearly visible elbow and knee joints. Friendly industrial design with an imposing readable combat silhouette, restrained marine wear and chipped paint. Entire character visible, isolated single character, no base, no environment, no text, no logos, no handheld weapon, no floating parts. Opaque PBR materials, simplified game-ready hard-surface shapes.",
+      "integration": {
+        "approximateHeightMeters": 1.8,
+        "animation": "Check rig compatibility before purchasing idle and walk animations",
+        "collision": "Gameplay capsule independent of rendered mesh"
+      }
+    }
+  ]
+}

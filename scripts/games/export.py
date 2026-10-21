@@ -136,18 +136,41 @@ def export(catalog, destination, library=None, only=None):
             if kind == 'vite':
                 tree(source/'src', 'src')
                 tree(source/'src/assets', 'src/assets')  # reviewed asset-directory link is followed explicitly
-                tree(source/'public', 'public')
-                # Use the exact published HTML shell, with Vite's source entry restored.
-                html = (base/'files/index.html').read_text()
-                html = re.sub(r'<script type="module"[^>]*src="[^"]+"[^>]*></script>', '', html)
-                html = re.sub(r'<link rel="stylesheet"[^>]*href="[^\"]*assets/[^\"]+"[^>]*>', '', html)
-                css_file = next(f['path'] for f in delivery['files'] if f['path'].startswith('assets/') and f['path'].endswith('.css'))
-                copy(base/'files'/css_file, 'owngame.css')
-                css = (target/'owngame.css').read_text()
-                (target/'owngame.css').write_text(css.replace('url(art/', 'url(/art/').replace("url('art/", "url('/art/").replace('url("art/', 'url("/art/'))
-                html = html.replace('</head>', '<link rel="stylesheet" href="./owngame.css"></head>')
-                html = html.replace('</body>', '<script type="module" src="./src/main.js"></script></body>')
-                put('index.html', html.encode())
+                if spec.get('assetManifest'):
+                    audit = json.loads((source/spec['assetManifest']).read_text())
+                    for item in audit['files']:
+                        rel = Path(item['path'])
+                        if rel.is_absolute() or '..' in rel.parts:
+                            raise ValueError('Unsafe public asset path')
+                        f = source/'public'/rel
+                        data = f.read_bytes()
+                        if len(data) != item['bytes'] or SHA(data) != item['sha256']:
+                            raise ValueError('Public asset changed after review: '+str(rel))
+                        copy(f, Path('public')/rel)
+                else:
+                    tree(source/'public', 'public')
+                if spec.get('sourceEntry'):
+                    # Reviewed native Vite entry: retain editable CSS, imports and TypeScript.
+                    entry = spec['sourceEntry']
+                    if not re.fullmatch(r'src/[a-zA-Z0-9_./-]+\.(?:ts|js)', entry) or '..' in Path(entry).parts:
+                        raise ValueError('Unsafe Vite source entry')
+                    copy(source/'index.html', 'index.html')
+                    for name in spec.get('sourceFiles', []):
+                        if Path(name).is_absolute() or '..' in Path(name).parts:
+                            raise ValueError('Unsafe Vite source allowlist')
+                        copy(source/name, name)
+                else:
+                    # Use the exact published HTML shell, with Vite's source entry restored.
+                    html = (base/'files/index.html').read_text()
+                    html = re.sub(r'<script type="module"[^>]*src="[^"]+"[^>]*></script>', '', html)
+                    html = re.sub(r'<link rel="stylesheet"[^>]*href="[^\"]*assets/[^\"]+"[^>]*>', '', html)
+                    css_file = next(f['path'] for f in delivery['files'] if f['path'].startswith('assets/') and f['path'].endswith('.css'))
+                    copy(base/'files'/css_file, 'owngame.css')
+                    css = (target/'owngame.css').read_text()
+                    (target/'owngame.css').write_text(css.replace('url(art/', 'url(/art/').replace("url('art/", "url('/art/").replace('url("art/', 'url("/art/'))
+                    html = html.replace('</head>', '<link rel="stylesheet" href="./owngame.css"></head>')
+                    html = html.replace('</body>', '<script type="module" src="./src/main.js"></script></body>')
+                    put('index.html', html.encode())
             license_name = next((p for p in ['LICENSE','LICENSE.txt','public/LICENSE','public/LICENSE.txt'] if (target/p).is_file()), None)
             if not license_name:
                 put('LICENSE', (ROOT/'LICENSE').read_bytes())
@@ -174,14 +197,21 @@ def export(catalog, destination, library=None, only=None):
             if kind == 'moss':
                 dev['typescript'] = '7.0.2'
             if kind == 'vite':
-                pkg = json.loads((source/'package-lock.json').read_text())
-                for name in ['three','cannon-es','lil-gui']:
-                    deps[name] = pkg['packages']['node_modules/'+name]['version']
-                dev['vite'] = pkg['packages']['node_modules/vite']['version']
+                if spec.get('sourceEntry'):
+                    pkg = json.loads((source/'package.json').read_text())
+                    deps = pkg['dependencies']
+                    dev = {name: pkg['devDependencies'][name] for name in ['vite', 'typescript', 'vitest', '@types/three'] if name in pkg['devDependencies']}
+                else:
+                    pkg = json.loads((source/'package-lock.json').read_text())
+                    for name in ['three','cannon-es','lil-gui']:
+                        deps[name] = pkg['packages']['node_modules/'+name]['version']
+                    dev['vite'] = pkg['packages']['node_modules/vite']['version']
             dump(target/'package.json', {'name':'@owngame-example/'+ident,'version':'1.0.0','private':True,
                 'type':'module','engines':{'node':'>=22.18'},'license':spec.get('license','MIT'),
-                'scripts':{'build':'node build.mjs','serve':'node serve.mjs','start':'npm run build && npm run serve'},
+                'scripts':{'build':'node build.mjs','serve':'node serve.mjs','start':'npm run build && npm run serve', **({'test':'vitest run','typecheck':'tsc --noEmit'} if spec.get('sourceEntry') else {})},
                 'dependencies':deps,'devDependencies':dev})
+            if spec.get('dependencyLock'):
+                copy(source/spec['dependencyLock'], 'package-lock.json')
             put('build.mjs', (ROOT/'scripts/games/build-template.mjs').read_bytes())
             put('serve.mjs', (ROOT/'scripts/games/serve-template.mjs').read_bytes())
             notices = [f'# {game["title"]} · 授权与来源\n',
@@ -190,6 +220,8 @@ def export(catalog, destination, library=None, only=None):
             for f in sorted((target/'public').rglob('*')):
                 if f.is_file() and (f.name in ['THIRD_PARTY.txt','SOURCE.json','ARTWORK.json'] or f.suffix.lower()=='.txt' and any(x in f.name.lower() for x in ['ofl','license','phaser','eventemitter'])):
                     notices.append(f'\n## {f.relative_to(target).as_posix()}\n\n'+f.read_text())
+            if spec.get('sourceEntry') and (source/'THIRD_PARTY_NOTICES.md').is_file():
+                notices.append('\n'+(source/'THIRD_PARTY_NOTICES.md').read_text())
             if spec.get('upstream'):
                 notices.append('\n## 上游\n\n'+json.dumps(json.loads((target/'UPSTREAM.json').read_text()),indent=2)+'\n')
             put('THIRD_PARTY_NOTICES.md', '\n'.join(notices).encode())
@@ -204,6 +236,8 @@ def export(catalog, destination, library=None, only=None):
                 '`SOURCE_MANIFEST.json` 记录这里的可编辑源码、构建脚本与素材。依赖通过 npm 恢复，构建脚本已移除开发机和 NAS 路径。'
                 '打包路径、源码诊断标记或压缩器可能改变输出字节；重建结果和原交付的逐文件比较另见仓库检查结果。\n\n'
                 f'代码许可：**{spec.get("license","MIT")}**。字体、引擎与上游素材依照各自声明；见 [授权与来源](THIRD_PARTY_NOTICES.md)。\n').encode())
+            if spec.get('publicReadme'):
+                copy(source/spec['publicReadme'], 'README.md')
             dump(target/'ONLINE_BUILD.json', {'id':ident,'build_sha256':version,
                 'entrypoint':delivery['entrypoint'],'files':canonical})
         # A source fingerprint ties the published example back to reviewed local inputs.

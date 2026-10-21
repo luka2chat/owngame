@@ -15,6 +15,7 @@ jobs:
       - run: node --test tests/games/*.test.mjs tests/web/*.test.mjs
       - run: node scripts/games/verify.mjs
       - run: node scripts/games/build-all.mjs
+      - run: npm --prefix examples/tidal-reclaim run typecheck && npm --prefix examples/tidal-reclaim test
       - run: node scripts/games/rebuild-report.mjs
       - run: node --test examples/star-letters/web/*.test.mjs
       - run: npx playwright install --with-deps chromium

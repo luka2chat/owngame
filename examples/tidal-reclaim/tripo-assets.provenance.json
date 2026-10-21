@@ -1,0 +1,53 @@
+{
+  "provider": "Tripo CN",
+  "generatedOn": "2026-10-22",
+  "prompts": "tripo-asset-plan.json",
+  "rights": {
+    "source": "https://developers.tripo3d.com/zh/terms",
+    "section": "5.2.2 Paid Users",
+    "termsUpdated": "2025-07-11",
+    "verifiedOn": "2026-10-22",
+    "basis": "Generated with purchased API credits; paid outputs generally include use, modification and distribution rights subject to the terms.",
+    "scope": "Only the new assets listed here. Upstream Riftstrike assets require their own review."
+  },
+  "assets": [
+    {
+      "id": "purifier-unit",
+      "file": "generated-assets/purifier.glb",
+      "sha256": "928a4895ca7a0c67025de5279f77f9a1776cd5b315bf833aa6bd5427634fcad8",
+      "bytes": 433292,
+      "triangles": 7633,
+      "animations": [],
+      "sourceTaskIds": [
+        "d27c08d7-b6d8-4948-9ea5-ae5e6ba576f1",
+        "4c58e51d-99f8-44fa-aeda-cbb404aa344b"
+      ],
+      "generationModel": "v3.1-20260211",
+      "retopologyModel": "v3.0",
+      "rigModel": null,
+      "localOptimization": "glTF Transform 4.5.1; Meshopt; WebP 1024 px; no additional simplification"
+    },
+    {
+      "id": "offshore-patrol-robot",
+      "file": "generated-assets/patrol-robot.glb",
+      "sha256": "d6da6de9d0cb1966040006587a5c31ddd67a02d65900ac9aad20f5e41932b9c6",
+      "bytes": 854736,
+      "triangles": 11786,
+      "animations": [
+        "idle",
+        "run",
+        "walk"
+      ],
+      "sourceTaskIds": [
+        "46d72e24-d66a-4859-af4e-9e0bcb367b02",
+        "6bc26326-aa9f-4851-bb1a-de1e34a4d18b",
+        "13e3eb89-3882-497f-b673-e6e8726af9dc",
+        "41b4325b-646f-45db-89e5-c3fecf6d080f"
+      ],
+      "generationModel": "v3.1-20260211",
+      "retopologyModel": "v3.0",
+      "rigModel": "v3.0-20260909",
+      "localOptimization": "glTF Transform 4.5.1; Meshopt; WebP 1024 px; no additional simplification"
+    }
+  ]
+}

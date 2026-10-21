@@ -1,7 +1,7 @@
 import { t, localizeGame, localizeUrl } from "./i18n.js";
 import { track, gameParams, selectGame, setPageGame } from "./analytics.js";
 import { openRemix } from "./remix.js";
-import { supportsPlatform, platformLabel, playerPresentation } from "./platforms.js";
+import { supportsPlatform, platformLabel, playerPresentation, playerSandbox } from "./platforms.js";
 import {
   $,
   catalog,
@@ -262,7 +262,7 @@ try {
   frame = document.createElement("iframe");
   frame.title = localizeGame(game).title;
   frame.allow = "autoplay; fullscreen";
-  frame.setAttribute("sandbox", "allow-scripts allow-same-origin");
+  frame.setAttribute("sandbox", playerSandbox(game));
   const gameHeight =
     game.viewportHeight || (game.id === "signal-harbor" ? 800 : 1000);
   if (game.viewportHeight) document.body.classList.add("board-player");

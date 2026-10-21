@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-22",
+  "tool": "built-in image_gen",
+  "purpose": "Tidal Reclaim loading screen and main menu",
+  "references": "Existing game patrol robot and purifier; first generated loading illustration used as style reference for menu. Reference screenshots are not redistributed with the game.",
+  "sourceArchive": "Project NAS / interface-art/2026-10-22; original PNGs retained",
+  "encoding": "V1 full-bleed art, V3 transparent typography and live controls resize independently. V2 posters retained for cover and reference. Semantic text remains accessible.",
+  "assets": [
+    {
+      "file": "src/art/robot-loading-v1.webp",
+      "original": "robot-loading-v1.png",
+      "prompt": "Use case: stylized-concept\nAsset type: wide 16:9 loading-screen background illustration for the PC game Tidal Reclaim, landscape 1536x864 or larger.\nPrimary request: an art-directed retro industrial robot maintenance poster, restrained and graphic, NOT generic AI sci-fi key art.\nInput image: reference only, showing the actual cream and burnt-orange patrol robot and cylindrical water purifier. Ignore its UI, text, composition and screenshots. Preserve the robot's recognisable boxy cream head with one dark round sensor, compact cream torso, burnt-orange shoulder plates, forearms and boots, exposed dark mechanical joints.\nComposition: left 43 percent is calm warm off-white paper, nearly empty for real UI typography to be added later. Right half contains a large cropped three-quarter bust of that robot, head around x=76%, y=35%, shoulders reaching bottom edge. A single muted teal disc and a very thin technical registration line behind it, small restrained burnt-orange panel as visual counterweight. Illustration stays in the right half; never fill the left with mechanical detail.\nStyle: collectible Japanese industrial-design handbook meets hand-painted European sci-fi comic cover; crisp considered silhouette, confident slightly imperfect ink contours, flat gouache colour shapes, sparing cel shading, subtle screenprint grain, real designed asymmetry. Mechanical design is plausible, simple and legible with only a few panel seams and bolts; lived-in paint at edges rather than random dirt. Mature, tactile, charming utilitarian robotics.\nPalette: warm ivory #e7e1cf, deep petroleum teal #183f43, muted sage #91aaa0, burnt orange #b85b3c, charcoal. Soft daylight, no glossy 3D render, no cinematic lighting.\nNo text, letters, numbers, logos, watermark, UI boxes, fake HUD, cables everywhere, neon, glowing eyes, lens flare, bokeh, photorealism or hyperdetail. Opaque full-bleed background.",
+      "bytes": 127952,
+      "sha256": "ff374b7a0a39734f8bd940017e70c77dae39741bf043bf5efb4b659dfb886530",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "src/art/platform-menu-v1.webp",
+      "original": "platform-menu-v1.png",
+      "prompt": "Use case: stylized-concept\nAsset type: second background in a coherent illustrated PC game UI art set, 16:9 landscape full-bleed.\nInput images: image 1 is the approved style and robot identity reference; image 2 is the actual game asset reference for the purifier and robot, ignore all screenshot UI/text.\nCreate a new wide environmental illustration for Tidal Reclaim's main menu in EXACTLY the tactile editorial screenprint / ink-and-gouache visual language of image 1. Mature industrial robotics, clean readable shapes, lightly worn paint, restrained mechanical detail. Match the ivory, petroleum teal, muted sage, burnt-orange and charcoal palette.\nThe LEFT 45% is quiet warm ivory paper reserved for live title/menu typography. In the RIGHT 55%, an offshore water reclamation platform with cream cylindrical purification tanks, dark teal pipes, rust-orange railings and steel walkways above a flat teal sea. A full-body version of the same small single-lens box-headed cream and orange robot stands on the near deck at x=77%, about 50% of the image height; relaxed alert three-quarter pose, hands lowered, distinct mechanical fingers, no weapon required. The head has one black circular camera aperture and an orange shoulder on each side. A few large simple industrial forms and two distant wind turbines give clear depth, with a pale overcast sky. Deck forms should connect physically and have plausible perspective, no labyrinth of random pipes. Calm evocative atmosphere, a working sea outpost, no battle/explosions.\nGraphic composition with a clean ivory negative-space field on the left flowing into the pale sky; keep the character and all high contrast equipment to the right of x=48%. No frame, no card, no UI, no text, no tiny fake lettering, no watermark. Hand-designed collectible game box illustration, avoid glossy 3D, photorealism, cinematic teal-orange lighting, neon, fog glow, lens flare, photobashing, infinite microdetail.",
+      "bytes": 195440,
+      "sha256": "b16b02f03d0392f2dc75050af660319527bc4d48e454b1371d1fb1f8d34abe7b",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "src/art/robot-loading-v2.webp",
+      "original": "robot-loading-v2.png",
+      "reference": "robot-loading-v1.png",
+      "prompt": "Edit this existing 1672 x 941 landscape game illustration into a finished typographic game poster. Preserve its robot, setting, composition, warm ivory paper, teal and burnt-orange palette, and tactile ink/screenprint art. Add ONLY the following beautifully art-directed static typography in the empty LEFT area. All wording must be exact, with clean correct Chinese glyphs. Small bureau label at x=7%, y=8%: \"TR / 03\" followed by \"海上回收局\", over a short thin rule. The dominant title at x=7%, y=22% is \"潮汐回收站\" on ONE LINE, ending before x=43%, in custom bold condensed industrial Chinese lettering, dark petroleum teal, subtly softened corners and tiny deliberate stencil cuts. It must look like professional game box lettering, not a default UI font, no bevel or glow. Under it at x=7%, y=34%: \"TIDAL RECLAIM\", burnt orange compact geometric capitals with considered wide tracking. A fine orange divider under the English. At x=7%, y=43%, one restrained smaller Chinese line: \"旧机器，新任务。\" Set all text flush left, spacious and balanced with the robot art on the right. Keep the entire lower-left rectangle x=5% through 43%, y=51% through 94% completely FREE of added text, borders, shapes or buttons; live interactive menu/progress will occupy it later. Do not add other words, captions, numbers, watermarks, interface controls, loading bars or button art. Full-bleed opaque landscape, preserve aspect ratio and all artwork.",
+      "bytes": 148912,
+      "sha256": "ad1259fee800723f97d041039fc33984ff6c205227ba92e6d8c655fcd7d55d46",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "src/art/platform-menu-v2.webp",
+      "original": "platform-menu-v2.png",
+      "reference": "platform-menu-v1.png",
+      "prompt": "Edit this existing 1672 x 941 landscape game illustration into a finished typographic game poster. Preserve its robot, setting, composition, warm ivory paper, teal and burnt-orange palette, and tactile ink/screenprint art. Add ONLY the following beautifully art-directed static typography in the empty LEFT area. All wording must be exact, with clean correct Chinese glyphs. Small bureau label at x=7%, y=8%: \"TR / 03\" followed by \"海上回收局\", over a short thin rule. The dominant title at x=7%, y=22% is \"潮汐回收站\" on ONE LINE, ending before x=43%, in custom bold condensed industrial Chinese lettering, dark petroleum teal, subtly softened corners and tiny deliberate stencil cuts. It must look like professional game box lettering, not a default UI font, no bevel or glow. Under it at x=7%, y=34%: \"TIDAL RECLAIM\", burnt orange compact geometric capitals with considered wide tracking. A fine orange divider under the English. At x=7%, y=43%, one restrained smaller Chinese line: \"旧机器，新任务。\" Set all text flush left, spacious and balanced with the robot art on the right. Keep the entire lower-left rectangle x=5% through 43%, y=51% through 94% completely FREE of added text, borders, shapes or buttons; live interactive menu/progress will occupy it later. Do not add other words, captions, numbers, watermarks, interface controls, loading bars or button art. Full-bleed opaque landscape, preserve aspect ratio and all artwork.",
+      "bytes": 214160,
+      "sha256": "9703772ca1595d55b9e7d13ff7d8587bf4024d6cb8eefbdd8ed42c72d8f06e50",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "src/art/title-lettering-v3.webp",
+      "original": "title-lettering-v3.png",
+      "reference": "platform-menu-v2.png",
+      "prompt": "Create a transparent-background typography-only asset for the game in the reference. Keep the reference's distinctive bold dark petroleum-teal industrial Chinese stencil title and burnt-orange English subtitle. Output ONLY lettering and the small divider rules; completely remove all paper, scenery, robot, textures outside the letter strokes and every background pixel. Wide landscape approximately 2:1 canvas, tightly composed with 4 percent safe margins. Top small dark teal label: 'TR / 03   海上回收局'. Center dominant largest single line exact Chinese: '潮汐回收站'. Directly underneath burnt orange geometric letterspaced capitals: 'TIDAL RECLAIM'. A thin burnt orange horizontal rule. Bottom smaller dark teal exact motto: '旧机器，新任务。'. All flush left, complete correct glyphs, no additional text, no shadow, no cream rectangular backing. The letters themselves may retain tiny deliberate industrial stencil breaks but must be solid legible. True transparent alpha background so it overlays an illustrated game background cleanly.",
+      "bytes": 202704,
+      "sha256": "ef6e8c7fca0988bf58b7fe0787877fb01c37c16fc874c5c71a05d64fb0ba161d",
+      "transparent": true,
+      "encoding": "WebP quality 90 with alpha; no compositing"
+    }
+  ]
+}

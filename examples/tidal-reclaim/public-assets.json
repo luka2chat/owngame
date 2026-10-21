@@ -1,0 +1,768 @@
+{
+  "schema": "tidal-reclaim.public-assets.v1",
+  "excluded": "Original Mixamo-derived humanoids/animations, unused port scans, old loading art, share assets, tool caches and private receipts",
+  "files": [
+    {
+      "path": "assets/fx/additive.webp",
+      "bytes": 402764,
+      "sha256": "56f2775f1be185cda53ee5e65fda8b4aa31998d4750c260dc67503bd68153385",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/fx/decals.webp",
+      "bytes": 82098,
+      "sha256": "4da7025ff8efc7100e6eee586d54db577a5951a009b4028a3c71b166567dfbc9",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/fx/smoke.webp",
+      "bytes": 226508,
+      "sha256": "ea7f80096a92a9a0a3646933714d8738ac15816ef8c60cc1a78468b484f8be35",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/hdri/sky_1k.hdr",
+      "bytes": 394520,
+      "sha256": "761615523ee405afd9ddc7de1271b46094a61349baf699923ad20144e3199e07",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/hdri/sky_2k.webp",
+      "bytes": 111048,
+      "sha256": "5860539f1abd17893a1e682e55ee20f1f88e7ec7e870c79dcf9c2b5bad199be0",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/models/ammo_box.glb",
+      "bytes": 150684,
+      "sha256": "ce23014b6a462dac786fdd705708057d1c82e52f84344caaabe0bf3a258102c3",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/models/armor_plate.glb",
+      "bytes": 43704,
+      "sha256": "554631385f5bbb721224662c2f679103cdc7611755a4d419acc70c90c9c7bb13",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/models/barrel_03.glb",
+      "bytes": 106616,
+      "sha256": "4c58c36cea042f5ae09743fee79c20b95215e305046ab9473de15f4994aca76d",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/models/frag_grenade.glb",
+      "bytes": 84160,
+      "sha256": "c004e08765eb71ce64185488e6d2dcf6e8d4376589736c072fda8c2985be7cb5",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/models/jersey_barrier.glb",
+      "bytes": 134624,
+      "sha256": "b3cd10e72889f92dc024b2e533b4eb48cbdeb9af236c9e927e01cfdb4e03816d",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/models/medical_box.glb",
+      "bytes": 173356,
+      "sha256": "7cec969c563728656aec40c1d633cb6cd41e9175e4de0fffd0e707f893f2e238",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/models/old_military_crate.glb",
+      "bytes": 305068,
+      "sha256": "304dbd517e76a1b89f7f8264427ffb58e15b2bacf831ec6896e48928c1972daa",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/models/propane_tank.glb",
+      "bytes": 189752,
+      "sha256": "86cf854f6679486b98132abb7d04c5b05d5395d597828388931f188bb9682eb6",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/models/sandbags.glb",
+      "bytes": 175608,
+      "sha256": "92708e333970bb1c4a2f2fb18965cf21fa717bd70cbadc06aa35a124634b521a",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/models/security_light.glb",
+      "bytes": 212388,
+      "sha256": "502567e3a915642d175816e8f2a373f4938ca1be7fe0c5a69c602b6631d9d530",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/models/utility_box_02.glb",
+      "bytes": 203452,
+      "sha256": "a6535c1dde272b3f65702d3f13d865ff727663127794edeb91018142217ffaef",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/models/wooden_military_crate.glb",
+      "bytes": 582264,
+      "sha256": "825bb950a813f915b14d315f94dbc4ca182e5c4c8e2e21bb0a978574b0e73c4e",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/music/boss.mp3",
+      "bytes": 2365850,
+      "sha256": "4149d06cbd8c2a91c54ae8f9f7210bf6ba432e09bf50e5dd0a40c6e707a5f99c",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/music/combat.mp3",
+      "bytes": 2121918,
+      "sha256": "69f5eefeb82c0564f910e250eaf89a7667a98504d16d4d5cc3df42606311ec22",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/music/title.mp3",
+      "bytes": 1985873,
+      "sha256": "f87b4ce6dda03ec237ae28bfcbc76689f52d2d0d91c1caa7ec6d18c18aa16e63",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/ambience.mp3",
+      "bytes": 321036,
+      "sha256": "84c6c6ba7e8ba56e74eabd7a48fcc37ca751210c22dc5b0017a890a67e31ec74",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/armor_break.mp3",
+      "bytes": 12897,
+      "sha256": "9dcfe9fc489fb5c7a86269c916849df5946b09464d4318270a5246a037c9c1f0",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/armor_recharge.mp3",
+      "bytes": 31705,
+      "sha256": "62eaceae0e989441ff426cd0b974e50bf49034a6fefcaad408eba8402b91b822",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/boss_cannon.mp3",
+      "bytes": 18539,
+      "sha256": "ddacc6e67cf4b80e992f93c013b1c421b9aa63b9b0a3318fb6b131eabc4d14cd",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/boss_roar.mp3",
+      "bytes": 36720,
+      "sha256": "262b17ce0e59e4c1c2231f7125c6c3a0dfd5528b36a9416331072d4ea4cfdc1e",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/boss_slam.mp3",
+      "bytes": 30451,
+      "sha256": "f617daa58a96918665014b3b87de9e4a5c361ab739d6a39168f1fa7461f18663",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/bullet_flyby.mp3",
+      "bytes": 7881,
+      "sha256": "287648f3a4facadd9e453e1c989b8db9b0dbacfd707b7cd987e3651272d7a6d7",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/defeat.mp3",
+      "bytes": 48946,
+      "sha256": "6cc50d6f0974d13f52cf410974c082dfc98aabccf1fe7d1d4e1705fd7b3b91bd",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/drone_loop.mp3",
+      "bytes": 48946,
+      "sha256": "ba62bd9a09e1af246f48d1ce219879502736b8342b331d17f967ad12c75ac41d",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/dry_fire.mp3",
+      "bytes": 6627,
+      "sha256": "a7260ebc8a7a9290cb6cb82ef5b9e39411b173fe5505af0f55fedeac576bfc0d",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/enemy_shot.mp3",
+      "bytes": 11329,
+      "sha256": "3d584aee1ff05d69e3250c357cd8e8a1c019f1262551a9d82bb896ed44dec6c5",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/explosion.mp3",
+      "bytes": 36720,
+      "sha256": "4fa9d9bf8955b11ea9504aead34a3bfec840c6deb470cea399f8b126f4329fc0",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/footstep.mp3",
+      "bytes": 6627,
+      "sha256": "17c58bf76d64ad52edae9b2adfd7ed296642c67e2d97f3bc251090763c142cd8",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/grenade_bounce.mp3",
+      "bytes": 6627,
+      "sha256": "1a26e6bde38edd4395e45dc03cb28b94c43b598cd9db7313ec5c1f811e37839e",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/grenade_throw.mp3",
+      "bytes": 10389,
+      "sha256": "c52eaabecdf488629d003853ef747a49ce7f9e27ea657a502f1a8b807c269cc0",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/headshot.mp3",
+      "bytes": 9135,
+      "sha256": "356f193c6efdfcac3f96f423203d356a0b8904cf09959104ca7a2ef9dfc4d402",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/heartbeat.mp3",
+      "bytes": 12897,
+      "sha256": "07b326dac6c7987d25ec4c96c5cf1e10e30e028577ee162db3f808a04dda1c5e",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/hitmarker.mp3",
+      "bytes": 6627,
+      "sha256": "e54b4be4999efdd49356a2656b6c6658f2c4bdd2a573cd17208ba1642f91b4f4",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/hound_step.mp3",
+      "bytes": 6627,
+      "sha256": "6c7ac1af7bfb324b2de9e944a8207a8f88508b3e6725ef47d8d4c594a17f1d1a",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/human_death.mp3",
+      "bytes": 18539,
+      "sha256": "5da6cf3168a4f55a3cf87d4e6a77d59ca3bec618048c221dbe8325c8d87c4834",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/human_hit.mp3",
+      "bytes": 7881,
+      "sha256": "51ca0b0c960cdf3452602f73429d34c6e31fbad09dec306c83cbf97ba4933920",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/impact_concrete.mp3",
+      "bytes": 7881,
+      "sha256": "a12e5a64c238fbd18e26b38749f0cac1e5f5371b7d16b2103b227f143534213f",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/impact_metal.mp3",
+      "bytes": 7881,
+      "sha256": "bb7a22e0fb3d4e3d61e341ba24af9c64ce81839dcd81892fdd335246938c0b36",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/kill_confirm.mp3",
+      "bytes": 10389,
+      "sha256": "0748fd58048be0c2f6a2df93b266f411c5f51ba3c6be168de198e1cb558f9611",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/land.mp3",
+      "bytes": 7881,
+      "sha256": "50fd9140754ec5763ec311501cfd477c45c3e6fa839d6e4a5e79f3bff247189d",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/match_start.mp3",
+      "bytes": 30451,
+      "sha256": "8d98ab2014171bc45f03818dfefbd3362dd696b14fcfe62db663503d5d4b0d43",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/mech_stomp.mp3",
+      "bytes": 10389,
+      "sha256": "8be5c722466561ccdab2f35917f6b4868c93f75a1b755b05ef0ecd674d79e3e9",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/minigun.mp3",
+      "bytes": 30451,
+      "sha256": "e001fa414d900d8da5f6d742ee0d4b94952d6de30e3839ce1066ef33e432b69d",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/overdrive_on.mp3",
+      "bytes": 24809,
+      "sha256": "49ccbaf3483a8a63a002a4bf569380a5a1e846eeb6ac33353868ddf032a7b87d",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/perk_pick.mp3",
+      "bytes": 12897,
+      "sha256": "65ede54692ffe5765f815b78af60fb4e45acd0b11cc2ebc3dc5a9ce7c90033ff",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/pickup_ammo.mp3",
+      "bytes": 10389,
+      "sha256": "59a8bee23c3841d9fce4161ec11e012c1914045aa65da4d5d83b3a80bb5754b2",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/pickup_armor.mp3",
+      "bytes": 12897,
+      "sha256": "88f2c75cdae4653dc6994f56bebbd26a0e90d957afa9ca913c05545184c45535",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/pickup_health.mp3",
+      "bytes": 12897,
+      "sha256": "689efd8c6004662463094d406f90d1ce5cdb14e59cb6152edcf647f6773230d9",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/plasma_shot.mp3",
+      "bytes": 7881,
+      "sha256": "cc7c5d8c7241646279dd1a308268da28b8e532076264d64ea8722080c5246dba",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/player_hurt.mp3",
+      "bytes": 9135,
+      "sha256": "76aab0d56f3789dc7db313b07645e37e24da06bb203a603b39119fb4fc793588",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/rank_up.mp3",
+      "bytes": 12897,
+      "sha256": "1bb0a644f621185ef6dd270fa0cbabf10bba83c77612142c205214b00effdb49",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/rifle_reload.mp3",
+      "bytes": 24809,
+      "sha256": "6ed24800952ebda493cfbb315a69fe207adef4bef2095c32307108c579283ad7",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/rifle_shot.mp3",
+      "bytes": 15091,
+      "sha256": "53e5029ab120533e0ca305fe46907b4037f5233258153ce95a106df9785f7c94",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/robot_death.mp3",
+      "bytes": 24809,
+      "sha256": "3c8fe60d299845d624d16355adc26a129fdfc6439256304424fcb97db9d79b68",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/robot_hit.mp3",
+      "bytes": 7881,
+      "sha256": "d998f414c547d1b9749b021f46531f2d33ae1191d3cc9dbc335c2cddda689688",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/robot_step.mp3",
+      "bytes": 5060,
+      "sha256": "67c53fc2be1f7b3353793eae8f5dbb695038549d6667189b1416ada2252588b3",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/rocket_launch.mp3",
+      "bytes": 21987,
+      "sha256": "2013939a21b1d5fcb8a69e6ee39170ce12ed5f1e43b90b503109c175d597099e",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/rocket_loop.mp3",
+      "bytes": 36720,
+      "sha256": "8c21615563e1a8fd69b9fe5c40e7870ccd19012f043230b66456be61157d187e",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/rocket_reload.mp3",
+      "bytes": 24809,
+      "sha256": "50893a37e31619a679754b8b145393f24c0e0fc19692ac90e0324e7c390465f9",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/shard_pickup.mp3",
+      "bytes": 6627,
+      "sha256": "37c1e280a5b60b9e7b1ee114d19de461d5c8bddb05ff4090e8a36b45a59a60dd",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/shell_casing.mp3",
+      "bytes": 7881,
+      "sha256": "8faa03ffeaacbf0ff3e97c153605aae6a2d2355ca8178acadfbf2fdb31fadaa5",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/shell_insert.mp3",
+      "bytes": 6627,
+      "sha256": "4ab6a86881235adcce2c6b9bbd2cdebbf8949fa4c8c216198924df01bba88e48",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/shotgun_pump.mp3",
+      "bytes": 8508,
+      "sha256": "406bc7437b68181938584dfa1976ace2948718390fcdf177395b19669e046680",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/shotgun_shot.mp3",
+      "bytes": 20107,
+      "sha256": "a96bd3c460fb3ef0ff90024123fda653cfed532f6a97df30b11a31b01cef1715",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/slide.mp3",
+      "bytes": 11329,
+      "sha256": "053f4bb53362209dff06b6baff648a47cd29e6173321db8fc4032885dcca1e6d",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/spawn_in.mp3",
+      "bytes": 18539,
+      "sha256": "a3ad012faac8ffc79748f1bc3af790184e619e7a4deefc93fe6989a6692d51a4",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/ui_confirm.mp3",
+      "bytes": 11329,
+      "sha256": "d32e343eaeb2cb7b29656aca92ce23623e1d1ff694200767f37dc3234cf529f6",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/ui_hover.mp3",
+      "bytes": 6627,
+      "sha256": "fede85083213655c5792b5e5a139903844fd22076fb5b314b07fddd0f85d483c",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/victory.mp3",
+      "bytes": 48946,
+      "sha256": "1078c18defa8ffe749208abc69bd36b0758033111e11978717c949887084423a",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/wave_clear.mp3",
+      "bytes": 30451,
+      "sha256": "cbe53fdb5359956cbfbaff00ad86faaf43fcdc84e68e5aaf50aaa5a942e55601",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/wave_start.mp3",
+      "bytes": 36720,
+      "sha256": "6ab39dd681b2bdea98f943209ff5fb25b050fe11ff0ed626d7e171496df5a996",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/sfx/weapon_switch.mp3",
+      "bytes": 9135,
+      "sha256": "7635cb14900368e4e46f7a2f020032c2b082ba34c76a8507f348a55edd9a3424",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/tex/concrete_floor_03_arm.webp",
+      "bytes": 131578,
+      "sha256": "d617bb5c9c27d46a57b2b7f07a0040e465ee2fa3325807f49b45245db05ecaf7",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/concrete_floor_03_diff.webp",
+      "bytes": 266552,
+      "sha256": "b9ed56c6d868474dc745566d9e7fa54c7f6347a4030d858d30445a206079fd1c",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/concrete_floor_03_nor.webp",
+      "bytes": 228654,
+      "sha256": "86b9d96051a4c54d80cfac18fc534262c3dde8b5b200c320f4a29743896d5f3c",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/concrete_floor_worn_001_arm.webp",
+      "bytes": 53896,
+      "sha256": "eb5fe620e1647533b978c8f02712243caebad1927789c58a73f3b1890a419121",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/concrete_floor_worn_001_diff.webp",
+      "bytes": 36172,
+      "sha256": "3860bd80bd4c9be6178450745a7c65be70fdd83e5170d6e954a34d305994d40c",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/concrete_floor_worn_001_nor.webp",
+      "bytes": 68154,
+      "sha256": "f0723f4e97ee430658def9cef9b248062c46a6b9476c8d14569008c870a2bacf",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/concrete_wall_008_arm.webp",
+      "bytes": 44768,
+      "sha256": "ed083df0c35625e49e06ff9c5a57354d1f11964a38b810fb7f43d322ece2d7d4",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/concrete_wall_008_diff.webp",
+      "bytes": 69614,
+      "sha256": "af7c266282741d255a85abfb857c31bbfae28bd6b5f446beb13f88f6b620968b",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/concrete_wall_008_nor.webp",
+      "bytes": 36916,
+      "sha256": "a1db2a25de0fdb8c402a473e4967e9bf920109b0f6b4155d79c2748e5a1ce75c",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/corrugated_iron_02_arm.webp",
+      "bytes": 136272,
+      "sha256": "1fa944e7856757671ddc89a0acde68e6a7dd679f012fba2919f630b6e5e6b18f",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/corrugated_iron_02_diff.webp",
+      "bytes": 35330,
+      "sha256": "4ccfab99fab1361d264f8b6827530489acbcd640a1137b1de86c566a0693f4b2",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/corrugated_iron_02_nor.webp",
+      "bytes": 24830,
+      "sha256": "c05016ac1e50db967cdc23c0d554b7351116fa1b7b66e946a5449d684a73951d",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/metal_plate_arm.webp",
+      "bytes": 177068,
+      "sha256": "cb1097cb7cd931163389220018485e740ea1823d713ba9eb49ae0a511975c351",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/metal_plate_diff.webp",
+      "bytes": 78142,
+      "sha256": "e9b7a454247e6d843bfa4dc9c6721a8b6e6207e5205ce94cda0efca1903b11fa",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/metal_plate_nor.webp",
+      "bytes": 156652,
+      "sha256": "79341aaad6ba749a6ba21226e2a714e7ddcb93039cfaa0dcb59b66314c477a59",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/rusty_metal_02_arm.webp",
+      "bytes": 58960,
+      "sha256": "b635d52ddacf6c885e5f17f32d386466268047e7567cbdcb3cac575e4e6d6cac",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/rusty_metal_02_diff.webp",
+      "bytes": 134826,
+      "sha256": "5023d7ee27a7f54b77ed87d00a27deed0f46638b98e7d07657f6751f7f0fa9ce",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/tex/rusty_metal_02_nor.webp",
+      "bytes": 90558,
+      "sha256": "877b0d8503657bf454d5ecffa72f39aa78334d0c2a3cde6c779f066cbb27a38d",
+      "basis": "Poly Haven CC0; upstream fetch/build scripts and README credits"
+    },
+    {
+      "path": "assets/ui/icon_choke.webp",
+      "bytes": 6060,
+      "sha256": "1bb2082aeb951d838468685b204ad71333d918686c6440200e1f7e7ad5d85a49",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_demolitions.webp",
+      "bytes": 8732,
+      "sha256": "112ef6dadc9d2f91b095814366601448139b345d5bf8c8aae8fa7aa129482dc7",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_grenade.webp",
+      "bytes": 4418,
+      "sha256": "05e03a7dfee6d8318206553d1b66a80984d485ce2a1f304aff8fb843e4fd779a",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_hollow.webp",
+      "bytes": 7698,
+      "sha256": "deeebbb3bb7326ae4417c3da8e7f58ef82d9ecf35180907f4d19055327e29605",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_overclock.webp",
+      "bytes": 6036,
+      "sha256": "495377cb64917233b6831d5b8beb31c8a58b12d1d7cabf32152b902e4581c0b1",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_plated.webp",
+      "bytes": 5164,
+      "sha256": "2ede773c87526f25dc5d66074bd2529c29cf6e8d086269dd6f77da63b8193b4e",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_quick.webp",
+      "bytes": 5894,
+      "sha256": "e44d670ce247b9d629b45aeb1c0ee3e50502275c681efe98188b0ba8fc40b8c1",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_rifle.webp",
+      "bytes": 7390,
+      "sha256": "e67249452f5005cc706c4b05f98dab02da782d7016bf3420ee2be6f5e38a7160",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_rocket.webp",
+      "bytes": 5576,
+      "sha256": "eeca6d84b009dd57af55c41c678dae8ae35d860561d9c2313f94d85a3df039b8",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_scavenger.webp",
+      "bytes": 6736,
+      "sha256": "293addb67a7ed82bea277820cdcd06ee972802a3929c5989a68dde4d2bff8d09",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_shotgun.webp",
+      "bytes": 4748,
+      "sha256": "9f25be42f0a0a58ac0db0f6d2d92c67d4a391c820cefadcb9dd0221e5a6c7f3f",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_skull.webp",
+      "bytes": 5830,
+      "sha256": "b5a29e87b4ceec86f322562507326afb7f7613e2d9979a7b512213f284896aee",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/ui/icon_vampire.webp",
+      "bytes": 6538,
+      "sha256": "304be2612f70cc00a199768d071d580e1176824a0116baf3d88389a5a287ccf4",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/v4chars/hound.glb",
+      "bytes": 850664,
+      "sha256": "dd4bef089f0d228ffd204c820c35e821165c1d957e1b38ec840f7bd3fe4c9a93",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/vm/arm_l.glb",
+      "bytes": 548428,
+      "sha256": "5831915804f809ac665d64278b3506cd3919340f795155a0726a5d48ea6d39c0",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/vm/arm_r.glb",
+      "bytes": 494244,
+      "sha256": "acacef2d78857d0cf5541710926d24320bf6681c0abcff06b7fb06c86cf86b96",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/vm/launcher.glb",
+      "bytes": 796860,
+      "sha256": "3177f25b640292e54ec6f15757d90518406db651979d0dd3c779c5e4c40da558",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/vm/rifle.glb",
+      "bytes": 748540,
+      "sha256": "10d51ef14dc44103a54cfc359ca39358efa8dfeef0c120892bf167fad6aef839",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/vm/rocket.glb",
+      "bytes": 158888,
+      "sha256": "fdd1c1bf26c46a5537aa91ad2f6121d7ecf89bea023b1380757d07459c0cbab7",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "assets/vm/shotgun.glb",
+      "bytes": 798464,
+      "sha256": "de3ed7a372d3a33af33a963e1448ee0eb7e96f3c78f30575997b9a980d4d8d00",
+      "basis": "Manus generated output; user confirmed paid account and original project"
+    },
+    {
+      "path": "fonts/ChakraPetch-500.latin.woff2",
+      "bytes": 9956,
+      "sha256": "36ad966cb653de70ba37355c41003b02de8940b2df6cbcd46480a6ad8cadd65d",
+      "basis": "Bundled OFL / Manus CC0 notices"
+    },
+    {
+      "path": "fonts/ChakraPetch-700.latin.woff2",
+      "bytes": 9900,
+      "sha256": "ce5095dc1cb200aaa939e38067a0677018d10e9f26ec38cdcf1557ac524fc775",
+      "basis": "Bundled OFL / Manus CC0 notices"
+    },
+    {
+      "path": "fonts/ChakraPetch-OFL.txt",
+      "bytes": 4396,
+      "sha256": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56",
+      "basis": "Bundled OFL / Manus CC0 notices"
+    },
+    {
+      "path": "fonts/Figtree-OFL.txt",
+      "bytes": 4388,
+      "sha256": "140d37233e7f3ce7313798befa9600893bcceaf41a55fa0fa5ad52f7f657a268",
+      "basis": "Bundled OFL / Manus CC0 notices"
+    },
+    {
+      "path": "fonts/Figtree-VF.subset.woff2",
+      "bytes": 23660,
+      "sha256": "b3976c5969c8b1afd81dc3e314b61d8ffe3f3f58cf40906443105d330e6e0bdf",
+      "basis": "Bundled OFL / Manus CC0 notices"
+    },
+    {
+      "path": "fonts/ManusCC0-LICENSE.txt",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "basis": "Bundled OFL / Manus CC0 notices"
+    },
+    {
+      "path": "fonts/ManusCJK-subset.woff2",
+      "bytes": 68576,
+      "sha256": "9bac68ce5b4adaee716159d14d8b3d0d0685324de2426924742827c357a43888",
+      "basis": "Bundled OFL / Manus CC0 notices"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf",
+      "basis": "Retained license and provenance notices"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 4462,
+      "sha256": "79832d11417437fd7adfea425843c7bd932375ae3e369a8a4769e307620f4594",
+      "basis": "Retained license and provenance notices"
+    },
+    {
+      "path": "licenses/THREE-MIT.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "basis": "Retained license and provenance notices"
+    },
+    {
+      "path": "licenses/MESHOPTIMIZER-MIT.txt",
+      "bytes": 1079,
+      "sha256": "f03037ca7bad1e3eb7f4a63fa6084a8baabd5ba30d3c239a9a7f35705d873e26",
+      "basis": "Retained license and provenance notices"
+    },
+    {
+      "path": "licenses/RAPIER-APACHE-2.0.txt",
+      "bytes": 11343,
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519",
+      "basis": "Retained license and provenance notices"
+    }
+  ]
+}
