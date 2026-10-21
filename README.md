@@ -286,3 +286,15 @@ Open your game project in an AI coding assistant and send: **Follow https://raw.
 **Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone exploration scene with character controls, camera and interactive tasks. Create it through CLI/MCP: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the [Android client source](apps/android) is public and APK builds are listed in [Releases](https://github.com/luka2chat/owngame/releases). See the [support roadmap](#支持路线图) for scope and status.
 
 [Documentation](docs/README.md) · [Get started](#快速开始) · [Discord community](https://discord.gg/X5cYjTaD) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)
+
+## Star history
+
+Thanks for playing, creating, sharing feedback and contributing to owngame.
+
+<a href="https://www.star-history.com/?repos=luka2chat%2Fowngame&amp;type=date&amp;legend=top-left">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=luka2chat/owngame&amp;type=date&amp;theme=dark&amp;legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=luka2chat/owngame&amp;type=date&amp;legend=top-left" />
+    <img alt="Star history for luka2chat/owngame" src="https://api.star-history.com/chart?repos=luka2chat/owngame&amp;type=date&amp;legend=top-left" width="800" />
+  </picture>
+</a>
