@@ -6071,8 +6071,8 @@
     },
     {
       "path": "web/index.html",
-      "bytes": 7651,
-      "sha256": "951017391887288017418a73e11e78a3640055cfa4ad7dd17228cd922199c9b7",
+      "bytes": 7218,
+      "sha256": "d40baa1bb9840514156d7cdfdd9759eb8969462428de1d3c81da2d5090d6bbd9",
       "license": "MIT"
     },
     {
@@ -6089,8 +6089,8 @@
     },
     {
       "path": "web/save.mjs",
-      "bytes": 4329,
-      "sha256": "086b87b066a23619acd7f27bcedcfb4b553617006a2dbba6f0d8b93cf00e0ce1",
+      "bytes": 4399,
+      "sha256": "3ffb2af1a319a96e6155c93fab9c409fd7814491c95c3da1aa2354a412eda2e1",
       "license": "MIT"
     },
     {
@@ -6114,7 +6114,7 @@
     {
       "path": "ONLINE_BUILD.json",
       "bytes": 11311,
-      "sha256": "39f3d42a6ad9d8ca3d20dab79c9e75e73a86b7e4c4d7ff45878d422ae78d41bc",
+      "sha256": "1a2ade2ec824ad44df24421538cde516fa149b535108b0a80f3554274847edd8",
       "license": "MIT"
     }
   ]

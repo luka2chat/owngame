@@ -25,6 +25,7 @@ export function unityDirectoryHash(value) {
 }
 
 const legacyVersions = [
+  '81acaed073b42fc834e30dff38d5c891e237a08b682feaa20085b6fb9c455f66',
   '4868ae27e4f85cbae571943620644b804f2dbd5d33c527b081f274851d90aac1',
   '93d95cba9980301f370519dfb39615014342f2839595f4e946fe84caf7eec1fc',
   'aaff913a35745a6877d5cb66a64a3ae5993a088ef898c644d7191cd63b7f5b2f',

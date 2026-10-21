@@ -1,6 +1,6 @@
 {
   "id": "star-letters",
-  "build_sha256": "81acaed073b42fc834e30dff38d5c891e237a08b682feaa20085b6fb9c455f66",
+  "build_sha256": "6f42f2c6d5df6854d90472ee869886cfcd02fe6705555baa1a8e1b72681fb596",
   "entrypoint": "index.html",
   "files": [
     {
@@ -284,9 +284,9 @@
       "sha256": "65a77bb25abb4e78bb3d69140987fef8e3314590545c970634787931668b18f4"
     },
     {
-      "bytes": 7651,
+      "bytes": 7218,
       "path": "index.html",
-      "sha256": "951017391887288017418a73e11e78a3640055cfa4ad7dd17228cd922199c9b7"
+      "sha256": "d40baa1bb9840514156d7cdfdd9759eb8969462428de1d3c81da2d5090d6bbd9"
     },
     {
       "bytes": 4590,
@@ -339,9 +339,9 @@
       "sha256": "0652509dfc81a1a3d9e037e59bd047b305155fc5c4abeef69e2fc078488035fd"
     },
     {
-      "bytes": 4329,
+      "bytes": 4399,
       "path": "save.mjs",
-      "sha256": "086b87b066a23619acd7f27bcedcfb4b553617006a2dbba6f0d8b93cf00e0ce1"
+      "sha256": "3ffb2af1a319a96e6155c93fab9c409fd7814491c95c3da1aa2354a412eda2e1"
     },
     {
       "bytes": 435,
