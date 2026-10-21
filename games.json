@@ -53,6 +53,16 @@
       "license": "MIT; see THIRD_PARTY_NOTICES.md for fonts and Unity-derived files"
     },
     {
+      "id": "tidal-reclaim",
+      "title": "潮汐回收站",
+      "kind": "vite",
+      "path": "examples/tidal-reclaim",
+      "online_build_sha256": "dfff05fc374e22a85473553739b938979fd95a0cd80c5be2173995edd7e64818",
+      "input_sha256": "c0ecd0644a65cd3bc8bfc818e8adb70bf5a29e327d9849c5aacbfd7a4f4542d7",
+      "source_manifest_sha256": "3a660f7052320385be77fe4144e8278bbabaeea68bfbcf655c5be04e0d8b7cd9",
+      "license": "MIT"
+    },
+    {
       "id": "signal-harbor",
       "title": "潮光归位",
       "kind": "phaser",

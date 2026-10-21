@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "tidal-reclaim",
+  "title": "潮汐回收站",
+  "kind": "vite",
+  "online_build_sha256": "dfff05fc374e22a85473553739b938979fd95a0cd80c5be2173995edd7e64818",
+  "original_source_sha256": null,
+  "license": "MIT",
+  "description": "登陆被机械守卫占据的海上平台，重启三座净化站，带着回收成果撤离。"
+}

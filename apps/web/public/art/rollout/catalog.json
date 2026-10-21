@@ -50,5 +50,9 @@
   "neon-shooter": {
     "cover": "/art/rollout/neon-shooter.png",
     "coverTitleBaked": false
+  },
+  "tidal-reclaim": {
+    "cover": "/art/rollout/tidal-reclaim.webp",
+    "coverTitleBaked": true
   }
 }

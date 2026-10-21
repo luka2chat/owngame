@@ -1,0 +1,37 @@
+/* Full-bleed art and separately framed baked lettering adapt independently. */
+.screen-boot,.screen-title{--ink:#183f43;--paper:#e7e1cf;--rust:#b85b3c;background:var(--paper);color:var(--ink)}
+.poster-frame{position:absolute;inset:0;container-type:inline-size}
+.poster-panel{position:absolute;left:5%;top:48%;transform:translateY(-50%);width:min(46vw,72vh,680px);z-index:2}
+.poster-lettering{width:100%;aspect-ratio:2;background:url('../art/title-lettering-v3.webp') center/contain no-repeat}
+
+.boot-art,.title-art{inset:0;opacity:1;filter:none;mix-blend-mode:normal;animation:none;background-position:right center;background-size:cover;background-repeat:no-repeat}
+.boot-art{background-image:url('../art/robot-loading-v1.webp')}
+.title-art{background-image:url('../art/platform-menu-v1.webp')}
+.boot-art::after,.screen-boot::after,.screen-title::before{content:none}
+.boot-art::before,.title-art::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#e7e1cfe8 0%,#e7e1cfa0 36%,transparent 63%)}
+/* Semantic equivalents for screen readers; visible titles are part of the poster. */
+.poster-copy{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.boot-wrap{position:relative;left:0;top:auto;bottom:auto;transform:none;width:90%;gap:0;margin-top:35px}
+.boot-bar{height:5px;background:#183f4323;clip-path:none;overflow:hidden}
+.boot-bar i{background:var(--rust);box-shadow:none}
+.boot-bar b{display:none}
+.boot-row{font:600 clamp(11px,.85cqw,15px) var(--display);letter-spacing:.04em;color:var(--ink);text-shadow:none;margin-top:12px;gap:12px}
+.boot-pct{font-size:clamp(14px,1.2cqw,20px);letter-spacing:0}
+.boot-tip,.boot-tip.in{min-height:3em;text-align:left;font:500 clamp(11px,.85cqw,15px)/1.8 var(--body);color:#526861;opacity:1;animation:none;margin-top:22px}
+.screen-title .title-left{position:relative;left:0;top:auto;width:90%;transform:none;gap:12px;margin-top:24px}
+.screen-title .menu{width:100%;max-width:none;gap:clamp(7px,.7cqw,12px)}
+.screen-title .btn{min-width:0;width:100%;padding:clamp(10px,1cqw,18px) clamp(14px,1.25cqw,24px);border:1px solid #183f4340;background:#eee8d8f2;color:var(--ink);clip-path:none;box-shadow:none;letter-spacing:.08em;font-size:clamp(13px,1.05cqw,19px);transition:background .15s,transform .15s}
+.screen-title .btn::before{display:none}
+.screen-title .btn.primary{background:var(--ink);color:#f6efda;border-color:var(--ink);padding-top:clamp(13px,1.3cqw,24px);padding-bottom:clamp(13px,1.3cqw,24px)}
+.screen-title .btn.primary small{color:#d1dacc;font-size:clamp(9px,.7cqw,12px);letter-spacing:0}
+.screen-title .btn:hover,.screen-title .btn:focus-visible{transform:translateX(3px);background:#d7dfcf;box-shadow:none;outline:2px solid var(--rust);outline-offset:3px}
+.screen-title .btn.primary:hover,.screen-title .btn.primary:focus-visible{background:#29585a}
+.screen-title .best{min-height:0;font-size:clamp(10px,.8cqw,14px);color:#526861;letter-spacing:.04em}
+.screen-title .best:empty{display:none}
+.screen-title .best b{color:var(--rust)}
+.screen-title .title-foot{left:5.3%;bottom:3%;color:#405955;font-size:clamp(10px,.78cqw,14px);letter-spacing:0;max-width:43%;line-height:1.7}
+body[data-screen='boot'] canvas.sparks,body[data-screen='title'] canvas.sparks{display:none}
+@media(max-width:700px){.poster-panel{width:65vw}.boot-art,.title-art{background-position:72% center}.screen-title .title-foot{max-width:86%}}
+@media(max-width:1100px){.screen-title .btn.primary small{display:none}}
+@media(max-height:650px){.screen-title .btn.primary small{display:none}.screen-title .best{display:none}}
+@media(prefers-reduced-motion:reduce){.boot-bar i,.screen-title .btn{transition:none}}

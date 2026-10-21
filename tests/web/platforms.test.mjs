@@ -3,12 +3,12 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import vm from "node:vm";
 import {readGameEntries} from "../../scripts/web/catalog.mjs";
-import {validPlatforms, supportsPlatform, devicePlatform, resolvePlatform, platformAcceptance, playerPresentation} from "../../apps/web/public/platforms.js";
+import {validPlatforms, supportsPlatform, devicePlatform, resolvePlatform, platformAcceptance, playerPresentation, playerSandbox} from "../../apps/web/public/platforms.js";
 
 test("every published game explicitly declares supported platforms", async () => {
   const entries = await readGameEntries(process.cwd());
   for (const game of entries) assert(validPlatforms(game.platforms), game.id);
-  assert.deepEqual(entries.filter(g => supportsPlatform(g, "pc")).map(g => g.id), ["star-letters"]);
+  assert.deepEqual(entries.filter(g => supportsPlatform(g, "pc")).map(g => g.id), ["star-letters", "tidal-reclaim"]);
   assert.equal(entries.filter(g => supportsPlatform(g, "mobile")).length, 17);
 });
 
@@ -66,4 +66,10 @@ test("PC classification uses the Star Letters player; mobile retains authored pr
   assert.deepEqual(playerPresentation({id: "future-pc", platforms: ["pc"]}), {wide: true, responsive: true});
   assert.deepEqual(playerPresentation({id: "neon-shooter", platforms: ["mobile"]}), {wide: false, responsive: false});
   assert.deepEqual(playerPresentation({id: "star-triad", platforms: ["mobile"]}), {wide: false, responsive: true});
+});
+
+test("pointer lock is opt-in for declared PC games only", () => {
+  assert.equal(playerSandbox({platforms:["pc"],pointerLock:true}), "allow-scripts allow-same-origin allow-pointer-lock");
+  for (const game of [{}, {platforms:["pc"]}, {platforms:["mobile"],pointerLock:true}, {platforms:[],pointerLock:true}])
+    assert.equal(playerSandbox(game), "allow-scripts allow-same-origin");
 });

@@ -45,3 +45,9 @@ export function platformAcceptance(game) {
     ...(supportsPlatform(game, "pc") ? ["PC controls, layout and performance"] : []),
   ];
 }
+
+// Mouse capture is opt-in and only enabled for explicitly declared PC games.
+export function playerSandbox(game) {
+  const pointer = game.pointerLock === true && validPlatforms(game.platforms) && game.platforms.includes("pc");
+  return "allow-scripts allow-same-origin" + (pointer ? " allow-pointer-lock" : "");
+}
