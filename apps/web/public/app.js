@@ -7,7 +7,7 @@ import {
   safeSearch,
 } from "./analytics.js";
 import { openRemix } from "./remix.js";
-import { supportsPlatform, devicePlatform, platformLabel, platformNotice } from "./platforms.js";
+import { supportsPlatform, platformLabel } from "./platforms.js";
 import {
   $,
   element,
@@ -285,8 +285,7 @@ function render() {
             }),
     );
     dl.dataset.downloadGame = g.id;
-    dl.disabled = busy.has(g.id) || !supportsPlatform(g, devicePlatform());
-    if (!supportsPlatform(g, devicePlatform())) dl.textContent = t(platformNotice(g));
+    dl.disabled = busy.has(g.id);
     dl.onclick = async () => {
       if (ready.has(g.id)) {
         track("download_cached", {

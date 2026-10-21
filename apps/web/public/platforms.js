@@ -31,9 +31,13 @@ export function platformLabel(game) {
     ? "手机 · PC" : supportsPlatform(game, "mobile") ? "移动端" : "PC";
 }
 
-export function platformNotice(game) {
-  return supportsPlatform(game, "mobile") ? "请在手机或平板上游玩这款游戏。"
-    : "这款游戏支持 PC，请在电脑上游玩。";
+// Target classification chooses the PC presentation, without blocking browser play.
+export function playerPresentation(game) {
+  const pcOnly = supportsPlatform(game, "pc") && !supportsPlatform(game, "mobile");
+  return {
+    wide: pcOnly || game.wideViewport === true,
+    responsive: pcOnly || game.responsiveViewport === true || game.id === "star-triad",
+  };
 }
 
 export function platformAcceptance(game) {

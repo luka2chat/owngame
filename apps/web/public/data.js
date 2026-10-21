@@ -1,7 +1,7 @@
 import { t, localizeUrl } from "./i18n.js";
 import { track, gameParams, eventId } from "./analytics.js";
 import { imageAssets } from "./image-assets.js";
-import { resolvePlatform, devicePlatform, supportsPlatform, platformNotice } from "./platforms.js";
+import { resolvePlatform } from "./platforms.js";
 export const $ = (id) => document.getElementById(id);
 export function element(tag, cls, text) {
   const e = document.createElement(tag);
@@ -185,7 +185,6 @@ export async function offlineReady(g) {
   return !!done;
 }
 export async function download(g, onProgress) {
-  if (!supportsPlatform(g, devicePlatform())) throw new Error(t(platformNotice(g)));
   const action_id = eventId(),
     start = performance.now();
   const context = { ...gameParams(g), action_id, bytes: g.bytes };

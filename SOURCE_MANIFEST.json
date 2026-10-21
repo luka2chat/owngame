@@ -484,8 +484,8 @@
     },
     {
       "path": "apps/web/public/app.js",
-      "bytes": 14661,
-      "sha256": "59f32c213fab930895cfea808448ac81d015209cfc14d0dccc0878e122d3a7a1"
+      "bytes": 14500,
+      "sha256": "94c90e2c32d57f23c8e313f43329972804fac16442d8b206f2a2209f791ccde5"
     },
     {
       "path": "apps/web/public/art/arcade-mascot.png",
@@ -994,8 +994,8 @@
     },
     {
       "path": "apps/web/public/data.js",
-      "bytes": 7527,
-      "sha256": "61727e0a1153551a4968d7f56a3a8baf9084fa41ef1d64ca3d106f109f4f241e"
+      "bytes": 7392,
+      "sha256": "336c99e8b6389597960c307fc3c331bb5950adea34388b06b895600362a06f8b"
     },
     {
       "path": "apps/web/public/footer.js",
@@ -1034,8 +1034,8 @@
     },
     {
       "path": "apps/web/public/platforms.js",
-      "bytes": 1689,
-      "sha256": "5695b56830447dbf4ab4ef9fe579bda5d16053f411ab865ec5e3e9984e54de09"
+      "bytes": 1864,
+      "sha256": "b1b0093316ea5e8d206e91c44e03c9f69d09b051416e07e2e850fa636c33d74d"
     },
     {
       "path": "apps/web/public/play.css",
@@ -1049,8 +1049,8 @@
     },
     {
       "path": "apps/web/public/play.js",
-      "bytes": 14986,
-      "sha256": "b537e9a28007f525d78e6b4192667e382da86db9cb8a6a42d9fd7d6ab8a187e6"
+      "bytes": 14150,
+      "sha256": "7f70163cd21c4f7961e647c8988cd618fa09f64f20b43560c8c3a854b5bfcdec"
     },
     {
       "path": "apps/web/public/privacy.html",
@@ -1139,8 +1139,8 @@
     },
     {
       "path": "docs/game-publishing.md",
-      "bytes": 7390,
-      "sha256": "2580d5edc9e21a03a80f1479ce0e3064ae5729f0907bfd396a8053bd3ed4a1ee"
+      "bytes": 7723,
+      "sha256": "661a352ba0e048b998f44cdf91c73666ae18fb2a6eb32db1ff253d93ba7426a7"
     },
     {
       "path": "docs/images/arcade-mascot.png",
@@ -8939,8 +8939,8 @@
     },
     {
       "path": "scripts/games/platforms.json",
-      "bytes": 658,
-      "sha256": "70b68fb081f1839cb7bb64aba22586db0cd3538accbcc7e117e4d09f14f4d0f1"
+      "bytes": 690,
+      "sha256": "3f8ebae85751cc9d958b23ae3d6d063f64534ac7d04c0001f060bfc465877186"
     },
     {
       "path": "scripts/games/preflight.mjs",
@@ -10529,8 +10529,8 @@
     },
     {
       "path": "tests/web/platforms.test.mjs",
-      "bytes": 3265,
-      "sha256": "64bf21cf4c68e3a15df4d4cd5ce6069ad15f99634c85a57685f1061340ae9e57"
+      "bytes": 3916,
+      "sha256": "28cbed4227fbb050cfa36ea4dec53bcc78b12e40cbe8de9bd8069bc050ec7b40"
     },
     {
       "path": "tests/web/usage.test.mjs",

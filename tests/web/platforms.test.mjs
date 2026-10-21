@@ -3,11 +3,13 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import vm from "node:vm";
 import {readGameEntries} from "../../scripts/web/catalog.mjs";
-import {validPlatforms, supportsPlatform, devicePlatform, resolvePlatform, platformAcceptance} from "../../apps/web/public/platforms.js";
+import {validPlatforms, supportsPlatform, devicePlatform, resolvePlatform, platformAcceptance, playerPresentation} from "../../apps/web/public/platforms.js";
 
 test("every published game explicitly declares supported platforms", async () => {
   const entries = await readGameEntries(process.cwd());
   for (const game of entries) assert(validPlatforms(game.platforms), game.id);
+  assert.deepEqual(entries.filter(g => supportsPlatform(g, "pc")).map(g => g.id), ["star-letters"]);
+  assert.equal(entries.filter(g => supportsPlatform(g, "mobile")).length, 17);
 });
 
 test("single-platform games stay separate; historical catalogues stay usable", () => {
@@ -55,4 +57,10 @@ test("Recreate asks for only the selected game's support targets in both languag
       assert(!prompt.includes("电脑和手机尺寸"));
     }
   }
+});
+
+test("PC classification uses the Star Letters player; mobile retains authored presentation", () => {
+  assert.deepEqual(playerPresentation({id: "future-pc", platforms: ["pc"]}), {wide: true, responsive: true});
+  assert.deepEqual(playerPresentation({id: "neon-shooter", platforms: ["mobile"]}), {wide: false, responsive: false});
+  assert.deepEqual(playerPresentation({id: "star-triad", platforms: ["mobile"]}), {wide: false, responsive: true});
 });
