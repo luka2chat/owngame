@@ -64,8 +64,8 @@
     },
     {
       "path": "apps/android/assets/app.js",
-      "bytes": 18662,
-      "sha256": "e1f17dfc7362cff0815d89858e00f74fa15d4479cbcd66522ad443dbfc73d652"
+      "bytes": 18897,
+      "sha256": "5bb9df07dbb8cfa9cbfc8e5aee18836a9e167670ed553b6c243c1caa9d1be12f"
     },
     {
       "path": "apps/android/assets/art/arcade-mascot.png",
@@ -196,6 +196,11 @@
       "path": "apps/android/assets/art/rollout/star-letters.jpg",
       "bytes": 116321,
       "sha256": "6c34747ee4a3239fdab6c721efbc39321c9c3912d8c17e0538619c0285668ad0"
+    },
+    {
+      "path": "apps/android/assets/art/rollout/tidal-reclaim.png",
+      "bytes": 2019981,
+      "sha256": "6bed69208651c9cdcbcf7234ee928e3fd5599de8f98406c3d45280cd03b0d32d"
     },
     {
       "path": "apps/android/assets/art/rollout/unlock-bolts-mobile.png",
@@ -9899,8 +9904,8 @@
     },
     {
       "path": "scripts/android/public-files.json",
-      "bytes": 3874,
-      "sha256": "7113a4dc063464ba047eb157a92768052bafd623db1667ef3295f8ed6c74464b"
+      "bytes": 3929,
+      "sha256": "6fb4e02a479a79fe00091b39559f80f4f6bf6be020b6e88bdf5d7732dee08f91"
     },
     {
       "path": "scripts/android/public-source.mjs",

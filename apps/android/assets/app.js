@@ -140,6 +140,14 @@ const known = {
     "cover": "art/rollout/star-letters.jpg",
     "coverTitleBaked": false
   },
+  "tidal-reclaim": {
+    "title": "潮汐回收站",
+    "subtitle": "PC 射击 · 净化与撤离",
+    "category": "射击",
+    "kind": "tidal-reclaim",
+    "cover": "art/rollout/tidal-reclaim.png",
+    "coverTitleBaked": true
+  },
   "crowd-runner": {
     "title": "人潮冲线",
     "subtitle": "选门跑酷 · 8 关",
