@@ -1,6 +1,7 @@
 // Site copy only. Immutable game packages and their save formats stay separate.
 export const messages = {
   "游玩平台": "Play on",
+  "全部平台": "All platforms",
   "移动端游戏": "Mobile games",
   "PC 游戏": "PC games",
   "手机 · PC": "Mobile · PC",

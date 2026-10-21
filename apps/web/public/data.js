@@ -168,7 +168,7 @@ export function playUrl(g) {
   return localizeUrl("/play.html?game=" + encodeURIComponent(g.id) + "&platform=" + currentPlatform());
 }
 export function currentPlatform() {
-  return resolvePlatform({query: new URLSearchParams(location.search).get("platform"), saved: getStore("platform", null)});
+  return resolvePlatform({query: new URLSearchParams(location.search).get("platform")});
 }
 let registration;
 export async function serviceWorker() {

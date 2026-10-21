@@ -142,7 +142,7 @@ function render() {
   if (!catalogLoaded) return;
   let list = games.filter(
     (g) =>
-      supportsPlatform(g, platform) &&
+      (platform === "all" || supportsPlatform(g, platform)) &&
       (view === "all" ||
         view === g.category ||
         (view === "favorites" && favorites.has(g.id)) ||
@@ -337,7 +337,6 @@ document.querySelectorAll("[data-platform]").forEach((button) => {
   button.onclick = () => {
     recordSearch();
     platform = button.dataset.platform;
-    setStore("platform", platform);
     const url = new URL(location.href);
     url.searchParams.set("platform", platform);
     history.replaceState(null, "", url);

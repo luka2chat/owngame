@@ -21,9 +21,8 @@ export function devicePlatform(device = globalThis.navigator) {
     ? "mobile" : "pc";
 }
 
-export function resolvePlatform({ query, saved, device } = {}) {
-  return [query, saved].find((target) => platforms.includes(target)) ||
-    devicePlatform(device);
+export function resolvePlatform({ query } = {}) {
+  return ["all", ...platforms].includes(query) ? query : "all";
 }
 
 export function platformLabel(game) {

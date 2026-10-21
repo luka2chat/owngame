@@ -30,15 +30,18 @@ test("single-platform games stay separate; historical catalogues stay usable", (
   assert(!supportsPlatform(both, "unknown"));
 });
 
-test("device defaults do not mistake a narrow PC window for a phone; explicit choice wins", () => {
+test("the library defaults to all platforms regardless of device or legacy preference", () => {
   const pc = {userAgent: "Mozilla/5.0 Windows NT", maxTouchPoints: 10};
   const iphone = {userAgent: "Mozilla/5.0 iPhone"};
   const ipad = {userAgent: "Mozilla/5.0 Macintosh", platform: "MacIntel", maxTouchPoints: 5};
   assert.equal(devicePlatform(pc), "pc");
   for (const device of [iphone, ipad, {userAgentData: {mobile: true}}]) assert.equal(devicePlatform(device), "mobile");
   assert.equal(resolvePlatform({query: "pc", saved: "mobile", device: iphone}), "pc");
-  assert.equal(resolvePlatform({query: "invalid", saved: "pc", device: iphone}), "pc");
-  assert.equal(resolvePlatform({device: iphone}), "mobile");
+  assert.equal(resolvePlatform({query: "invalid", saved: "pc", device: iphone}), "all");
+  assert.equal(resolvePlatform({device: iphone}), "all");
+  assert.equal(resolvePlatform({saved: "mobile", device: pc}), "all");
+  assert.equal(resolvePlatform({query: "all", saved: "pc"}), "all");
+  assert.equal(resolvePlatform({query: "mobile"}), "mobile");
 });
 
 test("Recreate asks for only the selected game's support targets in both languages", async () => {

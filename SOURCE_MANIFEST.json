@@ -484,8 +484,8 @@
     },
     {
       "path": "apps/web/public/app.js",
-      "bytes": 14500,
-      "sha256": "94c90e2c32d57f23c8e313f43329972804fac16442d8b206f2a2209f791ccde5"
+      "bytes": 14488,
+      "sha256": "78e6b1b65cd3b9e867688d81096896e7f538ec2a8ba134c11f0cb54492b898be"
     },
     {
       "path": "apps/web/public/art/arcade-mascot.png",
@@ -994,8 +994,8 @@
     },
     {
       "path": "apps/web/public/data.js",
-      "bytes": 7392,
-      "sha256": "336c99e8b6389597960c307fc3c331bb5950adea34388b06b895600362a06f8b"
+      "bytes": 7357,
+      "sha256": "e0660314e9f345490497b7cfcf1bb0a68641f2dc7bfbc2be2baec3509ef72e54"
     },
     {
       "path": "apps/web/public/footer.js",
@@ -1014,13 +1014,13 @@
     },
     {
       "path": "apps/web/public/index.html",
-      "bytes": 10755,
-      "sha256": "c80195205e4edf04365fbf54b75257d524786a3cc0746da68055a5a0b1e63151"
+      "bytes": 10856,
+      "sha256": "ffee2507692ca6741551069d519a6b7e3c5b9feb6d958dba1866bb96a7abf255"
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 28324,
-      "sha256": "7f935447b7c51ecb1ce845ae5c653bba5711b14c8d8e0a15b88db44b672f03f2"
+      "bytes": 28359,
+      "sha256": "f92a4126f07177ca23ae89e48908a09104727faa969f76b090b9471e51cafc5f"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -1034,8 +1034,8 @@
     },
     {
       "path": "apps/web/public/platforms.js",
-      "bytes": 1864,
-      "sha256": "b1b0093316ea5e8d206e91c44e03c9f69d09b051416e07e2e850fa636c33d74d"
+      "bytes": 1813,
+      "sha256": "5c602b90cfa8545b3b170bea0aaedcc4429fd1655fedb036fad2547e7283d41e"
     },
     {
       "path": "apps/web/public/play.css",
@@ -1074,8 +1074,8 @@
     },
     {
       "path": "apps/web/public/style.css",
-      "bytes": 22467,
-      "sha256": "6dfe2a8ff627f0245ed386b25c3f92fff36e22d5de36676418aa138661d09f94"
+      "bytes": 23185,
+      "sha256": "555603e3981529aa098bfcbad4eb314f135c44491e3cec52de7f85f2cdc52c7e"
     },
     {
       "path": "apps/web/public/sw.js",
@@ -1139,8 +1139,8 @@
     },
     {
       "path": "docs/game-publishing.md",
-      "bytes": 7723,
-      "sha256": "661a352ba0e048b998f44cdf91c73666ae18fb2a6eb32db1ff253d93ba7426a7"
+      "bytes": 7824,
+      "sha256": "f211b1a44038d1ed87882504c7c1031df6d40257930de26acc8329efd0135052"
     },
     {
       "path": "docs/images/arcade-mascot.png",
@@ -10539,8 +10539,8 @@
     },
     {
       "path": "tests/web/platforms.test.mjs",
-      "bytes": 3916,
-      "sha256": "28cbed4227fbb050cfa36ea4dec53bcc78b12e40cbe8de9bd8069bc050ec7b40"
+      "bytes": 4112,
+      "sha256": "db8104c90d64c54c3eaf9c9b7d1e3c02712b3a3f5b162c7dc5bbdf46ae859355"
     },
     {
       "path": "tests/web/usage.test.mjs",
