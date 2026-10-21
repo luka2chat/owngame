@@ -18,10 +18,14 @@
     "web:build": "node scripts/web/build.mjs",
     "web:publish": "node scripts/web/publish.mjs",
     "android:build": "node scripts/android/build.mjs",
-    "android:check": "node scripts/android/export-source.mjs && node --test tests/android/public-source.test.mjs",
+    "android:check": "node scripts/android/export-source.mjs && node --test tests/android/public-source.test.mjs tests/mobile/*.test.mjs",
     "android:test:compile": "node scripts/android/test-repository.mjs --compile-only",
     "test:android": "node scripts/android/test-repository.mjs",
-    "android:test:updates": "node scripts/android/test-updates.mjs"
+    "android:test:updates": "node scripts/android/test-updates.mjs",
+    "ios:prepare": "node scripts/ios/prepare.mjs",
+    "ios:build": "node scripts/ios/build.mjs",
+    "ios:check": "node scripts/ios/export-source.mjs && node --test tests/ios/*.test.mjs tests/mobile/*.test.mjs",
+    "test:ios": "node scripts/ios/test.mjs"
   },
   "devDependencies": {
     "@types/node": "22.20.5",

@@ -97,6 +97,19 @@ public final class RepositoryTests extends Instrumentation {
       byte[] full=data("abcdef");yes(Arrays.equals(data("cd"),GameRepository.sliceFullResponse(full,2,2,6)));
       rejects(()->GameRepository.sliceFullResponse(full,2,2,7));rejects(()->GameRepository.sliceFullResponse(full,5,2,6));rejects(()->GameRepository.sliceFullResponse(full,-1,2,6));
     });
+    test("PC listings cannot leak through installed fallback, downloads or shortcuts",()->{
+      Fixture f=new Fixture("platform test");Fake server=new Fake(f);File isolated=new File(root,"platforms");isolated.mkdirs();GameRepository r=new GameRepository(isolated,server);
+      r.refresh();r.download("test-game",p->{});yes(r.mobileInstalled().length()==1);
+      f.item.put("platforms",new JSONArray().put("pc"));r.refresh();
+      yes(r.list().length()==0);yes(r.mobileInstalled().length()==0);yes(r.installed().length()==1);
+      int before=server.files;rejects(()->r.download("test-game",p->{}));yes(server.files==before);
+      for(Object value:new Object[]{new JSONArray(),new JSONArray().put("pc").put("pc"),new JSONArray().put("desktop"),"mobile",JSONObject.NULL}){
+        f.item.put("platforms",value);rejects(()->r.refresh());yes(r.list().length()==0);
+      }
+      f.item.put("platforms",new JSONArray().put("mobile"));r.refresh();yes(r.list().length()==1);yes(r.mobileInstalled().length()==1);
+      r.download("test-game",p->{});yes(r.installed("test-game").getJSONArray("platforms").getString(0).equals("mobile"));
+      server.catalogOverride=new JSONArray();r.refresh();yes(r.list().length()==1);yes(r.mobileInstalled().length()==1);
+    });
     remove(root);
   }
   static void remove(File f){File[] children=f.listFiles();if(children!=null)for(File c:children)remove(c);f.delete();}

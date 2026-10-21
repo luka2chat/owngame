@@ -20,6 +20,8 @@ Each listed game has a public reference description. Examples include:
 
 Descriptions include rules and controls, visual direction, fingerprints of the displayed version, a playable URL and acceptance goals. An assistant can read this information even when it cannot interact with the website; available browser tools can then be used to play the reference. Do not report a playtest if the assistant could not observe visuals or operate the game.
 
+Reference briefs include the game's declared `platforms`. Recreate prompts and acceptance are limited to those targets unless the user requests a change; a PC game does not implicitly require a mobile port, and a mobile game does not implicitly require PC controls.
+
 <a id="可以怎样改"></a>
 
 ## Describe a transformation

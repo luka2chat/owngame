@@ -7,12 +7,14 @@ const root = path.resolve(import.meta.dirname, "../..");
 const device = process.argv[2];
 const compileOnly = device === "--compile-only";
 const updates=process.argv[3]==="--updates";
+const localization=process.argv[3]==="--localization";
 const webview=process.argv[3]==="--webview";
+const isolated=process.argv[3]==="--isolated";
 const gameDir=process.argv[4]==="--star-letters-dir"&&process.argv[5]?path.resolve(process.argv[5]):null;
 if (!device || (!compileOnly&&device.startsWith("-")) ||
   (compileOnly&&process.argv.length!==3) || (!compileOnly&&process.argv.length!==3&&
-  !(webview&&(process.argv.length===4||(gameDir&&process.argv.length===6)))&&!(updates&&process.argv.length===6))) {
-  throw Error("Usage: node scripts/android/test-repository.mjs DEVICE_SERIAL [--webview [--star-letters-dir GAME_FILES] | --updates APK RELEASE_MANIFEST] | --compile-only");
+  !(isolated&&process.argv.length===4)&&!(localization&&process.argv.length===4)&&!(webview&&(process.argv.length===4||(gameDir&&process.argv.length===6)))&&!(updates&&process.argv.length===6))) {
+  throw Error("Usage: node scripts/android/test-repository.mjs DEVICE_SERIAL [--isolated | --webview [--star-letters-dir GAME_FILES] | --updates APK RELEASE_MANIFEST] | --compile-only");
 }
 const {java, tools, platform, sdk} = toolchain();
 const local = path.join(root, ".local");
@@ -29,15 +31,20 @@ try {
     "-d", path.join(out, "app-classes"), ...(await fs.readdir(path.join(root,"apps/android/src/dev/owngame/app"))).filter(p=>p.endsWith(".java")).map(p=>path.join(root,"apps/android/src/dev/owngame/app",p))]);
   run(path.join(java, "bin/javac"), ["--release", "8", "-encoding", "UTF-8", "-classpath",
     platform + path.delimiter + path.join(out, "app-classes"), "-d", path.join(out, "classes"),
-    path.join(root, "tests/android/RepositoryTests.java"),path.join(root,"tests/android/WebViewTests.java"),path.join(root,"tests/android/UpdateInstallTests.java")]);
-  run(path.join(java, "bin/jar"), ["cf", path.join(out, "tests.jar"), "-C", path.join(out, "classes"), "."]);
+    path.join(root, "tests/android/RepositoryTests.java"),path.join(root,"tests/android/WebViewTests.java"),path.join(root,"tests/android/LocalizationTests.java"),path.join(root,"tests/android/UpdateInstallTests.java")]);
+  run(path.join(java, "bin/jar"), ["cf", path.join(out, "tests.jar"), "-C", path.join(out, "classes"), ".", ...(isolated?["-C",path.join(out,"app-classes"),"."]:[])]);
   run(path.join(tools, "d8"), ["--lib", platform, "--classpath", path.join(out, "app-classes"),
     "--min-api", "26", "--output", path.join(out, "dex"), path.join(out, "tests.jar")]);
   if (compileOnly) {
     console.log("Android instrumentation harness compiled; device tests not run.");
   } else {
+    let manifest=path.join(root, "tests/android/AndroidManifest.xml");
+    if(isolated){
+      manifest=path.join(out,"isolated-manifest.xml");
+      await fs.writeFile(manifest,(await fs.readFile(path.join(root,"tests/android/AndroidManifest.xml"),"utf8")).replace('android:targetPackage="dev.owngame.app"','android:targetPackage="dev.owngame.tests"'));
+    }
     run(path.join(tools, "aapt2"), ["link", "-o", path.join(out, "base.apk"), "-I", platform,
-      "--manifest", path.join(root, "tests/android/AndroidManifest.xml")]);
+      "--manifest", manifest]);
     run("zip", ["-j", path.join(out, "base.apk"), path.join(out, "dex/classes.dex")]);
     run(path.join(tools, "zipalign"), ["-f", "4", path.join(out, "base.apk"), path.join(out, "aligned.apk")]);
     run(path.join(tools, "apksigner"), ["sign", "--ks", path.join(local, "owngame-android-debug.jks"),
@@ -56,11 +63,11 @@ try {
       run(adb,["-s",device,"shell","mkdir","-p",remote]);run(adb,["-s",device,"push",path.resolve(process.argv[4]),remote+"/update.apk"]);run(adb,["-s",device,"push",path.join(out,"wrong.apk"),remote+"/wrong.apk"]);
       installArgs=["-e","apk",remote+"/update.apk","-e","wrongSigner",remote+"/wrong.apk","-e","version",metadata.version,"-e","code",String(metadata.version_code)];
     }
-    const result = run(adb, ["-s", device, "shell", "am", "instrument", "-w",...(gameDir?["-e","gameFixture",remote]:[]),...installArgs,
-      "dev.owngame.tests/dev.owngame.tests."+(updates?"UpdateInstallTests":webview?"WebViewTests":"RepositoryTests")]);
+    const result = run(adb, ["-s", device, "shell", "am", "instrument", "-w",...(gameDir?["-e","gameFixture",remote]:[]),...installArgs,...(localization?["-e","language",process.env.OWNGAME_TEST_LANGUAGE||"en"]:[]),
+      "dev.owngame.tests/dev.owngame.tests."+(localization?"LocalizationTests":updates?"UpdateInstallTests":webview?"WebViewTests":"RepositoryTests")]);
     const artifacts = path.join(root, "artifacts/android-tests");
     await fs.mkdir(artifacts, {recursive: true});
-    await fs.writeFile(path.join(artifacts, updates?"update-install-tests.txt":webview?"webview-tests.txt":"repository-tests.txt"), result);
+    await fs.writeFile(path.join(artifacts, localization?"localization-"+(process.env.OWNGAME_TEST_LANGUAGE||"en")+".txt":updates?"update-install-tests.txt":webview?"webview-tests.txt":"repository-tests.txt"), result);
     console.log(result);
     if (!result.includes("INSTRUMENTATION_CODE: -1") || result.includes('"passed":false')) process.exitCode = 1;
   }

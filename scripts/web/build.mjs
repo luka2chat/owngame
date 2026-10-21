@@ -7,6 +7,7 @@ import {writeUsagePage} from "./usage.mjs";
 import {writeSharedFooters} from "./footer.mjs";
 import {imageHtml, imageCss} from "./image-delivery.mjs";
 import {imageAssets, imageIcons} from "../../apps/web/public/image-assets.js";
+import {platformAcceptance} from "../../apps/web/public/platforms.js";
 const root = path.resolve(import.meta.dirname, "../.."),
   out = process.env.OWNGAME_WEB_OUT ? path.resolve(process.env.OWNGAME_WEB_OUT) : path.join(root, "apps/web/dist");
 // A separate candidate library supports batch acceptance without changing the live selection.
@@ -120,6 +121,7 @@ for (const game of catalog) {
     id: game.id,
     title: game.title,
     category: game.category,
+    platforms: game.platforms,
     description: game.description,
     visual_direction: game.tag,
     rules_and_controls: game.instructions,
@@ -137,7 +139,7 @@ for (const game of catalog) {
       package: "@owngame/cli@latest",
     },
     task: "Use owngame with the user's AI assistant to recreate the core play and build a personalized version. Show a running visual direction early, then iterate on rules, feedback, and content.",
-    acceptance: ["Actual play through the core loop", "Restart and applicable save/reload", "Desktop and mobile-sized layout", "State untested behavior"],
+    acceptance: ["Actual play through the core loop", "Restart and applicable save/reload", ...platformAcceptance(game), "Only declared platforms are required; add another target only when requested", "State untested behavior"],
     reference_scope: "The matching editable game source is available at source_url. Follow its LICENSE and THIRD_PARTY_NOTICES.md, especially GPL and third-party asset terms. The npm toolkit provides separate starters; this brief does not copy source into a new project.",
   };
   await fs.writeFile(path.join(out, "remix", game.id + ".json"), JSON.stringify(brief, null, 2) + "\n");

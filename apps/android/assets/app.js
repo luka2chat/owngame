@@ -1,5 +1,6 @@
 "use strict";
 const $ = (id) => document.getElementById(id);
+const t = window.AppText.text;
 const categories = [
   ["全部", "全部", "#ed3b26", ""],
   ["益智", "益智", "#ffce27", "✦"],
@@ -156,17 +157,33 @@ const known = {
     "coverTitleBaked": true
   }
 };
-const info = (g) =>
-  known[g.id] || {
-    title: g.title,
-    subtitle: "挑一款喜欢的，下载后随时开玩",
-    category: g.category || "其他",
-    kind: "generic",
-  };
+function info(g) {
+  const base = known[g.id] || {title: g.title, subtitle: "挑一款喜欢的，下载后随时开玩", category: g.category || "其他", kind: "generic"};
+  const translated = AppText.game(g.id);
+  return translated ? {...base, title: translated.title, subtitle: translated.subtitle} : base;
+}
+function applyLanguage() {
+  document.documentElement.lang = AppText.language;
+  document.title = t("owngame · 做属于自己的游戏");
+  for (const [selector, key] of [
+    ['.masthead h1','做属于自己的游戏'], ['.promise','不充钱、不看广告、离线爽玩'],
+    ['.foot b','快乐，就这么简单。'], ['.foot > span','联网挑选和更新，下载后没网络也能玩。'],
+    ['#sync span','刷新游戏库'], ['.bottom-nav [data-page="home"] span','游戏库'],
+    ['.bottom-nav [data-page="categories"] span','分类'], ['.bottom-nav [data-page="mine"] span','我的游戏'],
+  ]) { const node=document.querySelector(selector); if(node) node.textContent=t(key); }
+  for (const [selector, attr, key] of [
+    ['.mascot','alt','戴皇冠帽的 owngame 街机小伙伴'], ['#search','placeholder','搜索你喜欢的游戏'],
+    ['#search','aria-label','搜索游戏'], ['#clear-search','aria-label','清除搜索'],
+    ['#chips','aria-label','游戏分类'], ['.bottom-nav','aria-label','主要导航'],
+  ]) { const node=document.querySelector(selector); if(node) node.setAttribute(attr,t(key)); }
+  $('app-update').textContent=t(window.__appPlatform === 'ios' ? '关于苹果测试版' : '检查 App 更新');
+}
+window.applyAppLanguage = () => { $('status').textContent=''; render(); };
+window.addEventListener('languagechange', window.applyAppLanguage);
 function el(tag, cls, text) {
   const e = document.createElement(tag);
   if (cls) e.className = cls;
-  if (text !== undefined) e.textContent = text;
+  if (text !== undefined) e.textContent = t(String(text));
   return e;
 }
 function icon(id) {
@@ -264,13 +281,13 @@ function size(g) {
   return ((g.bytes || 0) / 1048576).toFixed(1) + " MB";
 }
 function state(g) {
-  if (g.downloading) return "下载中 " + g.progress + "%";
-  if (g.update_available) return "有更新 · 旧版可玩";
-  return g.downloaded ? "已下载 · 离线可玩" : "下载后离线玩 · " + size(g);
+  if (g.downloading) return t("下载中 {percent}%", {percent:g.progress});
+  if (g.update_available) return t("有更新 · 旧版可玩");
+  return g.downloaded ? t("已下载 · 离线可玩") : t("下载后离线玩 · {size}", {size:size(g)});
 }
 function action(g) {
   if (g.downloaded) return "开玩 ›";
-  if (g.downloading) return "下载中 " + g.progress + "%";
+  if (g.downloading) return t("下载中 {percent}%", {percent:g.progress});
   return "下载 ↓";
 }
 function card(g) {
@@ -278,7 +295,7 @@ function card(g) {
     b = el("button", "card-open");
   b.setAttribute(
     "aria-label",
-    (g.downloaded ? "开始游戏：" : "下载游戏：") + g.title,
+    t(g.downloaded ? "开始游戏：{title}" : "下载游戏：{title}", {title:info(g).title}),
   );
   b.disabled = !g.downloaded && g.busy;
   b.onclick = () => play(g);
@@ -290,7 +307,7 @@ function card(g) {
   const f = el("button", "fav", g.favorite ? "★" : "☆");
   f.setAttribute(
     "aria-label",
-    (g.favorite ? "取消收藏：" : "收藏：") + g.title,
+    t(g.favorite ? "取消收藏：{title}" : "收藏：{title}", {title:info(g).title}),
   );
   f.setAttribute("aria-pressed", String(!!g.favorite));
   f.onclick = () => {
@@ -303,16 +320,16 @@ function card(g) {
       const update = el(
         "button",
         "update-button",
-        g.downloading ? "下载中 " + g.progress + "%" : "更新 · " + size(g),
+        g.downloading ? t("下载中 {percent}%",{percent:g.progress}) : t("更新 · {size}",{size:size(g)}),
       );
-      update.setAttribute("aria-label", "更新游戏：" + g.title);
+      update.setAttribute("aria-label", t("更新游戏：{title}",{title:info(g).title}));
       update.disabled = g.busy;
       update.onclick = () => bridge && bridge.download(g.id);
       actions.append(update);
     }
     if (g.previous_version) {
       const rollback = el("button", "rollback-button", "恢复上一版");
-      rollback.setAttribute("aria-label", "恢复上一版：" + g.title);
+      rollback.setAttribute("aria-label", t("恢复上一版：{title}",{title:info(g).title}));
       rollback.disabled = g.busy;
       rollback.onclick = () => bridge && bridge.rollback(g.id);
       actions.append(rollback);
@@ -331,7 +348,7 @@ function feature(g) {
   c.append(art(g));
   const copy = el("div", "featured-copy");
   copy.append(el("span", "stamp", "今天，玩点喜欢的"));
-  if (!info(g).coverTitleBaked) copy.append(
+  if (!info(g).coverTitleBaked || AppText.language === "en") copy.append(
     el("h2", "", info(g).title),
     el(
       "p",
@@ -347,7 +364,7 @@ function feature(g) {
     g.downloaded ? "开玩 ▶" : g.downloading ? g.progress + "%" : "下载 ↓",
   );
   b.disabled = !g.downloaded && g.busy;
-  b.setAttribute("aria-label", (g.downloaded ? "开玩：" : "下载：") + g.title);
+  b.setAttribute("aria-label", t(g.downloaded ? "开玩：{title}" : "下载：{title}", {title:info(g).title}));
   b.onclick = () => play(g);
   c.append(copy, el("span", "feature-meta", state(g)), b);
   return c;
@@ -366,12 +383,13 @@ function filtered() {
     (g) =>
       (category === "全部" || info(g).category === category) &&
       (!query ||
-        (g.title + " " + g.description + " " + info(g).title)
+        (g.title + " " + g.description + " " + info(g).title + " " + (known[g.id]?.title || ""))
           .toLocaleLowerCase()
           .includes(query)),
   );
 }
 function render() {
+  applyLanguage();
   document
     .querySelectorAll(".bottom-nav button")
     .forEach((b) =>
@@ -404,7 +422,7 @@ function render() {
       b.style.setProperty("--tint", tint);
       b.append(
         el("b", "", label),
-        el("span", "", n ? n + " 款游戏" : "还没有游戏"),
+        el("span", "", n ? t("{count} 款游戏", {count:n}) : "还没有游戏"),
         el("i", "", mark),
       );
       b.onclick = () => {
@@ -456,8 +474,8 @@ function render() {
           ? "找到的游戏"
           : category === "全部"
             ? "你的快乐游戏库"
-            : category + "游戏",
-        list.length + " 款 · 下载后离线玩",
+            : t("{category}游戏", {category:t(category)}),
+        t("{count} 款 · 下载后离线玩", {count:list.length}),
       ),
     );
   }
@@ -483,7 +501,7 @@ function render() {
   target.append(grid);
 }
 window.onStatus = (text) => {
-  $("status").textContent = text;
+  $("status").textContent = t(text);
 };
 window.setSafeArea = (top, bottom) => {
   document.documentElement.style.setProperty(
@@ -530,6 +548,9 @@ $("clear-search").onclick = () => {
 $("sync").onclick = () => {
   if (bridge) bridge.sync();
   else onStatus("请在手机 App 中刷新公网游戏库。");
+};
+$("search").onkeydown = (event) => {
+  if (event.key === "Enter") $("search").blur();
 };
 $("app-update").onclick = () => {
   if (bridge && bridge.checkAppUpdate) bridge.checkAppUpdate();

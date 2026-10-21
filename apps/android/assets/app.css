@@ -174,7 +174,7 @@ h1 {
   border: 0;
   background: transparent;
   outline: none;
-  font-size: 15px;
+  font-size: 16px;
   padding: 11px 0;
   color: var(--ink);
 }
@@ -419,8 +419,15 @@ input::-webkit-search-cancel-button {
   position: absolute;
   right: 6px;
   top: 6px;
+  width: 44px;
   min-width: 44px;
   height: 44px;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  display: grid;
+  place-items: center;
+  line-height: 1;
   background: #fff9e9;
   border: 1.5px solid var(--ink);
   border-radius: 50%;
@@ -775,3 +782,9 @@ button:disabled {
 .paper-lantern-token { position: absolute; inset: -12%; background: url("art/firefly-four-paper/atlas.png") 9.167% 18.421% / 250% 232.558% no-repeat; }
 .paper-lantern-token.jade { background-position: 90% 18.421%; }
 .art-firefly-four .paper-lantern-board { right: 50%; transform: translateX(50%) rotate(-5deg); }
+
+/* English labels need room without changing the shared arcade design. */
+html[lang="en"] .section-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+html[lang="en"] .section-head small { white-space: normal; }
+html[lang="en"] .feature .featured-copy { padding-bottom: 85px; }
+html[lang="en"] .feature .feature-meta { max-width: calc(100% - 190px); line-height: 1.35; }

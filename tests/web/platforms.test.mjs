@@ -1,7 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs/promises";
+import vm from "node:vm";
 import {readGameEntries} from "../../scripts/web/catalog.mjs";
-import {validPlatforms, supportsPlatform, devicePlatform, resolvePlatform} from "../../apps/web/public/platforms.js";
+import {validPlatforms, supportsPlatform, devicePlatform, resolvePlatform, platformAcceptance} from "../../apps/web/public/platforms.js";
 
 test("every published game explicitly declares supported platforms", async () => {
   const entries = await readGameEntries(process.cwd());
@@ -15,6 +17,8 @@ test("single-platform games stay separate; historical catalogues stay usable", (
   const games = [mobile, pc, both];
   assert.deepEqual(games.filter(g => supportsPlatform(g, "mobile")), [mobile, both]);
   assert.deepEqual(games.filter(g => supportsPlatform(g, "pc")), [pc, both]);
+  assert.deepEqual(platformAcceptance(pc), ["PC controls, layout and performance"]);
+  assert.deepEqual(platformAcceptance(mobile), ["Mobile touch controls, layout and device performance"]);
   for (const target of ["mobile", "pc"]) assert(supportsPlatform({id: "legacy"}, target));
   for (const value of [null, [], "pc", ["desktop"], ["pc", "pc"], ["pc", "unknown"]]) {
     assert(!validPlatforms(value));
@@ -33,4 +37,22 @@ test("device defaults do not mistake a narrow PC window for a phone; explicit ch
   assert.equal(resolvePlatform({query: "pc", saved: "mobile", device: iphone}), "pc");
   assert.equal(resolvePlatform({query: "invalid", saved: "pc", device: iphone}), "pc");
   assert.equal(resolvePlatform({device: iphone}), "mobile");
+});
+
+test("Recreate asks for only the selected game's support targets in both languages", async () => {
+  const source = (await fs.readFile("apps/web/public/remix.js", "utf8"))
+    .replace(/^import .* from .*;\n/gm, "").replaceAll("export ", "");
+  for (const language of ["en", "zh-CN"]) {
+    for (const target of ["mobile", "pc"]) {
+      const game = {id: "example", title: "Example", platforms: [target], instructions: "Play", tag: "Art", description: "Game"};
+      const prompt = vm.runInNewContext(source + "\nremixPrompt(game)", {
+        game, platforms: ["mobile", "pc"], supportsPlatform,
+        getLanguage: () => language, localizeGame: g => g,
+      });
+      assert(prompt.includes(target === "pc" ? "PC" : language === "en" ? "mobile" : "移动端"));
+      assert(!prompt.includes(target === "pc" ? "mobile" : "PC"));
+      assert(!prompt.includes("desktop and phone sizes"));
+      assert(!prompt.includes("电脑和手机尺寸"));
+    }
+  }
 });

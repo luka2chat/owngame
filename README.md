@@ -16,6 +16,8 @@
 
 ## 在电脑与手机上，随时开玩
 
+游戏库按 **移动端 / PC** 展示；每款游戏可支持一端或两端，不要求所有游戏适配全部平台。手机 App 只收录支持移动端的作品，具体支持范围见游戏标识。[平台登记与验收规则](docs/game-publishing.md#choose-supported-platforms)
+
 [![owngame 电脑端与移动端展示，AI 设备效果图](docs/images/owngame-platform-devices-v1.png)](https://owngame.dev)
 
 浏览游戏、收藏喜欢的作品，在下载完成后离线游玩。想继续创作时，点击 **复刻**，把参考说明与源码链接交给 AI 助手。

@@ -35,3 +35,10 @@ export function platformNotice(game) {
   return supportsPlatform(game, "mobile") ? "请在手机或平板上游玩这款游戏。"
     : "这款游戏支持 PC，请在电脑上游玩。";
 }
+
+export function platformAcceptance(game) {
+  return [
+    ...(supportsPlatform(game, "mobile") ? ["Mobile touch controls, layout and device performance"] : []),
+    ...(supportsPlatform(game, "pc") ? ["PC controls, layout and performance"] : []),
+  ];
+}

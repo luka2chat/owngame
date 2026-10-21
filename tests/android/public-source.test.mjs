@@ -88,7 +88,9 @@ test("every published game renders its bundled cover instead of the generic icon
     addEventListener() {}
   }
   const nodes = new Map();
-  const context = {document: {
+  const context = {navigator:{language:"zh-CN"}, addEventListener() {}, document: {
+    documentElement: {style:{setProperty() {}}},
+    querySelector() {return null;},
     getElementById(id) { if (!nodes.has(id)) nodes.set(id, new Element("div")); return nodes.get(id); },
     querySelectorAll() { return []; },
     createElement(tag) { return new Element(tag); },
@@ -96,6 +98,7 @@ test("every published game renders its bundled cover instead of the generic icon
   }};
   context.window = context;
   vm.createContext(context);
+  vm.runInContext(await fs.readFile(path.join(root, "apps/android/assets/localization.js"), "utf8"), context);
   vm.runInContext(await fs.readFile(path.join(root, "apps/android/assets/app.js"), "utf8"), context);
   const known = JSON.parse(vm.runInContext("JSON.stringify(known)", context));
   let games;

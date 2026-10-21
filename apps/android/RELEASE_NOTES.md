@@ -1,5 +1,15 @@
 # Android release notes
 
+## 0.4.17-alpha
+
+### 中文
+
+App 界面和原生游戏菜单支持简体中文、英语，跟随系统或 App 语言；其他语言使用英语。游戏库标题、简介、分类、搜索、收藏、下载状态、更新提示和评价界面同步翻译，英文窄屏排版已调整。搜索也支持原中文游戏名。游戏内部文字、封面美术和存档格式保持不变。沿用既有签名，可覆盖安装保留下载与存档。
+
+### English
+
+The app interface and native game menus now support English and Simplified Chinese, following the system or app language. Other languages use English. Library titles, descriptions, categories, search, favorites, download status, update prompts, and reviews are localized, with layouts adjusted for narrow screens. Search also recognizes original Chinese game names. Individual games retain their original text, artwork, and save format. Install over the previous version to preserve downloads and saves.
+
 ## 0.4.16-alpha
 
 ### 中文

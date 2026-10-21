@@ -48,8 +48,11 @@
   "apps/android/assets/art/star-triad-moonlight/pieces.png",
   "apps/android/assets/art/star-triad.svg",
   "apps/android/assets/index.html",
+  "apps/android/assets/localization.js",
   "apps/android/res/drawable-nodpi/arcade_mascot.png",
   "apps/android/res/mipmap-anydpi-v26/owngame.xml",
+  "apps/android/res/xml/locales_config.xml",
+  "apps/android/src/dev/owngame/app/AppText.java",
   "apps/android/src/dev/owngame/app/AppUpdateChecker.java",
   "apps/android/src/dev/owngame/app/AppUpdateDownload.java",
   "apps/android/src/dev/owngame/app/AppUpdateInstaller.java",
@@ -66,11 +69,15 @@
   "scripts/android/test-repository.mjs",
   "scripts/android/test-updates.mjs",
   "scripts/android/toolchain.mjs",
+  "scripts/mobile/localization.json",
+  "scripts/mobile/localization.mjs",
   "tests/android/AndroidManifest.xml",
   "tests/android/AppUpdateCheckerTests.java",
   "tests/android/AppUpdateDownloadTests.java",
+  "tests/android/LocalizationTests.java",
   "tests/android/RepositoryTests.java",
   "tests/android/UpdateInstallTests.java",
   "tests/android/WebViewTests.java",
-  "tests/android/public-source.test.mjs"
+  "tests/android/public-source.test.mjs",
+  "tests/mobile/localization.test.mjs"
 ]

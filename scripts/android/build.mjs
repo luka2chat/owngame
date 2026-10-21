@@ -3,6 +3,10 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { toolchain } from "./toolchain.mjs";
 const root = path.resolve(import.meta.dirname, "../..");
+import {localizationFiles} from '../mobile/localization.mjs';
+for (const [relative, content] of await localizationFiles()) {
+  if (relative.startsWith('apps/android/')) await fs.writeFile(path.join(root, relative), content);
+}
 const {java, tools, platform} = toolchain();
 const out = path.resolve(process.argv[2] ?? path.join(root, "artifacts/android"));
 const tempBase = path.resolve(process.env.OWNGAME_ANDROID_TEMP || path.join(root, ".local"));
@@ -49,6 +53,7 @@ try {
     "-d",
     path.join(temp, "classes"),
     path.join(root, "apps/android/src/dev/owngame/app/MainActivity.java"),
+    path.join(root, "apps/android/src/dev/owngame/app/AppText.java"),
     path.join(root, "apps/android/src/dev/owngame/app/GameActivity.java"),
     path.join(root, "apps/android/src/dev/owngame/app/GameRepository.java"),
     path.join(root, "apps/android/src/dev/owngame/app/AppUpdateChecker.java"),

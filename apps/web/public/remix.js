@@ -1,19 +1,23 @@
 import { track, gameParams, eventId } from "./analytics.js";
 import { element } from "./data.js";
 import { t, getLanguage, localizeGame } from "./i18n.js";
+import { platforms, supportsPlatform } from "./platforms.js";
 
 export const TOOLKIT_URL = "https://github.com/luka2chat/owngame";
 
 export function remixPrompt(game, change = "") {
+  const targets = platforms.filter(target => supportsPlatform(game, target));
+  const targetEnglish = targets.map(target => target === "mobile" ? "mobile" : "PC").join(" and ");
+  const targetChinese = targets.map(target => target === "mobile" ? "移动端" : "PC").join("、");
   const reference =
     "https://owngame.dev/play?game=" + encodeURIComponent(game.id);
   const brief =
     "https://owngame.dev/remix/" + encodeURIComponent(game.id) + ".json";
   if (getLanguage() === "en") {
     const display = localizeGame(game);
-    return `Use owngame to recreate and personalize ${display.title} (${reference}&lang=en) as my own playable game. First read the installation instructions at ${TOOLKIT_URL}; if owngame is not connected, install and configure it for my current AI assistant. Read the reference brief at ${brief} and play the original when browser access is available. ${game.sourceUrl ? `Matching editable source: ${game.sourceUrl}. Read LICENSE and THIRD_PARTY_NOTICES.md in that directory before reusing or adapting it. ` : ""}Gameplay: ${display.instructions} Visual direction: ${display.tag}. ${display.description} ${change.trim() ? `My requested changes: ${change.trim()}. ` : "Keep the core gameplay first, then ask which theme or details I want to change. "}Prioritize art: show me working visuals and interactions early, then develop the rules, feedback, and content. Use original or properly licensed assets. Playtest the result, check restart, applicable save/resume, and desktop and phone sizes. Explain how to run it and what remains unverified.`;
+    return `Use owngame to recreate and personalize ${display.title} (${reference}&lang=en) as my own playable game. First read the installation instructions at ${TOOLKIT_URL}; if owngame is not connected, install and configure it for my current AI assistant. Read the reference brief at ${brief} and play the original when browser access is available. ${game.sourceUrl ? `Matching editable source: ${game.sourceUrl}. Read LICENSE and THIRD_PARTY_NOTICES.md in that directory before reusing or adapting it. ` : ""}Gameplay: ${display.instructions} Visual direction: ${display.tag}. ${display.description} ${change.trim() ? `My requested changes: ${change.trim()}. ` : "Keep the core gameplay first, then ask which theme or details I want to change. "}Prioritize art: show me working visuals and interactions early, then develop the rules, feedback, and content. Use original or properly licensed assets. Playtest the result, check restart, applicable save/resume, and controls, layout and performance on ${targetEnglish}. Support only these targets unless I ask to change platforms. Explain how to run it and what remains unverified.`;
   }
-  return `请用 owngame 为我复刻并改编《${game.title}》（${reference}），做成我自己的可玩游戏。先阅读 ${TOOLKIT_URL} 的安装说明；如果尚未接入 owngame，按当前 AI 助手完成安装与配置。读取这款游戏的参考说明 ${brief}，并在能够使用浏览器时试玩原游戏。${game.sourceUrl ? "对应版本的完整源码：" + game.sourceUrl + "。阅读该目录的 LICENSE 和 THIRD_PARTY_NOTICES.md 后，再决定复用或改编。" : ""}玩法参考：${game.instructions} 视觉方向：${game.tag}；${game.description} ${change.trim() ? "我的改编要求：" + change.trim() + "。" : "先保留核心玩法，和我确定希望改变的主题或细节。"}美术优先，先给我看能运行的视觉与交互，再逐步完成规则、反馈和内容；使用自制或已获许可的素材。完成后实际试玩，检查重开、适用的存档续玩及电脑和手机尺寸，并告诉我如何运行以及还有哪些未验证。`;
+  return `请用 owngame 为我复刻并改编《${game.title}》（${reference}），做成我自己的可玩游戏。先阅读 ${TOOLKIT_URL} 的安装说明；如果尚未接入 owngame，按当前 AI 助手完成安装与配置。读取这款游戏的参考说明 ${brief}，并在能够使用浏览器时试玩原游戏。${game.sourceUrl ? "对应版本的完整源码：" + game.sourceUrl + "。阅读该目录的 LICENSE 和 THIRD_PARTY_NOTICES.md 后，再决定复用或改编。" : ""}玩法参考：${game.instructions} 视觉方向：${game.tag}；${game.description} ${change.trim() ? "我的改编要求：" + change.trim() + "。" : "先保留核心玩法，和我确定希望改变的主题或细节。"}美术优先，先给我看能运行的视觉与交互，再逐步完成规则、反馈和内容；使用自制或已获许可的素材。完成后实际试玩，检查重开、适用的存档续玩及${targetChinese}的操作、布局和性能。只要求这些平台，除非我明确要求更改支持范围，并告诉我如何运行以及还有哪些未验证。`;
 }
 
 // Shared by the library and player. Clipboard failure keeps an editable,

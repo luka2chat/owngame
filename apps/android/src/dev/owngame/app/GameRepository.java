@@ -116,6 +116,21 @@ public final class GameRepository {
   private JSONArray array(String name)throws Exception{File f=new File(root,name);return f.exists()||new File(f+".bak").exists()?new JSONArray(text(readAtomic(f,2*1024*1024))):new JSONArray();}
   public JSONArray installed()throws Exception{synchronized(COMMIT_LOCK){return array("catalog.json");}}
   public JSONObject installed(String id)throws Exception{return find(installed(),id);}
+  private static JSONArray platforms(JSONObject game)throws Exception{
+    if(!game.has("platforms"))return new JSONArray().put("mobile").put("pc");
+    JSONArray values=game.getJSONArray("platforms");Set<String> seen=new HashSet<>();
+    if(values.length()<1||values.length()>2)throw new IOException("Invalid game platforms");
+    for(int i=0;i<values.length();i++){Object value=values.get(i);if(!(value instanceof String)||!(value.equals("mobile")||value.equals("pc"))||!seen.add((String)value))throw new IOException("Invalid game platforms");}
+    return values;
+  }
+  private static boolean supportsMobile(JSONObject game)throws Exception{
+    JSONArray values=platforms(game);for(int i=0;i<values.length();i++)if(values.getString(i).equals("mobile"))return true;return false;
+  }
+  public JSONArray mobileInstalled()throws Exception{synchronized(COMMIT_LOCK){
+    JSONArray remote=array("remote-catalog.json"),local=installed(),result=new JSONArray();
+    for(int i=0;i<local.length();i++){JSONObject old=local.getJSONObject(i),latest=find(remote,old.getString("id"));if(supportsMobile(latest!=null?latest:old))result.put(old);}
+    return result;
+  }}
   private static JSONObject find(JSONArray all,String id)throws Exception{for(int i=0;i<all.length();i++)if(id.equals(all.getJSONObject(i).getString("id")))return all.getJSONObject(i);return null;}
   private static void identity(String id,String version)throws Exception{if(!id.matches("[a-z0-9][a-z0-9-]{0,63}")||!version.matches("[a-f0-9]{64}"))throw new IOException("Invalid game identity");}
   private JSONObject validateItem(JSONObject item)throws Exception{
@@ -125,7 +140,7 @@ public final class GameRepository {
     String title=item.getString("title"),description=item.getString("description");long size=item.getLong("bytes");
     if(title.isEmpty()||title.length()>160||description.length()>2000||size<=0||size>MAX_GAME)throw new IOException("Invalid game metadata");
     JSONObject clean=new JSONObject();for(String key:new String[]{"id","version","title","description","entry","manifest","bytes"})clean.put(key,item.get(key));
-    clean.put("category",item.optString("category","其他"));return clean;
+    clean.put("category",item.optString("category","其他"));clean.put("platforms",platforms(item));return clean;
   }
   public void refresh()throws Exception{
     JSONArray response=new JSONArray(text(transport.get("/catalog.json",2*1024*1024))),clean=new JSONArray();Set<String> ids=new HashSet<>();
@@ -137,14 +152,16 @@ public final class GameRepository {
     JSONArray remote=array("remote-catalog.json"),local=installed(),result=new JSONArray();Set<String> ids=new HashSet<>();
     for(int i=0;i<remote.length();i++){
       JSONObject r=remote.getJSONObject(i),old=find(local,r.getString("id")),row=copy(r);String id=r.getString("id");ids.add(id);
+      if(!supportsMobile(r))continue;
       row.put("downloaded",old!=null);row.put("update_available",old!=null&&!old.getString("build_sha256").equals(r.getString("version")));
       if(old!=null){row.put("installed_version",old.getString("build_sha256"));row.put("previous_version",old.optString("previous_version"));}result.put(row);
     }
-    for(int i=0;i<local.length();i++){JSONObject old=local.getJSONObject(i);if(ids.contains(old.getString("id")))continue;JSONObject row=copy(old);row.put("downloaded",true);row.put("update_available",false);row.put("unlisted",true);row.put("installed_version",old.getString("build_sha256"));result.put(row);}
+    for(int i=0;i<local.length();i++){JSONObject old=local.getJSONObject(i);if(ids.contains(old.getString("id"))||!supportsMobile(old))continue;JSONObject row=copy(old);row.put("downloaded",true);row.put("update_available",false);row.put("unlisted",true);row.put("installed_version",old.getString("build_sha256"));result.put(row);}
     return result;
   }}
   public JSONObject download(String id,Progress progress)throws Exception{
     JSONObject g; synchronized(COMMIT_LOCK){g=find(array("remote-catalog.json"),id);}if(g==null)throw new IOException("Refresh catalog first");g=validateItem(g);
+    if(!supportsMobile(g))throw new IOException("This game supports PC only");
     String version=g.getString("version"),prefix="/games/"+id+"/"+version+"/";
     JSONArray webFiles=new JSONArray(text(transport.get(g.getString("manifest"),2*1024*1024))),files=new JSONArray();Set<String> names=new HashSet<>();StringBuilder canonical=new StringBuilder("[");long total=0;
     if(webFiles.length()==0||webFiles.length()>4096)throw new IOException("Invalid file count");
@@ -170,7 +187,7 @@ public final class GameRepository {
       }
       complete+=f.getLong("bytes");progress.report((int)(complete*100/total));
     }
-    JSONObject delivery=new JSONObject().put("id",id).put("title",g.getString("title")).put("description",g.getString("description")).put("category",g.optString("category","其他")).put("build_sha256",version).put("entrypoint",entry).put("files",files).put("source","https://owngame.dev");
+    JSONObject delivery=new JSONObject().put("id",id).put("title",g.getString("title")).put("description",g.getString("description")).put("category",g.optString("category","其他")).put("platforms",platforms(g)).put("build_sha256",version).put("entrypoint",entry).put("files",files).put("source","https://owngame.dev");
     synchronized(COMMIT_LOCK){
       JSONArray all=installed();JSONObject old=find(all,id);if(old!=null){String prev=old.getString("build_sha256").equals(version)?old.optString("previous_version"):old.getString("build_sha256");if(!prev.isEmpty())delivery.put("previous_version",prev);}
       save(new File(base,"delivery.json"),bytes(delivery.toString()));commit(all,delivery);

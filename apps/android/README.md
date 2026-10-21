@@ -2,7 +2,11 @@
 
 面向玩家的 Android Alpha 客户端：从公开目录下载游戏、校验更新、离线游玩、恢复上一版、收藏和添加桌面快捷方式。创作仍由现有 AI 助手配合 CLI / MCP 完成。
 
-当前源码版本 **0.4.16-alpha（21）**，最低 Android 8.0（API 26），目标 API 34。客户端直接读取 `https://owngame.dev/catalog.json`，无需账号、配对令牌或电脑上的服务。源码已公开；[GitHub Alpha 测试包](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.16-alpha) 已提供下载，沿用内部测试签名。支持启动时检查 GitHub Android 新版本，由玩家选择是否更新；商店正式发行仍待完善。
+当前源码版本 **0.4.17-alpha（22）**，最低 Android 8.0（API 26），目标 API 34。客户端直接读取 `https://owngame.dev/catalog.json`，无需账号、配对令牌或电脑上的服务。上一个公开测试包为 [0.4.16-alpha](https://github.com/luka2chat/owngame/releases/tag/android-v0.4.16-alpha)，沿用内部测试签名。支持启动时检查 GitHub Android 新版本，由玩家选择是否更新；商店正式发行仍待完善。
+
+源码按目录的 `platforms` 声明只展示、下载和打开支持 `mobile` 的游戏。PC 专属作品不会出现在手机库；已有下载和存档保留，旧版无平台字段的记录保持兼容。客户端需要重新构建安装后才会采用这项过滤规则，不要求每款游戏同时支持手机和 PC。
+
+App 界面和原生菜单支持简体中文、英语，跟随系统或系统中的 App 语言；其他语言使用英语。共享文案位于 `scripts/mobile/localization.json`，构建时生成两端代码。游戏库标题和简介同步翻译，搜索兼容原中文名；游戏内部文字及封面原图保持原语言。切换语言不改变游戏 ID、收藏、下载或存档。
 
 ## 从源码构建
 
