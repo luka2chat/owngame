@@ -36,7 +36,7 @@ const plan=path.join(evidence,'planned-catalog.json');await fs.writeFile(plan,JS
 if(!retainGames)execFileSync('python3',[path.join(root,'scripts/games/export.py'),'--catalog',plan,'--out',repo,'--library',libraryRoot,...(selected.length?['--only',selected.join(',')]:[])],{cwd:root,stdio:'inherit'});
 const copy=async relative=>{const src=path.join(root,relative),dest=path.join(repo,relative);await fs.mkdir(path.dirname(dest),{recursive:true});await fs.cp(src,dest,{recursive:true,filter:p=>!p.includes('__pycache__')});};
 for(const relative of ['scripts/games','tests/games','tests/web','scripts/web/catalog.mjs','scripts/web/build.mjs','scripts/web/publish.mjs',
-  'scripts/web/verify-deployment.mjs','scripts/web/verify-i18n.mjs','scripts/web/link-sources.mjs','scripts/web/usage.mjs','scripts/web/footer.mjs','scripts/web/image-delivery.mjs','scripts/lib/codex-browser-preflight.mjs','.github/workflows/games.yml',
+  'scripts/web/verify-deployment.mjs','scripts/web/verify-i18n.mjs','scripts/web/link-sources.mjs','scripts/web/usage.mjs','scripts/web/footer.mjs','scripts/web/image-delivery.mjs','scripts/web/module-delivery.mjs','scripts/lib/codex-browser-preflight.mjs','.github/workflows/games.yml',
   'docs/open-source-games.md','docs/game-publishing.md','apps/web/public','apps/web/footer.html','apps/web/README.md','apps/web/wrangler.jsonc']) await copy(relative);
 const catalogModule=await fs.readFile(path.join(root,'scripts/web/catalog.mjs'),'utf8');
 const catalogFiles=[...catalogModule.matchAll(/"(scripts\/[^"\n]+\/catalog\.json)"/g)].map(match=>match[1]);

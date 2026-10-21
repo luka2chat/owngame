@@ -8984,8 +8984,8 @@
     },
     {
       "path": "scripts/games/sync.mjs",
-      "bytes": 6651,
-      "sha256": "a83749f5024afcb1fd7813ef8d2aad1dc829eee2b9840b6ff10e646c2f6a415f"
+      "bytes": 6685,
+      "sha256": "b49bd50c67daac2b88b4a6da53aae466d241f2474349797244e47fc0973a7c4a"
     },
     {
       "path": "scripts/games/verify.mjs",
@@ -9119,8 +9119,8 @@
     },
     {
       "path": "scripts/web/build.mjs",
-      "bytes": 9628,
-      "sha256": "bfd87fcc56a5da2495591ee336e47c2afd76295d8f48365740728cf6970613af"
+      "bytes": 9718,
+      "sha256": "d22a0287ced0e5a961eff192ff4a03981577509b9e76b1d007325ce32aabaa5e"
     },
     {
       "path": "scripts/web/catalog.mjs",
@@ -9141,6 +9141,11 @@
       "path": "scripts/web/link-sources.mjs",
       "bytes": 3113,
       "sha256": "acf93ca7e5ee53b2e029aedcee01845f790d948699bc8e5f4d31b9692cbb8292"
+    },
+    {
+      "path": "scripts/web/module-delivery.mjs",
+      "bytes": 1278,
+      "sha256": "4013364da6acf1dec825455f4783cc1a455a7e8a66430596bafa68803aa1cd42"
     },
     {
       "path": "scripts/web/publish.mjs",
@@ -10521,6 +10526,11 @@
       "path": "tests/web/image-delivery.test.mjs",
       "bytes": 1186,
       "sha256": "f5893d294f5aaac6ffd6c445af051bda6ba85c6b3091c8b5ced26c11e073711e"
+    },
+    {
+      "path": "tests/web/module-delivery.test.mjs",
+      "bytes": 1631,
+      "sha256": "0a8384afbecc75ec5177f38875e6a448ce34b293731fce6ee39d2a8cf2989551"
     },
     {
       "path": "tests/web/offline.test.mjs",

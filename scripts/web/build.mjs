@@ -8,6 +8,7 @@ import {writeSharedFooters} from "./footer.mjs";
 import {imageHtml, imageCss} from "./image-delivery.mjs";
 import {imageAssets, imageIcons} from "../../apps/web/public/image-assets.js";
 import {platformAcceptance} from "../../apps/web/public/platforms.js";
+import {versionShellModules} from "./module-delivery.mjs";
 const root = path.resolve(import.meta.dirname, "../.."),
   out = process.env.OWNGAME_WEB_OUT ? path.resolve(process.env.OWNGAME_WEB_OUT) : path.join(root, "apps/web/dist");
 // A separate candidate library supports batch acceptance without changing the live selection.
@@ -23,6 +24,7 @@ await fs.mkdir(out, { recursive: true });
 await fs.cp(path.join(root, "apps/web/public"), out, { recursive: true });
 await writeUsagePage(root, out);
 await writeSharedFooters(root, out);
+await versionShellModules(out);
 for (const name of await fs.readdir(out)) {
   const file = path.join(out, name);
   if (name.endsWith(".html")) await fs.writeFile(file, imageHtml(await fs.readFile(file, "utf8"), imageAssets, imageIcons));
@@ -40,7 +42,7 @@ for (const page of ["index.html", "play.html", "usage.html"]) {
   let html = await fs.readFile(file, "utf8");
   const links = [...html.matchAll(/((?:src|href)=")\/(?!\/)([^"?]+\.(?:js|css))(?:\?[^"\s]*)?("\s*\/?>?)/g)];
   for (const link of links) {
-    // Module preloads must match the unversioned URLs used by module imports.
+    // Shared modules already carry the same graph revision as their imports.
     if (link[2].endsWith('.js') && !['app.js', 'play.js'].includes(link[2])) continue;
     const digest = sha(await fs.readFile(path.join(out, link[2]))).slice(0, 12);
     html = html.replace(link[0], `${link[1]}/${link[2]}?v=${digest}${link[3]}`);
