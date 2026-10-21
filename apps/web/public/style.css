@@ -998,3 +998,9 @@ dialog p {
  .welcome .eyebrow { font-size:8px;letter-spacing:1px; }
  .welcome p { font-size:12px;line-height:1.7; }
 }
+.platform-tabs { display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px; }
+.platform-tabs button { min-height:44px;padding:8px 20px;border:2px solid var(--ink);border-radius:9px;background:var(--paper);color:var(--ink);font:inherit;font-weight:800;box-shadow:3px 3px 0 var(--ink);cursor:pointer; }
+.platform-tabs button[aria-pressed="true"] { background:var(--yellow);transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink); }
+.platform-tabs button[aria-pressed="true"]::before { content:"✓ "; }
+.platform-tabs button:focus-visible { outline:3px solid var(--blue);outline-offset:4px; }
+.platform-label { display:block;font-weight:700;color:var(--blue);margin:4px 0; }

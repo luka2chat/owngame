@@ -1,5 +1,14 @@
 // Site copy only. Immutable game packages and their save formats stay separate.
 export const messages = {
+  "游玩平台": "Play on",
+  "移动端游戏": "Mobile games",
+  "PC 游戏": "PC games",
+  "手机 · PC": "Mobile · PC",
+  "移动端": "Mobile",
+  "PC": "PC",
+  "返回适合当前设备的游戏库": "Browse games for this device",
+  "请在手机或平板上游玩这款游戏。": "Play this game on a phone or tablet.",
+  "这款游戏支持 PC，请在电脑上游玩。": "This game supports PC. Please play it on a computer.",
   "网站链接": "Site links",
   "项目 GitHub 仓库": "Project GitHub repository",
   "加入 Discord": "Join Discord",

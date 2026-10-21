@@ -1,0 +1,20 @@
+{
+  "signal-harbor": ["mobile", "pc"],
+  "unlock-bolts-mobile": ["mobile", "pc"],
+  "star-triad": ["mobile", "pc"],
+  "firefly-four": ["mobile", "pc"],
+  "moss-reversi": ["mobile", "pc"],
+  "postcard-slide": ["mobile", "pc"],
+  "kiln-merge": ["mobile", "pc"],
+  "petal-memory": ["mobile", "pc"],
+  "silk-serpent": ["mobile", "pc"],
+  "bamboo-rally": ["mobile", "pc"],
+  "wind-chime-memory": ["mobile", "pc"],
+  "neon-shooter": ["mobile", "pc"],
+  "faune-dungeon": ["mobile", "pc"],
+  "rc-rally": ["mobile", "pc"],
+  "civ-clicker": ["mobile", "pc"],
+  "star-letters": ["mobile", "pc"],
+  "crowd-runner": ["mobile", "pc"],
+  "arrow-escape": ["mobile", "pc"]
+}

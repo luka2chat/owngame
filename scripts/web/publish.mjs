@@ -4,15 +4,16 @@ import {spawn} from 'node:child_process';
 import {loadPublishedSources} from '../games/source-policy.mjs';
 const root=path.resolve(import.meta.dirname,'../..');
 const args=process.argv.slice(2);
-let repo,out,shellOnly=false,prepared=false;
+let repo,out,shellOnly=false,prepared=false,catalogOnly=false;
 for(let i=0;i<args.length;i++) {
   if(args[i]==='--repository-dir')repo=args[++i];
   else if(args[i]==='--out')out=args[++i];
   else if(args[i]==='--shell-only')shellOnly=true;
   else if(args[i]==='--prepared')prepared=true;
+  else if(args[i]==='--catalog-only')catalogOnly=true;
   else throw Error('Usage: npm run web:publish -- --repository-dir <clean checkout> --out <new web-output>');
 }
-if((!repo && !shellOnly) || !out || !path.basename(out).startsWith('web-') || (prepared && !shellOnly))throw Error('Specify a public checkout and a fresh web- output directory; --shell-only --prepared can publish a verified UI-only build');
+if((!repo && !shellOnly) || !out || !path.basename(out).startsWith('web-') || (prepared && !shellOnly) || (catalogOnly && shellOnly))throw Error('Specify a public checkout and a fresh web- output directory; --shell-only --prepared can publish a verified UI-only build');
 out=path.resolve(out);
 if(!prepared && await fs.access(out).then(()=>true,()=>false))throw Error('Use a new web- output directory');
 const run=(command,args,env=process.env)=>new Promise((resolve,reject)=>{
@@ -30,7 +31,7 @@ if(shellOnly) {
   const previous=JSON.parse(await fs.readFile(path.join(process.env.OWNGAME_WEB_PREVIOUS_OUT,'catalog.json'),'utf8'));
   unchangedCatalog=JSON.stringify(previous);
   if(JSON.stringify(await readLiveCatalog())!==unchangedCatalog)throw Error('Production changed; use its current accepted output');
-} else await run(process.execPath,['scripts/games/sync.mjs','--repository-dir',repo]);
+} else await run(process.execPath,['scripts/games/sync.mjs','--repository-dir',repo,...(catalogOnly?['--retain-game-sources']:[])]);
 if(!prepared)await run(process.execPath,['scripts/web/build.mjs'],{...process.env,OWNGAME_WEB_OUT:out});
 if(shellOnly) {
   const catalog=JSON.parse(await fs.readFile(path.join(out,'catalog.json'),'utf8'));

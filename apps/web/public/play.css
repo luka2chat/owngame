@@ -154,3 +154,5 @@
  .responsive-player .player-layout { padding-top:0; }
  .responsive-player .capsule { top:max(4px,env(safe-area-inset-top)); }
 }
+.platform-unavailable { max-width:440px;padding:24px;text-align:center;line-height:1.7; }
+.platform-unavailable a { display:inline-block;padding:12px; }

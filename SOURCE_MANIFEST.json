@@ -379,8 +379,8 @@
     },
     {
       "path": "apps/web/public/app.js",
-      "bytes": 13672,
-      "sha256": "5f1765ad6b57764553dec72d1efc1c2fe0966631867958f70a54f5d6222f6f8b"
+      "bytes": 14661,
+      "sha256": "59f32c213fab930895cfea808448ac81d015209cfc14d0dccc0878e122d3a7a1"
     },
     {
       "path": "apps/web/public/art/arcade-mascot.png",
@@ -889,8 +889,8 @@
     },
     {
       "path": "apps/web/public/data.js",
-      "bytes": 7145,
-      "sha256": "f188b61681f567f7de3d6c02888415a163097262389b4c171e1f1bd6d85c036e"
+      "bytes": 7527,
+      "sha256": "61727e0a1153551a4968d7f56a3a8baf9084fa41ef1d64ca3d106f109f4f241e"
     },
     {
       "path": "apps/web/public/footer.js",
@@ -909,13 +909,13 @@
     },
     {
       "path": "apps/web/public/index.html",
-      "bytes": 10395,
-      "sha256": "65128db13a0dfc814b9c5ea59ac1a5f93887241f986fdcec03084934603510fb"
+      "bytes": 10755,
+      "sha256": "c80195205e4edf04365fbf54b75257d524786a3cc0746da68055a5a0b1e63151"
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 27883,
-      "sha256": "cbe10eb2abf6831a7ab792ad18fc6fe2884d363ee029063bc7b6a6ea9f4c702c"
+      "bytes": 28324,
+      "sha256": "7f935447b7c51ecb1ce845ae5c653bba5711b14c8d8e0a15b88db44b672f03f2"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -928,9 +928,14 @@
       "sha256": "72f595ce3ebc963d83b367b877c52345fb8ca9dddfc50ffb881db20d0010d4a1"
     },
     {
+      "path": "apps/web/public/platforms.js",
+      "bytes": 1434,
+      "sha256": "bcfc1703a5c7722f60a17b27fd46c889418ce96b5e09854615f20cb7d26be624"
+    },
+    {
       "path": "apps/web/public/play.css",
-      "bytes": 8383,
-      "sha256": "a00f21a4c0a2270e538bc42f41cd63bae18239db8a04975df811dbf0886f983c"
+      "bytes": 8536,
+      "sha256": "e25217ba6f98d26fca2410979e203876570742ada0197823f7d364aecbf9e0d6"
     },
     {
       "path": "apps/web/public/play.html",
@@ -939,8 +944,8 @@
     },
     {
       "path": "apps/web/public/play.js",
-      "bytes": 13946,
-      "sha256": "031455f163170f7d17e1045155a4b14438b47bc2e4482f1ae42541e1bc45a4bc"
+      "bytes": 14986,
+      "sha256": "b537e9a28007f525d78e6b4192667e382da86db9cb8a6a42d9fd7d6ab8a187e6"
     },
     {
       "path": "apps/web/public/privacy.html",
@@ -964,8 +969,8 @@
     },
     {
       "path": "apps/web/public/style.css",
-      "bytes": 21649,
-      "sha256": "868cf61c9096334459009ad048abcb0729448d4730dc0d98d2e99bb22d21441a"
+      "bytes": 22322,
+      "sha256": "eea98a072f595f7c4c2127ca2042ce98234d5540b35cc5600059f50cac576780"
     },
     {
       "path": "apps/web/public/sw.js",
@@ -1029,8 +1034,8 @@
     },
     {
       "path": "docs/game-publishing.md",
-      "bytes": 5107,
-      "sha256": "1d2383f3b34f5e6662fd319c4a62a383feb013fc81ba4211c3728b754f70e423"
+      "bytes": 7390,
+      "sha256": "2580d5edc9e21a03a80f1479ce0e3064ae5729f0907bfd396a8053bd3ed4a1ee"
     },
     {
       "path": "docs/images/arcade-mascot.png",
@@ -8828,6 +8833,11 @@
       "sha256": "eb94d36db4db7744cf7ba848abe5dde98e8fac8e8b85426f1ae88e0bd5602341"
     },
     {
+      "path": "scripts/games/platforms.json",
+      "bytes": 658,
+      "sha256": "70b68fb081f1839cb7bb64aba22586db0cd3538accbcc7e117e4d09f14f4d0f1"
+    },
+    {
       "path": "scripts/games/preflight.mjs",
       "bytes": 1206,
       "sha256": "4731c65f57c8e699dc0f3817bed89da7d28db6374ed81b050f2e28fda48cdafd"
@@ -8869,8 +8879,8 @@
     },
     {
       "path": "scripts/games/sync.mjs",
-      "bytes": 6473,
-      "sha256": "ea11e51af2f11e4ff52895b6c94f447477b410643a2c6dc8567ffcf8a6715b72"
+      "bytes": 6651,
+      "sha256": "a83749f5024afcb1fd7813ef8d2aad1dc829eee2b9840b6ff10e646c2f6a415f"
     },
     {
       "path": "scripts/games/verify.mjs",
@@ -8954,8 +8964,8 @@
     },
     {
       "path": "scripts/web/catalog.mjs",
-      "bytes": 2891,
-      "sha256": "471f26f70d5bb2343b21dad0cfe082895ccd709e717112e03f34c670106dc67d"
+      "bytes": 3383,
+      "sha256": "d1e256338ca8c6577a0d4e2135c9127a264c505293d5cd343e4563a30baeaba5"
     },
     {
       "path": "scripts/web/footer.mjs",
@@ -8974,8 +8984,8 @@
     },
     {
       "path": "scripts/web/publish.mjs",
-      "bytes": 4501,
-      "sha256": "62fc2fa9961011f0c2f55ab90006aac3d3313a712c5825bbad3a78a07895606a"
+      "bytes": 4650,
+      "sha256": "419a0d7a6e4b8e163f181b1a14e3a10e63d49891cf95403527454cde0b38e315"
     },
     {
       "path": "scripts/web/usage.mjs",
@@ -10341,6 +10351,11 @@
       "path": "tests/web/offline.test.mjs",
       "bytes": 5942,
       "sha256": "45247b6c6500a6f382e95a595554efaa84f23b7f667a69c7da2cb46072d71d92"
+    },
+    {
+      "path": "tests/web/platforms.test.mjs",
+      "bytes": 2029,
+      "sha256": "30f52bb1c978f30eb3fee232c9e919be6a136279d00a41338f5731208c93b4f2"
     },
     {
       "path": "tests/web/usage.test.mjs",

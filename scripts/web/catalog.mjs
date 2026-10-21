@@ -1,5 +1,6 @@
 import {promises as fs} from "node:fs";
 import path from "node:path";
+import {validPlatforms} from "../../apps/web/public/platforms.js";
 export async function readGameEntries(root) {
 const entries = [
   {
@@ -49,5 +50,13 @@ const featuredOrder = new Map([
 entries.sort((a, b) =>
   (featuredOrder.get(a.id) ?? featuredOrder.size) -
   (featuredOrder.get(b.id) ?? featuredOrder.size));
+const targets = JSON.parse(await fs.readFile(path.join(root, "scripts/games/platforms.json"), "utf8"));
+for (const entry of entries) {
+  if (!validPlatforms(targets[entry.id])) throw Error("Declare supported platforms for " + entry.id);
+  entry.platforms = [...targets[entry.id]];
+}
+for (const id of Object.keys(targets)) {
+  if (!entries.some(entry => entry.id === id)) throw Error("Unknown platform declaration: " + id);
+}
 return entries;
 }

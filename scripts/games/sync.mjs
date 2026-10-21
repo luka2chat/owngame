@@ -6,7 +6,8 @@ import {validateCoverage} from './source-policy.mjs';
 import {preflightSource} from './preflight.mjs';
 const root=path.resolve(import.meta.dirname,'../..');
 const args=process.argv.slice(2);
-if(args.length!==2 || args[0]!=='--repository-dir') throw Error('Usage: node scripts/games/sync.mjs --repository-dir <clean public repository checkout>');
+const retainGames=args[2]==='--retain-game-sources';
+if((args.length!==2 && !(args.length===3 && retainGames)) || args[0]!=='--repository-dir') throw Error('Usage: node scripts/games/sync.mjs --repository-dir <clean public repository checkout> [--retain-game-sources]');
 const repo=path.resolve(args[1]);
 const libraryRoot=process.env.OWNGAME_LIBRARY_ROOT ? path.resolve(process.env.OWNGAME_LIBRARY_ROOT) : path.join(root,'.owngame/library');
 const git=(...args)=>execFileSync('git',args,{cwd:repo,encoding:'utf8'}).trim();
@@ -24,15 +25,15 @@ git('switch','-c',branch);
 const entries=await readGameEntries(root);
 const catalog=await Promise.all(entries.map(async e=>({...e,version:JSON.parse(await fs.readFile(path.join(libraryRoot,e.id,'current.json'))).build_sha256})));
 const selected=(process.env.OWNGAME_SOURCE_IDS||'').split(',').filter(Boolean);
-if(selected.length) {
+if(selected.length || retainGames) {
   if(new Set(selected).size!==selected.length || selected.some(id=>!catalog.some(game=>game.id===id))) throw Error('OWNGAME_SOURCE_IDS must name distinct selected catalog games');
   // Keep other games at their reviewed public sources. Their local work may belong to another task.
   const retained=JSON.parse(await fs.readFile(path.join(repo,'games.json')));
-  validateCoverage(retained,catalog.filter(game=>!selected.includes(game.id)));
+  validateCoverage(retained,catalog.filter(game=>retainGames || !selected.includes(game.id)));
 }
 const evidence=path.join(root,'artifacts/open-source');await fs.mkdir(evidence,{recursive:true});
 const plan=path.join(evidence,'planned-catalog.json');await fs.writeFile(plan,JSON.stringify(catalog,null,2)+'\n');
-execFileSync('python3',[path.join(root,'scripts/games/export.py'),'--catalog',plan,'--out',repo,'--library',libraryRoot,...(selected.length?['--only',selected.join(',')]:[])],{cwd:root,stdio:'inherit'});
+if(!retainGames)execFileSync('python3',[path.join(root,'scripts/games/export.py'),'--catalog',plan,'--out',repo,'--library',libraryRoot,...(selected.length?['--only',selected.join(',')]:[])],{cwd:root,stdio:'inherit'});
 const copy=async relative=>{const src=path.join(root,relative),dest=path.join(repo,relative);await fs.mkdir(path.dirname(dest),{recursive:true});await fs.cp(src,dest,{recursive:true,filter:p=>!p.includes('__pycache__')});};
 for(const relative of ['scripts/games','tests/games','tests/web','scripts/web/catalog.mjs','scripts/web/build.mjs','scripts/web/publish.mjs',
   'scripts/web/verify-deployment.mjs','scripts/web/verify-i18n.mjs','scripts/web/link-sources.mjs','scripts/web/usage.mjs','scripts/web/footer.mjs','scripts/web/image-delivery.mjs','scripts/lib/codex-browser-preflight.mjs','.github/workflows/games.yml',
@@ -45,7 +46,7 @@ const packagePath=path.join(repo,'package.json');
 const publicPackage=JSON.parse(await fs.readFile(packagePath));
 Object.assign(publicPackage.scripts,{'web:build':'node scripts/web/build.mjs','web:publish':'node scripts/web/publish.mjs'});
 await fs.writeFile(packagePath,JSON.stringify(publicPackage,null,2)+'\n');
-for(const game of index.games.filter(g=>g.kind!=='unity')) {
+for(const game of index.games.filter(g=>!retainGames && g.kind!=='unity')) {
   execFileSync('npm',['install','--package-lock-only','--ignore-scripts','--no-audit','--no-fund'],{cwd:path.join(repo,game.path),stdio:'inherit'});
 }
 execFileSync(process.execPath,[path.join(root,'scripts/games/refresh-manifests.mjs'),repo],{stdio:'inherit'});

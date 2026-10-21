@@ -14,6 +14,18 @@ For each game ID, register its source directory, build type and licensing in `sc
 
 Preserve upstream revisions, licenses and notices for third-party projects, fonts, images and models. Record the provenance of new assets before publication.
 
+## Choose supported platforms
+
+Every catalogue game must explicitly declare `["mobile"]`, `["pc"]` or `["mobile", "pc"]` in `scripts/games/platforms.json`. Missing, empty, duplicate or unknown targets stop catalogue generation. A game only needs to support its declared targets: PC games do not require touch controls, and mobile games do not require keyboard/mouse support. A responsive layout alone does not establish input or device compatibility.
+
+The website separates mobile and PC libraries and defaults to the visitor's device, with an explicit remembered switch. Android and iOS expose only games declaring `mobile`; PC-only games cannot be downloaded or opened through old shortcuts in updated clients. Earlier catalogues and installed records without this field retain their historical dual-platform interpretation. Keep installed files and saves when a listing changes; a platform declaration is not an uninstall request.
+
+Validate actual gameplay, input, performance, saves and offline cold starts on each declared target. Add another target only after that target's acceptance; do not expand all games to every platform by default. Sharing an ID across supported targets preserves saves and update identity. Separate target-specific builds, when needed, require an explicit package/version design rather than an engine or aspect-ratio guess.
+
+The existing 18 catalogue games retain their existing dual-platform controls. For the incoming source candidates, start mobile-focused validation with Space Pinball, Vertical Platformer, Space Dogfighter and Yarn Platformer; start PC-only validation with Rockwild, Riftstrike and Operation: Dust Fang. These are candidate choices, not published games or verified new support claims. Tower defense and single-player card battles can be assessed separately; card multiplayer needs its own service.
+
+For catalogue-only changes such as platform declarations, add `--catalog-only` to `web:publish`. This retains the reviewed game source exports, verifies every game ID/version against the public source index, publishes the updated catalogue/site source through the same CI gates, then builds and deploys. New games and changed game versions must use the normal source export path. This does not bypass source verification or CI.
+
 <a id="正式发布"></a>
 
 ## Publish a release

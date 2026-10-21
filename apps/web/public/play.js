@@ -1,6 +1,7 @@
 import { t, localizeGame, localizeUrl } from "./i18n.js";
 import { track, gameParams, selectGame, setPageGame } from "./analytics.js";
 import { openRemix } from "./remix.js";
+import { supportsPlatform, devicePlatform, platformLabel, platformNotice } from "./platforms.js";
 import {
   $,
   catalog,
@@ -24,9 +25,19 @@ let game,
   busy = false,
   downloadPercent = 0,
   downloadFailed = false;
+function canPlay() { return game && supportsPlatform(game, devicePlatform()); }
+function showPlatformNotice() {
+  const notice = element("div", "platform-unavailable");
+  notice.append(element("p", "", t(platformNotice(game))));
+  const back = element("a", "play-link", t("返回适合当前设备的游戏库"));
+  back.href = localizeUrl("/?platform=" + devicePlatform());
+  notice.append(back);
+  $("loading").replaceChildren(notice);
+  for (const id of ["enter-game", "fullscreen", "menu-fullscreen", "restart", "menu-new-window"]) $(id).disabled = true;
+}
 function updateDownloadCopy() {
-  $("download").disabled = busy;
-  $("menu-download").disabled = busy;
+  $("download").disabled = busy || !canPlay();
+  $("menu-download").disabled = busy || !canPlay();
   $("download").textContent = busy
     ? t("下载中 {percent}%", { percent: downloadPercent })
     : ready
@@ -39,6 +50,10 @@ function updateDownloadCopy() {
     : busy
       ? t("下载中 {percent}%", { percent: downloadPercent })
       : t("下载离线包");
+  if (game && !canPlay()) {
+    $("download").textContent = t(platformNotice(game));
+    $("menu-download").textContent = t(platformNotice(game));
+  }
 }
 function updateFavorite() {
   const text = favorites.has(game.id)
@@ -59,7 +74,7 @@ function renderDetails(all) {
   $("game-category").href = localizeUrl(
     "/?view=" + encodeURIComponent(game.category),
   );
-  $("game-subtitle").textContent = display.subtitle + " · " + t(game.category);
+  $("game-subtitle").textContent = display.subtitle + " · " + t(game.category) + " · " + t(platformLabel(game));
   if (game.caseUrl || game.sourceUrl) {
     const links = element("p", "game-source-links");
     for (const [url, label] of [
@@ -112,7 +127,7 @@ function renderDetails(all) {
     $("keyboard-help").hidden = false;
     $("keyboard-help").append(element("p", "", t("自动投飞刀，靠近宝箱自动打开")));
   }
-  const others = all.filter((g) => g.id !== game.id);
+  const others = all.filter((g) => g.id !== game.id && supportsPlatform(g, devicePlatform()));
   // Prefer related games, then offer other worlds from the existing catalog.
   others.sort(
     (a, b) =>
@@ -257,6 +272,10 @@ try {
   track("player_open");
   wire();
   renderDetails(all);
+  if (!canPlay()) {
+    showPlatformNotice();
+    updateDownloadCopy();
+  } else {
   frame = document.createElement("iframe");
   frame.title = localizeGame(game).title;
   frame.allow = "autoplay; fullscreen";
@@ -356,6 +375,7 @@ try {
   ready = await offlineReady(game);
   updateDownloadCopy();
   serviceWorker().catch(() => {});
+  }
 } catch (e) {
   loadError = e;
   track("player_error", {
@@ -391,6 +411,7 @@ window.addEventListener("owngame:languagechange", () => {
   renderDetails(allGames);
   updateFavorite();
   updateDownloadCopy();
+  if (!canPlay()) showPlatformNotice();
 });
 window.addEventListener("storage", () => {
   favorites = new Set(getStore("favorites", []));

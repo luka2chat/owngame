@@ -7,6 +7,7 @@ import {
   safeSearch,
 } from "./analytics.js";
 import { openRemix } from "./remix.js";
+import { supportsPlatform, devicePlatform, platformLabel, platformNotice } from "./platforms.js";
 import {
   $,
   element,
@@ -19,7 +20,9 @@ import {
   offlineReady,
   download,
   serviceWorker,
+  currentPlatform,
 } from "./data.js";
+let platform = currentPlatform();
 let games = [],
   view = "all",
   query = "",
@@ -121,6 +124,9 @@ function select(id) {
   if (query) searchTimer = setTimeout(recordSearch, 1500);
 }
 function render() {
+  document.querySelectorAll("[data-platform]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.platform === platform));
+  });
   artworkObserver.disconnect();
   const nav = $("nav");
   nav.replaceChildren();
@@ -136,6 +142,7 @@ function render() {
   if (!catalogLoaded) return;
   let list = games.filter(
     (g) =>
+      supportsPlatform(g, platform) &&
       (view === "all" ||
         view === g.category ||
         (view === "favorites" && favorites.has(g.id)) ||
@@ -256,7 +263,7 @@ function render() {
       render();
     };
     title.append(element("h3", "", g.title), fav);
-    copy.append(title, element("p", "", g.description));
+    copy.append(title, element("small", "platform-label", t(platformLabel(g))), element("p", "", g.description));
     const foot = element("div", "card-foot"),
       play = element("a", "play-link", t("开玩 ▶"));
     play.href = playUrl(g);
@@ -278,7 +285,8 @@ function render() {
             }),
     );
     dl.dataset.downloadGame = g.id;
-    dl.disabled = busy.has(g.id);
+    dl.disabled = busy.has(g.id) || !supportsPlatform(g, devicePlatform());
+    if (!supportsPlatform(g, devicePlatform())) dl.textContent = t(platformNotice(g));
     dl.onclick = async () => {
       if (ready.has(g.id)) {
         track("download_cached", {
@@ -326,6 +334,20 @@ function render() {
     impressionObserver.observe(card);
   }
 }
+document.querySelectorAll("[data-platform]").forEach((button) => {
+  button.onclick = () => {
+    recordSearch();
+    platform = button.dataset.platform;
+    setStore("platform", platform);
+    const url = new URL(location.href);
+    url.searchParams.set("platform", platform);
+    history.replaceState(null, "", url);
+    searchContext = {};
+    lastSearchKey = "";
+    render();
+    if (query) searchTimer = setTimeout(recordSearch, 1500);
+  };
+});
 $("search").oninput = (e) => {
   const previous = query;
   query = e.target.value.trim().toLowerCase();
