@@ -1,4 +1,5 @@
 import { Toolkit } from "./toolkit.js";
+import { Resources, ResourceSources } from "./resources.js";
 import { Library } from "../library/index.js";
 import path from "node:path";
 import { promises as fs } from "node:fs";
@@ -37,6 +38,7 @@ export type CoreOptions = {
   legacy?: boolean;
 };
 export class Core {
+  resources = new Resources();
   store: Store;
   kb: KnowledgeBase;
   library: Library;
@@ -145,6 +147,16 @@ export class Core {
   async dispatch(op: OperationName, a: any): Promise<OperationResult> {
     const ok = (d: unknown) => this.result(op, "succeeded", d);
     switch (op) {
+      case "resource.sources":
+        return ok({ sources: ResourceSources });
+      case "resource.search": {
+        const data = await this.resources.search(a);
+        return this.result(op, data.complete ? "succeeded" : "unknown", data,
+          data.complete ? undefined : "RESOURCE_SEARCH_INCOMPLETE",
+          data.complete ? undefined : "Some sources could not be searched; inspect provider status. Available results are retained.");
+      }
+      case "resource.get":
+        return ok(await this.resources.get(a));
       case "style.list":
         return ok(await this.toolkit.styles());
       case "style.get":

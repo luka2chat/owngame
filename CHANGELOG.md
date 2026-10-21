@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.10.0 — 2026-10-22
+
+- Add shared CLI/MCP `resource.sources`, `resource.search` and `resource.get` for
+  live model, texture, HDRI and image metadata from Poly Haven, ambientCG and Openverse.
+- Return previews, source licenses, download sizes, format/resolution choices and
+  model dependencies without downloading asset files. Preserve partial search
+  results and report unavailable providers as unknown.
+- Ask users to choose a game direction when their request is unspecified; finish
+  setup checks without treating the bundled sample as their chosen game.
+  Proceed directly when a direction is known or the user delegates the choice.
+
 ## 0.9.0 — 2026-10-19
 
 - Add `unity-home`, a standalone HomeArt exploration starter with character movement,

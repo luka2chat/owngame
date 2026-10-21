@@ -33,6 +33,7 @@
 ```text
 请按照以下说明，在当前项目接入 owngame，完成安装和可用性检查，然后帮我做游戏：
 https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md
+如果我还没说明想做什么游戏，请先给几个方向让我选择，等我选定后再开始制作。
 ```
 
 描述想法 → 试玩反馈 → 继续打磨。无需选择助手类型或配置 MCP。
@@ -149,6 +150,7 @@ owngame 提供参考、模板和检查接口；规划、代码实现、图片生
 | --- | --- | --- |
 | 创作指导 | 美术、Web、Cocos、测试与迭代的任务指导 | `guidance.get` / [Skill](skills/owngame/SKILL.md) |
 | 参考研究 | 检索公开案例摘要，整理任务相关的研究材料 | `research.prepare` / `knowledge.search` |
+| 素材搜索（0.10.0） | 实时搜索模型、PBR 贴图、HDRI、图片参考，返回预览、来源许可与文件依赖 | `resource.search` / `resource.get` / [使用说明](docs/resource-search.md) |
 | 风格配方 | 查询视觉方向，为实际游戏画面提供设计依据 | `style.list` / `style.get` |
 | 项目创建 | 创建独立游戏目录，选择 Web、Phaser、Cocos 或 Unity 起点 | `project.create` |
 | 构建检查 | 检查 Web 产物并生成内容指纹；调用外部 Cocos 构建 | `web.inspect` / `cocos.build` |

@@ -1,5 +1,5 @@
 {
-  "version": "0.9.0",
+  "version": "0.10.0",
   "scope": "Reviewed public toolkit, portable website game sources and their separate licenses; private production files and caches excluded",
   "files": [
     {
@@ -1104,8 +1104,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 2074,
-      "sha256": "b03d29c2f4546a584649737a64c903b4b0daac6d5bfc040001fa8acb96545d75"
+      "bytes": 2720,
+      "sha256": "0acc45a18e1281e3b5c98cfae5026fc2be4dfa4601e2d9183fc65b92e233791f"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -1114,8 +1114,8 @@
     },
     {
       "path": "docs/agent-setup.md",
-      "bytes": 4830,
-      "sha256": "086ffa103d095c4def674215c06abca7c6c581f7e51bbd38a24d4c7b71777604"
+      "bytes": 5786,
+      "sha256": "c4038e99e86068d2e5b1985fb60ce657ab078497ba531f575eab6ad07198ac3e"
     },
     {
       "path": "docs/cases/kiln-merge.md",
@@ -1219,8 +1219,8 @@
     },
     {
       "path": "docs/install.md",
-      "bytes": 7312,
-      "sha256": "6dfdd12a1de514693b3c3ffd5f09124ba1d92d68e99266cf893536934e69c0e5"
+      "bytes": 7421,
+      "sha256": "f2e6becef9311a5eec4c51b1ff08f4ce153b2311b1abd419e867a2c647010633"
     },
     {
       "path": "docs/open-source-games.md",
@@ -1254,8 +1254,8 @@
     },
     {
       "path": "docs/zh-CN/quickstart.md",
-      "bytes": 1830,
-      "sha256": "d84aecfbdf666ef88ec17224d6dc2e05fb9a16d2d7845c73b234630eab2275df"
+      "bytes": 1942,
+      "sha256": "e6cf90d108fe2d7173c2721435cb18d11ba70289c5264ac391f475fbd3e0d392"
     },
     {
       "path": "examples/arrow-escape/.gitignore",
@@ -8824,8 +8824,8 @@
     },
     {
       "path": "packages/core/index.ts",
-      "bytes": 22838,
-      "sha256": "09375720dbb08d3604a9cb4131fcfe67e35a2538bf3c081640394b5453c3c27c"
+      "bytes": 23459,
+      "sha256": "eabd588448925f31f1de065e81e97a9704e47c4d1bdd456bc5281d4cef498b70"
     },
     {
       "path": "packages/core/knowledge.ts",
@@ -8844,8 +8844,8 @@
     },
     {
       "path": "packages/core/toolkit.ts",
-      "bytes": 9658,
-      "sha256": "ff66e6eefad583bb01f594fc7dcc4880f1849253348fb0c6ea6afdd71db9385a"
+      "bytes": 9736,
+      "sha256": "826a974e8618ea3c341ece82affb0fea321a143ce601a1b475335b855c71e2e4"
     },
     {
       "path": "packages/library/index.ts",
@@ -8854,13 +8854,13 @@
     },
     {
       "path": "packages/mcp/index.ts",
-      "bytes": 2175,
-      "sha256": "8876ccd3206e67278723293a1468c86f70f415c7ab302bf0b7a951ef0cfe4e42"
+      "bytes": 2404,
+      "sha256": "f831a8f428214787b993c5611ea66199eacccb0ddb72b1debf3426eb3adad3c5"
     },
     {
       "path": "README.md",
-      "bytes": 20897,
-      "sha256": "41af2a6dace343958b1851af052d93071dae244f47f0fd624a13b0b744bcaba2"
+      "bytes": 21218,
+      "sha256": "71f4e4e056a66180c5cca13386f6f9a8b8bde8bcd407a0fd73e10d25cb3b9ff4"
     },
     {
       "path": "scripts/android/build.mjs",
@@ -9084,8 +9084,8 @@
     },
     {
       "path": "scripts/release/prepare.mjs",
-      "bytes": 5082,
-      "sha256": "ea5e9f88b1e3c0dbc6a53bd9455cde8069f08faa2620c370cb023f3640fb498b"
+      "bytes": 5108,
+      "sha256": "b462dcbc862522cd76c9690d6d427ad489c927657d01cf39a92554898051989a"
     },
     {
       "path": "scripts/release/publish.mjs",
@@ -9094,8 +9094,8 @@
     },
     {
       "path": "scripts/release/verify-package.mjs",
-      "bytes": 14561,
-      "sha256": "25e9a33bf75712d60441765e101b16e1e719f7c4a3ca0c2966bf8cb0a6159520"
+      "bytes": 14661,
+      "sha256": "bfc470d7a4c0a8a7d9e9123d717f8d324b010ad96e8682c8918c8aecdf275907"
     },
     {
       "path": "scripts/silk-serpent/catalog.json",
@@ -9174,8 +9174,8 @@
     },
     {
       "path": "skills/owngame/references/art.md",
-      "bytes": 1613,
-      "sha256": "0ee685581fb2ee57e5995f4a89d8d459db8a33dd140be1761c9bdaa0f274635b"
+      "bytes": 2795,
+      "sha256": "94fa374ea4cd6cde3519a845acf008167f557cd50fc61c437311fc2a2107af34"
     },
     {
       "path": "skills/owngame/references/cocos.md",
@@ -9194,13 +9194,13 @@
     },
     {
       "path": "skills/owngame/references/web.md",
-      "bytes": 1761,
-      "sha256": "41d4303ae65006f947f6a9bc92d7797dd8f9d9ac12372c2af2230d9f0df93c27"
+      "bytes": 2075,
+      "sha256": "314ac8aa008b70803eadd60bb7bd0cbbf9103f2def39f8623957616a6ab011fd"
     },
     {
       "path": "skills/owngame/SKILL.md",
-      "bytes": 4811,
-      "sha256": "47301389443073556fd0ba444ae924c73803699891c74f64c45d08330aecb152"
+      "bytes": 6222,
+      "sha256": "971aa3d95886c4ffac610d1e5bf47f00a8d66d289810493ae7d6bc8fccc8ce3b"
     },
     {
       "path": "starter-knowledge/records/kiln-merge.json",
@@ -10556,6 +10556,21 @@
       "path": "tsconfig.json",
       "bytes": 286,
       "sha256": "d96bb08c27d62dfc7c6f3a8564faf9dd4e1104b8208f8676ce5e1abd761d77c2"
+    },
+    {
+      "path": "docs/resource-search.md",
+      "bytes": 4485,
+      "sha256": "5c9cacdbe418de0cd7745ce7e8c907dadb1b4e0eda435bea534e59ccfbc1fccb"
+    },
+    {
+      "path": "packages/core/resources.ts",
+      "bytes": 18489,
+      "sha256": "295006c840db2b18e437a03a742a00a15b02b8c5ffc57e271863c285a77e8362"
+    },
+    {
+      "path": "tests/release/resources.test.mjs",
+      "bytes": 12337,
+      "sha256": "e343ba3e9da900100909a1965d834efa7575794b13318aa3dfdb9e8930e70948"
     }
   ]
 }

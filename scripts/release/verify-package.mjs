@@ -24,9 +24,9 @@ await fs.writeFile(path.join(reportDir,'verification.json'),JSON.stringify({stat
 try{
  const info=JSON.parse(run(npm,['pack',...(published?[pkg.name+'@'+pkg.version]:[]),'--json','--pack-destination',reportDir]))[0];
  const files=info.files.map(f=>f.path);
- const allowed=/^(dist\/packages\/|starter-knowledge\/|skills\/|templates\/|scripts\/toolkit\/|docs\/(cases|images)\/|docs\/zh-CN\/quickstart\.md$|docs\/(README|remix|open-source-games|game-publishing|install|agent-setup|quickstart|releasing)\.md$|docs\/style-recipes\.json$|package\.json$|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|CHANGELOG\.md$|CONTRIBUTING\.md$|SECURITY\.md$)/;
+ const allowed=/^(dist\/packages\/|starter-knowledge\/|skills\/|templates\/|scripts\/toolkit\/|docs\/(cases|images)\/|docs\/zh-CN\/quickstart\.md$|docs\/(README|remix|open-source-games|game-publishing|install|agent-setup|quickstart|resource-search|releasing)\.md$|docs\/style-recipes\.json$|package\.json$|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|CHANGELOG\.md$|CONTRIBUTING\.md$|SECURITY\.md$)/;
  for(const file of files){assert(allowed.test(file),`Unexpected packaged path: ${file}`);assert(!/(^|\/)(node_modules|\.env|\.git|\.local|\.owngame|\.DS_Store)(\/|$)/.test(file));}
- for(const needed of ['docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','skills/owngame/SKILL.md','templates/web-canvas/LICENSE','templates/web-canvas/src/main.js','starter-knowledge/sources.json','docs/cases/star-triad.md','templates/unity-home/Assets/Scenes/HomeArt.unity','templates/unity-home/Assets/Models/Story/HomeArt-v2.fbx','templates/unity-home/Assets/Resources/Fonts/StarLettersUI.ttf','templates/unity-home/Packages/packages-lock.json','templates/unity-home/LICENSES/NotoSansSC-OFL.txt'])assert(files.includes(needed),needed);
+ for(const needed of ['docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','dist/packages/core/resources.js','docs/resource-search.md','skills/owngame/SKILL.md','templates/web-canvas/LICENSE','templates/web-canvas/src/main.js','starter-knowledge/sources.json','docs/cases/star-triad.md','templates/unity-home/Assets/Scenes/HomeArt.unity','templates/unity-home/Assets/Models/Story/HomeArt-v2.fbx','templates/unity-home/Assets/Resources/Fonts/StarLettersUI.ttf','templates/unity-home/Packages/packages-lock.json','templates/unity-home/LICENSES/NotoSansSC-OFL.txt'])assert(files.includes(needed),needed);
  const tar=path.join(reportDir,info.filename);
  if(published){const prior=JSON.parse(await fs.readFile(path.join(root,'artifacts/release',pkg.version,'verification.json')));assert.equal(prior.status,'succeeded');assert.equal(createHash('sha256').update(await fs.readFile(tar)).digest('hex'),prior.sha256,'Registry archive differs from verified candidate');}
  await fs.writeFile(path.join(workspace,'package.json'),'{"private":true,"type":"module"}\n');
@@ -40,9 +40,9 @@ try{
  assert.equal(run(process.execPath,[path.join(installed,'dist/packages/cli/index.js'),'--version'],workspace).trim(),pkg.version);
  client=new Client({name:'owngame-release-check',version:'1'});
  await client.connect(new StdioClientTransport({command:process.execPath,args:[path.join(installed,'dist/packages/cli/index.js'),'mcp','--workspace',workspace],cwd:workspace,stderr:'pipe'}));
- const tools=await client.listTools();assert.equal(tools.tools.length,20);assert(!tools.tools.some(t=>/owngame_(run|task)_/.test(t.name)));
+ const tools=await client.listTools();assert.equal(tools.tools.length,23);assert(!tools.tools.some(t=>/owngame_(run|task)_/.test(t.name)));
  const normalized=x=>JSON.parse(JSON.stringify(x,(k,v)=>k==='operation_id'?'operation':v));
- for(const [op,input] of [['capabilities',{}],['research.prepare',{query:'美术'}],['research.prepare',{query:'容量',mode:'snapshot'}],['style.list',{}],['guidance.get',{topic:'web'}]]){
+ for(const [op,input] of [['capabilities',{}],['resource.sources',{}],['research.prepare',{query:'美术'}],['research.prepare',{query:'容量',mode:'snapshot'}],['style.list',{}],['guidance.get',{topic:'web'}]]){
   const c=cli(op,input),m=await client.callTool({name:'owngame_'+op.replaceAll('.','_'),arguments:input});assert.deepEqual(normalized(c),normalized(m.structuredContent));
  }
  const unityTool=tools.tools.find(t=>t.name==='owngame_project_create');

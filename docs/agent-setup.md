@@ -2,7 +2,7 @@
 
 [Documentation](README.md) · [中文入门](zh-CN/quickstart.md)
 
-When a user gives you this document, they want to use owngame in their current game project. Complete setup and verification, then continue their game task. Use the shared CLI: the user does not need to choose an assistant type, and the host does not need MCP support. Communicate with the user in their preferred language; English documentation does not require English game content or replies.
+When a user gives you this document, they want to use owngame in their current game project. Complete setup and verification, then continue their game task. If they have not specified what game to make, ask for their choice before creating one; “help me make a game” alone does not select the default template's gameplay. Use the shared CLI: the user does not need to choose an assistant type, and the host does not need MCP support. Communicate with the user in their preferred language; English documentation does not require English game content or replies.
 
 <a id="1-检查项目与环境"></a>
 
@@ -42,7 +42,17 @@ node "<runtime>/dist/packages/cli/index.js" doctor
 
 Confirm that `capabilities` returns `succeeded`, and that `doctor` reports `node_supported: true` and `knowledge: succeeded`. A `not_checked` field for MCP, browsers or engines is neither a CLI installation failure nor evidence that those external capabilities work.
 
-Use this stable entry point for subsequent operations. Discover operation names and parameters through `capabilities`. For complex JSON, write a temporary parameter file in the project and pass it with `@file` to avoid shell quoting differences. For example, when the user wants a new game, first verify that the destination does not exist, then save this as `create-game.json`:
+Use this stable entry point for subsequent operations. Discover operation names and parameters through `capabilities`. These read-only checks complete availability verification; creating a sample game is not part of setup.
+
+<a id="4-开始创作"></a>
+
+## 4. Continue the user's game task
+
+Briefly report the installed version, CLI verification results and actual blockers. Check the conversation and any selected game reference for the user's intended gameplay. If it is still unspecified, including “help me make a game” or a theme alone, ask one short choice question in their language. Offer a few concrete directions and let them describe another idea. For example: “你想做哪类游戏？可以选轻松解谜、动作冒险、经营养成，也可以说自己的想法。” Wait for their choice before creating a project or writing game-specific code and art. Do not infer three-in-a-row, an AI opponent, or another game from the bundled example.
+
+If the user has already specified a game or explicitly asked you to decide, proceed without repeating this question. For an existing game, continue the requested edits and preserve its rules and saves.
+
+After the direction is agreed, choose a suitable starter. For complex JSON, write a temporary parameter file in the project and pass it with `@file` to avoid shell quoting differences. The following is only a command syntax example: the default `web-canvas` starter contains three-in-a-row gameplay and must be adapted or replaced for the agreed game. Verify that the destination does not exist, then save this as `create-game.json`:
 
 ```json
 {"directory":"my-game","name":"my-game"}
@@ -52,12 +62,6 @@ Use this stable entry point for subsequent operations. Discover operation names 
 node "<runtime>/dist/packages/cli/index.js" project.create @create-game.json
 ```
 
-Create a project only when the user wants a new game. For an existing game, continue the requested edits. Do not modify a game or overwrite an existing directory merely to verify installation.
-
-<a id="4-开始创作"></a>
-
-## 4. Continue the user's game task
-
-Briefly report the installed version, CLI verification results and actual blockers, then continue the task. If no game request has been given, ask what the user wants to make. Follow the Skill: deliver a complete playable core loop early, inspect actual visuals and input, and preserve existing rules and saves. Use the host's available tools for image generation, browser playtesting and external engines; report each verification scope separately.
+Follow the Skill: deliver a complete playable core loop early, inspect actual visuals and input, and preserve existing rules and saves. Use the host's available tools for image generation, browser playtesting and external engines; report each verification scope separately.
 
 These checks establish CLI availability. They do not certify every assistant host, game behavior, visual quality or target device. MCP is an optional enhancement; configure it through [installation and integration](install.md) only when needed.

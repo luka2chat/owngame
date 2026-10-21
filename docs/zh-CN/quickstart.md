@@ -11,6 +11,7 @@
 ```text
 请按照以下说明，在当前项目接入 owngame，完成安装和可用性检查，然后帮我做游戏：
 https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md
+如果我还没说明想做什么游戏，请先给几个方向让我选择，等我选定后再开始制作。
 ```
 
 无需选择助手类型或配置 MCP。助手会检查环境、安装当前发布版本并验证 CLI；已有可用安装会保留，更新按你的要求进行。详细规则见[接入说明](../agent-setup.md)与[安装指南](../install.md)。

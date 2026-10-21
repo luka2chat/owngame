@@ -4,9 +4,11 @@ import { spawn } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { Fault, readJson, digest, hash } from "./storage.js";
+import { ResourceOperations } from "./resources.js";
 
 const text = z.string().min(1).max(4000);
 export const ToolkitOperations = {
+  ...ResourceOperations,
   "research.prepare": z.strictObject({
     query: z.string().min(1).max(200),
     mode: z.enum(["live", "snapshot"]).default("live"),

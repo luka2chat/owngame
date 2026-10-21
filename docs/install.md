@@ -13,6 +13,7 @@ Open the game project in an AI coding assistant that can read and write files an
 ```text
 Follow https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md
 Set up owngame in this project, verify it works, then help me make a game.
+If I have not specified what game to make, offer a few directions and wait for my choice before creating it.
 ```
 
 The assistant follows the [universal setup instructions](agent-setup.md), reads the Skill and verifies the CLI. No assistant selection, MCP configuration or host reload is required for this path. The remaining sections cover manual installation and optional MCP integration.
