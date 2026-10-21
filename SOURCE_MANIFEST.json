@@ -1059,8 +1059,8 @@
     },
     {
       "path": "apps/web/public/remix.css",
-      "bytes": 2587,
-      "sha256": "da7cd542859bd147b6c3555589d826fec64be6e4bed5a10ce638633d43a9e9b1"
+      "bytes": 2886,
+      "sha256": "b385d68046ba0af26b98782483a7fae994a90052602317f981af151e64cef92d"
     },
     {
       "path": "apps/web/public/remix.js",
@@ -1074,8 +1074,8 @@
     },
     {
       "path": "apps/web/public/style.css",
-      "bytes": 22322,
-      "sha256": "eea98a072f595f7c4c2127ca2042ce98234d5540b35cc5600059f50cac576780"
+      "bytes": 22467,
+      "sha256": "6dfe2a8ff627f0245ed386b25c3f92fff36e22d5de36676418aa138661d09f94"
     },
     {
       "path": "apps/web/public/sw.js",

@@ -25,7 +25,8 @@ body {
 }
 button,
 a,
-input {
+input,
+select {
   -webkit-tap-highlight-color: transparent;
 }
 button,
@@ -169,6 +170,12 @@ button:active,
   color: var(--ink);
   font: inherit;
   cursor: pointer;
+}
+.language-switch select:focus {
+  outline: none;
+}
+.language-switch:has(select:focus-visible) {
+  box-shadow: 0 0 0 3px var(--yellow);
 }
 main > .language-switch { float: right; margin: 0 0 16px 16px; }
 .menu-language { margin: 16px 0 8px; }
