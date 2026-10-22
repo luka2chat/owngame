@@ -2,7 +2,7 @@
 
 <a href="https://owngame.dev"><img src="docs/images/owngame-brand-v2.png" alt="owngame · 做属于自己的游戏" width="800" /></a>
 
-### 用 AI，把游戏做成你想要的样子。
+# 用 AI，把游戏做成你想要的样子。
 
 面向 AI 助手的开源游戏创作工具包。
 
@@ -16,11 +16,11 @@
 
 ## 在电脑与手机上，随时开玩
 
-按 **移动端 / PC** 选游戏，支持设备见游戏标识；手机 App 仅收录移动端作品。
+浏览游戏、收藏喜欢的作品，在下载完成后离线游玩。想继续创作时，点击 **复刻**，把参考说明与源码链接交给 AI 助手。
 
 [![owngame 电脑端与移动端展示，AI 设备效果图](docs/images/owngame-platform-devices-v1.png)](https://owngame.dev)
 
-浏览游戏、收藏喜欢的作品，在下载完成后离线游玩。想继续创作时，点击 **复刻**，把参考说明与源码链接交给 AI 助手。
+按 **移动端 / PC** 选游戏，支持设备见游戏标识；手机 App 仅收录移动端作品。
 
 [**打开游戏库 ↗**](https://owngame.dev) · [查看游戏源码](docs/open-source-games.md)
 
