@@ -9889,8 +9889,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 21181,
-      "sha256": "3a34cf28db1485115633118e8efd3a785d63609f1f51f5f79a74c4c1a4e567d2"
+      "bytes": 21178,
+      "sha256": "8b371069e27f092363d3fc07e71e3431a5338d9b8411d64705a1066f99d271a2"
     },
     {
       "path": "scripts/android/build.mjs",

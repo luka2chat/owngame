@@ -2,7 +2,7 @@
 
 <a href="https://owngame.dev"><img src="docs/images/owngame-brand-v2.png" alt="owngame · 做属于自己的游戏" width="800" /></a>
 
-# 用 AI，把游戏做成你想要的样子。
+# 用 AI，把游戏做成你想要的样子
 
 面向 AI 助手的开源游戏创作工具包。
 
