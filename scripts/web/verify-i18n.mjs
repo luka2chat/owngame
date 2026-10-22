@@ -64,7 +64,7 @@ try {
   assert.equal(await page.locator("html").getAttribute("lang"), "en");
   assert.equal(
     await page.locator(".game-card h3").first().innerText(),
-    "Neon Defender",
+    "Tidal Reclaim",
   );
   await englishOnly();
   const gameCount = await page.locator(".game-card").count();
@@ -90,7 +90,7 @@ try {
     await language("zh-CN");
     assert.equal(
       await page.locator(".game-card h3").first().innerText(),
-      "霓虹突围",
+      "潮汐回收站",
     );
     assert(
       await page.evaluate(

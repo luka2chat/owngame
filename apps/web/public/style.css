@@ -1022,3 +1022,4 @@ dialog p {
 }
 @media (pointer:coarse) { .platform-tabs button { min-height:44px; } }
 .platform-label { display:block;font-weight:700;color:var(--blue);margin:4px 0; }
+.computer-hint { display:block;color:#70451d;background:#fff0bb;border:1px solid #d4b66b;border-radius:5px;padding:5px 7px;margin:6px 0;font-size:12px;font-weight:700; }

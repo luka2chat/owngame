@@ -21,6 +21,10 @@ export function devicePlatform(device = globalThis.navigator) {
     ? "mobile" : "pc";
 }
 
+export function needsComputer(game, device = globalThis.navigator) {
+  return devicePlatform(device) === "mobile" && supportsPlatform(game, "pc") && !supportsPlatform(game, "mobile");
+}
+
 export function resolvePlatform({ query } = {}) {
   return ["all", ...platforms].includes(query) ? query : "all";
 }

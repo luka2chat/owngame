@@ -156,3 +156,23 @@
 }
 .platform-unavailable { max-width:440px;padding:24px;text-align:center;line-height:1.7; }
 .platform-unavailable a { display:inline-block;padding:12px; }
+.desktop-required { background:var(--paper);color:var(--ink); }
+.desktop-required .player-header { display:flex; }
+.desktop-required .player-breadcrumb { display:flex;margin-bottom:16px; }
+.desktop-required .detail-main { max-width:760px;margin:0 auto;padding:24px 20px; }
+.desktop-required .player-layout { display:block;height:auto; }
+.desktop-required .player-info { display:block;padding:0; }
+.desktop-required .player-info h1 { font-size:32px;letter-spacing:-1px;margin:12px 0; }
+.desktop-required #game-description { font-size:15px;line-height:1.6;margin:12px 0; }
+.desktop-required .player-panel,.desktop-required .capsule,.desktop-required #enter-game,.desktop-required #download,.desktop-required .instructions { display:none; }
+.desktop-required .player-recommend:not([hidden]) { display:block; }
+.desktop-required #recommend-games { grid-template-columns:1fr; }
+.desktop-required .player-actions { grid-template-columns:1fr 1fr; }
+.computer-notice { padding:16px;background:#fff8df;border:2px solid var(--ink);border-radius:14px;box-shadow:0 4px var(--ink); }
+.computer-cover { position:relative;aspect-ratio:16 / 9;overflow:hidden;border-radius:8px; }
+.computer-cover .art { position:absolute;inset:0; }
+.computer-cover img { width:100%;height:100%;object-fit:cover; }
+.computer-notice h2 { font-size:22px;margin:18px 0 8px; }
+.computer-notice p { font-size:14px;line-height:1.7;margin:8px 0 16px; }
+.computer-mobile-link { display:block;text-align:center;padding:14px 8px 0;color:var(--blue);font-weight:700; }
+.computer-link { width:100%;min-width:0;margin-top:14px;padding:10px; }

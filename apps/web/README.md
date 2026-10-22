@@ -58,3 +58,6 @@ Free 限额以 Cloudflare 官方文档为准；当前构建远低于每站 20,00
 ## 复刻
 
 首页与游戏详情共用 `public/remix.js`。点击复刻生成并尝试复制该游戏的具体任务，支持补充改编要求、编辑全文和复制失败后的手动选择。构建生成 `/remix/<id>.json`，记录当前上架版本、玩法、视觉方向、冻结可玩地址与工具安装入口。它包含对应游戏的公开源码链接和确切提交；源码按各游戏的许可使用，npm 工具包与完整游戏案例分别分发。
+## PC discovery on mobile
+
+The default catalog leads with Tidal Reclaim and Star Letters. Phone/tablet visitors still see PC game covers, with a computer-play notice before the action link. Their detail pages offer a copyable link, local favorites and mobile-game recommendations without loading the unsupported game or downloading its offline package. Device detection is independent of viewport width and the catalog filter, so narrow desktop windows keep working. Clipboard denial exposes a selectable URL. Keep Chinese and English copy aligned and retain the immutable game packages and saves. Verify with `node scripts/web/verify-pc-handoff.mjs` (set `OWNGAME_PC_BASE` for production).

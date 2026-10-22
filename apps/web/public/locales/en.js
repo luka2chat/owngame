@@ -1,5 +1,14 @@
 // Site copy only. Immutable game packages and their save formats stay separate.
 export const messages = {
+  "请在电脑上游玩": "Play on a computer",
+  "查看电脑游戏：{title}": "View PC game: {title}",
+  "查看游戏 ↗": "View game ↗",
+  "复制链接，到电脑玩": "Copy link to play on a computer",
+  "游戏链接": "Game link",
+  "链接已复制，在电脑浏览器打开即可": "Link copied. Open it in a browser on your computer.",
+  "长按或选中下方链接即可复制": "Press and hold or select the link below to copy it.",
+  "看看手机游戏": "Browse mobile games",
+  "这款游戏需要电脑和键盘鼠标。把链接发到电脑，打开就能玩。": "This game needs a computer, keyboard and mouse. Send the link to your computer and open it to play.",
   "游玩平台": "Play on",
   "全部平台": "All platforms",
   "移动端游戏": "Mobile games",
@@ -312,11 +321,11 @@ export const games = {
   },
   "star-letters": {
     title: "Star Letters",
-    tag: "3D fairy-tale adventure · Touch supported",
+    tag: "3D fairy-tale adventure · PC",
     description:
-      "Follow a letter, visit friends on three planets, and bring a late spring to a giant’s garden. Phone touch controls supported. About 54 MB on first load.",
+      "Follow a letter, visit friends on three planets, and bring a late spring to a giant’s garden. About 54 MB on first load.",
     instructions:
-      "Phone: move with the left stick, swipe empty space to look around, and use Interact, Continue, Close and Flip for conversations and keepsakes. Move and look with two fingers; landscape gives a wider view. Desktop: WASD or arrow keys to walk, Shift to run, E to interact, right mouse button to look, wheel to zoom, V for overview and C to reset the camera. Start at the home mailbox and visit three planets. Progress saves in this browser.",
+      "WASD or arrow keys to walk, Shift to run, E to interact, right mouse button to look, wheel to zoom, V for overview and C to reset the camera. Start at the home mailbox and visit three planets. Progress saves in this browser.",
   },
   "signal-harbor": {
     title: "Signal Harbor",

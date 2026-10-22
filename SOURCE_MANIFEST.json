@@ -489,8 +489,8 @@
     },
     {
       "path": "apps/web/public/app.js",
-      "bytes": 14488,
-      "sha256": "78e6b1b65cd3b9e867688d81096896e7f538ec2a8ba134c11f0cb54492b898be"
+      "bytes": 14780,
+      "sha256": "d26fb4fafb0ce185bcd17d19f3eb28205be5b6d64e87f6cb94c51ab996b1f8fe"
     },
     {
       "path": "apps/web/public/art/arcade-mascot.png",
@@ -1029,8 +1029,8 @@
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 29014,
-      "sha256": "dac90938d3978957695f470de80f4abaf0583ad1bbcad44595a3be42968a426a"
+      "bytes": 29450,
+      "sha256": "f26d990d1738732a6e5e68d67f892932f41ab01a3a34f8745bf770802523bca3"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -1044,13 +1044,13 @@
     },
     {
       "path": "apps/web/public/platforms.js",
-      "bytes": 2129,
-      "sha256": "9f848e4419b4a7c209086fd6b8a999814b64c997d8965d972b01ce5a1a5365b4"
+      "bytes": 2316,
+      "sha256": "142f587936cd4355f485b41590d1f6b5fc7b2201233ec10dd11a264dc11046aa"
     },
     {
       "path": "apps/web/public/play.css",
-      "bytes": 8536,
-      "sha256": "e25217ba6f98d26fca2410979e203876570742ada0197823f7d364aecbf9e0d6"
+      "bytes": 10132,
+      "sha256": "c90884dfd34b1ab50b76b0a005dbca4adbea37f4a368d5c68d4f0cce904ee66f"
     },
     {
       "path": "apps/web/public/play.html",
@@ -1059,8 +1059,8 @@
     },
     {
       "path": "apps/web/public/play.js",
-      "bytes": 14151,
-      "sha256": "c7616d018769ad1f713a088edd457bfb2d8e3c2d995023c172418d92922f8227"
+      "bytes": 15975,
+      "sha256": "ad3775eb604a7424bdefb7e95507781c4137d6281bc2dce2ff95f601821833db"
     },
     {
       "path": "apps/web/public/privacy.html",
@@ -1084,8 +1084,8 @@
     },
     {
       "path": "apps/web/public/style.css",
-      "bytes": 23185,
-      "sha256": "555603e3981529aa098bfcbad4eb314f135c44491e3cec52de7f85f2cdc52c7e"
+      "bytes": 23355,
+      "sha256": "ca8f6920389b849a7366cbd80e948e1b0e91417df3977ef444bff2141f76dae3"
     },
     {
       "path": "apps/web/public/sw.js",
@@ -1104,8 +1104,8 @@
     },
     {
       "path": "apps/web/README.md",
-      "bytes": 5432,
-      "sha256": "40223e53154cea4aa47f20521825555be71658d2e08f5b7b60ee8217d35153bd"
+      "bytes": 6123,
+      "sha256": "9d9a7ace6450e2f45e839b5bc65c5037e6e33131d0dab81686c4a36b2d04c7c5"
     },
     {
       "path": "apps/web/wrangler.jsonc",
@@ -9955,7 +9955,7 @@
     {
       "path": "scripts/games/__pycache__/export.cpython-315.pyc",
       "bytes": 29119,
-      "sha256": "a94f1c1064f3c08c51874dffef01dfc9dc768a4b7830f0252554b01bf9de69ce"
+      "sha256": "7079bea3ad326153b9edc253087677904610159b1b83a3535ef11cf8154aaea9"
     },
     {
       "path": "scripts/games/build-all.mjs",
@@ -10019,8 +10019,8 @@
     },
     {
       "path": "scripts/games/sync.mjs",
-      "bytes": 6685,
-      "sha256": "b49bd50c67daac2b88b4a6da53aae466d241f2474349797244e47fc0973a7c4a"
+      "bytes": 6721,
+      "sha256": "be167a6d6109dc84aba7737b297d0290540af3e9f4ee3505c8efa6345bb07831"
     },
     {
       "path": "scripts/games/verify.mjs",
@@ -10139,8 +10139,8 @@
     },
     {
       "path": "scripts/star-letters/catalog.json",
-      "bytes": 1137,
-      "sha256": "cf78447fa0fd3600d3594288d3ed9624413a0951f3a4e37bd3f6249e24b90ff2"
+      "bytes": 866,
+      "sha256": "ebd214ab19d8c267d20f211326808a6de7bab7b4b0dc70d55b647ab8ce17cb18"
     },
     {
       "path": "scripts/tidal-reclaim/catalog.json",
@@ -10164,8 +10164,8 @@
     },
     {
       "path": "scripts/web/catalog.mjs",
-      "bytes": 3509,
-      "sha256": "54694b685cbe6113f044c9a4770f6068408d33823d0537a3a315030817103646"
+      "bytes": 3493,
+      "sha256": "b74a2d801c6172f1ae5a62c6df56ca935058c9dc1984dac14855dd50e5d220e7"
     },
     {
       "path": "scripts/web/footer.mjs",
@@ -10204,8 +10204,13 @@
     },
     {
       "path": "scripts/web/verify-i18n.mjs",
-      "bytes": 10258,
-      "sha256": "0683fd77c05d5d9e7b1fd8fe9358b7fd1500e7333462ec86d611274fc1775e4b"
+      "bytes": 10261,
+      "sha256": "c39e843d16d76e9a3e3b2b4bd0bda765281a178deccaaaa296f72f7620d169dc"
+    },
+    {
+      "path": "scripts/web/verify-pc-handoff.mjs",
+      "bytes": 4928,
+      "sha256": "37551b332b3d92ad154625c492b039525da82b51410566ad19abe6a870550471"
     },
     {
       "path": "SECURITY.md",
@@ -11589,8 +11594,8 @@
     },
     {
       "path": "tests/web/platforms.test.mjs",
-      "bytes": 4532,
-      "sha256": "0b1f7d3ad98467291a2a037e38c1636a95de61eef531a496da3ac60dbd906650"
+      "bytes": 5333,
+      "sha256": "7300e99e122f05e93ce0c80731de3e2a33be5ca50167bc398a31775f60920955"
     },
     {
       "path": "tests/web/usage.test.mjs",

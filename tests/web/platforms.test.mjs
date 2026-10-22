@@ -3,12 +3,13 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import vm from "node:vm";
 import {readGameEntries} from "../../scripts/web/catalog.mjs";
-import {validPlatforms, supportsPlatform, devicePlatform, resolvePlatform, platformAcceptance, playerPresentation, playerSandbox} from "../../apps/web/public/platforms.js";
+import {validPlatforms, supportsPlatform, devicePlatform, resolvePlatform, platformAcceptance, playerPresentation, playerSandbox, needsComputer} from "../../apps/web/public/platforms.js";
 
 test("every published game explicitly declares supported platforms", async () => {
   const entries = await readGameEntries(process.cwd());
   for (const game of entries) assert(validPlatforms(game.platforms), game.id);
-  assert.deepEqual(entries.filter(g => supportsPlatform(g, "pc")).map(g => g.id), ["star-letters", "tidal-reclaim"]);
+  assert.deepEqual(entries.slice(0, 2).map(g => g.id), ["tidal-reclaim", "star-letters"]);
+  assert.deepEqual(entries.filter(g => supportsPlatform(g, "pc")).map(g => g.id), ["tidal-reclaim", "star-letters"]);
   assert.equal(entries.filter(g => supportsPlatform(g, "mobile")).length, 17);
 });
 
@@ -72,4 +73,17 @@ test("pointer lock is opt-in for declared PC games only", () => {
   assert.equal(playerSandbox({platforms:["pc"],pointerLock:true}), "allow-scripts allow-same-origin allow-pointer-lock");
   for (const game of [{}, {platforms:["pc"]}, {platforms:["mobile"],pointerLock:true}, {platforms:[],pointerLock:true}])
     assert.equal(playerSandbox(game), "allow-scripts allow-same-origin");
+});
+
+// Device checks must not turn a narrow desktop window into an unsupported device.
+test("PC reminders apply to phones/tablets, never platform filters or touch laptops", () => {
+  const pc = {platforms:["pc"]};
+  for (const device of [{userAgent:"iPhone"}, {userAgent:"Android"}, {platform:"MacIntel",maxTouchPoints:5}]) {
+    assert(needsComputer(pc,device));
+    assert(!needsComputer({platforms:["mobile"]},device));
+    assert(!needsComputer({platforms:["mobile","pc"]},device));
+    assert(!needsComputer({},device));
+  }
+  assert(!needsComputer(pc,{userAgent:"Windows NT",maxTouchPoints:10}));
+  assert(!needsComputer(pc,{userAgent:"Macintosh",platform:"MacIntel",maxTouchPoints:0}));
 });

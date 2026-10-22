@@ -7,7 +7,7 @@ import {
   safeSearch,
 } from "./analytics.js";
 import { openRemix } from "./remix.js";
-import { supportsPlatform, platformLabel } from "./platforms.js";
+import { supportsPlatform, platformLabel, needsComputer } from "./platforms.js";
 import {
   $,
   element,
@@ -193,6 +193,7 @@ function render() {
   }
   for (const [index, raw] of list.entries()) {
     const g = localizeGame(raw);
+    const computer = needsComputer(raw);
     const card = element("article", "game-card " + g.art);
     const cover = element("a", "cover");
     cover.href = playUrl(g);
@@ -202,7 +203,7 @@ function render() {
     };
     cover.setAttribute(
       "aria-label",
-      t("开始游戏：{title}", { title: g.title }),
+      t(computer ? "查看电脑游戏：{title}" : "开始游戏：{title}", { title: g.title }),
     );
     // Layered CSS art otherwise downloads its textures even far below the fold.
     if (!g.cover && index >= 2) {
@@ -263,9 +264,11 @@ function render() {
       render();
     };
     title.append(element("h3", "", g.title), fav);
-    copy.append(title, element("small", "platform-label", t(platformLabel(g))), element("p", "", g.description));
+    copy.append(title, element("small", "platform-label", t(platformLabel(g))));
+    if (computer) copy.append(element("small", "computer-hint", t("请在电脑上游玩")));
+    copy.append(element("p", "", g.description));
     const foot = element("div", "card-foot"),
-      play = element("a", "play-link", t("开玩 ▶"));
+      play = element("a", "play-link", t(computer ? "查看游戏 ↗" : "开玩 ▶"));
     play.href = playUrl(g);
     play.onclick = () => selection(raw, "play_button", index + 1);
     play.onauxclick = (e) => {
@@ -325,7 +328,9 @@ function render() {
       t("复刻 {title}，复制给 AI", { title: g.title }),
     );
     remix.onclick = () => openRemix(raw);
-    foot.append(play, dl, remix);
+    foot.append(play);
+    if (!computer) foot.append(dl);
+    foot.append(remix);
     copy.append(foot);
     card.append(cover, copy);
     grid.append(card);

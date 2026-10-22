@@ -1,7 +1,7 @@
 import { t, localizeGame, localizeUrl } from "./i18n.js";
 import { track, gameParams, selectGame, setPageGame } from "./analytics.js";
 import { openRemix } from "./remix.js";
-import { supportsPlatform, platformLabel, playerPresentation, playerSandbox } from "./platforms.js";
+import { supportsPlatform, platformLabel, playerPresentation, playerSandbox, needsComputer } from "./platforms.js";
 import {
   $,
   catalog,
@@ -25,6 +25,40 @@ let game,
   busy = false,
   downloadPercent = 0,
   downloadFailed = false;
+function renderComputerNotice() {
+  document.getElementById("computer-notice")?.remove();
+  if (!needsComputer(game)) return;
+  const notice = element("section", "computer-notice");
+  notice.id = "computer-notice";
+  const cover = element("div", "computer-cover");
+  cover.append(art(game, {priority:true}));
+  const coverImage = cover.querySelector("img");
+  if (coverImage) coverImage.sizes = "(max-width:760px) calc(100vw - 76px), 680px";
+  const heading = element("h2", "", t("请在电脑上游玩"));
+  heading.id = "computer-notice-title";
+  notice.setAttribute("aria-labelledby", heading.id);
+  const copy = element("button", "player-button primary-action", t("复制链接，到电脑玩"));
+  copy.id = "copy-computer-link";
+  const fallback = element("input", "computer-link");
+  fallback.readOnly = true;
+  fallback.hidden = true;
+  fallback.setAttribute("aria-label", t("游戏链接"));
+  fallback.value = new URL(playUrl(game), location.origin).href;
+  copy.onclick = async () => {
+    try {
+      await navigator.clipboard.writeText(fallback.value);
+      toast(t("链接已复制，在电脑浏览器打开即可"));
+    } catch {
+      fallback.hidden = false;
+      fallback.focus();fallback.select();
+      toast(t("长按或选中下方链接即可复制"));
+    }
+  };
+  const mobile = element("a", "computer-mobile-link", t("看看手机游戏"));
+  mobile.href = localizeUrl("/?platform=mobile");
+  notice.append(cover, heading, element("p", "", t("这款游戏需要电脑和键盘鼠标。把链接发到电脑，打开就能玩。")), copy, fallback, mobile);
+  $("game-description").after(notice);
+}
 function updateDownloadCopy() {
   $("download").disabled = busy;
   $("menu-download").disabled = busy;
@@ -114,7 +148,8 @@ function renderDetails(all) {
     $("keyboard-help").hidden = false;
     $("keyboard-help").append(element("p", "", t("自动投飞刀，靠近宝箱自动打开")));
   }
-  const others = all.filter((g) => g.id !== game.id && supportsPlatform(g, supportsPlatform(game, "mobile") ? "mobile" : "pc"));
+  renderComputerNotice();
+  const others = all.filter((g) => g.id !== game.id && supportsPlatform(g, needsComputer(game) || supportsPlatform(game, "mobile") ? "mobile" : "pc"));
   // Prefer related games, then offer other worlds from the existing catalog.
   others.sort(
     (a, b) =>
@@ -155,7 +190,7 @@ function toggleFavorite() {
   updateFavorite();
 }
 async function downloadGame() {
-  if (busy) return;
+  if (busy || needsComputer(game)) return;
   if (ready) {
     track("download_cached");
     toast(t("游戏已下载，可在当前浏览器离线玩"));
@@ -255,10 +290,12 @@ try {
   allGames = all;
   game = all.find((g) => g.id === id);
   if (!game) throw new Error("没有找到这款游戏，请回游戏库重新选择。");
+  document.body.classList.toggle("desktop-required", needsComputer(game));
   setPageGame(game);
   track("player_open");
   wire();
   renderDetails(all);
+  if (!needsComputer(game)) {
   frame = document.createElement("iframe");
   frame.title = localizeGame(game).title;
   frame.allow = "autoplay; fullscreen";
@@ -357,6 +394,7 @@ try {
   setStore("recent", recent);
   ready = await offlineReady(game);
   updateDownloadCopy();
+  }
   serviceWorker().catch(() => {});
 } catch (e) {
   loadError = e;
