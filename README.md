@@ -16,7 +16,7 @@
 
 ## 在电脑与手机上，随时开玩
 
-游戏库按 **移动端 / PC** 展示；每款游戏可支持一端或两端，不要求所有游戏适配全部平台。手机 App 只收录支持移动端的作品，具体支持范围见游戏标识。[平台登记与验收规则](docs/game-publishing.md#choose-supported-platforms)
+按 **移动端 / PC** 选游戏，支持设备见游戏标识；手机 App 仅收录移动端作品。
 
 [![owngame 电脑端与移动端展示，AI 设备效果图](docs/images/owngame-platform-devices-v1.png)](https://owngame.dev)
 
@@ -276,6 +276,8 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 owngame 自有代码与文档采用 [MIT 许可](LICENSE)。网站展示游戏、素材和其他第三方内容保留各自许可，详见 [第三方声明](THIRD_PARTY_NOTICES.md)。
 
 项目的安装体验、工具与案例组织方式参考了 [REA](https://github.com/morluto/rea)。
+
+部分 PC 游戏基于作者使用 [Manus](https://manus.im) 付费账号制作的作品进行二次开发，感谢 Manus 提供的创作工具。
 
 ## English
 
