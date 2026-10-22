@@ -22,6 +22,12 @@ https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md
 
 也可以在 [owngame.dev](https://owngame.dev) 试玩游戏，点击 **复刻**，补充修改方向后，把生成的任务交给助手。它会在你的工作区实现新版本；网站不会在后台直接生成游戏。
 
+## 用画板持续记录游戏设计
+
+支持 `outline.get` 的 CLI 版本可用 `owngame outline` 打开本地画板。每个游戏目录的 `game-outline.json` 保存目标、规则、任务、关卡和资产引用，画板与 CLI 共用这份数据。新项目自动创建；已有目录用 `owngame outline.init '{"directory":"my-game"}'` 接入。
+
+助手在开发前读取设计，完成后更新相关卡片和实际验证结果。画板不会自行生成代码。此功能需要 CLI 0.11.0 或更高版本；已安装版本可先看 `owngame capabilities` 是否包含 `outline.get`。详见[画板说明](../../apps/outline/README.md)。
+
 ## 继续阅读
 
 - [第一个游戏教程](../quickstart.md)：创建项目、实际试玩、调整美术并保留进度。

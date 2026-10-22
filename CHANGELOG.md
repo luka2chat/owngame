@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.11.0 — 2026-10-23
+
+- Add the local infinite game-design canvas with six planning areas, structured
+  cards, relationships, derived progress, previews, and import/export.
+- Share each game's `game-outline.json` between the canvas and CLI/MCP through
+  `outline.init`, `outline.list`, `outline.get`, and guarded `outline.update`.
+  `owngame outline` starts the loopback-only page; external edits refresh while
+  idle, stale writes are rejected, and unavailable files remain read-only.
+- Initialize design files and project guidance with `project.create`. Teach the
+  skill to read current design before development and record changes and actual
+  validation afterward. `project.inspect` exposes bounded existing-project
+  metadata and the linked outline context without running project scripts.
+- Package the canvas and its existing owngame brand assets. Exclude private
+  project designs, directory bindings, backups and local caches from distribution.
+- Migration: older central canvas data is preserved in individual local project
+  files. Existing source directories opt in with `outline.init`; no game code or
+  saves are migrated. Review project JSON before choosing to share it yourself.
+
 ## 0.10.0 — 2026-10-22
 
 - Add shared CLI/MCP `resource.sources`, `resource.search` and `resource.get` for

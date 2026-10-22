@@ -65,3 +65,7 @@ node "<runtime>/dist/packages/cli/index.js" project.create @create-game.json
 Follow the Skill: deliver a complete playable core loop early, inspect actual visuals and input, and preserve existing rules and saves. Use the host's available tools for image generation, browser playtesting and external engines; report each verification scope separately.
 
 These checks establish CLI availability. They do not certify every assistant host, game behavior, visual quality or target device. MCP is an optional enhancement; configure it through [installation and integration](install.md) only when needed.
+
+## Persistent game design context
+
+When capabilities include `outline.get`, read the game's `game-outline.json` before implementation and update affected cards with actual evidence after changes. `project.create` initializes it automatically; use `outline.init` for existing game directories. `owngame outline` opens the local canvas, which shares these files with CLI/MCP. See the [outline workflow](../skills/owngame/references/outline.md). These capabilities require CLI 0.11.0 or later. Check the installed capabilities before using them.

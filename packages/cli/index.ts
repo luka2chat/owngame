@@ -4,14 +4,24 @@ import { Core } from "../core/index.js";
 import path from "node:path";
 import { setup, doctor } from "./setup.js";
 import { options } from "../core/options.js";
+import { pathToFileURL } from "node:url";
 let core: Core | undefined;
 try {
   const parsed = options(process.argv.slice(2));
   const command = parsed.rest[0];
   if (command === "mcp" || path.basename(process.argv[1]).replace(/\.cmd$/, "") === "owngame-mcp") {
     await import("../mcp/index.js");
+  } else if (command === "outline") {
+    const args = parsed.rest.slice(1);
+    if (args.length && !(args.length === 2 && args[0] === "--port")) throw Error("Usage: owngame outline [--port 3228] [--workspace path]");
+    const port = Number(args[1] || 3228);
+    if (!Number.isInteger(port) || port < 1024 || port > 65535) throw Error("Invalid outline port");
+    const { createOutlineServer } = await import(pathToFileURL(path.join(parsed.options.root, "apps/outline/server.mjs")).href);
+    const { server, url } = await createOutlineServer({ workspace: parsed.options.workspace, port });
+    console.log(JSON.stringify({ url, workspace: parsed.options.workspace, storage: "Each linked game uses game-outline.json", stop: "Ctrl+C" }));
+    for (const signal of ["SIGINT", "SIGTERM"]) process.on(signal, () => server.close());
   } else if (["--help", "help", "-h"].includes(command)) {
-    console.log("owngame — game authoring tools for your existing agent\n\nsetup [--agent codex|cursor|generic] [--apply]  Preview/apply project integration\ndoctor                                      Read-only readiness report\n--version                                   Installed toolkit version\n<operation> [JSON | @file | -]               Call the shared CLI/MCP core\n\nOptions: --workspace <path>, --knowledge <path>, --config <file>\nStart: owngame project.create '{\"directory\":\"my-game\",\"name\":\"my-game\"}'\nTemplates: web-canvas (default), web-phaser, cocos-minimal, unity-home");
+    console.log("owngame — game authoring tools for your existing agent\n\nsetup [--agent codex|cursor|generic] [--apply]  Preview/apply project integration\ndoctor                                      Read-only readiness report\noutline [--port 3228]                        Open the local design board\noutline.init / outline.get / outline.update  Shared project design JSON\noutline.list                                List connected game boards\n--version                                   Installed toolkit version\n<operation> [JSON | @file | -]               Call the shared CLI/MCP core\n\nOptions: --workspace <path>, --knowledge <path>, --config <file>\nStart: owngame project.create '{\"directory\":\"my-game\",\"name\":\"my-game\"}'\nTemplates: web-canvas (default), web-phaser, cocos-minimal, unity-home");
   } else if (command === "--version") {
     console.log(JSON.parse(await readFile(path.join(parsed.options.root, "package.json"), "utf8")).version);
   } else if (command === "setup" || command === "doctor") {

@@ -5,6 +5,7 @@ import os from 'node:os';
 import assert from 'node:assert/strict';
 import {spawn,spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
 import {Client} from '@modelcontextprotocol/sdk/client/index.js';
 import {StdioClientTransport} from '@modelcontextprotocol/sdk/client/stdio.js';
 import {chromium} from 'playwright';
@@ -19,14 +20,14 @@ function run(command,args,cwd=root,allowed=[0]){
  if(r.error||!allowed.includes(r.status))throw Error(`${command} ${args[0]}: ${r.error?.message??''}\n${r.stdout}\n${r.stderr}`);
  return r.stdout;
 }
-let browser,server,client;
+let browser,server,client,outlineServer;
 await fs.writeFile(path.join(reportDir,'verification.json'),JSON.stringify({status:'running',version:pkg.version})+'\n');
 try{
  const info=JSON.parse(run(npm,['pack',...(published?[pkg.name+'@'+pkg.version]:[]),'--json','--pack-destination',reportDir]))[0];
  const files=info.files.map(f=>f.path);
- const allowed=/^(dist\/packages\/|starter-knowledge\/|skills\/|templates\/|scripts\/toolkit\/|docs\/(cases|images)\/|docs\/zh-CN\/quickstart\.md$|docs\/(README|remix|open-source-games|game-publishing|install|agent-setup|quickstart|resource-search|releasing)\.md$|docs\/style-recipes\.json$|package\.json$|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|CHANGELOG\.md$|CONTRIBUTING\.md$|SECURITY\.md$)/;
- for(const file of files){assert(allowed.test(file),`Unexpected packaged path: ${file}`);assert(!/(^|\/)(node_modules|\.env|\.git|\.local|\.owngame|\.DS_Store)(\/|$)/.test(file));}
- for(const needed of ['docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','dist/packages/core/resources.js','docs/resource-search.md','skills/owngame/SKILL.md','templates/web-canvas/LICENSE','templates/web-canvas/src/main.js','starter-knowledge/sources.json','docs/cases/star-triad.md','templates/unity-home/Assets/Scenes/HomeArt.unity','templates/unity-home/Assets/Models/Story/HomeArt-v2.fbx','templates/unity-home/Assets/Resources/Fonts/StarLettersUI.ttf','templates/unity-home/Packages/packages-lock.json','templates/unity-home/LICENSES/NotoSansSC-OFL.txt'])assert(files.includes(needed),needed);
+ const allowed=/^(apps\/outline\/|dist\/packages\/|starter-knowledge\/|skills\/|templates\/|scripts\/toolkit\/|docs\/(cases|images)\/|docs\/zh-CN\/quickstart\.md$|docs\/(README|remix|open-source-games|game-publishing|install|agent-setup|quickstart|resource-search|releasing)\.md$|docs\/style-recipes\.json$|package\.json$|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|CHANGELOG\.md$|CONTRIBUTING\.md$|SECURITY\.md$)/;
+ for(const file of files){assert(allowed.test(file),`Unexpected packaged path: ${file}`);assert(!/(^|\/)(game-outline\.json(?:\..*)?|project-files\.json|workspace\.json(?:\..*)?|\.game-outline\.lock)(\/|$)/.test(file),`Private outline data: ${file}`);assert(!/(^|\/)(node_modules|\.env|\.git|\.local|\.owngame|\.DS_Store)(\/|$)/.test(file));}
+ for(const needed of ['apps/outline/server.mjs','apps/outline/brand/arcade-mascot.webp','scripts/toolkit/outline-store.mjs','skills/owngame/references/outline.md','docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','dist/packages/core/resources.js','docs/resource-search.md','skills/owngame/SKILL.md','templates/web-canvas/LICENSE','templates/web-canvas/src/main.js','starter-knowledge/sources.json','docs/cases/star-triad.md','templates/unity-home/Assets/Scenes/HomeArt.unity','templates/unity-home/Assets/Models/Story/HomeArt-v2.fbx','templates/unity-home/Assets/Resources/Fonts/StarLettersUI.ttf','templates/unity-home/Packages/packages-lock.json','templates/unity-home/LICENSES/NotoSansSC-OFL.txt'])assert(files.includes(needed),needed);
  const tar=path.join(reportDir,info.filename);
  if(published){const prior=JSON.parse(await fs.readFile(path.join(root,'artifacts/release',pkg.version,'verification.json')));assert.equal(prior.status,'succeeded');assert.equal(createHash('sha256').update(await fs.readFile(tar)).digest('hex'),prior.sha256,'Registry archive differs from verified candidate');}
  await fs.writeFile(path.join(workspace,'package.json'),'{"private":true,"type":"module"}\n');
@@ -40,7 +41,7 @@ try{
  assert.equal(run(process.execPath,[path.join(installed,'dist/packages/cli/index.js'),'--version'],workspace).trim(),pkg.version);
  client=new Client({name:'owngame-release-check',version:'1'});
  await client.connect(new StdioClientTransport({command:process.execPath,args:[path.join(installed,'dist/packages/cli/index.js'),'mcp','--workspace',workspace],cwd:workspace,stderr:'pipe'}));
- const tools=await client.listTools();assert.equal(tools.tools.length,23);assert(!tools.tools.some(t=>/owngame_(run|task)_/.test(t.name)));
+ const tools=await client.listTools();assert.equal(tools.tools.length,28);assert(!tools.tools.some(t=>/owngame_(run|task)_/.test(t.name)));
  const normalized=x=>JSON.parse(JSON.stringify(x,(k,v)=>k==='operation_id'?'operation':v));
  for(const [op,input] of [['capabilities',{}],['resource.sources',{}],['research.prepare',{query:'美术'}],['research.prepare',{query:'容量',mode:'snapshot'}],['style.list',{}],['guidance.get',{topic:'web'}]]){
   const c=cli(op,input),m=await client.callTool({name:'owngame_'+op.replaceAll('.','_'),arguments:input});assert.deepEqual(normalized(c),normalized(m.structuredContent));
@@ -115,11 +116,33 @@ try{
    assert.equal(await fs.readFile(path.join(consumer,'.agents/skills/owngame/SKILL.md'),'utf8'),await fs.readFile(path.join(installed,'skills/owngame/SKILL.md'),'utf8'));
   }finally{await consumerClient?.close();await fs.rm(consumer,{recursive:true,force:true});}
  }
- const report={status:'succeeded',version:pkg.version,tarball:info.filename,sha256:createHash('sha256').update(await fs.readFile(tar)).digest('hex'),bytes:info.size,files:files.length,operations:tools.tools.length,npx_default_entry:true,npx_project_install:published?'verified':'requires_registry',cli_mcp_parity:true,installed_creation:true,unity_template:{cli:true,mcp:true,asset_manifest:true,independent_identity:true,npx_latest:published?'verified':'requires_registry',editor_playmode:'not_run_by_this_package_check'},rules_positions:5478,real_input:['win','terminal-input-disabled','undo','restart','draw','keyboard','save-reload'],viewports:['1280x900','360x640','390x844'],art_revision_preserves_save:true,build_changed:before.data.build_sha256!==after.data.build_sha256,browser:await browser.version(),page_errors:errors,external_requests:external,physical_phone:'not_run',offline_cold_start:'not_run',human_art_and_feel:'not_evaluated',public_npm:published?'verified_registry_install':'not_published',github_ci:'not_run'};
+ // Exercise the packaged local canvas against the same project JSON as CLI/MCP.
+ const {createOutlineServer}=await import(pathToFileURL(path.join(installed,'apps/outline/server.mjs')));
+ const outline=await createOutlineServer({workspace,port:0});outlineServer=outline.server;
+ const design=cli('outline.get',{directory:'my-game'});assert.equal(design.status,'succeeded');
+ const changed=cli('outline.update',{directory:'my-game',expected_sha256:design.data.sha256,changes:{project:{tagline:'Packaged canvas sync'}}});assert.equal(changed.status,'succeeded');
+ const canvas=await context.newPage();await canvas.setViewportSize({width:1280,height:900});
+ const canvasErrors=[];canvas.on('pageerror',e=>canvasErrors.push(String(e)));
+ await canvas.goto(outline.url);await canvas.locator('#projects').selectOption(design.data.project.id);
+ await canvas.getByText('Packaged canvas sync',{exact:true}).waitFor();
+ await canvas.getByRole('button',{name:'编辑项目',exact:true}).click();
+ await canvas.getByLabel('一句话定位',{exact:true}).fill('Canvas saved to project JSON');
+ await canvas.getByRole('button',{name:'保存项目',exact:true}).click();
+ await canvas.getByText('● 已同步项目 JSON',{exact:true}).waitFor();
+ assert.equal(cli('outline.get',{directory:'my-game'}).data.project.tagline,'Canvas saved to project JSON');
+ const disk=cli('outline.get',{directory:'my-game'});
+ assert.equal(cli('outline.update',{directory:'my-game',expected_sha256:disk.data.sha256,changes:{project:{tagline:'External update detected'}}}).status,'succeeded');
+ await canvas.getByText('External update detected',{exact:true}).waitFor({timeout:15000});
+ await canvas.reload();await canvas.getByText('External update detected',{exact:true}).waitFor();
+ await canvas.screenshot({path:path.join(reportDir,'outline.png')});assert.deepEqual(canvasErrors,[]);
+ assert.equal(cli('outline.update',{directory:'my-game',expected_sha256:disk.data.sha256,changes:{project:{title:'stale'}}}).diagnostics[0].code,'OUTLINE_CONFLICT');
+ const mcpOutline=await client.callTool({name:'owngame_outline_get',arguments:{directory:'my-game'}});assert.equal(mcpOutline.structuredContent.data.project.tagline,'External update detected');
+ const report={status:'succeeded',version:pkg.version,tarball:info.filename,sha256:createHash('sha256').update(await fs.readFile(tar)).digest('hex'),bytes:info.size,files:files.length,operations:tools.tools.length,npx_default_entry:true,npx_project_install:published?'verified':'requires_registry',cli_mcp_parity:true,installed_creation:true,outline:{cli_mcp:true,canvas_writes:true,external_refresh:true,reload:true,stale_write_rejected:true,private_design_files_packaged:false},unity_template:{cli:true,mcp:true,asset_manifest:true,independent_identity:true,npx_latest:published?'verified':'requires_registry',editor_playmode:'not_run_by_this_package_check'},rules_positions:5478,real_input:['win','terminal-input-disabled','undo','restart','draw','keyboard','save-reload'],viewports:['1280x900','360x640','390x844'],art_revision_preserves_save:true,build_changed:before.data.build_sha256!==after.data.build_sha256,browser:await browser.version(),page_errors:errors,external_requests:external,physical_phone:'not_run',offline_cold_start:'not_run',human_art_and_feel:'not_evaluated',public_npm:published?'verified_registry_install':'not_published',github_ci:'not_run'};
  await fs.writeFile(path.join(reportDir,'verification.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
 }catch(error){
  await fs.writeFile(path.join(reportDir,'verification.json'),JSON.stringify({status:'failed',version:pkg.version,error:String(error)},null,2)+'\n');throw error;
 }finally{
+ if(outlineServer)await new Promise(r=>outlineServer.close(r));
  await client?.close();await browser?.close();if(server){server.kill();await new Promise(r=>server.exitCode!==null?r():server.once('exit',r));}
  await fs.rm(workspace,{recursive:true,force:true});
 }

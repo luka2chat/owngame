@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf5e8"><title>游戏构思板 · owngame</title>
+  <link rel="icon" href="/brand/arcade-mascot.png"><link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="/" aria-label="owngame 游戏构思板"><span>o</span><span>w</span><span>n</span><span>g</span><span>a</span><span>m</span><span>e</span></a>
+    <span class="app-name">游戏构思板 <span class="local-tag">LOCAL</span></span>
+    <label class="project-picker"><span class="sr-only">当前项目</span><select id="projects" aria-label="当前项目"></select></label>
+    <button id="new-project" class="plain" title="新建空白项目">＋ 新项目</button>
+    <span id="save-status" role="status" class="save-status">正在读取…</span>
+    <button id="export" class="outline">导出备份 ↗</button><button id="import" class="plain">导入</button>
+  </header>
+  <div class="workspace">
+    <aside class="sidebar">
+      <div class="sidebar-label">把游戏想清楚 <span>↘</span></div>
+      <nav id="sections" aria-label="构思区域"></nav>
+      <div class="sidebar-note"><img src="/brand/arcade-mascot.png" alt="owngame 街机吉祥物"><strong>先做一个<br>小而完整的游戏。</strong><p>想法可以很大，<br>下一步可以很小。</p></div>
+      <button id="help" class="plain help-button">? 画布怎么用</button>
+      <span class="local-foot">● 本机文件自动保存</span>
+    </aside>
+    <main id="main">
+      <section class="board-header">
+        <div class="breadcrumbs"><span id="project-crumb"></span><span>/</span><span id="section-crumb"></span></div>
+        <div class="project-file"><span id="file-status"></span><button id="refresh-files" title="从项目 JSON 重新读取">↻ 同步</button></div>
+        <div class="heading-row"><div><h1 id="board-title"></h1><p id="board-desc"></p></div><div class="heading-actions"><button id="edit-project" class="outline">编辑项目</button><button id="add-card" class="primary">＋ 添加卡片</button></div></div>
+        <div class="board-controls"><div id="tabs" class="tabs" aria-label="区域视图"></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="搜索整个项目…" aria-label="搜索整个项目"><kbd>/</kbd></label></div>
+      </section>
+      <section id="overview" class="overview" aria-label="项目总览"></section>
+      <div id="canvas-shell" class="canvas-shell">
+        <div class="canvas-top"><span id="canvas-caption">灵感便签</span><span id="card-count"></span><span class="canvas-hint">拖动空白处平移 · 滚轮移动 · ⌘ / Ctrl + 滚轮缩放</span></div>
+        <div id="viewport" class="viewport" tabindex="0" aria-label="无限画布，可用方向键移动，双击空白处添加卡片">
+          <div id="world" class="world"><svg id="connections" class="connections" aria-label="卡片连线"></svg><div id="cards"></div></div>
+          <div id="empty" class="empty" hidden><span>✎</span><h2>给这个想法一个位置</h2><p>添加第一张卡片，或双击画布开始。</p><button id="empty-add" class="outline">＋ 添加卡片</button></div>
+        </div>
+        <div id="search-results" class="search-results" hidden></div>
+        <div class="canvas-bottom"><div class="tools"><button id="select-tool" class="tool active" title="选择与拖动 (V)" aria-label="选择与拖动">↖</button><button id="connect-tool" class="tool" title="连线 (C)" aria-label="连线">⤳</button><span class="divider"></span><button id="undo" class="tool" title="撤销 (⌘/Ctrl Z)" aria-label="撤销">↶</button><button id="redo" class="tool" title="重做 (⌘/Ctrl Shift Z)" aria-label="重做">↷</button></div><span id="tool-hint" class="tool-hint">单击卡片编辑 · 拖动卡片顶部移动</span><div class="zoom"><button id="zoom-out" aria-label="缩小">−</button><button id="zoom-reset" title="还原到 100%">100%</button><button id="zoom-in" aria-label="放大">＋</button><button id="fit" title="适合画布 (F)">适合</button></div></div>
+      </div>
+    </main>
+    <aside id="inspector" class="inspector" hidden aria-label="卡片编辑器"></aside>
+  </div>
+  <dialog id="dialog"><div id="dialog-content"></div></dialog>
+  <input id="import-file" type="file" accept="application/json,.json" hidden><input id="image-file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

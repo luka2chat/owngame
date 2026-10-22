@@ -27,6 +27,7 @@ jobs:
         run: node scripts/release/check-metadata.mjs
       - run: npm ci
       - run: npm run test:release
+      - run: npm run test:outline
       - run: npx playwright install --with-deps chromium
       - run: npm run verify:package
       - name: Publish the verified archive

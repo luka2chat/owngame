@@ -1,5 +1,5 @@
 {
-  "version": "0.10.0",
+  "version": "0.11.0",
   "scope": "Reviewed public toolkit, portable website game sources and their separate licenses; private production files and caches excluded",
   "files": [
     {
@@ -19,8 +19,8 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 555,
-      "sha256": "5a95df0265c2e1a8fab2622689c51c3dd137b7e1093d7fa952c2065988275ada"
+      "bytes": 589,
+      "sha256": "bf91521e3cec7354f71bc36256df0a89b105f3c6ed3d303bbe89a77563952284"
     },
     {
       "path": ".github/workflows/games.yml",
@@ -29,8 +29,8 @@
     },
     {
       "path": ".github/workflows/release.yml",
-      "bytes": 1274,
-      "sha256": "82940ecefcbd4f23cb32eec8317ba7a7bdaef700c0da0148b0dc3d5e5c5bfa44"
+      "bytes": 1308,
+      "sha256": "b92c1eecf1d41512aa3693f2f3495372d8e064cfe1fe83428062a776a08965ea"
     },
     {
       "path": ".github/workflows/star-letters.yml",
@@ -39,8 +39,8 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 350,
-      "sha256": "49f34c0ef16d099822f747b5b2c92a96d6159237ab4baeefddfd5286ce09aad7"
+      "bytes": 461,
+      "sha256": "cddab36a2ea4ef90879d814f24ead17619162fefacf17f2122b06f2759f8d4cf"
     },
     {
       "path": "AGENTS.md",
@@ -1114,8 +1114,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 2720,
-      "sha256": "0acc45a18e1281e3b5c98cfae5026fc2be4dfa4601e2d9183fc65b92e233791f"
+      "bytes": 3921,
+      "sha256": "8825daa78d213cf34e47ef34a53e2fcf82451cf9ff763c81301e019ebcec233e"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -1124,8 +1124,8 @@
     },
     {
       "path": "docs/agent-setup.md",
-      "bytes": 5786,
-      "sha256": "c4038e99e86068d2e5b1985fb60ce657ab078497ba531f575eab6ad07198ac3e"
+      "bytes": 6330,
+      "sha256": "edf8b37e2784eb320e13f4153c1fd8546a639292b4470dfe234c4f535109f6a4"
     },
     {
       "path": "docs/cases/kiln-merge.md",
@@ -1244,8 +1244,8 @@
     },
     {
       "path": "docs/README.md",
-      "bytes": 3158,
-      "sha256": "066f17ad31beb53275a5eb19c5dc9735723eb7b1502afa2da1be553530a671d1"
+      "bytes": 3437,
+      "sha256": "1e2e6b9c3aee2c0c3b5f2928a7b407c1b7f3584aea8d4cddfd1582ed90c340c8"
     },
     {
       "path": "docs/releasing.md",
@@ -1269,8 +1269,8 @@
     },
     {
       "path": "docs/zh-CN/quickstart.md",
-      "bytes": 1942,
-      "sha256": "e6cf90d108fe2d7173c2721435cb18d11ba70289c5264ac391f475fbd3e0d392"
+      "bytes": 2589,
+      "sha256": "d76f8c4327c65b548556d3f1c4ff0510950be11066b6a6e3b24d84b4ac827135"
     },
     {
       "path": "examples/arrow-escape/.gitignore",
@@ -9825,17 +9825,17 @@
     {
       "path": "package-lock.json",
       "bytes": 57583,
-      "sha256": "724b300d53d44d33a2455a1196fa5231d4064ce464ec48e9b59446bf7e100b81"
+      "sha256": "7b860738c8a3bc67bd2ca236d835a433c061bd96768826b90bd056121e8fdaa6"
     },
     {
       "path": "package.json",
-      "bytes": 2806,
-      "sha256": "221ed509484ed243ba0e77a8954b1ceb25de16d0dc9bd38f716b9c86e9eb64f1"
+      "bytes": 2934,
+      "sha256": "48d4b23cfc007074bb75cac2b5dc15736e6c24a82aa07e7f35cbf2ed4b29ee60"
     },
     {
       "path": "packages/cli/index.ts",
-      "bytes": 2961,
-      "sha256": "61e98f768083266d9ce77d2c32a67dac96824bdf5af4963cc4b4f905bfe6477e"
+      "bytes": 4051,
+      "sha256": "abc6617325928cb3c29fda7a343d8a303c28868f40805ac7140399ac5f2ba039"
     },
     {
       "path": "packages/cli/setup.ts",
@@ -9849,8 +9849,8 @@
     },
     {
       "path": "packages/core/index.ts",
-      "bytes": 23459,
-      "sha256": "eabd588448925f31f1de065e81e97a9704e47c4d1bdd456bc5281d4cef498b70"
+      "bytes": 23719,
+      "sha256": "84e56cc0a2ecaf9e854e3d37c7181c5614b04ba08df707c028e13fe8d02fd972"
     },
     {
       "path": "packages/core/knowledge.ts",
@@ -9874,8 +9874,8 @@
     },
     {
       "path": "packages/core/toolkit.ts",
-      "bytes": 9736,
-      "sha256": "826a974e8618ea3c341ece82affb0fea321a143ce601a1b475335b855c71e2e4"
+      "bytes": 13890,
+      "sha256": "3e656eafea23c625a86ef7c0b28fde229b5aed6b4886a37f0434d54909529979"
     },
     {
       "path": "packages/library/index.ts",
@@ -9884,13 +9884,13 @@
     },
     {
       "path": "packages/mcp/index.ts",
-      "bytes": 2404,
-      "sha256": "f831a8f428214787b993c5611ea66199eacccb0ddb72b1debf3426eb3adad3c5"
+      "bytes": 2949,
+      "sha256": "2931bad332fffef22022872349fb69cc3c58004bd7e5da441affd18314d31943"
     },
     {
       "path": "README.md",
-      "bytes": 21178,
-      "sha256": "8b371069e27f092363d3fc07e71e3431a5338d9b8411d64705a1066f99d271a2"
+      "bytes": 21372,
+      "sha256": "ec2fd9b3f3f2f2a5688a7e849bfb44e17325e77b9db9a23ffa8c9a73a152550b"
     },
     {
       "path": "scripts/android/build.mjs",
@@ -10119,8 +10119,8 @@
     },
     {
       "path": "scripts/release/prepare.mjs",
-      "bytes": 5108,
-      "sha256": "b462dcbc862522cd76c9690d6d427ad489c927657d01cf39a92554898051989a"
+      "bytes": 5487,
+      "sha256": "f989fbd244f2265e882008b3f03a3ccecebf1ade95e2fcf80a8316f8a6939a33"
     },
     {
       "path": "scripts/release/publish.mjs",
@@ -10129,8 +10129,8 @@
     },
     {
       "path": "scripts/release/verify-package.mjs",
-      "bytes": 14661,
-      "sha256": "bfc470d7a4c0a8a7d9e9123d717f8d324b010ad96e8682c8918c8aecdf275907"
+      "bytes": 17450,
+      "sha256": "1a2a6daa487f5af54731b2e98f8ed0004035badfe603643b9360d0663f9c1788"
     },
     {
       "path": "scripts/silk-serpent/catalog.json",
@@ -10244,8 +10244,8 @@
     },
     {
       "path": "skills/owngame/SKILL.md",
-      "bytes": 6222,
-      "sha256": "971aa3d95886c4ffac610d1e5bf47f00a8d66d289810493ae7d6bc8fccc8ce3b"
+      "bytes": 7127,
+      "sha256": "c88d1c497200666f2b5e10e7b9fa4c5aa71bb0eb7f0896ab11efb32c62f5fd6b"
     },
     {
       "path": "starter-knowledge/records/kiln-merge.json",
@@ -11611,6 +11611,86 @@
       "path": "tsconfig.json",
       "bytes": 286,
       "sha256": "d96bb08c27d62dfc7c6f3a8564faf9dd4e1104b8208f8676ce5e1abd761d77c2"
+    },
+    {
+      "path": "apps/outline/README.md",
+      "bytes": 4895,
+      "sha256": "9fb3abe021c874e6546ed18796dbfd20cc119f3957fe77a4bd75accc2141a3cb"
+    },
+    {
+      "path": "apps/outline/app.js",
+      "bytes": 35468,
+      "sha256": "c4a0fab38226f35b46ce06881c571071a25db814d9c340383242dbd2eabd1383"
+    },
+    {
+      "path": "apps/outline/brand/arcade-mascot.webp",
+      "bytes": 29536,
+      "sha256": "8427c72738bdd32e6f289686e8bfc3b5050f74106f5a46437509869a2234a5b1"
+    },
+    {
+      "path": "apps/outline/brand/harbor-background.webp",
+      "bytes": 274904,
+      "sha256": "670c43d37408335ea49f283b8cba79517ae29c1719047db1d766fbce6e749d95"
+    },
+    {
+      "path": "apps/outline/brand/lighthouse.webp",
+      "bytes": 270100,
+      "sha256": "bf11f608cf43281b612f24c66afb58da17c43811c678863e3e0e2dccd460992c"
+    },
+    {
+      "path": "apps/outline/index.html",
+      "bytes": 4729,
+      "sha256": "1602e03a8733a68e95f950c4896bb2f0b0a7c1eb8411cbd878fb9970bdf48e25"
+    },
+    {
+      "path": "apps/outline/model.mjs",
+      "bytes": 10989,
+      "sha256": "d4b5a68b1dea173e9c72dd4a5e24c05a2c40a2302ed25132350fa35324d23e34"
+    },
+    {
+      "path": "apps/outline/server.mjs",
+      "bytes": 5947,
+      "sha256": "7a42d321970beafb7a7fbb3105844a1275908be5e51b9dd41bb5bf4207322d7e"
+    },
+    {
+      "path": "apps/outline/style.css",
+      "bytes": 21589,
+      "sha256": "87a1e7b2b42beef5ceafdf0759a0581fdc359527eed0746d2325cdc7bc0425c2"
+    },
+    {
+      "path": "packages/core/project-inspect.ts",
+      "bytes": 8522,
+      "sha256": "f372bf7fc8f1be96a879fbc30930ff3e4c653cbcd423f902f03700b1e5c30a60"
+    },
+    {
+      "path": "scripts/toolkit/outline-store.mjs",
+      "bytes": 15075,
+      "sha256": "9ab5b52099f3d778593ff91a687110001387afb46d7214ade5512f9e2fcddc71"
+    },
+    {
+      "path": "skills/owngame/references/importing.md",
+      "bytes": 3165,
+      "sha256": "b9e7a0c6a585718d1e05f26238d0a910f4793505da755d9d5ea2f281b7ba582d"
+    },
+    {
+      "path": "skills/owngame/references/outline.md",
+      "bytes": 4821,
+      "sha256": "3e2e2a67e97b00dfa28f647cbc36b75beea10d46dff91a75698cc10f43cec082"
+    },
+    {
+      "path": "tests/outline/workspace.test.mjs",
+      "bytes": 7553,
+      "sha256": "51cc0e24309b702a854efd3f81dc413f62569e40fe9f32766a2d8aa1fb8bd648"
+    },
+    {
+      "path": "tests/release/outline.test.mjs",
+      "bytes": 4781,
+      "sha256": "a6ca5b5e7306fa9f7b714284791a1cb42fdc86bf7720a2921921ea6981bc7f76"
+    },
+    {
+      "path": "tests/release/project-inspect.test.mjs",
+      "bytes": 5899,
+      "sha256": "f77c41a0714d2f40412b35d8e7ce6a789e6997fbc9629764a00986f3e900785a"
     }
   ]
 }

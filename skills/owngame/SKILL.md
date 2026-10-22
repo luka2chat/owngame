@@ -1,6 +1,6 @@
 ---
 name: owngame
-description: Create or improve small games using owngame reference cases, playable Web starters, and targeted playtesting. Use for new game ideas, art or gameplay revisions, reference research, and playable delivery.
+description: Create or improve small games using owngame project design boards, reference cases, playable Web starters, and targeted playtesting. Use for new game ideas, game design boards, art or gameplay revisions, reference research, and playable delivery.
 ---
 
 # Make your own game
@@ -13,13 +13,15 @@ The host agent owns reasoning, code edits and iteration. owngame supplies reusab
 - **Art redesign:** inspect the current running scene and identify what should change. Compare directions when useful or requested; multiple concepts are not a mandatory gate. Preserve rules and saves unless the user also wants them changed.
 - **Local fix or content extension:** reproduce the specific state first and retain the accepted parts. Read [iteration](references/iteration.md) for variable-capacity art, existing saves, migration and shared player integration.
 - **Reference research:** separate mechanic inspiration, exact parameter matching, level reproduction and asset reuse. Search only as deeply as the requested commitment requires. Unknown parameters stay unknown or become explicitly original choices.
-- **Third-party adaptation:** establish license/provenance, runtime dependencies and the complete playable loop before promising reuse. Do not relabel upstream code, levels or assets as original.
+- **Third-party adaptation:** establish license/provenance, runtime dependencies and the complete playable loop before promising reuse. For an existing Node game or a platform-generated export, read [importing](references/importing.md) and use `project.inspect` before choosing commands. Do not relabel upstream code, levels or assets as original.
 
 If the user only says “help me make a game” or gives a theme without a gameplay direction, first check the conversation and any selected reference for an existing choice. If the direction is still missing, ask one short question in the user's language with a few concrete options and room for their own idea. For example: “你想做哪类游戏？可以选轻松解谜、动作冒险、经营养成，也可以说自己的想法。” Wait for their answer before calling `project.create`, choosing gameplay, or producing game-specific code and art. Requested installation and availability checks can proceed while waiting. The bundled three-in-a-row starter is not the user's game choice.
 
 If the user explicitly delegates the choice (“你决定” / “surprise me”), briefly state the chosen direction and proceed. When the game direction is already clear, make reasonable low-impact implementation choices without repeating this question. Surface consequential choices, such as original levels versus exact reference difficulty, before committing to them.
 
 ## Use the installed tools
+
+For game development, first read the project's `game-outline.json` with `outline.get`. It is the shared design source used by the local canvas and CLI/MCP. If an existing game has no file, initialize it with `outline.init` and transfer only supported facts from its documents; `project.create` initializes one automatically. Read [design board workflow](references/outline.md) for the data layout, editing commands, conflict handling and evidence updates. Preserve the user's current instructions and accepted direction; pending questions remain pending. After implementation, update the affected cards and record actual validation and remaining gaps, so the next iteration starts from current project state.
 
 Discover operations with `owngame capabilities` or `owngame_capabilities` over MCP. CLI takes `operation JSON`, `operation @file`, or JSON on stdin with `-`. MCP names are `owngame_` plus the operation with dots replaced by underscores. Both use the same core. `setup` and `doctor` are CLI-only installation helpers, not creative tasks.
 

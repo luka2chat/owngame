@@ -18,9 +18,10 @@ await fs.mkdir(path.dirname(out),{recursive:true});
 out=path.join(path.dirname(out),'.owngame-export-'+randomUUID());
 await fs.mkdir(out);
 try {
-const entries=['packages','starter-knowledge','skills','templates','scripts/toolkit','scripts/lib/codex-browser-preflight.mjs','scripts/release','tests/release','.github','tsconfig.json','README.md','LICENSE','THIRD_PARTY_NOTICES.md','CONTRIBUTING.md','SECURITY.md','CHANGELOG.md','docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','docs/install.md','docs/agent-setup.md','docs/quickstart.md','docs/resource-search.md','docs/releasing.md','docs/style-recipes.json','docs/cases','docs/images'];
+const entries=['apps/outline','tests/outline','packages','starter-knowledge','skills','templates','scripts/toolkit','scripts/lib/codex-browser-preflight.mjs','scripts/release','tests/release','.github','tsconfig.json','README.md','LICENSE','THIRD_PARTY_NOTICES.md','CONTRIBUTING.md','SECURITY.md','CHANGELOG.md','docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','docs/install.md','docs/agent-setup.md','docs/quickstart.md','docs/resource-search.md','docs/releasing.md','docs/style-recipes.json','docs/cases','docs/images'];
 const manifest=[];
 async function copy(relative){
+ if(/(^|\/)(game-outline\.json(?:\..*)?|project-files\.json|workspace\.json(?:\..*)?|\.game-outline\.lock)(\/|$)/.test(relative))throw Error('Private outline data cannot be exported: '+relative);
  const file=path.join(root,relative),stat=await fs.lstat(file);
  if(stat.isSymbolicLink())throw Error('Public source cannot contain symlink: '+relative);
  if(stat.isDirectory()) {for(const name of (await fs.readdir(file)).sort())await copy(`${relative}/${name}`);return;}
@@ -36,13 +37,13 @@ for(const [relative,bytes] of await readPublicFiles(root)) {
  await fs.mkdir(path.dirname(path.join(out,relative)),{recursive:true});await fs.writeFile(path.join(out,relative),bytes);
  manifest.push({path:relative,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')});
 }
-pkg.scripts={build:'tsc -p tsconfig.json',test:'npm run test:release','test:release':pkg.scripts['test:release'],'verify:package':pkg.scripts['verify:package'],'release:prepare':pkg.scripts['release:prepare'],prepack:'npm run build'};
+pkg.scripts={build:'tsc -p tsconfig.json',test:'npm run test:release','test:release':pkg.scripts['test:release'],outline:pkg.scripts.outline,'test:outline':pkg.scripts['test:outline'],'verify:package':pkg.scripts['verify:package'],'release:prepare':pkg.scripts['release:prepare'],prepack:'npm run build'};
 Object.assign(pkg.scripts,{'android:test:updates':'node scripts/android/test-updates.mjs','android:build':'node scripts/android/build.mjs','android:check':'node scripts/android/export-source.mjs && node --test tests/android/public-source.test.mjs','android:test:compile':'node scripts/android/test-repository.mjs --compile-only','test:android':'node scripts/android/test-repository.mjs'});
 if(repository){pkg.repository={type:'git',url:repository+'.git'};pkg.bugs={url:repository+'/issues'};}
 await fs.writeFile(path.join(out,'package.json'),JSON.stringify(pkg,null,2)+'\n');
 const lock=JSON.parse(await fs.readFile(path.join(root,'package-lock.json')));lock.version=pkg.version;lock.packages[''].version=pkg.version;lock.packages[''].license=pkg.license;
 await fs.writeFile(path.join(out,'package-lock.json'),JSON.stringify(lock,null,2)+'\n');
-await fs.writeFile(path.join(out,'.gitignore'),'node_modules/\ndist/\n/artifacts/\n/release/\n.local/\n.gradle/\nlocal.properties\n*.jks\n*.keystore\n*.p12\n*.pfx\n*.apk\n*.aab\n.owngame/\n.codex/\n.cursor/\n.agents/\n.env\n.env.*\n.npmrc\n*.tgz\n.DS_Store\nmy-game/\n');
+await fs.writeFile(path.join(out,'.gitignore'),'node_modules/\ndist/\n/artifacts/\n/release/\n.local/\ngame-outline.json\ngame-outline.json.*\nproject-files.json\n.game-outline.lock/\n.gradle/\nlocal.properties\n*.jks\n*.keystore\n*.p12\n*.pfx\n*.apk\n*.aab\n.owngame/\n.codex/\n.cursor/\n.agents/\n.env\n.env.*\n.npmrc\n*.tgz\n.DS_Store\nmy-game/\n');
 await fs.writeFile(path.join(out,'SOURCE_MANIFEST.json'),JSON.stringify({version:pkg.version,scope:'Explicit public toolkit export; production workspace excluded',files:manifest},null,2)+'\n');
 await fs.rename(out,destination);
 console.log(JSON.stringify({directory:destination,version:pkg.version,source_files:manifest.length,repository:repository??'not configured',next:'npm ci; npm test; npm run verify:package in the exported directory before publishing'}));

@@ -5,8 +5,15 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { Fault, readJson, digest, hash } from "./storage.js";
 import { ResourceOperations } from "./resources.js";
+import { inspectProject } from "./project-inspect.js";
+import { pathToFileURL } from "node:url";
 
 const text = z.string().min(1).max(4000);
+const OutlineCardPatch = z.strictObject({
+  id: z.string().max(100).optional(), type: z.enum(["note","decision","rule","state","place","character","story","quest","level","reference","asset"]).optional(),
+  title: z.string().max(200).optional(), body: z.string().max(20000).optional(), status: z.enum(["idea","doing","done"]).optional(),
+  fields: z.record(z.string(), z.string().max(20000)).optional(), x: z.number().min(-1000000).max(1000000).optional(), y: z.number().min(-1000000).max(1000000).optional(),
+});
 export const ToolkitOperations = {
   ...ResourceOperations,
   "research.prepare": z.strictObject({
@@ -18,13 +25,26 @@ export const ToolkitOperations = {
   "style.get": z.strictObject({ id: z.string().regex(/^[a-z-]+$/) }),
   "guidance.get": z.strictObject({
     topic: z
-      .enum(["authoring", "web", "cocos", "testing", "art", "iteration"])
+      .enum(["authoring", "web", "cocos", "testing", "art", "iteration", "importing", "outline"])
       .default("authoring"),
   }),
   "project.create": z.strictObject({
     directory: text,
     name: z.string().regex(/^[a-z][a-z0-9-]{0,63}$/),
     template: z.enum(["web-canvas", "web-phaser", "cocos-minimal", "unity-home"]).default("web-canvas"),
+  }),
+  "project.inspect": z.strictObject({ directory: text }),
+  "outline.init": z.strictObject({ directory: text, title: z.string().min(1).max(200).optional() }),
+  "outline.list": z.strictObject({}),
+  "outline.get": z.strictObject({ directory: text, view: z.enum(["context", "full"]).default("context") }),
+  "outline.update": z.strictObject({
+    directory: text, expected_sha256: z.string().regex(/^[a-f0-9]{64}$/),
+    changes: z.strictObject({
+      project: z.strictObject({ title: z.string().min(1).max(200).optional(), tagline: z.string().max(20000).optional(), experience: z.string().max(20000).optional(), scope: z.string().max(20000).optional(), playable: z.string().max(2000).optional() }).optional(),
+      cards: z.array(OutlineCardPatch).max(1500).optional(), delete_cards: z.array(z.string().max(100)).max(1500).optional(),
+      edges: z.array(z.strictObject({ id: z.string().max(100).optional(), from: z.string().max(100), to: z.string().max(100), label: z.string().max(200) })).max(5000).optional(),
+      delete_edges: z.array(z.string().max(100)).max(5000).optional(),
+    }),
   }),
   "cocos.build": z.strictObject({
     project: text,
@@ -56,6 +76,43 @@ export class Toolkit {
   }
   async styles() {
     return readJson(path.join(this.root, "docs/style-recipes.json"));
+  }
+  async inspectProject(value: string) {
+    const directory = await this.inside(value);
+    const report = await inspectProject(directory);
+    let outline;
+    try { outline = await this.outline("outline.get", { directory, view: "context" }); }
+    catch (e) { outline = { available: false, reason: e instanceof Error ? e.message : String(e), next: "outline.init" }; }
+    return { ...report, outline };
+  }
+  async outline(operation: string, a: any = {}): Promise<any> {
+    const module = await import(pathToFileURL(path.join(this.root, "scripts/toolkit/outline-store.mjs")).href);
+    try {
+      const registry = new module.OutlineWorkspace(this.workspace);
+      if (operation === "outline.list") {
+        const snapshot = await registry.snapshot();
+        if (!snapshot.workspace.projects.length) {
+          try { const value = await module.readOutline(this.workspace); return { items: [module.outlineContext(value)], errors: [] }; }
+          catch (e) { if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e; }
+        }
+        return { items: snapshot.workspace.projects.map((p: any) => ({ id:p.id, title:p.title, ...snapshot.bindings[p.id] })), errors: snapshot.errors };
+      }
+      const directory = await this.inside(a.directory);
+      if (operation === "outline.init") {
+        const value = await module.initOutline(directory, { title: a.title });
+        await registry.initialize(); await registry.register(directory);
+        return { ...module.outlineContext(value), created: value.created };
+      }
+      const current = await module.readOutline(directory);
+      if (operation === "outline.get") return module.outlineContext(current, a.view === "full");
+      if (current.sha256 !== a.expected_sha256) throw new Fault("OUTLINE_CONFLICT", "Read the current outline and reconcile changes before retrying.");
+      const project = module.patchProject(current.project, a.changes);
+      return module.outlineContext(await module.writeOutline(directory, a.expected_sha256, project));
+    } catch (e) {
+      const code = (e as NodeJS.ErrnoException).code;
+      if (code?.startsWith("OUTLINE_")) throw new Fault(code, (e as Error).message);
+      throw e;
+    }
   }
   async style(id: string) {
     const value = (await this.styles()).styles.find((s: any) => s.id === id);
@@ -90,6 +147,7 @@ export class Toolkit {
         errorOnExist: true,
       });
     }
+    const outline = await this.outline("outline.init", { directory: dest, title: a.name });
     if (a.template === "unity-home") {
       const settingsPath = path.join(dest, "ProjectSettings/ProjectSettings.asset");
       const identity = randomUUID().replaceAll("-", "");
@@ -102,6 +160,7 @@ export class Toolkit {
       await fs.writeFile(path.join(dest, ".gitignore"), "/[Ll]ibrary/\n/[Tt]emp/\n/[Oo]bj/\n/[Bb]uilds/\n/[Ll]ogs/\n/[Uu]ser[Ss]ettings/\n/.vs/\n*.csproj\n*.sln\n.DS_Store\n");
       return {
         project: dest,
+        outline: { file: outline.file, sha256: outline.sha256 },
         template: a.template,
         engine: "unity@6000.3.26f1",
         scene: "Assets/Scenes/HomeArt.unity",
@@ -120,6 +179,7 @@ export class Toolkit {
     );
     return {
       project: dest,
+      outline: { file: outline.file, sha256: outline.sha256 },
       template: a.template,
       engine: a.template === "cocos-minimal" ? "cocos@3.8.8" : a.template === "web-phaser" ? "phaser@3.90.0" : "canvas2d+dom",
       ...(a.template === "cocos-minimal" ? { scene: "assets/scenes/M1.scene" } : {

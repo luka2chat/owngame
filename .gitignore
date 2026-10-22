@@ -26,3 +26,9 @@ local.properties
 *.pfx
 *.apk
 *.aab
+
+# Private local game-design data
+game-outline.json
+game-outline.json.*
+project-files.json
+.game-outline.lock/

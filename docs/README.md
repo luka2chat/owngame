@@ -10,6 +10,7 @@ Technical instructions for agents, developers and maintainers are maintained in 
 - [Installation and optional MCP](install.md): manual setup, updates, host configuration and recovery.
 - [Create and revise your first game](quickstart.md): a playable starter, actual input and a visual revision that preserves saves.
 - [Recreate a website game](remix.md): turn a reference brief into a task in your workspace.
+- [Continue an imported Node game](../skills/owngame/references/importing.md): inspect existing commands, platform dependencies and scoped validation before editing.
 
 For an agent, read setup first when integration is needed, then the installed [owngame Skill](../skills/owngame/SKILL.md). Follow only the task-relevant references for [Web](../skills/owngame/references/web.md), [Cocos](../skills/owngame/references/cocos.md), [art](../skills/owngame/references/art.md), [iteration](../skills/owngame/references/iteration.md) and [testing](../skills/owngame/references/testing.md). Use `capabilities` for the installed runtime's current operations and parameters.
 
@@ -29,3 +30,5 @@ Game source examples and website publication tooling belong to the GitHub reposi
 ## Documentation maintenance
 
 Maintain technical behavior in the canonical English document. Keep the Chinese guide short and link to it rather than duplicating every command and constraint in a second full manual. Update cross-references when headings change. Preserve existing inbound anchors where practical, especially licensing links from the README and website. Translation must not turn `unknown`, `not_checked`, `not_run` or pending human feedback into a successful validation claim.
+
+- [Local game design board](../apps/outline/README.md): per-game JSON, canvas, CLI/MCP and development context.

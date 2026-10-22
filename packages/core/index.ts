@@ -165,6 +165,13 @@ export class Core {
         return ok(await this.toolkit.guidance(a.topic));
       case "project.create":
         return ok(await this.toolkit.create(a));
+      case "project.inspect":
+        return ok(await this.toolkit.inspectProject(a.directory));
+      case "outline.init":
+      case "outline.list":
+      case "outline.get":
+      case "outline.update":
+        return ok(await this.toolkit.outline(op, a));
       case "web.inspect":
         return ok(await this.toolkit.inspect(a.directory));
       case "cocos.build": {
