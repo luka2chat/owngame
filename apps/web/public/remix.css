@@ -25,9 +25,11 @@
   .card-foot .download { order: 3; }
 }
 @media (max-width:760px) {
-  .card-foot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .card-foot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; align-items:stretch; }
   .card-foot .play-link,
   .card-foot .card-remix { display: inline-flex; align-items: center; justify-content: center; margin: 0; min-width: 0; min-height: 44px; padding: 8px 4px; border-radius: 9px; box-shadow: 0 3px var(--ink); font-size: 11px; line-height: 1.2; text-align: center; }
   .card-foot .card-remix { white-space: normal; }
+  .card-foot .play-link { white-space:nowrap; }
   .card-foot .download { grid-column: 1 / -1; min-height: 44px; padding: 6px 0; border-bottom: 0; line-height: 1.5; }
 }
+@media (max-width:360px) { .card-foot .play-link { font-size:10px;padding-inline:3px; } }

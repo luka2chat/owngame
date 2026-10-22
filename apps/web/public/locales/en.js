@@ -1,5 +1,7 @@
 // Site copy only. Immutable game packages and their save formats stay separate.
 export const messages = {
+  "请用电脑玩": "Play on PC",
+  "查看 ↗": "View ↗",
   "请在电脑上游玩": "Play on a computer",
   "查看电脑游戏：{title}": "View PC game: {title}",
   "查看游戏 ↗": "View game ↗",

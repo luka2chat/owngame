@@ -264,11 +264,16 @@ function render() {
       render();
     };
     title.append(element("h3", "", g.title), fav);
-    copy.append(title, element("small", "platform-label", t(platformLabel(g))));
-    if (computer) copy.append(element("small", "computer-hint", t("请在电脑上游玩")));
+    const platformNote = element("small", "platform-label" + (computer ? " computer-hint" : ""), t(computer ? "请用电脑玩" : platformLabel(g)));
+    if (computer) {
+      const icon = element("span", "computer-symbol");
+      icon.setAttribute("aria-hidden", "true");
+      platformNote.prepend(icon);
+    }
+    copy.append(title, platformNote);
     copy.append(element("p", "", g.description));
     const foot = element("div", "card-foot"),
-      play = element("a", "play-link", t(computer ? "查看游戏 ↗" : "开玩 ▶"));
+      play = element("a", "play-link", t(computer ? "查看 ↗" : "开玩 ▶"));
     play.href = playUrl(g);
     play.onclick = () => selection(raw, "play_button", index + 1);
     play.onauxclick = (e) => {

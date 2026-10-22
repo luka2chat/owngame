@@ -489,8 +489,8 @@
     },
     {
       "path": "apps/web/public/app.js",
-      "bytes": 14780,
-      "sha256": "d26fb4fafb0ce185bcd17d19f3eb28205be5b6d64e87f6cb94c51ab996b1f8fe"
+      "bytes": 14950,
+      "sha256": "a92c909ae50f1be83167b3fb190b7aa4dbf35dfce9bab6a77dc687c7aef91799"
     },
     {
       "path": "apps/web/public/art/arcade-mascot.png",
@@ -1029,8 +1029,8 @@
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 29450,
-      "sha256": "f26d990d1738732a6e5e68d67f892932f41ab01a3a34f8745bf770802523bca3"
+      "bytes": 29513,
+      "sha256": "7a7b0c7811334998ff4c40e42f4922fad7bc1bdae221969e2a0e22f0ec49249b"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -1069,8 +1069,8 @@
     },
     {
       "path": "apps/web/public/remix.css",
-      "bytes": 2886,
-      "sha256": "b385d68046ba0af26b98782483a7fae994a90052602317f981af151e64cef92d"
+      "bytes": 3045,
+      "sha256": "96923cee932c27459ed4db48941945fd53e2750b79044dd3742bb38820885ce2"
     },
     {
       "path": "apps/web/public/remix.js",
@@ -1084,8 +1084,8 @@
     },
     {
       "path": "apps/web/public/style.css",
-      "bytes": 23355,
-      "sha256": "ca8f6920389b849a7366cbd80e948e1b0e91417df3977ef444bff2141f76dae3"
+      "bytes": 24123,
+      "sha256": "02f4d56585d8d96006d65f7b2f075d1c878c958e4883110738841b194afbd955"
     },
     {
       "path": "apps/web/public/sw.js",
@@ -9955,7 +9955,7 @@
     {
       "path": "scripts/games/__pycache__/export.cpython-315.pyc",
       "bytes": 29119,
-      "sha256": "7079bea3ad326153b9edc253087677904610159b1b83a3535ef11cf8154aaea9"
+      "sha256": "e37ff98a3eabac6184a3298a6e90bb9e41d5842f33e6afad26655ae11b08a3b4"
     },
     {
       "path": "scripts/games/build-all.mjs",
@@ -10209,8 +10209,8 @@
     },
     {
       "path": "scripts/web/verify-pc-handoff.mjs",
-      "bytes": 4928,
-      "sha256": "37551b332b3d92ad154625c492b039525da82b51410566ad19abe6a870550471"
+      "bytes": 4922,
+      "sha256": "12e12d648a787288a7523556752a67ba82b7988ed3bfbce5be2fe8f6bdb44df5"
     },
     {
       "path": "SECURITY.md",

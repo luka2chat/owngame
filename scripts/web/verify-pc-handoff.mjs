@@ -13,7 +13,7 @@ try{
  const requests=[];page.on('request',r=>{if(new URL(r.url()).pathname.startsWith('/games/'))requests.push(r.url())});
  await page.goto(base+'/?lang=zh-CN');await page.locator('.game-card.tidal-reclaim').waitFor();
  assert.deepEqual(await page.locator('.game-card').evaluateAll(cards=>cards.slice(0,2).map(c=>c.querySelector('h3').textContent)),['潮汐回收站','星野来信']);
- for(const id of ['tidal-reclaim','star-letters']){const card=page.locator('.game-card.'+id);assert(await card.getByText('请在电脑上游玩',{exact:true}).isVisible());assert.equal(await card.locator('[data-download-game]').count(),0)}
+ for(const id of ['tidal-reclaim','star-letters']){const card=page.locator('.game-card.'+id);assert(await card.getByText('请用电脑玩',{exact:true}).isVisible());assert.equal(await card.locator('[data-download-game]').count(),0)}
  await page.screenshot({path:out+'/phone-library.png',fullPage:false});
  for(const id of ['tidal-reclaim','star-letters'])for(const lang of ['zh-CN','en']){
   await page.goto(base+'/play?game='+id+'&platform=pc&lang='+lang);

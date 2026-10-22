@@ -366,6 +366,8 @@ h1 {
   gap: 25px;
 }
 .game-card {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   background: #fffdf5;
   border: 3px solid var(--ink);
@@ -381,6 +383,7 @@ h1 {
   box-shadow: 0 9px var(--ink);
 }
 .cover {
+  flex-shrink: 0;
   display: block;
   aspect-ratio: 16/9;
   position: relative;
@@ -519,6 +522,9 @@ h1 {
   background: #d3dec8;
 }
 .card-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 20px 23px;
 }
 .title-line {
@@ -549,6 +555,7 @@ h1 {
   margin: 4px 0 16px;
 }
 .card-foot {
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -1022,4 +1029,14 @@ dialog p {
 }
 @media (pointer:coarse) { .platform-tabs button { min-height:44px; } }
 .platform-label { display:block;font-weight:700;color:var(--blue);margin:4px 0; }
-.computer-hint { display:block;color:#70451d;background:#fff0bb;border:1px solid #d4b66b;border-radius:5px;padding:5px 7px;margin:6px 0;font-size:12px;font-weight:700; }
+.computer-hint { display:flex;align-items:center;gap:7px;color:#416878;font-size:12px;line-height:1.5;margin:6px 0; }
+.computer-symbol { position:relative;display:inline-block;flex:none;width:15px;height:11px;border:1.5px solid currentColor;border-radius:2px;margin-bottom:3px; }
+.computer-symbol::after { content:"";position:absolute;left:3px;right:3px;bottom:-5px;height:3px;border-bottom:1.5px solid currentColor; }
+/* Share the title, platform, description and action rows across each mobile pair. */
+@supports (grid-template-rows:subgrid) {
+  @media (max-width:760px) {
+    .game-card { display:grid;grid-template-rows:subgrid;grid-row:span 5;row-gap:0; }
+    .card-info { display:grid;grid-template-rows:subgrid;grid-row:span 4;row-gap:0; }
+    .card-foot { margin-top:0;align-self:start; }
+  }
+}
