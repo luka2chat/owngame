@@ -120,6 +120,14 @@ owngame 提供参考、模板和检查接口；代码实现、图片生成及浏
 
 <a id="3d-推荐"></a>
 
+### 裂隙突击 · 3D 第一人称射击
+
+工业港区里的第一人称射击，结合波次生存与机器人对战。
+
+[![裂隙突击实机画面：工业港区中的第一人称武器、瞄准准星与战斗 HUD](docs/images/riftstrike-gameplay.png)](docs/images/riftstrike-gameplay.png)
+
+*本地开发版实机截图。*
+
 <details>
 <summary><strong>探索 3D 游戏案例</strong></summary>
 

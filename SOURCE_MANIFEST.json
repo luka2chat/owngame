@@ -1298,6 +1298,11 @@
       "sha256": "b8b7482cd6bfbf88de92fa426b2e7c4109b4a2d320301fed717278e72f20270c"
     },
     {
+      "path": "docs/images/riftstrike-gameplay.png",
+      "bytes": 130000,
+      "sha256": "1ff05fe94df3bd4283ccebf3ddb50997aacff4660fc5c7dd0b6a637b82c2f1f7"
+    },
+    {
       "path": "docs/install.md",
       "bytes": 8111,
       "sha256": "c18c5c41d941a7ac1ab11c85d135a01be2fb6f4d8ced5a6535ae872b1c9a2c0a"
@@ -10154,8 +10159,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 22655,
-      "sha256": "67d6e85db5faf6f4bb63d37494c47affb495748ef36888e209e0327fcf006b31"
+      "bytes": 22984,
+      "sha256": "e4040e8e3af489c9840c66f68df9f4e9dd26da0176bbc9be110c81f4c2762047"
     },
     {
       "path": "scripts/android/build.mjs",
