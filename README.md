@@ -280,6 +280,8 @@ owngame 自有代码与文档采用 [MIT 许可](LICENSE)。网站展示游戏�
 
 部分 PC 游戏基于作者使用 [Manus](https://manus.im) 付费账号制作的作品进行二次开发，感谢 Manus 提供的创作工具。
 
+项目首发于 [Linux.do 社区](https://linux.do/)。
+
 ## English
 
 **Make games your own, with your AI agent.**
