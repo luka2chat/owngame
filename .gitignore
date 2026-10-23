@@ -27,8 +27,9 @@ local.properties
 *.apk
 *.aab
 
-# Private local game-design data
+# Local game-design backups and indexes; reviewed example boards are tracked
 game-outline.json
+!examples/*/game-outline.json
 game-outline.json.*
 project-files.json
 .game-outline.lock/

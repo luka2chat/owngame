@@ -10,9 +10,19 @@
       "sha256": "b21a5e72c8bee33dfbf1f5cf29b9b83afc6dfc196e634f5944319a960891fa6c"
     },
     {
+      "path": "AGENTS.md",
+      "bytes": 976,
+      "sha256": "75f7bda4f0915394aa8b6f867756acb149f564af5abdc6db1ea2a80c9351e4da"
+    },
+    {
       "path": "build.mjs",
       "bytes": 2848,
       "sha256": "1b2099523b150fb4482c06001dfd39223014a08eeaf9fa5cdae116b06fcf74a9"
+    },
+    {
+      "path": "game-outline.json",
+      "bytes": 3040,
+      "sha256": "d81a9a0d256de3c86352114c5f535df120cc97a87a5a4f08d95f96912bbaa1e0"
     },
     {
       "path": "game.json",
@@ -91,8 +101,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1270,
-      "sha256": "ca0f229f10a511c7344ee80081945fd85b1abf497ec23bb1b0176ed3f1cd333b"
+      "bytes": 1751,
+      "sha256": "f5fec5d61c39444cbc91f30b38f9dc654fe56962093c48898085ec84d3031447"
     },
     {
       "path": "serve.mjs",

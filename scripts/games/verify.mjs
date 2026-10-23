@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {sha256, validateCoverage} from './source-policy.mjs';
+import {validatePublicOutline} from './outline-policy.mjs';
 import {readGameEntries} from '../web/catalog.mjs';
 export async function verify(root) {
   const index = JSON.parse(await fs.readFile(path.join(root, 'games.json')));
@@ -30,6 +31,8 @@ export async function verify(root) {
       if (/\.(?:ts|js|mjs|json|md|html|css)$/.test(f.path) && /\/Users\/|\/Volumes\/|192\.168\.\d+\.\d+|gh[pousr]_[A-Za-z0-9]{30,}|-----BEGIN (?:RSA |OPENSSH )?PRIVATE KEY/.test(b.toString())) throw Error('Private data in public source: '+game.id+'/'+f.path);
       count++; bytes+=b.length;
     }}));
+    if (!names.has('game-outline.json') || !names.has('AGENTS.md')) throw Error('Missing project-local design board: '+game.id);
+    validatePublicOutline(JSON.parse(await fs.readFile(path.join(folder,'game-outline.json'),'utf8')));
     for (const name of ['README.md','LICENSE','THIRD_PARTY_NOTICES.md','package.json']) if (!names.has(name)) throw Error('Missing public documentation: '+game.id+'/'+name);
     if (game.kind !== 'unity') {
       for (const name of ['game.json','build.mjs','serve.mjs','package-lock.json']) if (!names.has(name)) throw Error('Missing portable build: '+game.id+'/'+name);

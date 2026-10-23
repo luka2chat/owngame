@@ -114,3 +114,9 @@ npx @owngame/cli@latest project.create '{"directory":"my-unity-game","name":"my-
 Add `my-unity-game` in Unity Hub, open `Assets/Scenes/HomeArt.unity` and press Play. Unity Package Manager retrieves project dependencies on first import. The template README covers gameplay, art and validation entry points.
 
 If the project already uses setup and needs an update, preview and apply the same adapter used for its installation. Reload the host only if using its MCP connection. Updating the toolkit does not migrate existing game projects.
+
+## Open a project design board
+
+From any game directory, run `owngame outline` (or `npx @owngame/cli@latest outline .`). From a parent directory, run `owngame outline path/to/game`. The browser opens the project's own `./game-outline.json`; a missing file is initialized. Use `--no-open` to only print the URL, and `--port 3230` to select a port. The default port falls back to a free one if occupied. Stop with Ctrl+C.
+
+Keep JSON/document/asset references relative to the game directory. The ignored workspace index stores relative paths and accepts older absolute bindings during migration. A cloned public game includes its reviewed design JSON and needs no private workspace registry.

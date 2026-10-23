@@ -1,0 +1,61 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 1,
+  "project": {
+    "id": "4c32a3fa-1bfa-4910-a671-b943d987d484",
+    "title": "萤灯四连 · Web",
+    "tagline": "竹亭渐暗，先点亮属于你的四盏萤灯。",
+    "experience": "",
+    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "6484ff33-aaca-4457-bbca-92d8e1c075d6",
+        "type": "rule",
+        "section": "rules",
+        "title": "当前玩法说明（文档记录）",
+        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "trigger": "",
+          "behavior": "点选一列，灯珠会落到最下方空位。横、竖或斜向连成四个获胜。支持单人陪练、同屏双人、悔棋和自动存档。",
+          "example": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "ce65ace6-2532-4608-b7b9-54ed1b1acb6f",
+        "type": "decision",
+        "section": "overview",
+        "title": "下一步开发目标",
+        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
+          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
+          "result": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "905a46d9-2ebc-4e2b-86fe-ea7c6a72d7f2",
+        "type": "note",
+        "section": "overview",
+        "title": "开发记录与验证",
+        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
+        "status": "idea",
+        "x": 410,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

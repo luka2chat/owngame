@@ -43,7 +43,7 @@ if(repository){pkg.repository={type:'git',url:repository+'.git'};pkg.bugs={url:r
 await fs.writeFile(path.join(out,'package.json'),JSON.stringify(pkg,null,2)+'\n');
 const lock=JSON.parse(await fs.readFile(path.join(root,'package-lock.json')));lock.version=pkg.version;lock.packages[''].version=pkg.version;lock.packages[''].license=pkg.license;
 await fs.writeFile(path.join(out,'package-lock.json'),JSON.stringify(lock,null,2)+'\n');
-await fs.writeFile(path.join(out,'.gitignore'),'node_modules/\ndist/\n/artifacts/\n/release/\n.local/\ngame-outline.json\ngame-outline.json.*\nproject-files.json\n.game-outline.lock/\n.gradle/\nlocal.properties\n*.jks\n*.keystore\n*.p12\n*.pfx\n*.apk\n*.aab\n.owngame/\n.codex/\n.cursor/\n.agents/\n.env\n.env.*\n.npmrc\n*.tgz\n.DS_Store\nmy-game/\n');
+await fs.writeFile(path.join(out,'.gitignore'),'node_modules/\ndist/\n/artifacts/\n/release/\n.local/\ngame-outline.json\n!examples/*/game-outline.json\ngame-outline.json.*\nproject-files.json\n.game-outline.lock/\n.gradle/\nlocal.properties\n*.jks\n*.keystore\n*.p12\n*.pfx\n*.apk\n*.aab\n.owngame/\n.codex/\n.cursor/\n.agents/\n.env\n.env.*\n.npmrc\n*.tgz\n.DS_Store\nmy-game/\n');
 await fs.writeFile(path.join(out,'SOURCE_MANIFEST.json'),JSON.stringify({version:pkg.version,scope:'Explicit public toolkit export; production workspace excluded',files:manifest},null,2)+'\n');
 await fs.rename(out,destination);
 console.log(JSON.stringify({directory:destination,version:pkg.version,source_files:manifest.length,repository:repository??'not configured',next:'npm ci; npm test; npm run verify:package in the exported directory before publishing'}));

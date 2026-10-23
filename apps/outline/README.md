@@ -48,3 +48,9 @@ npm run test:outline
 ```
 
 Tests cover persistence across restarts, backup recovery data, stale-write protection, import validation and local HTTP boundaries. Browser verification uses the supported in-app browser; never launch Chromium inside macOS Seatbelt.
+
+## Open a project design board
+
+From any game directory, run `owngame outline` (or `npx @owngame/cli@latest outline .`). From a parent directory, run `owngame outline path/to/game`. The browser opens the project's own `./game-outline.json`; a missing file is initialized. Use `--no-open` to only print the URL, and `--port 3230` to select a port. The default port falls back to a free one if occupied. Stop with Ctrl+C.
+
+Keep JSON/document/asset references relative to the game directory. The ignored workspace index stores relative paths and accepts older absolute bindings during migration. A cloned public game includes its reviewed design JSON and needs no private workspace registry.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.1 — 2026-10-23
+
+- Open a game-local board with `owngame outline [directory]`; initialize missing project JSON, open the browser, and choose a free port if the default is occupied. Use `--no-open` for headless workflows.
+- Store workspace bindings as relative paths and migrate legacy absolute bindings without changing game designs. Copying a project preserves its board.
+- Publish reviewed, sanitized game design snapshots beside each public game source, with relative JSON references and development guidance. Private originals, backups and caches remain excluded from npm and public exports.
+
 ## 0.11.0 — 2026-10-23
 
 - Add the local infinite game-design canvas with six planning areas, structured

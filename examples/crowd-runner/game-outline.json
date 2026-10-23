@@ -1,0 +1,73 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 1,
+  "project": {
+    "id": "a0b586ca-7b10-462b-9f9c-ea3bb36e5c65",
+    "title": "人潮冲线 · Web",
+    "tagline": "选对数字门，集结队伍，冲过终点。",
+    "experience": "",
+    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "b8b10268-91f6-433c-8943-c4f004a95bef",
+        "type": "note",
+        "section": "overview",
+        "title": "现有项目说明",
+        "body": "选对数字门，集结队伍，冲过终点。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "2118ecca-8983-4800-a466-3aea87baed47",
+        "type": "rule",
+        "section": "rules",
+        "title": "当前玩法说明（文档记录）",
+        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "trigger": "",
+          "behavior": "按住跑道左右拖动，或使用方向键／A、D，选择加法、乘法门壮大队伍；减法和除法门要看清当前人数。避开旋转障碍，带足伙伴战胜终点对手。支持暂停、8 关选关和独立存档续玩。",
+          "example": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "22b29a3d-5b8b-4b5a-b058-77dea233c4e7",
+        "type": "decision",
+        "section": "overview",
+        "title": "下一步开发目标",
+        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "status": "idea",
+        "x": 410,
+        "y": 50,
+        "fields": {
+          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
+          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
+          "result": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "bf4fa0a2-c4a8-4abb-9141-f76420a1e919",
+        "type": "note",
+        "section": "overview",
+        "title": "开发记录与验证",
+        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
+        "status": "idea",
+        "x": 770,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

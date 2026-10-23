@@ -1,0 +1,73 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 1,
+  "project": {
+    "id": "877c3bb9-f247-4963-9f7a-013b7d20238f",
+    "title": "小小文明 · 导入项目",
+    "tagline": "从一顶帐篷开始，安排居民生产，建设自己的城邦。",
+    "experience": "",
+    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "1007352f-39f7-45ea-8ef2-0af42f449bb3",
+        "type": "note",
+        "section": "overview",
+        "title": "现有项目说明",
+        "body": "从一顶帐篷开始，安排居民生产，建设自己的城邦。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "c4cce6b8-e2ea-4e22-baef-2d30dd758f35",
+        "type": "rule",
+        "section": "rules",
+        "title": "当前玩法说明（文档记录）",
+        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "trigger": "",
+          "behavior": "先收获粮食获得毛皮，再伐木搭帐篷。招募农夫保障食物，再发展伐木、采矿、建筑、科技和贸易。切到后台自动暂停；支持独立存档和导入导出。",
+          "example": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "14f4a3c0-8661-4cf7-8dc4-0cea904170eb",
+        "type": "decision",
+        "section": "overview",
+        "title": "下一步开发目标",
+        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "status": "idea",
+        "x": 410,
+        "y": 50,
+        "fields": {
+          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
+          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
+          "result": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "17f54045-a761-4da3-aff6-cd1e55ac0c35",
+        "type": "note",
+        "section": "overview",
+        "title": "开发记录与验证",
+        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
+        "status": "idea",
+        "x": 770,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

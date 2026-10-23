@@ -1,0 +1,73 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 1,
+  "project": {
+    "id": "ac58e9aa-c844-413a-98ea-096ab45bfd88",
+    "title": "星野来信 · Unity / Web",
+    "tagline": "收信出发，拜访三颗星球上的朋友，让巨人的花园迎来迟到的春天。首次加载约 54 MB。",
+    "experience": "",
+    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "9e25b2a6-3d2d-4c37-b79a-b7ab3dd9653b",
+        "type": "note",
+        "section": "overview",
+        "title": "现有项目说明",
+        "body": "收信出发，拜访三颗星球上的朋友，让巨人的花园迎来迟到的春天。首次加载约 54 MB。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "c8c42040-e8de-40cb-a9f3-eef665673433",
+        "type": "rule",
+        "section": "rules",
+        "title": "当前玩法说明（文档记录）",
+        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "trigger": "",
+          "behavior": "WASD／方向键行走，Shift 跑步，E 互动，右键环视，滚轮缩放，V 全景，C 恢复镜头。从家园信箱开始，解开邻星谜题，再带着邀请去巨人花园。进度自动保存在当前浏览器。",
+          "example": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "1174e97a-628e-493f-b906-ab458c9c9aa6",
+        "type": "decision",
+        "section": "overview",
+        "title": "下一步开发目标",
+        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "status": "idea",
+        "x": 410,
+        "y": 50,
+        "fields": {
+          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
+          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
+          "result": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "e2998c72-53af-4827-ac38-f3eafe6a4ffd",
+        "type": "note",
+        "section": "overview",
+        "title": "开发记录与验证",
+        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
+        "status": "idea",
+        "x": 770,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

@@ -2,81 +2,99 @@
   "signal-harbor": {
     "project": "examples/web/signal-harbor",
     "kind": "phaser",
-    "extra": "examples/signal-harbor/assets/scripts"
+    "extra": "examples/signal-harbor/assets/scripts",
+    "outline": "game-outline.public.json"
   },
   "unlock-bolts-mobile": {
     "project": "examples/web/unlock-bolts-mobile",
-    "kind": "phaser"
+    "kind": "phaser",
+    "outline": "game-outline.public.json"
   },
   "star-triad": {
     "project": "examples/web/star-triad",
-    "kind": "phaser"
+    "kind": "phaser",
+    "outline": "game-outline.public.json"
   },
   "firefly-four": {
     "project": "examples/firefly-four/web",
-    "kind": "canvas"
+    "kind": "canvas",
+    "outline": "game-outline.public.json"
   },
   "moss-reversi": {
     "project": "examples/web/moss-reversi",
-    "kind": "moss"
+    "kind": "moss",
+    "outline": "game-outline.public.json"
   },
   "postcard-slide": {
     "project": "examples/web/postcard-slide",
-    "kind": "phaser"
+    "kind": "phaser",
+    "outline": "game-outline.public.json"
   },
   "kiln-merge": {
     "project": "examples/web/kiln-merge",
-    "kind": "phaser"
+    "kind": "phaser",
+    "outline": "game-outline.public.json"
   },
   "petal-memory": {
     "project": "examples/web/petal-memory",
-    "kind": "phaser"
+    "kind": "phaser",
+    "outline": "game-outline.public.json"
   },
   "silk-serpent": {
     "project": "examples/web/silk-serpent",
-    "kind": "phaser"
+    "kind": "phaser",
+    "outline": "game-outline.public.json"
   },
   "bamboo-rally": {
     "project": "examples/web/bamboo-rally",
-    "kind": "phaser"
+    "kind": "phaser",
+    "outline": "game-outline.public.json"
   },
   "wind-chime-memory": {
     "project": "examples/web/wind-chime-memory",
-    "kind": "phaser"
+    "kind": "phaser",
+    "outline": "game-outline.public.json"
   },
   "neon-shooter": {
     "project": "examples/imported/neon-shooter",
     "kind": "static",
-    "upstream": true
+    "upstream": true,
+    "outline": "game-outline.public.json"
   },
   "faune-dungeon": {
     "project": "examples/imported/faune-dungeon",
     "kind": "faune",
-    "upstream": true
+    "upstream": true,
+    "outline": "game-outline.public.json"
   },
   "rc-rally": {
     "project": "examples/imported/rc-rally",
     "kind": "vite",
-    "upstream": true
+    "upstream": true,
+    "outline": "game-outline.public.json"
   },
   "civ-clicker": {
     "project": "examples/imported/civ-clicker",
     "kind": "static",
     "upstream": true,
-    "license": "GPL-3.0-or-later"
+    "license": "GPL-3.0-or-later",
+    "outline": "game-outline.public.json"
   },
   "crowd-runner": {
     "project": "examples/web/crowd-runner",
-    "kind": "native-js"
+    "kind": "native-js",
+    "outline": "game-outline.public.json"
   },
   "arrow-escape": {
     "project": "examples/web/arrow-escape",
-    "kind": "native-js"
+    "kind": "native-js",
+    "outline": "game-outline.public.json"
   },
   "star-letters": {
     "project": "examples/star-letters",
     "kind": "unity",
-    "license": "MIT; see THIRD_PARTY_NOTICES.md for fonts and Unity-derived files"
+    "license": "MIT; see THIRD_PARTY_NOTICES.md for fonts and Unity-derived files",
+    "outline": "game-outline.public.json"
   },
   "tidal-reclaim": {
     "project": "examples/imported/tidal-reclaim",
@@ -109,6 +127,7 @@
     ],
     "assetManifest": "public-assets.json",
     "publicReadme": "PUBLIC_README.md",
-    "dependencyLock": "public-package-lock.json"
+    "dependencyLock": "public-package-lock.json",
+    "outline": "game-outline.public.json"
   }
 }

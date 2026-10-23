@@ -1,0 +1,73 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 1,
+  "project": {
+    "id": "1c8a278b-40bf-4100-83a6-0f9adb998b91",
+    "title": "法恩探险 · 导入项目",
+    "tagline": "穿过五段各具挑战的遗迹，收集符印、避开机关，迎战林心守卫。",
+    "experience": "",
+    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "866f5e22-c6cc-490a-8dce-1ab40611d43b",
+        "type": "note",
+        "section": "overview",
+        "title": "现有项目说明",
+        "body": "穿过五段各具挑战的遗迹，收集符印、避开机关，迎战林心守卫。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "6f2dcecf-457d-45ea-8bde-8a74387531f0",
+        "type": "rule",
+        "section": "rules",
+        "title": "当前玩法说明（文档记录）",
+        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "trigger": "",
+          "behavior": "按住战场出现浮动摇杆，向任意方向拉住即可持续移动；轻推慢走、拉远全速，松手停下。也可用方向键 / WASD，Esc 暂停或继续。沿面朝方向自动投飞刀，靠近宝箱和符印自动收集。五关逐步解锁，收齐本关目标后前往出口；避开有预警的机关，最后击败林心守卫。地图按钮可查看路线，关卡手记保留每关进度与星章。",
+          "example": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "660b9aeb-691e-48c3-b4f2-8e4c865da1f5",
+        "type": "decision",
+        "section": "overview",
+        "title": "下一步开发目标",
+        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "status": "idea",
+        "x": 410,
+        "y": 50,
+        "fields": {
+          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
+          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
+          "result": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "1adffb99-752d-4694-9553-b606e18cd47c",
+        "type": "note",
+        "section": "overview",
+        "title": "开发记录与验证",
+        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
+        "status": "idea",
+        "x": 770,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

@@ -150,7 +150,7 @@ owngame 提供参考、模板和检查接口；规划、代码实现、图片生
 | --- | --- | --- |
 | 创作指导 | 美术、Web、Cocos、测试与迭代的任务指导 | `guidance.get` / [Skill](skills/owngame/SKILL.md) |
 | 参考研究 | 检索公开案例摘要，整理任务相关的研究材料 | `research.prepare` / `knowledge.search` |
-| 游戏设计画板（0.11.0） | 本地无限画布与每个游戏的设计 JSON 共用，供助手持续读取和回写 | `outline` / `outline.get` / [使用说明](apps/outline/README.md) |
+| 游戏设计画板（0.11.1） | 本地无限画布与每个游戏的设计 JSON 共用，供助手持续读取和回写 | `outline [游戏目录]` / `outline.get` / [使用说明](apps/outline/README.md) |
 | 素材搜索（0.10.0） | 实时搜索模型、PBR 贴图、HDRI、图片参考，返回预览、来源许可与文件依赖 | `resource.search` / `resource.get` / [使用说明](docs/resource-search.md) |
 | 风格配方 | 查询视觉方向，为实际游戏画面提供设计依据 | `style.list` / `style.get` |
 | 项目创建 | 创建独立游戏目录，选择 Web、Phaser、Cocos 或 Unity 起点 | `project.create` |

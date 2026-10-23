@@ -68,3 +68,9 @@ This path requires a game catalogue identical to the current live site, rechecks
 `scripts/web/usage.mjs` generates the website's usage/licensing body from the README section named `使用与授权`. Keep that heading and the shared content intact. Rebuild and publish the website to synchronize changes to that section.
 
 Repository checks establish only their stated scope. Validate the Unity editor, complete gameplay, human art/feel feedback, phones and offline behavior in the corresponding game delivery. Source synchronization does not automatically mark those checks as passed.
+
+## Reviewed project design boards
+
+Each public example includes `./game-outline.json`. In the production source project, keep private work in `game-outline.json` and prepare an explicitly reviewed `game-outline.public.json` beside it. Register `outline: "game-outline.public.json"` in the game's source entry. The exporter validates and copies only this reviewed snapshot to the public project, adds relative-path usage guidance, and refreshes source-manifest identities. It never falls back to the private file. `node scripts/games/export-outlines.mjs --repository-dir <public-checkout>` updates only reviewed design files and guidance; it does not publish game builds or change online delivery identities.
+
+Keep publicly shared references inside the game directory (for example `./README.md`, `./SOURCE_MANIFEST.json`). Remove local paths, private evidence, embedded previews that have not been reviewed, and personal plans. Record candidate-only verification as candidate-only when the public game still runs an older build. Backups, directory registries and recovery caches stay ignored. The package excludes game designs; public game source contains the reviewed copies.

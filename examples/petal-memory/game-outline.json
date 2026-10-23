@@ -1,0 +1,73 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 1,
+  "project": {
+    "id": "c748da6c-57ee-471c-bad4-0e22ddb686d5",
+    "title": "花笺拾忆 · Web",
+    "tagline": "翻开手绘花笺，与标本师或朋友比一比记忆。",
+    "experience": "",
+    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "21f34871-3173-4d14-b692-134d4ef95aae",
+        "type": "note",
+        "section": "overview",
+        "title": "现有项目说明",
+        "body": "翻开手绘花笺，与标本师或朋友比一比记忆。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "e627ab73-3082-4e6e-9f42-9ea9c4ba0f9e",
+        "type": "rule",
+        "section": "rules",
+        "title": "当前玩法说明（文档记录）",
+        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
+        "status": "idea",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "trigger": "",
+          "behavior": "每次翻两张，配对得一分并继续，失配换人。三档14、22、30张；支持与标本师对战或同屏双人，进度自动保存。",
+          "example": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "b769569e-4733-41ac-ac96-b02387ab3723",
+        "type": "decision",
+        "section": "overview",
+        "title": "下一步开发目标",
+        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "status": "idea",
+        "x": 410,
+        "y": 50,
+        "fields": {
+          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
+          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
+          "result": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "ad9896f6-861c-4b1d-bf8b-504525843579",
+        "type": "note",
+        "section": "overview",
+        "title": "开发记录与验证",
+        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
+        "status": "idea",
+        "x": 770,
+        "y": 50,
+        "fields": {},
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

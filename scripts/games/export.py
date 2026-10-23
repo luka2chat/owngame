@@ -270,6 +270,9 @@ def export(catalog, destination, library=None, only=None):
         merged.update({g['id']:g for g in games})
         games = [merged[g['id']] for g in planned]
     dump(destination/'games.json', {'schema':'owngame.open-games.v1','repository':'luka2chat/owngame','games':games})
+    outline_ids = [g['id'] for g in games if projects[g['id']].get('outline') and (not only or g['id'] in wanted)]
+    if outline_ids:
+        subprocess.run(['node', str(ROOT/'scripts/games/export-outlines.mjs'), '--repository-dir', str(destination), '--only', ','.join(outline_ids)], check=True)
     rows = '\n'.join(f"| [{g['title']}]({g['id']}/) | `{g['id']}` | {g['license']} |" for g in games)
     (destination/'examples/README.md').write_text('# 网站游戏源码\n\n'+f'共 {len(games)} 款，与 [games.json](../games.json) 中的线上版本对应。\n\n| 游戏 | ID | 代码许可 |\n|---|---|---|\n'+rows+'\n\n在目标目录执行 `npm ci` 与 `npm start`；Unity 游戏另见其 README。第三方素材按各目录声明使用。\n')
 

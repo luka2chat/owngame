@@ -43,3 +43,7 @@ npm run dev
 ## 已知范围
 
 故事流程已在制作阶段完成；美术、声音听感、冷启动和不同硬件表现仍需继续打磨。公开版本保留现有玩法，移除了机器专属路径；历史规则与路径验证不等于在所有设备完成试玩，也未对公开副本重新做完整 Unity 导入和构建。
+
+## Game design board
+
+The editable [game-outline.json](./game-outline.json) lives beside the game source. From this directory run `owngame outline` (or `npx @owngame/cli@latest outline .`). The command opens the local canvas; Ctrl+C stops it. Read the design before development and write design changes and actual validation back afterward. JSON and other project file references are relative to this directory. The published snapshot has been reviewed to remove private content.

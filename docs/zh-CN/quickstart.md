@@ -24,9 +24,9 @@ https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md
 
 ## 用画板持续记录游戏设计
 
-支持 `outline.get` 的 CLI 版本可用 `owngame outline` 打开本地画板。每个游戏目录的 `game-outline.json` 保存目标、规则、任务、关卡和资产引用，画板与 CLI 共用这份数据。新项目自动创建；已有目录用 `owngame outline.init '{"directory":"my-game"}'` 接入。
+CLI 0.11.1 起，在游戏目录运行 `owngame outline` 就会打开这个项目的画板；也可以在仓库目录运行 `owngame outline examples/star-triad`。每个游戏目录的 `game-outline.json` 保存目标、规则、任务、关卡和资产引用，画板与 CLI 共用这份数据。新项目自动创建；已有目录首次打开时会创建缺失的画板。开源游戏自带经过隐私整理的 JSON，引用路径相对于游戏目录；复制或克隆项目后可直接使用。
 
-助手在开发前读取设计，完成后更新相关卡片和实际验证结果。画板不会自行生成代码。此功能需要 CLI 0.11.0 或更高版本；已安装版本可先看 `owngame capabilities` 是否包含 `outline.get`。详见[画板说明](../../apps/outline/README.md)。
+助手在开发前读取设计，完成后更新相关卡片和实际验证结果。画板不会自行生成代码。基础读写需要 CLI 0.11.0 或更高版本，目录快捷打开需要 0.11.1 或更高版本；已安装版本可先看 `owngame capabilities` 是否包含 `outline.get`。详见[画板说明](../../apps/outline/README.md)。
 
 ## 继续阅读
 
