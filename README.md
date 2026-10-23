@@ -69,6 +69,27 @@ npm run preview
 
 owngame 提供参考、模板和检查接口；代码实现、图片生成及浏览器操作由助手和它可用的工具完成。
 
+## 用画板整理游戏设计
+
+把玩法、流程、故事、关卡与素材放到同一张设计画板上，用卡片与连线梳理关系。画板与 AI 助手共用项目中的 `game-outline.json`，让设计与实现持续衔接。
+
+[![游戏设计画板：在无限画布中组织美术参考、生产素材与卡片关系](docs/images/owngame-outline-assets.jpg)](docs/images/owngame-outline-assets.jpg)
+
+- **梳理设计**：拖动卡片、连接关系，记录规则、验证例子与待办。
+- **查看素材**：直接预览项目图片与 3D 模型，把视觉参考连到具体资产。
+- **协作迭代**：在本地画板编辑，或让助手通过 CLI / MCP 读取与更新同一份设计。
+
+<details>
+<summary>查看场景配置与 3D 模型预览</summary>
+
+| 场景与关卡 | 3D 模型预览 |
+| --- | --- |
+| [![场景与关卡卡片展示场景图、路线参数与关联模型](docs/images/owngame-outline-levels.jpg)](docs/images/owngame-outline-levels.jpg) | [![在画板中打开项目 GLB 模型，拖动旋转、滚轮缩放](docs/images/owngame-outline-model-preview.jpg)](docs/images/owngame-outline-model-preview.jpg) |
+
+</details>
+
+[**打开与使用画板 →**](apps/outline/README.md)
+
 <a id="创意案例"></a>
 
 ## 从可玩的作品出发
@@ -150,7 +171,7 @@ owngame 提供参考、模板和检查接口；规划、代码实现、图片生
 | --- | --- | --- |
 | 创作指导 | 美术、Web、Cocos、测试与迭代的任务指导 | `guidance.get` / [Skill](skills/owngame/SKILL.md) |
 | 参考研究 | 检索公开案例摘要，整理任务相关的研究材料 | `research.prepare` / `knowledge.search` |
-| 游戏设计画板（0.11.2） | 本地无限画布与每个游戏的设计 JSON 共用，供助手持续读取和回写 | `outline [游戏目录]` / `outline.get` / [使用说明](apps/outline/README.md) |
+| 游戏设计画板 | 本地无限画布与每个游戏的设计 JSON 共用，供助手持续读取和回写 | `outline [游戏目录]` / `outline.get` / [使用说明](apps/outline/README.md) |
 | 素材搜索（0.10.0） | 实时搜索模型、PBR 贴图、HDRI、图片参考，返回预览、来源许可与文件依赖 | `resource.search` / `resource.get` / [使用说明](docs/resource-search.md) |
 | 风格配方 | 查询视觉方向，为实际游戏画面提供设计依据 | `style.list` / `style.get` |
 | 项目创建 | 创建独立游戏目录，选择 Web、Phaser、Cocos 或 Unity 起点 | `project.create` |
