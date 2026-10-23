@@ -1,24 +1,24 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "project": {
     "id": "54fef6a0-1485-43cb-bc11-088ff76b5780",
-    "title": "霓虹突围 · 导入项目",
+    "title": "霓虹突围 · Web",
     "tagline": "躲开弹幕，收集强化，迎战每三波出现的首领。",
-    "experience": "",
-    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "experience": "自由走位躲弹，用持续自动射击突破波次。",
+    "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
     "playable": "",
     "cards": [
       {
         "id": "f91ede83-3b44-43e5-80af-3e05807243c5",
         "type": "note",
         "section": "overview",
-        "title": "现有项目说明",
-        "body": "躲开弹幕，收集强化，迎战每三波出现的首领。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
-        "status": "idea",
-        "x": 50,
-        "y": 50,
+        "title": "Web 设计入口",
+        "body": "自由走位躲弹，用持续自动射击突破波次。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
         "fields": {},
         "image": ""
       },
@@ -26,15 +26,15 @@
         "id": "69bdad9a-ed4d-4929-80be-163574bf45ed",
         "type": "rule",
         "section": "rules",
-        "title": "当前玩法说明（文档记录）",
-        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
-        "status": "idea",
-        "x": 50,
-        "y": 50,
+        "title": "核心规则 · 设计与历史验证",
+        "body": "已验证（历史版本范围）：自动开火和保留的波次/武器规则；碰撞、伤害和拾取以隔离schema1夹具验证，非长线全Boss通关。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
         "fields": {
-          "trigger": "",
-          "behavior": "战斗中持续自动开火。手机或鼠标拖动战机上下左右移动；键盘使用方向键或 WASD，Esc 暂停或继续。收集武器、生命和维修道具，挑战更高波次。支持暂停与续玩。",
-          "example": ""
+          "trigger": "玩家进行当前回合操作。",
+          "behavior": "战斗中持续自动开火，暂停/死亡停火；波次推进，敌人和掉落影响生命及武器等级。",
+          "example": "站定仍持续发射；暂停后弹幕和伤害冻结；松开拖动立即停止移动。"
         },
         "image": ""
       },
@@ -42,15 +42,15 @@
         "id": "683652b0-eb58-4b9e-a073-49af691b1da1",
         "type": "decision",
         "section": "overview",
-        "title": "下一步开发目标",
-        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "title": "待验证与下一步",
+        "body": "碰撞/拾取夹具不代表长线自然打完整Boss循环；用户手感评价待收集；iOS未验。",
         "status": "idea",
-        "x": 410,
-        "y": 50,
+        "x": 760,
+        "y": 60,
         "fields": {
-          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
-          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
-          "result": ""
+          "question": "下一轮补哪些未覆盖项？",
+          "options": "碰撞/拾取夹具不代表长线自然打完整Boss循环；用户手感评价待收集；iOS未验。",
+          "result": "保持待验证；不以历史或静态导入替代本版本验收。"
         },
         "image": ""
       },
@@ -58,16 +58,144 @@
         "id": "04a9a697-76c1-4af6-bd5c-efa29b418966",
         "type": "note",
         "section": "overview",
-        "title": "开发记录与验证",
-        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
-        "status": "idea",
-        "x": 770,
-        "y": 50,
+        "title": "验证索引 · 分版本记录",
+        "body": "历史验证摘要（未重新运行）：\n• 2026-10-20 / neon-controls-2026-10-20 / 14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4：14e5e7版实际键盘/鼠标/触摸、Android 实机原生输入通过；暂停/死亡/重试、旧包进度、正常更新、浏览器离线及整机断网冷启动通过。\n• 2026-10-20 / neon-controls-2026-10-20-browser-result.json / 14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / neon-controls-2026-10-20-phone.json / 14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / neon-controls-2026-10-20-production-result.json / 14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+        "status": "done",
+        "x": 410,
+        "y": 60,
         "fields": {},
+        "image": ""
+      },
+      {
+        "id": "aa6f283a-41ac-4669-a3bb-1dedaf9db39e",
+        "type": "rule",
+        "section": "rules",
+        "title": "输入与操作边界",
+        "body": "已验证（历史版本范围）：14e5e7版实际键盘/鼠标/触摸及Android 实机输入；相对拖动、松手、旋转位置保持通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "trigger": "触摸、键盘或指针输入及取消。",
+          "behavior": "WASD/方向键、鼠标/触摸相对拖动双轴；无开火按钮；旋转保位置并清控制。",
+          "example": "站定仍持续发射；暂停后弹幕和伤害冻结；松开拖动立即停止移动。\n下一轮还应按目标设备复核取消/松手边界。"
+        },
+        "image": ""
+      },
+      {
+        "id": "e3afaaf7-2289-46a4-b32a-1274aa20f04a",
+        "type": "state",
+        "section": "flow",
+        "title": "游玩、结算与重试",
+        "body": "已验证（历史版本范围）：暂停/继续、死亡/重试、背景释放控制通过；当前记录不证明所有波次自然通关。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "entry": "进入本局或从已有进度继续。",
+          "exit": "战斗→击破波次/Boss→下一波；生命耗尽→失败/重试；失焦暂停显式继续。",
+          "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+        },
+        "image": ""
+      },
+      {
+        "id": "9fe7741c-1da3-4792-a89c-6debd631818c",
+        "type": "state",
+        "section": "flow",
+        "title": "存档、暂停与恢复",
+        "body": "已验证（历史版本范围）：旧包checkpoint兼容、正常下载更新、浏览器离线及整机断网冷启通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "done",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "entry": "读取旧档、暂停、后台或重新打开。",
+          "exit": "恢复到合法状态后由玩家继续。",
+          "recovery": "v1原键保存最高分、音效和当前局；定时/暂停保存；旧包进度接续。"
+        },
+        "image": ""
+      },
+      {
+        "id": "d2eea73c-80e6-4cc0-88c2-ffe0f5110c32",
+        "type": "level",
+        "section": "levels",
+        "title": "关卡配置与推进节奏",
+        "body": "已验证（历史版本范围）：4敌人/3波Boss/3级武器为当前配置；长线波次平衡待验证。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "space": "4类敌人，每3波Boss，武器最高3级；碰撞与拾取用隔离schema1夹具验证。",
+          "config": "4类敌人，每3波Boss，武器最高3级；碰撞与拾取用隔离schema1夹具验证。",
+          "rhythm": "自由走位躲弹，用持续自动射击突破波次。",
+          "completion": "战斗→击破波次/Boss→下一波；生命耗尽→失败/重试；失焦暂停显式继续。"
+        },
+        "image": ""
+      },
+      {
+        "id": "e0e1a6be-44a2-4df7-bf17-5442226f9859",
+        "type": "reference",
+        "section": "assets",
+        "title": "美术方向与参考",
+        "body": "深空既有美术与6项素材许可文件字节一致；本地音效，无新增外部素材。\n设计与历史来源：./game-outline.json",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "direction": "深空既有美术与6项素材许可文件字节一致；本地音效，无新增外部素材。",
+          "source": "./game-outline.json",
+          "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+        },
+        "image": ""
+      },
+      {
+        "id": "eb37eecd-3c43-4d41-a591-882c881e9610",
+        "type": "asset",
+        "section": "assets",
+        "title": "生产素材与交付边界",
+        "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：碰撞/拾取夹具不代表长线自然打完整Boss循环；用户手感评价待收集；iOS未验。",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "spec": "深空既有美术与6项素材许可文件字节一致；本地音效，无新增外部素材。",
+          "source": "./public/LICENSE.txt\n./public/index.html\n./public/owngame.css",
+          "license": "保留现有作者与第三方许可；见项目许可文件。"
+        },
         "image": ""
       }
     ],
-    "edges": [],
+    "edges": [
+      {
+        "id": "24fabcdd-6489-4a52-8fa9-f6b746bd66a1",
+        "label": "规则用于关卡",
+        "from": "69bdad9a-ed4d-4929-80be-163574bf45ed",
+        "to": "d2eea73c-80e6-4cc0-88c2-ffe0f5110c32"
+      },
+      {
+        "id": "c84b1f28-c789-4c49-aa99-0b08c46bd6e0",
+        "label": "操作驱动状态",
+        "from": "aa6f283a-41ac-4669-a3bb-1dedaf9db39e",
+        "to": "e3afaaf7-2289-46a4-b32a-1274aa20f04a"
+      },
+      {
+        "id": "55002821-2016-4550-a92b-92fa929a4f37",
+        "label": "暂停与恢复",
+        "from": "e3afaaf7-2289-46a4-b32a-1274aa20f04a",
+        "to": "9fe7741c-1da3-4792-a89c-6debd631818c"
+      },
+      {
+        "id": "1700c224-9fea-45c7-8623-85c3961e72bb",
+        "label": "方向落实到素材",
+        "from": "e0e1a6be-44a2-4df7-bf17-5442226f9859",
+        "to": "eb37eecd-3c43-4d41-a591-882c881e9610"
+      },
+      {
+        "id": "73f70164-e151-4fe3-a18f-11a8b47f0d65",
+        "label": "补验后回写",
+        "from": "683652b0-eb58-4b9e-a073-49af691b1da1",
+        "to": "04a9a697-76c1-4af6-bd5c-efa29b418966"
+      }
+    ],
     "views": {}
   }
 }

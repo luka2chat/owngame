@@ -17,22 +17,25 @@
   </header>
   <div class="workspace">
     <aside class="sidebar">
-      <div class="sidebar-label">把游戏想清楚 <span>↘</span></div>
       <nav id="sections" aria-label="构思区域"></nav>
-      <div class="sidebar-note"><img src="/brand/arcade-mascot.png" alt="owngame 街机吉祥物"><strong>先做一个<br>小而完整的游戏。</strong><p>想法可以很大，<br>下一步可以很小。</p></div>
-      <button id="help" class="plain help-button">? 画布怎么用</button>
-      <span class="local-foot">● 本机文件自动保存</span>
+      <img class="sidebar-mascot" src="/brand/arcade-mascot.png" alt="owngame 街机吉祥物">
+      <button id="help" class="plain help-button" aria-label="画布怎么用" title="画布怎么用">画布怎么用</button>
     </aside>
     <main id="main">
       <section class="board-header">
-        <div class="breadcrumbs"><span id="project-crumb"></span><span>/</span><span id="section-crumb"></span></div>
-        <div class="project-file"><span id="file-status"></span><button id="refresh-files" title="从项目 JSON 重新读取">↻ 同步</button></div>
-        <div class="heading-row"><div><h1 id="board-title"></h1><p id="board-desc"></p></div><div class="heading-actions"><button id="edit-project" class="outline">编辑项目</button><button id="add-card" class="primary">＋ 添加卡片</button></div></div>
-        <div class="board-controls"><div id="tabs" class="tabs" aria-label="区域视图"></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="搜索整个项目…" aria-label="搜索整个项目"><kbd>/</kbd></label></div>
+        <div class="board-heading"><h1 id="board-title"></h1><p id="board-desc" class="sr-only"></p></div>
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索整个项目…" aria-label="搜索整个项目"><kbd>/</kbd></label>
+        <div class="heading-actions"><button id="toggle-details" class="outline" aria-expanded="false" aria-controls="project-details-panel">项目资料</button><button id="add-card" class="primary">＋ 添加卡片</button></div>
       </section>
-      <section id="overview" class="overview" aria-label="项目总览"></section>
+      <aside id="project-details-panel" class="project-details-panel" aria-label="项目资料与进度" hidden>
+        <div class="details-header"><h2>项目资料与进度</h2><button id="edit-project" class="outline">编辑项目</button><button id="close-details" aria-label="关闭项目资料">×</button></div>
+        <div class="details-content">
+          <div class="project-file"><span id="file-status"></span><button id="refresh-files" title="从项目 JSON 重新读取">↻ 同步</button></div>
+          <section id="overview" class="overview" aria-label="项目总览"></section>
+        </div>
+      </aside>
       <div id="canvas-shell" class="canvas-shell">
-        <div class="canvas-top"><span id="canvas-caption">灵感便签</span><span id="card-count"></span><span class="canvas-hint">拖动空白处平移 · 滚轮移动 · ⌘ / Ctrl + 滚轮缩放</span></div>
+        <div class="canvas-top"><div id="tabs" class="tabs" aria-label="区域视图"></div><span id="canvas-caption" class="sr-only">灵感便签</span><span id="card-count"></span><span class="canvas-hint">滚轮缩放 · 按住拖动 · 触屏双指缩放</span></div>
         <div id="viewport" class="viewport" tabindex="0" aria-label="无限画布，可用方向键移动，双击空白处添加卡片">
           <div id="world" class="world"><svg id="connections" class="connections" aria-label="卡片连线"></svg><div id="cards"></div></div>
           <div id="empty" class="empty" hidden><span>✎</span><h2>给这个想法一个位置</h2><p>添加第一张卡片，或双击画布开始。</p><button id="empty-add" class="outline">＋ 添加卡片</button></div>

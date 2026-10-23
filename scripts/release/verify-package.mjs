@@ -27,7 +27,7 @@ try{
  const files=info.files.map(f=>f.path);
  const allowed=/^(apps\/outline\/|dist\/packages\/|starter-knowledge\/|skills\/|templates\/|scripts\/toolkit\/|docs\/(cases|images)\/|docs\/zh-CN\/quickstart\.md$|docs\/(README|remix|open-source-games|game-publishing|install|agent-setup|quickstart|resource-search|releasing)\.md$|docs\/style-recipes\.json$|package\.json$|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|CHANGELOG\.md$|CONTRIBUTING\.md$|SECURITY\.md$)/;
  for(const file of files){assert(allowed.test(file),`Unexpected packaged path: ${file}`);assert(!/(^|\/)(game-outline\.json(?:\..*)?|project-files\.json|workspace\.json(?:\..*)?|\.game-outline\.lock)(\/|$)/.test(file),`Private outline data: ${file}`);assert(!/(^|\/)(node_modules|\.env|\.git|\.local|\.owngame|\.DS_Store)(\/|$)/.test(file));}
- for(const needed of ['apps/outline/server.mjs','apps/outline/brand/arcade-mascot.webp','scripts/toolkit/outline-store.mjs','skills/owngame/references/outline.md','docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','dist/packages/core/resources.js','docs/resource-search.md','skills/owngame/SKILL.md','templates/web-canvas/LICENSE','templates/web-canvas/src/main.js','starter-knowledge/sources.json','docs/cases/star-triad.md','templates/unity-home/Assets/Scenes/HomeArt.unity','templates/unity-home/Assets/Models/Story/HomeArt-v2.fbx','templates/unity-home/Assets/Resources/Fonts/StarLettersUI.ttf','templates/unity-home/Packages/packages-lock.json','templates/unity-home/LICENSES/NotoSansSC-OFL.txt'])assert(files.includes(needed),needed);
+ for(const needed of ['apps/outline/server.mjs','apps/outline/model-preview.js','apps/outline/project-assets.mjs','apps/outline/brand/arcade-mascot.webp','scripts/toolkit/outline-store.mjs','skills/owngame/references/outline.md','docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','dist/packages/core/resources.js','docs/resource-search.md','skills/owngame/SKILL.md','templates/web-canvas/LICENSE','templates/web-canvas/src/main.js','starter-knowledge/sources.json','docs/cases/star-triad.md','templates/unity-home/Assets/Scenes/HomeArt.unity','templates/unity-home/Assets/Models/Story/HomeArt-v2.fbx','templates/unity-home/Assets/Resources/Fonts/StarLettersUI.ttf','templates/unity-home/Packages/packages-lock.json','templates/unity-home/LICENSES/NotoSansSC-OFL.txt'])assert(files.includes(needed),needed);
  const tar=path.join(reportDir,info.filename);
  if(published){const prior=JSON.parse(await fs.readFile(path.join(root,'artifacts/release',pkg.version,'verification.json')));assert.equal(prior.status,'succeeded');assert.equal(createHash('sha256').update(await fs.readFile(tar)).digest('hex'),prior.sha256,'Registry archive differs from verified candidate');}
  await fs.writeFile(path.join(workspace,'package.json'),'{"private":true,"type":"module"}\n');
@@ -124,6 +124,7 @@ try{
  const canvas=await context.newPage();await canvas.setViewportSize({width:1280,height:900});
  const canvasErrors=[];canvas.on('pageerror',e=>canvasErrors.push(String(e)));
  await canvas.goto(outline.url);await canvas.locator('#projects').selectOption(design.data.project.id);
+ await canvas.getByRole('button',{name:'项目资料',exact:true}).click();
  await canvas.getByText('Packaged canvas sync',{exact:true}).waitFor();
  await canvas.getByRole('button',{name:'编辑项目',exact:true}).click();
  await canvas.getByLabel('一句话定位',{exact:true}).fill('Canvas saved to project JSON');
@@ -133,7 +134,7 @@ try{
  const disk=cli('outline.get',{directory:'my-game'});
  assert.equal(cli('outline.update',{directory:'my-game',expected_sha256:disk.data.sha256,changes:{project:{tagline:'External update detected'}}}).status,'succeeded');
  await canvas.getByText('External update detected',{exact:true}).waitFor({timeout:15000});
- await canvas.reload();await canvas.getByText('External update detected',{exact:true}).waitFor();
+ await canvas.reload();await canvas.getByRole('button',{name:'项目资料',exact:true}).click();await canvas.getByText('External update detected',{exact:true}).waitFor();
  await canvas.screenshot({path:path.join(reportDir,'outline.png')});assert.deepEqual(canvasErrors,[]);
  assert.equal(cli('outline.update',{directory:'my-game',expected_sha256:disk.data.sha256,changes:{project:{title:'stale'}}}).diagnostics[0].code,'OUTLINE_CONFLICT');
  const mcpOutline=await client.callTool({name:'owngame_outline_get',arguments:{directory:'my-game'}});assert.equal(mcpOutline.structuredContent.data.project.tagline,'External update detected');

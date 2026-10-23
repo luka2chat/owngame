@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve, dirname, extname, relative, sep } from 'node:path';
 import { sampleWorkspace } from './model.mjs';
 import { OutlineWorkspace, initOutline } from '../../scripts/toolkit/outline-store.mjs';
+import { serveProjectAsset } from './project-assets.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const repo = resolve(root, '../..');
@@ -14,13 +15,13 @@ export async function createOutlineServer({ workspace = repo, dataDir = resolve(
   await store.initialize(sampleWorkspace);
   const file = store.indexFile;
   let saving = false;
-  const publicFiles = new Set(['index.html', 'app.js', 'style.css', 'model.mjs']);
+  const publicFiles = new Set(['index.html', 'app.js', 'style.css', 'model.mjs', 'model-preview.js']);
   const brandFiles = new Set(['arcade-mascot.png', 'harbor-background.png', 'lighthouse.png']);
   const server = http.createServer(async (req, res) => {
     const reply = (code, data) => { res.writeHead(code, { 'Content-Type': 'application/json; charset=utf-8' }); res.end(JSON.stringify(data)); };
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'");
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'");
     const origin = `http://127.0.0.1:${server.address().port}`;
     if (req.headers.host !== new URL(origin).host || (req.headers.origin && req.headers.origin !== origin) || req.headers['sec-fetch-site'] === 'cross-site') { reply(403, { error: '只接受本机页面请求。' }); return; }
     try {
@@ -59,6 +60,11 @@ export async function createOutlineServer({ workspace = repo, dataDir = resolve(
         return;
       }
       if (!['GET', 'HEAD'].includes(req.method)) { reply(405, { error: 'Method not allowed' }); return; }
+      if(path.startsWith('/api/asset/')||path.startsWith('/api/three/')) {
+        try { const asset=await serveProjectAsset(store,path,new URL(req.url,origin).searchParams.get('file'));if(!asset)throw Error('预览不存在。');res.writeHead(200,{'Content-Type':asset.type});res.end(req.method==='HEAD'?undefined:asset.contents); }
+        catch { reply(404,{error:'源文件不可用，请检查项目路径、NAS 连接或项目的 Three.js 依赖。'}); }
+        return;
+      }
       const name = path === '/' ? 'index.html' : path.slice(1);
       let target;
       if (publicFiles.has(name)) target = resolve(root, name);

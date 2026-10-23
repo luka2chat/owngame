@@ -1,22 +1,22 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "project": {
     "id": "903e1164-7a3e-4dde-9887-b86bb306a933",
-    "title": "潮汐回收站 · 导入项目",
+    "title": "潮汐回收站",
     "tagline": "登陆被机械守卫占据的海上平台，重启三座净化站，带着回收成果撤离。",
-    "experience": "",
-    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "experience": "在有限时间里选择路线、顶住机械守卫，重启三站并带回数据。目标体验由现有任务结构概括；真人难度与手感仍待确认。",
+    "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
     "playable": "",
     "cards": [
       {
         "id": "e5a8c7b3-def0-4405-b100-0d0ac49d78c0",
         "type": "note",
         "section": "overview",
-        "title": "现有项目说明",
-        "body": "登陆被机械守卫占据的海上平台，重启三座净化站，带着回收成果撤离。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
-        "status": "idea",
+        "title": "项目定位与资料入口",
+        "body": "单人 PC 键鼠第一人称回收行动。现有主循环：登陆 → 选择净化站 → 启动与防守 → 三站完成 → 码头撤离。\n玩法、流程、任务、关卡与资产已拆到左侧对应区域。原始说明保留在 ./README.md；来源与许可见 ./THIRD_PARTY_NOTICES.md。\n本次仅整理资料，不更改玩法、不重新运行历史验收。",
+        "status": "done",
         "x": 50,
         "y": 50,
         "fields": {},
@@ -26,15 +26,15 @@
         "id": "9311ea2b-7036-4a9f-ad85-9fc75d2b0643",
         "type": "rule",
         "section": "rules",
-        "title": "当前玩法说明（文档记录）",
-        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
-        "status": "idea",
+        "title": "净化站 · 启动、阻塞与保留进度",
+        "body": "【代码已核对；历史 v3/v4/v8 主流程通过】\n规则来源 ./src/game/tidal-mission.ts；边界用例见 ./tests/tidal-mission.test.ts。本轮未执行测试。历史报告见 ./game-outline.json 的 mission-*；离开/敌人阻塞的逐项边界不冒充本轮实测。",
+        "status": "doing",
         "x": 50,
         "y": 50,
         "fields": {
-          "trigger": "",
-          "behavior": "PC 键鼠操作。WASD 移动，鼠标瞄准，左键射击、右键瞄准，R 换弹，Shift 冲刺，空格跳跃，E 启动净化站。留在青色范围内完成三座净化站，再到码头连续停留八秒撤离。Esc 暂停，数字键切换已解锁武器，G 投掷手雷。",
-          "example": ""
+          "trigger": "靠近未完成控制台，按 E；一次只允许一座站激活。",
+          "behavior": "玩家留在作业范围且中心无敌人时推进；离开或敌人占据中心则暂停，已有净化进度保留。达到配置时长完成该站，三站都完成后进入撤离。数值见关卡配置。",
+          "example": "已有 1 秒净化 → 走出范围或让敌人进入中心 → 仍为 1 秒；回到安全范围 → 继续增长。远距离 E、重复 E 不应同时激活另一站。"
         },
         "image": ""
       },
@@ -42,15 +42,15 @@
         "id": "d2d6baa6-43ba-4644-8b15-f0f1d8bdd74a",
         "type": "decision",
         "section": "overview",
-        "title": "下一步开发目标",
-        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "title": "待验证与下一次迭代目标",
+        "body": "历史通过不自动覆盖当前源码。保留原有玩法、美术、存档兼容性与许可。未开展的验证仍保持待决策。",
         "status": "idea",
-        "x": 410,
+        "x": 400,
         "y": 50,
         "fields": {
-          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
-          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
-          "result": ""
+          "question": "下一轮先验证哪一项，或具体修改什么？",
+          "options": "1. 真人无辅助瞄准：难度、反馈、节奏、美术手感。\n2. 长时性能、低配机器与不同浏览器。\n3. 真实设备断网/重启；手柄完整操作。\n4. 资源加载失败后 E 重试、存储受限与损坏存档的真实 UI 恢复。\n5. 当前源码的死亡、超时、重开与全任务回归。",
+          "result": "尚未决定。先确定验收范围与具体版本，再实施；不从历史通过推断本轮通过。"
         },
         "image": ""
       },
@@ -58,22 +58,413 @@
         "id": "f45bbddb-7632-48b5-abea-59b9798ecb9a",
         "type": "note",
         "section": "overview",
-        "title": "开发记录与验证",
-        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
-        "status": "idea",
-        "x": 770,
+        "title": "已验证记录 · 版本与证据索引",
+        "body": "2026-10-22 历史报告已复核：\n• mission-v3：顺序按 README 为 1→2→3，148.74 秒、28 击杀，自然撤离。\n• mission-v4：报告顺序 3→1→2，153.46 秒、28 击杀，自然撤离。\n• release-v8：1→2→3，154.13 秒、31 击杀；三站均 35 秒，撤离持续 8.012 秒。\n• v8 界面：5 种尺寸通过。线上：移动、锁鼠、开火和浏览器离线新标签页通过。\n适用版本与历史结果见本卡摘要；原始报告未公开。具体已验范围写在各卡片中。\n“已完成”只指该卡明确列出的历史验证/整理范围，不表示当前源码或所有设备已验收。",
+        "status": "done",
+        "x": 750,
         "y": 50,
         "fields": {},
         "image": ""
+      },
+      {
+        "id": "2546894b-3a6b-4aaf-9c04-f140ecb38ba0",
+        "type": "rule",
+        "section": "rules",
+        "title": "撤离 · 必须连续守住码头",
+        "body": "【历史已验证 · v3/v4/v8】三站完成、走离登船区使读秒归零、返回连续登船并胜利。辅助瞄准的输入脚本验证流程，不代表真人难度。见 ./game-outline.json。\n【代码/测试定义，未在本轮运行】死亡、总时间耗尽、撤离时限耗尽都失败。",
+        "status": "done",
+        "x": 400,
+        "y": 50,
+        "fields": {
+          "trigger": "三站净化完成后进入撤离阶段。",
+          "behavior": "到达码头且附近无敌人，连续保持到规定时长才获胜；离开或敌人进入会清零登船进度。失败/胜利后任务状态冻结。",
+          "example": "读秒超过 2 秒后走离码头 → 归零；返回重新守满 8 秒 → won。死亡/总时限/撤离时限分别应产生 lost。"
+        },
+        "image": ""
+      },
+      {
+        "id": "70f6e45d-f789-4523-a095-d4ac43a8cfe3",
+        "type": "rule",
+        "section": "rules",
+        "title": "战斗输入、伤害与武器保留",
+        "body": "【历史已验证 · v8】键盘移动、锁定鼠标、鼠标开火；任务报告记录 182 发、106 命中、31 击杀。瞄准为脚本辅助。\n【代码已核对】护甲吸收、爆炸衰减见 ./src/game/rules.ts 与 ./tests/rules.test.ts；武器参数见 ./src/game/config.ts。./game-outline.json",
+        "status": "doing",
+        "x": 750,
+        "y": 50,
+        "fields": {
+          "trigger": "WASD 移动；鼠标瞄准；左键开火、右键瞄准、R 换弹；Shift 冲刺、空格跳跃、数字键切武器、G 手雷。",
+          "behavior": "命中按护甲与伤害规则结算；爆炸随距离衰减。支援武器解锁不强制替换当前装备；回访低编号站不应撤销已经开放的手雷能力。",
+          "example": "脚本在 3 号站运行时检查当前仍为步枪；另需真人核验切枪、手雷与后坐力手感。护甲/爆炸边界已有单测定义，本轮未运行。"
+        },
+        "image": ""
+      },
+      {
+        "id": "c55a31bd-1b20-445a-b950-f84b6f292b3f",
+        "type": "rule",
+        "section": "rules",
+        "title": "设置与成绩保存 · 不是任务续关",
+        "body": "【历史已验证 · 线上 v8】README 记录设置保留；production-v8 报告确认离线模拟新标签页可移动/开火。报告未逐字段记录存档值。\n【单测定义已核对】./tests/save.test.ts 覆盖缺失/损坏/版本不符回退、字段限制、排行榜和存储异常。",
+        "status": "doing",
+        "x": 50,
+        "y": 400,
+        "fields": {
+          "trigger": "设置变更、写入成绩、再次打开游戏。",
+          "behavior": "保存设置与成绩；不要把“设置保留”描述成中途任务续关。读取异常回退默认值；写入异常不应令游戏崩溃。",
+          "example": "损坏存档、禁用存储、刷新后设置和排行榜恢复，需要在实际 UI 单独验证；现有单测定义不等于该运行验证。"
+        },
+        "image": ""
+      },
+      {
+        "id": "1d58c280-781a-4263-913b-57fbffe8fb7b",
+        "type": "state",
+        "section": "flow",
+        "title": "加载与部署准备",
+        "body": "【历史已验证 · interface-v8】实际加载画面与后续启动有检查记录。5 个窗口尺寸见 ./game-outline.json。",
+        "status": "done",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "entry": "打开游戏，初始化场景、物理与资源。",
+          "exit": "资源就绪 → 标题菜单。",
+          "recovery": "启动失败显示原因；故障恢复的实际注入验证仍待做。"
+        },
+        "image": ""
+      },
+      {
+        "id": "c0e1a3e3-ed60-4747-b144-d24ef55617b6",
+        "type": "state",
+        "section": "flow",
+        "title": "标题与菜单",
+        "body": "【历史已验证 · v8】菜单导航、开始回收行动和响应式画面。旧框架保留死亡竞赛相关文案/代码，不据此把它记为本项目已验收的核心模式。",
+        "status": "done",
+        "x": 400,
+        "y": 50,
+        "fields": {
+          "entry": "加载完成或返回标题。",
+          "exit": "开始回收行动 → 3.2 秒倒计时 → 游玩；设置/操作说明 → 返回菜单。",
+          "recovery": "重新部署应创建独立任务；实际失败后重开流程待下一轮核验。"
+        },
+        "image": ""
+      },
+      {
+        "id": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457",
+        "type": "state",
+        "section": "flow",
+        "title": "游玩 · 净化到撤离",
+        "body": "【历史已验证 · mission-v8】从开局两名守卫，到三站完成，再到自然胜利。./game-outline.json",
+        "status": "done",
+        "x": 750,
+        "y": 50,
+        "fields": {
+          "entry": "部署倒计时结束，模式 playing。",
+          "exit": "Esc / 失去锁鼠触发暂停路径；任务 won/lost → 结算。",
+          "recovery": "净化保留已完成进度，撤离计时被打断则清零；不承诺跨刷新续关。"
+        },
+        "image": ""
+      },
+      {
+        "id": "c3cc14ba-4837-457d-9a42-9b763b85cfe8",
+        "type": "state",
+        "section": "flow",
+        "title": "暂停与继续",
+        "body": "【历史已验证 · v3/v4/v8 输入流程】Esc 后暂停，脚本检查任务时钟不再增加，点击继续后恢复。",
+        "status": "done",
+        "x": 50,
+        "y": 400,
+        "fields": {
+          "entry": "游玩/倒计时暂停；释放鼠标锁定。",
+          "exit": "点击继续重新获取鼠标锁定，回到倒计时或游玩；也可返回标题。",
+          "recovery": "多次失焦、锁鼠被拒绝等组合路径尚无专项历史记录。"
+        },
+        "image": ""
+      },
+      {
+        "id": "7e3a917e-9d6e-4848-8398-92a62c947822",
+        "type": "state",
+        "section": "flow",
+        "title": "结算、重试与返回标题",
+        "body": "【历史已验证】三轮任务报告均为 ended / won。\n【未覆盖】死亡/超时的实际结算界面、连续重试与退出路径。",
+        "status": "doing",
+        "x": 400,
+        "y": 400,
+        "fields": {
+          "entry": "三站后撤离获胜；死亡或超时失败。",
+          "exit": "再来一局 → 重新部署；标题画面 → 菜单。",
+          "recovery": "新任务应清零净化/计时，保留设置与成绩；待实际输入验证。"
+        },
+        "image": ""
+      },
+      {
+        "id": "47e31188-4021-435b-b1f7-485c4f8708d8",
+        "type": "state",
+        "section": "flow",
+        "title": "异常恢复 · 待故障注入验证",
+        "body": "【实现已核对；运行未验证】./src/game/game.ts 处理分阶段资源加载失败，提示联网后按 E 重试；过期任务的加载回调用会话标识忽略。",
+        "status": "idea",
+        "x": 750,
+        "y": 400,
+        "fields": {
+          "entry": "启动失败、守卫资源加载失败、离线资源缺失。",
+          "exit": "恢复网络后按 E 重试；资源就绪且仍在控制台附近时激活任务。",
+          "recovery": "需模拟失败→恢复、加载中退出/重开、锁鼠拒绝；不能用正常加载通过代替异常恢复验证。"
+        },
+        "image": ""
+      },
+      {
+        "id": "2ebe4e54-071a-4b8e-b009-ff998759b9fe",
+        "type": "place",
+        "section": "world",
+        "title": "海上平台与机械守卫",
+        "body": "【现有设定】玩家登陆被机械守卫占据的平台，重启设备并把回收数据带走。来源 ./README.md 与 ./src/i18n/zh-CN.json。",
+        "status": "doing",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "kind": "地点 / 阵营",
+          "detail": "海上回收局的单人行动；敌对机械守卫守住平台。当前没有独立对白、人物关系网或分支剧情需求，不补造人物关系。"
+        },
+        "image": ""
+      },
+      {
+        "id": "c3da25c0-8fc5-423a-86b3-91f6429014a9",
+        "type": "quest",
+        "section": "world",
+        "title": "任务一 · 重启三座净化站",
+        "body": "【历史流程已验证】v8 以 1→2→3 完成，v4 以 3→1→2 完成。./game-outline.json",
+        "status": "done",
+        "x": 400,
+        "y": 50,
+        "fields": {
+          "giver": "行动简报 / 海上回收局（无任务发布 NPC）。",
+          "location": "进水泵站 → 膜滤机组 → 潮汐中继；玩家可选择顺序。",
+          "requires": "玩家存活、任务处于 repair；目标站未完成。",
+          "objective": "走到控制台按 E，守住区域、清除干扰敌人，完成三站净化。",
+          "completion": "三座 progress 都达到 35 秒。",
+          "changes": "各站完成标记保留；补给发放；三站完成时 phase 从 repair 变为 extract。"
+        },
+        "image": ""
+      },
+      {
+        "id": "ef82645f-93ab-468d-a646-68669414e5e1",
+        "type": "quest",
+        "section": "world",
+        "title": "任务二 · 返回码头撤离",
+        "body": "【历史流程已验证 · v8】净化后回到出发码头，中断登船后重新完成。",
+        "status": "done",
+        "x": 750,
+        "y": 50,
+        "fields": {
+          "giver": "三站完成后的行动指令。",
+          "location": "EXIT 码头 / 出发处。",
+          "requires": "三站完成、进入 extract，玩家存活且未超时。",
+          "objective": "在撤离期限内赶回码头，清除近处威胁并连续守住。",
+          "completion": "连续 8 秒满足范围与安全条件，mission.phase = won。",
+          "changes": "任务结束、显示回收成功与统计；失败则显示行动中断。"
+        },
+        "image": ""
+      },
+      {
+        "id": "e674ae73-2079-4861-b266-c8ca4ceeb5c2",
+        "type": "level",
+        "section": "levels",
+        "title": "平台路线与任务参数",
+        "body": "【代码配置已核对】./src/game/tidal-mission.ts、./src/game/game.ts。\n【历史路径】v3、v8 正序与 v4 逆序均跑通；其余 4 种排列、卡边/跳跃捷径尚无完整记录。\n公开快照未包含本地场景截图；关卡结构见项目源码。",
+        "status": "done",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "space": "出生 (0,-30)；1 号进水泵站 (-22,-18)；2 号膜滤机组 (23,-10)；3 号潮汐中继 (0,25)；EXIT (0,-33)。坐标为 x,z。",
+          "config": "3 站 × 35 秒；激活距离约 3.4m；作业半径 7m；敌人干扰半径 4.5m。总限时 600s；撤离阶段 100s；登船半径 4m，连续 8s。",
+          "rhythm": "开场看见威胁 → 自选站点 → 守点战斗 → 补给与转场 → 限时返航。",
+          "completion": "三站完成后在码头安全登船；死亡/总超时/撤离超时均失败。"
+        },
+        "image": ""
+      },
+      {
+        "id": "1331ada6-33c5-43ea-bf6d-3bb48ba6c12f",
+        "type": "level",
+        "section": "levels",
+        "title": "守卫与增援 · 现有配置",
+        "body": "【历史已验证】v8 开场两名守卫、任务战斗与撤离。\n【代码已核对】./src/game/game.ts 的 beginWave、stepDirector、stepSpawns；波次配置见 ./src/game/onslaught.ts。\n【待验证】真人压力曲线、远近增援可读性、所有站点顺序的手雷与支援武器保留。\n2026-10-23 视觉预览直接引用项目巡逻机器人 GLB 与原贴图，仅展示守卫模型；部署数量、增援与压力曲线仍以本卡配置和对应验证记录为准。",
+        "status": "doing",
+        "x": 400,
+        "y": 50,
+        "fields": {
+          "space": "开场守卫 (-6,-17)、(7,-14)；各站与撤离附近持续产生战斗。",
+          "config": "站点初始队列：1号4名 scrapper；2号4名 scrapper + 1名 hornet；3号5名 scrapper + 1名 hornet + 1名 juggernaut；并发上限 MAX_ALIVE=10。\n开局 2 名 scrapper；站激活后首次增援计时 18s，此后计时到且敌人数<5 时加入2名 scrapper，重设20s；进入撤离队列加入3名 scrapper。显示守卫数包含存活、待落地和待生成。",
+          "rhythm": "站间未完成的落地继续推进；完成站点给补给，保留当前武器。",
+          "completion": "数量是遭遇配置，不是通用伤害规则；帧率与人数压力需要独立性能验证。",
+          "file": "./generated-assets/patrol-robot.glb"
+        },
+        "image": ""
+      },
+      {
+        "id": "0c771161-b34d-4f2c-8685-f86010b99f60",
+        "type": "reference",
+        "section": "assets",
+        "title": "视觉方向 · 工业插画与海上作业",
+        "body": "【参考方向，非验收结论】奶油白机器、石油青与锈橙；墨线、水粉色块与克制丝网印刷颗粒。参考现有机器人/净化器的识别特征。",
+        "status": "doing",
+        "x": 50,
+        "y": 50,
+        "fields": {
+          "direction": "左侧留给真实标题/控件，右侧机器人肖像或平台场景；避免把进度、按钮做成图片。",
+          "source": "./interface-art.provenance.json；./src/art/ 下 V1/V2/V3 素材；",
+          "license": "来源说明见 ./THIRD_PARTY_NOTICES.md。参考截图不随游戏再分发；本卡不作新增版权结论。",
+          "file": "./src/art/platform-menu-v2.webp"
+        },
+        "image": ""
+      },
+      {
+        "id": "4d2d8a2a-a8cb-47c9-b86a-4e0c2b0c6ae8",
+        "type": "asset",
+        "section": "assets",
+        "title": "生产资产 · 净化器",
+        "body": "【历史集成已验证】v8 三站任务完整跑通；规格按现有 provenance 核对。\n2026-10-23：构思板直接读取项目 GLB 与原贴图，缩略图加载通过；机器人旋转查看通过。这只验证素材预览，不替代游戏玩法、完整动画或设备验收。",
+        "status": "done",
+        "x": 400,
+        "y": 50,
+        "fields": {
+          "spec": "7,633 三角面；1024px WebP 贴图、Meshopt；独立游戏碰撞体，三个站点共用。",
+          "source": "./generated-assets/purifier.glb；./tripo-assets.provenance.json；./public-assets.json。",
+          "license": "按 ./THIRD_PARTY_NOTICES.md 保留 Tripo 生成来源与对应许可记录；不附账户或账单。",
+          "file": "./generated-assets/purifier.glb"
+        },
+        "image": ""
+      },
+      {
+        "id": "2f13b816-930f-4301-848e-981193424518",
+        "type": "asset",
+        "section": "assets",
+        "title": "生产资产 · 巡逻机器人",
+        "body": "【历史集成已验证】asset-integration 记录约1.8m、18个骨骼名称、idle/run/walk；v8 完整战斗通过。来源 ./game-outline.json 与现有资产清单。\n2026-10-23：构思板直接读取项目 GLB 与原贴图，缩略图加载通过；机器人旋转查看通过。这只验证素材预览，不替代游戏玩法、完整动画或设备验收。",
+        "status": "done",
+        "x": 750,
+        "y": 50,
+        "fields": {
+          "spec": "11,786 三角面；1024px WebP、Meshopt；idle/walk/run 原地动画，位移由游戏控制。所有人形含影子身体用这套单独生成的骨架/动画。",
+          "source": "./generated-assets/patrol-robot.glb；./tripo-assets.provenance.json。",
+          "license": "保留 ./THIRD_PARTY_NOTICES.md；原始 Mixamo 人形/动画已排除，不因骨骼命名兼容而恢复旧文件。",
+          "file": "./generated-assets/patrol-robot.glb"
+        },
+        "image": ""
+      },
+      {
+        "id": "febe94e2-0536-4586-a3db-d6da7783b764",
+        "type": "asset",
+        "section": "assets",
+        "title": "生产资产 · 加载与标题画面",
+        "body": "【历史界面已验证 · v8】1440×900、1054×840、1280×720、897×840、2560×1080；记录无浏览器错误/资源失败。\n【未验证】手机触控、真人视觉偏好；这些尺寸检查不等于移动端玩法验收。",
+        "status": "done",
+        "x": 50,
+        "y": 460,
+        "fields": {
+          "spec": "V1 全幅 WebP 背景 + V3 透明标题分层缩放；真实 UI 保留进度、按钮、提示与存档状态；语义标题可被读屏读取。V2 海报保留作参考/封面。",
+          "source": "./src/art/；./interface-art.provenance.json；历史界面记录见 ./game-outline.json 的 interface-v8。",
+          "license": "来源见项目许可说明；遵循 ./THIRD_PARTY_NOTICES.md。",
+          "file": "./src/art/robot-loading-v1.webp"
+        },
+        "image": ""
       }
     ],
-    "edges": [],
-    "views": {
-      "rules": {
-        "x": 30,
-        "y": 19.2120361328125,
-        "z": 0.85
+    "edges": [
+      {
+        "id": "7b23b345-d17f-4499-8c2f-95f08a420627",
+        "label": "加载完成",
+        "from": "1d58c280-781a-4263-913b-57fbffe8fb7b",
+        "to": "c0e1a3e3-ed60-4747-b144-d24ef55617b6"
+      },
+      {
+        "id": "d1bb2546-48aa-4fc0-9597-3470513aef16",
+        "label": "部署倒计时结束",
+        "from": "c0e1a3e3-ed60-4747-b144-d24ef55617b6",
+        "to": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457"
+      },
+      {
+        "id": "65ee8de7-8329-4e79-8e9e-426a231f56fa",
+        "label": "暂停",
+        "from": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457",
+        "to": "c3cc14ba-4837-457d-9a42-9b763b85cfe8"
+      },
+      {
+        "id": "9ea37dde-13f2-4b52-ae4e-71c11eaf0343",
+        "label": "继续",
+        "from": "c3cc14ba-4837-457d-9a42-9b763b85cfe8",
+        "to": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457"
+      },
+      {
+        "id": "577fc2c7-d9db-499d-ba5e-6a98d41d7802",
+        "label": "胜利 / 失败",
+        "from": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457",
+        "to": "7e3a917e-9d6e-4848-8398-92a62c947822"
+      },
+      {
+        "id": "d35a8dae-84d4-4fa0-8d04-4f5cef9ce0ce",
+        "label": "返回标题",
+        "from": "7e3a917e-9d6e-4848-8398-92a62c947822",
+        "to": "c0e1a3e3-ed60-4747-b144-d24ef55617b6"
+      },
+      {
+        "id": "c2a04ff7-47ac-48b9-8e68-6188eb0a0f8e",
+        "label": "失败",
+        "from": "1d58c280-781a-4263-913b-57fbffe8fb7b",
+        "to": "47e31188-4021-435b-b1f7-485c4f8708d8"
+      },
+      {
+        "id": "fd39d175-a8f6-421b-ba31-93962f58ae37",
+        "label": "资源重试成功",
+        "from": "47e31188-4021-435b-b1f7-485c4f8708d8",
+        "to": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457"
+      },
+      {
+        "id": "38b2f78e-88b3-46f6-aab2-1933f50f6226",
+        "label": "三站完成",
+        "from": "c3da25c0-8fc5-423a-86b3-91f6429014a9",
+        "to": "ef82645f-93ab-468d-a646-68669414e5e1"
+      },
+      {
+        "id": "a4faf79b-1184-48cd-88ec-96db2823532b",
+        "label": "任务使用规则",
+        "from": "9311ea2b-7036-4a9f-ad85-9fc75d2b0643",
+        "to": "c3da25c0-8fc5-423a-86b3-91f6429014a9"
+      },
+      {
+        "id": "b9ffe3a5-4e0e-4984-8274-33287cf81a14",
+        "label": "任务使用规则",
+        "from": "2546894b-3a6b-4aaf-9c04-f140ecb38ba0",
+        "to": "ef82645f-93ab-468d-a646-68669414e5e1"
+      },
+      {
+        "id": "9c64af60-5845-4ce3-8124-0b469c7c10bb",
+        "label": "承载任务",
+        "from": "e674ae73-2079-4861-b266-c8ca4ceeb5c2",
+        "to": "c3da25c0-8fc5-423a-86b3-91f6429014a9"
+      },
+      {
+        "id": "40e33a55-3477-44bb-a65b-62682c49d8d2",
+        "label": "使用伤害规则",
+        "from": "1331ada6-33c5-43ea-bf6d-3bb48ba6c12f",
+        "to": "70f6e45d-f789-4523-a095-d4ac43a8cfe3"
+      },
+      {
+        "id": "e26bff71-0f5d-43a9-99a9-a0022aab0dad",
+        "label": "视觉方向",
+        "from": "0c771161-b34d-4f2c-8685-f86010b99f60",
+        "to": "febe94e2-0536-4586-a3db-d6da7783b764"
+      },
+      {
+        "id": "0a284c73-6480-4eae-a204-3e43e2fea7be",
+        "label": "守卫模型",
+        "from": "2f13b816-930f-4301-848e-981193424518",
+        "to": "1331ada6-33c5-43ea-bf6d-3bb48ba6c12f"
+      },
+      {
+        "id": "ebd25626-e5ed-4533-8a43-5cc838b02afe",
+        "label": "设备模型",
+        "from": "4d2d8a2a-a8cb-47c9-b86a-4e0c2b0c6ae8",
+        "to": "c3da25c0-8fc5-423a-86b3-91f6429014a9"
       }
-    }
+    ],
+    "views": {}
   }
 }

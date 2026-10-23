@@ -1,24 +1,24 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "project": {
     "id": "a0b586ca-7b10-462b-9f9c-ea3bb36e5c65",
     "title": "人潮冲线 · Web",
     "tagline": "选对数字门，集结队伍，冲过终点。",
-    "experience": "",
-    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "experience": "在短赛道上选对人数门，带队抵达终点。",
+    "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
     "playable": "",
     "cards": [
       {
         "id": "b8b10268-91f6-433c-8943-c4f004a95bef",
         "type": "note",
         "section": "overview",
-        "title": "现有项目说明",
-        "body": "选对数字门，集结队伍，冲过终点。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
-        "status": "idea",
-        "x": 50,
-        "y": 50,
+        "title": "Web 设计入口",
+        "body": "在短赛道上选对人数门，带队抵达终点。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
         "fields": {},
         "image": ""
       },
@@ -26,15 +26,15 @@
         "id": "2118ecca-8983-4800-a466-3aea87baed47",
         "type": "rule",
         "section": "rules",
-        "title": "当前玩法说明（文档记录）",
-        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
-        "status": "idea",
-        "x": 50,
-        "y": 50,
+        "title": "核心规则 · 设计与历史验证",
+        "body": "已验证（历史版本范围）：game-art-v2构建cc538420ffdb：门/障碍/终点对战，8关通关与失败路线通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "done",
+        "x": 60,
+        "y": 60,
         "fields": {
-          "trigger": "",
-          "behavior": "按住跑道左右拖动，或使用方向键／A、D，选择加法、乘法门壮大队伍；减法和除法门要看清当前人数。避开旋转障碍，带足伙伴战胜终点对手。支持暂停、8 关选关和独立存档续玩。",
-          "example": ""
+          "trigger": "玩家进行当前回合操作。",
+          "behavior": "加乘门扩队，减除门和障碍减员；终点按实际人数对战，绘制人数上限不改变数值。",
+          "example": "通过乘门后实际人数按规则增加；人数超过画面小人上限时结算仍用真实人数。"
         },
         "image": ""
       },
@@ -42,15 +42,15 @@
         "id": "22b29a3d-5b8b-4b5a-b058-77dea233c4e7",
         "type": "decision",
         "section": "overview",
-        "title": "下一步开发目标",
-        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "title": "待验证与下一步",
+        "body": "最终版美术和手感待用户反馈；8关通关记录属于所列版本，后续差异需定向回归。",
         "status": "idea",
-        "x": 410,
-        "y": 50,
+        "x": 760,
+        "y": 60,
         "fields": {
-          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
-          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
-          "result": ""
+          "question": "下一轮补哪些未覆盖项？",
+          "options": "最终版美术和手感待用户反馈；8关通关记录属于所列版本，后续差异需定向回归。",
+          "result": "保持待验证；不以历史或静态导入替代本版本验收。"
         },
         "image": ""
       },
@@ -58,16 +58,144 @@
         "id": "bf4fa0a2-c4a8-4abb-9141-f76420a1e919",
         "type": "note",
         "section": "overview",
-        "title": "开发记录与验证",
-        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
-        "status": "idea",
-        "x": 770,
-        "y": 50,
+        "title": "验证索引 · 分版本记录",
+        "body": "历史验证摘要（未重新运行）：\n• 2026-10-19 / browser-history / cc538420ffdb：game-art-v2：8关真实控制通关，失败路线/重试、键盘暂停和进度恢复通过；最终标签位置、粒子色及resize改动另有12项重绘回归。\n• 2026-10-19 / resize-regression / 未记录构建指纹：最终包12项同帧重绘、触摸和精确进度恢复回归通过。\n• 2026-10-19 / production-history / 2a062aaa2d95a6e294b262e30b38524cf6e01f898c98e2cb7d809ee68bada10e：最终包正式站点整合检查；此记录不自动推断真机或用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+        "status": "done",
+        "x": 410,
+        "y": 60,
         "fields": {},
+        "image": ""
+      },
+      {
+        "id": "32bdc46e-ce09-4485-8afa-ad1ca8a2f183",
+        "type": "rule",
+        "section": "rules",
+        "title": "输入与操作边界",
+        "body": "已验证（历史版本范围）：捕获拖动、桌面键盘/暂停、窄屏/横屏布局通过；最终resize另有12项重绘断言。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "trigger": "触摸、键盘或指针输入及取消。",
+          "behavior": "手机横向拖动；桌面A/D或方向键；暂停后停止推进。",
+          "example": "通过乘门后实际人数按规则增加；人数超过画面小人上限时结算仍用真实人数。\n下一轮还应按目标设备复核取消/松手边界。"
+        },
+        "image": ""
+      },
+      {
+        "id": "bc0af4dd-14c6-4c5b-a731-e0ea4be8fdb2",
+        "type": "state",
+        "section": "flow",
+        "title": "游玩、结算与重试",
+        "body": "已验证（历史版本范围）：开跑→对战→胜利解锁→下一关和失败重试通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "entry": "进入本局或从已有进度继续。",
+          "exit": "开跑→选择路线与避障→终点对战→获胜解锁／失败重试。",
+          "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+        },
+        "image": ""
+      },
+      {
+        "id": "e758a714-40a2-4755-bed6-1da3d1e9d7fd",
+        "type": "state",
+        "section": "flow",
+        "title": "存档、暂停与恢复",
+        "body": "已验证（历史版本范围）：实际暂停、精确save/reload和恢复通过。最终生产记录不单独证明整机离线。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "done",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "entry": "读取旧档、暂停、后台或重新打开。",
+          "exit": "恢复到合法状态后由玩家继续。",
+          "recovery": "v1存关卡解锁、最佳人数与当前进度，刷新后显式继续。"
+        },
+        "image": ""
+      },
+      {
+        "id": "58f49fee-c1ed-4583-90af-ffdbcfd52ef5",
+        "type": "level",
+        "section": "levels",
+        "title": "关卡配置与推进节奏",
+        "body": "已验证（历史版本范围）：8条赛道均由真实控制和计时循环获胜；最终标签/粒子/resize小改做定向回归。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "space": "8条赛道，门数值、障碍位置、终点敌人属于关卡配置。",
+          "config": "8条赛道，门数值、障碍位置、终点敌人属于关卡配置。",
+          "rhythm": "在短赛道上选对人数门，带队抵达终点。",
+          "completion": "开跑→选择路线与避障→终点对战→获胜解锁／失败重试。"
+        },
+        "image": ""
+      },
+      {
+        "id": "067471a1-c7ea-47c4-980e-21c0a4aa0083",
+        "type": "reference",
+        "section": "assets",
+        "title": "美术方向与参考",
+        "body": "以当前源码及本地素材为准；历史包含早期重绘与game-art-v2版本，不能互相代替运行验收。\n设计与历史来源：./game-outline.json",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "direction": "以当前源码及本地素材为准；历史包含早期重绘与game-art-v2版本，不能互相代替运行验收。",
+          "source": "./game-outline.json",
+          "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+        },
+        "image": ""
+      },
+      {
+        "id": "589f1c01-00d5-493c-9047-24ca9c307dce",
+        "type": "asset",
+        "section": "assets",
+        "title": "生产素材与交付边界",
+        "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：最终版美术和手感待用户反馈；8关通关记录属于所列版本，后续差异需定向回归。",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "spec": "以当前源码及本地素材为准；历史包含早期重绘与game-art-v2版本，不能互相代替运行验收。",
+          "source": "./public/LICENSE.txt\n./public/SOURCE.json\n./public/index.html\n./public/style.css",
+          "license": "保留现有作者与第三方许可；见项目许可文件。"
+        },
         "image": ""
       }
     ],
-    "edges": [],
+    "edges": [
+      {
+        "id": "c50021bd-ebc5-4ec4-9047-ddd77051a749",
+        "label": "规则用于关卡",
+        "from": "2118ecca-8983-4800-a466-3aea87baed47",
+        "to": "58f49fee-c1ed-4583-90af-ffdbcfd52ef5"
+      },
+      {
+        "id": "4792f554-d853-41c4-91c7-17716fbe8dd3",
+        "label": "操作驱动状态",
+        "from": "32bdc46e-ce09-4485-8afa-ad1ca8a2f183",
+        "to": "bc0af4dd-14c6-4c5b-a731-e0ea4be8fdb2"
+      },
+      {
+        "id": "04a00820-09ec-4c31-9ca2-140ad6bd1c59",
+        "label": "暂停与恢复",
+        "from": "bc0af4dd-14c6-4c5b-a731-e0ea4be8fdb2",
+        "to": "e758a714-40a2-4755-bed6-1da3d1e9d7fd"
+      },
+      {
+        "id": "eebbecce-3237-4c3c-a73b-9903535f62fc",
+        "label": "方向落实到素材",
+        "from": "067471a1-c7ea-47c4-980e-21c0a4aa0083",
+        "to": "589f1c01-00d5-493c-9047-24ca9c307dce"
+      },
+      {
+        "id": "9e47a730-69b8-4eda-ad13-e530baf901c0",
+        "label": "补验后回写",
+        "from": "22b29a3d-5b8b-4b5a-b058-77dea233c4e7",
+        "to": "bf4fa0a2-c4a8-4abb-9141-f76420a1e919"
+      }
+    ],
     "views": {}
   }
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.11.2 — 2026-10-23
+
+- Zoom the canvas with the wheel and pan while holding the mouse; use one-finger pan and two-finger pinch on touch screens, with stable transitions and cancellation.
+- Fit cards when opening boards and show project-local image, GLB and level previews. External asset symlinks require a private local allowlist; no machine-specific network paths are bundled.
+- Organize 19 public Web game boards into design and scoped historical-validation cards. Keep unverified work and unpublished candidates explicit, use project-relative references, and exclude private reports and embedded images.
+- Verify gesture input, package installation and project JSON synchronization; physical-phone gesture acceptance remains separate.
+
 ## 0.11.1 — 2026-10-23
 
 - Open a game-local board with `owngame outline [directory]`; initialize missing project JSON, open the browser, and choose a free port if the default is occupied. Use `--no-open` for headless workflows.

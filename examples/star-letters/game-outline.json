@@ -1,24 +1,24 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "project": {
     "id": "ac58e9aa-c844-413a-98ea-096ab45bfd88",
-    "title": "星野来信 · Unity / Web",
+    "title": "星野来信 · Web",
     "tagline": "收信出发，拜访三颗星球上的朋友，让巨人的花园迎来迟到的春天。首次加载约 54 MB。",
-    "experience": "",
-    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "experience": "在小行星之间送信、照料花园，让邻居重新连接。",
+    "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
     "playable": "",
     "cards": [
       {
         "id": "9e25b2a6-3d2d-4c37-b79a-b7ab3dd9653b",
         "type": "note",
         "section": "overview",
-        "title": "现有项目说明",
-        "body": "收信出发，拜访三颗星球上的朋友，让巨人的花园迎来迟到的春天。首次加载约 54 MB。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
-        "status": "idea",
-        "x": 50,
-        "y": 50,
+        "title": "Web 设计入口",
+        "body": "在小行星之间送信、照料花园，让邻居重新连接。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
         "fields": {},
         "image": ""
       },
@@ -26,15 +26,15 @@
         "id": "c8c42040-e8de-40cb-a9f3-eef665673433",
         "type": "rule",
         "section": "rules",
-        "title": "当前玩法说明（文档记录）",
-        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
-        "status": "idea",
-        "x": 50,
-        "y": 50,
+        "title": "核心规则 · 设计与历史验证",
+        "body": "已验证（历史版本范围）：首封信打开后进入照看第一朵花阶段，实际旧档恢复返回该任务；其余完整故事条件待验证。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
         "fields": {
-          "trigger": "",
-          "behavior": "WASD／方向键行走，Shift 跑步，E 互动，右键环视，滚轮缩放，V 全景，C 恢复镜头。从家园信箱开始，解开邻星谜题，再带着邀请去巨人花园。进度自动保存在当前浏览器。",
-          "example": ""
+          "trigger": "玩家进行当前回合操作。",
+          "behavior": "以探索、互动和世界状态推进任务；故事阶段由照花、零件、信标、邻星谜题及邀请推进。",
+          "example": "收到首封信后任务切换到照看第一朵花；完成任务改变状态，刷新不应丢失。"
         },
         "image": ""
       },
@@ -42,15 +42,15 @@
         "id": "1174e97a-628e-493f-b906-ab458c9c9aa6",
         "type": "decision",
         "section": "overview",
-        "title": "下一步开发目标",
-        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "title": "待验证与下一步",
+        "body": "2026-10-20没有重验完整故事通关、iPhone Safari、Android App WebView或低配性能；剧情与后期任务保持待验证。",
         "status": "idea",
-        "x": 410,
-        "y": 50,
+        "x": 760,
+        "y": 60,
         "fields": {
-          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
-          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
-          "result": ""
+          "question": "下一轮补哪些未覆盖项？",
+          "options": "2026-10-20没有重验完整故事通关、iPhone Safari、Android App WebView或低配性能；剧情与后期任务保持待验证。",
+          "result": "保持待验证；不以历史或静态导入替代本版本验收。"
         },
         "image": ""
       },
@@ -58,16 +58,248 @@
         "id": "e2998c72-53af-4827-ac38-f3eafe6a4ffd",
         "type": "note",
         "section": "overview",
-        "title": "开发记录与验证",
-        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
-        "status": "idea",
-        "x": 770,
-        "y": 50,
+        "title": "验证索引 · 分版本记录",
+        "body": "历史验证摘要（未重新运行）：\n• 2026-10-20 / web-release-2026-10-20 / 81acaed073b42fc834e30dff38d5c891e237a08b682feaa20085b6fb9c455f66：2026-10-20：浏览器横竖屏、多指、取消/失焦；Android 实机实际行走、花朵对话、首封信与旧档恢复通过；正式站点下载后断网进入实际3D场景。\n• 2026-10-20 / save-migration-2026-10-20 / 未记录构建指纹：旧地址最近记录优先、原件保留、新地址不覆盖、其他游戏不迁移通过。\n• 2026-10-20 / touch-validation-note / 未记录构建指纹：浏览器触摸与Android 实机首封信实玩，完整故事未重验；最终包USB真机不计手机公网验收。\n• 2026-10-19 / loading-recovery-2026-10-19 / 4868ae27e4f85cbae571943620644b804f2dbd5d33c527b081f274851d90aac1：曾有线上HTTP/3冷启动超时；分块校验/重试和站点协议调整后，默认Chrome三次独立冷启5.516/5.365/5.631秒并真实移动。只代表当时机器网络。未测全剧情。\n• 2026-10-19 / loading-browser-2026-10-19 / 4868ae27e4f85cbae571943620644b804f2dbd5d33c527b081f274851d90aac1：最终默认Chrome三次独立冷启动记录；h2、53块、无重试，随后实际3D移动。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+        "status": "done",
+        "x": 410,
+        "y": 60,
         "fields": {},
+        "image": ""
+      },
+      {
+        "id": "bbdb4029-fd78-42a6-b162-9451eff724e9",
+        "type": "rule",
+        "section": "rules",
+        "title": "输入与操作边界",
+        "body": "已验证（历史版本范围）：浏览器844×390与390×844多指/环视/取消/失焦；Android 实机行走、花朵对话、开信通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "trigger": "触摸、键盘或指针输入及取消。",
+          "behavior": "Web左侧摇杆行走，空白拖动环视，可双指同时进行；互动/继续/收起/翻面/全景/复位；键盘鼠标仍保留。",
+          "example": "收到首封信后任务切换到照看第一朵花；完成任务改变状态，刷新不应丢失。\n下一轮还应按目标设备复核取消/松手边界。"
+        },
+        "image": ""
+      },
+      {
+        "id": "0df35feb-411c-4fff-978a-32b19ad14cf9",
+        "type": "state",
+        "section": "flow",
+        "title": "游玩、结算与重试",
+        "body": "已验证（历史版本范围）：正式站Web加载到3D场景；首封信与对话已验，完整故事结局未重验。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "entry": "进入本局或从已有进度继续。",
+          "exit": "加载Unity Web→继续／新游戏→探索／对话／读信→自动保存；失焦后台释放按键。",
+          "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+        },
+        "image": ""
+      },
+      {
+        "id": "9ef81aeb-2684-416d-b790-dd34fb6ac25a",
+        "type": "state",
+        "section": "flow",
+        "title": "存档、暂停与恢复",
+        "body": "已验证（历史版本范围）：最近旧地址记录优先，保留原件，不覆盖新地址，其他游戏不迁移；正式站下载后断网冷启到3D场景。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "done",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "entry": "读取旧档、暂停、后台或重新打开。",
+          "exit": "恢复到合法状态后由玩家继续。",
+          "recovery": "Web PlayerPrefs迁移仅复制已知旧地址最新存档，保留旧原件，不覆盖新地址记录，不扫描其他游戏。"
+        },
+        "image": ""
+      },
+      {
+        "id": "fb0bb466-4e83-4a98-9871-878292b8970e",
+        "type": "level",
+        "section": "levels",
+        "title": "关卡配置与推进节奏",
+        "body": "已验证（历史版本范围）：家园首封信范围已验；邻星谜题、巨人花园至结局的完整Web游玩仍待逐项验收。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "idea",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "space": "家园→邻星风与灌溉谜题→巨人花园邀请→开门种花敲铃→回信；结局后可旅行。",
+          "config": "家园→邻星风与灌溉谜题→巨人花园邀请→开门种花敲铃→回信；结局后可旅行。",
+          "rhythm": "在小行星之间送信、照料花园，让邻居重新连接。",
+          "completion": "加载Unity Web→继续／新游戏→探索／对话／读信→自动保存；失焦后台释放按键。"
+        },
+        "image": ""
+      },
+      {
+        "id": "a0f474dc-803b-49e9-8604-228057a118b6",
+        "type": "reference",
+        "section": "assets",
+        "title": "美术方向与参考",
+        "body": "保留Unity Web交付的55个引擎与素材文件指纹；触摸层仅改Web输入。\n设计与历史来源：./game-outline.json",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "direction": "保留Unity Web交付的55个引擎与素材文件指纹；触摸层仅改Web输入。",
+          "source": "./game-outline.json",
+          "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+        },
+        "image": ""
+      },
+      {
+        "id": "1976c8b8-1e01-4f7b-9bd2-5e0cdac94b8f",
+        "type": "asset",
+        "section": "assets",
+        "title": "生产素材与交付边界",
+        "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：2026-10-20没有重验完整故事通关、iPhone Safari、Android App WebView或低配性能；剧情与后期任务保持待验证。",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "spec": "保留Unity Web交付的55个引擎与素材文件指纹；触摸层仅改Web输入。",
+          "source": "./LICENSE\n./THIRD_PARTY_NOTICES.md\n./index.html\n./web/touch.js",
+          "license": "保留现有作者与第三方许可；见项目许可文件。"
+        },
+        "image": ""
+      },
+      {
+        "id": "c80272d4-520d-40b3-9e3a-84c584d8e8f9",
+        "type": "story",
+        "section": "world",
+        "title": "三颗星的回信",
+        "body": "现有剧情：家园来信、邻星协作、巨人花园、春天与最终回信。2026-10-20触屏验证没有覆盖完整故事。",
+        "status": "idea",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "chapter": "家园→邻星→巨人花园",
+          "event": "照花、修复信标与邀请邻居连接世界",
+          "branch": "结局后仍可旅行；未据本轮记录确认全部分支。"
+        },
+        "image": ""
+      },
+      {
+        "id": "aa602a72-c586-47d4-a70a-54b467246260",
+        "type": "quest",
+        "section": "world",
+        "title": "第一封信",
+        "body": "历史已验证：Android 实机首封信和任务恢复。\n证据与边界：./game-outline.json",
+        "status": "done",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "giver": "信件/角色任务提示",
+          "location": "家园信箱",
+          "requires": "到达当前故事阶段",
+          "objective": "到信箱互动打开首封信",
+          "completion": "首封信打开",
+          "changes": "下一任务变为照看第一朵花"
+        },
+        "image": ""
+      },
+      {
+        "id": "b0db7d62-20fb-42bc-8bf1-bf7dcb877c04",
+        "type": "quest",
+        "section": "world",
+        "title": "照看花圃",
+        "body": "设计已记录，完整完成条件与运行表现待逐项验证。\n证据与边界：./game-outline.json",
+        "status": "idea",
+        "x": 760,
+        "y": 60,
+        "fields": {
+          "giver": "信件/角色任务提示",
+          "location": "家园",
+          "requires": "到达当前故事阶段",
+          "objective": "照看第一朵花，继续收集零件/修复信标",
+          "completion": "按任务提示完成对应互动",
+          "changes": "推进家园阶段"
+        },
+        "image": ""
+      },
+      {
+        "id": "5f1f56b1-d0ec-4a2e-8be7-0774c301ea87",
+        "type": "quest",
+        "section": "world",
+        "title": "邻星协作与回信",
+        "body": "设计已记录，完整完成条件与运行表现待逐项验证。\n证据与边界：./game-outline.json",
+        "status": "idea",
+        "x": 60,
+        "y": 410,
+        "fields": {
+          "giver": "信件/角色任务提示",
+          "location": "邻星/巨人花园",
+          "requires": "到达当前故事阶段",
+          "objective": "解风与灌溉谜题，邀请、开门、种花、敲铃",
+          "completion": "完成对应世界状态条件",
+          "changes": "春天/最终回信与后续旅行"
+        },
+        "image": ""
+      },
+      {
+        "id": "1723a727-5270-4901-971b-916cf8cf973b",
+        "type": "place",
+        "section": "world",
+        "title": "星际花园",
+        "body": "区域背景来自现有故事设计，具体对象位置待后续关卡验收。",
+        "status": "doing",
+        "x": 410,
+        "y": 410,
+        "fields": {
+          "kind": "小行星与花园",
+          "detail": "家园、邻星、巨人花园；不要把故事事件直接当玩家任务完成证据。"
+        },
+        "image": ""
+      },
+      {
+        "id": "1757cc7a-98f8-4981-982a-e451401e0e46",
+        "type": "state",
+        "section": "flow",
+        "title": "下载、校验与异常恢复",
+        "body": "已验证（2026-10-19）：17项下载器/离线测试；浏览器断流、内容损坏、持续503与手动继续后进入3D。HTTP/3低速失败被保留，协议调整后的三次默认Chrome冷启通过。\n证据：./game-outline.json\n待验证：跨地区、低配与未来重新启用HTTP/3后的表现。",
+        "status": "done",
+        "x": 760,
+        "y": 60,
+        "fields": {
+          "entry": "首次加载或恢复中断下载。",
+          "exit": "53个最多1MiB分块逐个校验后启动Unity。",
+          "recovery": "并发3；无进展12秒或总计45秒中断，每块最多4次；复用已校验缓存，失败可继续接收，启动失败重新打开。"
+        },
         "image": ""
       }
     ],
-    "edges": [],
+    "edges": [
+      {
+        "id": "efea95cf-1cf6-46e0-941e-32476fe41ea0",
+        "label": "规则用于关卡",
+        "from": "c8c42040-e8de-40cb-a9f3-eef665673433",
+        "to": "fb0bb466-4e83-4a98-9871-878292b8970e"
+      },
+      {
+        "id": "e60b4b62-84e6-4290-9fea-881abceca2fa",
+        "label": "操作驱动状态",
+        "from": "bbdb4029-fd78-42a6-b162-9451eff724e9",
+        "to": "0df35feb-411c-4fff-978a-32b19ad14cf9"
+      },
+      {
+        "id": "a3c817a6-fc51-4254-aeae-20ba78374c5a",
+        "label": "暂停与恢复",
+        "from": "0df35feb-411c-4fff-978a-32b19ad14cf9",
+        "to": "9ef81aeb-2684-416d-b790-dd34fb6ac25a"
+      },
+      {
+        "id": "909f8039-dd62-485a-87fa-71ed3ce1cd32",
+        "label": "方向落实到素材",
+        "from": "a0f474dc-803b-49e9-8604-228057a118b6",
+        "to": "1976c8b8-1e01-4f7b-9bd2-5e0cdac94b8f"
+      },
+      {
+        "id": "07051ab5-7e07-4ac9-b797-17cc11816536",
+        "label": "补验后回写",
+        "from": "1174e97a-628e-493f-b906-ab458c9c9aa6",
+        "to": "e2998c72-53af-4827-ac38-f3eafe6a4ffd"
+      }
+    ],
     "views": {}
   }
 }

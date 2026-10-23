@@ -1,24 +1,24 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "project": {
     "id": "af37166c-a9fa-46f8-a7e2-f6b07d619518",
-    "title": "遥控冲线 · 导入项目",
+    "title": "遥控冲线 · Web",
     "tagline": "驾驶遥控车穿过检查点，挑战两圈最快纪录。",
-    "experience": "",
-    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "experience": "驾驶遥控车穿过检查点，用完整两圈挑战最佳时间。",
+    "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
     "playable": "",
     "cards": [
       {
         "id": "4d683d07-5630-4a99-a0a0-8258a80b46d9",
         "type": "note",
         "section": "overview",
-        "title": "现有项目说明",
-        "body": "驾驶遥控车穿过检查点，挑战两圈最快纪录。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
-        "status": "idea",
-        "x": 50,
-        "y": 50,
+        "title": "Web 设计入口",
+        "body": "驾驶遥控车穿过检查点，用完整两圈挑战最佳时间。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
         "fields": {},
         "image": ""
       },
@@ -26,15 +26,15 @@
         "id": "2a0368cd-eeb2-4f2c-806e-4f91399522b8",
         "type": "rule",
         "section": "rules",
-        "title": "当前玩法说明（文档记录）",
-        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
-        "status": "idea",
-        "x": 50,
-        "y": 50,
+        "title": "核心规则 · 设计与历史验证",
+        "body": "已验证（历史版本范围）：修复前右推向左；修复后以车头与上方向计算驾驶者右向量，左右真实朝向变化正确。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
         "fields": {
-          "trigger": "",
-          "behavior": "右侧摇杆前推加速、左右转向，后拉刹车或倒车。左侧闪电加速，依次通过五个检查点跑两圈；回到起点会加时五秒。支持暂停与续跑。",
-          "example": ""
+          "trigger": "玩家进行当前回合操作。",
+          "behavior": "按顺序过5个检查点、跑2圈；重生加5秒罚时。以驾驶者朝向定义左右，而非输入符号。",
+          "example": "向前时右推应朝驾驶者右侧转；后拉制动再倒车；重生后计时增加5秒。"
         },
         "image": ""
       },
@@ -42,15 +42,15 @@
         "id": "9762023b-1f8a-4f51-bcf1-543b5246b013",
         "type": "decision",
         "section": "overview",
-        "title": "下一步开发目标",
-        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "title": "待验证与下一步",
+        "body": "iPhone Safari、Android App WebView、实体手柄未重测；Android 实机通过USB加载正式包，不算手机公网验收。",
         "status": "idea",
-        "x": 410,
-        "y": 50,
+        "x": 760,
+        "y": 60,
         "fields": {
-          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
-          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
-          "result": ""
+          "question": "下一轮补哪些未覆盖项？",
+          "options": "iPhone Safari、Android App WebView、实体手柄未重测；Android 实机通过USB加载正式包，不算手机公网验收。",
+          "result": "保持待验证；不以历史或静态导入替代本版本验收。"
         },
         "image": ""
       },
@@ -58,16 +58,144 @@
         "id": "e6e9c699-2d1d-454d-ac6b-235e5e58dcab",
         "type": "note",
         "section": "overview",
-        "title": "开发记录与验证",
-        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
-        "status": "idea",
-        "x": 770,
-        "y": 50,
+        "title": "验证索引 · 分版本记录",
+        "body": "历史验证摘要（未重新运行）：\n• 2026-10-21 / race-complete / 未记录构建指纹：自然驾驶输入跑完两圈全部检查点，最终75.9478秒；暂停保存重载和最佳成绩保留通过。\n• 2026-10-21 / live-input / 未记录构建指纹：正式网站四方向和键盘、双指加速/取消检查通过。\n• 2026-10-21 / offline-restore / 未记录构建指纹：正式网站下载后断网重开、存档续跑通过。\n• 2026-10-21 / phone-direction / 未记录构建指纹：Android 实机最终包USB加载，实际四方向通过；不是手机公网验收。\n• 2026-10-21 / publication / ca6bd6ffc1bae7645592b9b61f4d5b1f1597eb9befc7d6feed84e335e6fd887a：2026-10-21正式发布与资源完整性检查。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+        "status": "done",
+        "x": 410,
+        "y": 60,
         "fields": {},
+        "image": ""
+      },
+      {
+        "id": "6a26a93f-f816-46b5-8b93-5040e1232e5b",
+        "type": "rule",
+        "section": "rules",
+        "title": "输入与操作边界",
+        "body": "已验证（历史版本范围）：最终包、正式站四方向/键盘通过；Android 实机原生四方向为USB加载；实体手柄未连接验。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "trigger": "触摸、键盘或指针输入及取消。",
+          "behavior": "摇杆前进/后拉制动倒车/左右转向，另一指加速；键盘同层；失焦/取消/丢捕获清控制。",
+          "example": "向前时右推应朝驾驶者右侧转；后拉制动再倒车；重生后计时增加5秒。\n下一轮还应按目标设备复核取消/松手边界。"
+        },
+        "image": ""
+      },
+      {
+        "id": "95f1bba8-4a74-4847-a2d4-0415d04cd56b",
+        "type": "state",
+        "section": "flow",
+        "title": "游玩、结算与重试",
+        "body": "已验证（历史版本范围）：自然驾驶两圈全部检查点，最终75.9478秒；暂停/重载续跑及最佳值保留通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "entry": "进入本局或从已有进度继续。",
+          "exit": "起跑→顺序检查点→第二圈→计时结算/最佳成绩；暂停后可续跑。",
+          "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+        },
+        "image": ""
+      },
+      {
+        "id": "d2c3d81d-333b-4004-8b8a-862fa654439a",
+        "type": "state",
+        "section": "flow",
+        "title": "存档、暂停与恢复",
+        "body": "已验证（历史版本范围）：线上下载后断网重开，检查点/位置续跑；双指加速与取消通过。App WebView不在这次复测范围。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "done",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "entry": "读取旧档、暂停、后台或重新打开。",
+          "exit": "恢复到合法状态后由玩家继续。",
+          "recovery": "schema1原键，保存位置、圈数、检查点与计时；重载接续且保留最佳。"
+        },
+        "image": ""
+      },
+      {
+        "id": "1ce70b1a-7a0f-4aa0-bf1c-4b7bb2d47528",
+        "type": "level",
+        "section": "levels",
+        "title": "关卡配置与推进节奏",
+        "body": "已验证（历史版本范围）：5检查点×2圈完整比赛记录；重生+5秒为源码配置，罚时专项实测未在此记录明确列出。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "space": "5检查点×2圈；追尾镜头在车后方；赛道模型和美术保持。",
+          "config": "5检查点×2圈；追尾镜头在车后方；赛道模型和美术保持。",
+          "rhythm": "驾驶遥控车穿过检查点，用完整两圈挑战最佳时间。",
+          "completion": "起跑→顺序检查点→第二圈→计时结算/最佳成绩；暂停后可续跑。"
+        },
+        "image": ""
+      },
+      {
+        "id": "673de3d1-a0f9-4cb7-b1de-c92f1a0af49b",
+        "type": "reference",
+        "section": "assets",
+        "title": "美术方向与参考",
+        "body": "沿用现有遥控车/赛道和15项美术模型许可文件；本轮只改转向和触摸镜头。\n设计与历史来源：./game-outline.json",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "direction": "沿用现有遥控车/赛道和15项美术模型许可文件；本轮只改转向和触摸镜头。",
+          "source": "./game-outline.json",
+          "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+        },
+        "image": ""
+      },
+      {
+        "id": "d78ea86a-6f9e-452e-89f0-9b7c507641de",
+        "type": "asset",
+        "section": "assets",
+        "title": "生产素材与交付边界",
+        "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：iPhone Safari、Android App WebView、实体手柄未重测；Android 实机通过USB加载正式包，不算手机公网验收。",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "spec": "沿用现有遥控车/赛道和15项美术模型许可文件；本轮只改转向和触摸镜头。",
+          "source": "./LICENSE\n./index.html\n./owngame.css",
+          "license": "保留现有作者与第三方许可；见项目许可文件。"
+        },
         "image": ""
       }
     ],
-    "edges": [],
+    "edges": [
+      {
+        "id": "f112a24d-7ae8-4f41-a9ae-c6a1a4381ed6",
+        "label": "规则用于关卡",
+        "from": "2a0368cd-eeb2-4f2c-806e-4f91399522b8",
+        "to": "1ce70b1a-7a0f-4aa0-bf1c-4b7bb2d47528"
+      },
+      {
+        "id": "597e307d-fe23-4863-94fc-f78938d0a433",
+        "label": "操作驱动状态",
+        "from": "6a26a93f-f816-46b5-8b93-5040e1232e5b",
+        "to": "95f1bba8-4a74-4847-a2d4-0415d04cd56b"
+      },
+      {
+        "id": "4075f37f-5d45-422f-9310-9b10f5f3dee3",
+        "label": "暂停与恢复",
+        "from": "95f1bba8-4a74-4847-a2d4-0415d04cd56b",
+        "to": "d2c3d81d-333b-4004-8b8a-862fa654439a"
+      },
+      {
+        "id": "ac85abd6-c6c4-41f0-afcb-ed7c644657c4",
+        "label": "方向落实到素材",
+        "from": "673de3d1-a0f9-4cb7-b1de-c92f1a0af49b",
+        "to": "d78ea86a-6f9e-452e-89f0-9b7c507641de"
+      },
+      {
+        "id": "02ddd384-b1a6-4931-b1d9-36b242ac1f8d",
+        "label": "补验后回写",
+        "from": "9762023b-1f8a-4f51-bcf1-543b5246b013",
+        "to": "e6e9c699-2d1d-454d-ac6b-235e5e58dcab"
+      }
+    ],
     "views": {}
   }
 }

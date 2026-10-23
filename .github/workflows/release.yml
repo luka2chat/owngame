@@ -29,6 +29,7 @@ jobs:
       - run: npm run test:release
       - run: npm run test:outline
       - run: npx playwright install --with-deps chromium
+      - run: npm run test:outline:gestures
       - run: npm run verify:package
       - name: Publish the verified archive
         env:

@@ -1,24 +1,24 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "project": {
     "id": "1c8a278b-40bf-4100-83a6-0f9adb998b91",
-    "title": "法恩探险 · 导入项目",
+    "title": "法恩探险 · Web",
     "tagline": "穿过五段各具挑战的遗迹，收集符印、避开机关，迎战林心守卫。",
-    "experience": "",
-    "scope": "公开源码项目。设计文件：./game-outline.json；项目说明：./README.md；源码指纹：./SOURCE_MANIFEST.json；线上交付指纹：./ONLINE_BUILD.json。\n保留已有玩法、美术、存档兼容性与第三方许可。文档记录不代表当前运行验收；开始迭代前确认目标，完成后回写设计与实际验证。",
+    "experience": "探索五章地牢，收集宝箱与封印，带着进度回营。",
+    "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
     "playable": "",
     "cards": [
       {
         "id": "866f5e22-c6cc-490a-8dce-1ab40611d43b",
         "type": "note",
         "section": "overview",
-        "title": "现有项目说明",
-        "body": "穿过五段各具挑战的遗迹，收集符印、避开机关，迎战林心守卫。\n项目用法、来源和许可见 ./README.md 与 ./THIRD_PARTY_NOTICES.md。本文仅保留已有设计摘要。",
-        "status": "idea",
-        "x": 50,
-        "y": 50,
+        "title": "Web 设计入口",
+        "body": "探索五章地牢，收集宝箱与封印，带着进度回营。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
         "fields": {},
         "image": ""
       },
@@ -26,15 +26,15 @@
         "id": "6f2dcecf-457d-45ea-8bde-8a74387531f0",
         "type": "rule",
         "section": "rules",
-        "title": "当前玩法说明（文档记录）",
-        "body": "现有设计摘要；项目说明见 ./README.md。保留规则与可验证例子，实际运行结果单独记录。",
-        "status": "idea",
-        "x": 50,
-        "y": 50,
+        "title": "核心规则 · 设计与历史验证",
+        "body": "已验证（历史版本范围）：campaign构建五章自然键盘通关，封印/陷阱/多击守卫/Boss和解锁通过；摇杆版保留数据并做伤害回归。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "done",
+        "x": 60,
+        "y": 60,
         "fields": {
-          "trigger": "",
-          "behavior": "按住战场出现浮动摇杆，向任意方向拉住即可持续移动；轻推慢走、拉远全速，松手停下。也可用方向键 / WASD，Esc 暂停或继续。沿面朝方向自动投飞刀，靠近宝箱和符印自动收集。五关逐步解锁，收齐本关目标后前往出口；避开有预警的机关，最后击败林心守卫。地图按钮可查看路线，关卡手记保留每关进度与星章。",
-          "example": ""
+          "trigger": "玩家进行当前回合操作。",
+          "behavior": "移动探索、接近互动、自动匕首攻击；机关预警后生效；出口必须满足本章宝箱/封印和Boss条件。",
+          "example": "终章未击败守卫时出口不能完成；机关橙色预警后再伤害；暂停冻结战斗。"
         },
         "image": ""
       },
@@ -42,15 +42,15 @@
         "id": "660b9aeb-691e-48c3-b4f2-8e4c865da1f5",
         "type": "decision",
         "section": "overview",
-        "title": "下一步开发目标",
-        "body": "项目已接入画板。不要从旧文档或目录上架状态推断本轮验收通过。",
+        "title": "待验证与下一步",
+        "body": "五章完整通关属早期campaign构建；最新摇杆版保持章节数据，做定向输入/伤害回归。用户手感与iOS待验。",
         "status": "idea",
-        "x": 410,
-        "y": 50,
+        "x": 760,
+        "y": 60,
         "fields": {
-          "question": "下一次迭代具体改变什么？哪些已有体验必须保留？",
-          "options": "在开始开发前，依据用户需求补充目标和可验证的验收例子。",
-          "result": ""
+          "question": "下一轮补哪些未覆盖项？",
+          "options": "五章完整通关属早期campaign构建；最新摇杆版保持章节数据，做定向输入/伤害回归。用户手感与iOS待验。",
+          "result": "保持待验证；不以历史或静态导入替代本版本验收。"
         },
         "image": ""
       },
@@ -58,16 +58,399 @@
         "id": "1adffb99-752d-4694-9553-b606e18cd47c",
         "type": "note",
         "section": "overview",
-        "title": "开发记录与验证",
-        "body": "整理自现有项目画板。公开版本对应 ./ONLINE_BUILD.json，源码对应 ./SOURCE_MANIFEST.json。尚未针对本次公开快照重新验收玩法、设备、离线或美术手感；下一轮记录具体改动、构建指纹、实际验证及未验证项。",
-        "status": "idea",
-        "x": 770,
-        "y": 50,
+        "title": "验证索引 · 分版本记录",
+        "body": "历史验证摘要（未重新运行）：\n• 2026-10-20 / faune-campaign-2026-10-20 / baf4386ea9131ada28a2109444dc8e0aa9593da36ca89827f1eee29adab38efb：campaign版五章以自然键盘输入通关、解锁/评星/重玩/迁移通过；91aa37摇杆版浏览器和Android 实机持续按住、反向、低速、HOME清输入、全断网冷恢复通过。\n• 2026-10-20 / faune-campaign-2026-10-20-browser.json / baf4386ea9131ada28a2109444dc8e0aa9593da36ca89827f1eee29adab38efb：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / faune-campaign-2026-10-20-phone.json / baf4386ea9131ada28a2109444dc8e0aa9593da36ca89827f1eee29adab38efb：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / faune-campaign-2026-10-20-production-result.json / baf4386ea9131ada28a2109444dc8e0aa9593da36ca89827f1eee29adab38efb：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / faune-joystick-2026-10-20 / 91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97：campaign版五章以自然键盘输入通关、解锁/评星/重玩/迁移通过；91aa37摇杆版浏览器和Android 实机持续按住、反向、低速、HOME清输入、全断网冷恢复通过。\n• 2026-10-20 / faune-joystick-2026-10-20-browser.json / 91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / faune-joystick-2026-10-20-phone.json / 91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / faune-joystick-2026-10-20-production-result.json / 91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+        "status": "done",
+        "x": 410,
+        "y": 60,
         "fields": {},
+        "image": ""
+      },
+      {
+        "id": "75b536ba-ed22-40d1-9691-963da78a4315",
+        "type": "rule",
+        "section": "rules",
+        "title": "输入与操作边界",
+        "body": "已验证（历史版本范围）：91aa37摇杆版：Android 实机持续贴边、释放、反向、半速、旋转与HOME清输入通过；浏览器死区/斜向速度检查。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "trigger": "触摸、键盘或指针输入及取消。",
+          "behavior": "8px死区、48px满速浮动摇杆；持续按住可走，松手停；斜向归一最高100单位/秒；WASD/Esc。",
+          "example": "终章未击败守卫时出口不能完成；机关橙色预警后再伤害；暂停冻结战斗。\n下一轮还应按目标设备复核取消/松手边界。"
+        },
+        "image": ""
+      },
+      {
+        "id": "a4d10b1d-2c40-415d-b3df-fdf7d3d2f2d0",
+        "type": "state",
+        "section": "flow",
+        "title": "游玩、结算与重试",
+        "body": "已验证（历史版本范围）：五章通关、战役结束、重载保留评星/解锁、选章重玩通过；完整战役属于campaign构建。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "entry": "进入本局或从已有进度继续。",
+          "exit": "选已解锁章节→探索收集→出口完成→补3心并解锁下一章→重玩评星。",
+          "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+        },
+        "image": ""
+      },
+      {
+        "id": "912a5b69-ca81-4160-bf1c-e9c0665d0840",
+        "type": "state",
+        "section": "flow",
+        "title": "存档、暂停与恢复",
+        "body": "已验证（历史版本范围）：v1夹具迁移保留原文本；v2独立章节检查点；摇杆版实际旧包更新、全断网冷恢复及继续游玩通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+        "status": "done",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "entry": "读取旧档、暂停、后台或重新打开。",
+          "exit": "恢复到合法状态后由玩家继续。",
+          "recovery": "v2分章节检查点；迁移v1且保留原文本；已完成v1可解锁第二章；旋转/失焦/暂停清输入。"
+        },
+        "image": ""
+      },
+      {
+        "id": "badf8de6-055b-4216-9e1c-58582e13b6ed",
+        "type": "level",
+        "section": "levels",
+        "title": "关卡配置与推进节奏",
+        "body": "已验证（历史版本范围）：五章不同图结构自然键盘完成；最新摇杆版23项美术/引擎许可及章节规则保留，不重复声称五章重跑。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。\n当前配置：./src/levels.ts",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "space": "五章：苔庭入口、双环回廊、9室机关水道、封印书库、林心圣殿；数量/目标写在各章卡。",
+          "config": "五章：苔庭入口、双环回廊、9室机关水道、封印书库、林心圣殿；数量/目标写在各章卡。",
+          "rhythm": "探索五章地牢，收集宝箱与封印，带着进度回营。",
+          "completion": "选已解锁章节→探索收集→出口完成→补3心并解锁下一章→重玩评星。"
+        },
+        "image": ""
+      },
+      {
+        "id": "38ace713-87f2-4ad4-a896-6fbca3935776",
+        "type": "reference",
+        "section": "assets",
+        "title": "美术方向与参考",
+        "body": "保留现有地牢素材、23项美术引擎许可文件；摇杆改动不换美术。\n设计与历史来源：./game-outline.json",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "direction": "保留现有地牢素材、23项美术引擎许可文件；摇杆改动不换美术。",
+          "source": "./game-outline.json",
+          "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+        },
+        "image": ""
+      },
+      {
+        "id": "84622705-1630-4fa3-adb6-3ed141a27531",
+        "type": "asset",
+        "section": "assets",
+        "title": "生产素材与交付边界",
+        "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：五章完整通关属早期campaign构建；最新摇杆版保持章节数据，做定向输入/伤害回归。用户手感与iOS待验。",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "spec": "保留现有地牢素材、23项美术引擎许可文件；摇杆改动不换美术。",
+          "source": "./LICENSE",
+          "license": "保留现有作者与第三方许可；见项目许可文件。"
+        },
+        "image": ""
+      },
+      {
+        "id": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+        "type": "place",
+        "section": "world",
+        "title": "五章地牢与营地",
+        "body": "章节之间通过出口和营地连接，地图结构与任务条件分开记录。",
+        "status": "doing",
+        "x": 60,
+        "y": 60,
+        "fields": {
+          "kind": "地牢/营地",
+          "detail": "每章独立检查点；通关解锁下一章并恢复生命。"
+        },
+        "image": ""
+      },
+      {
+        "id": "aba78a8a-fa15-49a6-98b9-10e91cfcbe73",
+        "type": "quest",
+        "section": "world",
+        "title": "苔庭入口 · 玩家任务",
+        "body": "历史campaign版自然键盘通关；最新摇杆版保留章节数据并做输入回归。\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+        "status": "done",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "giver": "章节目标提示",
+          "location": "苔庭入口",
+          "requires": "已解锁该章",
+          "objective": "3个宝箱",
+          "completion": "回营出口开放且玩家到达",
+          "changes": "保存本章完成/评星，解锁后续章节；终章完成战役。"
+        },
+        "image": ""
+      },
+      {
+        "id": "428c5638-0846-4566-8ef8-beeb7055390c",
+        "type": "level",
+        "section": "levels",
+        "title": "苔庭入口 · 空间与配置",
+        "body": "承接旧v1未完进度\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+        "status": "doing",
+        "x": 410,
+        "y": 60,
+        "fields": {
+          "space": "苔庭入口",
+          "config": "承接旧v1未完进度；3个宝箱",
+          "rhythm": "探索收集→遇敌/机关→返回出口",
+          "completion": "回营出口"
+        },
+        "image": ""
+      },
+      {
+        "id": "d1da7177-8b08-443b-acab-7a20ffdc74d1",
+        "type": "quest",
+        "section": "world",
+        "title": "双环回廊 · 玩家任务",
+        "body": "历史campaign版自然键盘通关；最新摇杆版保留章节数据并做输入回归。\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+        "status": "done",
+        "x": 760,
+        "y": 60,
+        "fields": {
+          "giver": "章节目标提示",
+          "location": "双环回廊",
+          "requires": "已解锁该章",
+          "objective": "3宝箱＋2封印",
+          "completion": "出口开放且玩家到达",
+          "changes": "保存本章完成/评星，解锁后续章节；终章完成战役。"
+        },
+        "image": ""
+      },
+      {
+        "id": "4f8e2f95-a121-4e06-835a-6a6c4862a22d",
+        "type": "level",
+        "section": "levels",
+        "title": "双环回廊 · 空间与配置",
+        "body": "猎手与双环路线\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+        "status": "doing",
+        "x": 760,
+        "y": 60,
+        "fields": {
+          "space": "双环回廊",
+          "config": "66×40地图、6房间、3宝箱、2符印、5敌人；目标时间130秒。",
+          "rhythm": "探索收集→遇敌/机关→返回出口",
+          "completion": "出口"
+        },
+        "image": ""
+      },
+      {
+        "id": "a5d0a271-e326-476a-84bb-9e69127bdc49",
+        "type": "quest",
+        "section": "world",
+        "title": "机关水道 · 玩家任务",
+        "body": "历史campaign版自然键盘通关；最新摇杆版保留章节数据并做输入回归。\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+        "status": "done",
+        "x": 60,
+        "y": 410,
+        "fields": {
+          "giver": "章节目标提示",
+          "location": "机关水道",
+          "requires": "已解锁该章",
+          "objective": "3只宝箱＋2枚符印",
+          "completion": "收齐后东南出口开启，玩家到达出口",
+          "changes": "保存本章完成/评星，解锁后续章节；终章完成战役。"
+        },
+        "image": ""
+      },
+      {
+        "id": "493cdb5e-b92d-46fa-9b0e-8bebb29d9600",
+        "type": "level",
+        "section": "levels",
+        "title": "机关水道 · 空间与配置",
+        "body": "9房间，机关1.2秒橙色预警\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+        "status": "doing",
+        "x": 60,
+        "y": 410,
+        "fields": {
+          "space": "机关水道",
+          "config": "62×54地图、9房间、3宝箱、2符印、5机关、6敌人；目标时间165秒。",
+          "rhythm": "探索收集→遇敌/机关→返回出口",
+          "completion": "出口"
+        },
+        "image": ""
+      },
+      {
+        "id": "f057ef8b-04fc-40ef-b8e7-b5190f88eace",
+        "type": "quest",
+        "section": "world",
+        "title": "封印书库 · 玩家任务",
+        "body": "历史campaign版自然键盘通关；最新摇杆版保留章节数据并做输入回归。\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+        "status": "done",
+        "x": 410,
+        "y": 410,
+        "fields": {
+          "giver": "章节目标提示",
+          "location": "封印书库",
+          "requires": "已解锁该章",
+          "objective": "4宝箱＋3封印",
+          "completion": "出口开放且玩家到达",
+          "changes": "保存本章完成/评星，解锁后续章节；终章完成战役。"
+        },
+        "image": ""
+      },
+      {
+        "id": "9656d0ab-99ec-4ba9-aa4a-8f621f592cae",
+        "type": "level",
+        "section": "levels",
+        "title": "封印书库 · 空间与配置",
+        "body": "金色守卫需2次命中\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+        "status": "doing",
+        "x": 410,
+        "y": 410,
+        "fields": {
+          "space": "封印书库",
+          "config": "64×51地图、7房间、4宝箱、3符印、2机关、6敌人；目标时间180秒。",
+          "rhythm": "探索收集→遇敌/机关→返回出口",
+          "completion": "出口"
+        },
+        "image": ""
+      },
+      {
+        "id": "7d3cea94-73a2-48bd-a27a-92d55574177a",
+        "type": "quest",
+        "section": "world",
+        "title": "林心圣殿 · 玩家任务",
+        "body": "历史campaign版自然键盘通关；最新摇杆版保留章节数据并做输入回归。\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+        "status": "done",
+        "x": 760,
+        "y": 410,
+        "fields": {
+          "giver": "章节目标提示",
+          "location": "林心圣殿",
+          "requires": "已解锁该章",
+          "objective": "3只宝箱＋2枚符印＋击败林心守卫",
+          "completion": "收齐并击败守卫后，圣殿中央出口开启，玩家到达出口",
+          "changes": "保存本章完成/评星，解锁后续章节；终章完成战役。"
+        },
+        "image": ""
+      },
+      {
+        "id": "9f1a355b-59ba-402b-b0bd-ac536dd6ddea",
+        "type": "level",
+        "section": "levels",
+        "title": "林心圣殿 · 空间与配置",
+        "body": "守卫10生命，射线/冲锋/扇形，半血加速\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+        "status": "doing",
+        "x": 760,
+        "y": 410,
+        "fields": {
+          "space": "林心圣殿",
+          "config": "62×48地图、5房间、3宝箱、2符印、2机关、3敌人（含林心守卫）；目标时间190秒。",
+          "rhythm": "探索收集→遇敌/机关→返回出口",
+          "completion": "终章出口"
+        },
         "image": ""
       }
     ],
-    "edges": [],
+    "edges": [
+      {
+        "id": "610a225e-0fde-4147-b339-8d559cdfc9fb",
+        "label": "规则用于关卡",
+        "from": "6f2dcecf-457d-45ea-8bde-8a74387531f0",
+        "to": "badf8de6-055b-4216-9e1c-58582e13b6ed"
+      },
+      {
+        "id": "75d8f8cc-25f4-440b-ba43-bbf160fb0a1d",
+        "label": "操作驱动状态",
+        "from": "75b536ba-ed22-40d1-9691-963da78a4315",
+        "to": "a4d10b1d-2c40-415d-b3df-fdf7d3d2f2d0"
+      },
+      {
+        "id": "b65f07bf-9b93-47d2-95e9-3e895c4b4b71",
+        "label": "暂停与恢复",
+        "from": "a4d10b1d-2c40-415d-b3df-fdf7d3d2f2d0",
+        "to": "912a5b69-ca81-4160-bf1c-e9c0665d0840"
+      },
+      {
+        "id": "aae1a860-dd00-4616-80eb-9b2606521e8b",
+        "label": "方向落实到素材",
+        "from": "38ace713-87f2-4ad4-a896-6fbca3935776",
+        "to": "84622705-1630-4fa3-adb6-3ed141a27531"
+      },
+      {
+        "id": "40b53b42-1899-4381-bd54-092d10c856fb",
+        "label": "补验后回写",
+        "from": "660b9aeb-691e-48c3-b4f2-8e4c865da1f5",
+        "to": "1adffb99-752d-4694-9553-b606e18cd47c"
+      },
+      {
+        "id": "3b74ed3c-dca9-4308-aba5-8bd4fa04efe5",
+        "label": "承载玩家任务",
+        "from": "428c5638-0846-4566-8ef8-beeb7055390c",
+        "to": "aba78a8a-fa15-49a6-98b9-10e91cfcbe73"
+      },
+      {
+        "id": "6a1fe528-4300-4422-a864-2dea8a06fbeb",
+        "label": "发生于此地牢",
+        "from": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+        "to": "aba78a8a-fa15-49a6-98b9-10e91cfcbe73"
+      },
+      {
+        "id": "af1aae86-2110-4726-a657-4991e68e252b",
+        "label": "承载玩家任务",
+        "from": "4f8e2f95-a121-4e06-835a-6a6c4862a22d",
+        "to": "d1da7177-8b08-443b-acab-7a20ffdc74d1"
+      },
+      {
+        "id": "666c6241-67fb-4d68-92a4-47990945858e",
+        "label": "发生于此地牢",
+        "from": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+        "to": "d1da7177-8b08-443b-acab-7a20ffdc74d1"
+      },
+      {
+        "id": "eee8e03e-6294-4929-a967-cf5a4ace3d16",
+        "label": "承载玩家任务",
+        "from": "493cdb5e-b92d-46fa-9b0e-8bebb29d9600",
+        "to": "a5d0a271-e326-476a-84bb-9e69127bdc49"
+      },
+      {
+        "id": "d2b55bdd-fd07-4615-8f7a-f7030f13d6ba",
+        "label": "发生于此地牢",
+        "from": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+        "to": "a5d0a271-e326-476a-84bb-9e69127bdc49"
+      },
+      {
+        "id": "f9b4d34a-e1dd-4bff-8488-8519f3143f45",
+        "label": "承载玩家任务",
+        "from": "9656d0ab-99ec-4ba9-aa4a-8f621f592cae",
+        "to": "f057ef8b-04fc-40ef-b8e7-b5190f88eace"
+      },
+      {
+        "id": "e0d29463-3f69-436c-8d2f-06f8ba58d7e6",
+        "label": "发生于此地牢",
+        "from": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+        "to": "f057ef8b-04fc-40ef-b8e7-b5190f88eace"
+      },
+      {
+        "id": "77623fa3-fdbb-47e9-8967-1934a4d4a8c4",
+        "label": "承载玩家任务",
+        "from": "9f1a355b-59ba-402b-b0bd-ac536dd6ddea",
+        "to": "7d3cea94-73a2-48bd-a27a-92d55574177a"
+      },
+      {
+        "id": "2da4c55d-7553-4890-9b9c-fa3069667d60",
+        "label": "发生于此地牢",
+        "from": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+        "to": "7d3cea94-73a2-48bd-a27a-92d55574177a"
+      }
+    ],
     "views": {}
   }
 }

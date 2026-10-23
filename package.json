@@ -1,6 +1,6 @@
 {
   "name": "@owngame/cli",
-  "version": "0.11.1",
+  "version": "0.11.2",
   "type": "module",
   "engines": {
     "node": ">=22"
@@ -27,7 +27,8 @@
     "ios:check": "node scripts/ios/export-source.mjs && node --test tests/ios/*.test.mjs tests/mobile/*.test.mjs",
     "test:ios": "node scripts/ios/test.mjs",
     "outline": "node apps/outline/server.mjs",
-    "test:outline": "node --test tests/outline/*.test.mjs"
+    "test:outline": "node --test tests/outline/*.test.mjs",
+    "test:outline:gestures": "node scripts/outline/verify-gestures.mjs"
   },
   "devDependencies": {
     "@types/node": "22.20.5",

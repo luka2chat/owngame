@@ -15,9 +15,9 @@ export const TYPES = {
   character: { name: '角色', section: 'world', color: 'yellow', fields: { role: '身份与动机', ability: '能力与限制', relation: '关系说明' } },
   story: { name: '剧情事件', section: 'world', color: 'purple', fields: { chapter: '章节与顺序', event: '事件 / 对白', branch: '分支与结局' } },
   quest: { name: '任务', section: 'world', color: 'red', fields: { giver: '谁发布', location: '在哪里发生', requires: '前置条件 / 需要什么', objective: '玩家需要做什么', completion: '何时完成', changes: '改变哪些世界状态' } },
-  level: { name: '关卡', section: 'levels', color: 'green', fields: { space: '空间与路线', config: '具体配置 / 敌人数量与参数', rhythm: '挑战、奖励与节奏', completion: '完成条件' } },
-  reference: { name: '参考素材', section: 'assets', color: 'purple', fields: { direction: '借鉴什么', source: '来源链接', license: '授权 / 使用限制' } },
-  asset: { name: '生产资产', section: 'assets', color: 'blue', fields: { spec: '规格与验收要求', source: '文件位置或链接', license: '作者与许可' } },
+  level: { name: '关卡', section: 'levels', color: 'green', fields: { file: '场景预览源文件（项目相对路径）', space: '空间与路线', config: '具体配置 / 敌人数量与参数', rhythm: '挑战、奖励与节奏', completion: '完成条件' } },
+  reference: { name: '参考素材', section: 'assets', color: 'purple', fields: { file: '预览源文件（项目相对路径）', direction: '借鉴什么', source: '来源链接', license: '授权 / 使用限制' } },
+  asset: { name: '生产资产', section: 'assets', color: 'blue', fields: { file: '预览源文件（项目相对路径）', spec: '规格与验收要求', source: '文件位置或链接', license: '作者与许可' } },
 };
 export const STATUSES = { idea: '构思中', doing: '进行中', done: '已完成' };
 export const id = () => crypto.randomUUID();

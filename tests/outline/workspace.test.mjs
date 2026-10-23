@@ -1,13 +1,52 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm, writeFile, realpath } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, writeFile, realpath, mkdir, symlink } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { once } from 'node:events';
 import http from 'node:http';
 import { createOutlineServer } from '../../apps/outline/server.mjs';
-import { sampleWorkspace, validateWorkspace, stats, newCard } from '../../apps/outline/model.mjs';
+import { sampleWorkspace, validateWorkspace, stats, newCard, newProject } from '../../apps/outline/model.mjs';
 import { readOutline, writeOutline, initOutline, OutlineWorkspace } from '../../scripts/toolkit/outline-store.mjs';
+
+test('asset previews read declared project files live and reject unrelated paths', async t => {
+  const base=await mkdtemp(join(tmpdir(),'outline-assets-')),directory=join(base,'game');
+  await mkdir(join(directory,'art'),{recursive:true});
+  const project=newProject('Source previews'),asset=newCard('asset'),note=newCard('note'),level=newCard('level');
+  asset.fields.file='./art/actual.webp';note.fields.file='./art/actual.webp';level.fields.file='./art/actual.webp';project.cards.push(asset,note,level);
+  await writeFile(join(directory,'art/actual.webp'),'first source version');
+  await writeFile(join(base,'outside.webp'),'outside');
+  await symlink(join(base,'outside.webp'),join(directory,'art/escaped.webp'));
+  await initOutline(directory,{project});
+  const active=await createOutlineServer({workspace:directory,port:0});
+  t.after(async()=>{await new Promise(resolve=>active.server.close(resolve));await rm(base,{recursive:true,force:true});});
+  const url=`${active.url}/api/asset/${project.id}/${asset.id}`;
+  const first=await fetch(url);assert.equal(first.status,200);assert.equal(first.headers.get('content-type'),'image/webp');assert.equal(await first.text(),'first source version');
+  await writeFile(join(directory,'art/actual.webp'),'updated source version');
+  assert.equal(await (await fetch(url)).text(),'updated source version');
+  assert.equal((await fetch(`${url}?file=another.webp`)).status,404);
+  assert.equal((await fetch(`${active.url}/api/asset/${project.id}/${note.id}`)).status,404);
+  const levelPreview=await fetch(`${active.url}/api/asset/${project.id}/${level.id}`);
+  assert.equal(levelPreview.status,200);assert.equal(await levelPreview.text(),'updated source version');
+  for(const file of ['../outside.webp','/etc/hosts','./art/escaped.webp','https://example.com/image.webp','./.private/image.png','./art/code.js']){
+    const before=await readOutline(directory);before.project.cards[0].fields.file=file;
+    await writeOutline(directory,before.sha256,before.project);
+    assert.equal((await fetch(url)).status,404,file);
+  }
+  const external=join(base,'authorized-assets');await mkdir(external);
+  await writeFile(join(external,'preview.webp'),'authorized preview');
+  await symlink(join(external,'preview.webp'),join(directory,'art/authorized.webp'));
+  const before=await readOutline(directory);before.project.cards[0].fields.file='./art/authorized.webp';
+  await writeOutline(directory,before.sha256,before.project);
+  assert.equal((await fetch(url)).status,404,'external assets are denied by default');
+  await mkdir(join(directory,'.local'),{recursive:true});
+  await writeFile(join(directory,'.local/outline-asset-roots.json'),JSON.stringify({roots:[external]}));
+  assert.equal(await (await fetch(url)).text(),'authorized preview');
+  const outside=await readOutline(directory);outside.project.cards[0].fields.file='./art/escaped.webp';
+  await writeOutline(directory,outside.sha256,outside.project);
+  assert.equal((await fetch(url)).status,404,'authorization does not include sibling assets');
+  assert.equal((await fetch(`${active.url}/api/three/${project.id}/../../package.json`)).status,404);
+});
 
 test('sample relations, structured fields and derived totals remain consistent', () => {
   const workspace=validateWorkspace(sampleWorkspace()),p=workspace.projects[0];

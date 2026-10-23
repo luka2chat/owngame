@@ -1,4 +1,5 @@
 import { SECTIONS, TYPES, STATUSES, id, newProject, newCard, stats, validateWorkspace } from './model.mjs';
+import { mountModelCards, mountModel } from './model-preview.js';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
@@ -8,6 +9,8 @@ let data, revision, section = 'overview', tab = 'all', selected = null, tool = '
 let bindings = {}, polling = false;
 let history = [], future = [], view = { x: 30, y: 25, z: .85 }, dirty = false, seq = 0, saveTimer, saving = false, conflict = false;
 let dragging = null, space = false, toastTimer, imageTarget = null, searchTerm = '';
+let autoFit = true, fitFrame;
+let previewChanged = false;
 const p = () => data.projects.find(p => p.id === data.activeProjectId);
 const card = () => p().cards.find(c => c.id === selected);
 const sectionName = s => SECTIONS.find(v => v.id === s)?.name || s;
@@ -29,6 +32,7 @@ async function save() {
     revision = result.revision; bindings = result.bindings || bindings; dirty = sent !== seq;
     if (!dirty) { $('#save-status').textContent = '● 已同步项目 JSON'; $('#save-status').classList.remove('error'); }
     renderBinding();
+    if(!dirty&&previewChanged){previewChanged=false;renderCards();}
   } catch (e) { $('#save-status').textContent = conflict ? '保存冲突 · 请先导出' : '未保存 · 点击重试'; $('#save-status').classList.add('error'); notify(e.message || '保存失败，请导出备份。'); }
   finally { saving = false; if (dirty && !conflict && sent !== seq) saveTimer = setTimeout(save, 300); }
 }
@@ -43,7 +47,6 @@ function undo(redo = false) {
 function renderNav() {
   $('#projects').innerHTML = data.projects.map(x => `<option value="${esc(x.id)}" ${x.id === p().id ? 'selected' : ''}>${esc(x.title)}</option>`).join('');
   $('#sections').innerHTML = SECTIONS.map(s => `<button data-section="${s.id}" class="${s.id === section ? 'active' : ''}" title="${s.name}" aria-label="${s.name}" ${s.id === section ? 'aria-current="page"' : ''}><span class="nav-icon">${s.icon}</span><span class="nav-name">${s.name}</span><span class="nav-count">${p().cards.filter(c => c.section === s.id).length}</span></button>`).join('');
-  $('#project-crumb').textContent = p().title;
   renderBinding();
 }
 function renderBinding() {
@@ -55,22 +58,25 @@ function renderBinding() {
 }
 function renderOverview() {
   const project = p(), s = stats(project), playable = safeURL(project.playable);
-  $('#overview').hidden = section !== 'overview';
-  if (section !== 'overview') return;
   $('#overview').innerHTML = `<div class="project-intro"><div class="intro-main"><span class="eyebrow">THE NEXT LITTLE ADVENTURE</span>${project.title === '雾港来信' ? '<span class="sample-tag">可编辑的虚构示例</span>' : ''}<h2>${esc(project.title)}</h2><p class="tagline">${esc(project.tagline)}</p><p class="experience">${esc(project.experience || '想让玩家感受到什么？从「编辑项目」写下目标体验。')}</p></div><div class="intro-side"><div class="scope"><h3>这一次，我们做多大？</h3><p>${esc(project.scope || '先确定一个小而完整的可玩范围。')}</p></div><div class="playable"><strong>▶ 当前可玩版本</strong>${playable ? `<a href="${esc(playable)}" target="_blank" rel="noopener noreferrer">打开试玩 ↗</a>` : '<span class="version-empty">还没放入试玩链接</span>'}</div></div></div>
   <div class="stat-row"><button class="stat" data-stat="character"><span class="stat-value">${s.characters.toString().padStart(2,'0')}</span><span class="stat-name">角色</span><span class="stat-progress">↗</span></button><button class="stat" data-stat="quest"><span class="stat-value">${s.quests.toString().padStart(2,'0')}</span><span class="stat-name">任务</span><span class="stat-progress">${s.questsDone}/${s.quests} 完成</span></button><button class="stat" data-stat="asset"><span class="stat-value">${s.assets.toString().padStart(2,'0')}</span><span class="stat-name">生产资产</span><span class="stat-progress">${s.assetsDone}/${s.assets} 完成</span></button><button class="stat" data-stat="decision"><span class="stat-value">${s.decisions.toString().padStart(2,'0')}</span><span class="stat-name">待决策</span><span class="stat-progress">↗</span></button></div>
   <div class="section-links">${SECTIONS.slice(1).map(s => `<button class="section-link" data-section="${s.id}"><span class="nav-icon">${s.icon}</span>${s.name}<span class="arrow">↗</span></button>`).join('')}</div>`;
 }
 function cardHTML(c) {
   const type = TYPES[c.type], edges = p().edges.filter(e => e.from === c.id || e.to === c.id).length;
-  const fields = Object.entries(type.fields).filter(([k]) => c.fields[k]).slice(0, c.type === 'state' ? 1 : 2);
-  return `<article class="card ${type.color} ${selected === c.id ? 'selected' : ''} ${source === c.id ? 'connect-source' : ''}" data-card="${esc(c.id)}" style="left:${c.x}px;top:${c.y}px" tabindex="0" aria-label="${esc(type.name + '：' + c.title)}"><div class="card-head"><span class="type">${type.name}</span><span class="status-dot ${c.status}">● ${STATUSES[c.status]}</span><span class="drag-handle" aria-hidden="true">⠿</span></div>${c.image ? `<img class="card-image" src="${esc(c.image)}" alt="${esc(c.title)}" draggable="false">` : ''}<h3>${esc(c.title)}</h3>${c.body ? `<p class="card-body">${esc(c.body)}</p>` : ''}${fields.map(([k,label]) => `<div class="card-field"><strong>${esc(label)}</strong>${esc(c.fields[k])}</div>`).join('')}${!c.body && !fields.length ? '<p class="card-placeholder">点击补充想法…</p>' : ''}<div class="card-footer"><span>${edges ? `${edges} 个关联` : '点击编辑'}</span><span>${c.type === 'rule' ? (c.fields.example ? '✓ 含验证例子' : '待补验证例子') : c.type === 'reference' ? '仅作参考' : '↗'}</span></div></article>`;
+  const visual=['assets','levels'].includes(c.section),file=visual&&c.fields.file?.trim(),model=file&&/\.glb$/i.test(file);
+  const url=file?`/api/asset/${encodeURIComponent(p().id)}/${encodeURIComponent(c.id)}?file=${encodeURIComponent(file)}`:c.image;
+  const preview=url?`<button class="asset-preview" data-preview="${esc(c.id)}" aria-label="查看${esc(c.title)}${model?'三维模型':'大图'}">${model?`<span class="model-thumbnail" data-model-url="${esc(url)}">正在读取源模型…</span>`:`<img class="card-image" src="${esc(url)}" alt="${esc(c.title)}" draggable="false"><span class="preview-error" hidden>源图片不可用 · 检查项目路径或 NAS</span>`}<span class="preview-badge">${file?(model?'GLB · 查看 3D':c.section==='levels'?'场景图 · 放大':'源图 · 放大'):'导入的预览图'}</span></button>`:'';
+  const fields = Object.entries(type.fields).filter(([k]) => c.fields[k]&&k!=='file').slice(0, c.type === 'state' ? 1 : 2);
+  return `<article class="card ${type.color} ${visual?'visual-card':''} ${selected === c.id ? 'selected' : ''} ${source === c.id ? 'connect-source' : ''}" data-card="${esc(c.id)}" style="left:${c.x}px;top:${c.y}px" tabindex="0" aria-label="${esc(type.name + '：' + c.title)}"><div class="card-head"><span class="type">${type.name}</span><span class="status-dot ${c.status}">● ${STATUSES[c.status]}</span><span class="drag-handle" aria-hidden="true">⠿</span></div>${visual?preview:(c.image ? `<img class="card-image" src="${esc(c.image)}" alt="${esc(c.title)}" draggable="false">` : '')}<h3>${esc(c.title)}</h3>${c.body ? `<p class="card-body">${esc(c.body)}</p>` : ''}${(visual&&url?(c.type==='level'?fields.slice(0,1):[]):fields).map(([k,label]) => `<div class="card-field"><strong>${esc(label)}</strong>${esc(c.fields[k])}</div>`).join('')}${visual&&file?`<p class="asset-source" title="${esc(file)}">↗ ${esc(file)}</p>`:''}${!url && !c.body && !fields.length ? '<p class="card-placeholder">点击补充想法…</p>' : ''}<div class="card-footer"><span>${edges ? `${edges} 个关联` : '点击编辑'}</span><span>${c.type === 'rule' ? (c.fields.example ? '✓ 含验证例子' : '待补验证例子') : c.type === 'reference' ? '仅作参考' : '↗'}</span></div></article>`;
 }
 function renderCards() {
   $('#cards').innerHTML = visibleCards().map(cardHTML).join('');
   $('#card-count').textContent = `${visibleCards().length} 张卡片`;
   $('#empty').hidden = visibleCards().length > 0;
   requestAnimationFrame(renderEdges);
+  mountModelCards(p().id);
+  scheduleFit();
 }
 function renderEdges() {
   if(!data)return;
@@ -89,14 +95,15 @@ function renderEdges() {
 function render() {
   renderNav(); renderOverview();
   const s = SECTIONS.find(s => s.id === section);
-  $('#board-title').textContent = s.name; $('#board-desc').textContent = s.desc; $('#section-crumb').textContent = s.name;
-  $('#edit-project').hidden = section !== 'overview';
+  $('#board-title').textContent = s.name; $('#board-title').title = s.desc; $('#board-desc').textContent = s.desc;
   $('#tabs').innerHTML = sectionTabs[section].map(([key,label]) => `<button data-tab="${key}" class="${tab === key ? 'active' : ''}" aria-pressed="${tab === key}">${label}</button>`).join('');
   $('#canvas-caption').textContent = section === 'overview' ? '灵感与待决策' : '自由画布';
   renderCards(); applyView(); renderInspector(); updateTool(); updateUndo(); renderSearch();
   renderBinding();
 }
 function switchSection(next, nextTab = 'all') {
+  setDetails(false);
+  autoFit = true;
   section = next; tab = nextTab; selected = null; source = null; searchTerm = ''; $('#search').value = '';
   view = clone(p().views[section] || { x:30,y:25,z:.85 }); render(); $('#main').scrollTop = 0;
 }
@@ -106,22 +113,37 @@ function applyView() {
   $('#viewport').style.backgroundPosition = `${view.x}px ${view.y}px`;
   $('#zoom-reset').textContent = `${Math.round(view.z*100)}%`;
 }
-function saveView() { if(bindings[p().id]?.available===false)return;p().views[section] = clone(view); modified(); }
+function saveView() {
+  // A very wide board can fit below the stored view format's 20% minimum.
+  if(bindings[p().id]?.available===false || view.z < .2)return;
+  p().views[section] = clone(view); modified();
+}
 function zoom(factor, cx = $('#viewport').clientWidth/2, cy = $('#viewport').clientHeight/2) {
-  const z = Math.max(.2,Math.min(2,view.z*factor));
+  autoFit = false;
+  const z = Math.max(Math.min(.2,view.z),Math.min(2,view.z*factor));
   view.x = cx-(cx-view.x)*z/view.z; view.y = cy-(cy-view.y)*z/view.z; view.z = z; applyView(); saveView();
 }
+function scheduleFit() {
+  cancelAnimationFrame(fitFrame);
+  if(autoFit)fitFrame=requestAnimationFrame(()=>{if(data&&autoFit&&!selected&&!dragging&&!touches.size)fit();});
+}
 function fit() {
-  const cs = visibleCards(); if (!cs.length) { view = {x:30,y:25,z:.85}; applyView(); saveView(); return; }
+  autoFit = true;
+  const cs = visibleCards(); if (!cs.length) { view = {x:30,y:25,z:.85}; applyView(); return; }
   const nodes = [...document.querySelectorAll('[data-card]')];
   const minX = Math.min(...cs.map(c=>c.x)), minY = Math.min(...cs.map(c=>c.y));
-  const maxX = Math.max(...cs.map(c=>c.x+290)), maxY = Math.max(...cs.map(c=>c.y+(nodes.find(n=>n.dataset.card===c.id)?.offsetHeight || 240)));
+  const maxX = Math.max(...cs.map(c=>c.x+(nodes.find(n=>n.dataset.card===c.id)?.offsetWidth || 290))), maxY = Math.max(...cs.map(c=>c.y+(nodes.find(n=>n.dataset.card===c.id)?.offsetHeight || 240)));
   const w=$('#viewport').clientWidth,h=$('#viewport').clientHeight;
-  const z=Math.max(.2,Math.min(1,(w-80)/(maxX-minX),(h-60)/(maxY-minY)));
-  view={x:(w-(maxX-minX)*z)/2-minX*z,y:(h-(maxY-minY)*z)/2-minY*z,z}; applyView(); saveView();
+  if(!w||!h)return;
+  const padding=Math.min(32,w*.06), bottom=Math.max(padding,$('#viewport').getBoundingClientRect().bottom-$('.canvas-bottom').getBoundingClientRect().top+16);
+  const availableW=Math.max(1,w-padding*2),availableH=Math.max(1,h-padding-bottom);
+  const z=Math.min(1,availableW/(maxX-minX),availableH/(maxY-minY));
+  view={x:padding+(availableW-(maxX-minX)*z)/2-minX*z,y:padding+(availableH-(maxY-minY)*z)/2-minY*z,z}; applyView();
 }
 function focusCard(c) {
+  setDetails(false);
   if (c.section !== section || !visibleCards().some(v=>v.id===c.id)) switchSection(c.section);
+  autoFit = false;
   selected=c.id; source=null; renderInspector();
   const w=$('#viewport').clientWidth,h=$('#viewport').clientHeight;
   const node=document.querySelector(`[data-card="${CSS.escape(c.id)}"]`);
@@ -137,7 +159,7 @@ function renderInspector() {
     <label>状态<select data-prop="status" aria-label="卡片状态">${Object.entries(STATUSES).map(([key,name])=>`<option value="${key}" ${c.status===key?'selected':''}>${name}</option>`).join('')}</select></label>
     <label>描述<textarea data-prop="body" maxlength="20000">${esc(c.body)}</textarea></label>
     ${Object.entries(type.fields).map(([key,name])=>`<label>${name}<textarea data-field="${key}" maxlength="20000" rows="3">${esc(c.fields[key]||'')}</textarea></label>`).join('')}
-    <h3>图片</h3>${c.image?`<img class="image-preview" src="${esc(c.image)}" alt="${esc(c.title)}">`:''}<div class="image-actions"><button id="upload-image">${c.image?'替换图片':'＋ 添加图片'}</button>${c.image?'<button id="remove-image">移除图片</button>':''}</div>
+    <h3>资源预览</h3>${['assets','levels'].includes(c.section)&&c.fields.file?.trim()?`<p class="source-help">直接读取上方路径中的项目源文件；替换源文件后重新打开预览即可更新。支持 PNG、JPEG、WebP 和自包含 GLB。</p><div class="image-actions"><button data-preview="${esc(c.id)}">查看源文件预览</button></div>`:`${c.image?`<img class="image-preview" src="${esc(c.image)}" alt="${esc(c.title)}">`:''}<div class="image-actions"><button id="upload-image">${c.image?'替换图片':'＋ 添加图片'}</button>${c.image?'<button id="remove-image">移除图片</button>':''}</div>${['assets','levels'].includes(c.section)?'<p class="source-help">优先填写上方的项目源文件路径。手动上传会保存一份独立的预览副本。</p>':''}`}
     <h3>关联 · ${edges.length}</h3>${edges.map(e=>{const other=p().cards.find(v=>v.id===(e.from===c.id?e.to:e.from));return `<div class="relation"><button data-jump="${esc(other.id)}"><small>${sectionName(other.section)} · ${esc(e.label||'关联')} ${e.from===c.id?'→':'←'}</small>${esc(other.title)}</button><button data-edit-edge="${esc(e.id)}" aria-label="编辑关联 ${esc(e.label)}">⋯</button></div>`;}).join('')}
     <div class="relation-form"><select id="relation-target" aria-label="关联到卡片"><option value="">选择任意区域的卡片…</option>${p().cards.filter(v=>v.id!==c.id).map(v=>`<option value="${esc(v.id)}">${sectionName(v.section)} / ${esc(v.title)}</option>`).join('')}</select><input id="relation-label" placeholder="关系：例如发布、位于、触发" maxlength="200" aria-label="关联名称"><button id="add-relation" class="outline">＋ 建立关联</button></div>
     <button id="delete-card" class="danger">删除卡片（可撤销）</button>`;
@@ -145,7 +167,7 @@ function renderInspector() {
 }
 function renderOne(c) {
   const node=document.querySelector(`[data-card="${CSS.escape(c.id)}"]`); if(node) node.outerHTML=cardHTML(c);
-  renderNav(); renderOverview(); requestAnimationFrame(renderEdges);
+  renderNav(); renderOverview(); mountModelCards(p().id); requestAnimationFrame(renderEdges);
 }
 function updateTool() {
   $('#select-tool').classList.toggle('active',tool==='select'); $('#connect-tool').classList.toggle('active',tool==='connect');
@@ -154,8 +176,22 @@ function updateTool() {
 }
 function openDialog(html) { $('#dialog-content').innerHTML=html; $('#dialog').showModal(); }
 function closeDialog() { $('#dialog').close(); }
+let previewDispose=()=>{};
+$('#dialog').addEventListener('close',()=>{previewDispose();previewDispose=()=>{};});
+document.addEventListener('error',e=>{
+  if(e.target.matches?.('.asset-preview .card-image')){e.target.hidden=true;e.target.parentElement.querySelector('.preview-error').hidden=false;}
+  if(e.target.matches?.('.asset-large-preview img'))e.target.parentElement.textContent='源图片不可用 · 请检查项目路径或 NAS。';
+},true);
+async function openAssetPreview(cardId) {
+  const c=p().cards.find(c=>c.id===cardId);if(!c)return;
+  const file=c.fields.file?.trim(),model=file&&/\.glb$/i.test(file);
+  const url=file?`/api/asset/${encodeURIComponent(p().id)}/${encodeURIComponent(c.id)}?file=${encodeURIComponent(file)}`:c.image;
+  openDialog(`<h2>${esc(c.title)}</h2><p class="subtext">${file?`项目源文件 · ${esc(file)}`:'手动导入的预览图'}${model?' · 拖动旋转，滚轮缩放':''}</p><div class="asset-large-preview">${model?'正在读取源模型…':`<img src="${esc(url)}" alt="${esc(c.title)}">`}</div><div class="dialog-actions"><button class="outline" data-close>关闭预览</button></div>`);
+  if(model){const host=$('.asset-large-preview'),dispose=await mountModel(host,p().id,url,true);if(!$('#dialog').open||!host.isConnected)dispose();else previewDispose=dispose;}
+}
 function addDialog(point) {
   if(bindings[p().id]?.available===false){notify('项目文件暂不可用，恢复连接后可继续编辑。');return;}
+  setDetails(false);
   const options=Object.entries(TYPES).filter(([key,t])=>t.section===section && (tab==='all'||tab===key||(tab==='world'&&key==='place')||(tab==='story'&&['story','quest'].includes(key))));
   openDialog(`<h2>放下一个新想法</h2><p class="subtext">${sectionName(section)} · 每张卡片只放一件事，之后再连起来。</p><div class="type-grid">${options.map(([key,t])=>`<button class="type-choice" data-new-type="${key}">${t.name}<small>＋</small></button>`).join('')}</div><div class="dialog-actions"><button data-close>取消</button></div>`);
   $('#dialog').querySelectorAll('[data-new-type]').forEach(button=>button.onclick=()=>{
@@ -177,7 +213,7 @@ function projectDialog(isNew=false) {
     }
     if(isNew){
       // Creating a persistent project cannot be undone as a card edit.
-      if(bindings[p().id]?.available!==false)p().views[section]=clone(view);
+      if(bindings[p().id]?.available!==false&&view.z>=.2)p().views[section]=clone(view);
       Object.assign(current,f,{title:f.title.trim()});data.projects.push(current);data.activeProjectId=current.id;history=[];future=[];modified();
     }else change(()=>Object.assign(current,f,{title:f.title.trim()}));
     closeDialog();if(isNew)switchSection('overview');else render();
@@ -196,7 +232,12 @@ function addEdge(from,to,label='关联') {
 }
 function selectCard(c) {
   if(tool==='connect') { if(!source){source=c.id;renderCards();updateTool();}else{const from=source;source=null;addEdge(from,c.id);updateTool();}return; }
-  selected=c.id;renderCards();renderInspector();
+  setDetails(false);selected=c.id;renderCards();renderInspector();
+}
+function setDetails(open) {
+  $('#project-details-panel').hidden = !open;
+  $('#toggle-details').setAttribute('aria-expanded', String(open));
+  if(open) { selected=null;renderCards();renderInspector(); }
 }
 function renderSearch() {
   const q=searchTerm.trim().toLowerCase();$('#search-results').hidden=!q;if(!q)return;
@@ -209,15 +250,16 @@ function exportFile() {
 }
 
 document.addEventListener('click',e=>{
+  const preview=e.target.closest('[data-preview]');if(preview){openAssetPreview(preview.dataset.preview);return;}
   const sectionButton=e.target.closest('[data-section]');if(sectionButton){switchSection(sectionButton.dataset.section);return;}
-  const tabButton=e.target.closest('[data-tab]');if(tabButton){tab=tabButton.dataset.tab;selected=null;source=null;render();return;}
+  const tabButton=e.target.closest('[data-tab]');if(tabButton){autoFit=true;tab=tabButton.dataset.tab;selected=null;source=null;render();return;}
   const close=e.target.closest('[data-close]');if(close){closeDialog();return;}
   const jump=e.target.closest('[data-jump]');if(jump){const c=p().cards.find(c=>c.id===jump.dataset.jump);if(c)focusCard(c);return;}
   const stat=e.target.closest('[data-stat]');if(stat){const type=stat.dataset.stat;if(type==='decision'){section='overview';tab='all';selected=null;render();const c=p().cards.find(c=>c.type==='decision'&&c.status!=='done');if(c)focusCard(c);}else switchSection(TYPES[type].section,type==='quest'?'story':type);return;}
   const edge=e.target.closest('[data-edge],[data-edit-edge]');if(edge){const v=p().edges.find(v=>v.id===(edge.dataset.edge||edge.dataset.editEdge));if(v)edgeDialog(v);return;}
 });
 $('#inspector').addEventListener('focusin',e=>{if(e.target.matches('[data-prop],[data-field]'))checkpoint();});
-$('#inspector').addEventListener('input',e=>{const c=card();if(!c)return;if(e.target.dataset.prop)c[e.target.dataset.prop]=e.target.value;else if(e.target.dataset.field)c.fields[e.target.dataset.field]=e.target.value;else return;modified();renderOne(c);});
+$('#inspector').addEventListener('input',e=>{const c=card();if(!c)return;if(e.target.dataset.prop)c[e.target.dataset.prop]=e.target.value;else if(e.target.dataset.field){c.fields[e.target.dataset.field]=e.target.value;if(e.target.dataset.field==='file')previewChanged=true;}else return;modified();renderOne(c);});
 $('#inspector').addEventListener('click',e=>{
   const c=card();if(!c)return;
   if(e.target.id==='close-inspector'){selected=null;renderInspector();renderCards();}
@@ -235,8 +277,81 @@ $('#image-file').onchange=async e=>{
     const c=p().cards.find(v=>v.id===target);if(!c)return;change(()=>c.image=encoded);renderCards();renderInspector();notify('图片已加入，自动缩小以节省本机空间。');
   }catch(error){notify(error.message||'无法读取图片。');}
 };
+// Keep touch taps separate from drags so a second finger can start a pinch
+// over cards, links or previews without opening an editor or moving a card.
+const touches = new Map();
+let touchGesture = null, suppressTouchClickUntil = 0;
+function touchPair() {
+  const [a,b] = [...touches.values()];
+  return {x:(a.x+b.x)/2,y:(a.y+b.y)/2,distance:Math.max(1,Math.hypot(a.x-b.x,a.y-b.y))};
+}
+function beginTouchGesture(continued = false) {
+  if(touches.size >= 2){
+    const pair=touchPair();
+    touchGesture={kind:'pinch',...pair,view:clone(view),moved:continued};
+  }else if(touches.size){
+    const t=[...touches.values()][0],node=t.target.closest('[data-card]');
+    const c=node&&p().cards.find(c=>c.id===node.dataset.card);
+    const moveCard=!continued&&c&&bindings[p().id]?.available!==false&&tool==='select'&&t.target.closest('.card-head');
+    touchGesture={kind:moveCard?'card':'pan',x:t.x,y:t.y,view:clone(view),c:moveCard?c:null,node:moveCard?node:null,cardX:c?.x,cardY:c?.y,moved:continued,target:continued?null:t.target};
+  }else touchGesture=null;
+}
+function touchStart(e) {
+  if(!data)return;
+  e.preventDefault();
+  const r=$('#viewport').getBoundingClientRect();
+  touches.set(e.pointerId,{x:e.clientX-r.left,y:e.clientY-r.top,target:e.target});
+  $('#viewport').setPointerCapture(e.pointerId);
+  if(touchGesture?.kind==='card'&&touchGesture.moved){
+    // A pinch must not leave an accidental first-finger card displacement.
+    const g=touchGesture;g.c.x=g.cardX;g.c.y=g.cardY;
+    g.node.style.left=`${g.cardX}px`;g.node.style.top=`${g.cardY}px`;renderEdges();
+    history=g.previousHistory;future=g.previousFuture;updateUndo();
+  }
+  beginTouchGesture(touches.size>1);
+}
+function touchMove(e) {
+  if(!touches.has(e.pointerId)||!touchGesture)return;
+  e.preventDefault();
+  const r=$('#viewport').getBoundingClientRect(),t=touches.get(e.pointerId),g=touchGesture;
+  t.x=e.clientX-r.left;t.y=e.clientY-r.top;
+  if(g.kind==='pinch'){
+    const pair=touchPair(),z=Math.max(Math.min(.2,g.view.z),Math.min(2,g.view.z*pair.distance/g.distance));
+    view.x=pair.x-(g.x-g.view.x)*z/g.view.z;view.y=pair.y-(g.y-g.view.y)*z/g.view.z;view.z=z;
+    g.moved=true;autoFit=false;applyView();return;
+  }
+  const dx=t.x-g.x,dy=t.y-g.y;
+  if(!g.moved&&Math.hypot(dx,dy)<4)return;
+  if(!g.moved&&g.c){g.previousFuture=future;g.previousHistory=history.slice();checkpoint();}
+  g.moved=true;autoFit=false;
+  if(g.c){g.c.x=Math.round(g.cardX+dx/view.z);g.c.y=Math.round(g.cardY+dy/view.z);g.node.style.left=`${g.c.x}px`;g.node.style.top=`${g.c.y}px`;renderEdges();}
+  else{view.x=g.view.x+dx;view.y=g.view.y+dy;applyView();}
+}
+function touchEnd(e) {
+  if(!touches.has(e.pointerId))return;
+  const g=touchGesture,cancelled=e.type!=='pointerup';
+  const released=cancelled?[...touches.keys()]:[e.pointerId];
+  for(const pointer of released)touches.delete(pointer);
+  for(const pointer of released)if($('#viewport').hasPointerCapture(pointer))$('#viewport').releasePointerCapture(pointer);
+  suppressTouchClickUntil=performance.now()+700;
+  if(g?.moved){if(g.c)modified();else saveView();}
+  else if(!cancelled&&g?.target){
+    const target=g.target,node=target.closest('[data-card]'),edge=target.closest('[data-edge]'),preview=target.closest('[data-preview]');
+    if(preview)openAssetPreview(preview.dataset.preview);
+    else if(edge)edgeDialog(p().edges.find(v=>v.id===edge.dataset.edge));
+    else if(node)selectCard(p().cards.find(c=>c.id===node.dataset.card));
+    else if(target.closest('button'))target.closest('button').click();
+    else{selected=null;source=null;renderCards();renderInspector();updateTool();}
+  }
+  beginTouchGesture(true);
+}
+$('#viewport').addEventListener('click',e=>{
+  if(e.isTrusted&&performance.now()<suppressTouchClickUntil){e.preventDefault();e.stopPropagation();}
+},true);
 $('#viewport').addEventListener('pointerdown',e=>{
-  if(e.button!==0&&e.button!==1)return;if(e.target.closest('[data-edge]'))return;
+  if(e.pointerType==='touch'){touchStart(e);return;}
+  if(touches.size||dragging)return;
+  if(e.button!==0&&e.button!==1)return;if(e.target.closest('[data-edge],[data-preview]'))return;
   const node=e.target.closest('[data-card]'),c=node&&p().cards.find(c=>c.id===node.dataset.card);
   const moveCard=c&&bindings[p().id]?.available!==false&&tool==='select'&&!space&&e.button===0&&e.target.closest('.card-head');
   if(c&&!moveCard&&e.button===0&&!space){selectCard(c);return;}
@@ -246,22 +361,32 @@ $('#viewport').addEventListener('pointerdown',e=>{
   $('#viewport').setPointerCapture(e.pointerId);
 });
 $('#viewport').addEventListener('pointermove',e=>{
+  if(e.pointerType==='touch'){touchMove(e);return;}
   if(!dragging||e.pointerId!==dragging.pointer)return;const d=dragging,dx=e.clientX-d.startX,dy=e.clientY-d.startY;
   if(!d.moved&&Math.hypot(dx,dy)<4)return;
   if(!d.moved&&d.c)checkpoint();d.moved=true;
+  autoFit=false;
   if(d.c){d.c.x=Math.round(d.x+dx/view.z);d.c.y=Math.round(d.y+dy/view.z);d.node.style.left=`${d.c.x}px`;d.node.style.top=`${d.c.y}px`;renderEdges();}
   else{view.x=d.x+dx;view.y=d.y+dy;applyView();}
 });
-function endDrag(e){if(!dragging)return;const d=dragging;dragging=null;if($('#viewport').hasPointerCapture(d.pointer))$('#viewport').releasePointerCapture(d.pointer);if(d.moved){if(d.c)modified();else saveView();}else if(d.c)selectCard(d.c);else if(e.type!=='pointercancel'){selected=null;source=null;renderCards();renderInspector();updateTool();}}
+function endDrag(e){if(touches.has(e.pointerId)){touchEnd(e);return;}if(!dragging||e.pointerId!==dragging.pointer)return;const d=dragging;dragging=null;if($('#viewport').hasPointerCapture(d.pointer))$('#viewport').releasePointerCapture(d.pointer);if(d.moved){if(d.c)modified();else saveView();}else if(d.c)selectCard(d.c);else if(e.type!=='pointercancel'){selected=null;source=null;renderCards();renderInspector();updateTool();}}
 $('#viewport').addEventListener('pointerup',endDrag);$('#viewport').addEventListener('pointercancel',endDrag);
+$('#viewport').addEventListener('lostpointercapture',endDrag);
 $('#viewport').addEventListener('dblclick',e=>{if(e.target.closest('[data-card],[data-edge]'))return;const r=$('#viewport').getBoundingClientRect();addDialog({x:(e.clientX-r.left-view.x)/view.z,y:(e.clientY-r.top-view.y)/view.z});});
-$('#viewport').addEventListener('wheel',e=>{e.preventDefault();if(e.ctrlKey||e.metaKey){const r=$('#viewport').getBoundingClientRect();zoom(Math.exp(-e.deltaY*.008),e.clientX-r.left,e.clientY-r.top);}else{view.x-=e.deltaX;view.y-=e.deltaY;applyView();saveView();}},{passive:false});
+$('#viewport').addEventListener('wheel',e=>{
+  e.preventDefault();if(dragging||touches.size)return;
+  const r=$('#viewport').getBoundingClientRect();
+  const delta=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?r.height:1);
+  zoom(Math.exp(-Math.max(-240,Math.min(240,delta))*.003),e.clientX-r.left,e.clientY-r.top);
+},{passive:false});
 $('#viewport').addEventListener('keydown',e=>{const c=e.target.closest('[data-card]'),edge=e.target.closest('[data-edge]');if(['Enter',' '].includes(e.key)&&(c||edge)){e.preventDefault();if(c)selectCard(p().cards.find(v=>v.id===c.dataset.card));else edgeDialog(p().edges.find(v=>v.id===edge.dataset.edge));}});
 $('#select-tool').onclick=()=>{tool='select';source=null;renderCards();updateTool();};$('#connect-tool').onclick=()=>{tool=tool==='connect'?'select':'connect';source=null;renderCards();updateTool();};
 $('#zoom-in').onclick=()=>zoom(1.2);$('#zoom-out').onclick=()=>zoom(1/1.2);$('#zoom-reset').onclick=()=>zoom(1/view.z);$('#fit').onclick=fit;
 $('#undo').onclick=()=>undo();$('#redo').onclick=()=>undo(true);$('#add-card').onclick=()=>addDialog();$('#empty-add').onclick=()=>addDialog();$('#new-project').onclick=()=>projectDialog(true);$('#edit-project').onclick=()=>projectDialog();
+$('#toggle-details').onclick=()=>setDetails($('#project-details-panel').hidden);
+$('#close-details').onclick=()=>{setDetails(false);$('#toggle-details').focus();};
 $('#projects').onchange=e=>{data.activeProjectId=e.target.value;history=[];future=[];modified();switchSection('overview');};
-$('#search').oninput=e=>{searchTerm=e.target.value;renderSearch();};
+$('#search').oninput=e=>{setDetails(false);searchTerm=e.target.value;renderSearch();};
 $('#export').onclick=exportFile;$('#import').onclick=()=>$('#import-file').click();
 $('#import-file').onchange=async e=>{
   const file=e.target.files[0];e.target.value='';if(!file)return;if(file.size>25*1024*1024){notify('备份超过 25 MB，无法导入。');return;}
@@ -272,10 +397,10 @@ $('#import-file').onchange=async e=>{
   }catch(error){notify(error.message||'无法导入备份。');}
 };
 $('#save-status').onclick=()=>{if(conflict){notify('请先导出备份，再刷新读取其他窗口保存的内容。之后可导入备份作为新项目。');return;}if(dirty)save();};
-$('#help').onclick=()=>openDialog(`<h2>让想法在画布上碰个面。</h2><div class="help-content"><p><strong>放卡片</strong>　点击「添加卡片」，或双击空白处。</p><p><strong>移动</strong>　拖卡片顶部重新摆放；拖空白处平移。触控板双指移动，⌘ / Ctrl + 滚轮缩放。</p><p><strong>连线</strong>　按 <kbd>C</kbd>，依次点两张卡片。点击线上的文字可命名或删除；跨区域关联在卡片右侧添加。</p><p><strong>快捷键</strong>　<kbd>V</kbd> 选择 · <kbd>F</kbd> 适合画布 · <kbd>/</kbd> 搜索 · <kbd>Esc</kbd> 取消 · <kbd>⌘/Ctrl Z</kbd> 撤销。选中卡片时用方向键移动，<kbd>Shift</kbd> 加速。</p><p><strong>任务与规则</strong>　任务写发布者、地点、条件、目标、完成与状态变化；通用规则写触发、结果和验证例子。关卡再放具体配置。</p><p class="storage">每个项目自动保存到页眉显示的 game-outline.json，与 CLI 共用，并保留上一次保存的 .bak。空闲时自动读取外部更新；文件或 NAS 不可用时该画板只读。导出包含图片和连线；导入始终创建副本。图片会缩到最长 1400 像素；大型原素材建议放 NAS，卡片只记路径。多窗口保存冲突时会停止覆盖，请先导出再刷新。</p></div><div class="dialog-actions"><button class="primary" data-close>开始构思</button></div>`);
+$('#help').onclick=()=>openDialog(`<h2>让想法在画布上碰个面。</h2><div class="help-content"><p><strong>放卡片</strong>　点击「添加卡片」，或双击空白处。</p><p><strong>移动</strong>　拖卡片顶部重新摆放；拖空白处平移。滚轮直接缩放；手机单指拖动画布、双指缩放。</p><p><strong>连线</strong>　按 <kbd>C</kbd>，依次点两张卡片。点击线上的文字可命名或删除；跨区域关联在卡片右侧添加。</p><p><strong>快捷键</strong>　<kbd>V</kbd> 选择 · <kbd>F</kbd> 适合画布 · <kbd>/</kbd> 搜索 · <kbd>Esc</kbd> 取消 · <kbd>⌘/Ctrl Z</kbd> 撤销。选中卡片时用方向键移动，<kbd>Shift</kbd> 加速。</p><p><strong>任务与规则</strong>　任务写发布者、地点、条件、目标、完成与状态变化；通用规则写触发、结果和验证例子。关卡再放具体配置。</p><p class="storage">每个项目自动保存到页眉显示的 game-outline.json，与 CLI 共用，并保留上一次保存的 .bak。空闲时自动读取外部更新；文件或 NAS 不可用时该画板只读。导出包含图片和连线；导入始终创建副本。图片会缩到最长 1400 像素；大型原素材建议放 NAS，卡片只记路径。多窗口保存冲突时会停止覆盖，请先导出再刷新。</p></div><div class="dialog-actions"><button class="primary" data-close>开始构思</button></div>`);
 document.addEventListener('keydown',e=>{
   const editing=e.target.matches('input,textarea,select,[contenteditable]');
-  if(e.key==='Escape'){source=null;tool='select';if(!$('#dialog').open){selected=null;renderCards();renderInspector();updateTool();}return;}
+  if(e.key==='Escape'){source=null;tool='select';if(!$('#dialog').open){if(!$('#project-details-panel').hidden){setDetails(false);$('#toggle-details').focus();}selected=null;renderCards();renderInspector();updateTool();}return;}
   if($('#dialog').open)return;
   if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='s'){e.preventDefault();save();return;}
   if(editing)return;
@@ -285,17 +410,17 @@ document.addEventListener('keydown',e=>{
   if(e.key.toLowerCase()==='v')$('#select-tool').click();
   if(e.key.toLowerCase()==='f')fit();
   if(e.key==='/'){e.preventDefault();$('#search').focus();}
-  if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();const delta=e.shiftKey?50:10,dx=e.key==='ArrowLeft'?-delta:e.key==='ArrowRight'?delta:0,dy=e.key==='ArrowUp'?-delta:e.key==='ArrowDown'?delta:0;if(card()){change(()=>{card().x+=dx;card().y+=dy;});renderCards();}else{view.x-=dx;view.y-=dy;applyView();saveView();}}
+  if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();autoFit=false;const delta=e.shiftKey?50:10,dx=e.key==='ArrowLeft'?-delta:e.key==='ArrowRight'?delta:0,dy=e.key==='ArrowUp'?-delta:e.key==='ArrowDown'?delta:0;if(card()){change(()=>{card().x+=dx;card().y+=dy;});renderCards();}else{view.x-=dx;view.y-=dy;applyView();saveView();}}
 });
-document.addEventListener('keyup',e=>{if(e.key===' ')space=false;});window.addEventListener('blur',()=>space=false);
+document.addEventListener('keyup',e=>{if(e.key===' ')space=false;});window.addEventListener('blur',()=>{space=false;if(touches.size)touchEnd({pointerId:touches.keys().next().value,type:'pointercancel'});if(dragging)endDrag({pointerId:dragging.pointer,type:'pointercancel'});});
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
-new ResizeObserver(()=>requestAnimationFrame(renderEdges)).observe($('#viewport'));
+new ResizeObserver(()=>{requestAnimationFrame(renderEdges);scheduleFit();}).observe($('#viewport'));
 
 async function refreshFiles(manual=false){
-  if(!data||polling||dirty||saving||$('#dialog').open||(!manual&&(document.hidden||document.activeElement?.matches('input,textarea,select')))){if(manual)notify('请先保存当前编辑；如有冲突，请先导出备份再刷新页面。');return;}
+  if(!data||polling||dirty||saving||dragging||touches.size||$('#dialog').open||(!manual&&(document.hidden||document.activeElement?.matches('input,textarea,select')))){if(manual)notify('请先保存当前编辑；如有冲突，请先导出备份再刷新页面。');return;}
   polling=true;
   try{const response=await fetch('/api/workspace');if(!response.ok)throw Error('无法读取项目文件。');const result=await response.json();
-    if(dirty||saving||(!manual&&document.activeElement?.matches('input,textarea,select')))return;
+    if(dirty||saving||dragging||touches.size||(!manual&&document.activeElement?.matches('input,textarea,select')))return;
     if(result.revision!==revision){const active=data.activeProjectId;data=validateWorkspace(result.workspace);if(data.projects.some(p=>p.id===active))data.activeProjectId=active;revision=result.revision;bindings=result.bindings||{};history=[];future=[];conflict=false;render();$('#save-status').classList.remove('error');$('#save-status').textContent='● 已同步项目 JSON';if(manual)notify('已读取最新项目文件。');}
     else if(manual)notify('画板与项目 JSON 已一致。');
   }catch(error){if(manual)notify(error.message);}finally{polling=false;}

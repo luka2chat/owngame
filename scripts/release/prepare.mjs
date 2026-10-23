@@ -18,7 +18,7 @@ await fs.mkdir(path.dirname(out),{recursive:true});
 out=path.join(path.dirname(out),'.owngame-export-'+randomUUID());
 await fs.mkdir(out);
 try {
-const entries=['apps/outline','tests/outline','packages','starter-knowledge','skills','templates','scripts/toolkit','scripts/lib/codex-browser-preflight.mjs','scripts/release','tests/release','.github','tsconfig.json','README.md','LICENSE','THIRD_PARTY_NOTICES.md','CONTRIBUTING.md','SECURITY.md','CHANGELOG.md','docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','docs/install.md','docs/agent-setup.md','docs/quickstart.md','docs/resource-search.md','docs/releasing.md','docs/style-recipes.json','docs/cases','docs/images'];
+const entries=['apps/outline','tests/outline','packages','starter-knowledge','skills','templates','scripts/toolkit','scripts/outline/verify-gestures.mjs','scripts/lib/codex-browser-preflight.mjs','scripts/release','tests/release','.github','tsconfig.json','README.md','LICENSE','THIRD_PARTY_NOTICES.md','CONTRIBUTING.md','SECURITY.md','CHANGELOG.md','docs/README.md','docs/zh-CN/quickstart.md','docs/remix.md','docs/open-source-games.md','docs/game-publishing.md','docs/install.md','docs/agent-setup.md','docs/quickstart.md','docs/resource-search.md','docs/releasing.md','docs/style-recipes.json','docs/cases','docs/images'];
 const manifest=[];
 async function copy(relative){
  if(/(^|\/)(game-outline\.json(?:\..*)?|project-files\.json|workspace\.json(?:\..*)?|\.game-outline\.lock)(\/|$)/.test(relative))throw Error('Private outline data cannot be exported: '+relative);
@@ -37,7 +37,7 @@ for(const [relative,bytes] of await readPublicFiles(root)) {
  await fs.mkdir(path.dirname(path.join(out,relative)),{recursive:true});await fs.writeFile(path.join(out,relative),bytes);
  manifest.push({path:relative,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')});
 }
-pkg.scripts={build:'tsc -p tsconfig.json',test:'npm run test:release','test:release':pkg.scripts['test:release'],outline:pkg.scripts.outline,'test:outline':pkg.scripts['test:outline'],'verify:package':pkg.scripts['verify:package'],'release:prepare':pkg.scripts['release:prepare'],prepack:'npm run build'};
+pkg.scripts={build:'tsc -p tsconfig.json',test:'npm run test:release','test:release':pkg.scripts['test:release'],outline:pkg.scripts.outline,'test:outline':pkg.scripts['test:outline'],'test:outline:gestures':pkg.scripts['test:outline:gestures'],'verify:package':pkg.scripts['verify:package'],'release:prepare':pkg.scripts['release:prepare'],prepack:'npm run build'};
 Object.assign(pkg.scripts,{'android:test:updates':'node scripts/android/test-updates.mjs','android:build':'node scripts/android/build.mjs','android:check':'node scripts/android/export-source.mjs && node --test tests/android/public-source.test.mjs','android:test:compile':'node scripts/android/test-repository.mjs --compile-only','test:android':'node scripts/android/test-repository.mjs'});
 if(repository){pkg.repository={type:'git',url:repository+'.git'};pkg.bugs={url:repository+'/issues'};}
 await fs.writeFile(path.join(out,'package.json'),JSON.stringify(pkg,null,2)+'\n');
