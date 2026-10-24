@@ -1,3 +1,4 @@
+import { attachBlueprint } from "./remix-blueprint.js";
 import { element } from "./data.js";
 import { t } from "./i18n.js";
 import {
@@ -51,6 +52,14 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
     }
   }
 
+  let blueprintLoading = false,
+    blueprintFailed = false;
+  let needsBlueprint = !stored && !conflict;
+  const blueprintController = new AbortController();
+  const blueprintStatus = element("div", "workflow-blueprint-status");
+  blueprintStatus.setAttribute("role", "status");
+  let selectedBlueprintCard;
+
   const toolbar = element("div", "workflow-toolbar");
   const workspace = element("div", "workflow-workspace");
   const viewport = element("div", "workflow-viewport");
@@ -101,7 +110,7 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
         );
       } finally {
         if (!disposed && request === copyAttempt)
-          copy.disabled = workflowIssues(plan).length > 0;
+          copy.disabled = needsBlueprint || workflowIssues(plan).length > 0;
       }
     },
     "workflow-primary",
@@ -154,7 +163,8 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
   };
   const importButton = button("导入方案", () => file.click());
   footer.append(download, importButton, copy);
-  host.append(
+  const blueprintGate = element("fieldset", "workflow-blueprint-gate");
+  blueprintGate.append(
     meta,
     toolbar,
     saveStatus,
@@ -165,7 +175,106 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
     footer,
     file,
   );
+  host.append(blueprintStatus, blueprintGate);
 
+  function renderBlueprintStatus() {
+    blueprintStatus.replaceChildren();
+    if (plan.blueprint) {
+      blueprintStatus.append(
+        element(
+          "strong",
+          "",
+          t("已带入「{title}」的 {count} 张蓝图卡片", {
+            title: plan.blueprint.title,
+            count: plan.blueprint.cards.length,
+          }),
+        ),
+        element(
+          "p",
+          "",
+          t("在步骤详情中调整原玩法、关卡和素材；修改只保存在你的复刻方案里。"),
+        ),
+      );
+    } else {
+      blueprintStatus.append(
+        element(
+          "p",
+          "",
+          t(
+            blueprintLoading
+              ? "正在带入这个游戏的蓝图…"
+              : blueprintFailed
+                ? "蓝图暂时无法载入。请重试，或切换到简单复刻。"
+                : "这是已有草稿，可以补入游戏蓝图，原来的步骤调整会保留。",
+          ),
+        ),
+      );
+      if (!blueprintLoading)
+        blueprintStatus.append(
+          button(
+            blueprintFailed ? "重试载入蓝图" : "带入游戏蓝图",
+            loadBlueprint,
+          ),
+        );
+    }
+    blueprintGate.disabled = needsBlueprint;
+    for (const node of [meta, toolbar, workspace, output, footer])
+      node.inert = needsBlueprint;
+    copy.disabled = needsBlueprint || workflowIssues(plan).length > 0;
+    download.disabled = needsBlueprint;
+  }
+  async function loadBlueprint() {
+    if (blueprintLoading || plan.blueprint) return;
+    const targetPlan = plan;
+    blueprintLoading = true;
+    blueprintFailed = false;
+    renderBlueprintStatus();
+    try {
+      const read = async (url) => {
+        const response = await fetch(url, {
+          signal: blueprintController.signal,
+        });
+        if (!response.ok) throw Error("Blueprint unavailable");
+        const text = await response.text();
+        if (text.length > 900000) throw Error("Blueprint too large");
+        return JSON.parse(text);
+      };
+      const [document, labels] = await Promise.all([
+        read(`/blueprints/${encodeURIComponent(game.id)}.json`),
+        read("/blueprints/meta.json"),
+      ]);
+      if (disposed || plan.blueprint || plan !== targetPlan) return;
+      const next = attachBlueprint(plan, document, labels, game);
+      if (needsBlueprint) {
+        // Imported cards now carry the actual design. Do not also hand off the
+        // old generic preserve-text, which could contradict edited rules.
+        const defaults = createWorkflow(game);
+        for (const step of next.steps) {
+          const initial = defaults.steps.find((s) => s.id === step.id);
+          if (initial && step.preserve === initial.preserve) step.preserve = "";
+        }
+      }
+      if (needsBlueprint && !next.goal) {
+        next.goal = (
+          document.project.experience ||
+          document.project.tagline ||
+          ""
+        ).slice(0, 4000);
+      } else if (!needsBlueprint) {
+        history.push(clone(plan));
+        future = [];
+      }
+      plan = next;
+      needsBlueprint = false;
+      save(false);
+      render();
+    } catch {
+      if (!disposed) blueprintFailed = true;
+    } finally {
+      blueprintLoading = false;
+      if (!disposed) renderBlueprintStatus();
+    }
+  }
   function renderStatus() {
     saveStatus.textContent = t(notice);
     if (
@@ -181,10 +290,10 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
         ),
       );
   }
-  function save() {
+  function save(edited = true) {
     copyAttempt++;
     copyStatus.textContent = "";
-    onEdit?.();
+    if (edited) onEdit?.();
     try {
       if (conflict || localStorage.getItem(key) !== stored) {
         conflict = true;
@@ -217,8 +326,8 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
     const issues = workflowIssues(plan);
     errors.textContent = issues.join(" ");
     errors.hidden = !issues.length;
-    copy.disabled = Boolean(issues.length);
-    preview.value = issues.length ? "" : workflowPrompt(plan);
+    copy.disabled = needsBlueprint || Boolean(issues.length);
+    preview.value = needsBlueprint || issues.length ? "" : workflowPrompt(plan);
   }
   function field(
     parent,
@@ -524,6 +633,16 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
           ),
         ),
       );
+      const sourceCount =
+        plan.blueprint?.cards.filter((c) => c.stepId === step.id).length || 0;
+      if (sourceCount)
+        card.append(
+          element(
+            "span",
+            "workflow-source-count",
+            t("{count} 张蓝图卡片", { count: sourceCount }),
+          ),
+        );
       board.append(card);
     }
   }
@@ -539,6 +658,119 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
     viewport.scrollTo(0, 0);
     renderBoard();
     renderToolbar();
+  }
+  function renderBlueprintCards(step) {
+    const cards =
+      plan.blueprint?.cards.filter((c) => c.stepId === step.id) || [];
+    if (!cards.length) return;
+    const section = element("section", "workflow-blueprint-cards");
+    section.setAttribute("aria-label", t("本步骤的蓝图卡片"));
+    section.append(element("h4", "", t("本步骤的蓝图卡片")));
+    const select = element("select", "workflow-blueprint-select");
+    select.setAttribute("aria-label", t("选择蓝图卡片"));
+    const card = cards.find((c) => c.id === selectedBlueprintCard) || cards[0];
+    selectedBlueprintCard = card.id;
+    for (const source of cards) {
+      const option = element(
+        "option",
+        "",
+        (source.enabled ? "" : "− ") + source.title,
+      );
+      option.value = source.id;
+      select.append(option);
+    }
+    select.value = card.id;
+    select.onchange = () => {
+      selectedBlueprintCard = select.value;
+      renderInspector();
+    };
+    section.append(select);
+    toggle(section, t("采用这张卡片"), card.enabled, (value) =>
+      update(() => (card.enabled = value)),
+    );
+    field(
+      section,
+      "卡片名称",
+      card.title,
+      (value) => {
+        card.title = value;
+        select.selectedOptions[0].textContent = value;
+      },
+      { max: 400, name: "blueprint-title" },
+    );
+    field(section, "设计内容", card.body, (value) => (card.body = value), {
+      area: true,
+      max: 20000,
+      name: "blueprint-body",
+    });
+    for (const [key, value] of Object.entries(card.fields))
+      field(
+        section,
+        card.labels[key] || key,
+        value,
+        (next) => (card.fields[key] = next),
+        { area: true, max: 20000, name: "blueprint-" + key },
+      );
+    field(
+      section,
+      "这张卡想怎么改",
+      card.request,
+      (value) => (card.request = value),
+      { area: true, name: "blueprint-request" },
+    );
+    const original = element("details", "workflow-blueprint-original");
+    original.append(
+      element("summary", "", t("查看原蓝图内容")),
+      element("p", "", card.original.title),
+      element("p", "", card.original.body),
+    );
+    for (const [key, value] of Object.entries(card.original.fields))
+      original.append(
+        element("p", "", `${t(card.labels[key] || key)}: ${value}`),
+      );
+    section.append(original);
+    if (card.asset) {
+      const link = element("a", "", t("查看原素材 ↗"));
+      link.href = card.asset.source;
+      link.target = "_blank";
+      link.rel = "noopener";
+      section.append(link);
+      if (
+        card.asset.preview &&
+        card.fields.file === card.original.fields.file
+      ) {
+        const image = element("img", "workflow-blueprint-preview");
+        image.src = card.asset.preview;
+        image.alt = card.original.title;
+        image.loading = "lazy";
+        image.onerror = () => image.remove();
+        section.append(image);
+      }
+    }
+    const edges = plan.blueprint.edges.filter(
+      (e) => e.from === card.id || e.to === card.id,
+    );
+    if (edges.length) {
+      section.append(element("p", "workflow-hint", t("原蓝图中的关联")));
+      for (const edge of edges) {
+        const other = plan.blueprint.cards.find(
+          (c) => c.id === (edge.from === card.id ? edge.to : edge.from),
+        );
+        const link = button(
+          "关联卡片",
+          () => {
+            selected = other.stepId;
+            selectedBlueprintCard = other.id;
+            renderBoard();
+            renderInspector();
+          },
+          "workflow-blueprint-relation",
+        );
+        link.textContent = `${edge.from === card.id ? "→" : "←"} ${edge.label} · ${other.title}`;
+        section.append(link);
+      }
+    }
+    inspector.append(section);
   }
   function renderInspector() {
     if (!plan.steps.some((s) => s.id === selected)) selected = plan.steps[0].id;
@@ -557,6 +789,7 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
       update(() => (step.checkpoint = value)),
     );
     inspector.append(switches);
+    renderBlueprintCards(step);
     for (const [key, label] of Object.entries(fieldLabels))
       field(inspector, label, step[key], (value) => (step[key] = value), {
         area: true,
@@ -609,6 +842,8 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
         for (const s of plan.steps)
           s.dependsOn = s.dependsOn.filter((id) => id !== step.id);
         selected = plan.steps[Math.min(index, plan.steps.length - 1)].id;
+        for (const card of plan.blueprint?.cards || [])
+          if (card.stepId === step.id) card.stepId = selected;
       }),
     );
     remove.disabled = plan.steps.length === 1;
@@ -630,6 +865,7 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
     renderBoard();
     renderInspector();
     renderOutput();
+    renderBlueprintStatus();
   }
   const onStorage = (event) => {
     if (
@@ -644,6 +880,7 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
   };
   window.addEventListener("storage", onStorage);
   render();
+  if (needsBlueprint) loadBlueprint();
   requestAnimationFrame(() => {
     if (!disposed && !host.hidden && viewport.clientWidth > 600) fitCanvas();
   });
@@ -660,6 +897,7 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
     },
     dispose() {
       disposed = true;
+      blueprintController.abort();
       copyAttempt++;
       window.removeEventListener("storage", onStorage);
     },

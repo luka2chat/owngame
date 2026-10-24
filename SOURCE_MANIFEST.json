@@ -1094,8 +1094,8 @@
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 41247,
-      "sha256": "3100e39149a5b112ef0151976aeb1b1364991d063e469cf5a73e0d475560e112"
+      "bytes": 44345,
+      "sha256": "d846a786e050cbbaa1cfd644ff1bf5660b5b02ab016d3b3432ffe2b859249d14"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -1133,19 +1133,24 @@
       "sha256": "bee6ab31a7bfff208963693d1611dea5d95c03a533709f25324784d3d8333453"
     },
     {
+      "path": "apps/web/public/remix-blueprint.js",
+      "bytes": 7698,
+      "sha256": "c5d6a5f5485f9bee3fe485062917219bec9626aeed5fd7a44839221ac2ab0de0"
+    },
+    {
       "path": "apps/web/public/remix-workflow-model.js",
-      "bytes": 10205,
-      "sha256": "0af791ee8f446528c51f8b33cf1e749c5598b67adc109121ac54112c7c05f17a"
+      "bytes": 10437,
+      "sha256": "aa3714cd42be97f9309c52ff889037b8449195a8d5a2e2747d4694a7c94ed16f"
     },
     {
       "path": "apps/web/public/remix-workflow.js",
-      "bytes": 21319,
-      "sha256": "ebb88b2338f662ae39cf993421d3c122a90a1af4f33ecb65a85c7231878d9412"
+      "bytes": 29572,
+      "sha256": "2636f26bba1c6ea352706ce7ab76edd1d5e61cdeaabca9208cb2d62a88d277b9"
     },
     {
       "path": "apps/web/public/remix.css",
-      "bytes": 11550,
-      "sha256": "16a2be81680e03e0552df53d0a954a48b7423de7af1aba38b9275a4be6acab5f"
+      "bytes": 12907,
+      "sha256": "e1648682d4ce348a6437ef6a8f1aac3bea593f058843d41372f8d259de298a2a"
     },
     {
       "path": "apps/web/public/remix.js",
@@ -1179,8 +1184,8 @@
     },
     {
       "path": "apps/web/README.md",
-      "bytes": 7639,
-      "sha256": "577bc7c22f89d104f60f4d1c9315f8f53ff4d209af4b9b92287ee698b705b57a"
+      "bytes": 8182,
+      "sha256": "4c24f9589f2567a030054658eb8c9bc3969701bd3e100ffa963b1fa842d9101d"
     },
     {
       "path": "apps/web/wrangler.jsonc",
@@ -1349,8 +1354,8 @@
     },
     {
       "path": "docs/remix.md",
-      "bytes": 6285,
-      "sha256": "2b9762675a8df6cfc6d5129fc20961d1d97fa502154e2df7c3bfbea7214b5cc8"
+      "bytes": 7641,
+      "sha256": "8e6a566e5f396d4208d24cb592cab722840427feb9fecfbf5484a7a355ba14f8"
     },
     {
       "path": "docs/resource-search.md",
@@ -11958,9 +11963,14 @@
       "sha256": "7300e99e122f05e93ce0c80731de3e2a33be5ca50167bc398a31775f60920955"
     },
     {
+      "path": "tests/web/remix-blueprint.test.mjs",
+      "bytes": 5099,
+      "sha256": "b3df36060b1d7bcce4f302b419ddb05e4bfc60a6a25fd0c44b4681f5c58a3671"
+    },
+    {
       "path": "tests/web/remix-workflow.test.mjs",
-      "bytes": 5191,
-      "sha256": "30ae14de3be6792416415d6ee6db896b3410c271f3c4b1fae6a250d453bd50c9"
+      "bytes": 5230,
+      "sha256": "162e525cc1f623718f483b72521522dd063556e80c4d80c3c4c8155948cf9e33"
     },
     {
       "path": "tests/web/usage.test.mjs",

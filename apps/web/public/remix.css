@@ -610,3 +610,26 @@
     padding-inline: 3px;
   }
 }
+
+.workflow-blueprint-status {
+  padding: 12px 16px;
+  border: 2px solid var(--ink, #22251f);
+  border-radius: 10px;
+  background: #e9f1f8;
+  margin: 12px 0;
+}
+.workflow-blueprint-status p { margin: 4px 0; }
+.workflow-source-count { display: block; color: #075bb4; font-size: 12px; margin: 5px 12px; }
+.workflow-blueprint-cards { border-block: 2px solid #075bb4; padding: 12px 0; margin: 14px 0; }
+.workflow-blueprint-cards h4 { margin: 0 0 10px; }
+.workflow-blueprint-select { width: 100%; min-height: 44px; min-width: 0; font: inherit; border: 2px solid #22251f; background: #fffdf5; border-radius: 8px; margin-bottom: 10px; }
+.workflow-blueprint-original { margin: 12px 0; font-size: 13px; }
+.workflow-blueprint-original summary { min-height: 44px; cursor: pointer; }
+.workflow-blueprint-original p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.workflow-blueprint-cards a { display: block; padding-block: 12px; overflow-wrap: anywhere; }
+.workflow-blueprint-preview { display: block; max-width: 100%; max-height: 180px; object-fit: contain; margin-bottom: 12px; }
+.workflow-blueprint-relation { display: block; width: 100%; text-align: left; margin-block: 8px; overflow-wrap: anywhere; }
+
+.workflow-card:has(.workflow-source-count) { height: 204px; }
+
+.workflow-blueprint-gate { display: contents; padding: 0; margin: 0; border: 0; min-width: 0; }

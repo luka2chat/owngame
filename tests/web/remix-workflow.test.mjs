@@ -136,7 +136,11 @@ test("imports reject wrong games, malformed fields, oversize payloads and cycles
 });
 
 test("workflow UI and model translation keys have English messages", async () => {
-  for (const name of ["remix-workflow.js", "remix-workflow-model.js"]) {
+  for (const name of [
+    "remix-workflow.js",
+    "remix-workflow-model.js",
+    "remix-blueprint.js",
+  ]) {
     const text = await fs.readFile("apps/web/public/" + name, "utf8");
     for (const [, key] of text.matchAll(/(?:t|button)\("([^"\n]+)"/g)) {
       if (/\p{Script=Han}/u.test(key))

@@ -1,3 +1,4 @@
+import { validateBlueprint, blueprintPrompt } from "./remix-blueprint.js";
 import { t, localizeGame } from "./i18n.js";
 import { platforms, supportsPlatform } from "./platforms.js";
 
@@ -209,6 +210,9 @@ export function validateWorkflow(value, gameId) {
         value.reference[k],
       ]),
     ),
+    ...(value.blueprint !== undefined
+      ? { blueprint: validateBlueprint(value.blueprint, gameId, [...ids]) }
+      : {}),
     steps: value.steps.map((s) =>
       Object.fromEntries(
         [
@@ -284,6 +288,7 @@ export function workflowPrompt(plan) {
       `${t("完成后等我确认")}: ${t(s.checkpoint ? "是" : "否")}`,
       "",
     ]),
+    ...blueprintPrompt(plan),
     t(
       "最后交付运行方式与验证证据。区分规则测试、浏览器操作、实机测试和人的视觉体验反馈；未执行的检查明确标为未验证。",
     ),
