@@ -514,8 +514,8 @@
     },
     {
       "path": "apps/web/public/_headers",
-      "bytes": 1298,
-      "sha256": "a7d7e8b4ff314985779cb66257dfa3a18d62f6cc4fa0889f828aea314d937a21"
+      "bytes": 1539,
+      "sha256": "c1c09922482c101eaa8b6cf32d480608e42befc004f108519d7e8fe74c554cae"
     },
     {
       "path": "apps/web/public/404.html",
@@ -1048,14 +1048,34 @@
       "sha256": "d9747e839ce298cc77e781bcca18c5a38564651a68f776542b66fd47eab2886b"
     },
     {
+      "path": "apps/web/public/blueprint-media-policy.js",
+      "bytes": 637,
+      "sha256": "5d4823ec67c912681de8cb951e59a10d701aea1bc5f983acc01b196d724e0e72"
+    },
+    {
+      "path": "apps/web/public/blueprint-media.js",
+      "bytes": 3108,
+      "sha256": "3f7394be58ee3ee491efa39b41b2fb46ad6d7616762d8eeacb91c811b27a1010"
+    },
+    {
+      "path": "apps/web/public/blueprint-model.html",
+      "bytes": 864,
+      "sha256": "26f41eae54f00215ea5173e2751b613e043397e2b9d69d3898214519d7544a19"
+    },
+    {
+      "path": "apps/web/public/blueprint-model.js",
+      "bytes": 3833,
+      "sha256": "d245a4a68ea4c1e240782d51b6c1347db0cacc8789da944468f2bd5c9fae3773"
+    },
+    {
       "path": "apps/web/public/blueprint.css",
-      "bytes": 7588,
-      "sha256": "3af1ee5454eeb02c154a037273f2f21bc5e68c25769e798c0d8f347c469f552e"
+      "bytes": 10373,
+      "sha256": "089a83304950d9f78d684e921158e109658213aaf59bd531f26314332ad62c1c"
     },
     {
       "path": "apps/web/public/blueprint.js",
-      "bytes": 13721,
-      "sha256": "72bf81999bc5152a364de09cc4846c71e01de02947f112e07cdb1320860d779a"
+      "bytes": 13784,
+      "sha256": "15c0dd9b90ed6f3842eccb7f0038284d7c81c48ef8c50ca09be79b0232f2badc"
     },
     {
       "path": "apps/web/public/cases/star-letters/case.css",
@@ -1094,8 +1114,8 @@
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 44345,
-      "sha256": "d846a786e050cbbaa1cfd644ff1bf5660b5b02ab016d3b3432ffe2b859249d14"
+      "bytes": 44811,
+      "sha256": "729b9ff7423f10555ce45b0bba0348bcb86c0b0b16a72c908964466daf452b92"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -1134,8 +1154,8 @@
     },
     {
       "path": "apps/web/public/remix-blueprint.js",
-      "bytes": 7698,
-      "sha256": "c5d6a5f5485f9bee3fe485062917219bec9626aeed5fd7a44839221ac2ab0de0"
+      "bytes": 8310,
+      "sha256": "dff3d32cea685a4cdcea866f35bc6f87ecef5978883386b55b9ff36c12cf5610"
     },
     {
       "path": "apps/web/public/remix-workflow-model.js",
@@ -1144,8 +1164,8 @@
     },
     {
       "path": "apps/web/public/remix-workflow.js",
-      "bytes": 29572,
-      "sha256": "2636f26bba1c6ea352706ce7ab76edd1d5e61cdeaabca9208cb2d62a88d277b9"
+      "bytes": 30771,
+      "sha256": "ed9dfd923e4983ca2a6203d2b54f16e9a0797fd8ac9e2a2fc148c907abe03ac0"
     },
     {
       "path": "apps/web/public/remix.css",
@@ -1169,8 +1189,8 @@
     },
     {
       "path": "apps/web/public/sw.js",
-      "bytes": 6484,
-      "sha256": "679ad55a9dc5b5798bef3389cd21aef038826d096db0bfe7a96d543dcd25d1a2"
+      "bytes": 6735,
+      "sha256": "08269107334470400449a0ce43c8674d77442ba1de7dc5a963b14fa23cb91e27"
     },
     {
       "path": "apps/web/public/usage.css",
@@ -1183,9 +1203,34 @@
       "sha256": "a13e4a0dfe6c380a1b913d178c3594edd5b8d9147da3c39cd70e3dbe3e5c078f"
     },
     {
+      "path": "apps/web/public/vendor/three-0.186.1/LICENSE",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "apps/web/public/vendor/three-0.186.1/MESHOPTIMIZER-MIT.txt",
+      "bytes": 1079,
+      "sha256": "f03037ca7bad1e3eb7f4a63fa6084a8baabd5ba30d3c239a9a7f35705d873e26"
+    },
+    {
+      "path": "apps/web/public/vendor/three-0.186.1/PROVENANCE.md",
+      "bytes": 576,
+      "sha256": "ebb72acac1ad6ce44a2901f96668f4bd2f4b53004ef8bafe1300dd382de4eb4b"
+    },
+    {
+      "path": "apps/web/public/vendor/three-0.186.1/viewer.js",
+      "bytes": 676286,
+      "sha256": "c04fcb018f866d70ec646712c2ca172adbcbd6c467b2e17341dbc7137f962c74"
+    },
+    {
+      "path": "apps/web/public/vendor/three-0.186.1/viewer.js.LEGAL.txt",
+      "bytes": 188,
+      "sha256": "cc7cc7e2f53d5db0235ab2226e85fc6e91655161573b39813b41bb00e5919674"
+    },
+    {
       "path": "apps/web/README.md",
-      "bytes": 8182,
-      "sha256": "4c24f9589f2567a030054658eb8c9bc3969701bd3e100ffa963b1fa842d9101d"
+      "bytes": 8749,
+      "sha256": "653cdeb947deb4044db4572fa95d6c0e4c5a783dbf3c8eff84ed62c4a91ee7f7"
     },
     {
       "path": "apps/web/wrangler.jsonc",
@@ -10319,8 +10364,8 @@
     },
     {
       "path": "scripts/games/sync.mjs",
-      "bytes": 7489,
-      "sha256": "d0ea7621800c1336238a4321a704da57545e1426af66c31a10d32682c213bc34"
+      "bytes": 7558,
+      "sha256": "d7e9875026a3d453e3ba84e95c2d73aa7849328f22d1bbd285dcc425aa7a91e7"
     },
     {
       "path": "scripts/games/verify.mjs",
@@ -10473,14 +10518,24 @@
       "sha256": "e1dd8a6170fe0bb867305b262c789ff5a23289e2bfd320f8ccdca676d91fe461"
     },
     {
+      "path": "scripts/web/blueprint-media.json",
+      "bytes": 15544,
+      "sha256": "7286ad311ac87150db02799a7f6428eb038b5079deada3626c704235cd190aff"
+    },
+    {
+      "path": "scripts/web/blueprint-media.mjs",
+      "bytes": 4043,
+      "sha256": "6a03d896a31ba1c6aefb16512657d7b8098d874fe559f27975c9cc9e98d56c51"
+    },
+    {
       "path": "scripts/web/blueprint-snapshots.json",
       "bytes": 247974,
       "sha256": "11f394856e8fb677a62de52f9719e5154f56e364f97208365aacd8e54dd49954"
     },
     {
       "path": "scripts/web/blueprints.mjs",
-      "bytes": 3664,
-      "sha256": "8e0458738444ea4993b6ff202f87657bb90e07bfcf0c45830fa4c91dd2f8a028"
+      "bytes": 4022,
+      "sha256": "54a0d08fc691b9548b45bf1ddb25fca0d8dd304e6d654173b11f3c4a0437120d"
     },
     {
       "path": "scripts/web/build.mjs",
@@ -11928,9 +11983,14 @@
       "sha256": "9856901d40eb9d0c5fb01d69237c83633a1d5ac1c816fee39f70492dbc9b8544"
     },
     {
+      "path": "tests/web/blueprint-media.test.mjs",
+      "bytes": 6054,
+      "sha256": "f776f366e463b39f0a62772ca0545571f5024ec7dc265e319f8a580efb7b1340"
+    },
+    {
       "path": "tests/web/blueprints.test.mjs",
-      "bytes": 6444,
-      "sha256": "a21db1143843947861f41f8dd5c116e318ba78fe4726e7ad9f9d81e81cc8709e"
+      "bytes": 7168,
+      "sha256": "6764a48976b4e3a14e6817b5feb9dca9b001821257f7d55cd5292042861904cf"
     },
     {
       "path": "tests/web/footer.test.mjs",
@@ -11954,8 +12014,8 @@
     },
     {
       "path": "tests/web/offline.test.mjs",
-      "bytes": 5942,
-      "sha256": "45247b6c6500a6f382e95a595554efaa84f23b7f667a69c7da2cb46072d71d92"
+      "bytes": 6913,
+      "sha256": "4acea073c57bd6b5c41f747ad6e9b6e59068e00ce5a526fcc8dac84ea917b3b2"
     },
     {
       "path": "tests/web/platforms.test.mjs",

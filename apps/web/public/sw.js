@@ -13,7 +13,7 @@ self.addEventListener("install", (event) =>
       const c = await caches.open(CORE);
       await Promise.all(
         // Art is cached when requested, not eagerly downloaded alongside the game.
-        CORE_FILES.filter(url => !/\.(png|jpe?g|webp|gif|avif)$/i.test(url)).map(async (url) => {
+        CORE_FILES.filter(url => !url.startsWith("/vendor/") && !url.startsWith("/blueprint-media/") && !/\.(png|jpe?g|webp|gif|avif)$/i.test(url)).map(async (url) => {
           // A new shell cache must not inherit stale scripts from the HTTP cache.
           const response = await fetch(url, { cache: "reload" });
           if (!response.ok) throw Error("Page shell unavailable");
@@ -50,7 +50,7 @@ self.addEventListener("fetch", (event) => {
       const cache = await caches.open(CORE);
       let key = url.pathname;
       // Content hashes make these images safe to reuse without a network round trip.
-      if (key.startsWith("/art/optimized/")) {
+      if (key.startsWith("/art/optimized/") || key.startsWith("/blueprint-media/") || key.startsWith("/vendor/")) {
         const cached = await cache.match(key);
         if (cached) return cached;
       }
@@ -58,6 +58,7 @@ self.addEventListener("fetch", (event) => {
         if (key === "/" || key === "/index.html") key = "/index.html";
         else if (key === "/play" || key === "/play.html") key = "/play.html";
         else if (key === "/privacy" || key === "/privacy.html") key = "/privacy.html";
+        else if (key === "/blueprint-model" || key === "/blueprint-model.html") key = "/blueprint-model.html";
         else if (key === "/usage" || key === "/usage.html") key = "/usage.html";
         else if (key.endsWith('/') && CORE_FILES.includes(key + 'index.html')) key += 'index.html';
       }

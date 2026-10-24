@@ -1,3 +1,4 @@
+import { appendMediaGallery } from "./blueprint-media.js";
 import { attachBlueprint } from "./remix-blueprint.js";
 import { element } from "./data.js";
 import { t } from "./i18n.js";
@@ -52,6 +53,8 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
     }
   }
 
+  let previewAssets = {},
+    refreshMedia = () => {};
   let blueprintLoading = false,
     blueprintFailed = false;
   let needsBlueprint = !stored && !conflict;
@@ -685,6 +688,18 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
       renderInspector();
     };
     section.append(select);
+    const mediaHost = element("div", "workflow-blueprint-media");
+    section.append(mediaHost);
+    refreshMedia = () => {
+      mediaHost.replaceChildren();
+      if (card.fields.file === card.original.fields.file)
+        appendMediaGallery(
+          mediaHost,
+          card.asset?.items ? card.asset : previewAssets[card.id] || card.asset,
+          card.original.title,
+        );
+    };
+    refreshMedia();
     toggle(section, t("采用这张卡片"), card.enabled, (value) =>
       update(() => (card.enabled = value)),
     );
@@ -708,7 +723,10 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
         section,
         card.labels[key] || key,
         value,
-        (next) => (card.fields[key] = next),
+        (next) => {
+          card.fields[key] = next;
+          if (key === "file") refreshMedia();
+        },
         { area: true, max: 20000, name: "blueprint-" + key },
       );
     field(
@@ -729,24 +747,6 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
         element("p", "", `${t(card.labels[key] || key)}: ${value}`),
       );
     section.append(original);
-    if (card.asset) {
-      const link = element("a", "", t("查看原素材 ↗"));
-      link.href = card.asset.source;
-      link.target = "_blank";
-      link.rel = "noopener";
-      section.append(link);
-      if (
-        card.asset.preview &&
-        card.fields.file === card.original.fields.file
-      ) {
-        const image = element("img", "workflow-blueprint-preview");
-        image.src = card.asset.preview;
-        image.alt = card.original.title;
-        image.loading = "lazy";
-        image.onerror = () => image.remove();
-        section.append(image);
-      }
-    }
     const edges = plan.blueprint.edges.filter(
       (e) => e.from === card.id || e.to === card.id,
     );
@@ -881,6 +881,38 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
   window.addEventListener("storage", onStorage);
   render();
   if (needsBlueprint) loadBlueprint();
+  else if (
+    plan.blueprint?.cards.some((c) => c.section === "assets" && !c.asset?.items)
+  ) {
+    // Media is additive display metadata. Old draft text, source identity and
+    // edits stay untouched; only matching original cards may get new previews.
+    fetch(`/blueprints/${encodeURIComponent(game.id)}.json`, {
+      signal: blueprintController.signal,
+    })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((document) => {
+        if (
+          disposed ||
+          !document ||
+          document.project?.id !== plan.blueprint?.projectId ||
+          document.revision !== plan.blueprint.revision
+        )
+          return;
+        for (const card of plan.blueprint.cards) {
+          const current = document.project.cards.find((c) => c.id === card.id);
+          if (
+            current &&
+            current.title === card.original.title &&
+            current.body === card.original.body &&
+            JSON.stringify(current.fields) ===
+              JSON.stringify(card.original.fields)
+          )
+            previewAssets[card.id] = document.assets?.[card.id];
+        }
+        refreshMedia();
+      })
+      .catch(() => {});
+  }
   requestAnimationFrame(() => {
     if (!disposed && !host.hidden && viewport.clientWidth > 600) fitCanvas();
   });

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      footer,
+      #offline-info {
+        display: none;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #e8ede5;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        font: 14px system-ui;
+        color: #454b42;
+      }
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+      }
+      p {
+        padding: 16px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="status" role="status">…</p>
+    <script type="module" src="/blueprint-model.js"></script>
+    <!-- OWNGAME_SITE_FOOTER -->
+  </body>
+</html>

@@ -5,7 +5,10 @@ import vm from "node:vm";
 import { webcrypto, createHash } from "node:crypto";
 const source = (await readFile("apps/web/public/sw.js", "utf8"))
   .replace("__BUILD__", "test")
-  .replace("__CORE_FILES__", '["/index.html","/play.html","/catalog.json","/art/huge-cover.png","/art/optimized/cover-abc123.webp"]');
+  .replace(
+    "__CORE_FILES__",
+    '["/index.html","/play.html","/catalog.json","/art/huge-cover.png","/art/optimized/cover-abc123.webp","/blueprint-media/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.glb","/vendor/three-0.186.1/viewer.js"]',
+  );
 function harness({ corrupt = false, block = false } = {}) {
   const version = "a".repeat(64),
     id = "game",
@@ -90,7 +93,11 @@ function harness({ corrupt = false, block = false } = {}) {
     return response;
   }
   return {
-    install: () => { let done; handlers.install({waitUntil:p=>done=p}); return done; },
+    install: () => {
+      let done;
+      handlers.install({ waitUntil: (p) => (done = p) });
+      return done;
+    },
     fetched,
     download,
     request,
@@ -144,18 +151,27 @@ test("offline navigation normalizes query routes and missing content fails expli
 });
 
 test("first install skips unrelated artwork while viewed covers remain available offline", async () => {
-  const h = harness(); await h.install();
+  const h = harness();
+  await h.install();
   assert.ok(h.fetched.includes("/play.html"));
   assert.ok(!h.fetched.includes("/art/huge-cover.png"));
-  assert.equal(await (await h.request("/art/huge-cover.png", "no-cors")).text(), "shell");
+  assert.equal(
+    await (await h.request("/art/huge-cover.png", "no-cors")).text(),
+    "shell",
+  );
   h.offline();
-  assert.equal(await (await h.request("/art/huge-cover.png", "no-cors")).text(), "shell");
+  assert.equal(
+    await (await h.request("/art/huge-cover.png", "no-cors")).text(),
+    "shell",
+  );
 });
 
 test("unvisited artwork has a neutral offline fallback without weakening missing game errors", async () => {
-  const h = harness(); h.offline();
+  const h = harness();
+  h.offline();
   const image = await h.request("/art/other-game.png", "no-cors");
-  assert.equal(image.status, 200); assert.equal(image.headers.get("content-type"), "image/svg+xml");
+  assert.equal(image.status, 200);
+  assert.equal(image.headers.get("content-type"), "image/svg+xml");
   assert.ok((await image.text()).includes("#faf5e8"));
   await assert.rejects(h.request("/games/missing/index.html"), /offline/);
 });
@@ -165,7 +181,26 @@ test("fingerprinted artwork reuses the cache and remains available offline", asy
   const url = "/art/optimized/cover-abc123.webp";
   await h.request(url, "no-cors");
   await h.request(url, "no-cors");
-  assert.equal(h.fetched.filter(p => p === url).length, 1);
+  assert.equal(h.fetched.filter((p) => p === url).length, 1);
   h.offline();
   assert.equal(await (await h.request(url, "no-cors")).text(), "shell");
+});
+
+test("blueprint models and renderer modules load on demand and remain reusable offline", async () => {
+  const model = "/blueprint-media/" + "b".repeat(64) + ".glb";
+  const vendor = "/vendor/three-0.186.1/viewer.js";
+  const h = harness();
+  await h.install();
+  assert(!h.fetched.includes(model));
+  assert(!h.fetched.includes(vendor));
+  const cache = await h.caches.open("owngame-web-test");
+  await cache.put(model, new Response("cached model"));
+  await cache.put(vendor, new Response("cached renderer"));
+  const before = h.fetched.length;
+  assert.equal(await (await h.request(model, "cors")).text(), "cached model");
+  assert.equal(
+    await (await h.request(vendor, "cors")).text(),
+    "cached renderer",
+  );
+  assert.equal(h.fetched.length, before);
 });

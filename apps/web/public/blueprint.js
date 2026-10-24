@@ -1,3 +1,4 @@
+import { mediaThumbnail, appendMediaGallery } from "./blueprint-media.js";
 import { element } from "./data.js";
 import { t, localizeGame } from "./i18n.js";
 import { openRemix } from "./remix.js";
@@ -207,7 +208,12 @@ export function openBlueprint(game) {
     const minX = Math.min(...cards.map((c) => c.x)),
       minY = Math.min(...cards.map((c) => c.y));
     const positions = new Map(
-      cards.map((c) => [c.id, { x: c.x - minX + 32, y: c.y - minY + 32 }]),
+      cards.map((c, index) => [
+        c.id,
+        section === "assets"
+          ? { x: index * 300 + 32, y: 32 }
+          : { x: c.x - minX + 32, y: c.y - minY + 32 },
+      ]),
     );
     const width = Math.max(...[...positions.values()].map((p) => p.x + 300)),
       height = Math.max(...[...positions.values()].map((p) => p.y + 240));
@@ -268,8 +274,11 @@ export function openBlueprint(game) {
       const position = positions.get(card.id);
       node.style.left = position.x + "px";
       node.style.top = position.y + "px";
+      const media = mediaThumbnail(documentData.assets?.[card.id], card.title);
+      if (media) node.classList.add("has-media");
       node.append(
         element("span", "blueprint-card-type", t(meta.types[card.type].name)),
+        ...(media ? [media] : []),
         element("strong", "", card.title),
         element(
           "span",
@@ -302,18 +311,9 @@ export function openBlueprint(game) {
       );
       inspector.append(scope);
     }
-    if (card.body) inspector.append(element("p", "blueprint-body", card.body));
     const asset = documentData.assets?.[card.id];
-    if (asset?.preview) {
-      const img = element("img", "blueprint-preview");
-      img.alt = card.title;
-      img.src = asset.preview;
-      img.loading = "lazy";
-      img.referrerPolicy = "no-referrer";
-      img.onerror = () =>
-        img.replaceWith(element("p", "", t("预览暂不可用，可查看源素材。")));
-      inspector.append(img);
-    }
+    appendMediaGallery(inspector, asset, card.title);
+    if (card.body) inspector.append(element("p", "blueprint-body", card.body));
     const fields = element("dl", "blueprint-fields");
     for (const [key, value] of Object.entries(card.fields))
       if (value)
@@ -322,7 +322,7 @@ export function openBlueprint(game) {
           element("dd", "", value),
         );
     inspector.append(fields);
-    if (asset?.source) {
+    if (asset?.source && !asset.items?.length) {
       const link = element("a", "blueprint-asset-link", t("查看源素材 ↗"));
       link.href = asset.source;
       link.target = "_blank";

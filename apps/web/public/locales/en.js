@@ -1,5 +1,14 @@
 // Site copy only. Immutable game packages and their save formats stay separate.
 export const messages = {
+  "三维模型：{title}": "3D model: {title}",
+  "关闭素材预览": "Close asset preview",
+  "拖动旋转 · 滚动缩放": "Drag to rotate · Scroll to zoom",
+  "3D 模型": "3D model",
+  "{count} 张素材": "{count} assets",
+  "放大查看：{title}": "Expand: {title}",
+  "查看 3D ↗": "View 3D ↗",
+  "放大查看 ↗": "Expand ↗",
+  "模型预览暂不可用，可查看源素材。": "Model preview unavailable. Open the source asset instead.",
   "以调整后的卡片内容和调整说明为准；如与步骤要求冲突，先向我确认，不要自动补回原版内容。": "Use the edited card content and adaptation requests. If these conflict with step requirements, ask me first instead of restoring the original design automatically.",
   "蓝图对应源码": "Source code for the blueprint",
   "蓝图参考的游戏版本": "Game build referenced by the blueprint",

@@ -61,7 +61,7 @@ Free 限额以 Cloudflare 官方文档为准；当前构建远低于每站 20,00
 
 复刻弹窗提供「简单复刻」与「复杂复刻」。简单复刻保留原流程；复杂复刻由 `remix-workflow.js` 和 `remix-workflow-model.js` 提供可编排画布，支持步骤细节、依赖、启停、确认点、排序、拖动、缩放、撤销与重做。草稿按游戏保存在当前浏览器，支持 JSON 导入导出及并发窗口冲突提示；方案复制给 AI 后，要求同步到项目 outline 并逐步执行。网站自身不执行工作流，不把草稿正文发给统计服务。操作与边界见 [复刻说明](../../docs/remix.md)。
 
-「蓝图」与「复刻」并排，打开当前游戏的公开 outline 只读画布。六个区域、卡片字段与关联关系来自已有 outline 模型；支持全图搜索、关联跳转、缩放、完整详情和 JSON 下载。构建只读取 `scripts/games/projects.json` 显式登记的 `game-outline.public.json` 并执行公开内容校验，缺失或校验失败直接中止，不回退到私有设计板或本机服务。英文界面翻译操作与字段标签，设计内容保留作者原文。素材预览仅引用固定公开源码版本下的明确项目相对路径；3D 素材提供源文件链接。
+「蓝图」与「复刻」并排，打开当前游戏的公开 outline 只读画布。六个区域、卡片字段与关联关系来自已有 outline 模型；支持全图搜索、关联跳转、缩放、完整详情和 JSON 下载。构建只读取 `scripts/games/projects.json` 显式登记的 `game-outline.public.json` 并执行公开内容校验，缺失或校验失败直接中止，不回退到私有设计板或本机服务。英文界面翻译操作与字段标签，设计内容保留作者原文。美术卡直接显示图片或模型缩略图，详情提供素材画廊、放大与可旋转缩放的 GLB 查看器。`scripts/web/blueprint-media.json` 显式登记 19 款游戏已公开的素材及 SHA-256；构建从确切公开 Git 提交读取并校验，输出同站点的内容哈希地址，避免浏览时依赖 GitHub 图片服务。GLB 必须内嵌全部依赖；Three.js 0.186.1 / Meshopt 的本地查看模块保留许可。图库不会发布私有板或扫描工作目录。复杂复刻使用同一画廊，旧草稿仅补充匹配原卡片的显示元数据，不重写草稿内容。预览资源按需加载并缓存；模型展示不代表游戏运行验收。
 ## PC discovery on mobile
 
 The default catalog leads with Tidal Reclaim and Star Letters. Phone/tablet visitors still see PC game covers, with a computer-play notice before the action link. Their detail pages offer a copyable link, local favorites and mobile-game recommendations without loading the unsupported game or downloading its offline package. Device detection is independent of viewport width and the catalog filter, so narrow desktop windows keep working. Clipboard denial exposes a selectable URL. Keep Chinese and English copy aligned and retain the immutable game packages and saves. Verify with `node scripts/web/verify-pc-handoff.mjs` (set `OWNGAME_PC_BASE` for production).

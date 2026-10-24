@@ -1,3 +1,4 @@
+import { safeMediaUrl } from "./blueprint-media-policy.js";
 import { t } from "./i18n.js";
 
 const sectionKinds = {
@@ -91,17 +92,29 @@ export function validateBlueprint(value, gameId, stepIds) {
       original: copyCardText(card.original),
     };
     if (card.asset) {
+      const validItem = (item) =>
+        record(item) &&
+        safeAsset(item.source) &&
+        (!item.preview || safeMediaUrl(item.preview)) &&
+        (!item.model || safeMediaUrl(item.model, true)) &&
+        (!item.title || text(item.title, 400));
       if (
-        !record(card.asset) ||
-        !safeAsset(card.asset.source) ||
-        (card.asset.preview &&
-          (!safeAsset(card.asset.preview) ||
-            !/\.(png|jpe?g|webp)$/i.test(card.asset.preview)))
+        !validItem(card.asset) ||
+        (card.asset.items &&
+          (!Array.isArray(card.asset.items) ||
+            card.asset.items.length > 12 ||
+            !card.asset.items.every(validItem)))
       )
         fail();
+      const clean = (item) => ({
+        source: item.source,
+        ...(item.title ? { title: item.title } : {}),
+        ...(item.preview ? { preview: item.preview } : {}),
+        ...(item.model ? { model: item.model } : {}),
+      });
       result.asset = {
-        source: card.asset.source,
-        ...(card.asset.preview ? { preview: card.asset.preview } : {}),
+        ...clean(card.asset),
+        ...(card.asset.items ? { items: card.asset.items.map(clean) } : {}),
       };
     }
     return result;
@@ -224,7 +237,9 @@ export function blueprintPrompt(plan) {
       ),
       ...(c.request.trim() ? [`${t("这张卡想怎么改")}: ${c.request}`] : []),
       ...(c.asset && c.fields.file === c.original.fields.file
-        ? [`${t("原素材")}: ${c.asset.source}`]
+        ? (c.asset.items || [c.asset]).map(
+            (item) => `${t("原素材")}: ${item.source}`,
+          )
         : []),
       "",
     ]),

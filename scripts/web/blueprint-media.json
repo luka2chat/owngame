@@ -1,0 +1,472 @@
+{
+  "signal-harbor": {
+    "6acf3549-b6cb-4e44-98e5-cf0212ccbeae": [
+      {
+        "file": "public/assets/harbor-background.png",
+        "title": "harbor-background.png",
+        "sha256": "77951c1b487ae01a1df519216b4ee2c998415f441b4c332bd970fdeb2a3e303f"
+      }
+    ],
+    "53a30083-480c-4bda-a2ae-983b671c0637": [
+      {
+        "file": "public/assets/lighthouse.png",
+        "title": "lighthouse.png",
+        "sha256": "051705bd653e590323de7e25006ee6766bf5b810913ae076dc71a39e32360f76"
+      },
+      {
+        "file": "public/assets/buoy.png",
+        "title": "buoy.png",
+        "sha256": "45c3eec177210aa1586193f03504ec6e119906849493ed3dded995bca4c1989f"
+      },
+      {
+        "file": "public/assets/signal-a.png",
+        "title": "signal-a.png",
+        "sha256": "f08b98de117cc854a4f2e6b84dff155f609f2daee188c81e0149c9385b12d12b"
+      },
+      {
+        "file": "public/assets/signal-b.png",
+        "title": "signal-b.png",
+        "sha256": "972869dce2480c3f303d9d1e93773553b61bede24f83c2ae9570fdb50d5b6269"
+      },
+      {
+        "file": "public/assets/signal-c.png",
+        "title": "signal-c.png",
+        "sha256": "8184a36dbf68bb2fc342b98ec6fa33854c9fd2500c59b2a07d63bad3d8623962"
+      }
+    ]
+  },
+  "unlock-bolts-mobile": {
+    "2cef015e-a886-4d3e-8230-0983b5bb3616": [
+      {
+        "file": "public/assets/workshop.png",
+        "title": "workshop.png",
+        "sha256": "4b6618207229d4d37f44b9a8f85dc0e6640caee44f649eceefebdb6e12f039a9"
+      }
+    ],
+    "4640ab09-7152-45af-965a-70878acf9205": [
+      {
+        "file": "public/assets/hardware.png",
+        "title": "hardware.png",
+        "sha256": "a4720cccd690d6e6f77ae2713e6b1bbccf89d5df6145c76e776a3f97b6162536"
+      },
+      {
+        "file": "public/assets/shaft.png",
+        "title": "shaft.png",
+        "sha256": "c886d67c95fd0e7f3bc9f3db4dde5f5fd5d38e948a456e18b6b11e48647ce3b5"
+      }
+    ]
+  },
+  "star-triad": {
+    "a1ecec55-3a37-4cab-bfed-dc7d9866b311": [
+      {
+        "file": "public/assets/observatory.png",
+        "title": "observatory.png",
+        "sha256": "b95324555cd21b5feec929b5291262e54300784ccdf7e222b7763172b27978b4"
+      }
+    ],
+    "f4eeb557-8f8d-4d1a-b960-82cb718dd8b1": [
+      {
+        "file": "public/assets/board.png",
+        "title": "board.png",
+        "sha256": "814cf35a46eb5521f240d990cfd8431a346bcb0a0091eaacf69a68eeae3469f3"
+      },
+      {
+        "file": "public/assets/pieces.png",
+        "title": "pieces.png",
+        "sha256": "f0c8224139333751a73c327fe7b05cc199f9d06a7c54c34344aa28e7e8f419ed"
+      }
+    ]
+  },
+  "firefly-four": {
+    "d51f410d-5ac1-49f0-a2fd-3210f346f8db": [
+      {
+        "file": "public/art/bg.png",
+        "title": "bg.png",
+        "sha256": "2f1f6026a8350687a5de4d75d40c8b11bb59424b9ddf69eca1ba80d239e8b58c"
+      }
+    ],
+    "2dc551be-c29f-4208-acaf-d8f017a6b8fd": [
+      {
+        "file": "public/art/board.png",
+        "title": "board.png",
+        "sha256": "a70ee03e15285680067bb446477b0cd9ca10145b43e42db9cec0b105005dc7d0"
+      },
+      {
+        "file": "public/art/atlas.png",
+        "title": "atlas.png",
+        "sha256": "06a5197b4409ceaa6937f31bf9f436ba7646193b93b6053ddcb314e02a130fd5"
+      },
+      {
+        "file": "public/art/title.png",
+        "title": "title.png",
+        "sha256": "576718af6af42b839cbf67a700f039a0af2a567dbbe62166c3904e6bf698bbfd"
+      }
+    ]
+  },
+  "moss-reversi": {
+    "aa5361c8-16b4-4839-82d6-772f734f53f2": [
+      {
+        "file": "public/assets/paper-garden.png",
+        "title": "paper-garden.png",
+        "sha256": "3c5793056d929d82b020ae77530e508c0a9b14bb76c89a80eeebb5351c19e8cb"
+      }
+    ],
+    "07a1e64c-9800-4349-b68c-adf369cb1f8f": [
+      {
+        "file": "public/assets/inkstone.png",
+        "title": "inkstone.png",
+        "sha256": "9faf31671ff1146afbf5d9c5925382e1fb797d2873f959a7aa7b5dc9fdf46a43"
+      },
+      {
+        "file": "public/assets/porcelain.png",
+        "title": "porcelain.png",
+        "sha256": "43cb02e59f30b6688bedb2d23838dc698a5185e122af7ca200e1644689785093"
+      }
+    ]
+  },
+  "postcard-slide": {
+    "8af476ab-65b4-4388-b87e-92537f37bc95": [
+      {
+        "file": "public/assets/watercolor-town.png",
+        "title": "watercolor-town.png",
+        "sha256": "523bdcfb2bb5cf7f27296d9bd2f2e4f88422852b6cb8282c8a74245869269a76"
+      }
+    ],
+    "28bd3e60-1ccd-4548-aae0-fafdea7f0527": [
+      {
+        "file": "public/assets/wood-tray.png",
+        "title": "wood-tray.png",
+        "sha256": "ddcc0321477cfb66ebf939cb7ffce45f7337fa18918e6fee4539a71347b54884"
+      },
+      {
+        "file": "public/assets/letter-background.png",
+        "title": "letter-background.png",
+        "sha256": "0d06c8d3265a179dc61bdef0e1022f4b342494cda91a1f44a3112d34be6e6c5c"
+      }
+    ]
+  },
+  "kiln-merge": {
+    "1000b252-5967-4921-81f6-124d50a13c2e": [
+      {
+        "file": "public/assets/painted-workshop.png",
+        "title": "painted-workshop.png",
+        "sha256": "c060cb5009441e87e84bbb554e24a9b936cfe68f3831b971f12e3e2b16d2390d"
+      }
+    ],
+    "d3ac136f-144a-4939-b849-16ca94978442": [
+      {
+        "file": "public/assets/painted-atlas.png",
+        "title": "painted-atlas.png",
+        "sha256": "1dcbe54385ad22757d4f1f57e0a5ad143285c91da93ca21c0685c04aea26a156"
+      }
+    ]
+  },
+  "petal-memory": {
+    "fe10438f-a101-4b3e-82b7-c30e54b9c089": [
+      {
+        "file": "public/assets/desk.jpg",
+        "title": "desk.jpg",
+        "sha256": "f9b732434e9931d4abfd0b944b57d7c461522f2960c35b95950457779b1f8a7c"
+      }
+    ],
+    "51d68c00-1ba9-4d38-9206-2ee65c62cac5": [
+      {
+        "file": "public/assets/specimens.png",
+        "title": "specimens.png",
+        "sha256": "4e7aa72b8f87d70206b53fc2437113f48dc3f4f398a205d868a4766ed1ee92f9"
+      },
+      {
+        "file": "public/assets/card-back.png",
+        "title": "card-back.png",
+        "sha256": "393eeda7251014ec84abec2db0f0e1c322789d96182fece628f0a7a0a1b86580"
+      }
+    ]
+  },
+  "silk-serpent": {
+    "bfdc1579-db55-4015-a441-8af004905c99": [
+      {
+        "file": "public/assets/courtyard.png",
+        "title": "courtyard.png",
+        "sha256": "9c8fa0be55330b359d149265d65b76dbf5e7299110d4130084a1770519b5ae2c"
+      }
+    ],
+    "79aaebfd-2558-4c71-8edb-ed3e8362f5ca": [
+      {
+        "file": "public/assets/dragon.png",
+        "title": "dragon.png",
+        "sha256": "734098c6154ba310e74188350cd754854ccc4068bd92c6a3a866d574631e3669"
+      },
+      {
+        "file": "public/assets/bend.png",
+        "title": "bend.png",
+        "sha256": "1d7cb44c852a763869cf8c8ffa32aaa6090fdcfc4e8fb3b69629380d9d673e31"
+      },
+      {
+        "file": "public/assets/title.png",
+        "title": "title.png",
+        "sha256": "6b9ac338dddfba9452e078dcc4022064891b4738e87b204606eaba7bdde279b5"
+      }
+    ]
+  },
+  "bamboo-rally": {
+    "18503dd9-fa41-4106-a333-646eb925c22a": [
+      {
+        "file": "public/assets/courtyard.png",
+        "title": "courtyard.png",
+        "sha256": "71920e3b082234621302112dccd5721886d8b36ce6e962af1fcf5d7be4c292b0"
+      }
+    ],
+    "cd0e8480-6640-4706-8303-58a2da48e0b4": [
+      {
+        "file": "public/assets/paddles.png",
+        "title": "paddles.png",
+        "sha256": "2c67e38293872222a65ce15d4279f52c829f6c72c077836315b557a8bb9f7f8b"
+      },
+      {
+        "file": "public/assets/lacquer.png",
+        "title": "lacquer.png",
+        "sha256": "bc6dd1804e93e4d6fb65d21ec7280afca0543120432548add2b98074dd93f053"
+      }
+    ]
+  },
+  "wind-chime-memory": {
+    "df24acb8-adfd-4972-89ed-408e671ecb07": [
+      {
+        "file": "public/assets/garden-c.png",
+        "title": "garden-c.png",
+        "sha256": "738f314a0077b28154b6a1443935d67fc1a14c383a2d9eedfd3c388b7f4b5278"
+      }
+    ],
+    "8784cab8-f021-4f5a-ab5c-27ff244c7338": [
+      {
+        "file": "public/assets/chime-leaf.png",
+        "title": "chime-leaf.png",
+        "sha256": "ac0cb46a0f03bf36a3cd6b12654bed14cee3dc7d10f5e13ae2cf7e190f81832f"
+      },
+      {
+        "file": "public/assets/chime-moon.png",
+        "title": "chime-moon.png",
+        "sha256": "a2df94eb97576d906c10f2a3499c5fe6156162e34de8c68c1dfd1c46f3cdbd87"
+      },
+      {
+        "file": "public/assets/chime-stream.png",
+        "title": "chime-stream.png",
+        "sha256": "1555ade265bb58de2fca7a86188672f77fcb7e3ccea4c65d8295141c36e301d5"
+      },
+      {
+        "file": "public/assets/chime-sun.png",
+        "title": "chime-sun.png",
+        "sha256": "dec4d438130c07b07118ec78638f59d5f14ce46329ba52212b8d3a7cb9540151"
+      }
+    ]
+  },
+  "neon-shooter": {
+    "e0e1a6be-44a2-4df7-bf17-5442226f9859": [
+      {
+        "file": "public/art/neon-space.png",
+        "title": "neon-space.png",
+        "sha256": "8d6ca3b2ba5283636c5b46a5bd6a16db47f48c4741576d5115557923d63cff0d"
+      }
+    ],
+    "eb37eecd-3c43-4d41-a591-882c881e9610": [
+      {
+        "file": "public/art/neon-player.png",
+        "title": "neon-player.png",
+        "sha256": "72e21241c29510861cb496223d8755fef34c0df3a154eceea7b3634b5bfdf51a"
+      },
+      {
+        "file": "public/art/neon-enemies.png",
+        "title": "neon-enemies.png",
+        "sha256": "dbacde1190b9f263ba05f5ded0735eeda7ff4c793cf8026120387cdfda62b474"
+      }
+    ]
+  },
+  "faune-dungeon": {
+    "38ace713-87f2-4ad4-a896-6fbca3935776": [
+      {
+        "file": "public/art/faune-stone.png",
+        "title": "faune-stone.png",
+        "sha256": "af974afb3410801b13c989e6772d7b14a5068a7fd6271f1465e18b086592d7f6"
+      }
+    ],
+    "84622705-1630-4fa3-adb6-3ed141a27531": [
+      {
+        "file": "public/character/fauna.png",
+        "title": "fauna.png",
+        "sha256": "7bc11f1b881712286bee3d8297da7d90090b98d8065fc485312e1f3e490999cf"
+      },
+      {
+        "file": "public/enemies/lizard.png",
+        "title": "lizard.png",
+        "sha256": "b85857664cb0ce8068acd88c74df5471458e19f1593621a97ba4c963c4f0631d"
+      },
+      {
+        "file": "public/items/treasure.png",
+        "title": "treasure.png",
+        "sha256": "2e7531c6e6088f4a9270964e153cf89a38331350ccb113d8974a67eadf212131"
+      },
+      {
+        "file": "public/tiles/dungeon_tiles.png",
+        "title": "dungeon_tiles.png",
+        "sha256": "b78161949ab28a5e1fd568178702eaefa8e46aea738f18f31796d6ad8928cde9"
+      }
+    ]
+  },
+  "rc-rally": {
+    "673de3d1-a0f9-4cb7-b1de-c92f1a0af49b": [
+      {
+        "file": "src/assets/demo.jpg",
+        "title": "赛道画面",
+        "sha256": "6fa834d99f284b6972298216c75b342a5a934eb89dcd44493d02a1007adc08df"
+      }
+    ],
+    "d78ea86a-6f9e-452e-89f0-9b7c507641de": [
+      {
+        "file": "src/assets/base.glb",
+        "title": "base.glb",
+        "sha256": "7ae31c787ec42e0660801728d8f53a3899da783252f10c213539da0ca0690336"
+      },
+      {
+        "file": "src/assets/rc-level.glb",
+        "title": "rc-level.glb",
+        "sha256": "e3133c7776dbed86f4eddb837df66f559ce1e88c4c7698730912d950f6766df0"
+      },
+      {
+        "file": "public/art/race-asphalt.png",
+        "title": "race-asphalt.png",
+        "sha256": "fd58853ba9c9ae724bacaa16d2fe3fb625a7e1224c3c97e988620c2dcbd33787"
+      },
+      {
+        "file": "public/art/race-foliage.png",
+        "title": "race-foliage.png",
+        "sha256": "b83ba338490da5923592f36343ceeaa0de6fbd23a9a42be128af634141f9371c"
+      }
+    ]
+  },
+  "civ-clicker": {
+    "39e3a20d-50c7-4002-97c0-ed5cae011ae3": [
+      {
+        "file": "public/art/civ-valley.png",
+        "title": "civ-valley.png",
+        "sha256": "4a1893ccb19cc7d7f48f17542738d1ad6e23fe8a4d5380c4f7e47c3dc91de12f"
+      }
+    ],
+    "68ff3b70-f961-40d3-8f2a-cb7169e7af8c": [
+      {
+        "file": "public/art/civ-icons.png",
+        "title": "civ-icons.png",
+        "sha256": "a5cf39122ed7df92451aa73340e2a31098aed64043e83ecc907926ae48694265"
+      },
+      {
+        "file": "public/images/food.png",
+        "title": "food.png",
+        "sha256": "205ba7eeaa51d4b5a624e38358808b0e60bfdef48e1bb896d32e1d391bb8f449"
+      },
+      {
+        "file": "public/images/wood.png",
+        "title": "wood.png",
+        "sha256": "5392586fc14f3449b204a690a8fc2ad1909e1666d2c9447637b5a456ee684dda"
+      }
+    ]
+  },
+  "crowd-runner": {
+    "067471a1-c7ea-47c4-980e-21c0a4aa0083": [
+      {
+        "file": "public/cover.png",
+        "title": "游戏封面",
+        "sha256": "84496723886c9812463fb8fc62798c85c2c2f515ee3d8eccc008fd33088d70fe"
+      }
+    ],
+    "589f1c01-00d5-493c-9047-24ca9c307dce": [
+      {
+        "file": "public/cover.png",
+        "title": "游戏封面",
+        "sha256": "84496723886c9812463fb8fc62798c85c2c2f515ee3d8eccc008fd33088d70fe"
+      }
+    ]
+  },
+  "arrow-escape": {
+    "0463af33-1257-475a-b949-d883bc28060e": [
+      {
+        "file": "public/cover.png",
+        "title": "游戏封面",
+        "sha256": "14858618768580db5a55c4c4766b283ee33d2b44abb92ae3133ab03c4ffb3905"
+      }
+    ],
+    "3f5edce4-8111-422e-825e-0d276bb0b5ac": [
+      {
+        "file": "public/title-arcade-v1.png",
+        "title": "title-arcade-v1.png",
+        "sha256": "10e012ac00031197e7260261ce2d0dd31b55d6e44a021aa0e787bfa55fa73d5e"
+      }
+    ]
+  },
+  "star-letters": {
+    "a0f474dc-803b-49e9-8604-228057a118b6": [
+      {
+        "file": "unity/LittleOrbit/Assets/Resources/Story/OldPhotograph.png",
+        "title": "OldPhotograph.png",
+        "sha256": "cbae1d6a41b452287419ba455976d1bf87694129fab1334bf6e2519279e409bb"
+      }
+    ],
+    "1976c8b8-1e01-4f7b-9bd2-5e0cdac94b8f": [
+      {
+        "file": "unity/LittleOrbit/Assets/Textures/Story/V2_meadow.png",
+        "title": "V2_meadow.png",
+        "sha256": "a4d608bd9ac57b75a5e2a3b6247a53acd4b83f8df9863919863fb996898f865d"
+      },
+      {
+        "file": "unity/LittleOrbit/Assets/Textures/Story/V2_plaster.png",
+        "title": "V2_plaster.png",
+        "sha256": "2a88be92e9504c721570f80324ffcc908d424b0035a96cab95d965e8716b2a68"
+      },
+      {
+        "file": "unity/LittleOrbit/Assets/Textures/Story/V2_tree-bark.png",
+        "title": "V2_tree-bark.png",
+        "sha256": "4e0b1f3f4ba3714303af68ec0670e68b656872c33ae758f113e886bbb3ea5851"
+      },
+      {
+        "file": "unity/LittleOrbit/Assets/Textures/Story/V2_wood.png",
+        "title": "V2_wood.png",
+        "sha256": "45f2c66d95c646eb6202dd304586ca59500b0a24530ac0c9fd61e49b5c5bfe28"
+      }
+    ]
+  },
+  "tidal-reclaim": {
+    "1331ada6-33c5-43ea-bf6d-3bb48ba6c12f": [
+      {
+        "file": "generated-assets/patrol-robot.glb",
+        "title": "守卫与增援 · 现有配置",
+        "sha256": "d6da6de9d0cb1966040006587a5c31ddd67a02d65900ac9aad20f5e41932b9c6"
+      }
+    ],
+    "0c771161-b34d-4f2c-8685-f86010b99f60": [
+      {
+        "file": "src/art/platform-menu-v2.webp",
+        "title": "视觉方向 · 工业插画与海上作业",
+        "sha256": "9703772ca1595d55b9e7d13ff7d8587bf4024d6cb8eefbdd8ed42c72d8f06e50"
+      }
+    ],
+    "4d2d8a2a-a8cb-47c9-b86a-4e0c2b0c6ae8": [
+      {
+        "file": "generated-assets/purifier.glb",
+        "title": "生产资产 · 净化器",
+        "sha256": "928a4895ca7a0c67025de5279f77f9a1776cd5b315bf833aa6bd5427634fcad8"
+      }
+    ],
+    "2f13b816-930f-4301-848e-981193424518": [
+      {
+        "file": "generated-assets/patrol-robot.glb",
+        "title": "生产资产 · 巡逻机器人",
+        "sha256": "d6da6de9d0cb1966040006587a5c31ddd67a02d65900ac9aad20f5e41932b9c6"
+      }
+    ],
+    "febe94e2-0536-4586-a3db-d6da7783b764": [
+      {
+        "file": "src/art/robot-loading-v1.webp",
+        "title": "生产资产 · 加载与标题画面",
+        "sha256": "ff374b7a0a39734f8bd940017e70c77dae39741bf043bf5efb4b659dfb886530"
+      }
+    ]
+  }
+}

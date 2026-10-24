@@ -58,3 +58,11 @@
   Cache-Control: no-cache
 /art/optimized/*
   Cache-Control: public, max-age=31536000, immutable
+/blueprint-media/*
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+/blueprint-model.js
+  Cache-Control: no-cache
+/blueprint-media.js
+  Cache-Control: no-cache
