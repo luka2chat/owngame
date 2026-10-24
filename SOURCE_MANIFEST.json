@@ -1114,8 +1114,8 @@
     },
     {
       "path": "apps/web/public/play.css",
-      "bytes": 10132,
-      "sha256": "c90884dfd34b1ab50b76b0a005dbca4adbea37f4a368d5c68d4f0cce904ee66f"
+      "bytes": 10681,
+      "sha256": "eb4aaa6772e4e8d1db48cad73a06851ed489fff4116e40be786069297b5306d2"
     },
     {
       "path": "apps/web/public/play.html",
@@ -1124,8 +1124,8 @@
     },
     {
       "path": "apps/web/public/play.js",
-      "bytes": 16195,
-      "sha256": "17f47b94a4262593b479d060c9d2c6984d8dee8a7872fd40fdb0a99923d2655f"
+      "bytes": 16486,
+      "sha256": "2c535908fac7611ebe4b3ac01f05d88b120df3f64aedadfeaa8e85dc6c80fda7"
     },
     {
       "path": "apps/web/public/privacy.html",
@@ -3255,7 +3255,7 @@
     {
       "path": "examples/README.md",
       "bytes": 1442,
-      "sha256": "d9cda26a4342a015b1f3460926972b37f37bb3e4957acb411e2857f10e452c08"
+      "sha256": "520a9768af61e5ad0b9079d9aedbe3f27b5bbae42a13654f3fa7866b174cb109"
     },
     {
       "path": "examples/signal-harbor/.gitignore",
@@ -3625,7 +3625,7 @@
     {
       "path": "examples/star-letters/ONLINE_BUILD.json",
       "bytes": 11311,
-      "sha256": "1a2ade2ec824ad44df24421538cde516fa149b535108b0a80f3554274847edd8"
+      "sha256": "f7a605da4c85544d503cb27cad92988af97b76cf80df8f55c98eded1044e96fd"
     },
     {
       "path": "examples/star-letters/package-lock.json",
@@ -3725,7 +3725,7 @@
     {
       "path": "examples/star-letters/SOURCE_MANIFEST.json",
       "bytes": 237970,
-      "sha256": "cb43de29a186c779a795146c5297bec56e79df80bea73f01e0ad9b3e445bedd3"
+      "sha256": "7691eb865bb00557ca8df2a8f361c5afed7ec7c33617c78948f0a6d184709b4e"
     },
     {
       "path": "examples/star-letters/src/main.js",
@@ -8629,13 +8629,13 @@
     },
     {
       "path": "examples/star-letters/web/index.html",
-      "bytes": 7218,
-      "sha256": "d40baa1bb9840514156d7cdfdd9759eb8969462428de1d3c81da2d5090d6bbd9"
+      "bytes": 6935,
+      "sha256": "f35c233956135dccfe4d96748a2fed3e01cec6043104df41aff83d2313a0fcf6"
     },
     {
       "path": "examples/star-letters/web/launch.js",
-      "bytes": 4590,
-      "sha256": "6768363f102ba32948cdb53b69298433f2128eb3cbb9f225b4348a2556ee5bd6"
+      "bytes": 4542,
+      "sha256": "044c7cd5f0ff8ee61d8e157885f4095ce1b09989ea56711711764c722f587e2c"
     },
     {
       "path": "examples/star-letters/web/pack.mjs",
@@ -8649,8 +8649,8 @@
     },
     {
       "path": "examples/star-letters/web/save.mjs",
-      "bytes": 4399,
-      "sha256": "3ffb2af1a319a96e6155c93fab9c409fd7814491c95c3da1aa2354a412eda2e1"
+      "bytes": 4469,
+      "sha256": "31a821794f24615dabaabfead6708826cdf8f1e1ca920427793d0feac1edd5fa"
     },
     {
       "path": "examples/star-letters/web/save.test.mjs",
@@ -10100,7 +10100,7 @@
     {
       "path": "games.json",
       "bytes": 8641,
-      "sha256": "a52c92ac857017d9adbe8269083438e35bd2d5c58b73042a1cc6aa045bd65f64"
+      "sha256": "a80eca9b8145f92bce86357a5aa3049cacd9bf3a7a14f10ac16ccfdc21c99451"
     },
     {
       "path": "LICENSE",

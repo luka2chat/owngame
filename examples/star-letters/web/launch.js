@@ -40,7 +40,7 @@ async function launch(){
   diagnostics.phase='engine';engineStarted=true;
   const saveMigration = await migrateCampaignSave();
   await createUnityInstance(canvas,{...config,streamingAssetsUrl:'StreamingAssets',companyName:'DefaultCompany',productName:'LittleOrbit',productVersion:'0.1.0',devicePixelRatio:Math.min(devicePixelRatio||1,1.5),showBanner:(message,type)=>{if(type==='error')error.textContent=message;else console.warn(message);}},value=>{progress.value=.75+value*.25;status.textContent='正在开启旅程 '+Math.round(value*100)+'%';});
-  loading.remove();document.getElementById('credits').hidden=false;canvas.focus();
+  loading.remove();canvas.focus();
   installTouchControls(canvas);
   globalThis.starLetters={ready:true,loadedMs:Math.round(performance.now()-began),retries:diagnostics.retries,saveMigration};
   // Bound our own verified cache to the current game's chunks; never touch site/offline caches.

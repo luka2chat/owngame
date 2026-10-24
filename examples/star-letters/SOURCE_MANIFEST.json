@@ -1,6 +1,6 @@
 {
   "schema": "star-letters.source-audit.v1",
-  "reviewed": "2026-10-20",
+  "reviewed": "2026-10-24",
   "scope": "Authored story game and Three.js prototype; no engine binaries, caches, private logs, concept images or original blend files",
   "files": [
     {
@@ -84,7 +84,7 @@
     {
       "path": "ONLINE_BUILD.json",
       "bytes": 11311,
-      "sha256": "1a2ade2ec824ad44df24421538cde516fa149b535108b0a80f3554274847edd8",
+      "sha256": "f7a605da4c85544d503cb27cad92988af97b76cf80df8f55c98eded1044e96fd",
       "license": "MIT"
     },
     {
@@ -6083,14 +6083,14 @@
     },
     {
       "path": "web/index.html",
-      "bytes": 7218,
-      "sha256": "d40baa1bb9840514156d7cdfdd9759eb8969462428de1d3c81da2d5090d6bbd9",
+      "bytes": 6935,
+      "sha256": "f35c233956135dccfe4d96748a2fed3e01cec6043104df41aff83d2313a0fcf6",
       "license": "MIT"
     },
     {
       "path": "web/launch.js",
-      "bytes": 4590,
-      "sha256": "6768363f102ba32948cdb53b69298433f2128eb3cbb9f225b4348a2556ee5bd6",
+      "bytes": 4542,
+      "sha256": "044c7cd5f0ff8ee61d8e157885f4095ce1b09989ea56711711764c722f587e2c",
       "license": "MIT"
     },
     {
@@ -6107,8 +6107,8 @@
     },
     {
       "path": "web/save.mjs",
-      "bytes": 4399,
-      "sha256": "3ffb2af1a319a96e6155c93fab9c409fd7814491c95c3da1aa2354a412eda2e1",
+      "bytes": 4469,
+      "sha256": "31a821794f24615dabaabfead6708826cdf8f1e1ca920427793d0feac1edd5fa",
       "license": "MIT"
     },
     {

@@ -121,15 +121,15 @@
  .landscape-player #game-description { max-width:50em; }
  .landscape-player .player-actions { max-width:680px; }
 }
-.player-body:fullscreen { background:#081b24; }
-.player-body:fullscreen .site-footer { display:none; }
-.player-body:fullscreen .player-header,.player-body:fullscreen .player-info,.player-body:fullscreen .player-breadcrumb,.player-body:fullscreen .player-recommend,.player-body:fullscreen .player-tools { display:none; }
-.player-body:fullscreen .detail-main { max-width:none;margin:0;padding:0; }
-.player-body:fullscreen .player-layout { display:flex;justify-content:center;height:100dvh;padding:0;gap:0; }
-.player-body:fullscreen .player-panel { width:100%;height:100%;padding:0;border:0;border-radius:0;box-shadow:none;background:#081b24; }
-.player-body:fullscreen #stage { height:100%;max-width:100%;border-radius:0;outline:0; }
-.landscape-player:fullscreen #stage { width:100%;aspect-ratio:auto; }
-.player-body:fullscreen .capsule { display:flex; }
+.player-body:is(:fullscreen, .page-fullscreen) { background:#081b24; }
+.player-body:is(:fullscreen, .page-fullscreen) .site-footer { display:none; }
+.player-body:is(:fullscreen, .page-fullscreen) .player-header,.player-body:is(:fullscreen, .page-fullscreen) .player-info,.player-body:is(:fullscreen, .page-fullscreen) .player-breadcrumb,.player-body:is(:fullscreen, .page-fullscreen) .player-recommend,.player-body:is(:fullscreen, .page-fullscreen) .player-tools { display:none; }
+.player-body:is(:fullscreen, .page-fullscreen) .detail-main { max-width:none;margin:0;padding:0; }
+.player-body:is(:fullscreen, .page-fullscreen) .player-layout { display:flex;justify-content:center;height:100dvh;padding:0;gap:0; }
+.player-body:is(:fullscreen, .page-fullscreen) .player-panel { width:100%;height:100%;padding:0;border:0;border-radius:0;box-shadow:none;background:#081b24; }
+.player-body:is(:fullscreen, .page-fullscreen) #stage { height:100%;max-width:100%;border-radius:0;outline:0; }
+.landscape-player:is(:fullscreen, .page-fullscreen) #stage { width:100%;aspect-ratio:auto; }
+.player-body:is(:fullscreen, .page-fullscreen) .capsule { display:flex; }
 @media (min-width:761px) and (max-width:1100px) {
  .player-layout { gap:30px;grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
  .detail-main { padding:24px; }
@@ -176,3 +176,8 @@
 .computer-notice p { font-size:14px;line-height:1.7;margin:8px 0 16px; }
 .computer-mobile-link { display:block;text-align:center;padding:14px 8px 0;color:var(--blue);font-weight:700; }
 .computer-link { width:100%;min-width:0;margin-top:14px;padding:10px; }
+
+/* Share links fill the browser viewport without requiring a fullscreen gesture. */
+.player-body.page-fullscreen { overflow:hidden; }
+.player-body.page-fullscreen .player-layout { padding:0; }
+.player-body.page-fullscreen .capsule { display:none; }

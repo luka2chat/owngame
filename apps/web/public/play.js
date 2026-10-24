@@ -16,7 +16,13 @@ import {
   element,
   art,
 } from "./data.js";
-const id = new URLSearchParams(location.search).get("game");
+const query = new URLSearchParams(location.search);
+const id = query.get("game");
+function fullscreenUrl() {
+  const url = new URL(playUrl(game), location.origin);
+  url.searchParams.set("fullscreen", "");
+  return url.pathname + url.search;
+}
 let game,
   allGames = [],
   loadError,
@@ -239,7 +245,7 @@ function wire() {
   $("menu-title").textContent = localizeGame(game).title;
   $("game-description").textContent = localizeGame(game).description;
   $("instructions").textContent = localizeGame(game).instructions;
-  $("new-window").href = playUrl(game);
+  $("new-window").href = fullscreenUrl();
   $("remix").disabled = false;
   $("remix").onclick = () => openRemix(game);
   $("blueprint").disabled = false;
@@ -271,7 +277,7 @@ function wire() {
     fullscreen();
   };
   $("menu-new-window").onclick = () => {
-    window.open(playUrl(game), "_blank", "noopener");
+    window.open(fullscreenUrl(), "_blank", "noopener");
     $("menu").close();
   };
   $("more").onclick = () => $("menu").showModal();
@@ -295,6 +301,7 @@ try {
   game = all.find((g) => g.id === id);
   if (!game) throw new Error("没有找到这款游戏，请回游戏库重新选择。");
   document.body.classList.toggle("desktop-required", needsComputer(game));
+  document.body.classList.toggle("page-fullscreen", query.has("fullscreen") && !needsComputer(game));
   setPageGame(game);
   track("player_open");
   wire();
@@ -430,7 +437,7 @@ window.addEventListener("owngame:languagechange", () => {
   $("menu-title").textContent = localizeGame(game).title;
   $("game-description").textContent = localizeGame(game).description;
   $("instructions").textContent = localizeGame(game).instructions;
-  $("new-window").href = playUrl(game);
+  $("new-window").href = fullscreenUrl();
   if (frame) frame.title = localizeGame(game).title;
   renderDetails(allGames);
   updateFavorite();

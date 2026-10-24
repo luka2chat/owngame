@@ -3,6 +3,26 @@
   "repository": "luka2chat/owngame",
   "games": [
     {
+      "id": "tidal-reclaim",
+      "title": "潮汐回收站",
+      "kind": "vite",
+      "path": "examples/tidal-reclaim",
+      "online_build_sha256": "dfff05fc374e22a85473553739b938979fd95a0cd80c5be2173995edd7e64818",
+      "input_sha256": "c0ecd0644a65cd3bc8bfc818e8adb70bf5a29e327d9849c5aacbfd7a4f4542d7",
+      "source_manifest_sha256": "c0c4d0566229683f7457034f512acbc5c828277de0fd480495ee9d247afee428",
+      "license": "MIT"
+    },
+    {
+      "id": "star-letters",
+      "title": "星野来信",
+      "kind": "unity",
+      "path": "examples/star-letters",
+      "online_build_sha256": "4e85a7f8432136c9933890d7925ad892c6e9f812a3cb85132dbf4c05e92a3c9c",
+      "input_sha256": "a160d81bee6f65fe1c6bcc84a3147ead5f623115b36d2e754665ddebfae40e37",
+      "source_manifest_sha256": "7691eb865bb00557ca8df2a8f361c5afed7ec7c33617c78948f0a6d184709b4e",
+      "license": "MIT; see THIRD_PARTY_NOTICES.md for fonts and Unity-derived files"
+    },
+    {
       "id": "neon-shooter",
       "title": "霓虹突围",
       "kind": "static",
@@ -40,26 +60,6 @@
       "online_build_sha256": "cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a",
       "input_sha256": "b4fb9ae20203529e218e9a03c3a11a69468918f5c7595f4748ed04ccc9cb5516",
       "source_manifest_sha256": "5b9d0ad25c48d4629324b73263af50574d54671c970c9899e3611008d5e99187",
-      "license": "MIT"
-    },
-    {
-      "id": "star-letters",
-      "title": "星野来信",
-      "kind": "unity",
-      "path": "examples/star-letters",
-      "online_build_sha256": "6f42f2c6d5df6854d90472ee869886cfcd02fe6705555baa1a8e1b72681fb596",
-      "input_sha256": "6aa32ce0bab5383ab37646fbc249dbe6b7623d55019a53fa010df540b9a04324",
-      "source_manifest_sha256": "cb43de29a186c779a795146c5297bec56e79df80bea73f01e0ad9b3e445bedd3",
-      "license": "MIT; see THIRD_PARTY_NOTICES.md for fonts and Unity-derived files"
-    },
-    {
-      "id": "tidal-reclaim",
-      "title": "潮汐回收站",
-      "kind": "vite",
-      "path": "examples/tidal-reclaim",
-      "online_build_sha256": "dfff05fc374e22a85473553739b938979fd95a0cd80c5be2173995edd7e64818",
-      "input_sha256": "c0ecd0644a65cd3bc8bfc818e8adb70bf5a29e327d9849c5aacbfd7a4f4542d7",
-      "source_manifest_sha256": "c0c4d0566229683f7457034f512acbc5c828277de0fd480495ee9d247afee428",
       "license": "MIT"
     },
     {
