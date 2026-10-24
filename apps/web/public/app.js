@@ -7,6 +7,7 @@ import {
   safeSearch,
 } from "./analytics.js";
 import { openRemix } from "./remix.js";
+import { openBlueprint } from "./blueprint.js";
 import { supportsPlatform, platformLabel, needsComputer } from "./platforms.js";
 import {
   $,
@@ -333,9 +334,13 @@ function render() {
       t("复刻 {title}，复制给 AI", { title: g.title }),
     );
     remix.onclick = () => openRemix(raw);
+    const blueprint = element("button", "card-blueprint", t("蓝图"));
+    blueprint.type = "button";
+    blueprint.setAttribute("aria-label", t("查看 {title} 的蓝图", { title: g.title }));
+    blueprint.onclick = () => openBlueprint(raw);
     foot.append(play);
     if (!computer) foot.append(dl);
-    foot.append(remix);
+    foot.append(blueprint, remix);
     copy.append(foot);
     card.append(cover, copy);
     grid.append(card);

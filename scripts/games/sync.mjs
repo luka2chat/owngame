@@ -4,6 +4,7 @@ import {execFileSync} from 'node:child_process';
 import {readGameEntries} from '../web/catalog.mjs';
 import {validateCoverage} from './source-policy.mjs';
 import {preflightSource} from './preflight.mjs';
+import {readBlueprintSnapshots} from '../web/blueprints.mjs';
 const root=path.resolve(import.meta.dirname,'../..');
 const args=process.argv.slice(2);
 const retainGames=args[2]==='--retain-game-sources';
@@ -36,8 +37,9 @@ const plan=path.join(evidence,'planned-catalog.json');await fs.writeFile(plan,JS
 if(!retainGames)execFileSync('python3',[path.join(root,'scripts/games/export.py'),'--catalog',plan,'--out',repo,'--library',libraryRoot,...(selected.length?['--only',selected.join(',')]:[])],{cwd:root,stdio:'inherit'});
 const copy=async relative=>{const src=path.join(root,relative),dest=path.join(repo,relative);await fs.mkdir(path.dirname(dest),{recursive:true});await fs.cp(src,dest,{recursive:true,filter:p=>!p.includes('__pycache__')});};
 for(const relative of ['scripts/games','tests/games','tests/web','scripts/web/catalog.mjs','scripts/web/build.mjs','scripts/web/publish.mjs',
-  'scripts/web/verify-deployment.mjs','scripts/web/verify-i18n.mjs','scripts/web/verify-pc-handoff.mjs','scripts/web/link-sources.mjs','scripts/web/usage.mjs','scripts/web/footer.mjs','scripts/web/image-delivery.mjs','scripts/web/module-delivery.mjs','scripts/lib/codex-browser-preflight.mjs','.github/workflows/games.yml',
+  'scripts/web/blueprints.mjs','apps/outline/model.mjs','docs/remix.md','scripts/web/verify-deployment.mjs','scripts/web/verify-i18n.mjs','scripts/web/verify-pc-handoff.mjs','scripts/web/link-sources.mjs','scripts/web/usage.mjs','scripts/web/footer.mjs','scripts/web/image-delivery.mjs','scripts/web/module-delivery.mjs','scripts/lib/codex-browser-preflight.mjs','.github/workflows/games.yml',
   'docs/open-source-games.md','docs/game-publishing.md','apps/web/public','apps/web/footer.html','apps/web/README.md','apps/web/wrangler.jsonc']) await copy(relative);
+await fs.writeFile(path.join(repo,'scripts/web/blueprint-snapshots.json'),JSON.stringify(await readBlueprintSnapshots(root,catalog),null,2)+'\n');
 const catalogModule=await fs.readFile(path.join(root,'scripts/web/catalog.mjs'),'utf8');
 const catalogFiles=[...catalogModule.matchAll(/"(scripts\/[^"\n]+\/catalog\.json)"/g)].map(match=>match[1]);
 for(const file of catalogFiles) await copy(file);
@@ -54,7 +56,7 @@ execFileSync(process.execPath,[path.join(root,'scripts/games/verify.mjs'),repo],
 // Fail before a commit or push if copied tests reference missing modules or untranslated page copy.
 await preflightSource(repo);
 git('add',...catalogFiles,'examples','games.json','scripts/games','tests/games','tests/web','scripts/web','scripts/lib/codex-browser-preflight.mjs',
-  '.github/workflows/games.yml','docs/open-source-games.md','docs/game-publishing.md','apps/web','package.json','README.md');
+  '.github/workflows/games.yml','docs/open-source-games.md','docs/game-publishing.md','apps/web','apps/outline/model.mjs','docs/remix.md','package.json','README.md');
 execFileSync(process.execPath,[path.join(root,'scripts/games/refresh-root-manifest.mjs'),repo],{stdio:'inherit'});
 git('add','SOURCE_MANIFEST.json');
 if(git('diff','--cached','--name-only')) git('commit','-m','games: synchronize source for selected website releases');

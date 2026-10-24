@@ -514,8 +514,8 @@
     },
     {
       "path": "apps/web/public/_headers",
-      "bytes": 1081,
-      "sha256": "6d9ae7db8fa46925ef679203f2738fd1df4f697b2d5e713fd049a3e69edae01c"
+      "bytes": 1298,
+      "sha256": "a7d7e8b4ff314985779cb66257dfa3a18d62f6cc4fa0889f828aea314d937a21"
     },
     {
       "path": "apps/web/public/404.html",
@@ -544,8 +544,8 @@
     },
     {
       "path": "apps/web/public/app.js",
-      "bytes": 14950,
-      "sha256": "a92c909ae50f1be83167b3fb190b7aa4dbf35dfce9bab6a77dc687c7aef91799"
+      "bytes": 15255,
+      "sha256": "ab4a4d9f46d6271102b7bdb42eafc83fd31219eec58caf92525eac3afb9f500f"
     },
     {
       "path": "apps/web/public/art/arcade-mascot.png",
@@ -1048,6 +1048,16 @@
       "sha256": "d9747e839ce298cc77e781bcca18c5a38564651a68f776542b66fd47eab2886b"
     },
     {
+      "path": "apps/web/public/blueprint.css",
+      "bytes": 7588,
+      "sha256": "3af1ee5454eeb02c154a037273f2f21bc5e68c25769e798c0d8f347c469f552e"
+    },
+    {
+      "path": "apps/web/public/blueprint.js",
+      "bytes": 13721,
+      "sha256": "72bf81999bc5152a364de09cc4846c71e01de02947f112e07cdb1320860d779a"
+    },
+    {
       "path": "apps/web/public/cases/star-letters/case.css",
       "bytes": 3816,
       "sha256": "32675489705d4163476c03f8ae049a34ed8f1820929dc428307906257413acde"
@@ -1079,13 +1089,13 @@
     },
     {
       "path": "apps/web/public/index.html",
-      "bytes": 10856,
-      "sha256": "ffee2507692ca6741551069d519a6b7e3c5b9feb6d958dba1866bb96a7abf255"
+      "bytes": 10908,
+      "sha256": "c7a2b2eef8c48e9eef5f0be9338afb38599dd9049d8e034a53286645e7bb53b5"
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 29513,
-      "sha256": "7a7b0c7811334998ff4c40e42f4922fad7bc1bdae221969e2a0e22f0ec49249b"
+      "bytes": 41247,
+      "sha256": "3100e39149a5b112ef0151976aeb1b1364991d063e469cf5a73e0d475560e112"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -1109,13 +1119,13 @@
     },
     {
       "path": "apps/web/public/play.html",
-      "bytes": 7874,
-      "sha256": "ea1fb0de97e173a509844e1e8e0f892ddda493928dee972cc96b000dfcb188b9"
+      "bytes": 8264,
+      "sha256": "f1f187177fccf6dcc33959c41bbfb2500eaea4f8cebfcded6bd6cf6700d7abb7"
     },
     {
       "path": "apps/web/public/play.js",
-      "bytes": 15975,
-      "sha256": "ad3775eb604a7424bdefb7e95507781c4137d6281bc2dce2ff95f601821833db"
+      "bytes": 16195,
+      "sha256": "17f47b94a4262593b479d060c9d2c6984d8dee8a7872fd40fdb0a99923d2655f"
     },
     {
       "path": "apps/web/public/privacy.html",
@@ -1123,14 +1133,24 @@
       "sha256": "bee6ab31a7bfff208963693d1611dea5d95c03a533709f25324784d3d8333453"
     },
     {
+      "path": "apps/web/public/remix-workflow-model.js",
+      "bytes": 10205,
+      "sha256": "0af791ee8f446528c51f8b33cf1e749c5598b67adc109121ac54112c7c05f17a"
+    },
+    {
+      "path": "apps/web/public/remix-workflow.js",
+      "bytes": 21319,
+      "sha256": "ebb88b2338f662ae39cf993421d3c122a90a1af4f33ecb65a85c7231878d9412"
+    },
+    {
       "path": "apps/web/public/remix.css",
-      "bytes": 3045,
-      "sha256": "96923cee932c27459ed4db48941945fd53e2750b79044dd3742bb38820885ce2"
+      "bytes": 11550,
+      "sha256": "16a2be81680e03e0552df53d0a954a48b7423de7af1aba38b9275a4be6acab5f"
     },
     {
       "path": "apps/web/public/remix.js",
-      "bytes": 8568,
-      "sha256": "85eb73f0d5917fd87fc458efd98ec0c1f606f612f2705125c223b7ae5420d287"
+      "bytes": 10804,
+      "sha256": "05a333ad7f26906a73a3046d5e7687a97659bc625a3311e1e6627191682692aa"
     },
     {
       "path": "apps/web/public/robots.txt",
@@ -1159,8 +1179,8 @@
     },
     {
       "path": "apps/web/README.md",
-      "bytes": 6123,
-      "sha256": "9d9a7ace6450e2f45e839b5bc65c5037e6e33131d0dab81686c4a36b2d04c7c5"
+      "bytes": 7639,
+      "sha256": "577bc7c22f89d104f60f4d1c9315f8f53ff4d209af4b9b92287ee698b705b57a"
     },
     {
       "path": "apps/web/wrangler.jsonc",
@@ -1263,26 +1283,6 @@
       "sha256": "cc6d910a01db32fe5a16a29b7daa0ab3ca19007eb0a46e8f7af4d04160ecb09d"
     },
     {
-      "path": "docs/images/owngame-platform-devices-v1.png",
-      "bytes": 1901276,
-      "sha256": "854406cb0b4837009035d93c0237bf1110e45c491bfddf6245877d6cc2d64b96"
-    },
-    {
-      "path": "docs/images/owngame-workflow.png",
-      "bytes": 1696855,
-      "sha256": "3350193b3af4483538b41d89d50513e8d10046e4843823ebea3ab99cadbc9810"
-    },
-    {
-      "path": "docs/images/owngame-workflow.prompt.txt",
-      "bytes": 2705,
-      "sha256": "96e05841f0062923b1846189ed4baf404d5963493ff71d27917e013d29123a41"
-    },
-    {
-      "path": "docs/images/star-letters-gameplay.jpg",
-      "bytes": 116321,
-      "sha256": "6c34747ee4a3239fdab6c721efbc39321c9c3912d8c17e0538619c0285668ad0"
-    },
-    {
       "path": "docs/images/owngame-outline-assets.jpg",
       "bytes": 91966,
       "sha256": "0ca946da24ea4bafbd3dfb9c5f936dd0bb5261f8d46d7f5c053789814f4af2ef"
@@ -1298,9 +1298,29 @@
       "sha256": "b8b7482cd6bfbf88de92fa426b2e7c4109b4a2d320301fed717278e72f20270c"
     },
     {
+      "path": "docs/images/owngame-platform-devices-v1.png",
+      "bytes": 1901276,
+      "sha256": "854406cb0b4837009035d93c0237bf1110e45c491bfddf6245877d6cc2d64b96"
+    },
+    {
+      "path": "docs/images/owngame-workflow.png",
+      "bytes": 1696855,
+      "sha256": "3350193b3af4483538b41d89d50513e8d10046e4843823ebea3ab99cadbc9810"
+    },
+    {
+      "path": "docs/images/owngame-workflow.prompt.txt",
+      "bytes": 2705,
+      "sha256": "96e05841f0062923b1846189ed4baf404d5963493ff71d27917e013d29123a41"
+    },
+    {
       "path": "docs/images/riftstrike-gameplay.png",
       "bytes": 130000,
       "sha256": "1ff05fe94df3bd4283ccebf3ddb50997aacff4660fc5c7dd0b6a637b82c2f1f7"
+    },
+    {
+      "path": "docs/images/star-letters-gameplay.jpg",
+      "bytes": 116321,
+      "sha256": "6c34747ee4a3239fdab6c721efbc39321c9c3912d8c17e0538619c0285668ad0"
     },
     {
       "path": "docs/install.md",
@@ -1329,8 +1349,8 @@
     },
     {
       "path": "docs/remix.md",
-      "bytes": 3516,
-      "sha256": "fb3b0f5c4fac4f2ac71a301806caa1bfaa354f0a60373e195b3d6d368cb3e0d2"
+      "bytes": 6285,
+      "sha256": "2b9762675a8df6cfc6d5129fc20961d1d97fa502154e2df7c3bfbea7214b5cc8"
     },
     {
       "path": "docs/resource-search.md",
@@ -10225,7 +10245,7 @@
     {
       "path": "scripts/games/__pycache__/export.cpython-315.pyc",
       "bytes": 29757,
-      "sha256": "4414504cd5a23df79dc4c282eed36c71e4cc48cecbf5fcf3de6fd2b4227e1ea4"
+      "sha256": "562e9c1557cc140af96c765fddb76587cc0a6c6a500e33060c564356a7819c6a"
     },
     {
       "path": "scripts/games/build-all.mjs",
@@ -10299,8 +10319,8 @@
     },
     {
       "path": "scripts/games/sync.mjs",
-      "bytes": 6721,
-      "sha256": "be167a6d6109dc84aba7737b297d0290540af3e9f4ee3505c8efa6345bb07831"
+      "bytes": 7041,
+      "sha256": "101882c5815ef53c8f864dc2744e1bde34ed9d5b4f3f7b88405ee5dc18a49ce5"
     },
     {
       "path": "scripts/games/verify.mjs",
@@ -10453,9 +10473,19 @@
       "sha256": "e1dd8a6170fe0bb867305b262c789ff5a23289e2bfd320f8ccdca676d91fe461"
     },
     {
+      "path": "scripts/web/blueprint-snapshots.json",
+      "bytes": 247974,
+      "sha256": "11f394856e8fb677a62de52f9719e5154f56e364f97208365aacd8e54dd49954"
+    },
+    {
+      "path": "scripts/web/blueprints.mjs",
+      "bytes": 3664,
+      "sha256": "8e0458738444ea4993b6ff202f87657bb90e07bfcf0c45830fa4c91dd2f8a028"
+    },
+    {
       "path": "scripts/web/build.mjs",
-      "bytes": 9718,
-      "sha256": "d22a0287ced0e5a961eff192ff4a03981577509b9e76b1d007325ce32aabaa5e"
+      "bytes": 9820,
+      "sha256": "9508c0f0cbedd3a386a69eb867753aa680127375b32c80f96e924077d7ab9b18"
     },
     {
       "path": "scripts/web/catalog.mjs",
@@ -11898,6 +11928,11 @@
       "sha256": "9856901d40eb9d0c5fb01d69237c83633a1d5ac1c816fee39f70492dbc9b8544"
     },
     {
+      "path": "tests/web/blueprints.test.mjs",
+      "bytes": 6444,
+      "sha256": "a21db1143843947861f41f8dd5c116e318ba78fe4726e7ad9f9d81e81cc8709e"
+    },
+    {
       "path": "tests/web/footer.test.mjs",
       "bytes": 2197,
       "sha256": "4007afc4dfb61115552672aac9d69d9c1513b868d969524f79e31728f245489c"
@@ -11926,6 +11961,11 @@
       "path": "tests/web/platforms.test.mjs",
       "bytes": 5333,
       "sha256": "7300e99e122f05e93ce0c80731de3e2a33be5ca50167bc398a31775f60920955"
+    },
+    {
+      "path": "tests/web/remix-workflow.test.mjs",
+      "bytes": 5191,
+      "sha256": "30ae14de3be6792416415d6ee6db896b3410c271f3c4b1fae6a250d453bd50c9"
     },
     {
       "path": "tests/web/usage.test.mjs",

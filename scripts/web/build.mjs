@@ -9,6 +9,7 @@ import {imageHtml, imageCss} from "./image-delivery.mjs";
 import {imageAssets, imageIcons} from "../../apps/web/public/image-assets.js";
 import {platformAcceptance} from "../../apps/web/public/platforms.js";
 import {versionShellModules} from "./module-delivery.mjs";
+import {writeBlueprints} from "./blueprints.mjs";
 const root = path.resolve(import.meta.dirname, "../.."),
   out = process.env.OWNGAME_WEB_OUT ? path.resolve(process.env.OWNGAME_WEB_OUT) : path.join(root, "apps/web/dist");
 // A separate candidate library supports batch acceptance without changing the live selection.
@@ -22,6 +23,7 @@ const sources = await loadPublishedSources(process.env.OWNGAME_SOURCE_COMMIT || 
 await fs.rm(out, { recursive: true, force: true });
 await fs.mkdir(out, { recursive: true });
 await fs.cp(path.join(root, "apps/web/public"), out, { recursive: true });
+await writeBlueprints(root, out, entries, sources);
 await writeUsagePage(root, out);
 await writeSharedFooters(root, out);
 await versionShellModules(out);
