@@ -1,35 +1,612 @@
-.remix-dialog { width: min(620px, calc(100vw - 32px)); max-width: 620px; max-height: calc(100dvh - 32px); padding: 32px; border: 1px solid #d7cdb9; border-radius: 22px; box-shadow: 0 28px 100px #22251f33; }
-.remix-dialog::backdrop { background: #24272180; backdrop-filter: blur(5px); }
-.remix-close { float: right; background: transparent; border: 0; border-radius: 50%; font-size: 28px; width: 44px; height: 44px; margin: -12px -12px 0 0; }
-.remix-dialog h2 { margin: 12px 0 8px; font-size: 26px; line-height: 1.35; }
-.remix-dialog .remix-intro { margin: 0 0 22px; color: #665e4f; }
-.remix-label { display: block; font-size: 12px; font-weight: 700; margin: 16px 0 7px; }
-.remix-change, .remix-prompt { width: 100%; border: 1px solid #d7cdb9; border-radius: 10px; background: #fffdf7; padding: 12px; font: inherit; font-size: 13px; line-height: 1.75; color: var(--ink); }
-.remix-prompt { resize: vertical; min-height: 155px; max-height: 40dvh; }
-.remix-dialog .remix-status { font-size: 12px; color: #5b634d; line-height: 1.6; min-height: 20px; margin: 12px 0 20px; }
-.remix-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.remix-source { color: #746b5a; font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
-.remix-copy { border: 0; background: var(--red); color: white; border-radius: 10px; padding: 12px 18px; min-height: 44px; font-weight: 700; }
-.remix-copy:disabled { opacity: .6; cursor: wait; }
-@media(max-width: 600px) { .remix-dialog { padding: 22px; } .remix-dialog h2 { font-size: 22px; } .remix-change, .remix-prompt { font-size: 16px; } }
+.remix-dialog {
+  width: min(620px, calc(100vw - 32px));
+  max-width: 620px;
+  max-height: calc(100dvh - 32px);
+  padding: 32px;
+  border: 1px solid #d7cdb9;
+  border-radius: 22px;
+  box-shadow: 0 28px 100px #22251f33;
+}
+.remix-dialog::backdrop {
+  background: #24272180;
+  backdrop-filter: blur(5px);
+}
+.remix-close {
+  float: right;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  font-size: 28px;
+  width: 44px;
+  height: 44px;
+  margin: -12px -12px 0 0;
+}
+.remix-dialog h2 {
+  margin: 12px 0 8px;
+  font-size: 26px;
+  line-height: 1.35;
+}
+.remix-dialog .remix-intro {
+  margin: 0 0 22px;
+  color: #665e4f;
+}
+.remix-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 16px 0 7px;
+}
+.remix-change,
+.remix-prompt {
+  width: 100%;
+  border: 1px solid #d7cdb9;
+  border-radius: 10px;
+  background: #fffdf7;
+  padding: 12px;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.remix-prompt {
+  resize: vertical;
+  min-height: 155px;
+  max-height: 40dvh;
+}
+.remix-dialog .remix-status {
+  font-size: 12px;
+  color: #5b634d;
+  line-height: 1.6;
+  min-height: 20px;
+  margin: 12px 0 20px;
+}
+.remix-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.remix-source {
+  color: #746b5a;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.remix-copy {
+  border: 0;
+  background: var(--red);
+  color: white;
+  border-radius: 10px;
+  padding: 12px 18px;
+  min-height: 44px;
+  font-weight: 700;
+}
+.remix-copy:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.remix-dialog {
+  background: var(--paper, #faf5e8);
+  border: 3px solid var(--ink);
+  box-shadow: 7px 7px var(--ink);
+  border-radius: 16px;
+}
+.remix-modes {
+  display: flex;
+  gap: 8px;
+  margin: 18px 0 14px;
+}
+.remix-modes button {
+  flex: 1;
+  min-height: 46px;
+  border: 2px solid var(--ink);
+  border-radius: 9px;
+  background: #fffdf7;
+  font: inherit;
+  font-weight: 800;
+  box-shadow: 0 3px var(--ink);
+}
+.remix-modes button[aria-pressed="true"] {
+  background: var(--yellow);
+  box-shadow: none;
+  transform: translateY(2px);
+}
+.remix-simple[hidden],
+.remix-complex[hidden] {
+  display: none;
+}
+.remix-dialog-workflow {
+  width: min(1320px, calc(100vw - 32px));
+  max-width: 1320px;
+  padding: 24px;
+}
+.remix-dialog-workflow .remix-modes {
+  max-width: 440px;
+  width: 360px;
+  display: inline-flex;
+  vertical-align: middle;
+  margin: 6px 0 10px;
+}
+.remix-dialog-workflow h2 {
+  display: inline-block;
+  margin: 8px 24px 10px 0;
+  vertical-align: middle;
+}
+.remix-dialog-workflow .eyebrow {
+  margin-bottom: 4px;
+}
+.remix-dialog-workflow .remix-intro {
+  margin-bottom: 14px;
+}
+.workflow-meta {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) minmax(240px, 2fr) auto;
+  gap: 16px;
+  align-items: start;
+}
+.workflow-field {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 14px;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 750;
+}
+.workflow-field input,
+.workflow-field textarea {
+  width: 100%;
+  min-width: 0;
+  border: 2px solid #c8c0ae;
+  border-radius: 8px;
+  background: #fffdf7;
+  color: var(--ink);
+  padding: 9px 10px;
+  font: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.workflow-field textarea {
+  resize: vertical;
+  min-height: 82px;
+}
+.workflow-meta textarea {
+  min-height: 44px;
+  height: 44px;
+}
+.workflow-targets {
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 6px 12px;
+  border: 2px solid #c8c0ae;
+  border-radius: 8px;
+}
+.workflow-targets legend,
+.workflow-dependencies legend {
+  font-size: 12px;
+  font-weight: 800;
+}
+.workflow-toggle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.workflow-toggle input {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  accent-color: var(--blue);
+}
+.workflow-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.workflow-toolbar select {
+  max-width: 180px;
+  min-height: 44px;
+  padding: 8px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: #fffdf7;
+  font: inherit;
+  font-size: 13px;
+}
+.workflow-button {
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: #fffdf7;
+  color: var(--ink);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.workflow-button:hover:not(:disabled) {
+  background: #ffedb6;
+}
+.workflow-button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.workflow-button.workflow-primary {
+  background: var(--red);
+  color: white;
+  box-shadow: 3px 3px var(--ink);
+}
+.workflow-button.workflow-primary:hover:not(:disabled) {
+  background: #cf311d;
+}
+.workflow-zoom {
+  min-width: 40px;
+  text-align: center;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.workflow-save {
+  margin: 10px 0;
+  font-size: 12px;
+  color: #605b50;
+}
+.workflow-version-note {
+  display: block;
+  color: #9b3b14;
+  margin-top: 4px;
+}
+.workflow-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  overflow: hidden;
+  height: clamp(240px, calc(100dvh - 480px), 520px);
+  min-height: 240px;
+}
+.workflow-viewport {
+  overflow: auto;
+  background-color: #f5efdf;
+  background-image: radial-gradient(#b9af95 1px, transparent 1px);
+  background-size: 20px 20px;
+  overscroll-behavior: contain;
+}
+.workflow-surface,
+.workflow-board {
+  position: relative;
+}
+.workflow-board {
+  transform-origin: 0 0;
+}
+.workflow-board > svg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.workflow-board > svg > path {
+  stroke: var(--blue);
+  stroke-width: 2;
+  fill: none;
+}
+.workflow-board > svg > path.is-disabled {
+  stroke-dasharray: 5 5;
+  opacity: 0.3;
+}
+.workflow-card {
+  position: absolute;
+  width: 244px;
+  height: 174px;
+  background: #fffdf7;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 4px 4px #22251f35;
+  padding: 0 14px 10px;
+}
+.workflow-card.is-selected {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+.workflow-card.is-disabled {
+  opacity: 0.5;
+}
+.workflow-drag {
+  display: block;
+  width: calc(100% + 28px);
+  min-height: 32px;
+  margin: 0 -14px 10px;
+  padding: 5px 12px;
+  border: 0;
+  border-bottom: 2px solid var(--ink);
+  border-radius: 8px 8px 0 0;
+  background: #f7d568;
+  text-align: left;
+  cursor: grab;
+  touch-action: none;
+  font-size: 11px;
+}
+.kind-art .workflow-drag,
+.kind-levels .workflow-drag {
+  background: #b9d5ed;
+}
+.kind-validation .workflow-drag,
+.kind-controls .workflow-drag {
+  background: #f2b7a8;
+}
+.workflow-number {
+  float: right;
+  color: #787365;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+.workflow-select {
+  min-height: 32px;
+  max-width: 180px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 850;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.workflow-card-detail {
+  margin: 7px 0 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #686253;
+  height: 36px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: anywhere;
+}
+.workflow-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 750;
+  color: #345b73;
+}
+.workflow-inspector {
+  background: #fffaf0;
+  border-left: 2px solid var(--ink);
+  padding: 18px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.workflow-inspector h3 {
+  font-size: 15px;
+  margin: 0 0 16px;
+}
+.workflow-switches {
+  margin: -6px 0 14px;
+}
+.workflow-dependencies {
+  border: 1px dashed #bcb29d;
+  border-radius: 8px;
+  margin: 0 0 12px;
+  padding: 8px;
+}
+.workflow-dependencies p,
+.workflow-hint {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #686253;
+  margin: 4px 0;
+}
+.workflow-step-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.workflow-step-actions .workflow-button {
+  flex: 1;
+  padding: 8px;
+}
+.workflow-errors {
+  color: #a42416;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.workflow-output {
+  margin: 14px 0;
+}
+.workflow-output summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 750;
+  min-height: 36px;
+  padding: 8px 0;
+}
+.workflow-footer {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.workflow-footer .workflow-primary {
+  margin-left: auto;
+}
+.workflow-output + .remix-status:empty {
+  display: none;
+}
+@media (max-width: 900px) {
+  .workflow-meta {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .workflow-meta > :nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .workflow-workspace {
+    grid-template-columns: minmax(0, 1fr) 280px;
+  }
+}
+@media (max-width: 600px) {
+  .remix-dialog-workflow .remix-modes {
+    display: flex;
+    width: 100%;
+  }
+  .remix-dialog-workflow {
+    width: calc(100vw - 16px);
+    max-height: calc(100dvh - 16px);
+    padding: 16px;
+  }
+  .workflow-workspace {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+  .workflow-viewport {
+    height: 290px;
+    flex: none;
+  }
+  .workflow-inspector {
+    border-left: 0;
+    border-top: 2px solid var(--ink);
+    max-height: 410px;
+  }
+  .workflow-field input,
+  .workflow-field textarea {
+    font-size: 16px;
+  }
+  .workflow-toolbar {
+    gap: 6px;
+  }
+  .workflow-toolbar select {
+    max-width: 135px;
+  }
+  .workflow-button {
+    padding: 9px;
+  }
+  .workflow-toggle {
+    min-height: 44px;
+  }
+  .workflow-drag {
+    min-height: 44px;
+  }
+  .workflow-card {
+    height: 190px;
+  }
+  .workflow-select {
+    min-height: 44px;
+  }
+  .workflow-card-detail {
+    margin: 4px 0;
+  }
+  .workflow-meta {
+    gap: 8px;
+  }
+  .workflow-footer .workflow-primary {
+    flex-basis: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .remix-dialog {
+    padding: 22px;
+  }
+  .remix-dialog h2 {
+    font-size: 22px;
+  }
+  .remix-change,
+  .remix-prompt {
+    font-size: 16px;
+  }
+}
 
 /* A small action within the existing arcade card, without changing the gallery. */
-.card-foot { flex-wrap: wrap; }
-.card-remix { margin-left: auto; flex: none; min-height: 44px; padding: 8px 12px; border: 2px solid var(--ink); border-radius: 9px; background: var(--yellow); box-shadow: 0 2px var(--ink); font-size: 12px; font-weight: 750; white-space: nowrap; }
-.card-remix:hover { background: #ffdc61; }
-@media (max-width: 760px) { .card-foot .download { font-size: 10px; } .card-remix { padding: 7px 10px; font-size: 11px; } }
-@media (max-width:1100px) {
-  .card-foot { gap: 10px; }
-  .card-foot .play-link { order: 1; }
-  .card-remix { order: 2; }
-  .card-foot .download { order: 3; }
+.card-foot {
+  flex-wrap: wrap;
 }
-@media (max-width:760px) {
-  .card-foot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; align-items:stretch; }
+.card-remix {
+  margin-left: auto;
+  flex: none;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 2px solid var(--ink);
+  border-radius: 9px;
+  background: var(--yellow);
+  box-shadow: 0 2px var(--ink);
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.card-remix:hover {
+  background: #ffdc61;
+}
+@media (max-width: 760px) {
+  .card-foot .download {
+    font-size: 10px;
+  }
+  .card-remix {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+}
+@media (max-width: 1100px) {
+  .card-foot {
+    gap: 10px;
+  }
+  .card-foot .play-link {
+    order: 1;
+  }
+  .card-remix {
+    order: 2;
+  }
+  .card-foot .download {
+    order: 3;
+  }
+}
+@media (max-width: 760px) {
+  .card-foot {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    align-items: stretch;
+  }
   .card-foot .play-link,
-  .card-foot .card-remix { display: inline-flex; align-items: center; justify-content: center; margin: 0; min-width: 0; min-height: 44px; padding: 8px 4px; border-radius: 9px; box-shadow: 0 3px var(--ink); font-size: 11px; line-height: 1.2; text-align: center; }
-  .card-foot .card-remix { white-space: normal; }
-  .card-foot .play-link { white-space:nowrap; }
-  .card-foot .download { grid-column: 1 / -1; min-height: 44px; padding: 6px 0; border-bottom: 0; line-height: 1.5; }
+  .card-foot .card-remix {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    min-width: 0;
+    min-height: 44px;
+    padding: 8px 4px;
+    border-radius: 9px;
+    box-shadow: 0 3px var(--ink);
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .card-foot .card-remix {
+    white-space: normal;
+  }
+  .card-foot .play-link {
+    white-space: nowrap;
+  }
+  .card-foot .download {
+    grid-column: 1 / -1;
+    min-height: 44px;
+    padding: 6px 0;
+    border-bottom: 0;
+    line-height: 1.5;
+  }
 }
-@media (max-width:360px) { .card-foot .play-link { font-size:10px;padding-inline:3px; } }
+@media (max-width: 360px) {
+  .card-foot .play-link {
+    font-size: 10px;
+    padding-inline: 3px;
+  }
+}

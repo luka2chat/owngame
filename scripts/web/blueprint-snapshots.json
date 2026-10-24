@@ -1,0 +1,4481 @@
+{
+  "tidal-reclaim": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "903e1164-7a3e-4dde-9887-b86bb306a933",
+      "title": "潮汐回收站",
+      "tagline": "登陆被机械守卫占据的海上平台，重启三座净化站，带着回收成果撤离。",
+      "experience": "在有限时间里选择路线、顶住机械守卫，重启三站并带回数据。目标体验由现有任务结构概括；真人难度与手感仍待确认。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "e5a8c7b3-def0-4405-b100-0d0ac49d78c0",
+          "type": "note",
+          "section": "overview",
+          "title": "项目定位与资料入口",
+          "body": "单人 PC 键鼠第一人称回收行动。现有主循环：登陆 → 选择净化站 → 启动与防守 → 三站完成 → 码头撤离。\n玩法、流程、任务、关卡与资产已拆到左侧对应区域。原始说明保留在 ./README.md；来源与许可见 ./THIRD_PARTY_NOTICES.md。\n本次仅整理资料，不更改玩法、不重新运行历史验收。",
+          "status": "done",
+          "x": 50,
+          "y": 50,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "9311ea2b-7036-4a9f-ad85-9fc75d2b0643",
+          "type": "rule",
+          "section": "rules",
+          "title": "净化站 · 启动、阻塞与保留进度",
+          "body": "【代码已核对；历史 v3/v4/v8 主流程通过】\n规则来源 ./src/game/tidal-mission.ts；边界用例见 ./tests/tidal-mission.test.ts。本轮未执行测试。历史报告见 ./game-outline.json 的 mission-*；离开/敌人阻塞的逐项边界不冒充本轮实测。",
+          "status": "doing",
+          "x": 50,
+          "y": 50,
+          "fields": {
+            "trigger": "靠近未完成控制台，按 E；一次只允许一座站激活。",
+            "behavior": "玩家留在作业范围且中心无敌人时推进；离开或敌人占据中心则暂停，已有净化进度保留。达到配置时长完成该站，三站都完成后进入撤离。数值见关卡配置。",
+            "example": "已有 1 秒净化 → 走出范围或让敌人进入中心 → 仍为 1 秒；回到安全范围 → 继续增长。远距离 E、重复 E 不应同时激活另一站。"
+          },
+          "image": ""
+        },
+        {
+          "id": "d2d6baa6-43ba-4644-8b15-f0f1d8bdd74a",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一次迭代目标",
+          "body": "历史通过不自动覆盖当前源码。保留原有玩法、美术、存档兼容性与许可。未开展的验证仍保持待决策。",
+          "status": "idea",
+          "x": 400,
+          "y": 50,
+          "fields": {
+            "question": "下一轮先验证哪一项，或具体修改什么？",
+            "options": "1. 真人无辅助瞄准：难度、反馈、节奏、美术手感。\n2. 长时性能、低配机器与不同浏览器。\n3. 真实设备断网/重启；手柄完整操作。\n4. 资源加载失败后 E 重试、存储受限与损坏存档的真实 UI 恢复。\n5. 当前源码的死亡、超时、重开与全任务回归。",
+            "result": "尚未决定。先确定验收范围与具体版本，再实施；不从历史通过推断本轮通过。"
+          },
+          "image": ""
+        },
+        {
+          "id": "f45bbddb-7632-48b5-abea-59b9798ecb9a",
+          "type": "note",
+          "section": "overview",
+          "title": "已验证记录 · 版本与证据索引",
+          "body": "2026-10-22 历史报告已复核：\n• mission-v3：顺序按 README 为 1→2→3，148.74 秒、28 击杀，自然撤离。\n• mission-v4：报告顺序 3→1→2，153.46 秒、28 击杀，自然撤离。\n• release-v8：1→2→3，154.13 秒、31 击杀；三站均 35 秒，撤离持续 8.012 秒。\n• v8 界面：5 种尺寸通过。线上：移动、锁鼠、开火和浏览器离线新标签页通过。\n适用版本与历史结果见本卡摘要；原始报告未公开。具体已验范围写在各卡片中。\n“已完成”只指该卡明确列出的历史验证/整理范围，不表示当前源码或所有设备已验收。",
+          "status": "done",
+          "x": 750,
+          "y": 50,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "2546894b-3a6b-4aaf-9c04-f140ecb38ba0",
+          "type": "rule",
+          "section": "rules",
+          "title": "撤离 · 必须连续守住码头",
+          "body": "【历史已验证 · v3/v4/v8】三站完成、走离登船区使读秒归零、返回连续登船并胜利。辅助瞄准的输入脚本验证流程，不代表真人难度。见 ./game-outline.json。\n【代码/测试定义，未在本轮运行】死亡、总时间耗尽、撤离时限耗尽都失败。",
+          "status": "done",
+          "x": 400,
+          "y": 50,
+          "fields": {
+            "trigger": "三站净化完成后进入撤离阶段。",
+            "behavior": "到达码头且附近无敌人，连续保持到规定时长才获胜；离开或敌人进入会清零登船进度。失败/胜利后任务状态冻结。",
+            "example": "读秒超过 2 秒后走离码头 → 归零；返回重新守满 8 秒 → won。死亡/总时限/撤离时限分别应产生 lost。"
+          },
+          "image": ""
+        },
+        {
+          "id": "70f6e45d-f789-4523-a095-d4ac43a8cfe3",
+          "type": "rule",
+          "section": "rules",
+          "title": "战斗输入、伤害与武器保留",
+          "body": "【历史已验证 · v8】键盘移动、锁定鼠标、鼠标开火；任务报告记录 182 发、106 命中、31 击杀。瞄准为脚本辅助。\n【代码已核对】护甲吸收、爆炸衰减见 ./src/game/rules.ts 与 ./tests/rules.test.ts；武器参数见 ./src/game/config.ts。./game-outline.json",
+          "status": "doing",
+          "x": 750,
+          "y": 50,
+          "fields": {
+            "trigger": "WASD 移动；鼠标瞄准；左键开火、右键瞄准、R 换弹；Shift 冲刺、空格跳跃、数字键切武器、G 手雷。",
+            "behavior": "命中按护甲与伤害规则结算；爆炸随距离衰减。支援武器解锁不强制替换当前装备；回访低编号站不应撤销已经开放的手雷能力。",
+            "example": "脚本在 3 号站运行时检查当前仍为步枪；另需真人核验切枪、手雷与后坐力手感。护甲/爆炸边界已有单测定义，本轮未运行。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c55a31bd-1b20-445a-b950-f84b6f292b3f",
+          "type": "rule",
+          "section": "rules",
+          "title": "设置与成绩保存 · 不是任务续关",
+          "body": "【历史已验证 · 线上 v8】README 记录设置保留；production-v8 报告确认离线模拟新标签页可移动/开火。报告未逐字段记录存档值。\n【单测定义已核对】./tests/save.test.ts 覆盖缺失/损坏/版本不符回退、字段限制、排行榜和存储异常。",
+          "status": "doing",
+          "x": 50,
+          "y": 400,
+          "fields": {
+            "trigger": "设置变更、写入成绩、再次打开游戏。",
+            "behavior": "保存设置与成绩；不要把“设置保留”描述成中途任务续关。读取异常回退默认值；写入异常不应令游戏崩溃。",
+            "example": "损坏存档、禁用存储、刷新后设置和排行榜恢复，需要在实际 UI 单独验证；现有单测定义不等于该运行验证。"
+          },
+          "image": ""
+        },
+        {
+          "id": "1d58c280-781a-4263-913b-57fbffe8fb7b",
+          "type": "state",
+          "section": "flow",
+          "title": "加载与部署准备",
+          "body": "【历史已验证 · interface-v8】实际加载画面与后续启动有检查记录。5 个窗口尺寸见 ./game-outline.json。",
+          "status": "done",
+          "x": 50,
+          "y": 50,
+          "fields": {
+            "entry": "打开游戏，初始化场景、物理与资源。",
+            "exit": "资源就绪 → 标题菜单。",
+            "recovery": "启动失败显示原因；故障恢复的实际注入验证仍待做。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c0e1a3e3-ed60-4747-b144-d24ef55617b6",
+          "type": "state",
+          "section": "flow",
+          "title": "标题与菜单",
+          "body": "【历史已验证 · v8】菜单导航、开始回收行动和响应式画面。旧框架保留死亡竞赛相关文案/代码，不据此把它记为本项目已验收的核心模式。",
+          "status": "done",
+          "x": 400,
+          "y": 50,
+          "fields": {
+            "entry": "加载完成或返回标题。",
+            "exit": "开始回收行动 → 3.2 秒倒计时 → 游玩；设置/操作说明 → 返回菜单。",
+            "recovery": "重新部署应创建独立任务；实际失败后重开流程待下一轮核验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩 · 净化到撤离",
+          "body": "【历史已验证 · mission-v8】从开局两名守卫，到三站完成，再到自然胜利。./game-outline.json",
+          "status": "done",
+          "x": 750,
+          "y": 50,
+          "fields": {
+            "entry": "部署倒计时结束，模式 playing。",
+            "exit": "Esc / 失去锁鼠触发暂停路径；任务 won/lost → 结算。",
+            "recovery": "净化保留已完成进度，撤离计时被打断则清零；不承诺跨刷新续关。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c3cc14ba-4837-457d-9a42-9b763b85cfe8",
+          "type": "state",
+          "section": "flow",
+          "title": "暂停与继续",
+          "body": "【历史已验证 · v3/v4/v8 输入流程】Esc 后暂停，脚本检查任务时钟不再增加，点击继续后恢复。",
+          "status": "done",
+          "x": 50,
+          "y": 400,
+          "fields": {
+            "entry": "游玩/倒计时暂停；释放鼠标锁定。",
+            "exit": "点击继续重新获取鼠标锁定，回到倒计时或游玩；也可返回标题。",
+            "recovery": "多次失焦、锁鼠被拒绝等组合路径尚无专项历史记录。"
+          },
+          "image": ""
+        },
+        {
+          "id": "7e3a917e-9d6e-4848-8398-92a62c947822",
+          "type": "state",
+          "section": "flow",
+          "title": "结算、重试与返回标题",
+          "body": "【历史已验证】三轮任务报告均为 ended / won。\n【未覆盖】死亡/超时的实际结算界面、连续重试与退出路径。",
+          "status": "doing",
+          "x": 400,
+          "y": 400,
+          "fields": {
+            "entry": "三站后撤离获胜；死亡或超时失败。",
+            "exit": "再来一局 → 重新部署；标题画面 → 菜单。",
+            "recovery": "新任务应清零净化/计时，保留设置与成绩；待实际输入验证。"
+          },
+          "image": ""
+        },
+        {
+          "id": "47e31188-4021-435b-b1f7-485c4f8708d8",
+          "type": "state",
+          "section": "flow",
+          "title": "异常恢复 · 待故障注入验证",
+          "body": "【实现已核对；运行未验证】./src/game/game.ts 处理分阶段资源加载失败，提示联网后按 E 重试；过期任务的加载回调用会话标识忽略。",
+          "status": "idea",
+          "x": 750,
+          "y": 400,
+          "fields": {
+            "entry": "启动失败、守卫资源加载失败、离线资源缺失。",
+            "exit": "恢复网络后按 E 重试；资源就绪且仍在控制台附近时激活任务。",
+            "recovery": "需模拟失败→恢复、加载中退出/重开、锁鼠拒绝；不能用正常加载通过代替异常恢复验证。"
+          },
+          "image": ""
+        },
+        {
+          "id": "2ebe4e54-071a-4b8e-b009-ff998759b9fe",
+          "type": "place",
+          "section": "world",
+          "title": "海上平台与机械守卫",
+          "body": "【现有设定】玩家登陆被机械守卫占据的平台，重启设备并把回收数据带走。来源 ./README.md 与 ./src/i18n/zh-CN.json。",
+          "status": "doing",
+          "x": 50,
+          "y": 50,
+          "fields": {
+            "kind": "地点 / 阵营",
+            "detail": "海上回收局的单人行动；敌对机械守卫守住平台。当前没有独立对白、人物关系网或分支剧情需求，不补造人物关系。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c3da25c0-8fc5-423a-86b3-91f6429014a9",
+          "type": "quest",
+          "section": "world",
+          "title": "任务一 · 重启三座净化站",
+          "body": "【历史流程已验证】v8 以 1→2→3 完成，v4 以 3→1→2 完成。./game-outline.json",
+          "status": "done",
+          "x": 400,
+          "y": 50,
+          "fields": {
+            "giver": "行动简报 / 海上回收局（无任务发布 NPC）。",
+            "location": "进水泵站 → 膜滤机组 → 潮汐中继；玩家可选择顺序。",
+            "requires": "玩家存活、任务处于 repair；目标站未完成。",
+            "objective": "走到控制台按 E，守住区域、清除干扰敌人，完成三站净化。",
+            "completion": "三座 progress 都达到 35 秒。",
+            "changes": "各站完成标记保留；补给发放；三站完成时 phase 从 repair 变为 extract。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ef82645f-93ab-468d-a646-68669414e5e1",
+          "type": "quest",
+          "section": "world",
+          "title": "任务二 · 返回码头撤离",
+          "body": "【历史流程已验证 · v8】净化后回到出发码头，中断登船后重新完成。",
+          "status": "done",
+          "x": 750,
+          "y": 50,
+          "fields": {
+            "giver": "三站完成后的行动指令。",
+            "location": "EXIT 码头 / 出发处。",
+            "requires": "三站完成、进入 extract，玩家存活且未超时。",
+            "objective": "在撤离期限内赶回码头，清除近处威胁并连续守住。",
+            "completion": "连续 8 秒满足范围与安全条件，mission.phase = won。",
+            "changes": "任务结束、显示回收成功与统计；失败则显示行动中断。"
+          },
+          "image": ""
+        },
+        {
+          "id": "e674ae73-2079-4861-b266-c8ca4ceeb5c2",
+          "type": "level",
+          "section": "levels",
+          "title": "平台路线与任务参数",
+          "body": "【代码配置已核对】./src/game/tidal-mission.ts、./src/game/game.ts。\n【历史路径】v3、v8 正序与 v4 逆序均跑通；其余 4 种排列、卡边/跳跃捷径尚无完整记录。\n公开快照未包含本地场景截图；关卡结构见项目源码。",
+          "status": "done",
+          "x": 50,
+          "y": 50,
+          "fields": {
+            "space": "出生 (0,-30)；1 号进水泵站 (-22,-18)；2 号膜滤机组 (23,-10)；3 号潮汐中继 (0,25)；EXIT (0,-33)。坐标为 x,z。",
+            "config": "3 站 × 35 秒；激活距离约 3.4m；作业半径 7m；敌人干扰半径 4.5m。总限时 600s；撤离阶段 100s；登船半径 4m，连续 8s。",
+            "rhythm": "开场看见威胁 → 自选站点 → 守点战斗 → 补给与转场 → 限时返航。",
+            "completion": "三站完成后在码头安全登船；死亡/总超时/撤离超时均失败。"
+          },
+          "image": ""
+        },
+        {
+          "id": "1331ada6-33c5-43ea-bf6d-3bb48ba6c12f",
+          "type": "level",
+          "section": "levels",
+          "title": "守卫与增援 · 现有配置",
+          "body": "【历史已验证】v8 开场两名守卫、任务战斗与撤离。\n【代码已核对】./src/game/game.ts 的 beginWave、stepDirector、stepSpawns；波次配置见 ./src/game/onslaught.ts。\n【待验证】真人压力曲线、远近增援可读性、所有站点顺序的手雷与支援武器保留。\n2026-10-23 视觉预览直接引用项目巡逻机器人 GLB 与原贴图，仅展示守卫模型；部署数量、增援与压力曲线仍以本卡配置和对应验证记录为准。",
+          "status": "doing",
+          "x": 400,
+          "y": 50,
+          "fields": {
+            "space": "开场守卫 (-6,-17)、(7,-14)；各站与撤离附近持续产生战斗。",
+            "config": "站点初始队列：1号4名 scrapper；2号4名 scrapper + 1名 hornet；3号5名 scrapper + 1名 hornet + 1名 juggernaut；并发上限 MAX_ALIVE=10。\n开局 2 名 scrapper；站激活后首次增援计时 18s，此后计时到且敌人数<5 时加入2名 scrapper，重设20s；进入撤离队列加入3名 scrapper。显示守卫数包含存活、待落地和待生成。",
+            "rhythm": "站间未完成的落地继续推进；完成站点给补给，保留当前武器。",
+            "completion": "数量是遭遇配置，不是通用伤害规则；帧率与人数压力需要独立性能验证。",
+            "file": "./generated-assets/patrol-robot.glb"
+          },
+          "image": ""
+        },
+        {
+          "id": "0c771161-b34d-4f2c-8685-f86010b99f60",
+          "type": "reference",
+          "section": "assets",
+          "title": "视觉方向 · 工业插画与海上作业",
+          "body": "【参考方向，非验收结论】奶油白机器、石油青与锈橙；墨线、水粉色块与克制丝网印刷颗粒。参考现有机器人/净化器的识别特征。",
+          "status": "doing",
+          "x": 50,
+          "y": 50,
+          "fields": {
+            "direction": "左侧留给真实标题/控件，右侧机器人肖像或平台场景；避免把进度、按钮做成图片。",
+            "source": "./interface-art.provenance.json；./src/art/ 下 V1/V2/V3 素材；",
+            "license": "来源说明见 ./THIRD_PARTY_NOTICES.md。参考截图不随游戏再分发；本卡不作新增版权结论。",
+            "file": "./src/art/platform-menu-v2.webp"
+          },
+          "image": ""
+        },
+        {
+          "id": "4d2d8a2a-a8cb-47c9-b86a-4e0c2b0c6ae8",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产资产 · 净化器",
+          "body": "【历史集成已验证】v8 三站任务完整跑通；规格按现有 provenance 核对。\n2026-10-23：构思板直接读取项目 GLB 与原贴图，缩略图加载通过；机器人旋转查看通过。这只验证素材预览，不替代游戏玩法、完整动画或设备验收。",
+          "status": "done",
+          "x": 400,
+          "y": 50,
+          "fields": {
+            "spec": "7,633 三角面；1024px WebP 贴图、Meshopt；独立游戏碰撞体，三个站点共用。",
+            "source": "./generated-assets/purifier.glb；./tripo-assets.provenance.json；./public-assets.json。",
+            "license": "按 ./THIRD_PARTY_NOTICES.md 保留 Tripo 生成来源与对应许可记录；不附账户或账单。",
+            "file": "./generated-assets/purifier.glb"
+          },
+          "image": ""
+        },
+        {
+          "id": "2f13b816-930f-4301-848e-981193424518",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产资产 · 巡逻机器人",
+          "body": "【历史集成已验证】asset-integration 记录约1.8m、18个骨骼名称、idle/run/walk；v8 完整战斗通过。来源 ./game-outline.json 与现有资产清单。\n2026-10-23：构思板直接读取项目 GLB 与原贴图，缩略图加载通过；机器人旋转查看通过。这只验证素材预览，不替代游戏玩法、完整动画或设备验收。",
+          "status": "done",
+          "x": 750,
+          "y": 50,
+          "fields": {
+            "spec": "11,786 三角面；1024px WebP、Meshopt；idle/walk/run 原地动画，位移由游戏控制。所有人形含影子身体用这套单独生成的骨架/动画。",
+            "source": "./generated-assets/patrol-robot.glb；./tripo-assets.provenance.json。",
+            "license": "保留 ./THIRD_PARTY_NOTICES.md；原始 Mixamo 人形/动画已排除，不因骨骼命名兼容而恢复旧文件。",
+            "file": "./generated-assets/patrol-robot.glb"
+          },
+          "image": ""
+        },
+        {
+          "id": "febe94e2-0536-4586-a3db-d6da7783b764",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产资产 · 加载与标题画面",
+          "body": "【历史界面已验证 · v8】1440×900、1054×840、1280×720、897×840、2560×1080；记录无浏览器错误/资源失败。\n【未验证】手机触控、真人视觉偏好；这些尺寸检查不等于移动端玩法验收。",
+          "status": "done",
+          "x": 50,
+          "y": 460,
+          "fields": {
+            "spec": "V1 全幅 WebP 背景 + V3 透明标题分层缩放；真实 UI 保留进度、按钮、提示与存档状态；语义标题可被读屏读取。V2 海报保留作参考/封面。",
+            "source": "./src/art/；./interface-art.provenance.json；历史界面记录见 ./game-outline.json 的 interface-v8。",
+            "license": "来源见项目许可说明；遵循 ./THIRD_PARTY_NOTICES.md。",
+            "file": "./src/art/robot-loading-v1.webp"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "7b23b345-d17f-4499-8c2f-95f08a420627",
+          "label": "加载完成",
+          "from": "1d58c280-781a-4263-913b-57fbffe8fb7b",
+          "to": "c0e1a3e3-ed60-4747-b144-d24ef55617b6"
+        },
+        {
+          "id": "d1bb2546-48aa-4fc0-9597-3470513aef16",
+          "label": "部署倒计时结束",
+          "from": "c0e1a3e3-ed60-4747-b144-d24ef55617b6",
+          "to": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457"
+        },
+        {
+          "id": "65ee8de7-8329-4e79-8e9e-426a231f56fa",
+          "label": "暂停",
+          "from": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457",
+          "to": "c3cc14ba-4837-457d-9a42-9b763b85cfe8"
+        },
+        {
+          "id": "9ea37dde-13f2-4b52-ae4e-71c11eaf0343",
+          "label": "继续",
+          "from": "c3cc14ba-4837-457d-9a42-9b763b85cfe8",
+          "to": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457"
+        },
+        {
+          "id": "577fc2c7-d9db-499d-ba5e-6a98d41d7802",
+          "label": "胜利 / 失败",
+          "from": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457",
+          "to": "7e3a917e-9d6e-4848-8398-92a62c947822"
+        },
+        {
+          "id": "d35a8dae-84d4-4fa0-8d04-4f5cef9ce0ce",
+          "label": "返回标题",
+          "from": "7e3a917e-9d6e-4848-8398-92a62c947822",
+          "to": "c0e1a3e3-ed60-4747-b144-d24ef55617b6"
+        },
+        {
+          "id": "c2a04ff7-47ac-48b9-8e68-6188eb0a0f8e",
+          "label": "失败",
+          "from": "1d58c280-781a-4263-913b-57fbffe8fb7b",
+          "to": "47e31188-4021-435b-b1f7-485c4f8708d8"
+        },
+        {
+          "id": "fd39d175-a8f6-421b-ba31-93962f58ae37",
+          "label": "资源重试成功",
+          "from": "47e31188-4021-435b-b1f7-485c4f8708d8",
+          "to": "3caa9ab1-5dc5-4f46-af74-6e7ff498f457"
+        },
+        {
+          "id": "38b2f78e-88b3-46f6-aab2-1933f50f6226",
+          "label": "三站完成",
+          "from": "c3da25c0-8fc5-423a-86b3-91f6429014a9",
+          "to": "ef82645f-93ab-468d-a646-68669414e5e1"
+        },
+        {
+          "id": "a4faf79b-1184-48cd-88ec-96db2823532b",
+          "label": "任务使用规则",
+          "from": "9311ea2b-7036-4a9f-ad85-9fc75d2b0643",
+          "to": "c3da25c0-8fc5-423a-86b3-91f6429014a9"
+        },
+        {
+          "id": "b9ffe3a5-4e0e-4984-8274-33287cf81a14",
+          "label": "任务使用规则",
+          "from": "2546894b-3a6b-4aaf-9c04-f140ecb38ba0",
+          "to": "ef82645f-93ab-468d-a646-68669414e5e1"
+        },
+        {
+          "id": "9c64af60-5845-4ce3-8124-0b469c7c10bb",
+          "label": "承载任务",
+          "from": "e674ae73-2079-4861-b266-c8ca4ceeb5c2",
+          "to": "c3da25c0-8fc5-423a-86b3-91f6429014a9"
+        },
+        {
+          "id": "40e33a55-3477-44bb-a65b-62682c49d8d2",
+          "label": "使用伤害规则",
+          "from": "1331ada6-33c5-43ea-bf6d-3bb48ba6c12f",
+          "to": "70f6e45d-f789-4523-a095-d4ac43a8cfe3"
+        },
+        {
+          "id": "e26bff71-0f5d-43a9-99a9-a0022aab0dad",
+          "label": "视觉方向",
+          "from": "0c771161-b34d-4f2c-8685-f86010b99f60",
+          "to": "febe94e2-0536-4586-a3db-d6da7783b764"
+        },
+        {
+          "id": "0a284c73-6480-4eae-a204-3e43e2fea7be",
+          "label": "守卫模型",
+          "from": "2f13b816-930f-4301-848e-981193424518",
+          "to": "1331ada6-33c5-43ea-bf6d-3bb48ba6c12f"
+        },
+        {
+          "id": "ebd25626-e5ed-4533-8a43-5cc838b02afe",
+          "label": "设备模型",
+          "from": "4d2d8a2a-a8cb-47c9-b86a-4e0c2b0c6ae8",
+          "to": "c3da25c0-8fc5-423a-86b3-91f6429014a9"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "star-letters": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "ac58e9aa-c844-413a-98ea-096ab45bfd88",
+      "title": "星野来信 · Web",
+      "tagline": "收信出发，拜访三颗星球上的朋友，让巨人的花园迎来迟到的春天。首次加载约 54 MB。",
+      "experience": "在小行星之间送信、照料花园，让邻居重新连接。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "9e25b2a6-3d2d-4c37-b79a-b7ab3dd9653b",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "在小行星之间送信、照料花园，让邻居重新连接。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "c8c42040-e8de-40cb-a9f3-eef665673433",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：首封信打开后进入照看第一朵花阶段，实际旧档恢复返回该任务；其余完整故事条件待验证。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "以探索、互动和世界状态推进任务；故事阶段由照花、零件、信标、邻星谜题及邀请推进。",
+            "example": "收到首封信后任务切换到照看第一朵花；完成任务改变状态，刷新不应丢失。"
+          },
+          "image": ""
+        },
+        {
+          "id": "1174e97a-628e-493f-b906-ab458c9c9aa6",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "2026-10-20没有重验完整故事通关、iPhone Safari、Android App WebView或低配性能；剧情与后期任务保持待验证。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "2026-10-20没有重验完整故事通关、iPhone Safari、Android App WebView或低配性能；剧情与后期任务保持待验证。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "e2998c72-53af-4827-ac38-f3eafe6a4ffd",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-20 / web-release-2026-10-20 / 81acaed073b42fc834e30dff38d5c891e237a08b682feaa20085b6fb9c455f66：2026-10-20：浏览器横竖屏、多指、取消/失焦；Android 实机实际行走、花朵对话、首封信与旧档恢复通过；正式站点下载后断网进入实际3D场景。\n• 2026-10-20 / save-migration-2026-10-20 / 未记录构建指纹：旧地址最近记录优先、原件保留、新地址不覆盖、其他游戏不迁移通过。\n• 2026-10-20 / touch-validation-note / 未记录构建指纹：浏览器触摸与Android 实机首封信实玩，完整故事未重验；最终包USB真机不计手机公网验收。\n• 2026-10-19 / loading-recovery-2026-10-19 / 4868ae27e4f85cbae571943620644b804f2dbd5d33c527b081f274851d90aac1：曾有线上HTTP/3冷启动超时；分块校验/重试和站点协议调整后，默认Chrome三次独立冷启5.516/5.365/5.631秒并真实移动。只代表当时机器网络。未测全剧情。\n• 2026-10-19 / loading-browser-2026-10-19 / 4868ae27e4f85cbae571943620644b804f2dbd5d33c527b081f274851d90aac1：最终默认Chrome三次独立冷启动记录；h2、53块、无重试，随后实际3D移动。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "bbdb4029-fd78-42a6-b162-9451eff724e9",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：浏览器844×390与390×844多指/环视/取消/失焦；Android 实机行走、花朵对话、开信通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "Web左侧摇杆行走，空白拖动环视，可双指同时进行；互动/继续/收起/翻面/全景/复位；键盘鼠标仍保留。",
+            "example": "收到首封信后任务切换到照看第一朵花；完成任务改变状态，刷新不应丢失。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "0df35feb-411c-4fff-978a-32b19ad14cf9",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：正式站Web加载到3D场景；首封信与对话已验，完整故事结局未重验。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "加载Unity Web→继续／新游戏→探索／对话／读信→自动保存；失焦后台释放按键。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "9ef81aeb-2684-416d-b790-dd34fb6ac25a",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：最近旧地址记录优先，保留原件，不覆盖新地址，其他游戏不迁移；正式站下载后断网冷启到3D场景。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "Web PlayerPrefs迁移仅复制已知旧地址最新存档，保留旧原件，不覆盖新地址记录，不扫描其他游戏。"
+          },
+          "image": ""
+        },
+        {
+          "id": "fb0bb466-4e83-4a98-9871-878292b8970e",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：家园首封信范围已验；邻星谜题、巨人花园至结局的完整Web游玩仍待逐项验收。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "idea",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "家园→邻星风与灌溉谜题→巨人花园邀请→开门种花敲铃→回信；结局后可旅行。",
+            "config": "家园→邻星风与灌溉谜题→巨人花园邀请→开门种花敲铃→回信；结局后可旅行。",
+            "rhythm": "在小行星之间送信、照料花园，让邻居重新连接。",
+            "completion": "加载Unity Web→继续／新游戏→探索／对话／读信→自动保存；失焦后台释放按键。"
+          },
+          "image": ""
+        },
+        {
+          "id": "a0f474dc-803b-49e9-8604-228057a118b6",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "保留Unity Web交付的55个引擎与素材文件指纹；触摸层仅改Web输入。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "保留Unity Web交付的55个引擎与素材文件指纹；触摸层仅改Web输入。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "1976c8b8-1e01-4f7b-9bd2-5e0cdac94b8f",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：2026-10-20没有重验完整故事通关、iPhone Safari、Android App WebView或低配性能；剧情与后期任务保持待验证。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "保留Unity Web交付的55个引擎与素材文件指纹；触摸层仅改Web输入。",
+            "source": "./LICENSE\n./THIRD_PARTY_NOTICES.md\n./index.html\n./web/touch.js",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c80272d4-520d-40b3-9e3a-84c584d8e8f9",
+          "type": "story",
+          "section": "world",
+          "title": "三颗星的回信",
+          "body": "现有剧情：家园来信、邻星协作、巨人花园、春天与最终回信。2026-10-20触屏验证没有覆盖完整故事。",
+          "status": "idea",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "chapter": "家园→邻星→巨人花园",
+            "event": "照花、修复信标与邀请邻居连接世界",
+            "branch": "结局后仍可旅行；未据本轮记录确认全部分支。"
+          },
+          "image": ""
+        },
+        {
+          "id": "aa602a72-c586-47d4-a70a-54b467246260",
+          "type": "quest",
+          "section": "world",
+          "title": "第一封信",
+          "body": "历史已验证：Android 实机首封信和任务恢复。\n证据与边界：./game-outline.json",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "giver": "信件/角色任务提示",
+            "location": "家园信箱",
+            "requires": "到达当前故事阶段",
+            "objective": "到信箱互动打开首封信",
+            "completion": "首封信打开",
+            "changes": "下一任务变为照看第一朵花"
+          },
+          "image": ""
+        },
+        {
+          "id": "b0db7d62-20fb-42bc-8bf1-bf7dcb877c04",
+          "type": "quest",
+          "section": "world",
+          "title": "照看花圃",
+          "body": "设计已记录，完整完成条件与运行表现待逐项验证。\n证据与边界：./game-outline.json",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "giver": "信件/角色任务提示",
+            "location": "家园",
+            "requires": "到达当前故事阶段",
+            "objective": "照看第一朵花，继续收集零件/修复信标",
+            "completion": "按任务提示完成对应互动",
+            "changes": "推进家园阶段"
+          },
+          "image": ""
+        },
+        {
+          "id": "5f1f56b1-d0ec-4a2e-8be7-0774c301ea87",
+          "type": "quest",
+          "section": "world",
+          "title": "邻星协作与回信",
+          "body": "设计已记录，完整完成条件与运行表现待逐项验证。\n证据与边界：./game-outline.json",
+          "status": "idea",
+          "x": 60,
+          "y": 410,
+          "fields": {
+            "giver": "信件/角色任务提示",
+            "location": "邻星/巨人花园",
+            "requires": "到达当前故事阶段",
+            "objective": "解风与灌溉谜题，邀请、开门、种花、敲铃",
+            "completion": "完成对应世界状态条件",
+            "changes": "春天/最终回信与后续旅行"
+          },
+          "image": ""
+        },
+        {
+          "id": "1723a727-5270-4901-971b-916cf8cf973b",
+          "type": "place",
+          "section": "world",
+          "title": "星际花园",
+          "body": "区域背景来自现有故事设计，具体对象位置待后续关卡验收。",
+          "status": "doing",
+          "x": 410,
+          "y": 410,
+          "fields": {
+            "kind": "小行星与花园",
+            "detail": "家园、邻星、巨人花园；不要把故事事件直接当玩家任务完成证据。"
+          },
+          "image": ""
+        },
+        {
+          "id": "1757cc7a-98f8-4981-982a-e451401e0e46",
+          "type": "state",
+          "section": "flow",
+          "title": "下载、校验与异常恢复",
+          "body": "已验证（2026-10-19）：17项下载器/离线测试；浏览器断流、内容损坏、持续503与手动继续后进入3D。HTTP/3低速失败被保留，协议调整后的三次默认Chrome冷启通过。\n证据：./game-outline.json\n待验证：跨地区、低配与未来重新启用HTTP/3后的表现。",
+          "status": "done",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "entry": "首次加载或恢复中断下载。",
+            "exit": "53个最多1MiB分块逐个校验后启动Unity。",
+            "recovery": "并发3；无进展12秒或总计45秒中断，每块最多4次；复用已校验缓存，失败可继续接收，启动失败重新打开。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "efea95cf-1cf6-46e0-941e-32476fe41ea0",
+          "label": "规则用于关卡",
+          "from": "c8c42040-e8de-40cb-a9f3-eef665673433",
+          "to": "fb0bb466-4e83-4a98-9871-878292b8970e"
+        },
+        {
+          "id": "e60b4b62-84e6-4290-9fea-881abceca2fa",
+          "label": "操作驱动状态",
+          "from": "bbdb4029-fd78-42a6-b162-9451eff724e9",
+          "to": "0df35feb-411c-4fff-978a-32b19ad14cf9"
+        },
+        {
+          "id": "a3c817a6-fc51-4254-aeae-20ba78374c5a",
+          "label": "暂停与恢复",
+          "from": "0df35feb-411c-4fff-978a-32b19ad14cf9",
+          "to": "9ef81aeb-2684-416d-b790-dd34fb6ac25a"
+        },
+        {
+          "id": "909f8039-dd62-485a-87fa-71ed3ce1cd32",
+          "label": "方向落实到素材",
+          "from": "a0f474dc-803b-49e9-8604-228057a118b6",
+          "to": "1976c8b8-1e01-4f7b-9bd2-5e0cdac94b8f"
+        },
+        {
+          "id": "07051ab5-7e07-4ac9-b797-17cc11816536",
+          "label": "补验后回写",
+          "from": "1174e97a-628e-493f-b906-ab458c9c9aa6",
+          "to": "e2998c72-53af-4827-ac38-f3eafe6a4ffd"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "neon-shooter": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "54fef6a0-1485-43cb-bc11-088ff76b5780",
+      "title": "霓虹突围 · Web",
+      "tagline": "躲开弹幕，收集强化，迎战每三波出现的首领。",
+      "experience": "自由走位躲弹，用持续自动射击突破波次。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "f91ede83-3b44-43e5-80af-3e05807243c5",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "自由走位躲弹，用持续自动射击突破波次。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "69bdad9a-ed4d-4929-80be-163574bf45ed",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：自动开火和保留的波次/武器规则；碰撞、伤害和拾取以隔离schema1夹具验证，非长线全Boss通关。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "战斗中持续自动开火，暂停/死亡停火；波次推进，敌人和掉落影响生命及武器等级。",
+            "example": "站定仍持续发射；暂停后弹幕和伤害冻结；松开拖动立即停止移动。"
+          },
+          "image": ""
+        },
+        {
+          "id": "683652b0-eb58-4b9e-a073-49af691b1da1",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "碰撞/拾取夹具不代表长线自然打完整Boss循环；用户手感评价待收集；iOS未验。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "碰撞/拾取夹具不代表长线自然打完整Boss循环；用户手感评价待收集；iOS未验。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "04a9a697-76c1-4af6-bd5c-efa29b418966",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-20 / neon-controls-2026-10-20 / 14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4：14e5e7版实际键盘/鼠标/触摸、Android 实机原生输入通过；暂停/死亡/重试、旧包进度、正常更新、浏览器离线及整机断网冷启动通过。\n• 2026-10-20 / neon-controls-2026-10-20-browser-result.json / 14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / neon-controls-2026-10-20-phone.json / 14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / neon-controls-2026-10-20-production-result.json / 14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "aa6f283a-41ac-4669-a3bb-1dedaf9db39e",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：14e5e7版实际键盘/鼠标/触摸及Android 实机输入；相对拖动、松手、旋转位置保持通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "WASD/方向键、鼠标/触摸相对拖动双轴；无开火按钮；旋转保位置并清控制。",
+            "example": "站定仍持续发射；暂停后弹幕和伤害冻结；松开拖动立即停止移动。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "e3afaaf7-2289-46a4-b32a-1274aa20f04a",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：暂停/继续、死亡/重试、背景释放控制通过；当前记录不证明所有波次自然通关。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "战斗→击破波次/Boss→下一波；生命耗尽→失败/重试；失焦暂停显式继续。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "9fe7741c-1da3-4792-a89c-6debd631818c",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：旧包checkpoint兼容、正常下载更新、浏览器离线及整机断网冷启通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "v1原键保存最高分、音效和当前局；定时/暂停保存；旧包进度接续。"
+          },
+          "image": ""
+        },
+        {
+          "id": "d2eea73c-80e6-4cc0-88c2-ffe0f5110c32",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：4敌人/3波Boss/3级武器为当前配置；长线波次平衡待验证。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "4类敌人，每3波Boss，武器最高3级；碰撞与拾取用隔离schema1夹具验证。",
+            "config": "4类敌人，每3波Boss，武器最高3级；碰撞与拾取用隔离schema1夹具验证。",
+            "rhythm": "自由走位躲弹，用持续自动射击突破波次。",
+            "completion": "战斗→击破波次/Boss→下一波；生命耗尽→失败/重试；失焦暂停显式继续。"
+          },
+          "image": ""
+        },
+        {
+          "id": "e0e1a6be-44a2-4df7-bf17-5442226f9859",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "深空既有美术与6项素材许可文件字节一致；本地音效，无新增外部素材。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "深空既有美术与6项素材许可文件字节一致；本地音效，无新增外部素材。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "eb37eecd-3c43-4d41-a591-882c881e9610",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：碰撞/拾取夹具不代表长线自然打完整Boss循环；用户手感评价待收集；iOS未验。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "深空既有美术与6项素材许可文件字节一致；本地音效，无新增外部素材。",
+            "source": "./public/LICENSE.txt\n./public/index.html\n./public/owngame.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "24fabcdd-6489-4a52-8fa9-f6b746bd66a1",
+          "label": "规则用于关卡",
+          "from": "69bdad9a-ed4d-4929-80be-163574bf45ed",
+          "to": "d2eea73c-80e6-4cc0-88c2-ffe0f5110c32"
+        },
+        {
+          "id": "c84b1f28-c789-4c49-aa99-0b08c46bd6e0",
+          "label": "操作驱动状态",
+          "from": "aa6f283a-41ac-4669-a3bb-1dedaf9db39e",
+          "to": "e3afaaf7-2289-46a4-b32a-1274aa20f04a"
+        },
+        {
+          "id": "55002821-2016-4550-a92b-92fa929a4f37",
+          "label": "暂停与恢复",
+          "from": "e3afaaf7-2289-46a4-b32a-1274aa20f04a",
+          "to": "9fe7741c-1da3-4792-a89c-6debd631818c"
+        },
+        {
+          "id": "1700c224-9fea-45c7-8623-85c3961e72bb",
+          "label": "方向落实到素材",
+          "from": "e0e1a6be-44a2-4df7-bf17-5442226f9859",
+          "to": "eb37eecd-3c43-4d41-a591-882c881e9610"
+        },
+        {
+          "id": "73f70164-e151-4fe3-a18f-11a8b47f0d65",
+          "label": "补验后回写",
+          "from": "683652b0-eb58-4b9e-a073-49af691b1da1",
+          "to": "04a9a697-76c1-4af6-bd5c-efa29b418966"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "faune-dungeon": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "1c8a278b-40bf-4100-83a6-0f9adb998b91",
+      "title": "法恩探险 · Web",
+      "tagline": "穿过五段各具挑战的遗迹，收集符印、避开机关，迎战林心守卫。",
+      "experience": "探索五章地牢，收集宝箱与封印，带着进度回营。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "866f5e22-c6cc-490a-8dce-1ab40611d43b",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "探索五章地牢，收集宝箱与封印，带着进度回营。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "6f2dcecf-457d-45ea-8bde-8a74387531f0",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：campaign构建五章自然键盘通关，封印/陷阱/多击守卫/Boss和解锁通过；摇杆版保留数据并做伤害回归。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "移动探索、接近互动、自动匕首攻击；机关预警后生效；出口必须满足本章宝箱/封印和Boss条件。",
+            "example": "终章未击败守卫时出口不能完成；机关橙色预警后再伤害；暂停冻结战斗。"
+          },
+          "image": ""
+        },
+        {
+          "id": "660b9aeb-691e-48c3-b4f2-8e4c865da1f5",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "五章完整通关属早期campaign构建；最新摇杆版保持章节数据，做定向输入/伤害回归。用户手感与iOS待验。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "五章完整通关属早期campaign构建；最新摇杆版保持章节数据，做定向输入/伤害回归。用户手感与iOS待验。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "1adffb99-752d-4694-9553-b606e18cd47c",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-20 / faune-campaign-2026-10-20 / baf4386ea9131ada28a2109444dc8e0aa9593da36ca89827f1eee29adab38efb：campaign版五章以自然键盘输入通关、解锁/评星/重玩/迁移通过；91aa37摇杆版浏览器和Android 实机持续按住、反向、低速、HOME清输入、全断网冷恢复通过。\n• 2026-10-20 / faune-campaign-2026-10-20-browser.json / baf4386ea9131ada28a2109444dc8e0aa9593da36ca89827f1eee29adab38efb：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / faune-campaign-2026-10-20-phone.json / baf4386ea9131ada28a2109444dc8e0aa9593da36ca89827f1eee29adab38efb：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / faune-campaign-2026-10-20-production-result.json / baf4386ea9131ada28a2109444dc8e0aa9593da36ca89827f1eee29adab38efb：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / faune-joystick-2026-10-20 / 91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97：campaign版五章以自然键盘输入通关、解锁/评星/重玩/迁移通过；91aa37摇杆版浏览器和Android 实机持续按住、反向、低速、HOME清输入、全断网冷恢复通过。\n• 2026-10-20 / faune-joystick-2026-10-20-browser.json / 91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / faune-joystick-2026-10-20-phone.json / 91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n• 2026-10-20 / faune-joystick-2026-10-20-production-result.json / 91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97：该轮实际输入/生产检查的原始报告指纹；范围见该轮验收摘要。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "75b536ba-ed22-40d1-9691-963da78a4315",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：91aa37摇杆版：Android 实机持续贴边、释放、反向、半速、旋转与HOME清输入通过；浏览器死区/斜向速度检查。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "8px死区、48px满速浮动摇杆；持续按住可走，松手停；斜向归一最高100单位/秒；WASD/Esc。",
+            "example": "终章未击败守卫时出口不能完成；机关橙色预警后再伤害；暂停冻结战斗。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "a4d10b1d-2c40-415d-b3df-fdf7d3d2f2d0",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：五章通关、战役结束、重载保留评星/解锁、选章重玩通过；完整战役属于campaign构建。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "选已解锁章节→探索收集→出口完成→补3心并解锁下一章→重玩评星。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "912a5b69-ca81-4160-bf1c-e9c0665d0840",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：v1夹具迁移保留原文本；v2独立章节检查点；摇杆版实际旧包更新、全断网冷恢复及继续游玩通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "v2分章节检查点；迁移v1且保留原文本；已完成v1可解锁第二章；旋转/失焦/暂停清输入。"
+          },
+          "image": ""
+        },
+        {
+          "id": "badf8de6-055b-4216-9e1c-58582e13b6ed",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：五章不同图结构自然键盘完成；最新摇杆版23项美术/引擎许可及章节规则保留，不重复声称五章重跑。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。\n当前配置：./src/levels.ts",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "五章：苔庭入口、双环回廊、9室机关水道、封印书库、林心圣殿；数量/目标写在各章卡。",
+            "config": "五章：苔庭入口、双环回廊、9室机关水道、封印书库、林心圣殿；数量/目标写在各章卡。",
+            "rhythm": "探索五章地牢，收集宝箱与封印，带着进度回营。",
+            "completion": "选已解锁章节→探索收集→出口完成→补3心并解锁下一章→重玩评星。"
+          },
+          "image": ""
+        },
+        {
+          "id": "38ace713-87f2-4ad4-a896-6fbca3935776",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "保留现有地牢素材、23项美术引擎许可文件；摇杆改动不换美术。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "保留现有地牢素材、23项美术引擎许可文件；摇杆改动不换美术。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "84622705-1630-4fa3-adb6-3ed141a27531",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：五章完整通关属早期campaign构建；最新摇杆版保持章节数据，做定向输入/伤害回归。用户手感与iOS待验。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "保留现有地牢素材、23项美术引擎许可文件；摇杆改动不换美术。",
+            "source": "./LICENSE",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        },
+        {
+          "id": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+          "type": "place",
+          "section": "world",
+          "title": "五章地牢与营地",
+          "body": "章节之间通过出口和营地连接，地图结构与任务条件分开记录。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "kind": "地牢/营地",
+            "detail": "每章独立检查点；通关解锁下一章并恢复生命。"
+          },
+          "image": ""
+        },
+        {
+          "id": "aba78a8a-fa15-49a6-98b9-10e91cfcbe73",
+          "type": "quest",
+          "section": "world",
+          "title": "苔庭入口 · 玩家任务",
+          "body": "历史campaign版自然键盘通关；最新摇杆版保留章节数据并做输入回归。\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "giver": "章节目标提示",
+            "location": "苔庭入口",
+            "requires": "已解锁该章",
+            "objective": "3个宝箱",
+            "completion": "回营出口开放且玩家到达",
+            "changes": "保存本章完成/评星，解锁后续章节；终章完成战役。"
+          },
+          "image": ""
+        },
+        {
+          "id": "428c5638-0846-4566-8ef8-beeb7055390c",
+          "type": "level",
+          "section": "levels",
+          "title": "苔庭入口 · 空间与配置",
+          "body": "承接旧v1未完进度\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "space": "苔庭入口",
+            "config": "承接旧v1未完进度；3个宝箱",
+            "rhythm": "探索收集→遇敌/机关→返回出口",
+            "completion": "回营出口"
+          },
+          "image": ""
+        },
+        {
+          "id": "d1da7177-8b08-443b-acab-7a20ffdc74d1",
+          "type": "quest",
+          "section": "world",
+          "title": "双环回廊 · 玩家任务",
+          "body": "历史campaign版自然键盘通关；最新摇杆版保留章节数据并做输入回归。\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+          "status": "done",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "giver": "章节目标提示",
+            "location": "双环回廊",
+            "requires": "已解锁该章",
+            "objective": "3宝箱＋2封印",
+            "completion": "出口开放且玩家到达",
+            "changes": "保存本章完成/评星，解锁后续章节；终章完成战役。"
+          },
+          "image": ""
+        },
+        {
+          "id": "4f8e2f95-a121-4e06-835a-6a6c4862a22d",
+          "type": "level",
+          "section": "levels",
+          "title": "双环回廊 · 空间与配置",
+          "body": "猎手与双环路线\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+          "status": "doing",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "space": "双环回廊",
+            "config": "66×40地图、6房间、3宝箱、2符印、5敌人；目标时间130秒。",
+            "rhythm": "探索收集→遇敌/机关→返回出口",
+            "completion": "出口"
+          },
+          "image": ""
+        },
+        {
+          "id": "a5d0a271-e326-476a-84bb-9e69127bdc49",
+          "type": "quest",
+          "section": "world",
+          "title": "机关水道 · 玩家任务",
+          "body": "历史campaign版自然键盘通关；最新摇杆版保留章节数据并做输入回归。\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+          "status": "done",
+          "x": 60,
+          "y": 410,
+          "fields": {
+            "giver": "章节目标提示",
+            "location": "机关水道",
+            "requires": "已解锁该章",
+            "objective": "3只宝箱＋2枚符印",
+            "completion": "收齐后东南出口开启，玩家到达出口",
+            "changes": "保存本章完成/评星，解锁后续章节；终章完成战役。"
+          },
+          "image": ""
+        },
+        {
+          "id": "493cdb5e-b92d-46fa-9b0e-8bebb29d9600",
+          "type": "level",
+          "section": "levels",
+          "title": "机关水道 · 空间与配置",
+          "body": "9房间，机关1.2秒橙色预警\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+          "status": "doing",
+          "x": 60,
+          "y": 410,
+          "fields": {
+            "space": "机关水道",
+            "config": "62×54地图、9房间、3宝箱、2符印、5机关、6敌人；目标时间165秒。",
+            "rhythm": "探索收集→遇敌/机关→返回出口",
+            "completion": "出口"
+          },
+          "image": ""
+        },
+        {
+          "id": "f057ef8b-04fc-40ef-b8e7-b5190f88eace",
+          "type": "quest",
+          "section": "world",
+          "title": "封印书库 · 玩家任务",
+          "body": "历史campaign版自然键盘通关；最新摇杆版保留章节数据并做输入回归。\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+          "status": "done",
+          "x": 410,
+          "y": 410,
+          "fields": {
+            "giver": "章节目标提示",
+            "location": "封印书库",
+            "requires": "已解锁该章",
+            "objective": "4宝箱＋3封印",
+            "completion": "出口开放且玩家到达",
+            "changes": "保存本章完成/评星，解锁后续章节；终章完成战役。"
+          },
+          "image": ""
+        },
+        {
+          "id": "9656d0ab-99ec-4ba9-aa4a-8f621f592cae",
+          "type": "level",
+          "section": "levels",
+          "title": "封印书库 · 空间与配置",
+          "body": "金色守卫需2次命中\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+          "status": "doing",
+          "x": 410,
+          "y": 410,
+          "fields": {
+            "space": "封印书库",
+            "config": "64×51地图、7房间、4宝箱、3符印、2机关、6敌人；目标时间180秒。",
+            "rhythm": "探索收集→遇敌/机关→返回出口",
+            "completion": "出口"
+          },
+          "image": ""
+        },
+        {
+          "id": "7d3cea94-73a2-48bd-a27a-92d55574177a",
+          "type": "quest",
+          "section": "world",
+          "title": "林心圣殿 · 玩家任务",
+          "body": "历史campaign版自然键盘通关；最新摇杆版保留章节数据并做输入回归。\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+          "status": "done",
+          "x": 760,
+          "y": 410,
+          "fields": {
+            "giver": "章节目标提示",
+            "location": "林心圣殿",
+            "requires": "已解锁该章",
+            "objective": "3只宝箱＋2枚符印＋击败林心守卫",
+            "completion": "收齐并击败守卫后，圣殿中央出口开启，玩家到达出口",
+            "changes": "保存本章完成/评星，解锁后续章节；终章完成战役。"
+          },
+          "image": ""
+        },
+        {
+          "id": "9f1a355b-59ba-402b-b0bd-ac536dd6ddea",
+          "type": "level",
+          "section": "levels",
+          "title": "林心圣殿 · 空间与配置",
+          "body": "守卫10生命，射线/冲锋/扇形，半血加速\n证据：./game-outline.json\n当前配置：./src/levels.ts",
+          "status": "doing",
+          "x": 760,
+          "y": 410,
+          "fields": {
+            "space": "林心圣殿",
+            "config": "62×48地图、5房间、3宝箱、2符印、2机关、3敌人（含林心守卫）；目标时间190秒。",
+            "rhythm": "探索收集→遇敌/机关→返回出口",
+            "completion": "终章出口"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "610a225e-0fde-4147-b339-8d559cdfc9fb",
+          "label": "规则用于关卡",
+          "from": "6f2dcecf-457d-45ea-8bde-8a74387531f0",
+          "to": "badf8de6-055b-4216-9e1c-58582e13b6ed"
+        },
+        {
+          "id": "75d8f8cc-25f4-440b-ba43-bbf160fb0a1d",
+          "label": "操作驱动状态",
+          "from": "75b536ba-ed22-40d1-9691-963da78a4315",
+          "to": "a4d10b1d-2c40-415d-b3df-fdf7d3d2f2d0"
+        },
+        {
+          "id": "b65f07bf-9b93-47d2-95e9-3e895c4b4b71",
+          "label": "暂停与恢复",
+          "from": "a4d10b1d-2c40-415d-b3df-fdf7d3d2f2d0",
+          "to": "912a5b69-ca81-4160-bf1c-e9c0665d0840"
+        },
+        {
+          "id": "aae1a860-dd00-4616-80eb-9b2606521e8b",
+          "label": "方向落实到素材",
+          "from": "38ace713-87f2-4ad4-a896-6fbca3935776",
+          "to": "84622705-1630-4fa3-adb6-3ed141a27531"
+        },
+        {
+          "id": "40b53b42-1899-4381-bd54-092d10c856fb",
+          "label": "补验后回写",
+          "from": "660b9aeb-691e-48c3-b4f2-8e4c865da1f5",
+          "to": "1adffb99-752d-4694-9553-b606e18cd47c"
+        },
+        {
+          "id": "3b74ed3c-dca9-4308-aba5-8bd4fa04efe5",
+          "label": "承载玩家任务",
+          "from": "428c5638-0846-4566-8ef8-beeb7055390c",
+          "to": "aba78a8a-fa15-49a6-98b9-10e91cfcbe73"
+        },
+        {
+          "id": "6a1fe528-4300-4422-a864-2dea8a06fbeb",
+          "label": "发生于此地牢",
+          "from": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+          "to": "aba78a8a-fa15-49a6-98b9-10e91cfcbe73"
+        },
+        {
+          "id": "af1aae86-2110-4726-a657-4991e68e252b",
+          "label": "承载玩家任务",
+          "from": "4f8e2f95-a121-4e06-835a-6a6c4862a22d",
+          "to": "d1da7177-8b08-443b-acab-7a20ffdc74d1"
+        },
+        {
+          "id": "666c6241-67fb-4d68-92a4-47990945858e",
+          "label": "发生于此地牢",
+          "from": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+          "to": "d1da7177-8b08-443b-acab-7a20ffdc74d1"
+        },
+        {
+          "id": "eee8e03e-6294-4929-a967-cf5a4ace3d16",
+          "label": "承载玩家任务",
+          "from": "493cdb5e-b92d-46fa-9b0e-8bebb29d9600",
+          "to": "a5d0a271-e326-476a-84bb-9e69127bdc49"
+        },
+        {
+          "id": "d2b55bdd-fd07-4615-8f7a-f7030f13d6ba",
+          "label": "发生于此地牢",
+          "from": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+          "to": "a5d0a271-e326-476a-84bb-9e69127bdc49"
+        },
+        {
+          "id": "f9b4d34a-e1dd-4bff-8488-8519f3143f45",
+          "label": "承载玩家任务",
+          "from": "9656d0ab-99ec-4ba9-aa4a-8f621f592cae",
+          "to": "f057ef8b-04fc-40ef-b8e7-b5190f88eace"
+        },
+        {
+          "id": "e0d29463-3f69-436c-8d2f-06f8ba58d7e6",
+          "label": "发生于此地牢",
+          "from": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+          "to": "f057ef8b-04fc-40ef-b8e7-b5190f88eace"
+        },
+        {
+          "id": "77623fa3-fdbb-47e9-8967-1934a4d4a8c4",
+          "label": "承载玩家任务",
+          "from": "9f1a355b-59ba-402b-b0bd-ac536dd6ddea",
+          "to": "7d3cea94-73a2-48bd-a27a-92d55574177a"
+        },
+        {
+          "id": "2da4c55d-7553-4890-9b9c-fa3069667d60",
+          "label": "发生于此地牢",
+          "from": "d6a92901-1db7-4ef4-9a8e-9366020ce753",
+          "to": "7d3cea94-73a2-48bd-a27a-92d55574177a"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "wind-chime-memory": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "057f4dcc-d22d-42a5-be50-b0b1f6cd402b",
+      "title": "风铃回响 · Web",
+      "tagline": "听一段风铃，再把旋律轻轻敲回来。三档挑战，自动保存，静音也能玩。",
+      "experience": "听看铃序并复奏，用节奏与记忆逐轮推进。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "6e817849-2beb-41d3-98e1-bf064bd89170",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "听看铃序并复奏，用节奏与记忆逐轮推进。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "c2a2cb40-f32d-4646-a444-932c340136da",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：build-01三档各6轮、6次成功双铃、错铃、早放及超500ms失败通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "铃序每轮增长；困难模式40%双铃，两指需在500ms内按下且首指保持，提前松开或错铃失败。",
+            "example": "双铃提示后首指按住、500ms内第二指按下才成功；超过500ms或首指提前松开失败。"
+          },
+          "image": ""
+        },
+        {
+          "id": "2d1f066f-747e-4de6-a21e-d2a66204ffd9",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "用户运行手感、声音评价待收集；完整玩法属build-01，build-03只做遮罩/暂停/刷新定向回归。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "用户运行手感、声音评价待收集；完整玩法属build-01，build-03只做遮罩/暂停/刷新定向回归。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "6f2e8186-c63e-4f53-9fe8-cc8bd6b55dff",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / 2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995：build-01三档各6轮、6次双铃、错铃/早放/>500ms/键盘/静音/旧档通过；build-03两视口遮罩与恢复通过，随后真机/离线集中补验。\n• 2026-10-18 / support-1 / 74046413d32e31e0f63f83d88e5d97eef43bee64eb091358f2864c5a761a9b20：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / 20faa680c4c92702c34df8e5a505fc5c57550c0b3f6c732e0d7e0d55aafd76a2：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / 2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-5 / 2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / 2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / 2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-18 / consolidated-release-2026-10-18 / 2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "a7190586-d64d-4058-ab69-83ffcc5507d1",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：真实双指/键盘、按住反馈、播放锁、静音和拖动取消通过；build-03只测遮罩布局恢复。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "触摸铃、键盘和静音；播放阶段锁输入，拖出取消；暂停清除半次双铃。",
+            "example": "双铃提示后首指按住、500ms内第二指按下才成功；超过500ms或首指提前松开失败。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "03aaf7b9-fc1b-4c7f-8c5f-38db739b3873",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：build-01正确复奏推进及错误结束；build-03两个安全区视口暂停/刷新/继续通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "播放→复奏→成功加长／失误结束→重来；暂停后重播本轮。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c6b5df16-464e-4c97-97f6-9c06d9cf35dc",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：旧档、后台和刷新保分重播通过；后续2d9d8b版本真机下载、全断网冷恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "schema1保存序列/RNG/分数/最佳/静音/简洁；后台或刷新保分并重播当前轮。"
+          },
+          "image": ""
+        },
+        {
+          "id": "73cf2632-b642-4e54-ae36-1db58eec9a32",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：三档各6轮为历史范围；更长序列与长期难度未做完整覆盖。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "三档3/4/4铃；历史3档各完成6轮，不能等同无限长度覆盖。",
+            "config": "三档3/4/4铃；历史3档各完成6轮，不能等同无限长度覆盖。",
+            "rhythm": "听看铃序并复奏，用节奏与记忆逐轮推进。",
+            "completion": "播放→复奏→成功加长／失误结束→重来；暂停后重播本轮。"
+          },
+          "image": ""
+        },
+        {
+          "id": "df24acb8-adfd-4972-89ed-408e671ecb07",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "C陶铃庭院、4张铃图和本地合成音效；build-03修弹层遮罩覆盖安全区。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "C陶铃庭院、4张铃图和本地合成音效；build-03修弹层遮罩覆盖安全区。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "8784cab8-f021-4f5a-ab5c-27ff244c7338",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：用户运行手感、声音评价待收集；完整玩法属build-01，build-03只做遮罩/暂停/刷新定向回归。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "C陶铃庭院、4张铃图和本地合成音效；build-03修弹层遮罩覆盖安全区。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "25148ae9-6596-4168-8169-e21f8af7c0db",
+          "label": "规则用于关卡",
+          "from": "c2a2cb40-f32d-4646-a444-932c340136da",
+          "to": "73cf2632-b642-4e54-ae36-1db58eec9a32"
+        },
+        {
+          "id": "1c256f0e-5535-470f-9b53-9344524042bb",
+          "label": "操作驱动状态",
+          "from": "a7190586-d64d-4058-ab69-83ffcc5507d1",
+          "to": "03aaf7b9-fc1b-4c7f-8c5f-38db739b3873"
+        },
+        {
+          "id": "1c8f28ff-c589-4a32-b88e-29c458161689",
+          "label": "暂停与恢复",
+          "from": "03aaf7b9-fc1b-4c7f-8c5f-38db739b3873",
+          "to": "c6b5df16-464e-4c97-97f6-9c06d9cf35dc"
+        },
+        {
+          "id": "90ba3c55-e033-4f33-948b-39bc3d64fc10",
+          "label": "方向落实到素材",
+          "from": "df24acb8-adfd-4972-89ed-408e671ecb07",
+          "to": "8784cab8-f021-4f5a-ab5c-27ff244c7338"
+        },
+        {
+          "id": "9acaf7c9-eeed-4cfe-b7df-8e54487256ef",
+          "label": "补验后回写",
+          "from": "2d1f066f-747e-4de6-a21e-d2a66204ffd9",
+          "to": "6f2e8186-c63e-4f53-9fe8-cc8bd6b55dff"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "postcard-slide": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "495acd0c-7a58-4574-b1b7-b6a86326a9a9",
+      "title": "山城来信 · Web",
+      "tagline": "滑动一枚枚纸片，拼回落日里的山城。",
+      "experience": "把山城明信片逐行滑回完整画面。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "9eace67b-e0cb-47c2-bcc1-9b896921805c",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "把山城明信片逐行滑回完整画面。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "533cf9dc-de49-41f5-9322-5d5bc6ce1c77",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：300种子、1500长局移动通过；非法点击、同行列滑动和撤销已由实际输入验证。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "一个空格；点同一行/列可连续滑动整段。以合法步打乱确保可解。",
+            "example": "点空格同一行远处拼片应整段移动；非同行列不变；撤销回到前一步。"
+          },
+          "image": ""
+        },
+        {
+          "id": "a4e59d5a-9560-4ccd-9e61-5babc7cf73c8",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "用户对成品美术、手感与趣味待反馈；iOS与不同设备仍无普遍保证。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "用户对成品美术、手感与趣味待反馈；iOS与不同设备仍无普遍保证。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "644c3fa9-53e3-44de-8fdf-a9c803991cdc",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a：build-05：3档×4视口/安全区组合共12局，1517次实际触摸移动；规则300种子、1500长局移动；旧档/取消/旋转通过；后续真机离线补验。\n• 2026-10-18 / support-1 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-18 / consolidated-release-2026-10-18 / cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "c30eb5e4-c9dc-46ef-a8e2-e8c58d1a126f",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：1517次实际触摸移动；拖动取消、160ms锁、弹层键盘和旋转通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "点击／触摸拼片，160ms动画锁，拖动取消；原图对照与键盘弹层操作。",
+            "example": "点空格同一行远处拼片应整段移动；非同行列不变；撤销回到前一步。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "12bf61fd-c00f-4e3b-b3b9-4070afb99792",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：build-05共12局复原，撤销再完成、原图、换局取消/确认均通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "选难度→拼图／看原图→复原结算→换局确认；取消保持当前局。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "63bdc64c-85b9-4017-b394-bec798c6fda9",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：三份schema1旧档精确读取、继续/撤销/刷新通过；集中Android全断网冷恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "原v1键/schema1；三种旧档读取、继续、撤销及刷新恢复。"
+          },
+          "image": ""
+        },
+        {
+          "id": "afc355f5-14c6-45ec-8e90-e41bdfc6ea41",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：3种尺寸×360/393视口×两安全区组合共12局；最小拼片45.36px、控件44px。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "3×3/4×4/5×5，48/112/220步打乱，最多100次撤销。",
+            "config": "3×3/4×4/5×5，48/112/220步打乱，最多100次撤销。",
+            "rhythm": "把山城明信片逐行滑回完整画面。",
+            "completion": "选难度→拼图／看原图→复原结算→换局确认；取消保持当前局。"
+          },
+          "image": ""
+        },
+        {
+          "id": "8af476ab-65b4-4388-b87e-92537f37bc95",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "C水彩山城旅行图、木托盘与纸面界面。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "C水彩山城旅行图、木托盘与纸面界面。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "28bd3e60-1ccd-4548-aae0-fafdea7f0527",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：用户对成品美术、手感与趣味待反馈；iOS与不同设备仍无普遍保证。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "C水彩山城旅行图、木托盘与纸面界面。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "989e645b-5b19-4a54-9fc7-bf4dd7633a16",
+          "label": "规则用于关卡",
+          "from": "533cf9dc-de49-41f5-9322-5d5bc6ce1c77",
+          "to": "afc355f5-14c6-45ec-8e90-e41bdfc6ea41"
+        },
+        {
+          "id": "9af661a0-1108-4d2d-a716-b9dbd0240305",
+          "label": "操作驱动状态",
+          "from": "c30eb5e4-c9dc-46ef-a8e2-e8c58d1a126f",
+          "to": "12bf61fd-c00f-4e3b-b3b9-4070afb99792"
+        },
+        {
+          "id": "725b3bc5-e438-4711-b1f5-7db2e0ccada4",
+          "label": "暂停与恢复",
+          "from": "12bf61fd-c00f-4e3b-b3b9-4070afb99792",
+          "to": "63bdc64c-85b9-4017-b394-bec798c6fda9"
+        },
+        {
+          "id": "d4869103-fb1d-43a2-95eb-579b76e56d1b",
+          "label": "方向落实到素材",
+          "from": "8af476ab-65b4-4388-b87e-92537f37bc95",
+          "to": "28bd3e60-1ccd-4548-aae0-fafdea7f0527"
+        },
+        {
+          "id": "559acf7e-5c91-4b84-b926-008a209fca62",
+          "label": "补验后回写",
+          "from": "a4e59d5a-9560-4ccd-9e61-5babc7cf73c8",
+          "to": "644c3fa9-53e3-44de-8fdf-a9c803991cdc"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "signal-harbor": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "5d1fab84-d55c-4d4f-96ad-3b36827c47b3",
+      "title": "潮光归位 · Web",
+      "tagline": "借一处泊位，让灯光慢慢归航。24 个谜题，随时选关。",
+      "experience": "把港湾灯盏按纹样归塔，利用空泊位规划顺序。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "fbbf0a60-2b73-47fc-a274-be9d547c2a12",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "把港湾灯盏按纹样归塔，利用空泊位规划顺序。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "17c98e12-5ac0-402f-b555-21a810c78490",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：96模型场景；顶灯移动、撤销、提示和清空泊位结算由24关实玩覆盖。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "只能移动顶端一盏到空位或同纹样顶端；目标塔装满且泊位清空获胜；提示只给方向。",
+            "example": "异纹样顶端不可接收；撤销恢复上一摆放；提示不能自动替玩家移动。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c2db8a23-8395-45a4-b114-9f65fcf15a94",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "手机横屏不在接受范围，控件可能小于44px；用户运行评价待收集。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "手机横屏不在接受范围，控件可能小于44px；用户运行评价待收集。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "0258c486-2d23-431b-8722-2c47cf2f33ef",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / 7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99：build-04：915次UI操作，360×640完整24关、393×852代表关和桌面关通过；6/8容量仅夹具；后续正式版真机、离线冷恢复补验。\n• 2026-10-18 / support-1 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / 7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / 7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / 7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / 7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-18 / consolidated-release-2026-10-18 / 7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "8a43a2a5-527f-4e76-b74d-f94c88bf44e6",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：915次UI操作；直开与同源iframe安全区像素检查通过。手机横屏44px不满足，不在接受范围。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "触摸选塔再选目标，免费提示／撤销；竖屏为目标。",
+            "example": "异纹样顶端不可接收；撤销恢复上一摆放；提示不能自动替玩家移动。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "1a02c162-448a-4899-99cc-16cb71b701e2",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：360×640完整24关；393×852代表关1/9/17/24和桌面17关通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "选关→搬灯→塔归位且泊位空→结算／下一关；支持重来和恢复。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ffa0eacf-98dd-4acb-8e05-8df2fc59f774",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：旧档接续与历史恢复；后续7bc916版本正常下载、真机操作与全断网冷恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "关卡与移动历史保存；旧档继续、撤销与刷新恢复。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c9838df0-0f72-440f-ada4-5bb34ebd4f5f",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：正式容量2/3/4与24关已验；容量6/8只是隔离测试夹具，12只做几何检查。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "24关3章；塔容量2/3/4，泊位配置1或2。容量6/8仅测试夹具，未加入正式关卡。",
+            "config": "24关3章；塔容量2/3/4，泊位配置1或2。容量6/8仅测试夹具，未加入正式关卡。",
+            "rhythm": "把港湾灯盏按纹样归塔，利用空泊位规划顺序。",
+            "completion": "选关→搬灯→塔归位且泊位空→结算／下一关；支持重来和恢复。"
+          },
+          "image": ""
+        },
+        {
+          "id": "6acf3549-b6cb-4e44-98e5-cf0212ccbeae",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "保留7种玻璃港湾原美术；未使用另一套A/B/C方案。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "保留7种玻璃港湾原美术；未使用另一套A/B/C方案。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "53a30083-480c-4bda-a2ae-983b671c0637",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：手机横屏不在接受范围，控件可能小于44px；用户运行评价待收集。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "保留7种玻璃港湾原美术；未使用另一套A/B/C方案。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "107b4a9d-6f30-4392-a388-1852ce725bfb",
+          "label": "规则用于关卡",
+          "from": "17c98e12-5ac0-402f-b555-21a810c78490",
+          "to": "c9838df0-0f72-440f-ada4-5bb34ebd4f5f"
+        },
+        {
+          "id": "2f8dc410-27a5-45fe-a209-6c6c40019e5a",
+          "label": "操作驱动状态",
+          "from": "8a43a2a5-527f-4e76-b74d-f94c88bf44e6",
+          "to": "1a02c162-448a-4899-99cc-16cb71b701e2"
+        },
+        {
+          "id": "8e9138b4-4b3a-4713-8d06-237d67704052",
+          "label": "暂停与恢复",
+          "from": "1a02c162-448a-4899-99cc-16cb71b701e2",
+          "to": "ffa0eacf-98dd-4acb-8e05-8df2fc59f774"
+        },
+        {
+          "id": "cbae85d8-3c5f-4f86-b20f-af99531737d3",
+          "label": "方向落实到素材",
+          "from": "6acf3549-b6cb-4e44-98e5-cf0212ccbeae",
+          "to": "53a30083-480c-4bda-a2ae-983b671c0637"
+        },
+        {
+          "id": "2cb34f2f-3b7b-415b-9056-5fecdc31c47b",
+          "label": "补验后回写",
+          "from": "c2db8a23-8395-45a4-b114-9f65fcf15a94",
+          "to": "0258c486-2d23-431b-8722-2c47cf2f33ef"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "unlock-bolts-mobile": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "d3bf7f1d-ed77-425b-b36d-80c0e49bb13d",
+      "title": "螺帽之间 · Web",
+      "tagline": "转个念头，把每一种颜色放回它的位置。",
+      "experience": "将同色螺帽归柱，解锁预留空间。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "d5476b29-2a06-4eee-8fed-fce0b1bcc814",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "将同色螺帽归柱，解锁预留空间。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "1b2f82c0-122d-46a4-8fef-1d7582045290",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：规则/控制器/5关源一致；73冻结记录、5关历史往返通过；未知schema保护修复后重验。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "顶端同色成组移动，只能落空柱或同色顶端；完成色柱解锁预留柱；支持撤销。",
+            "example": "尝试放到异色柱应拒绝且不计步；完成同色柱后对应预留柱解锁，撤销恢复原锁定态。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c826bb50-b580-4fc9-807a-d47ae6b3c7d2",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "横屏不在本轮目标；用户运行版美术手感待评价；不要虚构旧版进度迁移。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "横屏不在本轮目标；用户运行版美术手感待评价；不要虚构旧版进度迁移。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "1eb8e133-e307-4573-a3e6-ff974fb409b7",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / 242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b：build-04：73规则冻结记录、5关存档往返、164次真实触摸完成5关、28布局；修复pagehide覆盖新schema后全套通过；后续真机/离线补验。\n• 2026-10-18 / support-1 / 242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / 242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / 242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / 242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / 242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-18 / consolidated-release-2026-10-18 / 242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "a57399cc-4981-4063-ae33-8938fe37da68",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：build-04实际164触摸、拖动取消、键盘弹层；28布局检查，最小44px。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "点选源柱与目标柱；触摸拖出取消，弹层阻挡，旋转清理按压。",
+            "example": "尝试放到异色柱应拒绝且不计步；完成同色柱后对应预留柱解锁，撤销恢复原锁定态。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ebd077cf-7542-4b21-91fc-21be0a631f3d",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：5关全部真实触摸获胜，撤销、锁柱解锁和重来通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "选关→分组搬运→完成柱解锁→全关完成→下一关／撤销／重来。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "d055052b-f43c-4d06-8ea6-29c33969ed80",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：Web新存档5关重放、其他键不变、未来schema在真实操作及pagehide后不覆盖；后续Android离线冷恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "旧Cocos公开包没有进度存储；Web新增v1/schema1保存关卡ID与合法移动重放；未知新schema不覆盖。"
+          },
+          "image": ""
+        },
+        {
+          "id": "623007e5-2a5e-4a11-9311-039158c40bcc",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：build-04全部5关已验。旧unlock-bolts原型不在此项目范围。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "5关，5–7柱、3–4层；每关的锁柱和颜色配置独立。",
+            "config": "5关，5–7柱、3–4层；每关的锁柱和颜色配置独立。",
+            "rhythm": "将同色螺帽归柱，解锁预留空间。",
+            "completion": "选关→分组搬运→完成柱解锁→全关完成→下一关／撤销／重来。"
+          },
+          "image": ""
+        },
+        {
+          "id": "2cef015e-a886-4d3e-8230-0983b5bb3616",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "A珐琅工作台，沿用已选原有资产。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "A珐琅工作台，沿用已选原有资产。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "4640ab09-7152-45af-965a-70878acf9205",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：横屏不在本轮目标；用户运行版美术手感待评价；不要虚构旧版进度迁移。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "A珐琅工作台，沿用已选原有资产。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "41a2a8a2-e1cc-4316-bf22-9e5a75e5dbb0",
+          "label": "规则用于关卡",
+          "from": "1b2f82c0-122d-46a4-8fef-1d7582045290",
+          "to": "623007e5-2a5e-4a11-9311-039158c40bcc"
+        },
+        {
+          "id": "b50ea4fb-ac52-4926-bd8c-b0dfed668705",
+          "label": "操作驱动状态",
+          "from": "a57399cc-4981-4063-ae33-8938fe37da68",
+          "to": "ebd077cf-7542-4b21-91fc-21be0a631f3d"
+        },
+        {
+          "id": "527ccdde-c2b2-44f9-9b49-b284882917c2",
+          "label": "暂停与恢复",
+          "from": "ebd077cf-7542-4b21-91fc-21be0a631f3d",
+          "to": "d055052b-f43c-4d06-8ea6-29c33969ed80"
+        },
+        {
+          "id": "74182905-e779-4dcc-8b64-116502db88ff",
+          "label": "方向落实到素材",
+          "from": "2cef015e-a886-4d3e-8230-0983b5bb3616",
+          "to": "4640ab09-7152-45af-965a-70878acf9205"
+        },
+        {
+          "id": "5264e206-c86e-4865-b49a-73cfd776ca62",
+          "label": "补验后回写",
+          "from": "c826bb50-b580-4fc9-807a-d47ae6b3c7d2",
+          "to": "1eb8e133-e307-4573-a3e6-ff974fb409b7"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "star-triad": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "a099c53b-aaf1-4b02-a952-9ce01ab0ec17",
+      "title": "星图三连 · Web",
+      "tagline": "月光观测室里的星月三连。支持单人陪练与同屏双人，自动保存，随时继续。",
+      "experience": "在月光珐琅棋盘上完成轻量三连对弈。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "9b7b60b2-7c74-4911-ba17-0a6c116cb79b",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "在月光珐琅棋盘上完成轻量三连对弈。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "a3cdbd62-33b4-4fd7-866a-e99d0d0aefe3",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：5478合法状态/16167转移、规则和存储检查；实际横竖斜胜负及平局通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "3×3横竖斜任一三连获胜，棋满无连为平局；单人用完整搜索AI，双人轮流。",
+            "example": "三枚同方横竖斜连线立即结算；终局不能继续落子，撤销恢复合法回合。"
+          },
+          "image": ""
+        },
+        {
+          "id": "54a25c47-1569-4784-8931-25f72f101c06",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "不同新版本仍需重验；iOS/实体手柄未发现本轮证据。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "不同新版本仍需重验；iOS/实体手柄未发现本轮证据。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "94148b9b-491a-423a-9411-7da908d1a5b4",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / 859b3503fc5e435d15a85d2fd6481fd88d3db871d58443f9701870ae10096cf1：5478状态/16167转移与完整单/双人、胜负平局、存档输入回归通过；后续996841版本手机布局、下载更新及3次断网冷恢复通过。\n• 2026-10-18 / support-1 / 859b3503fc5e435d15a85d2fd6481fd88d3db871d58443f9701870ae10096cf1：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / 859b3503fc5e435d15a85d2fd6481fd88d3db871d58443f9701870ae10096cf1：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / 859b3503fc5e435d15a85d2fd6481fd88d3db871d58443f9701870ae10096cf1：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-5 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / 99684105299e28b82e55f7edf0c1289732c556a81ac586850f30b3dd5e46cc91：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / 99684105299e28b82e55f7edf0c1289732c556a81ac586850f30b3dd5e46cc91：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-18 / phone-layout-2026-10-18 / 99684105299e28b82e55f7edf0c1289732c556a81ac586850f30b3dd5e46cc91：996841版本安全区、正常更新、3次离线冷恢复及原生悔棋重玩通过。\n• 2026-10-18 / consolidated-release-2026-10-18 / 99684105299e28b82e55f7edf0c1289732c556a81ac586850f30b3dd5e46cc91：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "f4585bc2-cce2-44ad-8701-85d2bed4083d",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：落子锁、释放、拖动取消、弹层阻挡、键盘和手机布局通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "触摸／鼠标落子，160ms落子锁、120msAI延迟；拖动超过18px取消。",
+            "example": "三枚同方横竖斜连线立即结算；终局不能继续落子，撤销恢复合法回合。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "5907a45b-0431-4d92-b00a-8dd5d2f4d1bd",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：完整单/双人局、撤销、新局确认/取消与刷新通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "选择模式→落子／AI→胜负或平局→悔棋／重来；弹层阻挡棋盘。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "cab8a8c7-f365-4dca-889a-6508cc1e131a",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：旧档/坏档/存储拒绝通过；996841版本正常更新保留原值，真机3次离线冷恢复。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "schema1历史重放；旧档、坏档备份、存储拒绝、暂停与刷新。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ec8265c2-f86e-4ad4-ad6b-f88047edaf62",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：3×3所有模型状态验证；浏览器完整单/双人和胜负/平局记录。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "3×3，单人／双人；模式改变在确认后新局。",
+            "config": "3×3，单人／双人；模式改变在确认后新局。",
+            "rhythm": "在月光珐琅棋盘上完成轻量三连对弈。",
+            "completion": "选择模式→落子／AI→胜负或平局→悔棋／重来；弹层阻挡棋盘。"
+          },
+          "image": ""
+        },
+        {
+          "id": "a1ecec55-3a37-4cab-bfed-dc7d9866b311",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "C月光珐琅与观星棋盘；集中交接记录星图方向获用户认可。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "C月光珐琅与观星棋盘；集中交接记录星图方向获用户认可。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "f4eeb557-8f8d-4d1a-b960-82cb718dd8b1",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：不同新版本仍需重验；iOS/实体手柄未发现本轮证据。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "C月光珐琅与观星棋盘；集中交接记录星图方向获用户认可。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "c457ebf6-0213-4188-9cde-a24667885a7a",
+          "label": "规则用于关卡",
+          "from": "a3cdbd62-33b4-4fd7-866a-e99d0d0aefe3",
+          "to": "ec8265c2-f86e-4ad4-ad6b-f88047edaf62"
+        },
+        {
+          "id": "b150e456-8aee-4172-9bf3-fb152305b63d",
+          "label": "操作驱动状态",
+          "from": "f4585bc2-cce2-44ad-8701-85d2bed4083d",
+          "to": "5907a45b-0431-4d92-b00a-8dd5d2f4d1bd"
+        },
+        {
+          "id": "a4bd3127-77de-4246-9944-4e37f3a48f77",
+          "label": "暂停与恢复",
+          "from": "5907a45b-0431-4d92-b00a-8dd5d2f4d1bd",
+          "to": "cab8a8c7-f365-4dca-889a-6508cc1e131a"
+        },
+        {
+          "id": "caf91929-7530-459e-82bb-686e90b7a803",
+          "label": "方向落实到素材",
+          "from": "a1ecec55-3a37-4cab-bfed-dc7d9866b311",
+          "to": "f4eeb557-8f8d-4d1a-b960-82cb718dd8b1"
+        },
+        {
+          "id": "cf6c7520-402c-4b15-a13b-561ecd6d8b99",
+          "label": "补验后回写",
+          "from": "54a25c47-1569-4784-8931-25f72f101c06",
+          "to": "94148b9b-491a-423a-9411-7da908d1a5b4"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "firefly-four": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "4c32a3fa-1bfa-4910-a671-b943d987d484",
+      "title": "萤灯四连 · Web",
+      "tagline": "竹亭渐暗，先点亮属于你的四盏萤灯。",
+      "experience": "把萤灯落入棋盘，先连四枚。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "6484ff33-aaca-4457-bbca-92d8e1c075d6",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：双人7触摸胜、单人10步AI胜；满列拒绝、终局拒绝和悔棋通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "7列6行，棋子落入该列最低空格；横竖斜四连胜；满列拒绝，棋满无四连为平局。",
+            "example": "连续点同一列到满后再点不得改变回合；四连结算后拒绝后续落子，悔棋可恢复。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ce65ace6-2532-4608-b7b9-54ed1b1acb6f",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "完整玩法与最终标题改动版本分别记录；用户成品美术手感待评价。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "完整玩法与最终标题改动版本分别记录；用户成品美术手感待评价。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "905a46d9-2ebc-4e2b-86fe-ea7c6a72d7f2",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / 290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d：浏览器双人7次触摸获胜、单人10步AI获胜；满列/悔棋/暂停AI/旧档/旋转通过。build-03标题定向回归后，集中真机与离线冷启通过。\n• 2026-10-18 / support-1 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / 1a1c72f010d4a3f3f94d39ebbed559645a8b799f24a1fba6ee167384d733631b：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / 1a1c72f010d4a3f3f94d39ebbed559645a8b799f24a1fba6ee167384d733631b：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / 290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / 290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / 290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-18 / consolidated-release-2026-10-18 / 290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "e8a9d0e6-a961-430e-a912-39f6309d905a",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "把萤灯落入棋盘，先连四枚。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "8a7399fb-8fb9-46ca-87a2-75d26f2597df",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：真实触摸、预览/滑动取消、动画锁、键盘/帮助、旋转取消按住通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "触摸列／鼠标／键盘，滑动和预览取消；动画期间锁重复输入。",
+            "example": "连续点同一列到满后再点不得改变回合；四连结算后拒绝后续落子，悔棋可恢复。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c5e6572b-f195-48fb-a583-ff25f5fd5fe5",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：完整单双人局、撤销/新局确认取消、待执行AI暂停/恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "落子→落到底部→AI或对手→四连/平局→悔棋或新局确认。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "b1b2754c-0c2c-401b-9c7b-c6315c497c3b",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：v1旧档保持到真实落子、坏档备份、存储拒绝通过；最终290a6e包集中真机与断网冷恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "v1旧档保持直到真实落子；坏档备份，存储不可用提示；暂停时待执行AI也冻结。"
+          },
+          "image": ""
+        },
+        {
+          "id": "7393bd8c-8ad0-4466-9169-9ffc1bda59bb",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：7列6行完整单/双人记录；build-03仅标题变化，继承未变的build-01规则/存储证据。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "单人陪练与双人，共用重力四连规则。",
+            "config": "单人陪练与双人，共用重力四连规则。",
+            "rhythm": "把萤灯落入棋盘，先连四枚。",
+            "completion": "落子→落到底部→AI或对手→四连/平局→悔棋或新局确认。"
+          },
+          "image": ""
+        },
+        {
+          "id": "d51f410d-5ac1-49f0-a2fd-3210f346f8db",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "C纸灯棋盘；build-03只改标题胶囊，玩法证据继承未变的build-01。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "C纸灯棋盘；build-03只改标题胶囊，玩法证据继承未变的build-01。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "2dc551be-c29f-4208-acaf-d8f017a6b8fd",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：完整玩法与最终标题改动版本分别记录；用户成品美术手感待评价。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "C纸灯棋盘；build-03只改标题胶囊，玩法证据继承未变的build-01。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "2a610855-e918-44dc-9552-772a03e26dbc",
+          "label": "规则用于关卡",
+          "from": "6484ff33-aaca-4457-bbca-92d8e1c075d6",
+          "to": "7393bd8c-8ad0-4466-9169-9ffc1bda59bb"
+        },
+        {
+          "id": "2c4216c7-19e5-4f68-8074-a60ff9c115c0",
+          "label": "操作驱动状态",
+          "from": "8a7399fb-8fb9-46ca-87a2-75d26f2597df",
+          "to": "c5e6572b-f195-48fb-a583-ff25f5fd5fe5"
+        },
+        {
+          "id": "35fb9a6a-c873-43e2-adc6-51b541aaf54c",
+          "label": "暂停与恢复",
+          "from": "c5e6572b-f195-48fb-a583-ff25f5fd5fe5",
+          "to": "b1b2754c-0c2c-401b-9c7b-c6315c497c3b"
+        },
+        {
+          "id": "6e0d10ff-c4d5-4a9c-9f12-17777b4fb987",
+          "label": "方向落实到素材",
+          "from": "d51f410d-5ac1-49f0-a2fd-3210f346f8db",
+          "to": "2dc551be-c29f-4208-acaf-d8f017a6b8fd"
+        },
+        {
+          "id": "fa85c8ac-3ea4-43ac-a465-63798a4c644a",
+          "label": "补验后回写",
+          "from": "ce65ace6-2532-4608-b7b9-54ed1b1acb6f",
+          "to": "905a46d9-2ebc-4e2b-86fe-ea7c6a72d7f2"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "moss-reversi": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "df4ad508-8638-4749-b072-ea7ce1b5b5a1",
+      "title": "苔庭翻面 · Web",
+      "tagline": "墨石与白瓷，在纸上的苔庭里翻转局势。",
+      "experience": "在苔庭黑白翻转中读懂合法落点与局势。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。 2026-10-23 可落点计数是未发布候选，不属于本目录公开游戏实现。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "70e9e9bb-edf9-4a42-89e9-60cce8debe36",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：2026-10-18模型200局、86次自动让行及浏览器两整局；2026-10-23旧档接续、非法/合法落子及每步点数核对通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。\n版本边界：2026-10-23 计数提示候选尚未同步至本目录公开游戏代码，候选结果不能代替公开构建验收。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "8×8棋盘，八方向夹住对方棋子即翻转；无合法落点自动让行，双方无路时多者胜。",
+            "example": "初始d3后黑4白1、白方3处可落；a1无效不变；c3后黑方4处可落。"
+          },
+          "image": ""
+        },
+        {
+          "id": "fa6a6c1a-2b80-4237-bee3-b4230867d762",
+          "type": "decision",
+          "section": "overview",
+          "title": "本轮目标：显示可落点数量",
+          "body": "2026-10-23 已完成这次小迭代，实际验证与限制见开发记录。\n本轮证据：./game-outline.json（local-iteration-2026-10-23）；本地候选未发布。\n版本边界：2026-10-23 计数提示候选尚未同步至本目录公开游戏代码，候选结果不能代替公开构建验收。",
+          "status": "idea",
+          "x": 60,
+          "y": 410,
+          "fields": {
+            "question": "本轮小迭代：怎样让玩家更容易读懂合法落点？",
+            "options": "保留现有纸庭美术、规则、单人/双人、悔棋及存档；只增加当前可落点数量提示。",
+            "result": "已实现回合状态可落点计数及玩法说明。数量来自现有 legal(state)，终局仅显示结算。验收：初始4处、落子更新、无效落子不变、悔棋、刷新、窄屏11处提示及自动让行通过。"
+          },
+          "image": ""
+        },
+        {
+          "id": "bbec63b6-ad9e-46fd-a660-59baa3acfe3c",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e：2026-10-18两局各60次触摸至白35黑29；2026-10-23 浏览器整局白45黑19，每步比对提示；360×640的11处提示、自动让行、旧档/悔棋/刷新通过。\n• 2026-10-18 / support-1 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-5 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-23 / local-iteration-2026-10-23 / 75c3ef1659d643f1a38852ea17d7faf41dcb21018e21a1f8503b47385f3bfc66：本地候选75c3ef1659d6：开发前读取画板并记录计划，开发后浏览器旧档接续、非法/合法落子、悔棋、刷新、60步白45黑19、360×640的11处提示与自动让行通过；语法/构建和差异检查通过。未验证本候选真机、单人整局、App/离线；未发布。\n• None / iteration-design-record / 未记录构建指纹：完整过程：初始4处；d3后白3处；a1拒绝；c3后黑4处；悔棋回到白3处；终局隐藏点数。源码23ca3de17986，构建75c3ef1659d6。\n• 2026-10-18 / consolidated-release-2026-10-18 / f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "ab019259-f09a-40bd-9166-ea53b551f5fb",
+          "type": "rule",
+          "section": "rules",
+          "title": "回合提示显示合法落点数量",
+          "body": "已验证（2026-10-23本地候选）：实际浏览器每步核对提示，终局白45黑19，窄屏11处及自动让行通过。\n证据：./game-outline.json（local-iteration-2026-10-23）\n待验证：真机、单人整局、App/离线；未发布。\n版本边界：2026-10-23 计数提示候选尚未同步至本目录公开游戏代码，候选结果不能代替公开构建验收。",
+          "status": "done",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "trigger": "棋盘重绘：落子、悔棋、新局、存档恢复和自动让行之后。",
+            "behavior": "非终局显示当前执棋方与 legal(state) 的数量，和棋盘圆环一致；终局仅显示胜负/平局。",
+            "example": "初始墨石4处；d3后白瓷3处；c3后墨石4处；悔棋回到白瓷3处。整局结束显示白瓷获胜19:45，不显示可落点。360×640 的11处提示完整可见。"
+          },
+          "image": ""
+        },
+        {
+          "id": "32fa350d-7c21-45ca-a43e-f5818376f8d4",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "在苔庭黑白翻转中读懂合法落点与局势。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "d24568d1-bc7f-422d-a6c4-5f896e56ddca",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "2026-10-23本地候选尚未验证真机、单人整局、App/离线，也未发布；旧发布版的真机结果不覆盖本轮。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "2026-10-23本地候选尚未验证真机、单人整局、App/离线，也未发布；旧发布版的真机结果不覆盖本轮。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "7d21da3e-3a23-4c80-b3e2-b21fe1e0612a",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：2026-10-23实际浏览器按钮走完60步；360×640容器11处提示不裁切，g1后自动让行正确。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。\n版本边界：2026-10-23 计数提示候选尚未同步至本目录公开游戏代码，候选结果不能代替公开构建验收。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "点击合法格，单人AI／双人、悔棋；回合提示显示合法点数，终局隐藏数量。",
+            "example": "初始d3后黑4白1、白方3处可落；a1无效不变；c3后黑方4处可落。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "0a689750-e503-4c36-bd0f-f1b936676dbf",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：本地候选白45黑19终局隐藏点数，新局恢复4处；旧版单人记录不能替代本候选单人整局。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。\n版本边界：2026-10-23 计数提示候选尚未同步至本目录公开游戏代码，候选结果不能代替公开构建验收。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "落子→翻转→对方回合或自动让行→双方无路结算→新局。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "09d7d53d-8be3-4cf8-a8af-75a73c62cd59",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：本地候选旧档接续、悔棋3↔4处、刷新通过；10月18日发布版Android离线通过不覆盖本候选。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。\n版本边界：2026-10-23 计数提示候选尚未同步至本目录公开游戏代码，候选结果不能代替公开构建验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "schema1按落子历史重放；本轮旧档接续、悔棋、刷新及窄屏让行已通过。"
+          },
+          "image": ""
+        },
+        {
+          "id": "caaf8e43-086c-4dc5-8a86-31a699f88d76",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：本地候选双人整局已验；单人整局、真机/App离线及发布仍待执行。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。\n版本边界：2026-10-23 计数提示候选尚未同步至本目录公开游戏代码，候选结果不能代替公开构建验收。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "8×8，单人多档AI与双人；2026-10-23仅增加可落点数量，不改规则。",
+            "config": "8×8，单人多档AI与双人；2026-10-23仅增加可落点数量，不改规则。",
+            "rhythm": "在苔庭黑白翻转中读懂合法落点与局势。",
+            "completion": "落子→翻转→对方回合或自动让行→双方无路结算→新局。"
+          },
+          "image": ""
+        },
+        {
+          "id": "aa5361c8-16b4-4839-82d6-772f734f53f2",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "B纸上苔庭，墨石与白瓷；本轮布局、样式、美术、字体、许可字节不变。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "B纸上苔庭，墨石与白瓷；本轮布局、样式、美术、字体、许可字节不变。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "07a1e64c-9800-4349-b68c-adf369cb1f8f",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：2026-10-23本地候选尚未验证真机、单人整局、App/离线，也未发布；旧发布版的真机结果不覆盖本轮。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "B纸上苔庭，墨石与白瓷；本轮布局、样式、美术、字体、许可字节不变。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "11fed9a5-d988-423e-b0d3-846747f3222b",
+          "label": "规则用于关卡",
+          "from": "70e9e9bb-edf9-4a42-89e9-60cce8debe36",
+          "to": "caaf8e43-086c-4dc5-8a86-31a699f88d76"
+        },
+        {
+          "id": "e4589a36-6f3e-494c-a09d-c3255f60f06c",
+          "label": "操作驱动状态",
+          "from": "7d21da3e-3a23-4c80-b3e2-b21fe1e0612a",
+          "to": "0a689750-e503-4c36-bd0f-f1b936676dbf"
+        },
+        {
+          "id": "0d75084c-fde2-4aa1-95d3-fd515ad13150",
+          "label": "暂停与恢复",
+          "from": "0a689750-e503-4c36-bd0f-f1b936676dbf",
+          "to": "09d7d53d-8be3-4cf8-a8af-75a73c62cd59"
+        },
+        {
+          "id": "b2b9eacb-e3d5-40ae-8141-8586a5efabce",
+          "label": "方向落实到素材",
+          "from": "aa5361c8-16b4-4839-82d6-772f734f53f2",
+          "to": "07a1e64c-9800-4349-b68c-adf369cb1f8f"
+        },
+        {
+          "id": "ddbc5ee6-991d-4d1e-b568-87babcc4aef5",
+          "label": "补验后回写",
+          "from": "d24568d1-bc7f-422d-a6c4-5f896e56ddca",
+          "to": "bbec63b6-ad9e-46fd-a660-59baa3acfe3c"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "kiln-merge": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "8099cb60-3c24-4eb5-a6a2-b6587693da75",
+      "title": "窑火相融 · Web",
+      "tagline": "让青釉瓷片相融，慢慢烧出一枚2048。",
+      "experience": "在陶片合并中积累到2048，允许一次后悔。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "a6f7d374-3044-4a93-83a7-256bac1e4bff",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "在陶片合并中积累到2048，允许一次后悔。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "793bfcf5-d8e7-4a14-84a0-96cc80df6dc3",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：24移动例、1000随机序列、310转移、10万生成样本；规则源一致。build-03实玩最高256，未从新局到2048。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "4×4同值合并，每块每步只合并一次；有效移动才生成2/4，四分块概率15%；加总合并值计分。",
+            "example": "2,2,2,2向左应成为4,4而非8；无效移动不生成；撤销恢复棋盘、分数及随机状态。"
+          },
+          "image": ""
+        },
+        {
+          "id": "cb0370ef-0800-4fb0-b099-968028fbb982",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "不得把2048旧档渲染说成从新局触摸到2048；运行美术与趣味待用户反馈。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "不得把2048旧档渲染说成从新局触摸到2048；运行美术与趣味待用户反馈。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "43722879-cf78-417f-b14c-702c17e3a2c9",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / 54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf：build-03实际208步至失败（最高256，2552分），旧档续玩/刷新通过；build-04仅背景布局修复，2视口各24次滑动回归；后续真机与离线补验。\n• 2026-10-18 / support-1 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / 54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / 54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-5 / 50ec2ddb43a76b322e130cdffe0ef4e9a4270e25c686144224acedd786978563：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-6 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / 54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / 54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-18 / consolidated-release-2026-10-18 / 54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "d5768dcb-ec40-4bca-8db1-71062985825c",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：build-03实际240次输入转移；build-04两视口各24次滑动及撤销/帮助/刷新回归通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "四向滑动或方向键；暂停、帮助、撤销按钮与动画锁。",
+            "example": "2,2,2,2向左应成为4,4而非8；无效移动不生成；撤销恢复棋盘、分数及随机状态。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "b18c2a19-c159-4283-a830-3765a185809e",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：build-03新局208步至失败，最高256、2552分；高值64–2048为合法旧档渲染夹具。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "开局→滑动合并→目标达成可继续／无路结束→撤销或新局。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "a299cdc5-1f46-4a7b-93ba-99343236e630",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：schema1精确恢复、读取不重写、实际触摸接续、刷新、旧规则读取新档通过；后续Android离线冷恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "schema1原键，保留简单模式、最佳成绩、一步撤销和随机状态；旧版规则可读新档。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ff0eed69-1a84-45f9-a6b9-5e1cfa65f2f9",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：4×4完整失败局已测；2048达成动画由旧档夹具覆盖，不能算自然通关。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "开局2块；目标2048；无合法移动结束。高值64–2048展示记录是合法旧档夹具。",
+            "config": "开局2块；目标2048；无合法移动结束。高值64–2048展示记录是合法旧档夹具。",
+            "rhythm": "在陶片合并中积累到2048，允许一次后悔。",
+            "completion": "开局→滑动合并→目标达成可继续／无路结束→撤销或新局。"
+          },
+          "image": ""
+        },
+        {
+          "id": "1000b252-5967-4921-81f6-124d50a13c2e",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "B绘画陶作工坊；build-04修复安全区背景接缝。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "B绘画陶作工坊；build-04修复安全区背景接缝。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "d3ac136f-144a-4939-b849-16ca94978442",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：不得把2048旧档渲染说成从新局触摸到2048；运行美术与趣味待用户反馈。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "B绘画陶作工坊；build-04修复安全区背景接缝。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "612e710a-4f14-4c59-b74f-744404afee53",
+          "label": "规则用于关卡",
+          "from": "793bfcf5-d8e7-4a14-84a0-96cc80df6dc3",
+          "to": "ff0eed69-1a84-45f9-a6b9-5e1cfa65f2f9"
+        },
+        {
+          "id": "1a929987-7bbe-4c89-86f9-155fde1d019b",
+          "label": "操作驱动状态",
+          "from": "d5768dcb-ec40-4bca-8db1-71062985825c",
+          "to": "b18c2a19-c159-4283-a830-3765a185809e"
+        },
+        {
+          "id": "32deb700-5d08-4959-a3c1-5d33333bf6ed",
+          "label": "暂停与恢复",
+          "from": "b18c2a19-c159-4283-a830-3765a185809e",
+          "to": "a299cdc5-1f46-4a7b-93ba-99343236e630"
+        },
+        {
+          "id": "1c99a926-06f2-4edd-b90a-9656e8220b12",
+          "label": "方向落实到素材",
+          "from": "1000b252-5967-4921-81f6-124d50a13c2e",
+          "to": "d3ac136f-144a-4939-b849-16ca94978442"
+        },
+        {
+          "id": "8bec8f93-e5a2-4eb8-af6e-26b8dea89031",
+          "label": "补验后回写",
+          "from": "cb0370ef-0800-4fb0-b099-968028fbb982",
+          "to": "43722879-cf78-417f-b14c-702c17e3a2c9"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "petal-memory": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "c748da6c-57ee-471c-bad4-0e22ddb686d5",
+      "title": "花笺拾忆 · Web",
+      "tagline": "翻开手绘花笺，与标本师或朋友比一比记忆。",
+      "experience": "翻开花笺，凭记忆配对并保持回合。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "21f34871-3173-4d14-b692-134d4ef95aae",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "翻开花笺，凭记忆配对并保持回合。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "e627ab73-3082-4e6e-9f42-9ea9c4ba0f9e",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：300种子5458配对、15000次CPU抽样；20/50/70%为记忆分支概率。六局属build-03。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "配对加1分并继续，不匹配换人；CPU记忆分支概率20/50/70%，不是命中率；观察约1.8秒。",
+            "example": "两张相同卡得分且不换人；不匹配只结算一次，后台或刷新不能额外加分。"
+          },
+          "image": ""
+        },
+        {
+          "id": "b769569e-4733-41ac-ac96-b02387ab3723",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "六局完整记录属build-03；最终build-05只重跑定向回归和一局22触摸，不能合并说最终六局；用户运行评价待收集。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "六局完整记录属build-03；最终build-05只重跑定向回归和一局22触摸，不能合并说最终六局；用户运行评价待收集。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ad9896f6-861c-4b1d-bf8b-504525843579",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c：规则300种子5458配对、15000次CPU抽样；build-03六局190触摸；build-05的21布局、旧档、边界和终局恢复通过，后续真机/离线补验。\n• 2026-10-18 / support-1 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-5 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-6 / bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-7 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-8 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-18 / consolidated-release-2026-10-18 / bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "c636a1a6-d549-4ecf-9b79-7e301135da9b",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：build-05的21布局、实际触摸、输入边界、最小44px通过；六局190触摸是build-03。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "触摸翻卡，单人／双人，弹层输入隔离和忙碌锁。",
+            "example": "两张相同卡得分且不换人；不匹配只结算一次，后台或刷新不能额外加分。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "7984b9b9-2d10-4d90-84bd-53db3bfeb9be",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：build-03单/双人×三档六局；build-05修终局busy计时后22触摸完整局/终局恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "翻第一张→翻第二张→配对结算／等待换人→清完结算→重来。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "34482810-9b89-41fc-a8d3-d2bc9c1e8d09",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：build-05旧档与待结算边界、后台/刷新无重复奖励；后续集中Android下载和离线恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "schema1记录首张、待结算与CPU计划；暂停、刷新恢复避免重复奖励。"
+          },
+          "image": ""
+        },
+        {
+          "id": "e41b4557-902d-462c-9799-f72a891b3954",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：14/22/30张×单/双人六局均在build-03完成，最终包定向回归单独记录。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "14/22/30张，三档；单人与双人共用配对规则。",
+            "config": "14/22/30张，三档；单人与双人共用配对规则。",
+            "rhythm": "翻开花笺，凭记忆配对并保持回合。",
+            "completion": "翻第一张→翻第二张→配对结算／等待换人→清完结算→重来。"
+          },
+          "image": ""
+        },
+        {
+          "id": "fe10438f-a101-4b3e-82b7-c30e54b9c089",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "A纸上植物标本桌，纸卡背与16种标本。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "A纸上植物标本桌，纸卡背与16种标本。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "51d68c00-1ba9-4d38-9206-2ee65c62cac5",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：六局完整记录属build-03；最终build-05只重跑定向回归和一局22触摸，不能合并说最终六局；用户运行评价待收集。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "A纸上植物标本桌，纸卡背与16种标本。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "06c038b2-f92d-465a-b432-5c9062d49bcb",
+          "label": "规则用于关卡",
+          "from": "e627ab73-3082-4e6e-9f42-9ea9c4ba0f9e",
+          "to": "e41b4557-902d-462c-9799-f72a891b3954"
+        },
+        {
+          "id": "764b714b-9d92-4d3e-a188-67b415c840ae",
+          "label": "操作驱动状态",
+          "from": "c636a1a6-d549-4ecf-9b79-7e301135da9b",
+          "to": "7984b9b9-2d10-4d90-84bd-53db3bfeb9be"
+        },
+        {
+          "id": "ad4f28d5-a1bb-4b00-a98e-8c0914357b98",
+          "label": "暂停与恢复",
+          "from": "7984b9b9-2d10-4d90-84bd-53db3bfeb9be",
+          "to": "34482810-9b89-41fc-a8d3-d2bc9c1e8d09"
+        },
+        {
+          "id": "eb55cb73-c853-4aa2-9840-420459498341",
+          "label": "方向落实到素材",
+          "from": "fe10438f-a101-4b3e-82b7-c30e54b9c089",
+          "to": "51d68c00-1ba9-4d38-9206-2ee65c62cac5"
+        },
+        {
+          "id": "197c1d68-400d-4421-b6bb-3bddd9cd7e69",
+          "label": "补验后回写",
+          "from": "b769569e-4733-41ac-ac96-b02387ab3723",
+          "to": "ad9896f6-861c-4b1d-bf8b-504525843579"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "silk-serpent": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "2bbf68a5-1655-4511-b394-d00ebed401ea",
+      "title": "绢龙逐珠 · Web",
+      "tagline": "滑动引领红绢游龙，在一庭灯火里拾珠长大。",
+      "experience": "引绢龙转弯追珠，在连续得分中控制风险。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "cfed14b6-2321-4636-8f19-1ffb63a72407",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "引绢龙转弯追珠，在连续得分中控制风险。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "0a03dbe5-8daa-40a0-9f8b-3df37ef6f79f",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：三档均有吃珠和碰撞记录，模型契约通过；build-02四组各吃3珠。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "四向前进禁止直接反转；初始长度4，珠子增加成长，1600ms连击窗口；撞墙或自身结束。",
+            "example": "向右行进时直接向左无效；暂停后状态冻结，恢复不能补跑后台时间。"
+          },
+          "image": ""
+        },
+        {
+          "id": "58694e0f-fa8e-482e-9582-699d2d538f8d",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "历史是短局吃珠及碰撞终局，不代表高分上限或难度平衡；用户成品评价待收集。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "历史是短局吃珠及碰撞终局，不代表高分上限或难度平衡；用户成品评价待收集。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "e99f9c68-5780-4c7d-9d38-04b76e38b761",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / 5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a：build-02四组实际键盘/触摸各吃3珠并到碰撞终局；暂停/旧档/重启/旋转通过；build-03补滑动刷新；后续真机离线补验。\n• 2026-10-18 / support-1 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / b71aae57081d6e0be85d45cd0c8c590a627014c79758a6825856216760a737b1：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / 5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / 5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / 5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-18 / consolidated-release-2026-10-18 / 5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "1c5e4f49-55b1-4af4-a8bc-d10ac116b79a",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：键盘/真实触摸转向、短划/斜划/多指拒绝、同指连续转向与按钮取消通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "滑动或键盘转向；短划、歧义多指拒绝，松手清理；暂停与显式继续。",
+            "example": "向右行进时直接向左无效；暂停后状态冻结，恢复不能补跑后台时间。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "c064961d-71c9-4f1b-952c-7d8f813dbfee",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：build-02四组实际到碰撞终局，帮助/重来取消/暂停通过；build-03仅封面定向回归。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "开始→追珠／连击→碰撞结束→重来；帮助和后台进入暂停。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "8c1a5276-9038-42c0-994e-3d8703a371ac",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：暂停冻结、400/1300ms长帧暂停、精确刷新、旧规则读取新档、坏档/配额提示通过；后续集中Android离线通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "保存龙身、随机状态和输入队列；刷新为暂停，继续后才推进；坏档备份。"
+          },
+          "image": ""
+        },
+        {
+          "id": "88492cbd-9cb2-4c83-bfb4-d8608b720ba4",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：三档速度短局已覆盖；未宣称最高分、最长龙身或长期难度平衡验收。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "三档，13×21或15×23棋盘、珠数3/2/2、速度5.25/7.875/10.5步每秒。",
+            "config": "三档，13×21或15×23棋盘、珠数3/2/2、速度5.25/7.875/10.5步每秒。",
+            "rhythm": "引绢龙转弯追珠，在连续得分中控制风险。",
+            "completion": "开始→追珠／连击→碰撞结束→重来；帮助和后台进入暂停。"
+          },
+          "image": ""
+        },
+        {
+          "id": "bfdc1579-db55-4015-a441-8af004905c99",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "A绢龙与灯笼庭院，最终build-03仅修封面。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "A绢龙与灯笼庭院，最终build-03仅修封面。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "79aaebfd-2558-4c71-8edb-ed3e8362f5ca",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：历史是短局吃珠及碰撞终局，不代表高分上限或难度平衡；用户成品评价待收集。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "A绢龙与灯笼庭院，最终build-03仅修封面。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "208a500a-1215-4cb5-aa2f-9c96f647d98a",
+          "label": "规则用于关卡",
+          "from": "0a03dbe5-8daa-40a0-9f8b-3df37ef6f79f",
+          "to": "88492cbd-9cb2-4c83-bfb4-d8608b720ba4"
+        },
+        {
+          "id": "c3faae80-d6dd-407f-a8f2-241dd3372922",
+          "label": "操作驱动状态",
+          "from": "1c5e4f49-55b1-4af4-a8bc-d10ac116b79a",
+          "to": "c064961d-71c9-4f1b-952c-7d8f813dbfee"
+        },
+        {
+          "id": "8447c3b6-e375-40c5-b0b9-28b4f6de864e",
+          "label": "暂停与恢复",
+          "from": "c064961d-71c9-4f1b-952c-7d8f813dbfee",
+          "to": "8c1a5276-9038-42c0-994e-3d8703a371ac"
+        },
+        {
+          "id": "22721cd2-50a9-49e4-9eda-2738041bda47",
+          "label": "方向落实到素材",
+          "from": "bfdc1579-db55-4015-a441-8af004905c99",
+          "to": "79aaebfd-2558-4c71-8edb-ed3e8362f5ca"
+        },
+        {
+          "id": "8a8acdb0-814b-49fd-b2b8-098a22086ddc",
+          "label": "补验后回写",
+          "from": "58694e0f-fa8e-482e-9582-699d2d538f8d",
+          "to": "e99f9c68-5780-4c7d-9d38-04b76e38b761"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "bamboo-rally": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "ac4d9ed9-06be-413d-841d-edb4cac1e060",
+      "title": "竹影回珠 · Web",
+      "tagline": "在晨光竹庭里拖拍回珠，单人陪练或与朋友同屏对打。",
+      "experience": "竹庭短局对打，保留可预判的回球节奏。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "c5ce640c-dbc3-40dc-ba83-6b684d1e4033",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "竹庭短局对打，保留可预判的回球节奏。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "475e5feb-7d1a-4607-88a0-544b33b4b899",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：build-02三档AI与双人均完成7分终局；规则与存档自动检查通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "固定20ms推进；先到7分获胜，每两分换发球，球落台后方可击回。",
+            "example": "比分6:6时下一得分者到7分结算；球未落台时不应提前击回。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ae39b004-bf43-4648-9558-b2bc6d41ebd0",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "真实难度平衡、声音和字体回退待用户反馈；设备历史只覆盖已记录Android版本。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "真实难度平衡、声音和字体回退待用户反馈；设备历史只覆盖已记录Android版本。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "470cd251-975f-4bb8-aa27-5dad9262e9c3",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / web-handoff-2026-10-18 / fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0：build-02完成三档AI和双人整局（7:0、7:0、7:0、7:6）；build-03仅封面差异，补测拖动、旋转与刷新；后续集中真机/离线已补验。\n• 2026-10-18 / support-1 / 未记录构建指纹：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-2 / 8deb800adbf338e84b10cd2a5fb078f8dbf1712f392c319dd7c2252e7e80e112：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-3 / fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• 2026-10-18 / support-4 / fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0：交接记录引用的原始报告指纹。具体通过范围以 web-handoff-2026-10-18 的分版本摘要为准；此指纹不表示重新运行。\n• None / android-native-offline-2026-10-18 / fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0：后续集中验收：本游戏所列版本正常下载、真机实际输入、全断网继续和精确冷恢复通过。\n• None / production-cold-2026-10-18 / fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0：后续正式App冷进程启动与离线画面检查通过，旧原值保留；仅覆盖该游戏版本。\n• 2026-10-18 / consolidated-release-2026-10-18 / fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0：集中发布和技术验收通过；早期交接中的手机/离线未执行项由后续指定版本结果补充。记录仅星图三连获用户认可，其余运行成品仍待用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "a213743c-fa89-4c62-8641-10fd86e113f9",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：球拍真实触摸拖动/键盘；最终build-03两竖屏重复拖动、按钮取消、旋转。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "触摸拖动球拍，桌面键盘；拖出按钮取消，暂停或长帧后清除输入。",
+            "example": "比分6:6时下一得分者到7分结算；球未落台时不应提前击回。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "e2ef2db2-b3f8-4e3a-b966-8ee6695ebb8c",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：build-02完整三档7:0和双人7:6；400/1300ms主线程阻塞自动暂停。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "开局／继续→回合→得分换发球→7分结算→再来。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "93599f65-8054-40e4-8d8e-be33e74868b2",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：旧档读取不改原值、坏档备份和存储拒绝覆盖；后续集中Android原生输入、全断网与精确冷恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "schema1原键；读取旧档不重写，坏档备份，暂停和400/1300ms长帧防补跑。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ceb18176-97d2-4f5f-85bd-7eda08bdd2a0",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：三档AI与双人均有整局记录；脚本辅助跟球不等于难度/趣味评估。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "3档AI＋双人；只在配置中切换模式与难度，不改公共得分规则。",
+            "config": "3档AI＋双人；只在配置中切换模式与难度，不改公共得分规则。",
+            "rhythm": "竹庭短局对打，保留可预判的回球节奏。",
+            "completion": "开局／继续→回合→得分换发球→7分结算→再来。"
+          },
+          "image": ""
+        },
+        {
+          "id": "18503dd9-fa41-4106-a333-646eb925c22a",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "B深青竹庭、漆面球拍与球台；运行成品的手感评价仍单列。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "B深青竹庭、漆面球拍与球台；运行成品的手感评价仍单列。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "cd0e8480-6640-4706-8303-58a2da48e0b4",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：真实难度平衡、声音和字体回退待用户反馈；设备历史只覆盖已记录Android版本。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "B深青竹庭、漆面球拍与球台；运行成品的手感评价仍单列。",
+            "source": "./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "68b0359c-3808-4197-858a-9885cb1bd779",
+          "label": "规则用于关卡",
+          "from": "475e5feb-7d1a-4607-88a0-544b33b4b899",
+          "to": "ceb18176-97d2-4f5f-85bd-7eda08bdd2a0"
+        },
+        {
+          "id": "066afa50-aab6-4a89-bd4b-418f9fbb3b4b",
+          "label": "操作驱动状态",
+          "from": "a213743c-fa89-4c62-8641-10fd86e113f9",
+          "to": "e2ef2db2-b3f8-4e3a-b966-8ee6695ebb8c"
+        },
+        {
+          "id": "24f4575d-f238-4b76-aeb9-39c9856c2bbf",
+          "label": "暂停与恢复",
+          "from": "e2ef2db2-b3f8-4e3a-b966-8ee6695ebb8c",
+          "to": "93599f65-8054-40e4-8d8e-be33e74868b2"
+        },
+        {
+          "id": "3b3ab6aa-6289-495a-90cd-36dd927b0388",
+          "label": "方向落实到素材",
+          "from": "18503dd9-fa41-4106-a333-646eb925c22a",
+          "to": "cd0e8480-6640-4706-8303-58a2da48e0b4"
+        },
+        {
+          "id": "e24e150f-9683-4c25-8a6c-608611475179",
+          "label": "补验后回写",
+          "from": "ae39b004-bf43-4648-9558-b2bc6d41ebd0",
+          "to": "470cd251-975f-4bb8-aa27-5dad9262e9c3"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "rc-rally": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "af37166c-a9fa-46f8-a7e2-f6b07d619518",
+      "title": "遥控冲线 · Web",
+      "tagline": "驾驶遥控车穿过检查点，挑战两圈最快纪录。",
+      "experience": "驾驶遥控车穿过检查点，用完整两圈挑战最佳时间。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "4d683d07-5630-4a99-a0a0-8258a80b46d9",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "驾驶遥控车穿过检查点，用完整两圈挑战最佳时间。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "2a0368cd-eeb2-4f2c-806e-4f91399522b8",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：修复前右推向左；修复后以车头与上方向计算驾驶者右向量，左右真实朝向变化正确。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "按顺序过5个检查点、跑2圈；重生加5秒罚时。以驾驶者朝向定义左右，而非输入符号。",
+            "example": "向前时右推应朝驾驶者右侧转；后拉制动再倒车；重生后计时增加5秒。"
+          },
+          "image": ""
+        },
+        {
+          "id": "9762023b-1f8a-4f51-bcf1-543b5246b013",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "iPhone Safari、Android App WebView、实体手柄未重测；Android 实机通过USB加载正式包，不算手机公网验收。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "iPhone Safari、Android App WebView、实体手柄未重测；Android 实机通过USB加载正式包，不算手机公网验收。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "e6e9c699-2d1d-454d-ac6b-235e5e58dcab",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-21 / race-complete / 未记录构建指纹：自然驾驶输入跑完两圈全部检查点，最终75.9478秒；暂停保存重载和最佳成绩保留通过。\n• 2026-10-21 / live-input / 未记录构建指纹：正式网站四方向和键盘、双指加速/取消检查通过。\n• 2026-10-21 / offline-restore / 未记录构建指纹：正式网站下载后断网重开、存档续跑通过。\n• 2026-10-21 / phone-direction / 未记录构建指纹：Android 实机最终包USB加载，实际四方向通过；不是手机公网验收。\n• 2026-10-21 / publication / ca6bd6ffc1bae7645592b9b61f4d5b1f1597eb9befc7d6feed84e335e6fd887a：2026-10-21正式发布与资源完整性检查。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "6a26a93f-f816-46b5-8b93-5040e1232e5b",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：最终包、正式站四方向/键盘通过；Android 实机原生四方向为USB加载；实体手柄未连接验。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "摇杆前进/后拉制动倒车/左右转向，另一指加速；键盘同层；失焦/取消/丢捕获清控制。",
+            "example": "向前时右推应朝驾驶者右侧转；后拉制动再倒车；重生后计时增加5秒。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "95f1bba8-4a74-4847-a2d4-0415d04cd56b",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：自然驾驶两圈全部检查点，最终75.9478秒；暂停/重载续跑及最佳值保留通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "起跑→顺序检查点→第二圈→计时结算/最佳成绩；暂停后可续跑。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "d2c3d81d-333b-4004-8b8a-862fa654439a",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：线上下载后断网重开，检查点/位置续跑；双指加速与取消通过。App WebView不在这次复测范围。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "schema1原键，保存位置、圈数、检查点与计时；重载接续且保留最佳。"
+          },
+          "image": ""
+        },
+        {
+          "id": "1ce70b1a-7a0f-4aa0-bf1c-4b7bb2d47528",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：5检查点×2圈完整比赛记录；重生+5秒为源码配置，罚时专项实测未在此记录明确列出。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "5检查点×2圈；追尾镜头在车后方；赛道模型和美术保持。",
+            "config": "5检查点×2圈；追尾镜头在车后方；赛道模型和美术保持。",
+            "rhythm": "驾驶遥控车穿过检查点，用完整两圈挑战最佳时间。",
+            "completion": "起跑→顺序检查点→第二圈→计时结算/最佳成绩；暂停后可续跑。"
+          },
+          "image": ""
+        },
+        {
+          "id": "673de3d1-a0f9-4cb7-b1de-c92f1a0af49b",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "沿用现有遥控车/赛道和15项美术模型许可文件；本轮只改转向和触摸镜头。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "沿用现有遥控车/赛道和15项美术模型许可文件；本轮只改转向和触摸镜头。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "d78ea86a-6f9e-452e-89f0-9b7c507641de",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：iPhone Safari、Android App WebView、实体手柄未重测；Android 实机通过USB加载正式包，不算手机公网验收。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "沿用现有遥控车/赛道和15项美术模型许可文件；本轮只改转向和触摸镜头。",
+            "source": "./LICENSE\n./index.html\n./owngame.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "f112a24d-7ae8-4f41-a9ae-c6a1a4381ed6",
+          "label": "规则用于关卡",
+          "from": "2a0368cd-eeb2-4f2c-806e-4f91399522b8",
+          "to": "1ce70b1a-7a0f-4aa0-bf1c-4b7bb2d47528"
+        },
+        {
+          "id": "597e307d-fe23-4863-94fc-f78938d0a433",
+          "label": "操作驱动状态",
+          "from": "6a26a93f-f816-46b5-8b93-5040e1232e5b",
+          "to": "95f1bba8-4a74-4847-a2d4-0415d04cd56b"
+        },
+        {
+          "id": "4075f37f-5d45-422f-9310-9b10f5f3dee3",
+          "label": "暂停与恢复",
+          "from": "95f1bba8-4a74-4847-a2d4-0415d04cd56b",
+          "to": "d2c3d81d-333b-4004-8b8a-862fa654439a"
+        },
+        {
+          "id": "ac85abd6-c6c4-41f0-afcb-ed7c644657c4",
+          "label": "方向落实到素材",
+          "from": "673de3d1-a0f9-4cb7-b1de-c92f1a0af49b",
+          "to": "d78ea86a-6f9e-452e-89f0-9b7c507641de"
+        },
+        {
+          "id": "02ddd384-b1a6-4931-b1d9-36b242ac1f8d",
+          "label": "补验后回写",
+          "from": "9762023b-1f8a-4f51-bcf1-543b5246b013",
+          "to": "e6e9c699-2d1d-454d-ac6b-235e5e58dcab"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "civ-clicker": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "877c3bb9-f247-4963-9f7a-013b7d20238f",
+      "title": "小小文明 · Web",
+      "tagline": "从一顶帐篷开始，安排居民生产，建设自己的城邦。",
+      "experience": "从手工采集到人口分工，建立自给自足的小文明。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "1007352f-39f7-45ea-8ef2-0af42f449bb3",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "从手工采集到人口分工，建立自给自足的小文明。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "c4cce6b8-e2ea-4e22-baef-2d30dd758f35",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：浏览器155次采集相关点击，建1帐篷、招1农民并观察食物增长；不是全经济系统验收。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "采食物木石，建住房扩人口，招募并分配工人产生资源；后续研究、贸易与建筑扩展。",
+            "example": "建帐篷后人口上限上升；招募农民后前台食物自动增长；暂停时资源停止推进。"
+          },
+          "image": ""
+        },
+        {
+          "id": "14f4a3c0-8661-4cf7-8dc4-0cea904170eb",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "长周期经济、研究/贸易/灾难全部分支未被初期循环测试覆盖；用户美术反馈及iOS待验。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "长周期经济、研究/贸易/灾难全部分支未被初期循环测试覆盖；用户美术反馈及iOS待验。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "17f54045-a761-4da3-aff6-cd1e55ac0c35",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-18 / browser-history / 未记录构建指纹：2026-10-18浏览器完成采集、建帐篷、招农民、生产、暂停与刷新；360/432窄屏及横屏检查。042192版另有真机、更新和离线冷启记录。\n• 2026-10-18 / release-history / 042192e78d3806130038501a678e8437fa32d04a5011ca218b32e032fb58a36d：已发布的历史版本：浏览器记录之后另有Android原生输入、正常更新及整机断网冷启；用户成品认可单独判断。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "c8ae2faa-80fa-4cee-befb-83a70284a857",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：360×640、432×862与横屏布局，实际采集/建筑/招募按钮通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "点击资源和建造／招募按钮，窄屏切换分区；保留明确暂停。",
+            "example": "建帐篷后人口上限上升；招募农民后前台食物自动增长；暂停时资源停止推进。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "f75e70e6-e50f-44b1-8d90-7e7984cceab7",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：采集→建造→招募→生产→暂停→重载循环通过；研究/贸易/灾难分支仍待验。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "采集→建造→招募分工→持续生产；菜单暂停，返回后继续。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ecc90874-2b2b-49d6-ab7f-7f0346010827",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：原生更新保留原始保存值；042192版全断网继续与冷恢复通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "独立v1保存文明与资源；保留导入/导出；暂停、刷新接续。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ddff642c-36c0-48a5-b783-820c1fc1fd13",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：初期一农民循环已有证据；长期人口、贸易平衡与大文明性能待验证。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "开放式经营，无固定关卡；从采集→住房→农民生产的初期节奏已有验证。",
+            "config": "开放式经营，无固定关卡；从采集→住房→农民生产的初期节奏已有验证。",
+            "rhythm": "从手工采集到人口分工，建立自给自足的小文明。",
+            "completion": "采集→建造→招募分工→持续生产；菜单暂停，返回后继续。"
+          },
+          "image": ""
+        },
+        {
+          "id": "39e3a20d-50c7-4002-97c0-ed5cae011ae3",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "沿用GPL上游代码与许可证，现有重绘素材另行保留来源。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "沿用GPL上游代码与许可证，现有重绘素材另行保留来源。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "68ff3b70-f961-40d3-8f2a-cb7169e7af8c",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：长周期经济、研究/贸易/灾难全部分支未被初期循环测试覆盖；用户美术反馈及iOS待验。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "沿用GPL上游代码与许可证，现有重绘素材另行保留来源。",
+            "source": "./LICENSE\n./public/index.html\n./public/owngame.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。CivClicker代码为GPL，发布时保留GPL。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "b88ff962-0e32-42f8-a8b1-b0b911ad9f4f",
+          "label": "规则用于关卡",
+          "from": "c4cce6b8-e2ea-4e22-baef-2d30dd758f35",
+          "to": "ddff642c-36c0-48a5-b783-820c1fc1fd13"
+        },
+        {
+          "id": "1cb5fc18-e51f-4234-a5b5-1e1c40cfa64f",
+          "label": "操作驱动状态",
+          "from": "c8ae2faa-80fa-4cee-befb-83a70284a857",
+          "to": "f75e70e6-e50f-44b1-8d90-7e7984cceab7"
+        },
+        {
+          "id": "2d3f6e3d-d829-4911-a05b-639b9b21afd1",
+          "label": "暂停与恢复",
+          "from": "f75e70e6-e50f-44b1-8d90-7e7984cceab7",
+          "to": "ecc90874-2b2b-49d6-ab7f-7f0346010827"
+        },
+        {
+          "id": "054325b0-7253-4533-8de1-e935c8b025b7",
+          "label": "方向落实到素材",
+          "from": "39e3a20d-50c7-4002-97c0-ed5cae011ae3",
+          "to": "68ff3b70-f961-40d3-8f2a-cb7169e7af8c"
+        },
+        {
+          "id": "45a96243-7f79-45f4-b47c-30a2d6c7d723",
+          "label": "补验后回写",
+          "from": "14f4a3c0-8661-4cf7-8dc4-0cea904170eb",
+          "to": "17f54045-a761-4da3-aff6-cd1e55ac0c35"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "crowd-runner": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "a0b586ca-7b10-462b-9f9c-ea3bb36e5c65",
+      "title": "人潮冲线 · Web",
+      "tagline": "选对数字门，集结队伍，冲过终点。",
+      "experience": "在短赛道上选对人数门，带队抵达终点。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "b8b10268-91f6-433c-8943-c4f004a95bef",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "在短赛道上选对人数门，带队抵达终点。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "2118ecca-8983-4800-a466-3aea87baed47",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：game-art-v2构建cc538420ffdb：门/障碍/终点对战，8关通关与失败路线通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "加乘门扩队，减除门和障碍减员；终点按实际人数对战，绘制人数上限不改变数值。",
+            "example": "通过乘门后实际人数按规则增加；人数超过画面小人上限时结算仍用真实人数。"
+          },
+          "image": ""
+        },
+        {
+          "id": "22b29a3d-5b8b-4b5a-b058-77dea233c4e7",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "最终版美术和手感待用户反馈；8关通关记录属于所列版本，后续差异需定向回归。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "最终版美术和手感待用户反馈；8关通关记录属于所列版本，后续差异需定向回归。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "bf4fa0a2-c4a8-4abb-9141-f76420a1e919",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-19 / browser-history / cc538420ffdb：game-art-v2：8关真实控制通关，失败路线/重试、键盘暂停和进度恢复通过；最终标签位置、粒子色及resize改动另有12项重绘回归。\n• 2026-10-19 / resize-regression / 未记录构建指纹：最终包12项同帧重绘、触摸和精确进度恢复回归通过。\n• 2026-10-19 / production-history / 2a062aaa2d95a6e294b262e30b38524cf6e01f898c98e2cb7d809ee68bada10e：最终包正式站点整合检查；此记录不自动推断真机或用户评价。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "32bdc46e-ce09-4485-8afa-ad1ca8a2f183",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：捕获拖动、桌面键盘/暂停、窄屏/横屏布局通过；最终resize另有12项重绘断言。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "手机横向拖动；桌面A/D或方向键；暂停后停止推进。",
+            "example": "通过乘门后实际人数按规则增加；人数超过画面小人上限时结算仍用真实人数。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "bc0af4dd-14c6-4c5b-a731-e0ea4be8fdb2",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：开跑→对战→胜利解锁→下一关和失败重试通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "开跑→选择路线与避障→终点对战→获胜解锁／失败重试。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "e758a714-40a2-4755-bed6-1da3d1e9d7fd",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：实际暂停、精确save/reload和恢复通过。最终生产记录不单独证明整机离线。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "v1存关卡解锁、最佳人数与当前进度，刷新后显式继续。"
+          },
+          "image": ""
+        },
+        {
+          "id": "58f49fee-c1ed-4583-90af-ffdbcfd52ef5",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：8条赛道均由真实控制和计时循环获胜；最终标签/粒子/resize小改做定向回归。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "8条赛道，门数值、障碍位置、终点敌人属于关卡配置。",
+            "config": "8条赛道，门数值、障碍位置、终点敌人属于关卡配置。",
+            "rhythm": "在短赛道上选对人数门，带队抵达终点。",
+            "completion": "开跑→选择路线与避障→终点对战→获胜解锁／失败重试。"
+          },
+          "image": ""
+        },
+        {
+          "id": "067471a1-c7ea-47c4-980e-21c0a4aa0083",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "以当前源码及本地素材为准；历史包含早期重绘与game-art-v2版本，不能互相代替运行验收。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "以当前源码及本地素材为准；历史包含早期重绘与game-art-v2版本，不能互相代替运行验收。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "589f1c01-00d5-493c-9047-24ca9c307dce",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：最终版美术和手感待用户反馈；8关通关记录属于所列版本，后续差异需定向回归。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "以当前源码及本地素材为准；历史包含早期重绘与game-art-v2版本，不能互相代替运行验收。",
+            "source": "./public/LICENSE.txt\n./public/SOURCE.json\n./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "c50021bd-ebc5-4ec4-9047-ddd77051a749",
+          "label": "规则用于关卡",
+          "from": "2118ecca-8983-4800-a466-3aea87baed47",
+          "to": "58f49fee-c1ed-4583-90af-ffdbcfd52ef5"
+        },
+        {
+          "id": "4792f554-d853-41c4-91c7-17716fbe8dd3",
+          "label": "操作驱动状态",
+          "from": "32bdc46e-ce09-4485-8afa-ad1ca8a2f183",
+          "to": "bc0af4dd-14c6-4c5b-a731-e0ea4be8fdb2"
+        },
+        {
+          "id": "04a00820-09ec-4c31-9ca2-140ad6bd1c59",
+          "label": "暂停与恢复",
+          "from": "bc0af4dd-14c6-4c5b-a731-e0ea4be8fdb2",
+          "to": "e758a714-40a2-4755-bed6-1da3d1e9d7fd"
+        },
+        {
+          "id": "eebbecce-3237-4c3c-a73b-9903535f62fc",
+          "label": "方向落实到素材",
+          "from": "067471a1-c7ea-47c4-980e-21c0a4aa0083",
+          "to": "589f1c01-00d5-493c-9047-24ca9c307dce"
+        },
+        {
+          "id": "9e47a730-69b8-4eda-ad13-e530baf901c0",
+          "label": "补验后回写",
+          "from": "22b29a3d-5b8b-4b5a-b058-77dea233c4e7",
+          "to": "bf4fa0a2-c4a8-4abb-9141-f76420a1e919"
+        }
+      ],
+      "views": {}
+    }
+  },
+  "arrow-escape": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 2,
+    "project": {
+      "id": "55bc6858-5953-4e34-9aaf-bec6a12f2197",
+      "title": "箭径出逃 · Web",
+      "tagline": "找出移除顺序，让所有箭头离开棋盘。",
+      "experience": "观察箭头依赖，用免费提示和撤销解开短局谜题。",
+      "scope": "公开 Web 项目设计与历史验证摘要。源码范围见 ./SOURCE_MANIFEST.json；已发布构建见 ./ONLINE_BUILD.json。历史通过仅适用于对应版本，本次整理未重新验收游戏。私人原始报告与未公开素材不随此快照发布。",
+      "playable": "",
+      "cards": [
+        {
+          "id": "9875bf30-d696-478f-88b9-16174316c97c",
+          "type": "note",
+          "section": "overview",
+          "title": "Web 设计入口",
+          "body": "观察箭头依赖，用免费提示和撤销解开短局谜题。\n本项目只维护Web版。规则、流程、关卡和素材见对应区域；历史验证按版本记录，未覆盖部分见待验证卡。\n设计来源：./README.md",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "4ea08eab-52b3-49c2-afaf-8e7807038d64",
+          "type": "rule",
+          "section": "rules",
+          "title": "核心规则 · 设计与历史验证",
+          "body": "已验证（历史版本范围）：36关规则与实际移除顺序通过；阻挡扣心、清空结算、失败撤销通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "trigger": "玩家进行当前回合操作。",
+            "behavior": "点击箭头任意线段；只有尖端到边缘无遮挡才能抽出。受阻扣一颗心，清空过关，三次容错。",
+            "example": "前方被另一箭挡住时点击应扣心且不移除；先移除挡路箭后原箭可离开；撤销可恢复。"
+          },
+          "image": ""
+        },
+        {
+          "id": "574e7803-3995-4b0f-85a8-56b8af1f16aa",
+          "type": "decision",
+          "section": "overview",
+          "title": "待验证与下一步",
+          "body": "修订README与当前美术一致；最终运行画面及手感待用户评价；iOS未找到验收。",
+          "status": "idea",
+          "x": 760,
+          "y": 60,
+          "fields": {
+            "question": "下一轮补哪些未覆盖项？",
+            "options": "修订README与当前美术一致；最终运行画面及手感待用户评价；iOS未找到验收。",
+            "result": "保持待验证；不以历史或静态导入替代本版本验收。"
+          },
+          "image": ""
+        },
+        {
+          "id": "e7fec3cf-0339-4736-912a-375423376bc8",
+          "type": "note",
+          "section": "overview",
+          "title": "验证索引 · 分版本记录",
+          "body": "历史验证摘要（未重新运行）：\n• 2026-10-20 / browser-history / 未记录构建指纹：2026-10-20街机版：36关实际触摸通关，阻挡扣心、失败撤销、重试、缩放、键盘、刷新通过。正常下载与Android 实机断网冷启另有发布记录。\n• 2026-10-20 / release-history / b4e597c5402c2c087dfb75a45da103d0b2374b07f545413d8ab867ce64f9e6b0：已发布的历史版本：浏览器记录之后另有Android原生输入、正常更新及整机断网冷启；用户成品认可单独判断。\n原始报告未公开。结果已分别归入规则、流程、关卡等卡片；历史结果不代表当前源码已验收。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "75583027-a1bb-4c03-a5d4-ddb7bb3bed38",
+          "type": "rule",
+          "section": "rules",
+          "title": "输入与操作边界",
+          "body": "已验证（历史版本范围）：实际点击线段、拖动平移、双指缩放、键盘选择与快捷键通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "trigger": "触摸、键盘或指针输入及取消。",
+            "behavior": "点击／触摸线段、拖动平移、双指缩放；方向键选箭，Enter移出，H提示，U撤销。",
+            "example": "前方被另一箭挡住时点击应扣心且不移除；先移除挡路箭后原箭可离开；撤销可恢复。\n下一轮还应按目标设备复核取消/松手边界。"
+          },
+          "image": ""
+        },
+        {
+          "id": "630750b9-5714-446a-af3a-305679238059",
+          "type": "state",
+          "section": "flow",
+          "title": "游玩、结算与重试",
+          "body": "已验证（历史版本范围）：失败、撤销离开失败、重来确认、选关重玩和下一关通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "entry": "进入本局或从已有进度继续。",
+            "exit": "选关→解谜→清空结算／失去心数→下一关／撤销／重来确认。",
+            "recovery": "暂停/失败后的恢复以本游戏记录为准；未覆盖部分不标为已验。"
+          },
+          "image": ""
+        },
+        {
+          "id": "fa41bdeb-da0e-4331-a01a-3d95d2cb69fe",
+          "type": "state",
+          "section": "flow",
+          "title": "存档、暂停与恢复",
+          "body": "已验证（历史版本范围）：精确checkpoint刷新；实际旧包进度接续，正常下载、Android 实机全断网冷启通过。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "done",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "entry": "读取旧档、暂停、后台或重新打开。",
+            "exit": "恢复到合法状态后由玩家继续。",
+            "recovery": "v1独立存档；校验关卡、箭头ID、心数及移除顺序，刷新恢复。"
+          },
+          "image": ""
+        },
+        {
+          "id": "ad1d292d-ca7f-49fc-b5d9-7427f6d7d4e0",
+          "type": "level",
+          "section": "levels",
+          "title": "关卡配置与推进节奏",
+          "body": "已验证（历史版本范围）：2026-10-20街机版36关720次移除触摸通关；不推广到未来生成关卡。\n历史版本摘要见总览的验证索引卡。\n本轮仅整理记录，未重跑。",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "space": "36关，逐步增加棋盘、箭长与依赖；生成器构造解后还需独立模拟验证。",
+            "config": "36关，逐步增加棋盘、箭长与依赖；生成器构造解后还需独立模拟验证。",
+            "rhythm": "观察箭头依赖，用免费提示和撤销解开短局谜题。",
+            "completion": "选关→解谜→清空结算／失去心数→下一关／撤销／重来确认。"
+          },
+          "image": ""
+        },
+        {
+          "id": "0463af33-1257-475a-b949-d883bc28060e",
+          "type": "reference",
+          "section": "assets",
+          "title": "美术方向与参考",
+          "body": "当前源码为A街机卡带方向：奶油纸面、蓝黄框、蓝色立体箭线与已选标题。README仍写纯白深色旧方向，属于文档过时。\n设计与历史来源：./game-outline.json",
+          "status": "doing",
+          "x": 60,
+          "y": 60,
+          "fields": {
+            "direction": "当前源码为A街机卡带方向：奶油纸面、蓝黄框、蓝色立体箭线与已选标题。README仍写纯白深色旧方向，属于文档过时。",
+            "source": "./game-outline.json",
+            "license": "参考方向不自动授予素材许可；保留项目原有来源说明。"
+          },
+          "image": ""
+        },
+        {
+          "id": "3f5edce4-8111-422e-825e-0d276bb0b5ac",
+          "type": "asset",
+          "section": "assets",
+          "title": "生产素材与交付边界",
+          "body": "使用项目既有生产素材；本轮未替换图片、引擎或许可。运行版视觉认可与技术通过分开记录。\n待验证：修订README与当前美术一致；最终运行画面及手感待用户评价；iOS未找到验收。",
+          "status": "doing",
+          "x": 410,
+          "y": 60,
+          "fields": {
+            "spec": "当前源码为A街机卡带方向：奶油纸面、蓝黄框、蓝色立体箭线与已选标题。README仍写纯白深色旧方向，属于文档过时。",
+            "source": "./public/LICENSE.txt\n./public/SOURCE.json\n./public/index.html\n./public/style.css",
+            "license": "保留现有作者与第三方许可；见项目许可文件。"
+          },
+          "image": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "ad3c8159-3888-44cd-8912-8a9d40151bc0",
+          "label": "规则用于关卡",
+          "from": "4ea08eab-52b3-49c2-afaf-8e7807038d64",
+          "to": "ad1d292d-ca7f-49fc-b5d9-7427f6d7d4e0"
+        },
+        {
+          "id": "724288af-29a4-4c83-bead-56434916b25e",
+          "label": "操作驱动状态",
+          "from": "75583027-a1bb-4c03-a5d4-ddb7bb3bed38",
+          "to": "630750b9-5714-446a-af3a-305679238059"
+        },
+        {
+          "id": "1083dde4-e606-4260-96c0-c5bd15baf76a",
+          "label": "暂停与恢复",
+          "from": "630750b9-5714-446a-af3a-305679238059",
+          "to": "fa41bdeb-da0e-4331-a01a-3d95d2cb69fe"
+        },
+        {
+          "id": "99ade71c-7bcb-4b94-ad11-7ea0cd8b123d",
+          "label": "方向落实到素材",
+          "from": "0463af33-1257-475a-b949-d883bc28060e",
+          "to": "3f5edce4-8111-422e-825e-0d276bb0b5ac"
+        },
+        {
+          "id": "b3fc9aec-9d28-4ad7-b6c2-f80b015e1ca2",
+          "label": "补验后回写",
+          "from": "574e7803-3995-4b0f-85a8-56b8af1f16aa",
+          "to": "e7fec3cf-0339-4736-912a-375423376bc8"
+        }
+      ],
+      "views": {}
+    }
+  }
+}

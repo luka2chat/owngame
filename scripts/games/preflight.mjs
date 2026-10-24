@@ -11,7 +11,7 @@ export async function preflightSource(repository,{stdio='inherit'}={}) {
     if(!files.length)throw Error('Exported source has no tests in '+folder);
     tests.push(...files.map(name=>path.join(repo,folder,name)));
   }
-  const env={...process.env};
+  const env={...process.env,PYTHONDONTWRITEBYTECODE:'1'};
   // Nested regression tests still need a fresh Node test runner, not the parent's worker protocol.
   delete env.NODE_TEST_CONTEXT;
   execFileSync(process.execPath,['--test',...tests],{cwd:repo,env,stdio,maxBuffer:8*1024*1024});

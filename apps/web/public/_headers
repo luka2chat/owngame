@@ -17,6 +17,16 @@
   Cache-Control: no-cache
 /remix.js
   Cache-Control: no-cache
+/remix-workflow.js
+  Cache-Control: no-cache
+/remix-workflow-model.js
+  Cache-Control: no-cache
+/blueprint.js
+  Cache-Control: no-cache
+/blueprint.css
+  Cache-Control: no-cache
+/blueprints/*
+  Cache-Control: no-cache
 /style.css
   Cache-Control: no-cache
 /remix.css

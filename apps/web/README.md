@@ -58,6 +58,12 @@ Free 限额以 Cloudflare 官方文档为准；当前构建远低于每站 20,00
 ## 复刻
 
 首页与游戏详情共用 `public/remix.js`。点击复刻生成并尝试复制该游戏的具体任务，支持补充改编要求、编辑全文和复制失败后的手动选择。构建生成 `/remix/<id>.json`，记录当前上架版本、玩法、视觉方向、冻结可玩地址与工具安装入口。它包含对应游戏的公开源码链接和确切提交；源码按各游戏的许可使用，npm 工具包与完整游戏案例分别分发。
+
+复刻弹窗提供「简单复刻」与「复杂复刻」。简单复刻保留原流程；复杂复刻由 `remix-workflow.js` 和 `remix-workflow-model.js` 提供可编排画布，支持步骤细节、依赖、启停、确认点、排序、拖动、缩放、撤销与重做。草稿按游戏保存在当前浏览器，支持 JSON 导入导出及并发窗口冲突提示；方案复制给 AI 后，要求同步到项目 outline 并逐步执行。网站自身不执行工作流，不把草稿正文发给统计服务。操作与边界见 [复刻说明](../../docs/remix.md)。
+
+「蓝图」与「复刻」并排，打开当前游戏的公开 outline 只读画布。六个区域、卡片字段与关联关系来自已有 outline 模型；支持全图搜索、关联跳转、缩放、完整详情和 JSON 下载。构建只读取 `scripts/games/projects.json` 显式登记的 `game-outline.public.json` 并执行公开内容校验，缺失或校验失败直接中止，不回退到私有设计板或本机服务。英文界面翻译操作与字段标签，设计内容保留作者原文。素材预览仅引用固定公开源码版本下的明确项目相对路径；3D 素材提供源文件链接。
 ## PC discovery on mobile
 
 The default catalog leads with Tidal Reclaim and Star Letters. Phone/tablet visitors still see PC game covers, with a computer-play notice before the action link. Their detail pages offer a copyable link, local favorites and mobile-game recommendations without loading the unsupported game or downloading its offline package. Device detection is independent of viewport width and the catalog filter, so narrow desktop windows keep working. Clipboard denial exposes a selectable URL. Keep Chinese and English copy aligned and retain the immutable game packages and saves. Verify with `node scripts/web/verify-pc-handoff.mjs` (set `OWNGAME_PC_BASE` for production).
+
+Public source export includes a validated `scripts/web/blueprint-snapshots.json` bundle and the shared outline metadata so website tests do not depend on private production project paths. Missing or invalid bundled snapshots fail closed. Production continues to read only registered `game-outline.public.json` files.

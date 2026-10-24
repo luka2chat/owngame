@@ -33,3 +33,6 @@ game-outline.json
 game-outline.json.*
 project-files.json
 .game-outline.lock/
+
+__pycache__/
+*.py[cod]

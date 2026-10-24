@@ -2,13 +2,18 @@ import { track, gameParams, eventId } from "./analytics.js";
 import { element } from "./data.js";
 import { t, getLanguage, localizeGame } from "./i18n.js";
 import { platforms, supportsPlatform } from "./platforms.js";
+import { createRemixWorkflow } from "./remix-workflow.js";
 
 export const TOOLKIT_URL = "https://github.com/luka2chat/owngame";
 
 export function remixPrompt(game, change = "") {
-  const targets = platforms.filter(target => supportsPlatform(game, target));
-  const targetEnglish = targets.map(target => target === "mobile" ? "mobile" : "PC").join(" and ");
-  const targetChinese = targets.map(target => target === "mobile" ? "移动端" : "PC").join("、");
+  const targets = platforms.filter((target) => supportsPlatform(game, target));
+  const targetEnglish = targets
+    .map((target) => (target === "mobile" ? "mobile" : "PC"))
+    .join(" and ");
+  const targetChinese = targets
+    .map((target) => (target === "mobile" ? "移动端" : "PC"))
+    .join("、");
   const reference =
     "https://owngame.dev/play?game=" + encodeURIComponent(game.id);
   const brief =
@@ -29,7 +34,8 @@ export function openRemix(game) {
   const context = { ...gameParams(game), action_id: eventId() };
   const openedAt = performance.now();
   let copied = false,
-    customized = false;
+    customized = false,
+    simpleCustomized = false;
   dialog = element("dialog", "remix-dialog");
   dialog.id = "remix-dialog";
   dialog.setAttribute("aria-labelledby", "remix-title");
@@ -56,6 +62,54 @@ export function openRemix(game) {
     "remix-intro",
     t("把这段话交给你的 AI，让喜欢的游戏长成你的样子。"),
   );
+  const modes = element("div", "remix-modes");
+  modes.setAttribute("role", "group");
+  const simple = element("button", "", t("简单复刻"));
+  const complex = element("button", "", t("复杂复刻"));
+  for (const button of [simple, complex]) button.type = "button";
+  simple.setAttribute("aria-pressed", "true");
+  complex.setAttribute("aria-pressed", "false");
+  modes.append(simple, complex);
+  const simplePanel = element("div", "remix-simple");
+  const complexPanel = element("div", "remix-complex");
+  complexPanel.hidden = true;
+  let workflow;
+  function switchMode(advanced) {
+    if (copy.disabled) {
+      statusKey = "内容已修改，点击「复制给 AI」复制新版。";
+      status.textContent = t(statusKey);
+    }
+    attempt++;
+    copy.disabled = false;
+    simplePanel.hidden = advanced;
+    complexPanel.hidden = !advanced;
+    dialog.classList.toggle("remix-dialog-workflow", advanced);
+    simple.setAttribute("aria-pressed", String(!advanced));
+    complex.setAttribute("aria-pressed", String(advanced));
+    intro.textContent = t(
+      advanced
+        ? "像搭积木一样编排复刻步骤，再交给 AI 逐步完成。"
+        : "把这段话交给你的 AI，让喜欢的游戏长成你的样子。",
+    );
+    if (advanced && !workflow) {
+      workflow = createRemixWorkflow(complexPanel, game, {
+        onEdit: () => {
+          if (!customized) track("remix_edit", context);
+          customized = true;
+        },
+        onCopy: () => {
+          copied = true;
+          track("remix_copy", {
+            ...context,
+            copy_mode: "workflow",
+            is_customized: 1,
+          });
+        },
+      });
+    }
+  }
+  simple.onclick = () => switchMode(false);
+  complex.onclick = () => switchMode(true);
   const label = element("label", "remix-label", t("想怎么改？"));
   label.htmlFor = "remix-change";
   const input = element("input", "remix-change");
@@ -123,6 +177,7 @@ export function openRemix(game) {
   function changed() {
     if (!customized) track("remix_edit", context);
     customized = true;
+    simpleCustomized = true;
     attempt++;
     copy.disabled = false;
     copyKey = "复制给 AI";
@@ -137,7 +192,7 @@ export function openRemix(game) {
   prompt.oninput = changed;
   copy.onclick = () => copyPrompt("manual");
   const updateLanguage = () => {
-    if (!customized) {
+    if (!simpleCustomized) {
       const next = remixPrompt(game);
       if (prompt.value !== next) {
         prompt.value = next;
@@ -151,7 +206,14 @@ export function openRemix(game) {
     title.textContent = t("复刻 · {title}", {
       title: localizeGame(game).title,
     });
-    intro.textContent = t("把这段话交给你的 AI，让喜欢的游戏长成你的样子。");
+    intro.textContent = t(
+      complexPanel.hidden
+        ? "把这段话交给你的 AI，让喜欢的游戏长成你的样子。"
+        : "像搭积木一样编排复刻步骤，再交给 AI 逐步完成。",
+    );
+    simple.textContent = t("简单复刻");
+    complex.textContent = t("复杂复刻");
+    workflow?.refreshLanguage();
     label.textContent = t("想怎么改？");
     input.placeholder = t("选填，例如：换成雨天咖啡馆的画风");
     promptLabel.textContent = t("给 AI 的话");
@@ -162,22 +224,16 @@ export function openRemix(game) {
   window.addEventListener("owngame:languagechange", updateLanguage);
   dialog.addEventListener(
     "close",
-    () => window.removeEventListener("owngame:languagechange", updateLanguage),
+    () => {
+      attempt++;
+      workflow?.dispose();
+      window.removeEventListener("owngame:languagechange", updateLanguage);
+    },
     { once: true },
   );
   actions.append(source, copy);
-  dialog.append(
-    close,
-    eyebrow,
-    title,
-    intro,
-    label,
-    input,
-    promptLabel,
-    prompt,
-    status,
-    actions,
-  );
+  simplePanel.append(label, input, promptLabel, prompt, status, actions);
+  dialog.append(close, eyebrow, title, modes, intro, simplePanel, complexPanel);
   document.body.append(dialog);
   dialog.showModal();
   track("remix_open", context);

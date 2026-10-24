@@ -1,6 +1,7 @@
 import { t, localizeGame, localizeUrl } from "./i18n.js";
 import { track, gameParams, selectGame, setPageGame } from "./analytics.js";
 import { openRemix } from "./remix.js";
+import { openBlueprint } from "./blueprint.js";
 import { supportsPlatform, platformLabel, playerPresentation, playerSandbox, needsComputer } from "./platforms.js";
 import {
   $,
@@ -241,6 +242,9 @@ function wire() {
   $("new-window").href = playUrl(game);
   $("remix").disabled = false;
   $("remix").onclick = () => openRemix(game);
+  $("blueprint").disabled = false;
+  $("blueprint").onclick = () => openBlueprint(game);
+  $("menu-blueprint").onclick = () => { $("menu").close(); openBlueprint(game); };
   $("menu-remix").onclick = () => {
     $("menu").close();
     openRemix(game);
