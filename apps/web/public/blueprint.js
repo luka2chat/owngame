@@ -1,3 +1,4 @@
+import { routeBlueprintConnections } from "./blueprint-connections.js";
 import { mediaThumbnail, appendMediaGallery } from "./blueprint-media.js";
 import { element } from "./data.js";
 import { t, localizeGame } from "./i18n.js";
@@ -224,31 +225,64 @@ export function openBlueprint(game) {
     svg.setAttribute("width", width);
     svg.setAttribute("height", height);
     svg.setAttribute("aria-hidden", "true");
-    const defs = document.createElementNS(ns, "defs"),
-      marker = document.createElementNS(ns, "marker"),
-      arrow = document.createElementNS(ns, "path");
-    marker.id = "blueprint-arrow";
-    marker.setAttribute("viewBox", "0 0 10 10");
-    marker.setAttribute("refX", "9");
-    marker.setAttribute("refY", "5");
-    marker.setAttribute("markerWidth", "6");
-    marker.setAttribute("markerHeight", "6");
-    marker.setAttribute("orient", "auto");
-    arrow.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
-    marker.append(arrow);
-    defs.append(marker);
+    svg.setAttribute("aria-hidden", "true");
+    const defs = document.createElementNS(ns, "defs");
+    for (const state of ["active", "muted"]) {
+      const marker = document.createElementNS(ns, "marker"),
+        arrow = document.createElementNS(ns, "path");
+      marker.id = "blueprint-arrow-" + state;
+      marker.classList.add("blueprint-arrow-" + state);
+      marker.setAttribute("viewBox", "0 0 10 10");
+      marker.setAttribute("refX", "9");
+      marker.setAttribute("refY", "5");
+      marker.setAttribute("markerWidth", "7");
+      marker.setAttribute("markerHeight", "7");
+      marker.setAttribute("orient", "auto");
+      arrow.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
+      marker.append(arrow);
+      defs.append(marker);
+    }
     svg.append(defs);
-    for (const edge of documentData.project.edges) {
-      const a = positions.get(edge.from),
-        b = positions.get(edge.to);
-      if (!a || !b) continue;
-      const path = document.createElementNS(ns, "path");
-      path.setAttribute(
-        "d",
-        `M ${a.x + 268} ${a.y + 100} C ${a.x + 305} ${a.y + 100}, ${b.x - 40} ${b.y + 100}, ${b.x - 4} ${b.y + 100}`,
-      );
-      path.setAttribute("marker-end", "url(#blueprint-arrow)");
-      svg.append(path);
+    const nodes = cards.map((card) => ({
+      id: card.id,
+      ...positions.get(card.id),
+    }));
+    for (const edge of routeBlueprintConnections(
+      nodes,
+      documentData.project.edges,
+      width,
+      height,
+    )) {
+      const group = document.createElementNS(ns, "g");
+      group.classList.add("blueprint-connection");
+      group.dataset.from = edge.from;
+      group.dataset.to = edge.to;
+      group.dataset.points = JSON.stringify(edge.points);
+      for (const kind of ["halo", "line"]) {
+        const path = document.createElementNS(ns, "path");
+        path.classList.add("blueprint-connection-" + kind);
+        path.setAttribute("d", edge.path);
+        path.setAttribute("vector-effect", "non-scaling-stroke");
+        group.append(path);
+      }
+      if (edge.label) {
+        const label = document.createElementNS(ns, "g"),
+          rect = document.createElementNS(ns, "rect"),
+          text = document.createElementNS(ns, "text");
+        label.classList.add("blueprint-connection-label");
+        for (const key of ["x", "y", "width", "height"])
+          rect.setAttribute(
+            key,
+            edge.label[key === "width" ? "w" : key === "height" ? "h" : key],
+          );
+        rect.setAttribute("rx", "5");
+        text.setAttribute("x", edge.label.x + edge.label.w / 2);
+        text.setAttribute("y", edge.label.y + edge.label.h / 2);
+        text.textContent = edge.label.text;
+        label.append(rect, text);
+        group.append(label);
+      }
+      svg.append(group);
     }
     board.append(svg);
     for (const card of cards) {
@@ -262,6 +296,7 @@ export function openBlueprint(game) {
               String(child.dataset.cardId === selected),
             );
           renderDetail();
+          updateConnections();
         },
         "blueprint-card color-" + meta.types[card.type].color,
       );
@@ -288,6 +323,21 @@ export function openBlueprint(game) {
         element("span", "blueprint-card-status", t(meta.statuses[card.status])),
       );
       board.append(node);
+    }
+    updateConnections();
+  }
+  function updateConnections() {
+    for (const edge of board.querySelectorAll(".blueprint-connection")) {
+      const active =
+        edge.dataset.from === selected || edge.dataset.to === selected;
+      edge.classList.toggle("is-active", active);
+      edge
+        .querySelector(".blueprint-connection-line")
+        .setAttribute(
+          "marker-end",
+          "url(#blueprint-arrow-" + (active ? "active" : "muted") + ")",
+        );
+      if (active) edge.parentElement.append(edge);
     }
   }
   function renderDetail() {

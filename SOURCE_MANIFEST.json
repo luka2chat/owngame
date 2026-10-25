@@ -1213,6 +1213,11 @@
       "sha256": "d9747e839ce298cc77e781bcca18c5a38564651a68f776542b66fd47eab2886b"
     },
     {
+      "path": "apps/web/public/blueprint-connections.js",
+      "bytes": 8846,
+      "sha256": "5825dac65188ccf3bcd40c8e23ef7175d8abcf0a97785fa74a926e9e67e8a507"
+    },
+    {
       "path": "apps/web/public/blueprint-media-policy.js",
       "bytes": 637,
       "sha256": "5d4823ec67c912681de8cb951e59a10d701aea1bc5f983acc01b196d724e0e72"
@@ -1234,13 +1239,13 @@
     },
     {
       "path": "apps/web/public/blueprint.css",
-      "bytes": 10373,
-      "sha256": "089a83304950d9f78d684e921158e109658213aaf59bd531f26314332ad62c1c"
+      "bytes": 11216,
+      "sha256": "132e72482351e518f52ea96aa1a9bd0fe7cd6e603c353ebd97f1ca97bb435eda"
     },
     {
       "path": "apps/web/public/blueprint.js",
-      "bytes": 13802,
-      "sha256": "54fe2133950fc2b4bc74185fd93bf842d2222a4a186a0ee8bbd04509793e5c5c"
+      "bytes": 15688,
+      "sha256": "67b90d0330d4e10f955b4a7048c1f887f424812bef49e2b66c50a4c5af8776ff"
     },
     {
       "path": "apps/web/public/cases/star-letters/case.css",
@@ -1394,8 +1399,8 @@
     },
     {
       "path": "apps/web/README.md",
-      "bytes": 9355,
-      "sha256": "79bad1de1f1fc6df4b1a18c89a46a8a148717b0d64654e0addbe0a9cf8ab8b99"
+      "bytes": 9685,
+      "sha256": "4f02a6c43a68b38bdc76887d2ebbe79a3ee3cb5464644d2d7a9e532261e1416f"
     },
     {
       "path": "apps/web/wrangler.jsonc",
@@ -12156,6 +12161,11 @@
       "path": "tests/web/analytics.test.mjs",
       "bytes": 1306,
       "sha256": "9856901d40eb9d0c5fb01d69237c83633a1d5ac1c816fee39f70492dbc9b8544"
+    },
+    {
+      "path": "tests/web/blueprint-connections.test.mjs",
+      "bytes": 3425,
+      "sha256": "6b33bb3329ddd124d7d01fbc3e3201a0a2e4dc0c3ac49b054a2561fcfbc6119e"
     },
     {
       "path": "tests/web/blueprint-media.test.mjs",

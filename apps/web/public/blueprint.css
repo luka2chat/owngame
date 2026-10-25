@@ -161,11 +161,6 @@
   inset: 0;
   pointer-events: none;
 }
-.blueprint-board > svg > path {
-  fill: none;
-  stroke: var(--blue);
-  stroke-width: 2;
-}
 .blueprint-board marker path {
   fill: var(--blue);
 }
@@ -526,4 +521,50 @@
   .blueprint-media-dialog > .blueprint-media-model {
     height: 55dvh;
   }
+}
+
+.blueprint-connection-line,
+.blueprint-connection-halo {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.blueprint-connection-line {
+  stroke: #8b9c91;
+  stroke-width: 1.25;
+  opacity: 0.3;
+}
+.blueprint-connection-halo {
+  stroke: #f5efdf;
+  stroke-width: 6;
+  opacity: 0;
+}
+.blueprint-connection.is-active .blueprint-connection-line {
+  stroke: var(--blue);
+  stroke-width: 2;
+  opacity: 1;
+}
+.blueprint-connection.is-active .blueprint-connection-halo {
+  opacity: 1;
+}
+.blueprint-board marker.blueprint-arrow-muted path {
+  fill: #8b9c91;
+}
+.blueprint-connection-label {
+  display: none;
+}
+.blueprint-connection.is-active .blueprint-connection-label {
+  display: block;
+}
+.blueprint-connection-label rect {
+  fill: #fffaf0;
+  stroke: #b5c7d4;
+  stroke-width: 1;
+}
+.blueprint-connection-label text {
+  fill: #075bb4;
+  font-size: 12px;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
