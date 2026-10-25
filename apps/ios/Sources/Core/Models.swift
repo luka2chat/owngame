@@ -11,6 +11,8 @@ enum GameError: Error, LocalizedError {
 enum GamePaths {
     static let maxFile = 25 * 1024 * 1024
     static let maxGame = 128 * 1024 * 1024
+    static let maxDevelopmentFile = 128 * 1024 * 1024
+    static let maxDevelopmentGame = 512 * 1024 * 1024
     static func require(_ condition: Bool, _ message: String) throws {
         if !condition { throw GameError.invalid(message) }
     }
@@ -35,10 +37,11 @@ enum GamePaths {
     static func within(_ base: URL, _ path: String) throws -> URL {
         try safe(path)
         let root = base.resolvingSymlinksInPath().standardizedFileURL
-        let file = base.appendingPathComponent(path).resolvingSymlinksInPath().standardizedFileURL
-        try require(file.path.hasPrefix(root.path + "/"), AppText.text("文件超出游戏目录"))
+        let file = root.appendingPathComponent(path).resolvingSymlinksInPath().standardizedFileURL
+        let prefix = root.path.hasSuffix("/") ? root.path : root.path + "/"
+        try require(file.path.hasPrefix(prefix) && file.path != root.path, AppText.text("文件超出游戏目录"))
         // Refuse symlinks, including ones that still point inside the game.
-        var cursor = base
+        var cursor = root
         for part in path.split(separator: "/") {
             cursor.appendPathComponent(String(part))
             let values = try? cursor.resourceValues(forKeys: [.isSymbolicLinkKey])
@@ -65,6 +68,8 @@ struct CatalogGame: Codable, Equatable {
     var manifest: String
     var bytes: Int
     var platforms: [String]? = nil
+    var development: Bool? = nil
+    var isDevelopment: Bool { development == true && id.hasPrefix("dev-") }
     var supportsMobile: Bool { platforms?.contains("mobile") ?? true }
     var prefix: String { "/games/\(id)/\(version)/" }
     var entrypoint: String { String(entry.dropFirst(prefix.count)) }
@@ -73,12 +78,13 @@ struct CatalogGame: Codable, Equatable {
             try GamePaths.require(!platforms.isEmpty && Set(platforms).count == platforms.count &&
                 platforms.allSatisfy { ["mobile", "pc"].contains($0) }, AppText.text("无效的游戏平台"))
         }
+        try GamePaths.require(development != true || (id.hasPrefix("dev-") && supportsMobile), "Invalid development game")
         try GamePaths.identity(id, version)
         try GamePaths.require(entry.hasPrefix(prefix) && manifest == prefix + "manifest.json", AppText.text("无效的游戏地址"))
         try GamePaths.route(entry)
         try GamePaths.safe(entrypoint)
         try GamePaths.require(!title.isEmpty && title.count <= 160 && description.count <= 2000 &&
-            bytes > 0 && bytes <= GamePaths.maxGame && (category?.count ?? 0) <= 80, AppText.text("无效的游戏资料"))
+            bytes > 0 && bytes <= (isDevelopment ? GamePaths.maxDevelopmentGame : GamePaths.maxGame) && (category?.count ?? 0) <= 80, AppText.text("无效的游戏资料"))
     }
 }
 
@@ -89,7 +95,8 @@ extension CatalogGame {
             description: try c.decode(String.self, forKey: .description), category: try c.decodeIfPresent(String.self, forKey: .category),
             version: try c.decode(String.self, forKey: .version), entry: try c.decode(String.self, forKey: .entry),
             manifest: try c.decode(String.self, forKey: .manifest), bytes: try c.decode(Int.self, forKey: .bytes),
-            platforms: c.contains(.platforms) ? try c.decode([String].self, forKey: .platforms) : nil)
+            platforms: c.contains(.platforms) ? try c.decode([String].self, forKey: .platforms) : nil,
+            development: try c.decodeIfPresent(Bool.self, forKey: .development))
     }
 }
 
@@ -111,10 +118,10 @@ enum GameManifest {
             try GamePaths.require(row.url.hasPrefix(game.prefix), AppText.text("文件不属于该游戏"))
             let name = String(row.url.dropFirst(game.prefix.count))
             try GamePaths.safe(name)
-            try GamePaths.require(names.insert(name).inserted && row.bytes >= 0 && row.bytes <= GamePaths.maxFile &&
+            try GamePaths.require(names.insert(name).inserted && row.bytes >= 0 && row.bytes <= (game.isDevelopment ? GamePaths.maxDevelopmentFile : GamePaths.maxFile) &&
                 GamePaths.matches(row.sha256, "^[a-f0-9]{64}$"), AppText.text("文件清单无效"))
             total += row.bytes
-            try GamePaths.require(total <= GamePaths.maxGame, AppText.text("游戏体积超限"))
+            try GamePaths.require(total <= (game.isDevelopment ? GamePaths.maxDevelopmentGame : GamePaths.maxGame), AppText.text("游戏体积超限"))
             files.append(GameFile(path: name, bytes: row.bytes, sha256: row.sha256))
         }
         // A parent cannot be both a file and a directory; exclude case-insensitive collisions on Apple filesystems.

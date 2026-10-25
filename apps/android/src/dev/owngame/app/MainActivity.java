@@ -34,6 +34,7 @@ public class MainActivity extends Activity {
   private int safeTop=0, safeBottom=0, safeRight=0;
   private WebView library, game;
   private JSONObject playing;
+  private DevelopmentReceipt developmentReceipt;
   private final ExecutorService io=Executors.newSingleThreadExecutor();
   private final ExecutorService updateIo=Executors.newSingleThreadExecutor();
   private boolean updateChecking=false, updateResumed=false;
@@ -59,6 +60,8 @@ public class MainActivity extends Activity {
     immersive(getWindow());
     WebView.setWebContentsDebuggingEnabled(false);
     repository=new GameRepository(getFilesDir());
+    prepareDevelopmentReceipt(getIntent());
+    writeDevelopmentCapabilities();
     if(!standalone())restoreAppUpdate();
     root=new FrameLayout(this);root.setBackgroundColor(Color.rgb(250,245,232));setContentView(root);
     root.setOnApplyWindowInsetsListener((v,insets)->{
@@ -69,6 +72,7 @@ public class MainActivity extends Activity {
     if(standalone()){String id=gameId(getIntent());if(id==null||!hasGame(id)){Toast.makeText(this,AppText.text("游戏尚未下载，请在游戏库中获取"),Toast.LENGTH_LONG).show();returnHome();}else open(id);return;}
     library=new WebView(this);configure(library,true);library.addJavascriptInterface(new LibraryBridge(),"Owngame");
     root.addView(library,new FrameLayout.LayoutParams(-1,-1));library.loadUrl(APP+"index.html");
+    receiveDevelopment(getIntent());
   }
   private void checkAppUpdate(boolean manual){
     if(standalone()||isFinishing()||isDestroyed())return;
@@ -175,6 +179,24 @@ public class MainActivity extends Activity {
       else Toast.makeText(this,AppText.text("尚未允许安装，安装包已保留，可稍后重试"),Toast.LENGTH_LONG).show();
     }else if(request==UPDATE_INSTALL&&result!=RESULT_OK)Toast.makeText(this,AppText.text("未完成安装，可稍后点检查 App 更新继续"),Toast.LENGTH_LONG).show();
   }
+  private File developmentInbox(){File external=getExternalFilesDir(null);return external==null?null:new File(external,DevelopmentReceipt.INBOX);}
+  private void writeDevelopmentCapabilities(){try{File inbox=developmentInbox();if(inbox==null)return;inbox.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(inbox,"capabilities.json"))){out.write("{\"schema\":\"owngame.device-capabilities.v1\",\"protocol\":1}".getBytes("UTF-8"));}}catch(Exception e){android.util.Log.w("OwngameDev","Could not write device capabilities",e);}}
+  private void prepareDevelopmentReceipt(Intent intent){
+    String request=intent.getStringExtra("owngame_development_job"),id=gameId(intent);File inbox=developmentInbox();
+    developmentReceipt=null;if(inbox==null||id==null||!id.startsWith("dev-")||!DevelopmentReceipt.validRequest(request))return;
+    try{developmentReceipt=new DevelopmentReceipt(new File(inbox,request));}catch(Exception e){android.util.Log.w("OwngameDev","Invalid development launch",e);}
+  }
+  private void receiveDevelopment(Intent intent){
+    if(standalone())return;String request=intent.getStringExtra("owngame_development");File inbox=developmentInbox();
+    if(inbox==null||!DevelopmentReceipt.validRequest(request))return;
+    intent.removeExtra("owngame_development");File folder=new File(inbox,request);
+    io.execute(()->{DevelopmentReceipt receipt=null;try{
+      receipt=new DevelopmentReceipt(folder);JSONObject delivery=repository.importDevelopment(folder);receipt.installed(delivery);
+      String id=delivery.getString("id");runOnUiThread(()->{refreshLibrary();startActivity(gameIntent(id).putExtra("owngame_development_job",request));});
+    }catch(Exception e){if(receipt!=null)receipt.fail(e.getMessage()==null?e.getClass().getSimpleName():e.getMessage());}});
+  }
+  private String gameAddress(){return gameOrigin()+((playing!=null&&playing.optBoolean("development"))?playing.optString("entrypoint"):playing.optString("id")+"/"+playing.optString("build_sha256")+"/"+playing.optString("entrypoint"));}
+  private String gameOrigin(){return playing!=null&&playing.optBoolean("development")?"https://"+playing.optString("id")+".owngame.invalid/":GAME;}
   private String gameId(Intent intent){
     Uri u=intent.getData();if(u==null||!"owngame".equals(u.getScheme())||!"game".equals(u.getHost())||u.getQuery()!=null||u.getFragment()!=null)return null;
     String p=u.getPath();if(p==null||!p.matches("/[a-z0-9][a-z0-9-]{0,63}"))return null;return p.substring(1);
@@ -183,11 +205,11 @@ public class MainActivity extends Activity {
   private Intent gameIntent(String id){return new Intent(this,GameActivity.class).setAction(Intent.ACTION_VIEW).setData(new Uri.Builder().scheme("owngame").authority("game").appendPath(id).build()).addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);}
   private void launchGame(String id){if(id==null||!id.matches("[a-z0-9][a-z0-9-]{0,63}")||!hasGame(id))return;startActivity(gameIntent(id));}
   private void returnHome(){startActivity(new Intent(this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP));finishAndRemoveTask();}
-  @Override protected void onNewIntent(Intent intent){super.onNewIntent(intent);setIntent(intent);if(standalone()){
+  @Override protected void onNewIntent(Intent intent){super.onNewIntent(intent);setIntent(intent);prepareDevelopmentReceipt(intent);if(standalone()){
     String id=gameId(intent);if(id==null||!hasGame(id)){Toast.makeText(this,AppText.text("游戏尚未下载"),Toast.LENGTH_SHORT).show();returnHome();return;}
     if(playing==null)open(id);
-    else try{JSONObject installed=repository.installed(id);if(installed!=null&&!installed.getString("build_sha256").equals(playing.optString("build_sha256")))reopenInstalled();}catch(Exception ignored){}
-  }else if(library!=null)library.evaluateJavascript("window.goHome&&window.goHome()",null);}
+    else try{JSONObject installed=repository.installed(id);if(installed!=null&&(developmentReceipt!=null||!installed.getString("build_sha256").equals(playing.optString("build_sha256"))))reopenInstalled();}catch(Exception ignored){}
+  }else {receiveDevelopment(intent);if(library!=null)library.evaluateJavascript("window.goHome&&window.goHome()",null);}}
   private Bitmap gameIcon(String id){
     Bitmap result=Bitmap.createBitmap(192,192,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(result);Paint p=new Paint(Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);
     c.drawColor(Color.rgb(250,245,232));
@@ -213,7 +235,7 @@ public class MainActivity extends Activity {
     view.setBackgroundColor(Color.rgb(250,245,232));
     WebSettings s=view.getSettings();s.setJavaScriptEnabled(true);s.setDomStorageEnabled(true);s.setAllowFileAccess(false);s.setAllowContentAccess(false);s.setMediaPlaybackRequiresUserGesture(true);s.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);s.setSupportMultipleWindows(true);
     view.setWebChromeClient(new WebChromeClient(){
-      @Override public boolean onConsoleMessage(ConsoleMessage m){android.util.Log.i("OwngameWeb",m.message());return false;}
+      @Override public boolean onConsoleMessage(ConsoleMessage m){android.util.Log.i("OwngameWeb",m.message());if(!trusted&&developmentReceipt!=null)developmentReceipt.log(m.messageLevel().name(),m.message()+" ("+m.sourceId()+":"+m.lineNumber()+")");return false;}
       @Override public boolean onCreateWindow(WebView source,boolean dialog,boolean gesture,Message result){
         if(!gesture)return false;
         // Capture the destination without loading it or giving the new window a native bridge.
@@ -233,13 +255,20 @@ public class MainActivity extends Activity {
       }
     });
     view.setWebViewClient(new WebViewClient(){
-      @Override public void onPageFinished(WebView v,String url){if(trusted){updateSafeArea();if(!initialRefresh){initialRefresh=true;sync();}}}
+      private boolean loadFailed=false;
+      @Override public void onReceivedError(WebView v,WebResourceRequest r,WebResourceError e){if(!trusted&&r.isForMainFrame()&&developmentReceipt!=null){loadFailed=true;developmentReceipt.fail(e.getDescription().toString());}}
+      @Override public void onReceivedHttpError(WebView v,WebResourceRequest r,WebResourceResponse e){if(!trusted&&r.isForMainFrame()&&developmentReceipt!=null){loadFailed=true;developmentReceipt.fail("Entry HTTP "+e.getStatusCode());}}
+      @Override public void onPageFinished(WebView v,String url){if(trusted){updateSafeArea();if(!initialRefresh){initialRefresh=true;sync();}}else if(!loadFailed&&developmentReceipt!=null&&playing!=null&&url.equals(gameAddress()))developmentReceipt.running(playing);}
       @Override public boolean shouldOverrideUrlLoading(WebView v,WebResourceRequest r){return handleNavigation(v,r.getUrl(),trusted,r.isForMainFrame()&&r.hasGesture());}
       @Override public WebResourceResponse shouldInterceptRequest(WebView v,WebResourceRequest r){
         try {
           Uri u=r.getUrl();if(!allowed(u,trusted))return response(403,"text/plain",new byte[0]);
           String relative=u.getPath().substring(1);safe(relative);
           if(trusted)return response(200,mime(relative),readAll(getAssets().open(relative),16*1024*1024));
+          if(playing!=null&&playing.optBoolean("development")){
+            File base=new File(getFilesDir(),"games/"+playing.optString("id")+"/"+playing.optString("build_sha256")+"/files");
+            return new WebResourceResponse(mime(relative),"UTF-8",new FileInputStream(contained(base,relative)));
+          }
           String[] parts=relative.split("/",3);if(parts.length!=3||!parts[0].matches("[a-z0-9][a-z0-9-]{0,63}")||!parts[1].matches("[a-f0-9]{64}"))throw new Exception("Unknown game");
           File base=new File(getFilesDir(),"games/"+parts[0]+"/"+parts[1]+"/files");File f=contained(base,parts[2]);
           return new WebResourceResponse(mime(relative),"UTF-8",new FileInputStream(f));
@@ -248,7 +277,7 @@ public class MainActivity extends Activity {
     });
     view.setOnLongClickListener(v->true);
   }
-  private boolean allowed(Uri u,boolean trusted){return "https".equals(u.getScheme())&&u.getUserInfo()==null&&(u.getPort()==-1||u.getPort()==443)&&(trusted?"app.owngame.invalid":"game.owngame.invalid").equals(u.getHost());}
+  private boolean allowed(Uri u,boolean trusted){return "https".equals(u.getScheme())&&u.getUserInfo()==null&&(u.getPort()==-1||u.getPort()==443)&&(trusted?"app.owngame.invalid":Uri.parse(gameOrigin()).getHost()).equals(u.getHost());}
   private boolean handleNavigation(WebView source,Uri target,boolean trusted,boolean gesture){
     if(allowed(target,trusted)){
       String path=target.getPath();
@@ -270,10 +299,14 @@ public class MainActivity extends Activity {
         String relative=target.getPath().substring(1);safe(relative);byte[] bytes;
         if(trusted)bytes=readAll(getAssets().open(relative),1024*1024);
         else{
+          if(playing!=null&&playing.optBoolean("development")){
+            bytes=readAll(new FileInputStream(contained(new File(getFilesDir(),"games/"+playing.optString("id")+"/"+playing.optString("build_sha256")+"/files"),relative)),1024*1024);
+          }else{
           String[] parts=relative.split("/",3);String[] origin=Uri.parse(current).getPath().substring(1).split("/",3);
           if(parts.length!=3||origin.length!=3||!parts[0].equals(origin[0])||!parts[1].equals(origin[1])||
             !parts[0].matches("[a-z0-9][a-z0-9-]{0,63}")||!parts[1].matches("[a-f0-9]{64}"))throw new IOException("Outside current game");
           bytes=readAll(new FileInputStream(contained(new File(getFilesDir(),"games/"+parts[0]+"/"+parts[1]+"/files"),parts[2])),1024*1024);
+        }
         }
         final String text=new String(bytes,java.nio.charset.StandardCharsets.UTF_8);
         runOnUiThread(()->{
@@ -334,6 +367,7 @@ public class MainActivity extends Activity {
     getSharedPreferences("player",MODE_PRIVATE).edit().putLong("played:"+id,System.currentTimeMillis()).apply();
     if(library!=null)library.setVisibility(View.GONE);
     setTaskDescription(new ActivityManager.TaskDescription(AppText.title(playing.optString("id"),playing.optString("title")),gameIcon(id),Color.rgb(250,245,232)));
+    WebView.setWebContentsDebuggingEnabled(playing.optBoolean("development"));
     game=new WebView(this);configure(game,false);game.addJavascriptInterface(new Haptics(),"OwngameFeedback");root.addView(game,new FrameLayout.LayoutParams(-1,-1));
     capsule=new LinearLayout(this);capsule.setGravity(Gravity.CENTER);capsule.setPadding(dp(2),0,dp(2),0);
     GradientDrawable bg=new GradientDrawable();bg.setColor(Color.argb(175,20,23,26));bg.setCornerRadius(dp(24));bg.setStroke(dp(1),Color.argb(90,255,255,255));capsule.setBackground(bg);
@@ -341,7 +375,7 @@ public class MainActivity extends Activity {
     View divider=new View(this);divider.setBackgroundColor(Color.argb(80,255,255,255));capsule.addView(divider,new LinearLayout.LayoutParams(dp(1),dp(20)));
     CapsuleButton close=new CapsuleButton(true);close.setContentDescription(AppText.text("关闭游戏，返回首页"));close.setOnClickListener(v->closeGame());capsule.addView(close,new LinearLayout.LayoutParams(dp(53),dp(44)));
     FrameLayout.LayoutParams lp=new FrameLayout.LayoutParams(dp(112),dp(44),Gravity.TOP|Gravity.RIGHT);root.addView(capsule,lp);updateSafeArea();immersive(getWindow());
-    game.loadUrl(GAME+playing.getString("id")+"/"+playing.getString("build_sha256")+"/"+playing.getString("entrypoint"));
+    game.loadUrl(gameAddress());
   }catch(Exception e){closeGame();notifyStatus(AppText.text("游戏暂时无法打开，请重新下载"));}}
   private final class CapsuleButton extends View {
     private final boolean close;private final Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);

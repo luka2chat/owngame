@@ -41,7 +41,10 @@ actor GameRepository {
         try GamePaths.require(response.status == 200 && response.data.count <= 2 * 1024 * 1024, AppText.text("目录下载失败"))
         let games = try JSONDecoder().decode([CatalogGame].self, from: response.data)
         try GamePaths.require(games.count <= 500 && Set(games.map(\.id)).count == games.count, AppText.text("游戏目录无效"))
-        for game in games { try game.validate() }
+        for game in games {
+            try game.validate()
+            try GamePaths.require(!game.id.hasPrefix("dev-") && game.development != true, "Reserved development game identity")
+        }
         try Task.checkCancellation()
         try save(games, "remote.json")
     }
@@ -141,13 +144,45 @@ actor GameRepository {
         try GamePaths.require((latest ?? delivery.game).supportsMobile, AppText.text("这款游戏仅支持 PC"))
         return (delivery, try verifiedRoot(delivery))
     }
+    func importDevelopment(_ folder: URL) throws -> InstalledGame {
+        try GamePaths.require(!busy, AppText.text("已有下载或刷新正在进行"))
+        busy = true; defer { busy = false }
+        let package = try DevelopmentPackage.read(folder), game = package.game
+        var all = try installed()
+        let old = all.first { $0.game.id == game.id }
+        try GamePaths.require(old == nil || old?.game.isDevelopment == true, "Cannot replace an official game")
+        for file in package.files {
+            try Task.checkCancellation()
+            let source = try GamePaths.within(folder, "files/" + file.path)
+            let values = try source.resourceValues(forKeys: [.isRegularFileKey, .fileSizeKey])
+            try GamePaths.require(values.isRegularFile == true && values.fileSize == file.bytes, "Development file incomplete")
+            let data = try Data(contentsOf: source, options: .mappedIfSafe)
+            try GamePaths.require(data.count == file.bytes && GamePaths.sha(data) == file.sha256, "Development file fingerprint mismatch: \(file.path)")
+            let destination = "games/\(game.id)/\(game.version)/files/\(file.path)"
+            try write(data, destination)
+            try GamePaths.require(validFile(try GamePaths.within(root, destination), file), "Development copy verification failed")
+        }
+        try Task.checkCancellation()
+        let previous = old?.game.version == game.version ? old?.previous : old?.game.version
+        let delivery = InstalledGame(game: game, files: package.files, previous: previous)
+        try save(delivery, "games/\(game.id)/\(game.version)/delivery.json")
+        all.removeAll { $0.game.id == game.id }; all.append(delivery)
+        try save(all, "installed.json")
+        let base = try GamePaths.within(root, "games/\(game.id)")
+        if let versions = try? fm.contentsOfDirectory(at: base, includingPropertiesForKeys: nil) {
+            for candidate in versions where GamePaths.matches(candidate.lastPathComponent, "^[a-f0-9]{64}$") && candidate.lastPathComponent != game.version && candidate.lastPathComponent != previous {
+                try? fm.removeItem(at: candidate)
+            }
+        }
+        return delivery
+    }
     private func verifiedRoot(_ delivery: InstalledGame) throws -> URL {
         try delivery.game.validate()
         try GamePaths.require(GamePaths.sha(try GamePaths.canonical(delivery.files)) == delivery.game.version &&
             delivery.files.contains { $0.path == delivery.game.entrypoint }, AppText.text("本地清单损坏"))
         let base = try GamePaths.within(root, "games/\(delivery.game.id)/\(delivery.game.version)/files")
         for file in delivery.files {
-            try GamePaths.require(file.bytes >= 0 && file.bytes <= GamePaths.maxFile &&
+            try GamePaths.require(file.bytes >= 0 && file.bytes <= (delivery.game.isDevelopment ? GamePaths.maxDevelopmentFile : GamePaths.maxFile) &&
                 validFile(try GamePaths.within(base, file.path), file), AppText.text("本地游戏损坏，请重新下载"))
         }
         return base

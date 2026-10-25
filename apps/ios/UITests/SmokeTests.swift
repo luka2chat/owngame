@@ -146,4 +146,48 @@ final class SmokeTests: XCTestCase {
         add(screenshot)
         print("OWNGAME_GAME_HIERARCHY\n" + app.debugDescription)
     }
+    @MainActor
+    private func openDevelopment(_ app: XCUIApplication) {
+        let search = app.webViews.searchFields["搜索游戏"].firstMatch
+        XCTAssertTrue(search.waitForExistence(timeout: 30), app.debugDescription)
+        search.tap(); search.typeText("Device Runner\n")
+        let hidden = XCTNSPredicateExpectation(predicate: NSPredicate { _,_ in !app.keyboards.firstMatch.exists }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [hidden], timeout: 10), .completed)
+        let play = app.webViews.buttons["开始游戏：Device Runner"].firstMatch
+        XCTAssertTrue(play.waitForExistence(timeout: 40), app.debugDescription)
+        play.tap()
+        XCTAssertTrue(app.buttons["更多游戏操作"].waitForExistence(timeout: 40), app.debugDescription)
+    }
+
+    @MainActor
+    func testDevelopmentFirstPlayAndSave() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(bundleIdentifier: "dev.owngame.app")
+        app.launch(); openDevelopment(app)
+        let first = app.webViews.buttons["第1行第1列，空格"].firstMatch
+        if first.waitForExistence(timeout: 5) {
+            first.tap()
+            let center = app.webViews.buttons["第2行第2列，空格"].firstMatch
+            XCTAssertTrue(center.waitForExistence(timeout: 10)); center.tap()
+        }
+        XCTAssertTrue(app.webViews.buttons["第1行第1列，星旅人"].firstMatch.waitForExistence(timeout: 10), app.debugDescription)
+        XCTAssertTrue(app.webViews.buttons["第2行第2列，守月人"].firstMatch.exists, app.debugDescription)
+        let firstShot = XCTAttachment(screenshot: app.screenshot()); firstShot.name = "iphone-development-two-moves"; firstShot.lifetime = .keepAlways; add(firstShot)
+        app.terminate(); app.launch(); openDevelopment(app)
+        XCTAssertTrue(app.webViews.buttons["第1行第1列，星旅人"].firstMatch.waitForExistence(timeout: 15), app.debugDescription)
+        XCTAssertTrue(app.webViews.buttons["第2行第2列，守月人"].firstMatch.exists, app.debugDescription)
+        let restored = XCTAttachment(screenshot: app.screenshot()); restored.name = "iphone-development-save-restored"; restored.lifetime = .keepAlways; add(restored)
+    }
+
+    @MainActor
+    func testDevelopmentUpdatedBuildPreservesMoves() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication(bundleIdentifier: "dev.owngame.app")
+        app.launch(); openDevelopment(app)
+        XCTAssertTrue(app.webViews.staticTexts["月下连星 · 调试 v2"].firstMatch.waitForExistence(timeout: 15), app.debugDescription)
+        XCTAssertTrue(app.webViews.buttons["第1行第1列，星旅人"].firstMatch.exists, app.debugDescription)
+        XCTAssertTrue(app.webViews.buttons["第2行第2列，守月人"].firstMatch.exists, app.debugDescription)
+        let screenshot = XCTAttachment(screenshot: app.screenshot()); screenshot.name = "iphone-development-v2-save"; screenshot.lifetime = .keepAlways; add(screenshot)
+    }
+
 }

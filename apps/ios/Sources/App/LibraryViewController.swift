@@ -12,6 +12,8 @@ final class LibraryViewController: UIViewController, WKScriptMessageHandler, WKN
     private var progress = 0
     private var rows = "[]"
     var pendingGame: String?
+    private var developmentTimer: Timer?
+    private var handlingDevelopment = false
     private let defaults = UserDefaults.standard
     private var shell: URL { Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "Shell")! }
 
@@ -41,6 +43,7 @@ final class LibraryViewController: UIViewController, WKScriptMessageHandler, WKN
             repository = try GameRepository(root: support.appendingPathComponent("Owngame"))
         } catch { showError(error) }
         web.loadFileURL(shell, allowingReadAccessTo: shell.deletingLastPathComponent())
+        developmentTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in self?.receiveDevelopment() }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -111,7 +114,7 @@ final class LibraryViewController: UIViewController, WKScriptMessageHandler, WKN
                     "bytes": game.bytes, "downloaded": old != nil, "update_available": old != nil && old?.game.version != game.version,
                     "previous_version": old?.previous ?? "", "favorite": isFavorite(game.id),
                     "last_played": defaults.double(forKey: "played:" + game.id), "downloading": downloading == game.id,
-                    "progress": progress, "busy": operation != nil]
+                    "progress": progress, "busy": operation != nil, "development": game.isDevelopment]
             }
             rows = String(decoding: try JSONSerialization.data(withJSONObject: result), as: UTF8.self)
             web.callAsyncJavaScript("window.__appLanguage = language; window.__nativeGamesJSON = rows; window.refresh();", arguments: ["language": AppText.language, "rows": rows], in: nil, in: .page, completionHandler: nil)
@@ -120,7 +123,7 @@ final class LibraryViewController: UIViewController, WKScriptMessageHandler, WKN
     private func status(_ text: String) {
         web?.callAsyncJavaScript("window.onStatus && window.onStatus(text)", arguments: ["text": text], in: nil, in: .page, completionHandler: nil)
     }
-    func openGame(_ id: String) {
+    func openGame(_ id: String, developmentReceipt: DevelopmentSession? = nil) {
         guard isViewLoaded, let repository else { pendingGame = id; return }
         guard !opening, presentedViewController == nil else { return }
         opening = true
@@ -128,15 +131,47 @@ final class LibraryViewController: UIViewController, WKScriptMessageHandler, WKN
             defer { opening = false }
             do {
                 let (delivery, root) = try await repository.playable(id)
-                let player = GameViewController(delivery: delivery, root: root, library: self)
+                let player = GameViewController(delivery: delivery, root: root, library: self, developmentReceipt: developmentReceipt)
                 try await player.start()
                 defaults.set(Date().timeIntervalSince1970 * 1000, forKey: "played:" + id)
                 player.modalPresentationStyle = .fullScreen
                 present(player, animated: true)
                 await pushRows()
-            } catch { showError(error) }
+            } catch { developmentReceipt?.failed(error); showError(error) }
         }
     }
+    private func receiveDevelopment() {
+        guard UIApplication.shared.applicationState == .active, !handlingDevelopment, !opening, operation == nil,
+              let repository, let inbox = try? DevelopmentSession.inbox(),
+              presentedViewController == nil || presentedViewController is GameViewController else { return }
+        let fm = FileManager.default
+        guard let children = try? fm.contentsOfDirectory(at: inbox, includingPropertiesForKeys: [.contentModificationDateKey]) else { return }
+        let ready = children.filter { folder in
+            guard DevelopmentPackage.isRequest(folder.lastPathComponent), fm.fileExists(atPath: folder.appendingPathComponent("ready.json").path) else { return false }
+            if let data = try? Data(contentsOf: folder.appendingPathComponent("receipt.json")),
+               let receipt = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let status = receipt["status"] as? String, ["running", "failed"].contains(status) { return false }
+            return true
+        }.sorted { $0.lastPathComponent < $1.lastPathComponent }
+        guard let folder = ready.first else { return }
+        handlingDevelopment = true
+        let receipt = DevelopmentSession(folder: folder)
+        Task {
+            defer { handlingDevelopment = false }
+            do {
+                let delivery = try await repository.importDevelopment(folder)
+                receipt.installed(delivery)
+                if presentedViewController is GameViewController {
+                    await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+                        dismiss(animated: false) { continuation.resume() }
+                    }
+                }
+                await pushRows()
+                openGame(delivery.game.id, developmentReceipt: receipt)
+            } catch { receipt.failed(error); status(AppText.text("本地调试同步失败，旧版保留。") + error.localizedDescription) }
+        }
+    }
+    deinit { developmentTimer?.invalidate() }
     private func showError(_ error: Error) {
         let alert = UIAlertController(title: AppText.text("暂时无法打开"), message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: AppText.text("知道了"), style: .default)); present(alert, animated: true)

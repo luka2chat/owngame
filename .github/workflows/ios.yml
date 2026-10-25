@@ -1,0 +1,20 @@
+name: iOS source checks
+on:
+  push:
+    paths: ['apps/ios/**', 'apps/android/assets/**', 'apps/android/res/drawable-nodpi/**', 'scripts/ios/**', 'scripts/android/public*', 'scripts/mobile/**', 'tests/ios/**', 'tests/mobile/**', '.github/workflows/ios.yml']
+  pull_request:
+    paths: ['apps/ios/**', 'apps/android/assets/**', 'apps/android/res/drawable-nodpi/**', 'scripts/ios/**', 'scripts/android/public*', 'scripts/mobile/**', 'tests/ios/**', 'tests/mobile/**', '.github/workflows/ios.yml']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run ios:check
+      - run: npm run test:ios
+      - run: npm run ios:build -- --out "${{ runner.temp }}/owngame-ios-simulator"
+      - run: npm run ios:build -- --sdk iphoneos --out "${{ runner.temp }}/owngame-ios-device"

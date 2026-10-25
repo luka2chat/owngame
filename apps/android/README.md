@@ -88,3 +88,7 @@ CI 检查公开文件清单、隐私防护测试、客户端 APK 构建及测试
 每个 Android GitHub 发布都要同时包含中文和英文说明，维护在 [RELEASE_NOTES.md](RELEASE_NOTES.md)。发布前执行 `node scripts/android/release-notes.mjs VERSION` 输出对应正文；缺少任一语言时命令会失败。中英文必须描述相同变更和已完成的验证，保留 Alpha、签名与覆盖安装说明。
 
 `npm run android:test:updates` 同时运行更新策略与流式下载校验测试；追加 `-- --live --live-download` 可下载真实公开 APK 验证，须先将 `OWNGAME_UPDATE_TEST_OUTPUT` 设置到适合大文件的私有测试目录。`npm run test:android -- DEVICE_SERIAL --updates APK RELEASE_MANIFEST` 验证真实 APK 解析、签名和只读安装提供者，需要设备现有版本低于测试 APK；不会安装更新或修改游戏/存档。
+
+## USB development games
+
+This source includes development protocol 1. Install the rebuilt APK over the existing client with `adb install -r`; preserve its signing identity and app data. `owngame device sync <web-build> --platform android --id my-game [--watch]` transfers a verified development package and opens it in the same game shell. Development games use reserved IDs and separate Web origins; official catalog installs cannot replace them. Only development WebViews enable USB inspection. Read [the command/transport contract](../../docs/device-development.md) before testing. File-picker import and publishing are separate workflows.

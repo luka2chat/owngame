@@ -58,7 +58,7 @@ try {
     path.join(root, "apps/android/src/dev/owngame/app/GameRepository.java"),
     path.join(root, "apps/android/src/dev/owngame/app/AppUpdateChecker.java"),
     path.join(root, "apps/android/src/dev/owngame/app/OwngameApplication.java"),
-    ...["AppUpdateDownload.java","AppUpdateInstaller.java","UpdateApkProvider.java"].map(name=>path.join(root,"apps/android/src/dev/owngame/app",name)),
+    ...["AppUpdateDownload.java","AppUpdateInstaller.java","UpdateApkProvider.java","DevelopmentReceipt.java"].map(name=>path.join(root,"apps/android/src/dev/owngame/app",name)),
   ]);
   run(path.join(java, "bin/jar"), [
     "cf",

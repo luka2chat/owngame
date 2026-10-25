@@ -26,5 +26,9 @@
   "scripts/ios/public-files.json",
   "scripts/ios/public-source.mjs",
   "scripts/ios/test.mjs",
-  "tests/ios/source.test.mjs"
+  "tests/ios/source.test.mjs",
+  "apps/ios/Sources/Core/DevelopmentPackage.swift",
+  "apps/ios/Sources/App/DevelopmentSession.swift",
+  "docs/device-development.md",
+  "apps/ios/RELEASE_NOTES.md"
 ]

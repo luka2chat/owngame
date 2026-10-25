@@ -229,6 +229,9 @@ public final class AppText {
     messages.put("iOS 测试版。请在 TestFlight 中获取更新。", "iOS beta. Get updates in TestFlight.");
     messages.put("开玩：{title}", "Play {title}");
     messages.put("下载：{title}", "Download {title}");
+    messages.put("本地调试", "Local development");
+    messages.put("本地调试 · 已同步", "Local development · Synced");
+    messages.put("本地调试同步失败，旧版保留。", "Local development sync failed; previous build kept. ");
     titles.put("neon-shooter", "Neon Defender");
     originalTitles.put("neon-shooter", "霓虹突围");
     descriptions.put("neon-shooter", "Dodge bullets, collect upgrades, and face a boss every three waves.");

@@ -248,3 +248,64 @@ func currentPublicManifestsMatchCanonicalFingerprint() async throws {
         #expect(files.contains { $0.path == game.entrypoint })
     }
 }
+
+private func developmentFixture(_ root: URL, html: String, id: String = "dev-fixture") throws -> (URL, CatalogGame) {
+    let folder = root.appendingPathComponent(UUID().uuidString.lowercased(), isDirectory: true)
+    try FileManager.default.createDirectory(at: folder.appendingPathComponent("files"), withIntermediateDirectories: true)
+    let body = Data(html.utf8), files = [GameFile(path: "index.html", bytes: body.count, sha256: GamePaths.sha(body))]
+    let version = GamePaths.sha(try GamePaths.canonical(files)), prefix = "/games/\(id)/\(version)/"
+    let game = CatalogGame(id: id, title: "Local fixture", description: "USB test", category: "本地调试", version: version,
+        entry: prefix + "index.html", manifest: prefix + "manifest.json", bytes: body.count, platforms: ["mobile"], development: true)
+    let object: [String: Any] = ["schema": DevelopmentPackage.schema, "requestId": folder.lastPathComponent,
+        "game": try JSONSerialization.jsonObject(with: JSONEncoder().encode(game)),
+        "files": try JSONSerialization.jsonObject(with: JSONEncoder().encode(files))]
+    let metadata = try JSONSerialization.data(withJSONObject: object, options: [.sortedKeys, .withoutEscapingSlashes])
+    try metadata.write(to: folder.appendingPathComponent("package.json"))
+    let ready: [String: String] = ["schema": DevelopmentPackage.schema, "requestId": folder.lastPathComponent, "packageSha256": GamePaths.sha(metadata)]
+    try JSONSerialization.data(withJSONObject: ready).write(to: folder.appendingPathComponent("ready.json"))
+    try body.write(to: folder.appendingPathComponent("files/index.html"))
+    return (folder, game)
+}
+
+@Test func localDevelopmentInstallUpdateFailureAndRollbackAreOfflineAndIsolated() async throws {
+    let f = try Fixture(); defer { f.clean() }
+    _ = try await f.version(Data("official".utf8)); try await f.repo.refresh(); try await f.repo.download("sample")
+    let official = try await f.repo.installed().first { $0.game.id == "sample" }
+    let (one, v1) = try developmentFixture(f.root, html: "local v1")
+    let (two, v2) = try developmentFixture(f.root, html: "local v2")
+    let first = try await f.repo.importDevelopment(one)
+    #expect(first.game.isDevelopment); #expect(first.previous == nil)
+    let second = try await f.repo.importDevelopment(two)
+    #expect(second.game.version == v2.version); #expect(second.previous == v1.version)
+    #expect(try await f.repo.importDevelopment(two).previous == v1.version)
+    let (broken, _) = try developmentFixture(f.root, html: "new uncommitted bytes")
+    try Data("corrupt".utf8).write(to: broken.appendingPathComponent("files/index.html"))
+    await #expect(throws: (any Error).self) { try await f.repo.importDevelopment(broken) }
+    #expect(try await f.repo.playable(v2.id).0.game.version == v2.version)
+    #expect(try await f.repo.installed().first { $0.game.id == "sample" } == official)
+    try await f.repo.rollback(v1.id)
+    #expect(try await f.repo.playable(v1.id).0.game.version == v1.version)
+    #expect(try await f.repo.libraryGames().contains { $0.isDevelopment })
+    let (third, _) = try developmentFixture(f.root, html: "local v3 clean")
+    _ = try await f.repo.importDevelopment(third)
+    #expect(!FileManager.default.fileExists(atPath: f.root.appendingPathComponent("games/\(v2.id)/\(v2.version)").path))
+    #expect(FileManager.default.fileExists(atPath: f.root.appendingPathComponent("games/\(v1.id)/\(v1.version)/delivery.json").path))
+}
+
+@Test func developmentReadyMarkerAndSymlinkChecksRetainTheCurrentInstall() async throws {
+    let f = try Fixture(); defer { f.clean() }
+    let (one, game) = try developmentFixture(f.root, html: "good")
+    _ = try await f.repo.importDevelopment(one)
+    let (bad, _) = try developmentFixture(f.root, html: "bad")
+    try Data("{}".utf8).write(to: bad.appendingPathComponent("ready.json"))
+    await #expect(throws: (any Error).self) { try await f.repo.importDevelopment(bad) }
+    let (linked, _) = try developmentFixture(f.root, html: "linked")
+    try FileManager.default.removeItem(at: linked.appendingPathComponent("files/index.html"))
+    try FileManager.default.createSymbolicLink(at: linked.appendingPathComponent("files/index.html"), withDestinationURL: one.appendingPathComponent("files/index.html"))
+    await #expect(throws: (any Error).self) { try await f.repo.importDevelopment(linked) }
+    #expect(try await f.repo.playable(game.id).0.game.version == game.version)
+    let directory = URL(fileURLWithPath: f.root.path + "/", isDirectory: true)
+    let newFile = try GamePaths.within(directory, "new-receipt.json")
+    try Data("receipt".utf8).write(to: newFile, options: .atomic)
+    #expect(try Data(contentsOf: newFile) == Data("receipt".utf8))
+}

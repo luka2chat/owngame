@@ -1,5 +1,19 @@
 # Android release notes
 
+## 0.4.18-alpha
+
+### 中文
+
+新增本地游戏 USB 开发同步，与 CLI 0.12.0 配合使用。构建游戏后运行 `owngame device sync ./dist --platform android --id my-game --watch`，后续重新构建即可自动更新手机里的游戏；可读取运行错误日志。开发游戏单独标记，与正式游戏隔离，同一 ID 更新保留存档，损坏包校验失败时保留旧版。
+
+包含上一版的中英文游戏库与菜单。已在 Moto g84 5G 验证实际触摸、监听更新、重启存档、运行错误日志、损坏包拒绝及原有游戏记录保持不变。沿用既有 Alpha 签名，请覆盖安装，不要卸载或清除数据。附 APK、SHA256SUMS 和 release-manifest.json；使用说明随源码公开。
+
+### English
+
+Adds USB delivery for local game development with CLI 0.12.0. Build the game and run `owngame device sync ./dist --platform android --id my-game --watch`; subsequent builds update the game in the existing container, with runtime logs available from the CLI. Development games are labeled and isolated from official games. Updates of the same ID preserve saves, and invalid packages retain the working version.
+
+Includes the previous bilingual library and menus. Verified on a physical Moto g84 5G: touch input, watched updates, saves after restart, runtime-error logs, corrupt-package rejection and unchanged official-game records. This Alpha preserves the existing signing identity. Install over the previous app without uninstalling or clearing data. The APK, SHA256SUMS, release manifest, matching source and usage guide are provided.
+
 ## 0.4.17-alpha
 
 ### 中文

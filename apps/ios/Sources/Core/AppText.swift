@@ -231,6 +231,9 @@ enum AppText {
         "iOS 测试版。请在 TestFlight 中获取更新。": "iOS beta. Get updates in TestFlight.",
         "开玩：{title}": "Play {title}",
         "下载：{title}": "Download {title}",
+        "本地调试": "Local development",
+        "本地调试 · 已同步": "Local development · Synced",
+        "本地调试同步失败，旧版保留。": "Local development sync failed; previous build kept. ",
     ]
     private static let titles: [String: String] = [
         "neon-shooter": "Neon Defender",

@@ -213,6 +213,21 @@ Cocos 构建适配器目前只在特定 macOS 环境验证过；浏览器、图�
 
 </details>
 
+## 在手机容器里调试本地游戏
+
+CLI 0.12.0 配合 Android 0.4.18-alpha / iOS 0.2.0，支持将本地构建通过 USB 同步到现有 owngame App。
+
+```sh
+npm install -g @owngame/cli@0.12.0
+npm run build
+owngame device list
+owngame device sync ./dist --platform android --id my-game --watch
+# iPhone 改用 --platform ios
+owngame device logs --platform android
+```
+
+修改后重新构建即可自动更新。相同 ID 的开发游戏保留存档，与正式游戏隔离；请覆盖更新容器，不要卸载。iOS 需要已配对设备、开发者模式和手机连接工具；TestFlight 构建以测试组开放状态为准。[完整说明与依赖](docs/device-development.md)。
+
 ## 支持路线图
 
 Web 是当前主要交付平台；引擎与平台适配按实际项目需求推进。
@@ -221,6 +236,7 @@ Web 是当前主要交付平台；引擎与平台适配按实际项目需求推�
 <summary><strong>查看已提供、计划与调研中的支持</strong></summary>
 
 owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同一套创作方法服务于 2D、3D 和跨平台游戏。下面区分当前能力、计划与调研方向；尚未提供的适配器和发布流程不包含在现有安装包中，也暂不承诺发布日期。
+
 
 ### 游戏引擎与创作框架
 
@@ -241,7 +257,7 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 | --- | --- | --- |
 | **浏览器 / Web** | 当前主要交付平台 | 持续完善电脑与手机浏览器体验、静态托管和离线验证 |
 | **Android** | [源码](apps/android)与[APK 发布记录](https://github.com/luka2chat/owngame/releases) 已公开 | 完善游戏下载、更新与离线体验，整理正式签名、安装和版本发布流程 |
-| **iOS / iPadOS** | 计划中 | 评估原生容器与引擎导出方案，补充触控、安全区、存档和真机验收流程 |
+| **iOS / iPadOS** | [开发预览工程](apps/ios)，功能与设备验证范围见项目说明 | iPhone 全屏胶囊与 Android 交互一致，横屏提供提示；已实现下载、校验、离线读取、收藏、更新与回滚，已提供 TestFlight 测试渠道，新版本以测试组开放状态为准；其他游戏与设备兼容性需分别验收 |
 | **Windows / macOS / Linux** | 原生桌面发布计划中 | 探索独立安装包、输入适配、存档位置与分发流程；当前可通过浏览器游玩 Web 游戏 |
 | **微信等小游戏平台** | 调研中 | 评估运行环境、包体与资源限制、平台接口及审核要求，确定适合接入的游戏类型 |
 
@@ -285,7 +301,7 @@ owngame 将从 Web 小游戏逐步扩展到更多引擎与发布平台，让同�
 
 [文档索引（English）](docs/README.md) · [中文入门](docs/zh-CN/quickstart.md)
 
-[接入助手](docs/agent-setup.md) · [安装说明](docs/install.md) · [第一个游戏](docs/quickstart.md) · [游戏源码](docs/open-source-games.md) · [制作案例](docs/cases/) · [创作 Skill](skills/owngame/SKILL.md) · [变更记录](CHANGELOG.md)
+[接入助手](docs/agent-setup.md) · [安装说明](docs/install.md) · [第一个游戏](docs/quickstart.md) · [手机调试同步](docs/device-development.md) · [游戏源码](docs/open-source-games.md) · [制作案例](docs/cases/) · [创作 Skill](skills/owngame/SKILL.md) · [变更记录](CHANGELOG.md)
 
 ## 参与贡献
 
@@ -321,7 +337,8 @@ Start with an idea, or play a game on [owngame.dev](https://owngame.dev) and use
 
 Open your game project in an AI coding assistant and send: **Follow https://raw.githubusercontent.com/luka2chat/owngame/main/docs/agent-setup.md to set up owngame in this project, verify it works, then help me make a game.** The assistant checks Node.js and npm against the [installation requirements](docs/install.md), installs the published toolkit, reads the creative Skill, and uses the shared CLI. No assistant selection or MCP configuration is required. This works with assistants that can read/write project files and run commands. See [manual installation and optional MCP](docs/install.md). The default Web starter is playable immediately, while Phaser and Cocos templates provide scaffolding for further development.
 
-**Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone exploration scene with character controls, camera and interactive tasks. Create it through CLI/MCP: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. Native desktop and iOS delivery are planned, while the [Android client source](apps/android) is public and APK builds are listed in [Releases](https://github.com/luka2chat/owngame/releases). See the [support roadmap](#支持路线图) for scope and status.
+**Unity starter:** The repository now includes [`unity-home`](templates/unity-home), a standalone exploration scene with character controls, camera and interactive tasks. Create it through CLI/MCP: use `npx @owngame/cli@latest project.create` with `"template":"unity-home"`. Unity Editor is installed separately. **Roadmap:** Unity editor/build integration remains the next engine priority, followed by additional engine templates and platform delivery workflows. Three.js and Godot are planned; Unreal Engine and mini-game platforms are under evaluation. The [iPhone/iPad development preview](apps/ios) includes a native WebKit host and the shared offline catalogue; build and device validation details are documented in the project README. Scoped physical-device checks and the TestFlight channel are documented separately; broader game compatibility, offline acceptance and per-game layouts still require their own validation. Native desktop delivery is planned, while the [Android client source](apps/android) is public and APK builds are listed in [Releases](https://github.com/luka2chat/owngame/releases). See the [support roadmap](#支持路线图) for scope and status.
+
 
 [Documentation](docs/README.md) · [Get started](#快速开始) · [Discord community](https://discord.gg/X5cYjTaD) · [Installation](docs/install.md) · [First game tutorial](docs/quickstart.md) · [Contributing](CONTRIBUTING.md)
 
@@ -336,3 +353,5 @@ Thanks for playing, creating, sharing feedback and contributing to owngame.
     <img alt="Star history for luka2chat/owngame" src="https://api.star-history.com/chart?repos=luka2chat/owngame&amp;type=date&amp;legend=top-left" width="800" />
   </picture>
 </a>
+
+**Local mobile development:** CLI 0.12.0 adds USB sync, watched build updates and runtime logs for the existing Android/iOS containers. See the [device development guide](docs/device-development.md) for container versions, pairing tools, isolated game IDs and save preservation. TestFlight availability and consumer file-picker import remain separate.

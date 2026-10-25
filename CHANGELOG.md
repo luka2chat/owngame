@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.12.0 — 2026-10-25
+
+- Add USB device discovery, local Web game sync, build-output watch, and runtime receipts/logs through `owngame device`.
+- Extend the existing Android/iOS containers with verified local-development packages, isolated identities/storage, immutable updates and rollback. Official games, downloads and saves are preserved.
+- Stabilize snapshots from SMB/NAS build outputs, while rejecting real in-progress writes and replaced files.
+- Keep local packages and device/signing state private; this does not publish games or implement consumer file-picker import.
+
 ## 0.11.2 — 2026-10-23
 
 - Zoom the canvas with the wheel and pan while holding the mouse; use one-finger pan and two-finger pinch on touch screens, with stable transitions and cancellation.

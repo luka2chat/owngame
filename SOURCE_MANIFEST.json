@@ -1,5 +1,5 @@
 {
-  "version": "0.11.2",
+  "version": "0.12.0",
   "scope": "Reviewed public toolkit, portable website game sources and their separate licenses; private production files and caches excluded",
   "files": [
     {
@@ -14,8 +14,8 @@
     },
     {
       "path": ".github/workflows/android.yml",
-      "bytes": 1054,
-      "sha256": "890160a4304a85e461c7de4cd00e59b37b53a7ae948046feef14fe41f554ab18"
+      "bytes": 1134,
+      "sha256": "8655fb5e3f6a1a09cce682b8c1c90bce041d72141c82345b3d644fb67aa554ac"
     },
     {
       "path": ".github/workflows/ci.yml",
@@ -26,6 +26,11 @@
       "path": ".github/workflows/games.yml",
       "bytes": 937,
       "sha256": "0561e99614fab0c4a08464a3004bf6c8506e97ada6623053c9ee7e4467f0dc32"
+    },
+    {
+      "path": ".github/workflows/ios.yml",
+      "bytes": 922,
+      "sha256": "bc7a069cc8ba514680cc95896256271b6059b2f1e21080e29dee16e166ded014"
     },
     {
       "path": ".github/workflows/release.yml",
@@ -50,7 +55,7 @@
     {
       "path": "apps/android/AndroidManifest.xml",
       "bytes": 1528,
-      "sha256": "a59b804b9a2073db607f2ebbb94630071fcdc1f836c9ba6d6a1549a55395d964"
+      "sha256": "5a14536866e34ccff8f02b3de9d2faa10154ae822cb3b9883e103ce74b5b5c36"
     },
     {
       "path": "apps/android/ART-PROVENANCE.md",
@@ -64,8 +69,8 @@
     },
     {
       "path": "apps/android/assets/app.js",
-      "bytes": 18897,
-      "sha256": "5bb9df07dbb8cfa9cbfc8e5aee18836a9e167670ed553b6c243c1caa9d1be12f"
+      "bytes": 18957,
+      "sha256": "d7534c88a2e02e34be1bf11f18aa6bcbfb389d946ed9abd379e57c7475195733"
     },
     {
       "path": "apps/android/assets/art/arcade-mascot.png",
@@ -284,8 +289,8 @@
     },
     {
       "path": "apps/android/assets/localization.js",
-      "bytes": 19091,
-      "sha256": "929dfed94213625e189f90fd450b5e201ae52a70414c9504af4cbe65358211c3"
+      "bytes": 19284,
+      "sha256": "770d0179608f67b4e7971d7e8486173c295430141a1a091f4b518bfceb6922b0"
     },
     {
       "path": "apps/android/assets/THIRD_PARTY_NOTICES.md",
@@ -294,13 +299,13 @@
     },
     {
       "path": "apps/android/README.md",
-      "bytes": 9856,
-      "sha256": "872e6881acc71521495ad935fbd3d941d112c295b62119274aa24cfa02fb308e"
+      "bytes": 10501,
+      "sha256": "b1cdd53ca4614f356fa744386842896ee1af924c4ec295562a459fbc2afc53c7"
     },
     {
       "path": "apps/android/RELEASE_NOTES.md",
-      "bytes": 15031,
-      "sha256": "25d2ad445dd158fe2da83e474003cac2f43b24c27eaf8544b4d5e8a7819bb4a3"
+      "bytes": 16630,
+      "sha256": "376a47034234048edeb37666d728d6d6d54fdc7cc141ab448f2d3242e941479c"
     },
     {
       "path": "apps/android/res/drawable-nodpi/arcade_mascot.png",
@@ -319,8 +324,8 @@
     },
     {
       "path": "apps/android/src/dev/owngame/app/AppText.java",
-      "bytes": 23879,
-      "sha256": "95cc898ea067f718d4cf14d4d062b28f585575f356303d86142e7bd296e4df40"
+      "bytes": 24132,
+      "sha256": "364ade4e012c9240093bf369667002719fd9892ff1894b02ee1aa800f86613f1"
     },
     {
       "path": "apps/android/src/dev/owngame/app/AppUpdateChecker.java",
@@ -338,19 +343,24 @@
       "sha256": "27e9cf0bf983b2cfe1d96ebb47ab9ae59a0261ef4be9c89305ca52d011eb9555"
     },
     {
+      "path": "apps/android/src/dev/owngame/app/DevelopmentReceipt.java",
+      "bytes": 2356,
+      "sha256": "3328b3f77547f9c8937919074d09752937108c998403057761fc44fa461eaf70"
+    },
+    {
       "path": "apps/android/src/dev/owngame/app/GameActivity.java",
       "bytes": 243,
       "sha256": "09e5b7ba090877e743550ccce65a380858f4c74ef5243378c72ae369600ba629"
     },
     {
       "path": "apps/android/src/dev/owngame/app/GameRepository.java",
-      "bytes": 17866,
-      "sha256": "a0dba578321a0bbe278af453fb406f648928cb51d80d66311534ea4c29f2ddd7"
+      "bytes": 24287,
+      "sha256": "5b2e9b7ad178c087dc1d983cd515845f4b50e0eb2da4945d6415af3910f6d948"
     },
     {
       "path": "apps/android/src/dev/owngame/app/MainActivity.java",
-      "bytes": 43562,
-      "sha256": "0d74e0b1357907ee88dc64aeb6d11620a2fd51ea2388f54e7555bfe254a4d963"
+      "bytes": 47362,
+      "sha256": "e21f02eee1b0db535a1fbd9919a040a9ad6863d8708dd44b8fd8e569fef66c50"
     },
     {
       "path": "apps/android/src/dev/owngame/app/OwngameApplication.java",
@@ -364,13 +374,13 @@
     },
     {
       "path": "apps/ios/Info.plist",
-      "bytes": 2016,
-      "sha256": "44b74e50d917efea23e0033d3462e788e8a25b1168e303415541b1774e320f81"
+      "bytes": 2058,
+      "sha256": "df33ad25f044f899f685e787bcb7e69080999cce7b646a41eae2ebbc9d8184c0"
     },
     {
       "path": "apps/ios/Owngame.xcodeproj/project.pbxproj",
-      "bytes": 10426,
-      "sha256": "5e7c85c339dd4358d82c6e2eece07f3f9002d8cd0c9d30ca3952f851b5b01ba2"
+      "bytes": 11041,
+      "sha256": "8bc63d81a0d220a104ba5f43eeca6c9c9822df4ff1e599342ef837b681b9f1c7"
     },
     {
       "path": "apps/ios/Owngame.xcodeproj/xcshareddata/xcschemes/owngame.xcscheme",
@@ -389,8 +399,13 @@
     },
     {
       "path": "apps/ios/README.md",
-      "bytes": 8861,
-      "sha256": "7908ab31bd14cc8b474920a1f0682ed4561dbc4c274708c723af5f8e6becaa47"
+      "bytes": 9619,
+      "sha256": "0e33ff96be63b09a0a33a09199a066524499deeb7603beccb12e5146907745a3"
+    },
+    {
+      "path": "apps/ios/RELEASE_NOTES.md",
+      "bytes": 2048,
+      "sha256": "e6edcaee90d3b76aa13f6c3d7bc388f754cb8e337bcb4c5b841a467cfee2af1c"
     },
     {
       "path": "apps/ios/Sources/App/AppDelegate.swift",
@@ -398,14 +413,19 @@
       "sha256": "08e752d8cdfc0eec4c1379070f4aa8580f5551c497f3e3e874f7a61c128bdf29"
     },
     {
+      "path": "apps/ios/Sources/App/DevelopmentSession.swift",
+      "bytes": 3410,
+      "sha256": "370eb6d1d2587927e58806936dd4f9849341f6e24218344693ff06dca783a63c"
+    },
+    {
       "path": "apps/ios/Sources/App/GameViewController.swift",
-      "bytes": 16536,
-      "sha256": "1ba1474399ecc17d6fb4198636ea600f7835e64d54f73a2188d4f5e8858a2628"
+      "bytes": 17856,
+      "sha256": "efca37a32221d4e9d6096afe79f02eaf89170c47c88b515e71b3b15d687099aa"
     },
     {
       "path": "apps/ios/Sources/App/LibraryViewController.swift",
-      "bytes": 8689,
-      "sha256": "78294810d5a4062adad538204d875be2f3436861c022ed2e23b46de2f8a86ea6"
+      "bytes": 11138,
+      "sha256": "87babaca461452defd306e346c26f567d179a2c31a1c168f174aa01f1ae8eb98"
     },
     {
       "path": "apps/ios/Sources/App/ReviewViewController.swift",
@@ -414,8 +434,13 @@
     },
     {
       "path": "apps/ios/Sources/Core/AppText.swift",
-      "bytes": 20775,
-      "sha256": "ce628ea7d61001bee6f18be9d4ece5a9354dfbda2df6567d36cd0b7a6a2cf2e5"
+      "bytes": 20998,
+      "sha256": "41d8500603759ea8cfaa94d9ab606a8e0083739f158eea8af0aeedf49446bd88"
+    },
+    {
+      "path": "apps/ios/Sources/Core/DevelopmentPackage.swift",
+      "bytes": 1873,
+      "sha256": "9aadf222012f677076fd7a182c1f013a02cbe916f5a1c0734e11a4ef89ecd17a"
     },
     {
       "path": "apps/ios/Sources/Core/GameHTTP.swift",
@@ -424,8 +449,8 @@
     },
     {
       "path": "apps/ios/Sources/Core/GameRepository.swift",
-      "bytes": 9438,
-      "sha256": "ba74a4f2fe5ca4f04130e11bebda6d4d40c8aa973f52300c981219bfe3f03d57"
+      "bytes": 11878,
+      "sha256": "f416f144b262b06dff0ddf14c796e3dc6ec4b2b4b072bcdbb59d9b47fc6b32d3"
     },
     {
       "path": "apps/ios/Sources/Core/LocalGameServer.swift",
@@ -434,8 +459,8 @@
     },
     {
       "path": "apps/ios/Sources/Core/Models.swift",
-      "bytes": 6955,
-      "sha256": "834118e86b063166a2849c2fcb7179642b0b7e9525386911109beb031f2b58c2"
+      "bytes": 7626,
+      "sha256": "aa068caa92db067c2d3457368f531b9b22d37db512d6423515094aabc53da9dc"
     },
     {
       "path": "apps/ios/Sources/Core/Transport.swift",
@@ -444,13 +469,13 @@
     },
     {
       "path": "apps/ios/Tests/RepositoryTests.swift",
-      "bytes": 14222,
-      "sha256": "8eca07e2d6f7393b6590dc594ffbe9f92acd250a915492eef71717daa7ad175e"
+      "bytes": 18969,
+      "sha256": "cf15f3fc1934bae3eb255789d2a845987d07dcd0c6bb0e0ea710f274c1c55680"
     },
     {
       "path": "apps/ios/UITests/SmokeTests.swift",
-      "bytes": 9899,
-      "sha256": "c0843755ca8e757544a2ce5b62d576f17a2e8da15eee6c899b4d83b76adb656c"
+      "bytes": 12907,
+      "sha256": "bc9c1d9bfcf02f7b40079618f16a68017926245a6b27eb73e1e8f1796b022ebb"
     },
     {
       "path": "apps/outline/app.js",
@@ -1414,8 +1439,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 5272,
-      "sha256": "d08bce11851206c56a6e20ab104a12e7c4ba016e9723b872177a4c1cf5e8aa60"
+      "bytes": 5855,
+      "sha256": "9b4b7ea5d035ae03d828998e7bebe9802f4a6188d7b695194c8cd33ee91809e9"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -1446,6 +1471,11 @@
       "path": "docs/cases/star-triad.md",
       "bytes": 1087,
       "sha256": "5b48260ab34795d7941c09a40662335d1ad479ff733758616c2ed19f1f548e61"
+    },
+    {
+      "path": "docs/device-development.md",
+      "bytes": 6449,
+      "sha256": "d362ca53fce33087cdba86e91f04167d91fef83c297fdee5da29dbe957a0e691"
     },
     {
       "path": "docs/game-publishing.md",
@@ -1559,13 +1589,13 @@
     },
     {
       "path": "docs/quickstart.md",
-      "bytes": 3287,
-      "sha256": "02b41d2b01cc7798a15c86439d860c539302dfecf80410746be0e147d9601a63"
+      "bytes": 3739,
+      "sha256": "7fee8b5552c19bcfbc845676a2aee8282de774e58542b7888ed8f27273daffe7"
     },
     {
       "path": "docs/README.md",
-      "bytes": 3437,
-      "sha256": "1e2e6b9c3aee2c0c3b5f2928a7b407c1b7f3584aea8d4cddfd1582ed90c340c8"
+      "bytes": 3564,
+      "sha256": "37a698a62f4251a37d2e9d12cab7f43659aa355623f298c010da056d6f9b852e"
     },
     {
       "path": "docs/releasing.md",
@@ -1589,8 +1619,8 @@
     },
     {
       "path": "docs/zh-CN/quickstart.md",
-      "bytes": 2830,
-      "sha256": "72111556f531dc17794c5a6a484df69a50925d50d3de5591eba863f1f5739274"
+      "bytes": 3714,
+      "sha256": "af363fd1043ec3311177f10f648ecaaeb30bbebbff41e81991abbb4dfb71eac8"
     },
     {
       "path": "examples/arrow-escape/.gitignore",
@@ -10335,17 +10365,17 @@
     {
       "path": "package-lock.json",
       "bytes": 57583,
-      "sha256": "fa072763b91d87dc041888196ce7af1bdb40cba81c7334f01b3de53ec13e0f4d"
+      "sha256": "66041ab26254ed72f246b83c4430749e9b48beb2baa9f8ce6dca9f28ebc986f2"
     },
     {
       "path": "package.json",
-      "bytes": 3007,
-      "sha256": "031627233d0513b3cfb9e71fcb319fea8b66af5190a2f7c9c7683a7b4255af1a"
+      "bytes": 3041,
+      "sha256": "546f7219a157808fd10952af9e8565918c5e91a0327f2a0a8cb99323105f8e91"
     },
     {
       "path": "packages/cli/index.ts",
-      "bytes": 3594,
-      "sha256": "24cd34ed58f7fb6c66f98a4dd772d319ab97e04d0e2c1bd4a5cb2163b1ed2ebe"
+      "bytes": 3933,
+      "sha256": "f48bcd4dc06e5fa06a0d46e96f7edae87c6cccad556ad931b57b486decd862e0"
     },
     {
       "path": "packages/cli/setup.ts",
@@ -10404,13 +10434,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 22984,
-      "sha256": "e4040e8e3af489c9840c66f68df9f4e9dd26da0176bbc9be110c81f4c2762047"
+      "bytes": 24685,
+      "sha256": "482aeadd8e9dc26365e8359740047ac2b596c5d03381c798740c9799e5ef5c20"
     },
     {
       "path": "scripts/android/build.mjs",
-      "bytes": 4748,
-      "sha256": "5078786c41627e0aedab3e123391895d4424227fb6f27a70001acff7789d0d93"
+      "bytes": 4774,
+      "sha256": "2ef9504e86f7e5c600e1a697164145ace24e7f7557c6a33167ff53eb99e6cc05"
     },
     {
       "path": "scripts/android/export-source.mjs",
@@ -10419,8 +10449,8 @@
     },
     {
       "path": "scripts/android/public-files.json",
-      "bytes": 3929,
-      "sha256": "6fb4e02a479a79fe00091b39559f80f4f6bf6be020b6e88bdf5d7732dee08f91"
+      "bytes": 4023,
+      "sha256": "ddbaaf6d8949185c54bf5297f8eb60ebbc98720085cf5b158d1c6da40945e5b0"
     },
     {
       "path": "scripts/android/public-source.mjs",
@@ -10579,8 +10609,8 @@
     },
     {
       "path": "scripts/ios/public-files.json",
-      "bytes": 1098,
-      "sha256": "991c495e6ed9d489812e746b8eb5a43f12170160398b7ad89377ea085c3e54c7"
+      "bytes": 1264,
+      "sha256": "3a13a9c0468c0ff77caf41934dd0850fd1877cd1fe11edbe7d499670a59d8e76"
     },
     {
       "path": "scripts/ios/public-source.mjs",
@@ -10589,8 +10619,8 @@
     },
     {
       "path": "scripts/ios/test.mjs",
-      "bytes": 1551,
-      "sha256": "8d1de4ce6966e4b7bcb81fbcfdcf79767f2ad6f2211823e831fe700913ddb15e"
+      "bytes": 1813,
+      "sha256": "62b75f4676f2491d5cd732ad8d646e587ab9f81dd490af8165547e248ac89a8d"
     },
     {
       "path": "scripts/kiln-merge/catalog.json",
@@ -10604,8 +10634,8 @@
     },
     {
       "path": "scripts/mobile/localization.json",
-      "bytes": 20342,
-      "sha256": "2b90346fb2e6e40c5c12b678f473e5d88882cb6a265a2640567a6cb7cf50b958"
+      "bytes": 20553,
+      "sha256": "49fa0870915703da7b7e98a694f0efa6487f671fbe2f309f21e06bc5434a6fc0"
     },
     {
       "path": "scripts/mobile/localization.mjs",
@@ -10644,8 +10674,8 @@
     },
     {
       "path": "scripts/release/prepare.mjs",
-      "bytes": 5617,
-      "sha256": "ea2fa443186c523387365f9d85a25fa21ac87ef59418d62162794dba8927c067"
+      "bytes": 6050,
+      "sha256": "4adb66c048d7f77f8b77111119580978ec89453d003a7af4fb8c6902ab5cc509"
     },
     {
       "path": "scripts/release/publish.mjs",
@@ -10654,8 +10684,8 @@
     },
     {
       "path": "scripts/release/verify-package.mjs",
-      "bytes": 17666,
-      "sha256": "554bd369e635848c7483f72b522f2a93117e03595dfcb666bb7b3280824d9c24"
+      "bytes": 18144,
+      "sha256": "c58aecb3c6336500c1626d5cce55407b15fb98f520968a04f2e7a1703b1dc8db"
     },
     {
       "path": "scripts/silk-serpent/catalog.json",
@@ -10676,6 +10706,26 @@
       "path": "scripts/toolkit/build-cocos.mjs",
       "bytes": 13158,
       "sha256": "8b05167b191da8d447130711f5bac68ffc5747bd998883ac82f6e13f6a24e91f"
+    },
+    {
+      "path": "scripts/toolkit/device-ios.py",
+      "bytes": 5147,
+      "sha256": "c13a9dd826b55320f41d6d78a140d36ee8c000b3f647e75150dcdef162f0fb9d"
+    },
+    {
+      "path": "scripts/toolkit/device-launcher.mjs",
+      "bytes": 9398,
+      "sha256": "25ebe4cf110d52d01eeca72fab4bdc0916b4091375c6ccbf8166ab33e7d82718"
+    },
+    {
+      "path": "scripts/toolkit/device-package.mjs",
+      "bytes": 7193,
+      "sha256": "a9ed62172832850b84f1bb54947e1ed73ed7742a8e6fa5c32a45a26aa7971f78"
+    },
+    {
+      "path": "scripts/toolkit/device-transport.mjs",
+      "bytes": 7750,
+      "sha256": "f6560d92a509618df750cf8d1f3da25941f817df70d5f7680cd6bc3cfc53892c"
     },
     {
       "path": "scripts/toolkit/outline-launcher.mjs",
@@ -12084,8 +12134,8 @@
     },
     {
       "path": "tests/android/RepositoryTests.java",
-      "bytes": 12847,
-      "sha256": "4693f8961fd245260e8272c0c4fc285cbda930c2a53ea9300bd5bdd26229860a"
+      "bytes": 16019,
+      "sha256": "eb90dfa3beabff751cf7bf3b5a100495a6f58808b1f5191fc1d967bf1c811e9a"
     },
     {
       "path": "tests/android/UpdateInstallTests.java",
@@ -12131,6 +12181,11 @@
       "path": "tests/outline/workspace.test.mjs",
       "bytes": 10737,
       "sha256": "ddf46e119ce79e5e2b717ffc1d156d90f2b57b2a9730a8fec7c4b671fa2c7c46"
+    },
+    {
+      "path": "tests/release/device-package.test.mjs",
+      "bytes": 5376,
+      "sha256": "4a4478033a123e820b1e6c980a783e43b80cfb9edfa5c8665cc16f4724c8279b"
     },
     {
       "path": "tests/release/outline-launcher.test.mjs",

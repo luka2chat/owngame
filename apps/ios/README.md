@@ -1,6 +1,6 @@
 # owngame iPhone / iPad 客户端
 
-**0.1.0 开发预览工程，最低 iOS / iPadOS 16。构建 4 已向 TestFlight 内部测试开放，并提交 Friends 外测审核；外部安装仍需 Apple 批准，尚未在 App Store 上架。其他开发者可使用自己的 Apple Team 签名测试。**
+**0.2.0 开发预览工程，最低 iOS / iPadOS 16。本次容器更新提供本地 USB 游戏开发同步，沿用现有 TestFlight 分发渠道；Apple 处理、测试组开放和外测审核分别确认。其他开发者可使用自己的 Apple Team 签名测试。**
 
 与 Android 使用同一个 `https://owngame.dev/catalog.json`，无需账号或电脑配对服务。游戏库直接复用 Android 的字标、吉祥物、美术与卡片界面；原生容器使用 UIKit 和 WKWebView，没有第三方运行依赖。
 
@@ -67,3 +67,7 @@ npm run ios:build
 自有 Swift 和构建脚本采用根目录 MIT。共享外观、游戏、第三方字体和素材保留原许可，含 CivClicker 的 GPL；`ios:prepare` 同步第三方声明与完整许可，游戏菜单可查看这些文件。素材来源见 [Android 素材说明](../android/ART-PROVENANCE.md)。
 
 `scripts/ios/public-files.json` 是逐项公开清单。公开交付排除生成资源、构建缓存、签名材料、开发者设置与本机路径。`node scripts/ios/export-source.mjs --out NEW_DIRECTORY` 可导出可复现的客户端源码（含共享 Android 界面输入与许可）。工具包的 `release:prepare` 也包含此清单；游戏源码和网站仍遵循现有发布流程。
+
+## USB development games
+
+This source includes development protocol 1. Update the signed container in place, preserving its bundle identifier, team and data. The CLI transfers packages into the app's Documents/DevelopmentInbox over the trusted USB connection. The foreground container validates the ready marker and complete file hashes, installs atomically and returns a load receipt; watch updates reopen the development game using its persistent isolated origin. `UIFileSharingEnabled` exposes only Documents; official downloads remain in Application Support. No game-script/native bridge or LAN listener is added. See [local device development](../../docs/device-development.md) for the Python/Xcode prerequisites, commands and runtime logs.

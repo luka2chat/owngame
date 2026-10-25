@@ -134,13 +134,19 @@ public final class GameRepository {
   private static JSONObject find(JSONArray all,String id)throws Exception{for(int i=0;i<all.length();i++)if(id.equals(all.getJSONObject(i).getString("id")))return all.getJSONObject(i);return null;}
   private static void identity(String id,String version)throws Exception{if(!id.matches("[a-z0-9][a-z0-9-]{0,63}")||!version.matches("[a-f0-9]{64}"))throw new IOException("Invalid game identity");}
   private JSONObject validateItem(JSONObject item)throws Exception{
+    if(item.optString("id").startsWith("dev-")||item.optBoolean("development"))throw new IOException("Reserved development game identity");
+    return validateItem(item,false);
+  }
+  private JSONObject validateItem(JSONObject item,boolean development)throws Exception{
     String id=item.getString("id"),version=item.getString("version");identity(id,version);
     String prefix="/games/"+id+"/"+version+"/",entry=item.getString("entry"),manifest=item.getString("manifest");
     if(!entry.startsWith(prefix)||!manifest.equals(prefix+"manifest.json"))throw new IOException("Invalid game URLs");safe(entry.substring(prefix.length()));validateRoute(entry);
     String title=item.getString("title"),description=item.getString("description");long size=item.getLong("bytes");
-    if(title.isEmpty()||title.length()>160||description.length()>2000||size<=0||size>MAX_GAME)throw new IOException("Invalid game metadata");
+    if(title.isEmpty()||title.length()>160||description.length()>2000||size<=0||size>(development?512L*1024*1024:MAX_GAME))throw new IOException("Invalid game metadata");
     JSONObject clean=new JSONObject();for(String key:new String[]{"id","version","title","description","entry","manifest","bytes"})clean.put(key,item.get(key));
-    clean.put("category",item.optString("category","其他"));clean.put("platforms",platforms(item));return clean;
+    clean.put("category",item.optString("category","其他"));clean.put("platforms",platforms(item));
+    if(development){if(!id.startsWith("dev-")||!Boolean.TRUE.equals(item.opt("development"))||!supportsMobile(item))throw new IOException("Invalid development identity");clean.put("development",true);}
+    return clean;
   }
   public void refresh()throws Exception{
     JSONArray response=new JSONArray(text(transport.get("/catalog.json",2*1024*1024))),clean=new JSONArray();Set<String> ids=new HashSet<>();
@@ -193,6 +199,56 @@ public final class GameRepository {
       save(new File(base,"delivery.json"),bytes(delivery.toString()));commit(all,delivery);
     }
     return delivery;
+  }
+  public JSONObject importDevelopment(File folder)throws Exception{
+    String request=folder.getName();if(!request.matches("[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"))throw new IOException("Invalid development request");
+    JSONObject ready=new JSONObject(text(read(new FileInputStream(developmentFile(folder,"ready.json")),4096)));
+    byte[] metadata=read(new FileInputStream(developmentFile(folder,"package.json")),2*1024*1024);
+    if(!"owngame.device-package.v1".equals(ready.optString("schema"))||!request.equals(ready.optString("requestId"))||!sha(metadata).equals(ready.optString("packageSha256")))throw new IOException("Development package incomplete");
+    JSONObject pack=new JSONObject(text(metadata));
+    if(!"owngame.device-package.v1".equals(pack.optString("schema"))||!request.equals(pack.optString("requestId")))throw new IOException("Invalid development package");
+    JSONObject g=validateItem(pack.getJSONObject("game"),true);String id=g.getString("id"),version=g.getString("version");
+    synchronized(COMMIT_LOCK){JSONObject old=installed(id);if(old!=null&&!old.optBoolean("development"))throw new IOException("Cannot replace an official game");}
+    JSONArray files=pack.getJSONArray("files");if(files.length()<1||files.length()>4096)throw new IOException("Invalid file count");
+    Set<String> names=new HashSet<>(),folded=new HashSet<>();StringBuilder canonical=new StringBuilder("[");long total=0;
+    for(int i=0;i<files.length();i++){
+      JSONObject f=files.getJSONObject(i);String name=f.getString("path"),hash=f.getString("sha256");safe(name);long size=f.getLong("bytes");
+      String key=java.text.Normalizer.normalize(name,java.text.Normalizer.Form.NFC).toLowerCase(Locale.ROOT);
+      if(!names.add(name)||!folded.add(key)||size<0||size>128L*1024*1024||!hash.matches("[a-f0-9]{64}"))throw new IOException("Invalid development file");
+      total+=size;if(total>512L*1024*1024)throw new IOException("Development game too large");
+      if(i>0)canonical.append(',');canonical.append("{\"bytes\":").append(size).append(",\"path\":").append(JSONObject.quote(name).replace("\\/","/")).append(",\"sha256\":").append(JSONObject.quote(hash)).append('}');
+    }
+    for(String name:folded){int p=name.lastIndexOf('/');while(p>0){if(folded.contains(name.substring(0,p)))throw new IOException("File-directory collision");p=name.lastIndexOf('/',p-1);}}
+    canonical.append(']');String entry=g.getString("entry").substring(("/games/"+id+"/"+version+"/").length());
+    if(!sha(bytes(canonical.toString())).equals(version)||!names.contains(entry)||total!=g.getLong("bytes"))throw new IOException("Development manifest fingerprint mismatch");
+    File base=new File(root,"games/"+id+"/"+version);
+    for(int i=0;i<files.length();i++){
+      JSONObject f=files.getJSONObject(i);String name=f.getString("path");File source=developmentFile(folder,"files/"+name),dest=within(new File(base,"files"),name);
+      if(!source.isFile()||source.length()!=f.getLong("bytes"))throw new IOException("Development file incomplete");
+      dest.getParentFile().mkdirs();File partial=new File(dest.getParentFile(),".development-"+UUID.randomUUID());MessageDigest digest=MessageDigest.getInstance("SHA-256");long copied=0;
+      try{
+        try(InputStream in=new FileInputStream(source);FileOutputStream out=new FileOutputStream(partial)){
+          byte[] buffer=new byte[65536];int n;while((n=in.read(buffer))!=-1){copied+=n;if(copied>f.getLong("bytes"))throw new IOException("Development file changed");digest.update(buffer,0,n);out.write(buffer,0,n);}out.getFD().sync();
+        }
+        StringBuilder hash=new StringBuilder();for(byte b:digest.digest())hash.append(String.format(Locale.ROOT,"%02x",b&255));
+        if(copied!=f.getLong("bytes")||!hash.toString().equals(f.getString("sha256")))throw new IOException("Development file fingerprint mismatch: "+name);
+        java.nio.file.Files.move(partial.toPath(),dest.toPath(),java.nio.file.StandardCopyOption.REPLACE_EXISTING,java.nio.file.StandardCopyOption.ATOMIC_MOVE);
+      }finally{partial.delete();}
+    }
+    JSONObject delivery=new JSONObject().put("id",id).put("title",g.getString("title")).put("description",g.getString("description")).put("category",g.optString("category","本地调试")).put("platforms",platforms(g)).put("build_sha256",version).put("entrypoint",entry).put("files",files).put("source","local-development").put("development",true);
+    synchronized(COMMIT_LOCK){JSONArray all=installed();JSONObject old=find(all,id);if(old!=null){String previous=old.getString("build_sha256").equals(version)?old.optString("previous_version"):old.getString("build_sha256");if(!previous.isEmpty())delivery.put("previous_version",previous);}save(new File(base,"delivery.json"),bytes(delivery.toString()));commit(all,delivery);pruneDevelopment(delivery);}
+    return delivery;
+  }
+  private void pruneDevelopment(JSONObject current){
+    if(!current.optBoolean("development")||!current.optString("id").startsWith("dev-"))return;
+    File base=new File(root,"games/"+current.optString("id"));File[] versions=base.listFiles();if(versions==null)return;
+    for(File version:versions)if(version.getName().matches("[a-f0-9]{64}")&&!version.getName().equals(current.optString("build_sha256"))&&!version.getName().equals(current.optString("previous_version")))removeDevelopmentCache(version);
+  }
+  static void removeDevelopmentCache(File path){
+    if(!java.nio.file.Files.isSymbolicLink(path.toPath())){File[] files=path.listFiles();if(files!=null)for(File child:files)removeDevelopmentCache(child);}path.delete();
+  }
+  private static File developmentFile(File base,String path)throws Exception{
+    File f=within(base,path),cursor=base;for(String part:path.split("/")){cursor=new File(cursor,part);if(java.nio.file.Files.isSymbolicLink(cursor.toPath()))throw new IOException("Development symlink refused");}return f;
   }
   private void commit(JSONArray all,JSONObject delivery)throws Exception{JSONArray updated=new JSONArray();for(int i=0;i<all.length();i++)if(!all.getJSONObject(i).getString("id").equals(delivery.getString("id")))updated.put(all.getJSONObject(i));updated.put(delivery);save(new File(root,"catalog.json"),bytes(updated.toString()));}
   public void rollback(String id)throws Exception{synchronized(COMMIT_LOCK){

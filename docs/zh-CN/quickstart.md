@@ -36,3 +36,17 @@ CLI 0.11.1 起，在游戏目录运行 `owngame outline` 就会打开这个项�
 - [工具与模板](../../README.md#工具与模板)：可用起点及运行环境。
 
 商用和再分发按具体项目及素材许可执行，根目录 MIT 不替代这些许可。查看[使用与授权](../../README.md#使用与授权)。
+
+## 在手机容器里调试本地游戏
+
+使用支持开发同步的 owngame 安卓/iOS 客户端，连接并信任测试机。在游戏目录构建后运行：
+
+```sh
+npm run build
+owngame device list
+owngame device sync ./dist --platform android --id my-game --watch
+# iPhone 使用 --platform ios；多台设备可加 --device ID
+owngame device logs --platform android
+```
+
+修改后重新构建，监听命令会同步并打开新版本。本地调试游戏与正式游戏区分，更新保留同一游戏的存档，校验失败时保留旧版。安卓不需要 root；iOS 需要开发者模式、配对及签名容器，并配置 Python 的手机连接工具。只更新现有 App，不要卸载或清空数据。完整依赖、格式、版本及调试说明见[本地设备开发](../device-development.md)。这项功能不是消费者文件选择器导入或公开发布。

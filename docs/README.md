@@ -27,8 +27,11 @@ Game source examples and website publication tooling belong to the GitHub reposi
 
 [Case studies](cases/) record implementation, art iteration and scoped evidence. [Style recipes](style-recipes.json) provide optional visual guidance. Keep project identifiers, command names, paths, JSON fields, UI labels and literal search keywords unchanged when translating prose. English documentation does not require the assistant to answer the user in English.
 
+
 ## Documentation maintenance
 
 Maintain technical behavior in the canonical English document. Keep the Chinese guide short and link to it rather than duplicating every command and constraint in a second full manual. Update cross-references when headings change. Preserve existing inbound anchors where practical, especially licensing links from the README and website. Translation must not turn `unknown`, `not_checked`, `not_run` or pending human feedback into a successful validation claim.
 
 - [Local game design board](../apps/outline/README.md): per-game JSON, canvas, CLI/MCP and development context.
+
+- [Local mobile development](device-development.md): USB sync, watch updates and runtime logs in the Android/iOS containers.

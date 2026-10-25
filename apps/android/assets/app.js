@@ -289,6 +289,7 @@ function size(g) {
   return ((g.bytes || 0) / 1048576).toFixed(1) + " MB";
 }
 function state(g) {
+  if (g.development) return t("本地调试 · 已同步");
   if (g.downloading) return t("下载中 {percent}%", {percent:g.progress});
   if (g.update_available) return t("有更新 · 旧版可玩");
   return g.downloaded ? t("已下载 · 离线可玩") : t("下载后离线玩 · {size}", {size:size(g)});

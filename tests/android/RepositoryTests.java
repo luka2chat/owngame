@@ -110,7 +110,35 @@ public final class RepositoryTests extends Instrumentation {
       r.download("test-game",p->{});yes(r.installed("test-game").getJSONArray("platforms").getString(0).equals("mobile"));
       server.catalogOverride=new JSONArray();r.refresh();yes(r.list().length()==1);yes(r.mobileInstalled().length()==1);
     });
+    test("development packages update offline, isolate official installs and retain rollback",()->{
+      File incoming=new File(root,"development-incoming");incoming.mkdirs();
+      String official=repo.installed("test-game").getString("build_sha256");
+      File one=development(incoming,"local one"),two=development(incoming,"local two");
+      JSONObject a=repo.importDevelopment(one),b=repo.importDevelopment(two);
+      yes(a.getBoolean("development"));yes(b.getString("previous_version").equals(a.getString("build_sha256")));
+      yes(repo.importDevelopment(two).getString("previous_version").equals(a.getString("build_sha256")));
+      File bad=development(incoming,"local broken");try(FileOutputStream out=new FileOutputStream(new File(bad,"files/index.html"))){out.write(data("corrupt"));}
+      rejects(()->repo.importDevelopment(bad));yes(repo.installed("dev-fixture").getString("build_sha256").equals(b.getString("build_sha256")));
+      yes(repo.installed("test-game").getString("build_sha256").equals(official));
+      repo.rollback("dev-fixture");yes(repo.installed("dev-fixture").getString("build_sha256").equals(a.getString("build_sha256")));
+      File partial=development(incoming,"partial");new File(partial,"ready.json").delete();rejects(()->repo.importDevelopment(partial));
+      yes(repo.installed("dev-fixture").getString("build_sha256").equals(a.getString("build_sha256")));
+      JSONObject third=repo.importDevelopment(development(incoming,"local clean three"));
+      yes(third.getString("previous_version").equals(a.getString("build_sha256")));
+      yes(!new File(root,"games/dev-fixture/"+b.getString("build_sha256")).exists());
+    });
     remove(root);
+  }
+  static File development(File root,String html)throws Exception{
+    File folder=new File(root,UUID.randomUUID().toString());new File(folder,"files").mkdirs();byte[] body=data(html);
+    String hash=GameRepository.sha(body);JSONArray files=new JSONArray().put(new JSONObject().put("path","index.html").put("bytes",body.length).put("sha256",hash));
+    String version=GameRepository.sha(data("[{\"bytes\":"+body.length+",\"path\":\"index.html\",\"sha256\":\""+hash+"\"}]")),prefix="/games/dev-fixture/"+version+"/";
+    JSONObject game=new JSONObject().put("id","dev-fixture").put("title","Fixture").put("description","USB fixture").put("version",version).put("entry",prefix+"index.html").put("manifest",prefix+"manifest.json").put("bytes",body.length).put("platforms",new JSONArray().put("mobile")).put("development",true);
+    byte[] metadata=data(new JSONObject().put("schema","owngame.device-package.v1").put("requestId",folder.getName()).put("game",game).put("files",files).toString());
+    try(FileOutputStream out=new FileOutputStream(new File(folder,"package.json"))){out.write(metadata);}
+    try(FileOutputStream out=new FileOutputStream(new File(folder,"files/index.html"))){out.write(body);}
+    byte[] ready=data(new JSONObject().put("schema","owngame.device-package.v1").put("requestId",folder.getName()).put("packageSha256",GameRepository.sha(metadata)).toString());
+    try(FileOutputStream out=new FileOutputStream(new File(folder,"ready.json"))){out.write(ready);}return folder;
   }
   static void remove(File f){File[] children=f.listFiles();if(children!=null)for(File c:children)remove(c);f.delete();}
 }

@@ -4,8 +4,11 @@ import fs from 'node:fs';
 import {spawnSync} from 'node:child_process';
 const root = path.resolve(import.meta.dirname,'../..');
 const cache = process.env.OWNGAME_IOS_TEST_DIR || path.join(os.tmpdir(),'owngame-ios-tests');
-const args = ['test','--package-path',path.join(root,'apps/ios'),'--scratch-path',path.join(cache,'build'),
+const args = ['test','--disable-index-store','--package-path',path.join(root,'apps/ios'),'--scratch-path',path.join(cache,'build'),
   '--cache-path',path.join(cache,'cache'),'--config-path',path.join(cache,'config'),'--security-path',path.join(cache,'security')];
+if(process.env.OWNGAME_SWIFT_BUILD_SYSTEM) args.push('--build-system',process.env.OWNGAME_SWIFT_BUILD_SYSTEM);
+const moduleCache = process.env.OWNGAME_IOS_MODULE_CACHE || path.join(cache,'modules');
+args.push('-Xswiftc','-module-cache-path','-Xswiftc',moduleCache);
 // Only SwiftPM's nested build sandbox is disabled within Codex's existing Seatbelt sandbox.
 // The process remains inside Codex's sandbox; no system security settings change.
 if(process.env.CODEX_SANDBOX === 'seatbelt') args.push('--disable-sandbox');
@@ -18,5 +21,5 @@ if(developer) {
   }
 }
 const result = spawnSync('swift',args,{cwd:root,stdio:'inherit',env:{...process.env,
-  CLANG_MODULE_CACHE_PATH:path.join(cache,'clang'),SWIFTPM_MODULECACHE_OVERRIDE:path.join(cache,'modules')}});
+  CLANG_MODULE_CACHE_PATH:moduleCache,SWIFTPM_MODULECACHE_OVERRIDE:moduleCache}});
 process.exit(result.status??1);

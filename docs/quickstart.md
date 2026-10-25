@@ -56,3 +56,7 @@ npx owngame web.inspect '{"directory":"my-game/dist"}'
 Record the resulting build fingerprint together with actual input, runtime screenshots, the test environment and uncovered behavior. Build and static checks do not establish offline cold-start support or human approval of the art.
 
 You can deliver `dist` to a static hosting service. Public deployment and local preview are separate actions. The default starter has no Service Worker and does not promise an offline cold start after the server stops. Stop your own preview server when finished.
+
+## Test inside the mobile containers
+
+Build the game, connect a trusted device, then run `owngame device list` and `owngame device sync ./dist --platform android --id my-game --watch` (use `--platform ios` for iPhone). Rebuild after edits; the watcher transfers the new immutable build and waits for the container's load result. See [local device development](device-development.md) for client updates, prerequisites, logs, save isolation and limits.

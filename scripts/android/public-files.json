@@ -80,5 +80,7 @@
   "tests/android/UpdateInstallTests.java",
   "tests/android/WebViewTests.java",
   "tests/android/public-source.test.mjs",
-  "tests/mobile/localization.test.mjs"
+  "tests/mobile/localization.test.mjs",
+  "apps/android/src/dev/owngame/app/DevelopmentReceipt.java",
+  "docs/device-development.md"
 ]

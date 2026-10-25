@@ -3,6 +3,8 @@ import WebKit
 
 final class GameViewController: UIViewController, WKNavigationDelegate {
     private let delivery: InstalledGame
+    private let developmentReceipt: DevelopmentSession?
+    private var developmentLogTimer: Timer?
     private let root: URL
     private weak var library: LibraryViewController?
     private let server = LocalGameServer()
@@ -14,8 +16,8 @@ final class GameViewController: UIViewController, WKNavigationDelegate {
     override var prefersStatusBarHidden: Bool { true }
     override var prefersHomeIndicatorAutoHidden: Bool { true }
     private var address: URL { URL(string: "http://localhost:\(port)/\(delivery.game.entrypoint)")! }
-    init(delivery: InstalledGame, root: URL, library: LibraryViewController) {
-        self.delivery = delivery; self.root = root; self.library = library
+    init(delivery: InstalledGame, root: URL, library: LibraryViewController, developmentReceipt: DevelopmentSession? = nil) {
+        self.delivery = delivery; self.root = root; self.library = library; self.developmentReceipt = developmentReceipt
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) is unsupported") }
@@ -49,7 +51,9 @@ final class GameViewController: UIViewController, WKNavigationDelegate {
         config.allowsInlineMediaPlayback = true
         // Deliberately no script message handlers or native API bridge in a game WebView.
         if let rules { config.userContentController.add(rules) }
+        if developmentReceipt != nil { config.userContentController.addUserScript(WKUserScript(source: DevelopmentSession.captureScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)) }
         web = WKWebView(frame: .zero, configuration: config)
+        if #available(iOS 16.4, *) { web.isInspectable = delivery.game.isDevelopment }
         web.navigationDelegate = self; web.scrollView.contentInsetAdjustmentBehavior = .never
         web.isOpaque = false; web.backgroundColor = .black; web.scrollView.backgroundColor = .black
         web.translatesAutoresizingMaskIntoConstraints = false; view.addSubview(web)
@@ -97,7 +101,20 @@ final class GameViewController: UIViewController, WKNavigationDelegate {
             url?.user == nil && url?.password == nil && navigationAction.targetFrame != nil
         decisionHandler(allowed ? .allow : .cancel)
     }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        guard let developmentReceipt else { return }
+        developmentReceipt.running()
+        developmentLogTimer?.invalidate()
+        developmentLogTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard let self else { return }
+            self.web.evaluateJavaScript("window.__owngameDevelopmentRead && window.__owngameDevelopmentRead()") { [weak self] value, _ in
+                if let snapshot = value as? [String: Any] { self?.developmentReceipt?.logs(snapshot) }
+            }
+        }
+    }
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) { developmentReceipt?.failed(error) }
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        developmentReceipt?.failed(error)
         info(AppText.text("加载失败"), error.localizedDescription + AppText.text("。请返回游戏库后重新打开。"))
     }
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
@@ -165,7 +182,7 @@ final class GameViewController: UIViewController, WKNavigationDelegate {
         present(UINavigationController(rootViewController: controller), animated: true)
     }
     @objc private func closeSheet() { presentedViewController?.dismiss(animated: true) }
-    deinit { server.stop() }
+    deinit { developmentLogTimer?.invalidate(); server.stop() }
 }
 
 private final class GameCapsuleButton: UIButton {
