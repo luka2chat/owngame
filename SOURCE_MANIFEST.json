@@ -1214,8 +1214,8 @@
     },
     {
       "path": "apps/web/public/blueprint-connections.js",
-      "bytes": 8846,
-      "sha256": "5825dac65188ccf3bcd40c8e23ef7175d8abcf0a97785fa74a926e9e67e8a507"
+      "bytes": 9006,
+      "sha256": "045a18a4b07ee35afd0034b651ef3e14676593b559610fad371a975b75f27aa8"
     },
     {
       "path": "apps/web/public/blueprint-media-policy.js",
@@ -1334,13 +1334,13 @@
     },
     {
       "path": "apps/web/public/remix-workflow.js",
-      "bytes": 31187,
-      "sha256": "4043294a8331822b156ae9c863f7342a70ba1cd295aca9b200156c23a8382936"
+      "bytes": 33138,
+      "sha256": "c2b2f1a4356e3d885c88a7074e665078fb725633eefafd99aab03bbd76a3a6d0"
     },
     {
       "path": "apps/web/public/remix.css",
-      "bytes": 12907,
-      "sha256": "e1648682d4ce348a6437ef6a8f1aac3bea593f058843d41372f8d259de298a2a"
+      "bytes": 13409,
+      "sha256": "5b156d6cb4831a9e1e9603ff08d7e708b0ea3cadca4ea3529c7ff75dbe19d4c2"
     },
     {
       "path": "apps/web/public/remix.js",
@@ -1399,8 +1399,8 @@
     },
     {
       "path": "apps/web/README.md",
-      "bytes": 9685,
-      "sha256": "4f02a6c43a68b38bdc76887d2ebbe79a3ee3cb5464644d2d7a9e532261e1416f"
+      "bytes": 10071,
+      "sha256": "34b36f4573ae70209ab2b9e3d9a490a4c731aae04ad49bfea673d1fb34da77e9"
     },
     {
       "path": "apps/web/wrangler.jsonc",
@@ -12164,8 +12164,8 @@
     },
     {
       "path": "tests/web/blueprint-connections.test.mjs",
-      "bytes": 3425,
-      "sha256": "6b33bb3329ddd124d7d01fbc3e3201a0a2e4dc0c3ac49b054a2561fcfbc6119e"
+      "bytes": 5316,
+      "sha256": "ff896f1fa2658f35502286f90b9a9f5fe4e136da384d943e3538e73a46b4b0e5"
     },
     {
       "path": "tests/web/blueprint-media.test.mjs",

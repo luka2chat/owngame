@@ -1,3 +1,7 @@
+import {
+  routeBlueprintConnections,
+  roundedConnection,
+} from "./blueprint-connections.js";
 import { appendMediaGallery } from "./blueprint-media.js";
 import { attachBlueprint } from "./remix-blueprint.js";
 import { element } from "./data.js";
@@ -481,7 +485,7 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
   function renderBoard() {
     board.replaceChildren();
     const width = Math.max(900, ...plan.steps.map((s) => s.x + 280));
-    const height = Math.max(470, ...plan.steps.map((s) => s.y + 210));
+    const height = Math.max(470, ...plan.steps.map((s) => s.y + 240));
     board.style.width = width + "px";
     board.style.height = height + "px";
     board.style.transform = `scale(${zoom})`;
@@ -492,38 +496,82 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
     svg.setAttribute("width", width);
     svg.setAttribute("height", height);
     svg.setAttribute("aria-hidden", "true");
-    const defs = document.createElementNS(ns, "defs"),
-      marker = document.createElementNS(ns, "marker"),
-      arrow = document.createElementNS(ns, "path");
-    marker.id = "workflow-arrow";
-    marker.setAttribute("viewBox", "0 0 10 10");
-    marker.setAttribute("refX", "9");
-    marker.setAttribute("refY", "5");
-    marker.setAttribute("markerWidth", "6");
-    marker.setAttribute("markerHeight", "6");
-    marker.setAttribute("orient", "auto-start-reverse");
-    arrow.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
-    arrow.setAttribute("fill", "#075bb4");
-    marker.append(arrow);
-    defs.append(marker);
+    const defs = document.createElementNS(ns, "defs");
+    for (const state of ["active", "muted"]) {
+      const marker = document.createElementNS(ns, "marker"),
+        arrow = document.createElementNS(ns, "path");
+      marker.id = "workflow-arrow-" + state;
+      marker.setAttribute("viewBox", "0 0 10 10");
+      marker.setAttribute("refX", "9");
+      marker.setAttribute("refY", "5");
+      marker.setAttribute("markerWidth", "7");
+      marker.setAttribute("markerHeight", "7");
+      marker.setAttribute("orient", "auto");
+      arrow.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
+      arrow.setAttribute("fill", state === "active" ? "#075bb4" : "#8b9c91");
+      marker.append(arrow);
+      defs.append(marker);
+    }
     svg.append(defs);
-    for (const step of plan.steps)
-      for (const id of step.dependsOn) {
-        const from = plan.steps.find((s) => s.id === id);
-        if (!from) continue;
-        const line = document.createElementNS(ns, "path"),
-          x1 = from.x + 244,
-          y1 = from.y + 80,
-          x2 = step.x,
-          y2 = step.y + 80;
-        line.setAttribute(
-          "d",
-          `M ${x1} ${y1} C ${x1 + 54} ${y1}, ${x2 - 54} ${y2}, ${x2 - 4} ${y2}`,
+    const edges = plan.steps.flatMap((step) =>
+      step.dependsOn.map((from) => ({ from, to: step.id })),
+    );
+    const nodes = plan.steps.map((step) => ({
+      ...step,
+      height: plan.blueprint?.cards.some((c) => c.stepId === step.id)
+        ? 204
+        : 174,
+    }));
+    const routes = routeBlueprintConnections(nodes, edges, width, height, {
+      cardWidth: 244,
+      cardHeight: 174,
+    });
+    // User-positioned cards can overlap. Keep their dependencies visible even
+    // when there is no free corridor; moving them apart restores normal routing.
+    for (const edge of edges) {
+      if (routes.some((r) => r.from === edge.from && r.to === edge.to))
+        continue;
+      const from = plan.steps.find((s) => s.id === edge.from),
+        to = plan.steps.find((s) => s.id === edge.to);
+      if (!from || !to) continue;
+      const points = [
+        { x: from.x + 244, y: from.y + 87 },
+        { x: Math.max(from.x + 264, to.x + 264), y: from.y + 87 },
+        { x: Math.max(from.x + 264, to.x + 264), y: to.y + 87 },
+        { x: to.x + 248, y: to.y + 87 },
+      ];
+      routes.push({ ...edge, points, path: roundedConnection(points) });
+    }
+    for (const edge of routes.sort(
+      (a, b) =>
+        Number(a.from === selected || a.to === selected) -
+        Number(b.from === selected || b.to === selected),
+    )) {
+      const group = document.createElementNS(ns, "g"),
+        active = edge.from === selected || edge.to === selected,
+        disabled = [edge.from, edge.to].some(
+          (id) => !plan.steps.find((s) => s.id === id)?.enabled,
         );
-        line.setAttribute("marker-end", "url(#workflow-arrow)");
-        if (!step.enabled || !from.enabled) line.classList.add("is-disabled");
-        svg.append(line);
+      group.classList.add("workflow-connection");
+      group.classList.toggle("is-active", active);
+      group.classList.toggle("is-disabled", disabled);
+      group.dataset.from = edge.from;
+      group.dataset.to = edge.to;
+      group.dataset.points = JSON.stringify(edge.points);
+      for (const kind of ["halo", "line"]) {
+        const line = document.createElementNS(ns, "path");
+        line.classList.add("workflow-connection-" + kind);
+        line.setAttribute("d", edge.path);
+        line.setAttribute("vector-effect", "non-scaling-stroke");
+        if (kind === "line")
+          line.setAttribute(
+            "marker-end",
+            `url(#workflow-arrow-${active ? "active" : "muted"})`,
+          );
+        group.append(line);
       }
+      svg.append(group);
+    }
     board.append(svg);
     const ordered = executionOrder(plan.steps);
     for (const step of plan.steps) {

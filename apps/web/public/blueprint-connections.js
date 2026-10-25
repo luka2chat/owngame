@@ -1,9 +1,7 @@
 // Route display-only connections through the free space around the cards.
 // The public board's positions and relationships remain the source of truth.
-// Match the card's logical dimensions before canvas zoom.
-const W = 268,
-  H = 208,
-  clearance = 14;
+// Card sizes are logical dimensions before canvas zoom.
+const clearance = 14;
 const inside = (p, r) =>
   p.x > r.x && p.x < r.x + r.w && p.y > r.y && p.y < r.y + r.h;
 const blocked = (a, b, rects) =>
@@ -30,6 +28,8 @@ const simplify = (points) =>
       ),
   );
 function ports(r, offset) {
+  const W = r.w,
+    H = r.h;
   return [
     [
       { x: r.x + W + 4, y: r.y + H / 2 + offset },
@@ -90,8 +90,8 @@ function search(source, target, rects, width, height, offset, used) {
     obstacles = rects.map((r) => ({
       x: r.x - clearance,
       y: r.y - clearance,
-      w: W + clearance * 2,
-      h: H + clearance * 2,
+      w: r.w + clearance * 2,
+      h: r.h + clearance * 2,
     }));
   const xs = new Set([8, width - 8]),
     ys = new Set([8, height - 8]);
@@ -205,7 +205,14 @@ export function roundedConnection(points) {
   const last = points.at(-1);
   return path + ` L ${last.x} ${last.y}`;
 }
-export function routeBlueprintConnections(cards, edges, width, height) {
+export function routeBlueprintConnections(
+  cards,
+  edges,
+  width,
+  height,
+  { cardWidth: W = 268, cardHeight: H = 208 } = {},
+) {
+  cards = cards.map((c) => ({ ...c, w: c.width ?? W, h: c.height ?? H }));
   const byId = new Map(cards.map((c) => [c.id, c])),
     used = [],
     labels = [];
@@ -240,7 +247,7 @@ export function routeBlueprintConnections(cards, edges, width, height) {
         ) + 12,
       );
     let label;
-    for (let i = 1; i < points.length && !label; i++) {
+    for (let i = 1; text && i < points.length && !label; i++) {
       const a = points[i - 1],
         b = points[i];
       if (a.y !== b.y || Math.abs(a.x - b.x) < labelWidth + 8) continue;
@@ -261,9 +268,9 @@ export function routeBlueprintConnections(cards, edges, width, height) {
         if (
           cards.some(
             (r) =>
-              box.x < r.x + W + 5 &&
+              box.x < r.x + r.w + 5 &&
               box.x + box.w > r.x - 5 &&
-              box.y < r.y + H + 5 &&
+              box.y < r.y + r.h + 5 &&
               box.y + box.h > r.y - 5,
           ) ||
           labels.some(

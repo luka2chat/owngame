@@ -289,14 +289,36 @@
   pointer-events: none;
   overflow: visible;
 }
-.workflow-board > svg > path {
+.workflow-connection-line,
+.workflow-connection-halo {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.workflow-connection-line {
+  stroke: #8b9c91;
+  stroke-width: 1.25;
+  opacity: 0.3;
+}
+.workflow-connection-halo {
+  stroke: #f5efdf;
+  stroke-width: 6;
+  opacity: 0;
+}
+.workflow-connection.is-active .workflow-connection-line {
   stroke: var(--blue);
   stroke-width: 2;
-  fill: none;
+  opacity: 1;
 }
-.workflow-board > svg > path.is-disabled {
+.workflow-connection.is-active .workflow-connection-halo {
+  opacity: 1;
+}
+.workflow-connection.is-disabled .workflow-connection-line {
   stroke-dasharray: 5 5;
   opacity: 0.3;
+}
+.workflow-connection.is-disabled.is-active .workflow-connection-line {
+  opacity: 0.65;
 }
 .workflow-card {
   position: absolute;

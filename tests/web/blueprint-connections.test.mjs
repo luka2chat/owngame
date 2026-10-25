@@ -95,3 +95,59 @@ test("forward, backward, reciprocal and self-return routes stay visible and dist
   assert.equal(new Set(routes.map((r) => r.path)).size, edges.length);
   assert.deepEqual(routeBlueprintConnections(nodes, edges, 682, 622), routes);
 });
+
+test("editable remix routes respect smaller step cards, branches, moves and empty labels", async () => {
+  const { createWorkflow, createStep, arrangeSteps } =
+    await import("../../apps/web/public/remix-workflow-model.js");
+  const plan = createWorkflow({ id: "tidal-reclaim", title: "Tidal Reclaim" });
+  const verify = () => {
+    const edges = plan.steps.flatMap((s) =>
+      s.dependsOn.map((from) => ({ from, to: s.id })),
+    );
+    const before = structuredClone(plan);
+    const routes = routeBlueprintConnections(plan.steps, edges, 2400, 1500, {
+      cardWidth: 244,
+      cardHeight: 174,
+    });
+    assert.equal(routes.length, edges.length);
+    for (const route of routes) {
+      assert.equal(route.label, undefined);
+      for (let i = 1; i < route.points.length; i++) {
+        const a = route.points[i - 1],
+          b = route.points[i];
+        assert(a.x === b.x || a.y === b.y);
+        assert(
+          !plan.steps.some((r) =>
+            a.x === b.x
+              ? a.x > r.x &&
+                a.x < r.x + 244 &&
+                Math.max(a.y, b.y) > r.y &&
+                Math.min(a.y, b.y) < r.y + (r.height ?? 174)
+              : a.y > r.y &&
+                a.y < r.y + (r.height ?? 174) &&
+                Math.max(a.x, b.x) > r.x &&
+                Math.min(a.x, b.x) < r.x + 244,
+          ),
+        );
+      }
+    }
+    assert.deepEqual(plan, before);
+  };
+  verify();
+  for (const step of plan.steps) step.height = 204;
+  verify();
+  plan.steps[2].dependsOn.push(plan.steps[1].id);
+  arrangeSteps(plan.steps);
+  verify();
+  plan.steps[0].x = 0;
+  plan.steps[0].y = 0;
+  plan.steps[2].x = 800;
+  plan.steps[2].y = 1000;
+  verify();
+  const extra = createStep("validation", "extra-validation", plan.steps.length);
+  extra.x = 1200;
+  extra.y = 800;
+  extra.dependsOn = plan.steps.slice(0, 4).map((s) => s.id);
+  plan.steps.push(extra);
+  verify();
+});
