@@ -41,6 +41,24 @@ try {
       return s ? s.ready!==false && s.atlasReady!==false : document.querySelectorAll('button').length>0;
     },null,{timeout:45000});
     if(game.id==='tidal-reclaim')await page.getByRole('button',{name:'开始回收行动'}).waitFor({timeout:90000});
+    if(game.id==='azeroth-strike') {
+      await page.getByRole('button',{name:/海加尔之战/}).click();
+      await page.locator('.overlay.click').waitFor({timeout:120000});
+      await page.locator('#game').click();
+      await page.waitForFunction(()=>!!document.pointerLockElement);
+      await page.waitForFunction(()=>window.__wow?.game?.phase==='live',null,{timeout:60000});
+      await page.keyboard.press('2');
+      await page.waitForFunction(()=>window.__wow.game.player.weaponId==='sniper' && window.__wow.game.player.switchTimer<=0);
+      await page.mouse.click(640,360,{button:'right'});
+      await page.locator('.scope').waitFor({state:'visible'});
+      const before=await page.evaluate(()=>({z:window.__wow.game.player.pos.z,ammo:window.__wow.game.player.ammo}));
+      await page.keyboard.down('w');
+      try{await page.waitForFunction(z=>Math.abs(window.__wow.game.player.pos.z-z)>.1,before.z);}finally{await page.keyboard.up('w');}
+      await page.mouse.click(640,360);
+      await page.waitForFunction(ammo=>window.__wow.game.player.ammo<ammo,before.ammo);
+      await page.keyboard.press('p');
+      await page.getByRole('button',{name:'继续游戏',exact:true}).waitFor();
+    }
     const starts=page.getByRole('button').filter({hasText:/^(开始|启程|出发|继续|进入|接着)/});
     let clicked=false;
     if(game.id==='tidal-reclaim'){

@@ -54,5 +54,9 @@
   "tidal-reclaim": {
     "cover": "/art/rollout/tidal-reclaim.webp",
     "coverTitleBaked": true
+  },
+  "azeroth-strike": {
+    "cover": "/art/rollout/azeroth-strike.webp",
+    "coverTitleBaked": true
   }
 }

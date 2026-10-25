@@ -61,6 +61,8 @@ def export(catalog, destination, library=None, only=None):
             put(relative, b)
         def tree(p, relative, allowed=None):
             for f in sorted(p.rglob('*')):
+                if any(part.startswith('.') for part in f.relative_to(p).parts):
+                    continue  # Finder metadata, editor caches and hidden local state are not source.
                 if f.is_file() and (allowed is None or f.suffix in allowed):
                     copy(f, Path(relative)/f.relative_to(p))
         if spec['kind'] == 'unity':
@@ -216,7 +218,7 @@ def export(catalog, destination, library=None, only=None):
             put('serve.mjs', (ROOT/'scripts/games/serve-template.mjs').read_bytes())
             notices = [f'# {game["title"]} · 授权与来源\n',
                 f'游戏代码：{spec.get("license","MIT")}。请同时保留 LICENSE 和随素材附带的声明。\n',
-                '原创 owngame 美术包含委托 OpenAI ImageGen 生成的图片；按所在项目许可分发。规则概念参考不代表复制参考游戏代码。\n']
+                spec.get('artNotice', '原创 owngame 美术包含委托 OpenAI ImageGen 生成的图片；按所在项目许可分发。规则概念参考不代表复制参考游戏代码。\n')]
             for f in sorted((target/'public').rglob('*')):
                 if f.is_file() and (f.name in ['THIRD_PARTY.txt','SOURCE.json','ARTWORK.json'] or f.suffix.lower()=='.txt' and any(x in f.name.lower() for x in ['ofl','license','phaser','eventemitter'])):
                     notices.append(f'\n## {f.relative_to(target).as_posix()}\n\n'+f.read_text())

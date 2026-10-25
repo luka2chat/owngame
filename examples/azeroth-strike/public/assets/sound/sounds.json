@@ -1,0 +1,316 @@
+{
+	"gunfire": {
+		"kind": "sfx",
+		"files": [
+			"gunfire_0",
+			"gunfire_1",
+			"gunfire_2"
+		]
+	},
+	"gunload": {
+		"kind": "sfx",
+		"files": [
+			"gunload_0",
+			"gunload_1",
+			"gunload_2"
+		]
+	},
+	"impact": {
+		"kind": "sfx",
+		"files": [
+			"impact_0",
+			"impact_1",
+			"impact_2",
+			"impact_3",
+			"impact_4",
+			"impact_5"
+		]
+	},
+	"wand": {
+		"kind": "sfx",
+		"files": [
+			"wand_0"
+		]
+	},
+	"wandcast": {
+		"kind": "sfx",
+		"files": [
+			"wandcast_0",
+			"wandcast_1",
+			"wandcast_2"
+		]
+	},
+	"swing": {
+		"kind": "sfx",
+		"files": [
+			"swing_0",
+			"swing_1",
+			"swing_2"
+		]
+	},
+	"swingheavy": {
+		"kind": "sfx",
+		"files": [
+			"swingheavy_0",
+			"swingheavy_1",
+			"swingheavy_2"
+		]
+	},
+	"stab": {
+		"kind": "sfx",
+		"files": [
+			"stab_0",
+			"stab_1",
+			"stab_2"
+		]
+	},
+	"stabcrit": {
+		"kind": "sfx",
+		"files": [
+			"stabcrit_0"
+		]
+	},
+	"stabwall": {
+		"kind": "sfx",
+		"files": [
+			"stabwall_0",
+			"stabwall_1"
+		]
+	},
+	"draw": {
+		"kind": "sfx",
+		"files": [
+			"draw_0"
+		]
+	},
+	"holster": {
+		"kind": "sfx",
+		"files": [
+			"holster_0"
+		]
+	},
+	"wanddraw": {
+		"kind": "sfx",
+		"files": [
+			"wanddraw_0"
+		]
+	},
+	"wandholster": {
+		"kind": "sfx",
+		"files": [
+			"wandholster_0"
+		]
+	},
+	"click": {
+		"kind": "sfx",
+		"files": [
+			"click_0"
+		]
+	},
+	"stepgrass": {
+		"kind": "sfx",
+		"files": [
+			"stepgrass_0",
+			"stepgrass_1",
+			"stepgrass_2",
+			"stepgrass_3",
+			"stepgrass_4"
+		]
+	},
+	"stepdirt": {
+		"kind": "sfx",
+		"files": [
+			"stepdirt_0",
+			"stepdirt_1",
+			"stepdirt_2",
+			"stepdirt_3",
+			"stepdirt_4"
+		]
+	},
+	"stepwood": {
+		"kind": "sfx",
+		"files": [
+			"stepwood_0",
+			"stepwood_1",
+			"stepwood_2",
+			"stepwood_3",
+			"stepwood_4"
+		]
+	},
+	"stepstone": {
+		"kind": "sfx",
+		"files": [
+			"stepstone_0",
+			"stepstone_1",
+			"stepstone_2",
+			"stepstone_3",
+			"stepstone_4"
+		]
+	},
+	"humanwound": {
+		"kind": "sfx",
+		"files": [
+			"humanwound_0",
+			"humanwound_1",
+			"humanwound_2",
+			"humanwound_3"
+		]
+	},
+	"humancrit": {
+		"kind": "sfx",
+		"files": [
+			"humancrit_0",
+			"humancrit_1"
+		]
+	},
+	"humandeath": {
+		"kind": "sfx",
+		"files": [
+			"humandeath_0"
+		]
+	},
+	"orcwound": {
+		"kind": "sfx",
+		"files": [
+			"orcwound_0",
+			"orcwound_1",
+			"orcwound_2"
+		]
+	},
+	"orccrit": {
+		"kind": "sfx",
+		"files": [
+			"orccrit_0"
+		]
+	},
+	"orcdeath": {
+		"kind": "sfx",
+		"files": [
+			"orcdeath_0"
+		]
+	},
+	"flagtaken_alliance": {
+		"kind": "sfx",
+		"files": [
+			"flagtaken_alliance_0"
+		]
+	},
+	"flagtaken_horde": {
+		"kind": "sfx",
+		"files": [
+			"flagtaken_horde_0"
+		]
+	},
+	"flagcaptured_alliance": {
+		"kind": "sfx",
+		"files": [
+			"flagcaptured_alliance_0"
+		]
+	},
+	"flagcaptured_horde": {
+		"kind": "sfx",
+		"files": [
+			"flagcaptured_horde_0"
+		]
+	},
+	"warning_alliance": {
+		"kind": "sfx",
+		"files": [
+			"warning_alliance_0"
+		]
+	},
+	"warning_horde": {
+		"kind": "sfx",
+		"files": [
+			"warning_horde_0"
+		]
+	},
+	"victory_alliance": {
+		"kind": "sfx",
+		"files": [
+			"victory_alliance_0"
+		]
+	},
+	"victory_horde": {
+		"kind": "sfx",
+		"files": [
+			"victory_horde_0"
+		]
+	},
+	"countdown": {
+		"kind": "sfx",
+		"files": [
+			"countdown_0"
+		]
+	},
+	"countdownend": {
+		"kind": "sfx",
+		"files": [
+			"countdownend_0"
+		]
+	},
+	"resurrect": {
+		"kind": "sfx",
+		"files": [
+			"resurrect_0"
+		]
+	},
+	"buffspeed": {
+		"kind": "sfx",
+		"files": [
+			"buffspeed_0"
+		]
+	},
+	"buffheal": {
+		"kind": "sfx",
+		"files": [
+			"buffheal_0"
+		]
+	},
+	"buffspawn": {
+		"kind": "sfx",
+		"files": [
+			"buffspawn_0"
+		]
+	},
+	"nodechannel": {
+		"kind": "sfx",
+		"files": [
+			"nodechannel_0"
+		]
+	},
+	"bannerup": {
+		"kind": "sfx",
+		"files": [
+			"bannerup_0"
+		]
+	},
+	"spirithealer": {
+		"kind": "loop",
+		"files": [
+			"spirithealer_0"
+		]
+	},
+	"amb_wsg": {
+		"kind": "loop",
+		"files": [
+			"amb_wsg_0"
+		]
+	},
+	"amb_ab": {
+		"kind": "loop",
+		"files": [
+			"amb_ab_0"
+		]
+	},
+	"music": {
+		"kind": "music",
+		"files": [
+			"music_0",
+			"music_1",
+			"music_2",
+			"music_3",
+			"music_4"
+		]
+	}
+}
