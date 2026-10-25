@@ -43,10 +43,11 @@ entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/star-letter
 entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/crowd-runner/catalog.json"),"utf8")));
 entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/arrow-escape/catalog.json"),"utf8")));
 entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/tidal-reclaim/catalog.json"),"utf8")));
-// Lead with the two PC worlds, followed by the existing creative examples.
+entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/azeroth-strike/catalog.json"),"utf8")));
+// Lead with the three PC worlds, followed by the existing creative examples.
 // Stable sorting preserves the existing relative order of all remaining games.
 const featuredOrder = new Map([
-  "tidal-reclaim", "star-letters", "neon-shooter", "faune-dungeon", "wind-chime-memory", "postcard-slide",
+  "azeroth-strike", "tidal-reclaim", "star-letters", "neon-shooter", "faune-dungeon", "wind-chime-memory", "postcard-slide",
 ].map((id, index) => [id, index]));
 entries.sort((a, b) =>
   (featuredOrder.get(a.id) ?? featuredOrder.size) -

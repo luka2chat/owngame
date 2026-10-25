@@ -1,0 +1,10 @@
+{
+  "managed_export": "owngame",
+  "id": "azeroth-strike",
+  "title": "艾泽拉斯反恐精英",
+  "kind": "vite",
+  "online_build_sha256": "1c6400def3cd60c9e351c57f56f3b10210f4c8d183983df18bd44a2b2d9469c9",
+  "original_source_sha256": null,
+  "license": "MIT (code only); proprietary Blizzard assets excluded",
+  "description": "选择联盟或部落，在战歌峡谷夺旗、阿拉希盆地占点，或迎战海加尔九波入侵。"
+}

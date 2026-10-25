@@ -1,4 +1,73 @@
 {
+  "azeroth-strike": {
+    "schema": "owngame-outline",
+    "version": 1,
+    "revision": 1,
+    "project": {
+      "id": "c636e904-1534-4701-984e-79f4a5a53da6",
+      "title": "Azeroth Strike",
+      "tagline": "魔兽战场 × 第一人称射击",
+      "experience": "选择阵营，在三个战场中体验夺旗、占点与营地守卫。",
+      "scope": "PC单机机器人FPS；公开源码许可与第三方资产权利分别记录。",
+      "playable": "./index.html",
+      "cards": [
+        {
+          "id": "4f292f12-caf6-408c-8b23-a8d856940dd3",
+          "type": "rule",
+          "section": "rules",
+          "title": "三种战场",
+          "body": "战歌夺旗先到3分；阿拉希占点先到1500资源；海加尔抵御9波入侵并保护核心。",
+          "status": "done",
+          "x": 80,
+          "y": 80,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "2966c3e8-68ef-4408-b0a7-acbb9829f49a",
+          "type": "rule",
+          "section": "rules",
+          "title": "PC 键鼠操作",
+          "body": "WASD移动，左右键射击与瞄准，数字键换武器，F骑乘，狙击右键下马开镜。",
+          "status": "done",
+          "x": 80,
+          "y": 80,
+          "fields": {},
+          "image": ""
+        },
+        {
+          "id": "f96ab09e-a2dc-4afe-8bab-f6a6f1b828f8",
+          "type": "asset",
+          "section": "assets",
+          "title": "魔兽世界场景与角色",
+          "body": "使用用户提供的魔兽客户端导出转换的运行素材；第三方素材不属于MIT许可。见 THIRD_PARTY_NOTICES.md。",
+          "status": "done",
+          "x": 80,
+          "y": 80,
+          "fields": {
+            "file": "public/assets/ui/loading-hyjal.webp",
+            "source": "World of Warcraft client export 11.1.7.61967",
+            "license": "Proprietary Blizzard assets; excluded from code license"
+          },
+          "image": ""
+        },
+        {
+          "id": "df7d1d62-fd6f-4fc9-a1af-d6bc25efe842",
+          "type": "note",
+          "section": "overview",
+          "title": "源码与验证范围",
+          "body": "TypeScript、Three.js、Rapier。单机机器人对局；三个战场的完整本地对局和结算已验证。移动设备与Windows实机不在本次验证范围。",
+          "status": "done",
+          "x": 80,
+          "y": 80,
+          "fields": {},
+          "image": ""
+        }
+      ],
+      "edges": [],
+      "views": {}
+    }
+  },
   "tidal-reclaim": {
     "schema": "owngame-outline",
     "version": 1,

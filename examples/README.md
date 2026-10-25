@@ -1,9 +1,10 @@
 # 网站游戏源码
 
-共 19 款，与 [games.json](../games.json) 中的线上版本对应。
+共 20 款，与 [games.json](../games.json) 中的线上版本对应。
 
 | 游戏 | ID | 代码许可 |
 |---|---|---|
+| [艾泽拉斯反恐精英](azeroth-strike/) | `azeroth-strike` | MIT (code only); proprietary Blizzard assets excluded |
 | [潮汐回收站](tidal-reclaim/) | `tidal-reclaim` | MIT |
 | [星野来信](star-letters/) | `star-letters` | MIT; see THIRD_PARTY_NOTICES.md for fonts and Unity-derived files |
 | [霓虹突围](neon-shooter/) | `neon-shooter` | MIT |

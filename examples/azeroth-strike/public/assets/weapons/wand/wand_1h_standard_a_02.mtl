@@ -1,0 +1,3 @@
+newmtl mat_wand_1h_standard_a_02light
+illum 1
+map_Kd wand_1h_standard_a_02light.png
