@@ -179,6 +179,7 @@ export const messages = {
   "已恢复这款游戏的草稿。": "Restored this game's draft.",
   "已有草稿无法读取。可导出当前方案，或导入有效备份继续。": "The saved draft could not be read. Export this plan or import a valid backup to continue.",
   "浏览器无法保存草稿，请导出备份。": "This browser cannot save the draft. Please export a backup.",
+  "拖动空白处平移，滚轮移动；中键可从卡片上拖动。": "Drag empty space to pan, scroll to move; middle-drag also works over cards.",
   "工作流画布": "Workflow canvas",
   "步骤详情": "Step details",
   "预览给 AI 的完整方案": "Preview the complete AI brief",

@@ -1239,13 +1239,18 @@
     },
     {
       "path": "apps/web/public/blueprint.css",
-      "bytes": 11216,
-      "sha256": "132e72482351e518f52ea96aa1a9bd0fe7cd6e603c353ebd97f1ca97bb435eda"
+      "bytes": 11371,
+      "sha256": "cfde3ce2b8efcdd46e7477d3c621f740cd690c38deff1bb70629dd5bf260655d"
     },
     {
       "path": "apps/web/public/blueprint.js",
-      "bytes": 15688,
-      "sha256": "67b90d0330d4e10f955b4a7048c1f887f424812bef49e2b66c50a4c5af8776ff"
+      "bytes": 15971,
+      "sha256": "5d41a57366a4f84fdc80bdf415bd2ca273520ab17c0c659731589bcc3a4b7d27"
+    },
+    {
+      "path": "apps/web/public/canvas-navigation.js",
+      "bytes": 3443,
+      "sha256": "a5f0b85645f70a2b87107ea72188c01ee002588c5f05d6f301125ff715f0ef41"
     },
     {
       "path": "apps/web/public/cases/star-letters/case.css",
@@ -1284,8 +1289,8 @@
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 45000,
-      "sha256": "84810972a2562dd768af897908b06c4a59cdfc21de6a38166e29b9974545ccae"
+      "bytes": 45154,
+      "sha256": "b7cd5aa8b2475a8ae965990dca88019c437fd6cd92703260d31bca6c5406c358"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -1334,13 +1339,13 @@
     },
     {
       "path": "apps/web/public/remix-workflow.js",
-      "bytes": 33138,
-      "sha256": "c2b2f1a4356e3d885c88a7074e665078fb725633eefafd99aab03bbd76a3a6d0"
+      "bytes": 33383,
+      "sha256": "29f47c032f2968c2a26d16297439128270413aca5abd277d7ad551c64f5c8933"
     },
     {
       "path": "apps/web/public/remix.css",
-      "bytes": 13409,
-      "sha256": "5b156d6cb4831a9e1e9603ff08d7e708b0ea3cadca4ea3529c7ff75dbe19d4c2"
+      "bytes": 13562,
+      "sha256": "f908054f82b9f47caac543db137b14dc5fa01d4ce807584d80ce63a139b60075"
     },
     {
       "path": "apps/web/public/remix.js",
@@ -1399,8 +1404,8 @@
     },
     {
       "path": "apps/web/README.md",
-      "bytes": 10071,
-      "sha256": "34b36f4573ae70209ab2b9e3d9a490a4c731aae04ad49bfea673d1fb34da77e9"
+      "bytes": 10544,
+      "sha256": "7de4579dc11a16650dc056254a0c085a50786d1ac01b0ad84db5a0fbe71f7582"
     },
     {
       "path": "apps/web/wrangler.jsonc",

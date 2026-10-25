@@ -1,3 +1,4 @@
+import { attachCanvasNavigation } from "./canvas-navigation.js";
 import { routeBlueprintConnections } from "./blueprint-connections.js";
 import { mediaThumbnail, appendMediaGallery } from "./blueprint-media.js";
 import { element } from "./data.js";
@@ -39,7 +40,7 @@ export function openBlueprint(game) {
     selected,
     zoom = 1,
     query = "";
-  let viewport, board, surface, inspector;
+  let viewport, board, surface, inspector, navigation;
 
   function labels() {
     close.setAttribute("aria-label", t("关闭蓝图"));
@@ -69,6 +70,7 @@ export function openBlueprint(game) {
     const project = documentData.project;
     const cards = project.cards.filter((c) => c.section === section);
     if (!cards.some((c) => c.id === selected)) selected = cards[0]?.id;
+    navigation?.dispose();
     content.replaceChildren();
     const heading = element(
       "p",
@@ -148,6 +150,8 @@ export function openBlueprint(game) {
     board = element("div", "blueprint-board");
     surface.append(board);
     viewport.append(surface);
+    navigation = attachCanvasNavigation(viewport, board);
+    viewport.title = t("拖动空白处平移，滚轮移动；中键可从卡片上拖动。");
     inspector = element("section", "blueprint-inspector");
     inspector.setAttribute("aria-label", t("卡片详情"));
     layout.append(viewport, inspector);
@@ -195,7 +199,7 @@ export function openBlueprint(game) {
       ),
     );
     applyZoom();
-    viewport.scrollTo(0, 0);
+    navigation.reset();
   }
   function drawCards(cards) {
     if (!cards.length) {
@@ -447,6 +451,7 @@ export function openBlueprint(game) {
     "close",
     () => {
       controller.abort();
+      navigation?.dispose();
       window.removeEventListener("owngame:languagechange", labels);
     },
     { once: true },

@@ -1,3 +1,4 @@
+import { attachCanvasNavigation } from "./canvas-navigation.js";
 import {
   routeBlueprintConnections,
   roundedConnection,
@@ -78,6 +79,8 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
   inspector.setAttribute("aria-label", t("步骤详情"));
   surface.append(board);
   viewport.append(surface);
+  const navigation = attachCanvasNavigation(viewport, board);
+  viewport.title = t("拖动空白处平移，滚轮移动；中键可从卡片上拖动。");
   workspace.append(viewport, inspector);
   const meta = element("div", "workflow-meta");
   const saveStatus = element("p", "workflow-save");
@@ -508,7 +511,7 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
       marker.setAttribute("markerHeight", "7");
       marker.setAttribute("orient", "auto");
       arrow.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
-      arrow.setAttribute("fill", state === "active" ? "#075bb4" : "#8b9c91");
+      arrow.setAttribute("fill", state === "active" ? "#075bb4" : "#526b80");
       marker.append(arrow);
       defs.append(marker);
     }
@@ -706,7 +709,7 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
         (viewport.clientHeight - 8) / board.offsetHeight,
       ),
     );
-    viewport.scrollTo(0, 0);
+    navigation.reset();
     renderBoard();
     renderToolbar();
   }
@@ -990,6 +993,7 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
     dispose() {
       disposed = true;
       blueprintController.abort();
+      navigation.dispose();
       copyAttempt++;
       window.removeEventListener("storage", onStorage);
     },

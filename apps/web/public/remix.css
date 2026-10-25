@@ -270,6 +270,8 @@
   min-height: 240px;
 }
 .workflow-viewport {
+  cursor: grab;
+  touch-action: pinch-zoom;
   overflow: auto;
   background-color: #f5efdf;
   background-image: radial-gradient(#b9af95 1px, transparent 1px);
@@ -296,9 +298,9 @@
   stroke-linejoin: round;
 }
 .workflow-connection-line {
-  stroke: #8b9c91;
-  stroke-width: 1.25;
-  opacity: 0.3;
+  stroke: #526b80;
+  stroke-width: 1.8;
+  opacity: 0.85;
 }
 .workflow-connection-halo {
   stroke: #f5efdf;
@@ -315,10 +317,10 @@
 }
 .workflow-connection.is-disabled .workflow-connection-line {
   stroke-dasharray: 5 5;
-  opacity: 0.3;
+  opacity: 0.65;
 }
 .workflow-connection.is-disabled.is-active .workflow-connection-line {
-  opacity: 0.65;
+  opacity: 0.9;
 }
 .workflow-card {
   position: absolute;
@@ -655,3 +657,9 @@
 .workflow-card:has(.workflow-source-count) { height: 204px; }
 
 .workflow-blueprint-gate { display: contents; padding: 0; margin: 0; border: 0; min-width: 0; }
+
+.workflow-viewport.is-panning,
+.workflow-viewport.is-panning * {
+  cursor: grabbing;
+  user-select: none;
+}
