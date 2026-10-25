@@ -92,12 +92,21 @@ export function validateBlueprint(value, gameId, stepIds) {
       original: copyCardText(card.original),
     };
     if (card.asset) {
+      const validScene = (s) =>
+        record(s) &&
+        s.gameVersion === value.gameVersion &&
+        /^[a-f0-9]{64}$/.test(s.gameVersion) &&
+        /^[a-f0-9]{40}$/.test(s.sourceCommit) &&
+        text(s.capturedAt, 40) &&
+        /^\d{4}-\d{2}-\d{2}T/.test(s.capturedAt) &&
+        ["runtime", "runtime-camera"].includes(s.kind);
       const validItem = (item) =>
         record(item) &&
         safeAsset(item.source) &&
         (!item.preview || safeMediaUrl(item.preview)) &&
         (!item.model || safeMediaUrl(item.model, true)) &&
-        (!item.title || text(item.title, 400));
+        (!item.title || text(item.title, 400)) &&
+        (!item.scene || (validScene(item.scene) && safeMediaUrl(item.preview)));
       if (
         !validItem(card.asset) ||
         (card.asset.items &&
@@ -111,6 +120,16 @@ export function validateBlueprint(value, gameId, stepIds) {
         ...(item.title ? { title: item.title } : {}),
         ...(item.preview ? { preview: item.preview } : {}),
         ...(item.model ? { model: item.model } : {}),
+        ...(item.scene
+          ? {
+              scene: {
+                gameVersion: item.scene.gameVersion,
+                sourceCommit: item.scene.sourceCommit,
+                capturedAt: item.scene.capturedAt,
+                kind: item.scene.kind,
+              },
+            }
+          : {}),
       });
       result.asset = {
         ...clean(card.asset),
@@ -237,9 +256,14 @@ export function blueprintPrompt(plan) {
       ),
       ...(c.request.trim() ? [`${t("这张卡想怎么改")}: ${c.request}`] : []),
       ...(c.asset && c.fields.file === c.original.fields.file
-        ? (c.asset.items || [c.asset]).map(
-            (item) => `${t("原素材")}: ${item.source}`,
-          )
+        ? (c.asset.items || [c.asset]).flatMap((item) => [
+            `${t("原素材")}: ${item.source}`,
+            ...(item.scene
+              ? [
+                  `${t("游戏实景")} · ${item.title || c.title}: ${new URL(item.preview, "https://owngame.dev").href}`,
+                ]
+              : []),
+          ])
         : []),
       "",
     ]),

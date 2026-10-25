@@ -1,0 +1,729 @@
+{
+  "schema": "owngame.blueprint-scenes.v1",
+  "games": {
+    "tidal-reclaim": {
+      "gameVersion": "dfff05fc374e22a85473553739b938979fd95a0cd80c5be2173995edd7e64818",
+      "cards": {
+        "e674ae73-2079-4861-b266-c8ca4ceeb5c2": {
+          "cardSha256": "7f86ea803868f614be92a0462e50aee864ff4a0f721f45123ca1aa90648b1826",
+          "items": [
+            {
+              "file": "art/scene-previews/a30be0e50d1fdc99bbe5d546bd6aa0a112b6dd6ea11f49419e59c286f36e7608.webp",
+              "sha256": "a30be0e50d1fdc99bbe5d546bd6aa0a112b6dd6ea11f49419e59c286f36e7608",
+              "title": "海上平台 · 游戏场景全景",
+              "view": "platform",
+              "kind": "runtime-camera",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "dfff05fc374e22a85473553739b938979fd95a0cd80c5be2173995edd7e64818",
+              "capturedAt": "2026-10-25T00:09:25.600Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/e0e0844676b890732521c611628891fef5c18849762b90606e3c3f98dc8afa22.webp",
+              "sha256": "e0e0844676b890732521c611628891fef5c18849762b90606e3c3f98dc8afa22",
+              "title": "1号进水泵站 · 场景实景",
+              "view": "station-1",
+              "kind": "runtime-camera",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "dfff05fc374e22a85473553739b938979fd95a0cd80c5be2173995edd7e64818",
+              "capturedAt": "2026-10-25T00:09:25.881Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/1465fe68aaf1df410bd49ddf14515b44a0dad306fc2c8a04c02101659de1a491.webp",
+              "sha256": "1465fe68aaf1df410bd49ddf14515b44a0dad306fc2c8a04c02101659de1a491",
+              "title": "2号膜滤机组 · 场景实景",
+              "view": "station-2",
+              "kind": "runtime-camera",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "dfff05fc374e22a85473553739b938979fd95a0cd80c5be2173995edd7e64818",
+              "capturedAt": "2026-10-25T00:09:26.138Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/09739bef9cfa0291f1a43fb6f1aedec5982f29f7a6ab20496d8cbf00b44c19c5.webp",
+              "sha256": "09739bef9cfa0291f1a43fb6f1aedec5982f29f7a6ab20496d8cbf00b44c19c5",
+              "title": "3号潮汐中继 · 场景实景",
+              "view": "station-3",
+              "kind": "runtime-camera",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "dfff05fc374e22a85473553739b938979fd95a0cd80c5be2173995edd7e64818",
+              "capturedAt": "2026-10-25T00:09:26.412Z",
+              "width": 1280,
+              "height": 800
+            }
+          ]
+        },
+        "1331ada6-33c5-43ea-bf6d-3bb48ba6c12f": {
+          "cardSha256": "054254fe9c5dcc3a4addf3a9693cdb85c06a6c9a5e082ec931852e604c51c9a8",
+          "items": [
+            {
+              "file": "art/scene-previews/fbdd30ee986bc521932dd9696e429a12f26fdd59d7b8a224b2f034a53fae98e0.webp",
+              "sha256": "fbdd30ee986bc521932dd9696e429a12f26fdd59d7b8a224b2f034a53fae98e0",
+              "title": "开局守卫 · 部署实景",
+              "view": "guards",
+              "kind": "runtime-camera",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "dfff05fc374e22a85473553739b938979fd95a0cd80c5be2173995edd7e64818",
+              "capturedAt": "2026-10-25T00:09:26.709Z",
+              "width": 1280,
+              "height": 800
+            }
+          ]
+        }
+      }
+    },
+    "star-letters": {
+      "gameVersion": "4e85a7f8432136c9933890d7925ad892c6e9f812a3cb85132dbf4c05e92a3c9c",
+      "cards": {
+        "fb0bb466-4e83-4a98-9871-878292b8970e": {
+          "cardSha256": "df9ae38b783500f24dea7486020614c3035c32c21edd8809eec2e8ba7f4c595a",
+          "items": [
+            {
+              "file": "art/scene-previews/14378e0e7f20006e4b3d71b9b1c73b0f705f5fd0b635a19252fa2a8dfbb83fb1.webp",
+              "sha256": "14378e0e7f20006e4b3d71b9b1c73b0f705f5fd0b635a19252fa2a8dfbb83fb1",
+              "title": "家园星球 · 游戏实景",
+              "view": "home",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "4e85a7f8432136c9933890d7925ad892c6e9f812a3cb85132dbf4c05e92a3c9c",
+              "capturedAt": "2026-10-25T00:09:38.324Z",
+              "width": 1280,
+              "height": 800
+            }
+          ]
+        }
+      }
+    },
+    "neon-shooter": {
+      "gameVersion": "14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4",
+      "cards": {
+        "d2eea73c-80e6-4cc0-88c2-ffe0f5110c32": {
+          "cardSha256": "291bb22c90a0d775b7b83855d14c301cbe90bbe964fbc06671d0b8ec68e7cbcc",
+          "items": [
+            {
+              "file": "art/scene-previews/6e4c54bffbc124d4c05ea4d726060ffd0f61b962908ed6fbca546a8c6487cdd9.webp",
+              "sha256": "6e4c54bffbc124d4c05ea4d726060ffd0f61b962908ed6fbca546a8c6487cdd9",
+              "title": "霓虹突围 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "14e5e76c8b47b0d1246e514417cee3c6106bc9fbc52bdcb675a90b83f27c2af4",
+              "capturedAt": "2026-10-25T00:09:27.822Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "faune-dungeon": {
+      "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+      "cards": {
+        "badf8de6-055b-4216-9e1c-58582e13b6ed": {
+          "cardSha256": "0a2398eb6530d184beb2d7089be655dd740cf2cb064d42ed1473b10950508cb8",
+          "items": [
+            {
+              "file": "art/scene-previews/2bd7c3a0129e5573466d09c91fd33780fc502b40ef0e1966a29d2765744033ae.webp",
+              "sha256": "2bd7c3a0129e5573466d09c91fd33780fc502b40ef0e1966a29d2765744033ae",
+              "title": "苔庭入口 · 游戏内视角",
+              "view": "forest-gate",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:13.194Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/6dcb26722a2b6d92f5af89186e527a6bd380d49e68df0a32ebdb61a68af63ae7.webp",
+              "sha256": "6dcb26722a2b6d92f5af89186e527a6bd380d49e68df0a32ebdb61a68af63ae7",
+              "title": "苔庭入口 · 游戏内地图",
+              "view": "forest-gate-map",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:13.539Z",
+              "width": 160,
+              "height": 162
+            },
+            {
+              "file": "art/scene-previews/3a1a8fe0eb1375f9352fbe23785e8c30750202fa6ca8791a1651def7a1ec822b.webp",
+              "sha256": "3a1a8fe0eb1375f9352fbe23785e8c30750202fa6ca8791a1651def7a1ec822b",
+              "title": "双环回廊 · 游戏内视角",
+              "view": "twin-rings",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:14.352Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/388eec683e074182d45dd039772f8834611593fabda308119532452bd7fefb7b.webp",
+              "sha256": "388eec683e074182d45dd039772f8834611593fabda308119532452bd7fefb7b",
+              "title": "双环回廊 · 游戏内地图",
+              "view": "twin-rings-map",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:14.658Z",
+              "width": 160,
+              "height": 162
+            },
+            {
+              "file": "art/scene-previews/c0fabdab4d0fa7bc49aa1e892c6cfa6d3b102e3078be7ee98bae3e0ff2355085.webp",
+              "sha256": "c0fabdab4d0fa7bc49aa1e892c6cfa6d3b102e3078be7ee98bae3e0ff2355085",
+              "title": "机关水道 · 游戏内视角",
+              "view": "sunken-causeway",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:15.467Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/cd5ae198e2a5f674d8cc44a049f61089e18dcf4b79ad7b1a41a701c8428fe9b3.webp",
+              "sha256": "cd5ae198e2a5f674d8cc44a049f61089e18dcf4b79ad7b1a41a701c8428fe9b3",
+              "title": "机关水道 · 游戏内地图",
+              "view": "sunken-causeway-map",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:15.772Z",
+              "width": 160,
+              "height": 162
+            },
+            {
+              "file": "art/scene-previews/37eb0f83dd454f7adf874e1a39ee53c3dd88b03294b72439bc461f50b1632bfc.webp",
+              "sha256": "37eb0f83dd454f7adf874e1a39ee53c3dd88b03294b72439bc461f50b1632bfc",
+              "title": "封印书库 · 游戏内视角",
+              "view": "sealed-archive",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:16.583Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/a11971a4df69f4da52c8bb79455b20df92145c062e7f5beebd3c2ba3d27c475d.webp",
+              "sha256": "a11971a4df69f4da52c8bb79455b20df92145c062e7f5beebd3c2ba3d27c475d",
+              "title": "封印书库 · 游戏内地图",
+              "view": "sealed-archive-map",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:16.885Z",
+              "width": 160,
+              "height": 162
+            },
+            {
+              "file": "art/scene-previews/af0dc7dcb6e2602b484470acef5e8ec870dc3a562e9f978810b8c80ded6573c9.webp",
+              "sha256": "af0dc7dcb6e2602b484470acef5e8ec870dc3a562e9f978810b8c80ded6573c9",
+              "title": "林心圣殿 · 游戏内视角",
+              "view": "heart-sanctum",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:17.742Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/836617a27b0c016bc713f9665e7eeeb51945eee35a212c385e5e45139ef67155.webp",
+              "sha256": "836617a27b0c016bc713f9665e7eeeb51945eee35a212c385e5e45139ef67155",
+              "title": "林心圣殿 · 游戏内地图",
+              "view": "heart-sanctum-map",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:18.066Z",
+              "width": 160,
+              "height": 162
+            }
+          ]
+        },
+        "428c5638-0846-4566-8ef8-beeb7055390c": {
+          "cardSha256": "266d4db79e211eef383ec1f158030c67960f245e864775a8d640eba18d270f3b",
+          "items": [
+            {
+              "file": "art/scene-previews/2bd7c3a0129e5573466d09c91fd33780fc502b40ef0e1966a29d2765744033ae.webp",
+              "sha256": "2bd7c3a0129e5573466d09c91fd33780fc502b40ef0e1966a29d2765744033ae",
+              "title": "苔庭入口 · 游戏内视角",
+              "view": "forest-gate",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:13.194Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/6dcb26722a2b6d92f5af89186e527a6bd380d49e68df0a32ebdb61a68af63ae7.webp",
+              "sha256": "6dcb26722a2b6d92f5af89186e527a6bd380d49e68df0a32ebdb61a68af63ae7",
+              "title": "苔庭入口 · 游戏内地图",
+              "view": "forest-gate-map",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:13.539Z",
+              "width": 160,
+              "height": 162
+            }
+          ]
+        },
+        "4f8e2f95-a121-4e06-835a-6a6c4862a22d": {
+          "cardSha256": "92dc71f34bd377156bba7550a7ce08b38275f5f4e1d5636002d49430ec1573db",
+          "items": [
+            {
+              "file": "art/scene-previews/3a1a8fe0eb1375f9352fbe23785e8c30750202fa6ca8791a1651def7a1ec822b.webp",
+              "sha256": "3a1a8fe0eb1375f9352fbe23785e8c30750202fa6ca8791a1651def7a1ec822b",
+              "title": "双环回廊 · 游戏内视角",
+              "view": "twin-rings",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:14.352Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/388eec683e074182d45dd039772f8834611593fabda308119532452bd7fefb7b.webp",
+              "sha256": "388eec683e074182d45dd039772f8834611593fabda308119532452bd7fefb7b",
+              "title": "双环回廊 · 游戏内地图",
+              "view": "twin-rings-map",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:14.658Z",
+              "width": 160,
+              "height": 162
+            }
+          ]
+        },
+        "493cdb5e-b92d-46fa-9b0e-8bebb29d9600": {
+          "cardSha256": "8f260e840f8db601074f8d7e7d94d9ac38f5343a5ad5ab47f8d969722e27f4ec",
+          "items": [
+            {
+              "file": "art/scene-previews/c0fabdab4d0fa7bc49aa1e892c6cfa6d3b102e3078be7ee98bae3e0ff2355085.webp",
+              "sha256": "c0fabdab4d0fa7bc49aa1e892c6cfa6d3b102e3078be7ee98bae3e0ff2355085",
+              "title": "机关水道 · 游戏内视角",
+              "view": "sunken-causeway",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:15.467Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/cd5ae198e2a5f674d8cc44a049f61089e18dcf4b79ad7b1a41a701c8428fe9b3.webp",
+              "sha256": "cd5ae198e2a5f674d8cc44a049f61089e18dcf4b79ad7b1a41a701c8428fe9b3",
+              "title": "机关水道 · 游戏内地图",
+              "view": "sunken-causeway-map",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:15.772Z",
+              "width": 160,
+              "height": 162
+            }
+          ]
+        },
+        "9656d0ab-99ec-4ba9-aa4a-8f621f592cae": {
+          "cardSha256": "c2649bc6a5c62ef44de72fbe73d1f1b7322a94ecb925a705f7c541f84bba95d4",
+          "items": [
+            {
+              "file": "art/scene-previews/37eb0f83dd454f7adf874e1a39ee53c3dd88b03294b72439bc461f50b1632bfc.webp",
+              "sha256": "37eb0f83dd454f7adf874e1a39ee53c3dd88b03294b72439bc461f50b1632bfc",
+              "title": "封印书库 · 游戏内视角",
+              "view": "sealed-archive",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:16.583Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/a11971a4df69f4da52c8bb79455b20df92145c062e7f5beebd3c2ba3d27c475d.webp",
+              "sha256": "a11971a4df69f4da52c8bb79455b20df92145c062e7f5beebd3c2ba3d27c475d",
+              "title": "封印书库 · 游戏内地图",
+              "view": "sealed-archive-map",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:16.885Z",
+              "width": 160,
+              "height": 162
+            }
+          ]
+        },
+        "9f1a355b-59ba-402b-b0bd-ac536dd6ddea": {
+          "cardSha256": "e8669494e98b4718679517cfa34b58743ddaf102e1519d1fdf8ac1542075c633",
+          "items": [
+            {
+              "file": "art/scene-previews/af0dc7dcb6e2602b484470acef5e8ec870dc3a562e9f978810b8c80ded6573c9.webp",
+              "sha256": "af0dc7dcb6e2602b484470acef5e8ec870dc3a562e9f978810b8c80ded6573c9",
+              "title": "林心圣殿 · 游戏内视角",
+              "view": "heart-sanctum",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:17.742Z",
+              "width": 1280,
+              "height": 800
+            },
+            {
+              "file": "art/scene-previews/836617a27b0c016bc713f9665e7eeeb51945eee35a212c385e5e45139ef67155.webp",
+              "sha256": "836617a27b0c016bc713f9665e7eeeb51945eee35a212c385e5e45139ef67155",
+              "title": "林心圣殿 · 游戏内地图",
+              "view": "heart-sanctum-map",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "91aa37fa06b7c2e3d5a2cca483b260097fc6e1610717a22a0ce2272cd040cc97",
+              "capturedAt": "2026-10-25T00:07:18.066Z",
+              "width": 160,
+              "height": 162
+            }
+          ]
+        }
+      }
+    },
+    "wind-chime-memory": {
+      "gameVersion": "2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995",
+      "cards": {
+        "73cf2632-b642-4e54-ae36-1db58eec9a32": {
+          "cardSha256": "d4ecd4ac3ed404ce4a6e803bdb2593f7aa34b4cdef60544e2d3733c0f366b65e",
+          "items": [
+            {
+              "file": "art/scene-previews/a49f0e1d8072416fb6d2c3e78508c83a2764f8cf5bb18cf7d6b53602b38f2078.webp",
+              "sha256": "a49f0e1d8072416fb6d2c3e78508c83a2764f8cf5bb18cf7d6b53602b38f2078",
+              "title": "风铃回响 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "2d9d8bf4720b204bb70d1646c2fb6747b3446ca075cfad7cc49223b9fe7ae995",
+              "capturedAt": "2026-10-25T00:07:19.610Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "postcard-slide": {
+      "gameVersion": "cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a",
+      "cards": {
+        "afc355f5-14c6-45ec-8e90-e41bdfc6ea41": {
+          "cardSha256": "ec072e9eed35b96aa352effc6502b277824e98a9f91948a4cbdff34bb20805bd",
+          "items": [
+            {
+              "file": "art/scene-previews/d1ebd821bb19a1b881856f23f997492f4fc108f869fb52c788fc1488c65859c3.webp",
+              "sha256": "d1ebd821bb19a1b881856f23f997492f4fc108f869fb52c788fc1488c65859c3",
+              "title": "山城来信 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "cddb2e10800326d0740e543b9a749c0983b4202ea5de9a7b78fbe3943bb2f63a",
+              "capturedAt": "2026-10-25T00:07:20.931Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "signal-harbor": {
+      "gameVersion": "7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99",
+      "cards": {
+        "c9838df0-0f72-440f-ada4-5bb34ebd4f5f": {
+          "cardSha256": "855d4ed6fc5321aed14973f4e0375593dbfee7e42cd1818b6842e3c1380a690c",
+          "items": [
+            {
+              "file": "art/scene-previews/d52a07d4bdf615fbf79249b337027cda97c7fbc9f82714fa1b086b2f4d377ec9.webp",
+              "sha256": "d52a07d4bdf615fbf79249b337027cda97c7fbc9f82714fa1b086b2f4d377ec9",
+              "title": "潮光归位 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "7bc916c53fdc71745004e3b85bd907de36fab42910dfe35273d4067ae8b97c99",
+              "capturedAt": "2026-10-25T00:07:22.329Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "unlock-bolts-mobile": {
+      "gameVersion": "242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b",
+      "cards": {
+        "623007e5-2a5e-4a11-9311-039158c40bcc": {
+          "cardSha256": "017f57126fc2fd1b131db00a6e1242d3824a519e7a616baf9a0e23ea5b7526e5",
+          "items": [
+            {
+              "file": "art/scene-previews/9f3be509653d64a357d19c2041bc99bcfcd3d947e40100a617a529613d6aebe0.webp",
+              "sha256": "9f3be509653d64a357d19c2041bc99bcfcd3d947e40100a617a529613d6aebe0",
+              "title": "螺帽之间 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "242ec04e83481095de6afa5c36bff48698e00ce9abe391a96e0c8719bbaa6a2b",
+              "capturedAt": "2026-10-25T00:07:23.611Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "star-triad": {
+      "gameVersion": "99684105299e28b82e55f7edf0c1289732c556a81ac586850f30b3dd5e46cc91",
+      "cards": {
+        "ec8265c2-f86e-4ad4-ad6b-f88047edaf62": {
+          "cardSha256": "c7cf8f852fa36111927d09c15e5d901d391c7688a848d48b512d0a2cb0f2fa80",
+          "items": [
+            {
+              "file": "art/scene-previews/ea12b66051ca5bca0712b2f084c6957962186bbbb1971be25062bfee97f8f13f.webp",
+              "sha256": "ea12b66051ca5bca0712b2f084c6957962186bbbb1971be25062bfee97f8f13f",
+              "title": "星图三连 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "99684105299e28b82e55f7edf0c1289732c556a81ac586850f30b3dd5e46cc91",
+              "capturedAt": "2026-10-25T00:07:24.925Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "firefly-four": {
+      "gameVersion": "290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d",
+      "cards": {
+        "7393bd8c-8ad0-4466-9169-9ffc1bda59bb": {
+          "cardSha256": "9c209520aafa498708c84c052b66eece8ec2649cc9b99fa8851e23584333ba59",
+          "items": [
+            {
+              "file": "art/scene-previews/3e49da2648939a63744c5ad814cae33d3ce7d96e8d3dd2b44774e219543cde25.webp",
+              "sha256": "3e49da2648939a63744c5ad814cae33d3ce7d96e8d3dd2b44774e219543cde25",
+              "title": "萤灯四连 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "290a6efd2fb171a167473e01bab68f05e9eafd636488d82bcae808d84252500d",
+              "capturedAt": "2026-10-25T00:07:26.104Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "moss-reversi": {
+      "gameVersion": "f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e",
+      "cards": {
+        "caaf8e43-086c-4dc5-8a86-31a699f88d76": {
+          "cardSha256": "5314a6b6fec00269b9578aee57e0b4cd2844f8f3ca75b2b0d801ee94a659bd41",
+          "items": [
+            {
+              "file": "art/scene-previews/eb1d9e716f8b13780b3fb65a0f0e38a445657d0f1a81863bb4dccebf55d184cb.webp",
+              "sha256": "eb1d9e716f8b13780b3fb65a0f0e38a445657d0f1a81863bb4dccebf55d184cb",
+              "title": "苔庭翻面 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "f42d8e18c5d2609aca92d49f3e5727e8a7c5422d862a0fbb2d6631d0d190ef5e",
+              "capturedAt": "2026-10-25T00:07:27.438Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "kiln-merge": {
+      "gameVersion": "54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf",
+      "cards": {
+        "ff0eed69-1a84-45f9-a6b9-5e1cfa65f2f9": {
+          "cardSha256": "9ee3bad4e16729602cc9b6778be70f021d77529a768c549eabaff65384d676d2",
+          "items": [
+            {
+              "file": "art/scene-previews/5615902dcc3ab851fc37d762f3adf0bb92abec21caeac317c816f175cbae741a.webp",
+              "sha256": "5615902dcc3ab851fc37d762f3adf0bb92abec21caeac317c816f175cbae741a",
+              "title": "窑火相融 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "54765142890d809cac71a5cb645e47dea4244a2ed54f1decf4280524e4dd6cdf",
+              "capturedAt": "2026-10-25T00:07:28.755Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "petal-memory": {
+      "gameVersion": "bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c",
+      "cards": {
+        "e41b4557-902d-462c-9799-f72a891b3954": {
+          "cardSha256": "deebbc860ea833a35948e9c5edc82b664dfb82e977e90fbb0910564ac5aa8c54",
+          "items": [
+            {
+              "file": "art/scene-previews/fcf0b5c904ce65fee70514dca21c522612f654fec51c7689ba5fc3f1fea13674.webp",
+              "sha256": "fcf0b5c904ce65fee70514dca21c522612f654fec51c7689ba5fc3f1fea13674",
+              "title": "花笺拾忆 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "bf288dc254fa872f1f166d88f4e0d02bc2ce3f837a6d784ee9dfa885f0edff3c",
+              "capturedAt": "2026-10-25T00:07:30.044Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "silk-serpent": {
+      "gameVersion": "5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a",
+      "cards": {
+        "88492cbd-9cb2-4c83-bfb4-d8608b720ba4": {
+          "cardSha256": "20cc55dba104b4dd87689e5341a7976d54cfab116ec82e6a4f6b439a46002ad4",
+          "items": [
+            {
+              "file": "art/scene-previews/fd48093634f079a0d9920a6b83f62a9a815a657399b40ad96dd9747b51658287.webp",
+              "sha256": "fd48093634f079a0d9920a6b83f62a9a815a657399b40ad96dd9747b51658287",
+              "title": "绢龙逐珠 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "5ac32187bf40b8b7afc6865a14a05f423c940084dc5401c305a5dc07cf01959a",
+              "capturedAt": "2026-10-25T00:07:31.305Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "bamboo-rally": {
+      "gameVersion": "fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0",
+      "cards": {
+        "ceb18176-97d2-4f5f-85bd-7eda08bdd2a0": {
+          "cardSha256": "823287c3ebc7573a35254256c059ad45f9eaa51e178b8393c73427a41da0663d",
+          "items": [
+            {
+              "file": "art/scene-previews/12356c8a317bd90ec188637ced49959c93888d857866bb932bb820490781ee90.webp",
+              "sha256": "12356c8a317bd90ec188637ced49959c93888d857866bb932bb820490781ee90",
+              "title": "竹影回珠 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "fba12b98ca96da32ffac30101f5f4354a32808cda13ca0722d7c9b60e253f1e0",
+              "capturedAt": "2026-10-25T00:07:33.333Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "rc-rally": {
+      "gameVersion": "ca6bd6ffc1bae7645592b9b61f4d5b1f1597eb9befc7d6feed84e335e6fd887a",
+      "cards": {
+        "1ce70b1a-7a0f-4aa0-bf1c-4b7bb2d47528": {
+          "cardSha256": "09009a346fd9d1ae53b8e99a04f6f86e8fa89c8cb35d426dffc4da223099f2b1",
+          "items": [
+            {
+              "file": "art/scene-previews/1e508db129734198101a893262b1913c0fce4e9368f223bdb596efb555b2fc41.webp",
+              "sha256": "1e508db129734198101a893262b1913c0fce4e9368f223bdb596efb555b2fc41",
+              "title": "遥控冲线 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "ca6bd6ffc1bae7645592b9b61f4d5b1f1597eb9befc7d6feed84e335e6fd887a",
+              "capturedAt": "2026-10-25T00:07:37.010Z",
+              "width": 1280,
+              "height": 800
+            }
+          ]
+        }
+      }
+    },
+    "civ-clicker": {
+      "gameVersion": "441e2c1e2b5fd8de0f896aa1b410e8b0b149eaf873bf4fb8d57323ae644b2c4c",
+      "cards": {
+        "ddff642c-36c0-48a5-b783-820c1fc1fd13": {
+          "cardSha256": "3edb216f594cf5ac995d13cf62a0872e5d0f6baeaf5fd0dc6dde574f81b664a6",
+          "items": [
+            {
+              "file": "art/scene-previews/a4cbde2a3d89579db7a24d6119275cf82230e602a8dabcbb10feb2ff5afdeb00.webp",
+              "sha256": "a4cbde2a3d89579db7a24d6119275cf82230e602a8dabcbb10feb2ff5afdeb00",
+              "title": "小小文明 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "441e2c1e2b5fd8de0f896aa1b410e8b0b149eaf873bf4fb8d57323ae644b2c4c",
+              "capturedAt": "2026-10-25T00:07:38.507Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "crowd-runner": {
+      "gameVersion": "2a062aaa2d95a6e294b262e30b38524cf6e01f898c98e2cb7d809ee68bada10e",
+      "cards": {
+        "58f49fee-c1ed-4583-90af-ffdbcfd52ef5": {
+          "cardSha256": "d6cf028532377475a7682adbeca47d7019e74d4dbec7ce976c0c7510b6d2cf1f",
+          "items": [
+            {
+              "file": "art/scene-previews/de54db4ecbc84283c22f0eaa2b31da30cbc014d5c91adca7514d3df79742890a.webp",
+              "sha256": "de54db4ecbc84283c22f0eaa2b31da30cbc014d5c91adca7514d3df79742890a",
+              "title": "人潮冲线 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "2a062aaa2d95a6e294b262e30b38524cf6e01f898c98e2cb7d809ee68bada10e",
+              "capturedAt": "2026-10-25T00:07:39.390Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    },
+    "arrow-escape": {
+      "gameVersion": "b4e597c5402c2c087dfb75a45da103d0b2374b07f545413d8ab867ce64f9e6b0",
+      "cards": {
+        "ad1d292d-ca7f-49fc-b5d9-7427f6d7d4e0": {
+          "cardSha256": "0e5d425e4e21224c74ec1f0e40f5a93d0e8997a79e1733e9e932f11b3164abde",
+          "items": [
+            {
+              "file": "art/scene-previews/0edfc0e0c87cf2d83068e932bdd90c71c78537a5854bff1d5296e1c95eeca02c.webp",
+              "sha256": "0edfc0e0c87cf2d83068e932bdd90c71c78537a5854bff1d5296e1c95eeca02c",
+              "title": "箭径出逃 · 游戏实景",
+              "view": "play",
+              "kind": "runtime",
+              "sourceCommit": "f34443f1f8c7f7f4c887329af676297774409f50",
+              "gameVersion": "b4e597c5402c2c087dfb75a45da103d0b2374b07f545413d8ab867ce64f9e6b0",
+              "capturedAt": "2026-10-25T00:07:40.339Z",
+              "width": 720,
+              "height": 1152
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,9 @@
 // Site copy only. Immutable game packages and their save formats stay separate.
 export const messages = {
+  "游戏实景": "In-game view",
+  "游戏实景快照": "In-game scene snapshot",
+  "场景图 · 放大 ↗": "Scene · Expand ↗",
+  "查看场景设计 ↗": "View scene design ↗",
   "三维模型：{title}": "3D model: {title}",
   "关闭素材预览": "Close asset preview",
   "拖动旋转 · 滚动缩放": "Drag to rotate · Scroll to zoom",

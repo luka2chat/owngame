@@ -1008,6 +1008,171 @@
       "sha256": "8ce1f8926932e7c1ca5b7d71e91fe7b257da1644ca927751c45d00d475a2ebb0"
     },
     {
+      "path": "apps/web/public/art/scene-previews/09739bef9cfa0291f1a43fb6f1aedec5982f29f7a6ab20496d8cbf00b44c19c5.webp",
+      "bytes": 112116,
+      "sha256": "09739bef9cfa0291f1a43fb6f1aedec5982f29f7a6ab20496d8cbf00b44c19c5"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/0edfc0e0c87cf2d83068e932bdd90c71c78537a5854bff1d5296e1c95eeca02c.webp",
+      "bytes": 46224,
+      "sha256": "0edfc0e0c87cf2d83068e932bdd90c71c78537a5854bff1d5296e1c95eeca02c"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/12356c8a317bd90ec188637ced49959c93888d857866bb932bb820490781ee90.webp",
+      "bytes": 204076,
+      "sha256": "12356c8a317bd90ec188637ced49959c93888d857866bb932bb820490781ee90"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/14378e0e7f20006e4b3d71b9b1c73b0f705f5fd0b635a19252fa2a8dfbb83fb1.webp",
+      "bytes": 130058,
+      "sha256": "14378e0e7f20006e4b3d71b9b1c73b0f705f5fd0b635a19252fa2a8dfbb83fb1"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/1465fe68aaf1df410bd49ddf14515b44a0dad306fc2c8a04c02101659de1a491.webp",
+      "bytes": 108388,
+      "sha256": "1465fe68aaf1df410bd49ddf14515b44a0dad306fc2c8a04c02101659de1a491"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/1e508db129734198101a893262b1913c0fce4e9368f223bdb596efb555b2fc41.webp",
+      "bytes": 199304,
+      "sha256": "1e508db129734198101a893262b1913c0fce4e9368f223bdb596efb555b2fc41"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/2bd7c3a0129e5573466d09c91fd33780fc502b40ef0e1966a29d2765744033ae.webp",
+      "bytes": 206528,
+      "sha256": "2bd7c3a0129e5573466d09c91fd33780fc502b40ef0e1966a29d2765744033ae"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/37eb0f83dd454f7adf874e1a39ee53c3dd88b03294b72439bc461f50b1632bfc.webp",
+      "bytes": 158588,
+      "sha256": "37eb0f83dd454f7adf874e1a39ee53c3dd88b03294b72439bc461f50b1632bfc"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/388eec683e074182d45dd039772f8834611593fabda308119532452bd7fefb7b.webp",
+      "bytes": 2968,
+      "sha256": "388eec683e074182d45dd039772f8834611593fabda308119532452bd7fefb7b"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/3a1a8fe0eb1375f9352fbe23785e8c30750202fa6ca8791a1651def7a1ec822b.webp",
+      "bytes": 149914,
+      "sha256": "3a1a8fe0eb1375f9352fbe23785e8c30750202fa6ca8791a1651def7a1ec822b"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/3e49da2648939a63744c5ad814cae33d3ce7d96e8d3dd2b44774e219543cde25.webp",
+      "bytes": 134368,
+      "sha256": "3e49da2648939a63744c5ad814cae33d3ce7d96e8d3dd2b44774e219543cde25"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/5615902dcc3ab851fc37d762f3adf0bb92abec21caeac317c816f175cbae741a.webp",
+      "bytes": 131482,
+      "sha256": "5615902dcc3ab851fc37d762f3adf0bb92abec21caeac317c816f175cbae741a"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/6dcb26722a2b6d92f5af89186e527a6bd380d49e68df0a32ebdb61a68af63ae7.webp",
+      "bytes": 2474,
+      "sha256": "6dcb26722a2b6d92f5af89186e527a6bd380d49e68df0a32ebdb61a68af63ae7"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/6e4c54bffbc124d4c05ea4d726060ffd0f61b962908ed6fbca546a8c6487cdd9.webp",
+      "bytes": 157438,
+      "sha256": "6e4c54bffbc124d4c05ea4d726060ffd0f61b962908ed6fbca546a8c6487cdd9"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/836617a27b0c016bc713f9665e7eeeb51945eee35a212c385e5e45139ef67155.webp",
+      "bytes": 2930,
+      "sha256": "836617a27b0c016bc713f9665e7eeeb51945eee35a212c385e5e45139ef67155"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/9f3be509653d64a357d19c2041bc99bcfcd3d947e40100a617a529613d6aebe0.webp",
+      "bytes": 174920,
+      "sha256": "9f3be509653d64a357d19c2041bc99bcfcd3d947e40100a617a529613d6aebe0"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/a11971a4df69f4da52c8bb79455b20df92145c062e7f5beebd3c2ba3d27c475d.webp",
+      "bytes": 3018,
+      "sha256": "a11971a4df69f4da52c8bb79455b20df92145c062e7f5beebd3c2ba3d27c475d"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/a30be0e50d1fdc99bbe5d546bd6aa0a112b6dd6ea11f49419e59c286f36e7608.webp",
+      "bytes": 48996,
+      "sha256": "a30be0e50d1fdc99bbe5d546bd6aa0a112b6dd6ea11f49419e59c286f36e7608"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/a49f0e1d8072416fb6d2c3e78508c83a2764f8cf5bb18cf7d6b53602b38f2078.webp",
+      "bytes": 151146,
+      "sha256": "a49f0e1d8072416fb6d2c3e78508c83a2764f8cf5bb18cf7d6b53602b38f2078"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/a4cbde2a3d89579db7a24d6119275cf82230e602a8dabcbb10feb2ff5afdeb00.webp",
+      "bytes": 153276,
+      "sha256": "a4cbde2a3d89579db7a24d6119275cf82230e602a8dabcbb10feb2ff5afdeb00"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/af0dc7dcb6e2602b484470acef5e8ec870dc3a562e9f978810b8c80ded6573c9.webp",
+      "bytes": 159648,
+      "sha256": "af0dc7dcb6e2602b484470acef5e8ec870dc3a562e9f978810b8c80ded6573c9"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/c0fabdab4d0fa7bc49aa1e892c6cfa6d3b102e3078be7ee98bae3e0ff2355085.webp",
+      "bytes": 140826,
+      "sha256": "c0fabdab4d0fa7bc49aa1e892c6cfa6d3b102e3078be7ee98bae3e0ff2355085"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/cd5ae198e2a5f674d8cc44a049f61089e18dcf4b79ad7b1a41a701c8428fe9b3.webp",
+      "bytes": 3028,
+      "sha256": "cd5ae198e2a5f674d8cc44a049f61089e18dcf4b79ad7b1a41a701c8428fe9b3"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/d1ebd821bb19a1b881856f23f997492f4fc108f869fb52c788fc1488c65859c3.webp",
+      "bytes": 247996,
+      "sha256": "d1ebd821bb19a1b881856f23f997492f4fc108f869fb52c788fc1488c65859c3"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/d52a07d4bdf615fbf79249b337027cda97c7fbc9f82714fa1b086b2f4d377ec9.webp",
+      "bytes": 233106,
+      "sha256": "d52a07d4bdf615fbf79249b337027cda97c7fbc9f82714fa1b086b2f4d377ec9"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/de54db4ecbc84283c22f0eaa2b31da30cbc014d5c91adca7514d3df79742890a.webp",
+      "bytes": 39944,
+      "sha256": "de54db4ecbc84283c22f0eaa2b31da30cbc014d5c91adca7514d3df79742890a"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/e0e0844676b890732521c611628891fef5c18849762b90606e3c3f98dc8afa22.webp",
+      "bytes": 116148,
+      "sha256": "e0e0844676b890732521c611628891fef5c18849762b90606e3c3f98dc8afa22"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/ea12b66051ca5bca0712b2f084c6957962186bbbb1971be25062bfee97f8f13f.webp",
+      "bytes": 125492,
+      "sha256": "ea12b66051ca5bca0712b2f084c6957962186bbbb1971be25062bfee97f8f13f"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/eb1d9e716f8b13780b3fb65a0f0e38a445657d0f1a81863bb4dccebf55d184cb.webp",
+      "bytes": 163112,
+      "sha256": "eb1d9e716f8b13780b3fb65a0f0e38a445657d0f1a81863bb4dccebf55d184cb"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/fbdd30ee986bc521932dd9696e429a12f26fdd59d7b8a224b2f034a53fae98e0.webp",
+      "bytes": 123658,
+      "sha256": "fbdd30ee986bc521932dd9696e429a12f26fdd59d7b8a224b2f034a53fae98e0"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/fcf0b5c904ce65fee70514dca21c522612f654fec51c7689ba5fc3f1fea13674.webp",
+      "bytes": 208034,
+      "sha256": "fcf0b5c904ce65fee70514dca21c522612f654fec51c7689ba5fc3f1fea13674"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/fd48093634f079a0d9920a6b83f62a9a815a657399b40ad96dd9747b51658287.webp",
+      "bytes": 157978,
+      "sha256": "fd48093634f079a0d9920a6b83f62a9a815a657399b40ad96dd9747b51658287"
+    },
+    {
+      "path": "apps/web/public/art/scene-previews/README.md",
+      "bytes": 1032,
+      "sha256": "3a6b7f10b55cb60522921fb8712f1eb3befdb12dc71c00c032d58a6a9b05afce"
+    },
+    {
       "path": "apps/web/public/art/signal-a.png",
       "bytes": 1774969,
       "sha256": "f08b98de117cc854a4f2e6b84dff155f609f2daee188c81e0149c9385b12d12b"
@@ -1054,8 +1219,8 @@
     },
     {
       "path": "apps/web/public/blueprint-media.js",
-      "bytes": 3108,
-      "sha256": "3f7394be58ee3ee491efa39b41b2fb46ad6d7616762d8eeacb91c811b27a1010"
+      "bytes": 3429,
+      "sha256": "4f6f1e6053ac1b96aa8f833a9761891d88105592258aae1b16c60268ca66a262"
     },
     {
       "path": "apps/web/public/blueprint-model.html",
@@ -1074,8 +1239,8 @@
     },
     {
       "path": "apps/web/public/blueprint.js",
-      "bytes": 13784,
-      "sha256": "15c0dd9b90ed6f3842eccb7f0038284d7c81c48ef8c50ca09be79b0232f2badc"
+      "bytes": 13802,
+      "sha256": "54fe2133950fc2b4bc74185fd93bf842d2222a4a186a0ee8bbd04509793e5c5c"
     },
     {
       "path": "apps/web/public/cases/star-letters/case.css",
@@ -1114,8 +1279,8 @@
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 44811,
-      "sha256": "729b9ff7423f10555ce45b0bba0348bcb86c0b0b16a72c908964466daf452b92"
+      "bytes": 45000,
+      "sha256": "84810972a2562dd768af897908b06c4a59cdfc21de6a38166e29b9974545ccae"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -1154,8 +1319,8 @@
     },
     {
       "path": "apps/web/public/remix-blueprint.js",
-      "bytes": 8310,
-      "sha256": "dff3d32cea685a4cdcea866f35bc6f87ecef5978883386b55b9ff36c12cf5610"
+      "bytes": 9252,
+      "sha256": "902ea9015bafd710bc3966dcaaae1744b36e963f70fe57dd4e75a46ff1363018"
     },
     {
       "path": "apps/web/public/remix-workflow-model.js",
@@ -1164,8 +1329,8 @@
     },
     {
       "path": "apps/web/public/remix-workflow.js",
-      "bytes": 30771,
-      "sha256": "ed9dfd923e4983ca2a6203d2b54f16e9a0797fd8ac9e2a2fc148c907abe03ac0"
+      "bytes": 31187,
+      "sha256": "4043294a8331822b156ae9c863f7342a70ba1cd295aca9b200156c23a8382936"
     },
     {
       "path": "apps/web/public/remix.css",
@@ -1229,8 +1394,8 @@
     },
     {
       "path": "apps/web/README.md",
-      "bytes": 8749,
-      "sha256": "653cdeb947deb4044db4572fa95d6c0e4c5a783dbf3c8eff84ed62c4a91ee7f7"
+      "bytes": 9355,
+      "sha256": "79bad1de1f1fc6df4b1a18c89a46a8a148717b0d64654e0addbe0a9cf8ab8b99"
     },
     {
       "path": "apps/web/wrangler.jsonc",
@@ -10364,8 +10529,8 @@
     },
     {
       "path": "scripts/games/sync.mjs",
-      "bytes": 7558,
-      "sha256": "d7e9875026a3d453e3ba84e95c2d73aa7849328f22d1bbd285dcc425aa7a91e7"
+      "bytes": 7629,
+      "sha256": "233a4c6adb05c8db6e0e78eb7d4ad1fcde8d569ffd3757d68efd56d46b22cd8a"
     },
     {
       "path": "scripts/games/verify.mjs",
@@ -10528,14 +10693,24 @@
       "sha256": "6a03d896a31ba1c6aefb16512657d7b8098d874fe559f27975c9cc9e98d56c51"
     },
     {
+      "path": "scripts/web/blueprint-scenes.json",
+      "bytes": 34484,
+      "sha256": "7be9c06a79308e342ded6f5c2614d831b63651b0bf25797e1b0db34cd485cd9e"
+    },
+    {
+      "path": "scripts/web/blueprint-scenes.mjs",
+      "bytes": 3292,
+      "sha256": "e3c803fcd247a995d063b879f7958182441a94c96a6e8b75031f8ec1c6985bc8"
+    },
+    {
       "path": "scripts/web/blueprint-snapshots.json",
-      "bytes": 247974,
-      "sha256": "11f394856e8fb677a62de52f9719e5154f56e364f97208365aacd8e54dd49954"
+      "bytes": 248101,
+      "sha256": "309b2fd8a9d358752fb28f3bc55f1db3b1e3e916a7121a02a2cf58bfc196d728"
     },
     {
       "path": "scripts/web/blueprints.mjs",
-      "bytes": 4022,
-      "sha256": "54a0d08fc691b9548b45bf1ddb25fca0d8dd304e6d654173b11f3c4a0437120d"
+      "bytes": 4467,
+      "sha256": "d5f300d61b3cd880e044867fe01610db55d4a582b24a06e0326c52160a3d81eb"
     },
     {
       "path": "scripts/web/build.mjs",
@@ -11986,6 +12161,11 @@
       "path": "tests/web/blueprint-media.test.mjs",
       "bytes": 6054,
       "sha256": "f776f366e463b39f0a62772ca0545571f5024ec7dc265e319f8a580efb7b1340"
+    },
+    {
+      "path": "tests/web/blueprint-scenes.test.mjs",
+      "bytes": 6042,
+      "sha256": "7a88f55842e8d6c4f9ecb64b9fb9eb0e0338fe3a03d89663cab50c6983f37790"
     },
     {
       "path": "tests/web/blueprints.test.mjs",

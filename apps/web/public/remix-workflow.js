@@ -695,7 +695,7 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
       if (card.fields.file === card.original.fields.file)
         appendMediaGallery(
           mediaHost,
-          card.asset?.items ? card.asset : previewAssets[card.id] || card.asset,
+          previewAssets[card.id] || card.asset,
           card.original.title,
         );
     };
@@ -882,7 +882,11 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
   render();
   if (needsBlueprint) loadBlueprint();
   else if (
-    plan.blueprint?.cards.some((c) => c.section === "assets" && !c.asset?.items)
+    plan.blueprint?.cards.some(
+      (c) =>
+        (c.section === "assets" && !c.asset?.items) ||
+        (c.section === "levels" && !c.asset?.items?.some((item) => item.scene)),
+    )
   ) {
     // Media is additive display metadata. Old draft text, source identity and
     // edits stay untouched; only matching original cards may get new previews.
@@ -903,11 +907,19 @@ export function createRemixWorkflow(host, game, { onEdit, onCopy } = {}) {
           if (
             current &&
             current.title === card.original.title &&
-            current.body === card.original.body &&
+            (current.body === card.original.body ||
+              card.section === "levels") &&
             JSON.stringify(current.fields) ===
               JSON.stringify(card.original.fields)
-          )
-            previewAssets[card.id] = document.assets?.[card.id];
+          ) {
+            const asset = document.assets?.[card.id];
+            const items = (asset?.items || (asset ? [asset] : [])).filter(
+              (item) =>
+                !item.scene ||
+                item.scene.gameVersion === plan.blueprint.gameVersion,
+            );
+            if (items.length) previewAssets[card.id] = { ...items[0], items };
+          }
         }
         refreshMedia();
       })

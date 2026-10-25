@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { SECTIONS, TYPES, STATUSES } from "../../apps/outline/model.mjs";
+import { writeBlueprintScenes } from "./blueprint-scenes.mjs";
 import { writeBlueprintMedia } from "./blueprint-media.mjs";
 import { validatePublicOutline } from "../games/outline-policy.mjs";
 
@@ -62,6 +63,23 @@ export async function writeBlueprints(root, out, games, sources, options = {}) {
       source,
       options,
     );
+    const scenes = await writeBlueprintScenes(
+      root,
+      out,
+      game,
+      document,
+      source,
+    );
+    for (const [id, scene] of Object.entries(scenes)) {
+      const original = assets[id];
+      assets[id] = {
+        ...scene,
+        items: [
+          ...scene.items,
+          ...(original?.items || (original ? [original] : [])),
+        ],
+      };
+    }
     for (const card of document.project.cards) {
       if (assets[card.id]) continue;
       const relative = card.fields.file?.replace(/^\.\//, "");

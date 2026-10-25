@@ -210,7 +210,7 @@ export function openBlueprint(game) {
     const positions = new Map(
       cards.map((c, index) => [
         c.id,
-        section === "assets"
+        ["assets", "levels"].includes(section)
           ? { x: index * 300 + 32, y: 32 }
           : { x: c.x - minX + 32, y: c.y - minY + 32 },
       ]),

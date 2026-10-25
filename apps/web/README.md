@@ -69,3 +69,5 @@ The default catalog leads with Tidal Reclaim and Star Letters. Phone/tablet visi
 Public source export includes a validated `scripts/web/blueprint-snapshots.json` bundle and the shared outline metadata so website tests do not depend on private production project paths. Missing or invalid bundled snapshots fail closed. Production continues to read only registered `game-outline.public.json` files.
 
 复杂复刻通过 `remix-blueprint.js` 载入同一份 `/blueprints/<id>.json` 和共享字段元数据，把原设计卡片分配到工作流步骤。新方案自动带入；旧草稿显式补入并保留已有步骤调整。每张卡片保留原内容用于比较，允许编辑字段、添加调整说明和取消采用；关联关系独立于执行依赖。导出与本地草稿包含快照及对应源码/游戏版本，复制给 AI 包含调整后的选中内容。蓝图加载失败时阻止空白的新方案交付，提供重试。
+
+「场景与关卡」复用素材画廊，显示从已发布冻结游戏采集的实景图，可点击放大；复杂复刻也显示同一组预览。`scripts/web/blueprint-scenes.json` 记录 19 款游戏、25 张关卡卡片对应的截图、构建版本和原卡片指纹。构建检查截图哈希、游戏版本和卡片内容；游戏或关卡设计变化后需重新采集审核，不用封面替代场景。潮汐回收站使用实际运行场景的观察视角，法恩探险按五章分别提供游戏画面与内置地图。旧草稿只补充匹配原设计、原游戏版本的显示信息。

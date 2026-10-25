@@ -41,6 +41,8 @@ function openMedia(item, title) {
   dialog.setAttribute("aria-label", title);
   dialog.append(close, heading, visual(item, title, true));
   if (item.model) dialog.append(element("p", "", t("拖动旋转 · 滚动缩放")));
+  if (item.scene)
+    dialog.append(element("p", "blueprint-scene-note", t("游戏实景快照")));
   dialog.addEventListener("close", () => dialog.remove(), { once: true });
   document.body.append(dialog);
   dialog.showModal();
@@ -56,9 +58,11 @@ export function mediaThumbnail(asset, title) {
     element(
       "span",
       "blueprint-media-badge",
-      items[0].model
-        ? t("3D 模型")
-        : t("{count} 张素材", { count: items.length }),
+      items[0].scene
+        ? t("游戏实景")
+        : items[0].model
+          ? t("3D 模型")
+          : t("{count} 张素材", { count: items.length }),
     ),
   );
   return host;
@@ -79,13 +83,21 @@ export function appendMediaGallery(host, asset, title) {
       element(
         "span",
         "blueprint-media-badge",
-        item.model ? t("查看 3D ↗") : t("放大查看 ↗"),
+        item.scene
+          ? t("场景图 · 放大 ↗")
+          : item.model
+            ? t("查看 3D ↗")
+            : t("放大查看 ↗"),
       ),
     );
     expand.onclick = () => openMedia(item, name);
     figure.append(expand, element("figcaption", "", name));
     if (item.source) {
-      const link = element("a", "blueprint-media-source", t("查看源素材 ↗"));
+      const link = element(
+        "a",
+        "blueprint-media-source",
+        item.scene ? t("查看场景设计 ↗") : t("查看源素材 ↗"),
+      );
       link.href = item.source;
       link.target = "_blank";
       link.rel = "noopener";
