@@ -14,6 +14,7 @@ test('native Vite export retains editable imports and only reviewed assets',asyn
  await put('scripts/games/projects.json',JSON.stringify(spec));await put('LICENSE','MIT fixture');
  for(const n of ['build-template.mjs','serve-template.mjs'])await put('scripts/games/'+n,'// fixture');
  await put('source/src/main.ts',"import './style.css';export const ready:boolean=true;");await put('source/src/style.css','body{color:teal}');
+ await put('source/src/.DS_Store','private Finder metadata');await put('source/src/.cache/state.json','private cache');
  const html='<html><head></head><body><script type="module" src="./src/main.ts"></script></body></html>';
  await put('source/index.html',html);await put('source/tsconfig.json','{}');
  await put('source/package.json',JSON.stringify({dependencies:{three:'0.186.1','@dimforge/rapier3d-compat':'0.21.0'},devDependencies:{vite:'8.3.1',typescript:'5.9.3'}}));
@@ -28,6 +29,7 @@ test('native Vite export retains editable imports and only reviewed assets',asyn
  assert.equal(await fs.readFile(out+'/index.html','utf8'),html);
  assert.equal(await fs.readFile(out+'/public/ok.bin','utf8'),'reviewed');
  await assert.rejects(fs.access(out+'/public/private-extra.bin'));
+ await assert.rejects(fs.access(out+'/src/.DS_Store'));await assert.rejects(fs.access(out+'/src/.cache/state.json'));
  const pkg=JSON.parse(await fs.readFile(out+'/package.json'));assert.equal(pkg.dependencies['@dimforge/rapier3d-compat'],'0.21.0');assert.equal(pkg.scripts.typecheck,'tsc --noEmit');
  await put('source/public/ok.bin','changed');assert.throws(run,e=>String(e.stderr).includes('Public asset changed after review'));
 });

@@ -468,5 +468,14 @@
         "sha256": "ff374b7a0a39734f8bd940017e70c77dae39741bf043bf5efb4b659dfb886530"
       }
     ]
+  },
+  "azeroth-strike": {
+    "f96ab09e-a2dc-4afe-8bab-f6a6f1b828f8": [
+      {
+        "file": "public/assets/ui/loading-hyjal.webp",
+        "title": "海加尔场景 · 魔兽世界素材",
+        "sha256": "e0c8775f8f62b3db019b13bac133cd3ae40e06c21a023d932da774d153f79f62"
+      }
+    ]
   }
 }

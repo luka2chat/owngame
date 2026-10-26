@@ -129,5 +129,43 @@
     "publicReadme": "PUBLIC_README.md",
     "dependencyLock": "public-package-lock.json",
     "outline": "game-outline.public.json"
+  },
+  "azeroth-strike": {
+    "project": "examples/imported/azeroth-strike",
+    "kind": "vite",
+    "sourceEntry": "src/main.ts",
+    "license": "MIT (code only); proprietary Blizzard assets excluded",
+    "sourceFiles": [
+      "tsconfig.json",
+      "LICENSE",
+      "THIRD_PARTY_NOTICES.md",
+      "public-assets.json",
+      "vite.config.ts",
+      "tools/pack.mjs",
+      "licenses/THREE-MIT.txt",
+      "licenses/RAPIER-APACHE-2.0.txt",
+      "tests/ab.test.ts",
+      "tests/agent.test.ts",
+      "tests/buffs.test.ts",
+      "tests/hyjal-powers.test.ts",
+      "tests/hyjal.test.ts",
+      "tests/i18n.test.ts",
+      "tests/minimap.test.ts",
+      "tests/mount.test.ts",
+      "tests/mounted-scope.test.ts",
+      "tests/nameplates.test.ts",
+      "tests/nav.test.ts",
+      "tests/routes.test.ts",
+      "tests/share-actions.test.ts",
+      "tests/share.test.ts",
+      "tests/weapons.test.ts",
+      "tests/wsg.test.ts",
+      "tools/pack.d.mts"
+    ],
+    "assetManifest": "public-assets.json",
+    "publicReadme": "PUBLIC_README.md",
+    "outline": "game-outline.public.json",
+    "artNotice": "本游戏使用魔兽世界相关素材，版权属于暴雪娱乐及其他权利人；第三方素材不适用原创代码的MIT许可。\n",
+    "dependencyLock": "public-package-lock.json"
   }
 }

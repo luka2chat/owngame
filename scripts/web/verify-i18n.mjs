@@ -64,7 +64,7 @@ try {
   assert.equal(await page.locator("html").getAttribute("lang"), "en");
   assert.equal(
     await page.locator(".game-card h3").first().innerText(),
-    "Tidal Reclaim",
+    "Azeroth Strike",
   );
   await englishOnly();
   const gameCount = await page.locator(".game-card").count();

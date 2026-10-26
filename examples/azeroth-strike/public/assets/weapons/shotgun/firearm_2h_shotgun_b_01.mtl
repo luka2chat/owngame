@@ -1,0 +1,6 @@
+newmtl mat_glowball
+illum 1
+map_Kd glowball.png
+newmtl mat_firearm_2h_rifle_b_01silver
+illum 1
+map_Kd firearm_2h_rifle_b_01silver.png
