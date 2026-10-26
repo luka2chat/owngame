@@ -9,6 +9,7 @@ import type { Team } from './game/teams'
 import { type Key, LANG_LABEL, LANGS, type Lang, lang, onLangChange, setLang, t, tm } from './i18n'
 import { sharePost } from './game/share'
 import { Hud } from './ui/hud'
+import { githubLink } from './ui/github'
 import { GAME_URL, GAME_PUBLISHED } from './game/publication'
 import { copyImage, prepareXShare } from './ui/share-actions'
 import { captureMatchFrame, canvasBlob, downloadBlob, drawShareCard } from './ui/sharecard'
@@ -232,7 +233,7 @@ function showMenu(): void {
       </section>
     </div>
     <footer class="menu-footer">
-      <button class="textbtn" data-open-setup="1">${t('menu.settings')}</button>
+      <div class="menu-links"><button class="textbtn" data-open-setup="1">${t('menu.settings')}</button>${githubLink()}</div>
       <p class="menu-disclaimer">${t('menu.disclaimer')}</p>
     </footer>`
   const setup = `
@@ -539,7 +540,7 @@ function showEnd(g: Game): void {
         </section>
       </div>
     </div>
-    <footer class="sheet-foot result-foot"><div class="result-langs">${langButtons()}</div><button class="redbtn again">${t('end.again')}</button><button class="redbtn menu-btn">${t('end.menu')}</button></footer>
+    <footer class="sheet-foot result-foot"><div class="result-langs">${langButtons()}</div>${githubLink()}<button class="redbtn again">${t('end.again')}</button><button class="redbtn menu-btn">${t('end.menu')}</button></footer>
   </div>`
   const preview = overlay.querySelector<HTMLImageElement>('.result-image img')!
   const status = overlay.querySelector('.share-status')!

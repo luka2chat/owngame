@@ -55,3 +55,13 @@ export function playerSandbox(game) {
   const pointer = game.pointerLock === true && validPlatforms(game.platforms) && game.platforms.includes("pc");
   return "allow-scripts allow-same-origin" + (pointer ? " allow-pointer-lock" : "");
 }
+
+// The parent player opens only the game's reviewed source links from its sandbox.
+export function sourceLinkDestination(href, game) {
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(game?.id || "")) return null;
+  const suffix = "/examples/" + game.id;
+  const pinned = /^https:\/\/github\.com\/luka2chat\/owngame\/tree\/[a-f0-9]{40}(\/examples\/[a-z0-9-]+)$/;
+  if (pinned.exec(game.sourceUrl || "")?.[1] !== suffix) return null;
+  const latest = "https://github.com/luka2chat/owngame/tree/main" + suffix;
+  return href === latest || href === game.sourceUrl ? href : null;
+}

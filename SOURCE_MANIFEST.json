@@ -1334,8 +1334,8 @@
     },
     {
       "path": "apps/web/public/platforms.js",
-      "bytes": 2316,
-      "sha256": "142f587936cd4355f485b41590d1f6b5fc7b2201233ec10dd11a264dc11046aa"
+      "bytes": 2887,
+      "sha256": "92403ecab0451c1c3e05706107b6a1e6f8280dcf8a925cebfdff5a8721b80942"
     },
     {
       "path": "apps/web/public/play.css",
@@ -1349,8 +1349,8 @@
     },
     {
       "path": "apps/web/public/play.js",
-      "bytes": 16486,
-      "sha256": "2c535908fac7611ebe4b3ac01f05d88b120df3f64aedadfeaa8e85dc6c80fda7"
+      "bytes": 16848,
+      "sha256": "a2fd32f61b2547fbc88a2b69f9af616ee4e76bc26bf955a16540325a4c2ced1e"
     },
     {
       "path": "apps/web/public/privacy.html",
@@ -1755,7 +1755,7 @@
     {
       "path": "examples/azeroth-strike/game.json",
       "bytes": 440,
-      "sha256": "909769e195b49cbc5dc213132f20f6758dbbbd968921c892263299b976308500"
+      "sha256": "77eb84bef96abd8f222504771204f88768d556bef0ef726a9b5f272af2e5f7ab"
     },
     {
       "path": "examples/azeroth-strike/index.html",
@@ -1780,7 +1780,7 @@
     {
       "path": "examples/azeroth-strike/ONLINE_BUILD.json",
       "bytes": 234439,
-      "sha256": "e2218bab34c8c9e03ebd9e19566a0e20dc506b1da5e0882e2c8dbaec092f2299"
+      "sha256": "6f4fc052ee8a2b782ccc93d1e772aca365fe709b83a40aa2d800ef6f2e13dd22"
     },
     {
       "path": "examples/azeroth-strike/package-lock.json",
@@ -7844,8 +7844,8 @@
     },
     {
       "path": "examples/azeroth-strike/SOURCE_MANIFEST.json",
-      "bytes": 254915,
-      "sha256": "319d0c42891f3dfd4e4a46d8841800375f5692bc98a35cbf03f54681d8fa4dd6"
+      "bytes": 255066,
+      "sha256": "071156cdafde9c82b041294ac5e41d1da160067cddce1ccb4d0cd3df3365516f"
     },
     {
       "path": "examples/azeroth-strike/src/engine/audio.ts",
@@ -7949,8 +7949,8 @@
     },
     {
       "path": "examples/azeroth-strike/src/game/publication.ts",
-      "bytes": 207,
-      "sha256": "bee0c4f5d4f2a2023e1962896849a07fdeff8d628bb6901b1ab068facc9505e3"
+      "bytes": 303,
+      "sha256": "b3cd31e4627d1a634e1f682284001402cf176f836a58f78041af8dcee08895b1"
     },
     {
       "path": "examples/azeroth-strike/src/game/routes.ts",
@@ -8009,13 +8009,18 @@
     },
     {
       "path": "examples/azeroth-strike/src/i18n.ts",
-      "bytes": 31076,
-      "sha256": "32e6cd7514cb2f302953cd83408840a861f68aa9a691fdf0870f1bb36367380c"
+      "bytes": 31165,
+      "sha256": "08432c836e603a4d76fb3d2c6f38c941ffdf8e11bb5098cd1c02486f229976f4"
     },
     {
       "path": "examples/azeroth-strike/src/main.ts",
-      "bytes": 27758,
-      "sha256": "3643a43394c4023953bdc3a1bf5a48a0c144651f2b873883b92c22d3d0185877"
+      "bytes": 27859,
+      "sha256": "cce62e224bfc1390b9cd2ecb3514fbff9407985a08813bb3997e033eb0c31f93"
+    },
+    {
+      "path": "examples/azeroth-strike/src/ui/github.ts",
+      "bytes": 1018,
+      "sha256": "f4e6d8d0d112526eb2ecf92ad8651dc2704aaf3e546feba45a76a3569b7985fc"
     },
     {
       "path": "examples/azeroth-strike/src/ui/hud.ts",
@@ -8039,8 +8044,8 @@
     },
     {
       "path": "examples/azeroth-strike/src/ui/style.css",
-      "bytes": 39904,
-      "sha256": "0574f994d492dc23a03f54701e45434ebe1120f641bde56e81cb47424dcddd7d"
+      "bytes": 40297,
+      "sha256": "2939ac6893a279652f5e8516a56037d49938bc9eb681e590e3cdbe14321cd808"
     },
     {
       "path": "examples/azeroth-strike/src/world/collision.ts",
@@ -16805,7 +16810,7 @@
     {
       "path": "games.json",
       "bytes": 9150,
-      "sha256": "3c45a60173d12055105306feeab2d018a98c53d786a424b42bbde4505e060654"
+      "sha256": "97ac17aceedcd8225640d9670b7963cf954314291f4afc169129489eedc8b85e"
     },
     {
       "path": "LICENSE",
@@ -17210,7 +17215,7 @@
     {
       "path": "scripts/web/blueprint-scenes.json",
       "bytes": 34622,
-      "sha256": "6988a1cbf4dd1cdb50b494bbd0026289aa3f347cca08cb2e1bb3935e75274b16"
+      "sha256": "9db7959cdd56028f65e7bb9701140caa300b880517fd14e7815e2dcc24b1720c"
     },
     {
       "path": "scripts/web/blueprint-scenes.mjs",
@@ -18724,8 +18729,8 @@
     },
     {
       "path": "tests/web/platforms.test.mjs",
-      "bytes": 5369,
-      "sha256": "2247bdb5adf3047c9cb1b282c14155c1c7dad5cab251ec52b38b2fbabb6b1a8b"
+      "bytes": 6347,
+      "sha256": "61a5e50b4d24ae24bc8447cb877456c878dc3e650324f24bc1b93153901ea4dd"
     },
     {
       "path": "tests/web/remix-blueprint.test.mjs",

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import vm from "node:vm";
 import {readGameEntries} from "../../scripts/web/catalog.mjs";
-import {validPlatforms, supportsPlatform, devicePlatform, resolvePlatform, platformAcceptance, playerPresentation, playerSandbox, needsComputer} from "../../apps/web/public/platforms.js";
+import {validPlatforms, supportsPlatform, devicePlatform, resolvePlatform, platformAcceptance, playerPresentation, playerSandbox, needsComputer, sourceLinkDestination} from "../../apps/web/public/platforms.js";
 
 test("every published game explicitly declares supported platforms", async () => {
   const entries = await readGameEntries(process.cwd());
@@ -73,6 +73,18 @@ test("pointer lock is opt-in for declared PC games only", () => {
   assert.equal(playerSandbox({platforms:["pc"],pointerLock:true}), "allow-scripts allow-same-origin allow-pointer-lock");
   for (const game of [{}, {platforms:["pc"]}, {platforms:["mobile"],pointerLock:true}, {platforms:[],pointerLock:true}])
     assert.equal(playerSandbox(game), "allow-scripts allow-same-origin");
+});
+
+test("sandbox source links resolve only to the selected game's reviewed GitHub example", () => {
+  const latest = "https://github.com/luka2chat/owngame/tree/main/examples/azeroth-strike";
+  const game = {id:"azeroth-strike", sourceUrl:latest.replace("/main/", "/" + "a".repeat(40) + "/")};
+  assert.equal(sourceLinkDestination(latest, game), latest);
+  assert.equal(sourceLinkDestination(game.sourceUrl, game), game.sourceUrl);
+  for (const href of [undefined, "javascript:alert(1)", latest + "?redirect=evil", latest + "/../../other", latest.replace("github.com", "github.com.evil.test"), latest.replace("azeroth-strike", "tidal-reclaim")])
+    assert.equal(sourceLinkDestination(href, game), null);
+  assert.equal(sourceLinkDestination(latest, {id:game.id}), null);
+  assert.equal(sourceLinkDestination(latest, {...game,sourceUrl:"https://evil.test/"}), null);
+  assert.equal(sourceLinkDestination(latest, {...game,id:"../azeroth-strike"}), null);
 });
 
 // Device checks must not turn a narrow desktop window into an unsupported device.

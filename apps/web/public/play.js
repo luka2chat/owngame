@@ -2,7 +2,7 @@ import { t, localizeGame, localizeUrl } from "./i18n.js";
 import { track, gameParams, selectGame, setPageGame } from "./analytics.js";
 import { openRemix } from "./remix.js";
 import { openBlueprint } from "./blueprint.js";
-import { supportsPlatform, platformLabel, playerPresentation, playerSandbox, needsComputer } from "./platforms.js";
+import { supportsPlatform, platformLabel, playerPresentation, playerSandbox, needsComputer, sourceLinkDestination } from "./platforms.js";
 import {
   $,
   catalog,
@@ -368,6 +368,13 @@ try {
       load_number: ++loadNumber,
     });
     syncSafeArea();
+    frame.contentDocument?.addEventListener("click", (event) => {
+      if (!event.isTrusted || event.defaultPrevented) return;
+      const href = sourceLinkDestination(event.target?.closest?.("a[href]")?.href, game);
+      if (!href) return;
+      event.preventDefault();
+      window.open(href, "_blank", "noopener,noreferrer");
+    });
     $("loading").hidden = true;
     $("enter-game").disabled = false;
   };

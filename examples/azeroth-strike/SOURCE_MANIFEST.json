@@ -1,8 +1,8 @@
 {
   "schema": "owngame.game-source.v1",
   "id": "azeroth-strike",
-  "online_build_sha256": "1c6400def3cd60c9e351c57f56f3b10210f4c8d183983df18bd44a2b2d9469c9",
-  "input_sha256": "90063ab445a153c8d5c19288bf48e564e6513835df6479886d9d59873878e5ba",
+  "online_build_sha256": "7bd323b8638a7a50e5da009a6140bb807964cc1e1d7a1ca2e6a893537e5abe8d",
+  "input_sha256": "a296889db06f91399e8eece661515498baadddd3e3118f4714ff68b496ae09c0",
   "files": [
     {
       "path": ".gitignore",
@@ -27,7 +27,7 @@
     {
       "path": "game.json",
       "bytes": 440,
-      "sha256": "909769e195b49cbc5dc213132f20f6758dbbbd968921c892263299b976308500"
+      "sha256": "77eb84bef96abd8f222504771204f88768d556bef0ef726a9b5f272af2e5f7ab"
     },
     {
       "path": "index.html",
@@ -52,7 +52,7 @@
     {
       "path": "ONLINE_BUILD.json",
       "bytes": 234439,
-      "sha256": "e2218bab34c8c9e03ebd9e19566a0e20dc506b1da5e0882e2c8dbaec092f2299"
+      "sha256": "6f4fc052ee8a2b782ccc93d1e772aca365fe709b83a40aa2d800ef6f2e13dd22"
     },
     {
       "path": "package-lock.json",
@@ -6216,8 +6216,8 @@
     },
     {
       "path": "src/game/publication.ts",
-      "bytes": 207,
-      "sha256": "bee0c4f5d4f2a2023e1962896849a07fdeff8d628bb6901b1ab068facc9505e3"
+      "bytes": 303,
+      "sha256": "b3cd31e4627d1a634e1f682284001402cf176f836a58f78041af8dcee08895b1"
     },
     {
       "path": "src/game/routes.ts",
@@ -6276,13 +6276,18 @@
     },
     {
       "path": "src/i18n.ts",
-      "bytes": 31076,
-      "sha256": "32e6cd7514cb2f302953cd83408840a861f68aa9a691fdf0870f1bb36367380c"
+      "bytes": 31165,
+      "sha256": "08432c836e603a4d76fb3d2c6f38c941ffdf8e11bb5098cd1c02486f229976f4"
     },
     {
       "path": "src/main.ts",
-      "bytes": 27758,
-      "sha256": "3643a43394c4023953bdc3a1bf5a48a0c144651f2b873883b92c22d3d0185877"
+      "bytes": 27859,
+      "sha256": "cce62e224bfc1390b9cd2ecb3514fbff9407985a08813bb3997e033eb0c31f93"
+    },
+    {
+      "path": "src/ui/github.ts",
+      "bytes": 1018,
+      "sha256": "f4e6d8d0d112526eb2ecf92ad8651dc2704aaf3e546feba45a76a3569b7985fc"
     },
     {
       "path": "src/ui/hud.ts",
@@ -6306,8 +6311,8 @@
     },
     {
       "path": "src/ui/style.css",
-      "bytes": 39904,
-      "sha256": "0574f994d492dc23a03f54701e45434ebe1120f641bde56e81cb47424dcddd7d"
+      "bytes": 40297,
+      "sha256": "2939ac6893a279652f5e8516a56037d49938bc9eb681e590e3cdbe14321cd808"
     },
     {
       "path": "src/world/collision.ts",
