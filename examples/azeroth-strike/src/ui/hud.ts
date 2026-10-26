@@ -1,6 +1,6 @@
 import { type Game, SPIRIT_HEALER_WAVE, teamColor } from '../game/game'
 import { POWERS, POWER_KINDS } from '../game/rules/hyjal-powers'
-import { WAVE_NAMES } from '../game/rules/hyjal'
+import { WAVE_NAMES, waveStage } from '../game/rules/hyjal'
 import { MOUNT_CAST } from '../game/mount'
 import { AB } from '../game/rules/ab'
 import type { BuffKind } from '../game/rules/buffs'
@@ -98,7 +98,7 @@ export class Hud {
       const defense=game.defense,drop=defense.nearestSupply(p.pos)
       const active=POWER_KINDS.filter(k=>p.powers.left[k]>0).map(k=>`<div class="power-active" style="--power:#${POWERS[k].color.toString(16)}"><b>${POWERS[k].symbol}</b><span>${t(`hyjal.power.${k}`)}</span><strong>${Math.ceil(p.powers.left[k])}s</strong></div>`).join('')
       const next=drop?t('hyjal.powerNearest',{name:t(`hyjal.power.${drop.kind}`),d:Math.round(Math.hypot(p.pos.x-defense.supplySites[drop.slot].x,p.pos.z-defense.supplySites[drop.slot].z)),s:Math.ceil(drop.expires-defense.supplies.time)}):t('hyjal.powerNext',{s:Math.ceil(defense.supplies.next-defense.supplies.time)})
-      this.powers.innerHTML=`${active}<div class="power-guide">${next}<small>${t('hyjal.powerHint')}</small></div>`
+      this.powers.innerHTML=`${p.powers.unlimitedFire?`<div class="power-active permanent"><b>∞</b><span>${t('hyjal.unlimitedFire')}</span><strong>${t('hyjal.fireBonuses')}</strong></div>`:''}${active}<div class="power-guide">${next}<small>${t('hyjal.powerHint')}</small></div>`
     }
     this.hit.style.opacity = game.hitMarker > 0 ? '1' : '0'
     this.hit.classList.toggle('head', game.hitHead)
@@ -109,6 +109,7 @@ export class Hud {
     let ammo: string
     if (p.switchTimer > 0) ammo = `<b class="small">${t('hud.switching')}</b>`
     else if (w.mode === 'melee') ammo = `<b class="small">${t('hud.melee')}</b>`
+    else if (p.powers.unlimitedFire) ammo = `<b>∞</b><span> ${t('hyjal.unlimitedFire')}</span>`
     else if (p.powers.infiniteAmmo) ammo = `<b>∞</b><span> ${Math.ceil(p.powers.left.ammo)}s</span>`
     else if (p.reloading) ammo = `<b class="small">${t('hud.reloading')}</b><i style="width:${(1 - p.reloadTimer / p.reloadTotal) * 100}%"></i>`
     else ammo = `<b>${p.ammo}</b><span> / ${p.reserve}</span>`
@@ -170,10 +171,10 @@ export class Hud {
 
   private hyjalTop(game: Game): string {
     const m=game.defense!.match
-    const phase=m.state==='break'?t('hyjal.break',{s:Math.ceil(m.countdown),n:m.wave,total:m.total}):t('hyjal.wave',{n:m.wave,total:m.total,left:m.remaining})
+    const phase=m.state==='break'?t('hyjal.break',{s:Math.ceil(m.countdown),n:m.wave,total:m.totalLabel}):t('hyjal.wave',{n:m.wave,total:m.totalLabel,left:m.remaining})
     const alive=[...game.defense!.invaders.values()].filter(m=>m.agent.alive),air=alive.filter(m=>m.kind==='flyer').length
-    const name=t(`hyjal.wave.${WAVE_NAMES[Math.min(8,m.state==='break'?m.wave:m.wave-1)]}`)
-    return `<div class="hyjal-top"><span>${t(`map.${game.opts.map}`)}</span><b>${phase}</b><small>${name} · ${t('hyjal.threats',{ground:alive.length-air,air,incoming:game.defense!.warnings.length})}</small><div class="core-health"><i style="width:${m.hp/m.maxHp*100}%"></i><strong>${t('hyjal.core')} ${Math.ceil(m.hp)} / ${m.maxHp}</strong></div></div>`
+    const name=t(`hyjal.wave.${WAVE_NAMES[m.endless?waveStage(m.state==='break'?m.wave+1:m.wave)-1:Math.min(8,m.state==='break'?m.wave:m.wave-1)]}`)
+    return `<div class="hyjal-top"><span>${t(`map.${game.opts.map}`)}${m.endless?` · ${t('hyjal.unlimitedFire')}`:''}</span><b>${phase}</b><small>${name} · ${t('hyjal.threats',{ground:alive.length-air,air,incoming:game.defense!.warnings.length})}</small><div class="core-health"><i style="width:${m.hp/m.maxHp*100}%"></i><strong>${t('hyjal.core')} ${Math.ceil(m.hp)} / ${m.maxHp}</strong></div></div>`
   }
 
   private wsgTop(game: Game): string {

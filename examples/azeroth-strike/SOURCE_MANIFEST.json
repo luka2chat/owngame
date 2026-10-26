@@ -1,8 +1,8 @@
 {
   "schema": "owngame.game-source.v1",
   "id": "azeroth-strike",
-  "online_build_sha256": "7bd323b8638a7a50e5da009a6140bb807964cc1e1d7a1ca2e6a893537e5abe8d",
-  "input_sha256": "a296889db06f91399e8eece661515498baadddd3e3118f4714ff68b496ae09c0",
+  "online_build_sha256": "4cc2d639a383b8cf4c8b5de620e0adc6aeb31afe111c7a625e7d6ddba029ecdc",
+  "input_sha256": "9abc453ba02243bb1630406a1d2312c842b3dcc587a52eea5222a513bcca8058",
   "files": [
     {
       "path": ".gitignore",
@@ -21,13 +21,13 @@
     },
     {
       "path": "game-outline.json",
-      "bytes": 2352,
-      "sha256": "46547705f5898871b05f69c6132a027e518b795002491a11a5cb33704d288232"
+      "bytes": 2784,
+      "sha256": "ffc40a500365d5a0043989a4bc76237265b997088f6f806c563c15aab90f352b"
     },
     {
       "path": "game.json",
-      "bytes": 440,
-      "sha256": "77eb84bef96abd8f222504771204f88768d556bef0ef726a9b5f272af2e5f7ab"
+      "bytes": 455,
+      "sha256": "184570827fc0c4f9a9eec8fcfd7719ac7d0e3141536fdaa8b14bfa079d46a8b6"
     },
     {
       "path": "index.html",
@@ -52,7 +52,7 @@
     {
       "path": "ONLINE_BUILD.json",
       "bytes": 234439,
-      "sha256": "6f4fc052ee8a2b782ccc93d1e772aca365fe709b83a40aa2d800ef6f2e13dd22"
+      "sha256": "ed2f42714fd0b0f2f6b7f01d1163d1cff2dd3cd7d5543e2b310b33b0a2fc7479"
     },
     {
       "path": "package-lock.json",
@@ -6106,8 +6106,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2534,
-      "sha256": "145362832e4350ea9958538137f5bac5e2e4bdecc3b30c1ea52a7140e3b178db"
+      "bytes": 3349,
+      "sha256": "440b0fc7b9a8fdd2766900923ef5ff0fde607d56f33c966e693f0069c65a0bab"
     },
     {
       "path": "serve.mjs",
@@ -6171,8 +6171,8 @@
     },
     {
       "path": "src/game/game.ts",
-      "bytes": 42041,
-      "sha256": "ac5207b2dbf58738f004e79f56b923401a2d7e3844d8ae9f3c98b2c3e8234053"
+      "bytes": 42311,
+      "sha256": "4adab9c1260ebbd94ae9c3a1ab1ff013469d64d64f9c5721a9284fd9af9ca89a"
     },
     {
       "path": "src/game/heroes.ts",
@@ -6186,8 +6186,8 @@
     },
     {
       "path": "src/game/hyjal.ts",
-      "bytes": 17315,
-      "sha256": "93c87a4c578a3eed996768430ae93ffc241c3224c8b246c51acd1817ded2087c"
+      "bytes": 17341,
+      "sha256": "cced462c7ead4757a5800807a9065650ff8732ce5e50cb3daa2d60f7d01ec656"
     },
     {
       "path": "src/game/intel.ts",
@@ -6236,13 +6236,13 @@
     },
     {
       "path": "src/game/rules/hyjal-powers.ts",
-      "bytes": 2402,
-      "sha256": "7f904bc05f487e9e3666a4138cc1c01b32a672e3545560e3edf5e02d4facac41"
+      "bytes": 2607,
+      "sha256": "9186d0ae301f09fe1d0f51caca1ce5d22b0d03456a45fb04aa331dc31e5057a9"
     },
     {
       "path": "src/game/rules/hyjal.ts",
-      "bytes": 5394,
-      "sha256": "a1d67901586a507cc268567592cacd42bcd49c77bc471cd8232a5b14fa8abd96"
+      "bytes": 6413,
+      "sha256": "869882911acfdd9b5d0955cabd317f54932c23882d770f1abf37780503e059a4"
     },
     {
       "path": "src/game/rules/wsg.ts",
@@ -6251,8 +6251,8 @@
     },
     {
       "path": "src/game/share.ts",
-      "bytes": 2258,
-      "sha256": "42c045b25295d41b9edcd9ca22e45ea1b43ea5f829bace8931d041a4de19bc5a"
+      "bytes": 2312,
+      "sha256": "768c71d6885bb01e397910e61e331c3d3c752dd2bd1f447a45a3f54767d6b82e"
     },
     {
       "path": "src/game/sounds.ts",
@@ -6276,13 +6276,13 @@
     },
     {
       "path": "src/i18n.ts",
-      "bytes": 31165,
-      "sha256": "08432c836e603a4d76fb3d2c6f38c941ffdf8e11bb5098cd1c02486f229976f4"
+      "bytes": 32204,
+      "sha256": "8a9620eab9705c3966c708934e9561bf3f1406645f0af490f82e11b81d525174"
     },
     {
       "path": "src/main.ts",
-      "bytes": 27859,
-      "sha256": "cce62e224bfc1390b9cd2ecb3514fbff9407985a08813bb3997e033eb0c31f93"
+      "bytes": 28570,
+      "sha256": "697959ba22c5c7c461ae0481a908fa99bd21dd16a9546f5835904af14f82c77b"
     },
     {
       "path": "src/ui/github.ts",
@@ -6291,8 +6291,8 @@
     },
     {
       "path": "src/ui/hud.ts",
-      "bytes": 17206,
-      "sha256": "f485153edc6c4204b8b9ec1c560ee5741df2b8c669078e2810004bc24926bff2"
+      "bytes": 17596,
+      "sha256": "8a017876ee8cc600966f1dc2b6786103d1516e0a0a7017d37ec01b643327fbf1"
     },
     {
       "path": "src/ui/nameplates.ts",
@@ -6311,8 +6311,8 @@
     },
     {
       "path": "src/ui/style.css",
-      "bytes": 40297,
-      "sha256": "2939ac6893a279652f5e8516a56037d49938bc9eb681e590e3cdbe14321cd808"
+      "bytes": 40792,
+      "sha256": "5b60cda8b7b9e97627eeffd0b096d8f3457e36d1e65ac86e02220b1552ad860c"
     },
     {
       "path": "src/world/collision.ts",
@@ -6358,6 +6358,11 @@
       "path": "tests/buffs.test.ts",
       "bytes": 1753,
       "sha256": "9545d400a4587baf8162c92868515fe8e49c1beb90417accc90bb57247f6c586"
+    },
+    {
+      "path": "tests/hyjal-endless.test.ts",
+      "bytes": 3785,
+      "sha256": "11c67075f349af0998e44dcab1c61d8d2fedb99d3457d73fea5f488ec34e0485"
     },
     {
       "path": "tests/hyjal-powers.test.ts",

@@ -28,17 +28,23 @@ export const HYJAL_WAVES: readonly (readonly MonsterKind[])[] = [
   [...group('guard',8),...group('flyer',6),...group('fiend',8),...group('brute',3)],
   ['boss',...group('fiend',8),...group('guard',4),...group('flyer',4),...group('brute',2)],
 ]
-export function waveOrders(wave:number,difficulty:DefenseDifficulty):SpawnOrder[] {
-  const base=HYJAL_WAVES[wave-1]
+export type HyjalMode = 'normal' | 'endless'
+export function waveStage(wave:number):number { return ((Math.max(1,wave)-1)%HYJAL_WAVES.length)+1 }
+export function waveOrders(wave:number,difficulty:DefenseDifficulty,endless=false):SpawnOrder[] {
+  if(!Number.isSafeInteger(wave)||wave<1)return []
+  const cycle=endless?Math.floor((wave-1)/HYJAL_WAVES.length):0
+  const countScale=Math.min(2,1+cycle*.15)
+  const stage=endless?waveStage(wave):wave
+  const base=HYJAL_WAVES[stage-1]
   if(!base)return []
   const kinds:MonsterKind[]=[]
   // Keep each wave's composition at every difficulty, and never duplicate the final boss.
-  for(const kind of [...new Set(base)])kinds.push(...group(kind,kind==='boss'?1:Math.max(1,Math.round(base.filter(x=>x===kind).length*DEFENSE_DIFFICULTY[difficulty].count))))
+  for(const kind of [...new Set(base)])kinds.push(...group(kind,kind==='boss'?1:Math.max(1,Math.round(base.filter(x=>x===kind).length*DEFENSE_DIFFICULTY[difficulty].count*countScale))))
   // Interleave classes so flyers and heavy units don't all arrive after the small enemies die.
   const mixed:MonsterKind[]=[]
   while(kinds.length)for(const kind of [...new Set(kinds)]){const i=kinds.indexOf(kind);mixed.push(kinds.splice(i,1)[0])}
-  return mixed.map((kind,i)=>({kind,lane:(i+wave-1)%3,elite:wave>=5&&kind==='guard'&&i%3===0,
-    arrival:kind==='flyer'?'air':kind==='boss'||(wave>=7&&kind==='brute')?'meteor':wave>=3&&kind==='fiend'&&i%2===0?'burrow':'ground'}))
+  return mixed.map((kind,i)=>({kind,lane:(i+wave-1)%3,elite:stage>=5&&kind==='guard'&&i%3===0,
+    arrival:kind==='flyer'?'air':kind==='boss'||(stage>=7&&kind==='brute')?'meteor':stage>=3&&kind==='fiend'&&i%2===0?'burrow':'ground'}))
 }
 export class HyjalMatch {
   readonly maxHp = 1800
@@ -52,8 +58,17 @@ export class HyjalMatch {
   private pending: SpawnOrder[] = []
   private spawnTimer = 0
   readonly events: Array<{type: 'start' | 'clear' | 'won' | 'lost'; wave: number}> = []
-  constructor(readonly difficulty:DefenseDifficulty='normal') {}
-  get tuning() { return DEFENSE_DIFFICULTY[this.difficulty] }
+  constructor(readonly difficulty:DefenseDifficulty='normal',readonly mode:HyjalMode='normal') {}
+  get endless():boolean { return this.mode==='endless' }
+  get cycle():number { return Math.floor((Math.max(1,this.wave)-1)/HYJAL_WAVES.length) }
+  get stage():number { return this.endless?waveStage(this.wave):this.wave }
+  get totalLabel():number|string { return this.endless?'∞':this.total }
+  get tuning() {
+    const base=DEFENSE_DIFFICULTY[this.difficulty]
+    if(!this.endless)return base
+    // Bound simultaneous enemies and per-enemy strength for long-running sessions.
+    return {...base,hp:base.hp*Math.min(4,1+this.cycle*.2),damage:base.damage*Math.min(2,1+this.cycle*.1),speed:base.speed*Math.min(1.2,1+this.cycle*.025)}
+  }
   get remaining(): number { return this.alive + this.pending.length }
   get total(): number { return HYJAL_WAVES.length }
   get terminal(): boolean { return this.state === 'won' || this.state === 'lost' }
@@ -66,7 +81,7 @@ export class HyjalMatch {
       if (this.countdown > 0) return []
       dt = Math.max(0, dt - waiting)
       this.wave++
-      this.pending = waveOrders(this.wave,this.difficulty)
+      this.pending = waveOrders(this.wave,this.difficulty,this.endless)
       this.spawnTimer = 0
       this.state = 'wave'
       this.events.push({type:'start',wave:this.wave})
@@ -76,10 +91,10 @@ export class HyjalMatch {
     while (this.pending.length && this.spawnTimer <= 0) {
       born.push(this.pending.shift()!)
       this.alive++
-      this.spawnTimer += this.tuning.spawn * (this.wave===6?.65:1)
+      this.spawnTimer += this.tuning.spawn * (this.stage===6?.65:1)
     }
     if (!this.remaining) {
-      if (this.wave === this.total) { this.state='won'; this.events.push({type:'won',wave:this.wave}) }
+      if (!this.endless && this.wave === this.total) { this.state='won'; this.events.push({type:'won',wave:this.wave}) }
       else { this.hp=Math.min(this.maxHp,this.hp+this.tuning.clearHeal); this.state='break'; this.countdown=this.tuning.rest; this.repairLeft=300; this.events.push({type:'clear',wave:this.wave}) }
     }
     return born

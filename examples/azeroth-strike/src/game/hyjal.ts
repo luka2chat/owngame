@@ -42,7 +42,7 @@ export class HyjalDefense {
   private readonly ring: THREE.Mesh<THREE.RingGeometry, THREE.MeshBasicMaterial>
   private readonly banner: THREE.Group
   constructor(private readonly game: Game, private readonly root: THREE.Group, private readonly creatures: Props, props: Props) {
-    this.match=new HyjalMatch(game.opts.difficulty)
+    this.match=new HyjalMatch(game.opts.difficulty,game.opts.hyjalMode)
     const cfg=game.cfg.defense!
     const n=game.nav.nearest(cfg.core)
     if(n<0) throw new Error('Hyjal core has no walkable ground')
@@ -147,7 +147,7 @@ export class HyjalDefense {
     } else {this.supplies.clear();this.game.player.powers.clear()}
     if(repair && this.canRepair()) this.match.repair(dt)
     for(const e of this.match.events.splice(0)) {
-      if(e.type==='start')this.game.banner({key:'hyjal.waveStart',params:{n:e.wave,total:this.match.total}},'#ffb171',4)
+      if(e.type==='start')this.game.banner({key:'hyjal.waveStart',params:{n:e.wave,total:this.match.totalLabel}},'#ffb171',4)
       if(e.type==='clear') {
         for(const a of this.game.agents)if(a.team===this.game.player.team && a.alive){ a.hp=a.maxHp;a.refill() }
         this.game.banner({key:'hyjal.clear'},'#91edb1',5)
@@ -198,7 +198,7 @@ export class HyjalDefense {
       } else {
         while(m.cursor<m.path.length-1 && distance(a.pos,m.path[m.cursor])<1.7)m.cursor++
         const point=m.path[m.cursor]??this.core
-        const wish=new THREE.Vector3(point.x-a.pos.x,0,point.z-a.pos.z).normalize().multiplyScalar(def.speed*this.match.tuning.speed*(this.match.wave===6?1.3:1))
+        const wish=new THREE.Vector3(point.x-a.pos.x,0,point.z-a.pos.z).normalize().multiplyScalar(def.speed*this.match.tuning.speed*(this.match.stage===6?1.3:1))
         a.yaw=Math.atan2(wish.x,wish.z)
         a.move(wish,m.stuck>.6,dt)
         m.stuck=a.moveVel.length()<.4?m.stuck+dt:0

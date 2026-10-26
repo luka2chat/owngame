@@ -160,7 +160,8 @@
       "tests/share.test.ts",
       "tests/weapons.test.ts",
       "tests/wsg.test.ts",
-      "tools/pack.d.mts"
+      "tools/pack.d.mts",
+      "tests/hyjal-endless.test.ts"
     ],
     "assetManifest": "public-assets.json",
     "publicReadme": "PUBLIC_README.md",

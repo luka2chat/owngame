@@ -1319,8 +1319,8 @@
     },
     {
       "path": "apps/web/public/locales/en.js",
-      "bytes": 45741,
-      "sha256": "201be03d9e00040717629affc747170d1667256c4999b6e1c430741458dee98d"
+      "bytes": 45911,
+      "sha256": "c482a03dd15767789f9079cace093a54d901d7688666e96cf5794d5ec066bb59"
     },
     {
       "path": "apps/web/public/manifest-en.webmanifest",
@@ -1749,13 +1749,13 @@
     },
     {
       "path": "examples/azeroth-strike/game-outline.json",
-      "bytes": 2352,
-      "sha256": "46547705f5898871b05f69c6132a027e518b795002491a11a5cb33704d288232"
+      "bytes": 2784,
+      "sha256": "ffc40a500365d5a0043989a4bc76237265b997088f6f806c563c15aab90f352b"
     },
     {
       "path": "examples/azeroth-strike/game.json",
-      "bytes": 440,
-      "sha256": "77eb84bef96abd8f222504771204f88768d556bef0ef726a9b5f272af2e5f7ab"
+      "bytes": 455,
+      "sha256": "184570827fc0c4f9a9eec8fcfd7719ac7d0e3141536fdaa8b14bfa079d46a8b6"
     },
     {
       "path": "examples/azeroth-strike/index.html",
@@ -1780,7 +1780,7 @@
     {
       "path": "examples/azeroth-strike/ONLINE_BUILD.json",
       "bytes": 234439,
-      "sha256": "6f4fc052ee8a2b782ccc93d1e772aca365fe709b83a40aa2d800ef6f2e13dd22"
+      "sha256": "ed2f42714fd0b0f2f6b7f01d1163d1cff2dd3cd7d5543e2b310b33b0a2fc7479"
     },
     {
       "path": "examples/azeroth-strike/package-lock.json",
@@ -7834,8 +7834,8 @@
     },
     {
       "path": "examples/azeroth-strike/README.md",
-      "bytes": 2534,
-      "sha256": "145362832e4350ea9958538137f5bac5e2e4bdecc3b30c1ea52a7140e3b178db"
+      "bytes": 3349,
+      "sha256": "440b0fc7b9a8fdd2766900923ef5ff0fde607d56f33c966e693f0069c65a0bab"
     },
     {
       "path": "examples/azeroth-strike/serve.mjs",
@@ -7844,8 +7844,8 @@
     },
     {
       "path": "examples/azeroth-strike/SOURCE_MANIFEST.json",
-      "bytes": 255066,
-      "sha256": "071156cdafde9c82b041294ac5e41d1da160067cddce1ccb4d0cd3df3365516f"
+      "bytes": 255228,
+      "sha256": "6a97f8e95aea425eff11478bae9ac1dfc6a11865a02990d5ce434d390e072e0b"
     },
     {
       "path": "examples/azeroth-strike/src/engine/audio.ts",
@@ -7904,8 +7904,8 @@
     },
     {
       "path": "examples/azeroth-strike/src/game/game.ts",
-      "bytes": 42041,
-      "sha256": "ac5207b2dbf58738f004e79f56b923401a2d7e3844d8ae9f3c98b2c3e8234053"
+      "bytes": 42311,
+      "sha256": "4adab9c1260ebbd94ae9c3a1ab1ff013469d64d64f9c5721a9284fd9af9ca89a"
     },
     {
       "path": "examples/azeroth-strike/src/game/heroes.ts",
@@ -7919,8 +7919,8 @@
     },
     {
       "path": "examples/azeroth-strike/src/game/hyjal.ts",
-      "bytes": 17315,
-      "sha256": "93c87a4c578a3eed996768430ae93ffc241c3224c8b246c51acd1817ded2087c"
+      "bytes": 17341,
+      "sha256": "cced462c7ead4757a5800807a9065650ff8732ce5e50cb3daa2d60f7d01ec656"
     },
     {
       "path": "examples/azeroth-strike/src/game/intel.ts",
@@ -7969,13 +7969,13 @@
     },
     {
       "path": "examples/azeroth-strike/src/game/rules/hyjal-powers.ts",
-      "bytes": 2402,
-      "sha256": "7f904bc05f487e9e3666a4138cc1c01b32a672e3545560e3edf5e02d4facac41"
+      "bytes": 2607,
+      "sha256": "9186d0ae301f09fe1d0f51caca1ce5d22b0d03456a45fb04aa331dc31e5057a9"
     },
     {
       "path": "examples/azeroth-strike/src/game/rules/hyjal.ts",
-      "bytes": 5394,
-      "sha256": "a1d67901586a507cc268567592cacd42bcd49c77bc471cd8232a5b14fa8abd96"
+      "bytes": 6413,
+      "sha256": "869882911acfdd9b5d0955cabd317f54932c23882d770f1abf37780503e059a4"
     },
     {
       "path": "examples/azeroth-strike/src/game/rules/wsg.ts",
@@ -7984,8 +7984,8 @@
     },
     {
       "path": "examples/azeroth-strike/src/game/share.ts",
-      "bytes": 2258,
-      "sha256": "42c045b25295d41b9edcd9ca22e45ea1b43ea5f829bace8931d041a4de19bc5a"
+      "bytes": 2312,
+      "sha256": "768c71d6885bb01e397910e61e331c3d3c752dd2bd1f447a45a3f54767d6b82e"
     },
     {
       "path": "examples/azeroth-strike/src/game/sounds.ts",
@@ -8009,13 +8009,13 @@
     },
     {
       "path": "examples/azeroth-strike/src/i18n.ts",
-      "bytes": 31165,
-      "sha256": "08432c836e603a4d76fb3d2c6f38c941ffdf8e11bb5098cd1c02486f229976f4"
+      "bytes": 32204,
+      "sha256": "8a9620eab9705c3966c708934e9561bf3f1406645f0af490f82e11b81d525174"
     },
     {
       "path": "examples/azeroth-strike/src/main.ts",
-      "bytes": 27859,
-      "sha256": "cce62e224bfc1390b9cd2ecb3514fbff9407985a08813bb3997e033eb0c31f93"
+      "bytes": 28570,
+      "sha256": "697959ba22c5c7c461ae0481a908fa99bd21dd16a9546f5835904af14f82c77b"
     },
     {
       "path": "examples/azeroth-strike/src/ui/github.ts",
@@ -8024,8 +8024,8 @@
     },
     {
       "path": "examples/azeroth-strike/src/ui/hud.ts",
-      "bytes": 17206,
-      "sha256": "f485153edc6c4204b8b9ec1c560ee5741df2b8c669078e2810004bc24926bff2"
+      "bytes": 17596,
+      "sha256": "8a017876ee8cc600966f1dc2b6786103d1516e0a0a7017d37ec01b643327fbf1"
     },
     {
       "path": "examples/azeroth-strike/src/ui/nameplates.ts",
@@ -8044,8 +8044,8 @@
     },
     {
       "path": "examples/azeroth-strike/src/ui/style.css",
-      "bytes": 40297,
-      "sha256": "2939ac6893a279652f5e8516a56037d49938bc9eb681e590e3cdbe14321cd808"
+      "bytes": 40792,
+      "sha256": "5b60cda8b7b9e97627eeffd0b096d8f3457e36d1e65ac86e02220b1552ad860c"
     },
     {
       "path": "examples/azeroth-strike/src/world/collision.ts",
@@ -8091,6 +8091,11 @@
       "path": "examples/azeroth-strike/tests/buffs.test.ts",
       "bytes": 1753,
       "sha256": "9545d400a4587baf8162c92868515fe8e49c1beb90417accc90bb57247f6c586"
+    },
+    {
+      "path": "examples/azeroth-strike/tests/hyjal-endless.test.ts",
+      "bytes": 3785,
+      "sha256": "11c67075f349af0998e44dcab1c61d8d2fedb99d3457d73fea5f488ec34e0485"
     },
     {
       "path": "examples/azeroth-strike/tests/hyjal-powers.test.ts",
@@ -16810,7 +16815,7 @@
     {
       "path": "games.json",
       "bytes": 9150,
-      "sha256": "97ac17aceedcd8225640d9670b7963cf954314291f4afc169129489eedc8b85e"
+      "sha256": "a3e797c60cd4f17471dfe742524ba2869d566e59717e3412a36ef2af824bd4bc"
     },
     {
       "path": "LICENSE",
@@ -16939,8 +16944,8 @@
     },
     {
       "path": "scripts/azeroth-strike/catalog.json",
-      "bytes": 820,
-      "sha256": "5d6deb241ce244ab4480509f497642c20971f6b1cf2f2f87175d6db381d4e590"
+      "bytes": 965,
+      "sha256": "6ea6eb8e85772133cf0f58cc9b44b77e41726a901939a2651019850541c854d2"
     },
     {
       "path": "scripts/bamboo-rally/catalog.json",
@@ -16994,8 +16999,8 @@
     },
     {
       "path": "scripts/games/projects.json",
-      "bytes": 5046,
-      "sha256": "4c1ca05205b563e106933f858882166d9f5ef2afaeb610e2bb119921a5537c22"
+      "bytes": 5083,
+      "sha256": "794c3c6237df3d41a13400319c69dcc68426c532538c8a5fb17719fceac12690"
     },
     {
       "path": "scripts/games/rebuild-report.mjs",
@@ -17019,8 +17024,8 @@
     },
     {
       "path": "scripts/games/smoke.mjs",
-      "bytes": 7137,
-      "sha256": "ef5b5c5dd7a06e47d1d3e858c58f2b3da6e17cb7834adc92c63c902cea8cfc87"
+      "bytes": 8687,
+      "sha256": "cf014832cbe2dc6a4bca3fa4e0c81709c5375c14dbae2555dc487c479bee07a1"
     },
     {
       "path": "scripts/games/source-policy.mjs",
@@ -17215,7 +17220,7 @@
     {
       "path": "scripts/web/blueprint-scenes.json",
       "bytes": 34622,
-      "sha256": "9db7959cdd56028f65e7bb9701140caa300b880517fd14e7815e2dcc24b1720c"
+      "sha256": "c7c0ae95fd1126edf53ae01933a9f4dec833d7fa2f7d3c280834782a1a1aebc5"
     },
     {
       "path": "scripts/web/blueprint-scenes.mjs",
@@ -17224,8 +17229,8 @@
     },
     {
       "path": "scripts/web/blueprint-snapshots.json",
-      "bytes": 250610,
-      "sha256": "6a939b750ce42c8701b4dfad4f8df4fe201214539a972ae5106b62ff6aa089f0"
+      "bytes": 251042,
+      "sha256": "e4d51e1072cadcd75d09ebbfb32143c95b7e7477a2caa32a7330e1d4904cbff8"
     },
     {
       "path": "scripts/web/blueprints.mjs",

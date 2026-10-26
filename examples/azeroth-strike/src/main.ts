@@ -66,9 +66,10 @@ function saveSettings(): void {
 }
 applySettings()
 
-type Choice = { map: 'wsg' | 'ab' | 'hyjal'; team: Team; difficulty: Difficulty; teamSize: number; view: View; lang: Lang }
+type Choice = { hyjalMode: 'normal' | 'endless'; map: 'wsg' | 'ab' | 'hyjal'; team: Team; difficulty: Difficulty; teamSize: number; view: View; lang: Lang }
 const choice: Choice = {
-  map: (params.get('map') as 'wsg' | 'ab' | 'hyjal') ?? 'wsg',
+  hyjalMode: params.get('mode')==='endless'||params.get('map')==='hyjal-endless'?'endless':'normal',
+  map: (params.get('map')==='hyjal-endless'?'hyjal':params.get('map') as 'wsg' | 'ab' | 'hyjal') ?? 'wsg',
   team: (params.get('team') as Team) ?? 'alliance',
   difficulty: (params.get('difficulty') as Difficulty) ?? 'normal',
   teamSize: Number(params.get('size') ?? 0),
@@ -212,7 +213,7 @@ function showMenu(): void {
     return `<button class="crest ${team} ${on ? 'on' : ''}" data-k="team" data-v="${team}" aria-pressed="${on}">
       <i class="crest-art"></i><span class="crest-name">${name}</span><small>${race ?? ''}</small></button>`
   }
-  const mode = (map: 'wsg' | 'ab' | 'hyjal') => `
+  const mode = (map: 'wsg' | 'ab' | 'hyjal' | 'hyjal-endless') => `
       <button class="mode ${map}" data-map="${map}">
         <span class="mode-kicker">${t(`menu.${map}Size`)}</span><b>${t(`menu.${map}Name`)}</b><small>${t(`menu.${map}Sub`)}</small>
         <span class="mode-go">${t('menu.start')}</span>
@@ -229,7 +230,7 @@ function showMenu(): void {
       </section>
       <section class="modes" aria-label="${t('menu.map')}">
         <h3>${t('menu.tagline')}</h3>
-        <div class="tickets">${mode('wsg')}${mode('ab')}${mode('hyjal')}</div>
+        <div class="tickets">${mode('hyjal-endless')}${mode('hyjal')}${mode('wsg')}${mode('ab')}</div>
       </section>
     </div>
     <footer class="menu-footer">
@@ -288,7 +289,8 @@ function showMenu(): void {
   overlay.querySelectorAll<HTMLButtonElement>('[data-map]').forEach(b => {
     b.addEventListener('mouseenter', () => paintArt(b.dataset.map!))
     b.addEventListener('click', () => {
-      choice.map = b.dataset.map as 'wsg' | 'ab' | 'hyjal'
+      choice.hyjalMode = b.dataset.map==='hyjal-endless'?'endless':'normal'
+      choice.map = (b.dataset.map==='hyjal-endless'?'hyjal':b.dataset.map) as Choice['map']
       void start()
     })
   })
@@ -330,8 +332,8 @@ function showLoading(): void {
   overlay.innerHTML = `
     <div class="art" style="background-image:url(${loadingArt(choice.map)})"></div>
     <div class="loadbox">
-      <h2>${t(`map.${choice.map}`)}</h2>
-      <p class="mode">${t(choice.map === 'hyjal' ? 'load.mode.defense' : choice.map === 'wsg' ? 'load.mode.ctf' : 'load.mode.dom')}</p>
+      <h2>${t(`map.${choice.map}`)}${choice.map==='hyjal'&&choice.hyjalMode==='endless'?` · ${t('hyjal.unlimitedFire')}`:''}</h2>
+      <p class="mode">${t(choice.map === 'hyjal' ? (choice.hyjalMode==='endless'?'load.mode.endless':'load.mode.defense') : choice.map === 'wsg' ? 'load.mode.ctf' : 'load.mode.dom')}</p>
       <p class="tip"><b>${t('load.tip')}</b><span></span></p>
       <div class="wowbar"><div class="track"><div class="fill"><i class="spark"></i></div></div><div class="frame"></div><span class="pct"></span></div>
       <p class="label"></p>
@@ -342,7 +344,7 @@ function showLoading(): void {
 
 function renderTip(): void {
   const el = overlay.querySelector('.loadbox .tip span')
-  if (el) el.textContent = choice.map === 'hyjal' ? t('hyjal.intro') : t(`tip.${tip}` as Key)
+  if (el) el.textContent = choice.map === 'hyjal' ? t(choice.hyjalMode==='endless'?'hyjal.endlessIntro':'hyjal.intro') : t(`tip.${tip}` as Key)
 }
 
 function renderLoad(): void {
@@ -379,7 +381,7 @@ async function start(): Promise<void> {
     game = await Game.create(
       renderer,
       input,
-      { map: choice.map === 'hyjal' ? `hyjal-${choice.team}` : choice.map, team: choice.team, difficulty: choice.difficulty, teamSize: choice.map === 'hyjal' ? undefined : choice.teamSize || undefined, autopilot: params.has('autopilot'), view: choice.view, playerHp: settings.playerHp },
+      { hyjalMode: choice.hyjalMode, map: choice.map === 'hyjal' ? `hyjal-${choice.team}` : choice.map, team: choice.team, difficulty: choice.difficulty, teamSize: choice.map === 'hyjal' ? undefined : choice.teamSize || undefined, autopilot: params.has('autopilot'), view: choice.view, playerHp: settings.playerHp },
       state => {
         loadState = state
         loadFrame ||= requestAnimationFrame(renderLoad)
@@ -406,7 +408,7 @@ function showClick(): void {
   screen = 'click'
   overlay.style.display = ''
   overlay.className = 'overlay click'
-  overlay.innerHTML = `<p>${t('click.start')}</p><small>${t('click.who', { map: choice.map === 'hyjal' ? `hyjal-${choice.team}` : choice.map, team: choice.team })}</small>`
+  overlay.innerHTML = `<p>${t('click.start')}</p><small>${t('click.who', { hyjalMode: choice.hyjalMode, map: choice.map === 'hyjal' ? `hyjal-${choice.team}` : choice.map, team: choice.team })}</small>`
 }
 
 function setPaused(paused: boolean): void {
@@ -510,14 +512,14 @@ function showEnd(g: Game): void {
   const title = t(r.winner === null ? 'end.draw' : won ? 'end.win' : 'end.lose')
   const color = g.defense ? (won ? '#b9efb7' : '#ff7662') : r.winner ? teamColor(r.winner) : '#ddd'
   const score = g.wsg ? { a: g.wsg.score.alliance, h: g.wsg.score.horde } : { a: g.ab?.resources.alliance ?? 0, h: g.ab?.resources.horde ?? 0 }
-  const scoreText = g.defense ? t('hyjal.summary', {n:g.defense.match.wave,total:g.defense.match.total,kills:g.defense.match.kills,hp:Math.ceil(g.defense.match.hp),max:g.defense.match.maxHp}) : t('end.score', score)
+  const scoreText = g.defense ? t('hyjal.summary', {n:g.defense.match.wave,total:g.defense.match.totalLabel,kills:g.defense.match.kills,hp:Math.ceil(g.defense.match.hp),max:g.defense.match.maxHp}) : t('end.score', score)
   const post = sharePost(g)
   const metrics = (['kills', 'deaths', 'damage'] as const).map(key => `<div><strong>${Math.round(g.player.stats[key])}</strong><span>${t(`board.${key}`)}</span></div>`).join('')
   overlay.innerHTML = `<div class="poster-panel sheet result-sheet">
     <h2 class="sheet-title">${t('end.title')}</h2>
     <div class="result-body">
       <header class="result-heading">
-        <div><p class="result-map">${t(`map.${g.opts.map}`)}</p><h1 style="color:${color}">${title}</h1></div>
+        <div><p class="result-map">${t(`map.${g.opts.map}`)}${g.defense?.match.endless?` · ${t('hyjal.unlimitedFire')}`:''}</p><h1 style="color:${color}">${title}</h1></div>
         <div class="result-summary"><p>${tm(r.reason)}</p><strong>${scoreText}</strong></div>
       </header>
       <div class="result-columns">
@@ -551,7 +553,7 @@ function showEnd(g: Game): void {
   const fileName = `azeroth-strike-${g.opts.map}.png`
   void drawShareCard({
     art: matchFrames.get(g) ?? loadingArt(g.opts.map),
-    title: `${t('title')} · ${t(`map.${g.opts.map}`)}`,
+    title: `${t('title')} · ${t(`map.${g.opts.map}`)}${g.defense?.match.endless?` · ${t('hyjal.unlimitedFire')}`:''}`,
     result: title, reason: tm(r.reason), score: scoreText, stats: post.stats,
     resultColor: color, url: GAME_URL, linkLabel: t(GAME_PUBLISHED ? 'share.live' : 'share.soon'),
   }).then(canvasBlob).then(blob => {

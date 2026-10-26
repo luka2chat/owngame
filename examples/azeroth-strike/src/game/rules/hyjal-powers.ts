@@ -8,6 +8,9 @@ export const POWERS = {
 export type PowerKind = keyof typeof POWERS
 export const POWER_KINDS = Object.keys(POWERS) as PowerKind[]
 export class BattlePowers {
+  /** Match rule, separate from timed pickups; survives death and respawn. */
+  unlimitedFire = false
+  get fireInterval():number { return this.unlimitedFire?.5:1 }
   readonly left: Record<PowerKind, number> = { ammo:0, fury:0, ward:0, sprint:0 }
   grant(kind:PowerKind): void { this.left[kind] = POWERS[kind].seconds }
   update(dt:number): void {
@@ -15,10 +18,10 @@ export class BattlePowers {
     for (const kind of POWER_KINDS) this.left[kind]=Math.max(0,this.left[kind]-dt)
   }
   clear(): void { for (const kind of POWER_KINDS) this.left[kind]=0 }
-  get damage():number { return this.left.fury>0?3:1 }
+  get damage():number { return this.unlimitedFire||this.left.fury>0?3:1 }
   get incoming():number { return this.left.ward>0?.35:1 }
   get speed():number { return this.left.sprint>0?1.65:1 }
-  get infiniteAmmo():boolean { return this.left.ammo>0 }
+  get infiniteAmmo():boolean { return this.unlimitedFire||this.left.ammo>0 }
 }
 export type PowerDrop = { id:number; kind:PowerKind; slot:number; expires:number }
 /** One drop at a time, rotating both power and site; unclaimed drops expire instead of piling up. */

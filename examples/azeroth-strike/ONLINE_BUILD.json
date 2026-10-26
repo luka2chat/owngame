@@ -1,6 +1,6 @@
 {
   "id": "azeroth-strike",
-  "build_sha256": "7bd323b8638a7a50e5da009a6140bb807964cc1e1d7a1ca2e6a893537e5abe8d",
+  "build_sha256": "4cc2d639a383b8cf4c8b5de620e0adc6aeb31afe111c7a625e7d6ddba029ecdc",
   "entrypoint": "index.html",
   "files": [
     {
@@ -369,14 +369,14 @@
       "sha256": "d1852669926415748045a74592f6477e94620349bb48d2d41e89ea07579bcaf6"
     },
     {
-      "bytes": 32202,
-      "path": "assets/index-Bih_sQk5.css",
-      "sha256": "a6c3526396102a714d4092cdcdbf72806bd8832f2ce78dfb782c2804ac1e3feb"
+      "bytes": 32657,
+      "path": "assets/index-DCfafLSi.css",
+      "sha256": "4794ff47f834a561917dc245e6ad563f8323aa0fa6abfb2b69469f74b7b9fb91"
     },
     {
-      "bytes": 5177366,
-      "path": "assets/index-BsGPWed0.js",
-      "sha256": "780a49e551bb5f98d1dc5c899d08121ec401657205ff61f76d4ff54b03aa8618"
+      "bytes": 5180265,
+      "path": "assets/index-Dr7zalff.js",
+      "sha256": "8a0df85649cad5f4348a6fb6bf59634fc8112ef57505c9cc49ff9156458916b4"
     },
     {
       "bytes": 458028,
@@ -6051,7 +6051,7 @@
     {
       "bytes": 474,
       "path": "index.html",
-      "sha256": "48e2b7879e3952289bcf928cd69fef84d26f5c0f6b2af27c889eb02fb1812856"
+      "sha256": "765aa4780f6cca49e23005ca8e290e5fd7980bf48156bdc7d92a9a034c2f2dd9"
     }
   ]
 }

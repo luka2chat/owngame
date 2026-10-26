@@ -3,8 +3,8 @@
   "id": "azeroth-strike",
   "title": "艾泽拉斯反恐精英",
   "kind": "vite",
-  "online_build_sha256": "7bd323b8638a7a50e5da009a6140bb807964cc1e1d7a1ca2e6a893537e5abe8d",
+  "online_build_sha256": "4cc2d639a383b8cf4c8b5de620e0adc6aeb31afe111c7a625e7d6ddba029ecdc",
   "original_source_sha256": null,
   "license": "MIT (code only); proprietary Blizzard assets excluded",
-  "description": "选择联盟或部落，在战歌峡谷夺旗、阿拉希盆地占点，或迎战海加尔九波入侵。"
+  "description": "选择联盟或部落，挑战海加尔无限火力与九波守卫，或在战歌峡谷夺旗、阿拉希盆地占点。"
 }

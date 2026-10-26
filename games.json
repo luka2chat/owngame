@@ -7,9 +7,9 @@
       "title": "艾泽拉斯反恐精英",
       "kind": "vite",
       "path": "examples/azeroth-strike",
-      "online_build_sha256": "7bd323b8638a7a50e5da009a6140bb807964cc1e1d7a1ca2e6a893537e5abe8d",
-      "input_sha256": "a296889db06f91399e8eece661515498baadddd3e3118f4714ff68b496ae09c0",
-      "source_manifest_sha256": "071156cdafde9c82b041294ac5e41d1da160067cddce1ccb4d0cd3df3365516f",
+      "online_build_sha256": "4cc2d639a383b8cf4c8b5de620e0adc6aeb31afe111c7a625e7d6ddba029ecdc",
+      "input_sha256": "9abc453ba02243bb1630406a1d2312c842b3dcc587a52eea5222a513bcca8058",
+      "source_manifest_sha256": "6a97f8e95aea425eff11478bae9ac1dfc6a11865a02990d5ce434d390e072e0b",
       "license": "MIT (code only); proprietary Blizzard assets excluded"
     },
     {

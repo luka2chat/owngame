@@ -16,6 +16,7 @@ import { Fx } from './fx'
 import { TeamIntel } from './intel'
 import { MAPS, type MapConfig, type MapKey, navSeeds } from './maps'
 import { Props } from './props'
+import type { HyjalMode } from './rules/hyjal'
 import { HyjalDefense } from './hyjal'
 import { AB, AbMatch } from './rules/ab'
 import { NodeFx } from './nodefx'
@@ -30,7 +31,7 @@ import { LOADOUT, type WeaponId } from './weapons'
 
 export type Difficulty = keyof typeof SKILLS
 export type View = 'first' | 'third'
-export type GameOptions = { map: MapKey; team: Team; difficulty: Difficulty; teamSize?: number; autopilot?: boolean; view?: View; playerHp?: number }
+export type GameOptions = { hyjalMode?: HyjalMode; map: MapKey; team: Team; difficulty: Difficulty; teamSize?: number; autopilot?: boolean; view?: View; playerHp?: number }
 
 export const SPIRIT_HEALER_WAVE = 5
 const PREP_TIME = 5
@@ -245,6 +246,7 @@ export class Game implements BotWorld {
         const role: Role = i % 10 < 5 ? 'attack' : i % 10 < 7 ? 'defend' : 'mid'
         if (isPlayer) {
           this.player = agent
+          agent.powers.unlimitedFire = !!this.cfg.defense && this.opts.hyjalMode === 'endless'
           if (this.opts.autopilot) this.playerBot = new Bot(agent, 'attack', skill)
         } else this.bots.set(agent.id, new Bot(agent, role, skill))
         this.spawnAt(agent, this.cfg.spawn[team], 10)
@@ -276,7 +278,7 @@ export class Game implements BotWorld {
     }
     const p = this.player
     this.camLook.yaw = p.yaw
-    this.banner({ key: this.cfg.defense ? 'hyjal.intro' : this.cfg.mode === 'ctf' ? 'banner.intro.ctf' : 'banner.intro.dom', params: { map: this.opts.map } }, '#ffd76a', 6)
+    this.banner({ key: this.cfg.defense ? (this.opts.hyjalMode==='endless'?'hyjal.endlessIntro':'hyjal.intro') : this.cfg.mode === 'ctf' ? 'banner.intro.ctf' : 'banner.intro.dom', params: { map: this.opts.map } }, '#ffd76a', 6)
     this.sounds.begin()
   }
 
@@ -516,7 +518,7 @@ export class Game implements BotWorld {
     const firing = input.held('fire')
     const heavy = melee && input.held('ads') && !firing
     if (!firing && !heavy) p.triggerReady = true
-    const triggerOk = w.mode === 'auto' || p.triggerReady
+    const triggerOk = w.mode === 'auto' || p.powers.unlimitedFire || p.triggerReady
     if ((firing || heavy) && triggerOk && p.canFire()) this.fire(p, heavy)
     else if (firing && !melee && p.ammo === 0 && p.switchTimer <= 0 && !p.reloading) {
       if (p.triggerReady) this.sounds.dryFire()
@@ -575,7 +577,7 @@ export class Game implements BotWorld {
 
     a.consumeRound()
     // Bots cannot be held to trigger discipline, so semi-automatics get a human tapping cadence.
-    a.cooldown = w.interval * (!a.isPlayer && w.mode === 'semi' ? 2 : 1)
+    a.cooldown = w.interval * a.powers.fireInterval * (!a.isPlayer && w.mode === 'semi' ? 2 : 1)
     const center = spreadDir(aim, a.spread())
     a.bloom = Math.min(w.bloomMax, a.bloom + w.bloomPerShot)
     if (isMe) {

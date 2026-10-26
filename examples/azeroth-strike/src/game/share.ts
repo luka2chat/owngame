@@ -41,7 +41,7 @@ export function sharePost(game: Game): { text: string; url: string; stats: strin
   if (game.defense) {
     const m = game.defense.match
     const stats = t('hyjal.stats', {kills:player.stats.kills,deaths:player.stats.deaths,damage:Math.round(player.stats.damage)})
-    const text = `${t('title')} · ${t(`map.${game.opts.map}`)}\n${title} · ${t('hyjal.summary',{n:m.wave,total:m.total,kills:m.kills,hp:Math.ceil(m.hp),max:m.maxHp})}\n${stats}\n${t(GAME_PUBLISHED ? 'share.playLink' : 'share.soonLink')} ${GAME_URL}`
+    const text = `${t('title')} · ${t(`map.${game.opts.map}`)}${m.endless?` · ${t('hyjal.unlimitedFire')}`:''}\n${title} · ${t('hyjal.summary',{n:m.wave,total:m.totalLabel,kills:m.kills,hp:Math.ceil(m.hp),max:m.maxHp})}\n${stats}\n${t(GAME_PUBLISHED ? 'share.playLink' : 'share.soonLink')} ${GAME_URL}`
     return {text, url:shareUrl(text), stats}
   }
   const text = shareText({ map: game.opts.map, result: title, reason: tm(result.reason), a: score.a, h: score.h, stats })

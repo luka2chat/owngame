@@ -42,7 +42,7 @@ try {
     },null,{timeout:45000});
     if(game.id==='tidal-reclaim')await page.getByRole('button',{name:'开始回收行动'}).waitFor({timeout:90000});
     if(game.id==='azeroth-strike') {
-      await page.getByRole('button',{name:/海加尔之战/}).click();
+      await page.locator('button.mode.hyjal').click();
       await page.locator('.overlay.click').waitFor({timeout:120000});
       await page.locator('#game').click();
       await page.waitForFunction(()=>!!document.pointerLockElement);
@@ -56,6 +56,23 @@ try {
       try{await page.waitForFunction(z=>Math.abs(window.__wow.game.player.pos.z-z)>.1,before.z);}finally{await page.keyboard.up('w');}
       await page.mouse.down();
       try{await page.waitForFunction(ammo=>window.__wow.game.player.ammo<ammo,before.ammo);}finally{await page.mouse.up();}
+      await page.keyboard.press('p');
+      await page.getByRole('button',{name:'继续游戏',exact:true}).waitFor();
+      await page.getByRole('button',{name:'返回菜单',exact:true}).click();
+      const modes=await page.locator('button.mode').evaluateAll(nodes=>nodes.map(node=>node.dataset.map));
+      if(JSON.stringify(modes)!==JSON.stringify(['hyjal-endless','hyjal','wsg','ab']))throw Error('Incorrect battleground order');
+      await page.locator('button.mode.hyjal-endless').click();
+      await page.locator('.overlay.click').waitFor({timeout:120000});
+      await page.locator('#game').click();
+      await page.waitForFunction(()=>!!document.pointerLockElement && window.__wow.game.phase==='live',null,{timeout:60000});
+      await page.keyboard.press('2');
+      await page.waitForFunction(()=>window.__wow.game.player.weaponId==='sniper' && window.__wow.game.player.switchTimer<=0);
+      const unlimitedAmmo=await page.evaluate(()=>window.__wow.game.player.ammo);
+      await page.mouse.down();
+      try{await page.waitForFunction(()=>window.__wow.game.player.cooldown>0);}finally{await page.mouse.up();}
+      await page.keyboard.press('r');
+      const unlimited=await page.evaluate(()=>({ammo:window.__wow.game.player.ammo,reloading:window.__wow.game.player.reloading,mode:window.__wow.game.defense.match.mode,total:document.querySelector('.hyjal-top').textContent}));
+      if(unlimited.ammo!==unlimitedAmmo || unlimited.reloading || unlimited.mode!=='endless' || !unlimited.total.includes('∞'))throw Error('Unlimited fire mode failed');
       await page.keyboard.press('p');
       await page.getByRole('button',{name:'继续游戏',exact:true}).waitFor();
     }

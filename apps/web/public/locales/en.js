@@ -499,9 +499,9 @@ export const messages = {
 export const games = {
   "azeroth-strike": {
     title: "Azeroth Strike",
-    tag: "Three battlegrounds · Rifles & camp defense",
-    description: "Choose Alliance or Horde. Capture flags in Warsong Gulch, hold Arathi Basin, or defend Mount Hyjal against nine waves.",
-    instructions: "PC keyboard and mouse. WASD move, left click shoot, right click scope, 1–4/Q weapons, R reload, wheel scope zoom, F mount, V camera, E interact or repair, P/Esc pause. Win three flags, 1500 resources, or nine defense waves. Unofficial non-profit learning project; Warcraft assets belong to their rights holders.",
+    tag: "Unlimited Fire · Four battleground modes",
+    description: "Choose Alliance or Horde. Play endless Unlimited Fire or nine-wave defense at Mount Hyjal, capture flags in Warsong Gulch, or hold Arathi Basin.",
+    instructions: "PC keyboard and mouse. WASD move, left click shoot, right click scope, 1–4/Q weapons, R reload, wheel scope zoom, F mount, V camera, E interact or repair, P/Esc pause. Win three flags, 1500 resources, or nine normal defense waves. Unlimited Fire grants infinite ammo, no reloads, 2× firearm rate and 3× damage; a new round starts every nine waves until the core falls. Unofficial non-profit learning project; Warcraft assets belong to their rights holders.",
   },
   "tidal-reclaim": {
     title: "Tidal Reclaim",

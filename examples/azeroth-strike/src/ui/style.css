@@ -337,7 +337,7 @@ body {
 .tickets {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 16px;
 }
 .overlay.menu.poster button.mode {
@@ -389,8 +389,15 @@ body {
   letter-spacing: 0.14em;
   color: #c9a45c;
 }
+.overlay.menu.poster button.mode.hyjal::before,
+.overlay.menu.poster button.mode.hyjal-endless::before {
+  background-image: url(/assets/ui/loading-hyjal.webp);
+}
+.overlay.menu.poster button.mode.hyjal-endless {
+  border-image: var(--iron-lit) 1;
+}
 .overlay.menu.poster button.mode b {
-  font: 400 30px/1.1 'WoW Morpheus', 'WoW Kai', serif;
+  font: 400 clamp(21px, 2.3vw, 30px)/1.3 'WoW Morpheus', 'WoW Kai', serif;
   letter-spacing: 0.05em;
   color: #fbe7b5;
   text-shadow: 0 2px 0 #000, 0 0 18px rgba(0, 0, 0, 0.85);
@@ -1600,3 +1607,7 @@ tr.dead {
 .power-active b { font-size:24px; min-width:32px; }.power-active span { font-size:13px; flex:1; }.power-active strong {font-size:17px;}
 .power-guide { background:#100e09c9; padding:10px 12px; color:#f1dba9; font-size:12px; border-left:2px solid #b4a06b; }.power-guide small {display:block;font-size:10px;line-height:1.6;color:#b9af99;margin-top:4px;}
 @media(max-height:620px) { .hyjal-powers {top:30%;width:220px;} .power-active {padding:4px 8px;} }
+
+.power-active.permanent { --power:#f1dba9; display:grid; grid-template-columns:32px 1fr; gap:3px 10px; }
+.power-active.permanent b { grid-row:span 2; }
+.power-active.permanent strong { font-size:12px; }
