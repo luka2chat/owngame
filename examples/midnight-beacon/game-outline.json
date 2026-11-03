@@ -1,0 +1,107 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 4,
+  "project": {
+    "id": "204b6698-0426-4699-b845-a7585091e482",
+    "title": "午夜灯塔",
+    "tagline": "在海雾中守住最后一盏灯。",
+    "experience": "单手移动，自动攻击，拾取光晶并选择成长路线，在三分钟压力曲线中生存至黎明。",
+    "scope": "Godot 4.4.1，手机竖屏，单指触控，ImageGen 像素风，合成音效。",
+    "playable": "见 README.md 的 Godot Web 导出与 owngame USB 同步。",
+    "cards": [
+      {
+        "id": "1eaf92c4-aa78-4365-82f2-bbbf4afdbb9c",
+        "type": "rule",
+        "section": "rules",
+        "title": "生存与战斗",
+        "body": "拖动移动，灯火自动索敌。躲开海雾生物，在180秒前保持生命。45、90和135秒出现精英。",
+        "status": "done",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "生命归零进入失败界面，点击重试开始全新一局。"
+        },
+        "image": ""
+      },
+      {
+        "id": "f6f32a4c-a976-4b10-adb7-1616eb434b9d",
+        "type": "rule",
+        "section": "rules",
+        "title": "光晶与成长",
+        "body": "光晶同时提供经验和闪光能量。能量满时释放一圈近身伤害。升级时暂停并选择一项强化。",
+        "status": "done",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "经验达到阈值时暂停战斗，选择强化后恢复。"
+        },
+        "image": ""
+      },
+      {
+        "id": "f021f46e-de05-4cee-8cba-135f01912139",
+        "type": "asset",
+        "section": "assets",
+        "title": "像素角色图集",
+        "body": "使用内置 imagegen 生成的原创守灯人、海雾怪物、光晶和灯火图集，见 assets/sprites.png。",
+        "status": "done",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "assets/sprites.png",
+          "spec": "3×2透明像素图集",
+          "source": "OpenAI ImageGen",
+          "license": "见 THIRD_PARTY_NOTICES.md"
+        },
+        "image": ""
+      },
+      {
+        "id": "16bf8a77-d7ce-4430-9555-633193347302",
+        "type": "note",
+        "section": "overview",
+        "title": "验证状态",
+        "body": "Godot 4.4.1 导入和 headless 冒烟通过。单线程 Web 导出经 owngame web.inspect 与 device sync 确认同一指纹 a5765a00c4fa。Moto g84 5G 上使用 WebGL 2，触摸开始、移动、击杀、升到3级并触发闪光。系统无默认网络时结束 App 进程，从最近玩过冷启至标题。Android 检测到活跃音频流，设备媒体音量静音。iPhone、实听和人类手感评价待验证。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "5b6fca8c-be04-42a1-bb3a-a81c42d0ac9f",
+        "type": "asset",
+        "section": "assets",
+        "title": "灯塔甲板",
+        "body": "",
+        "status": "done",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "assets/arena.png",
+          "spec": "9:16俯视深色像素风地面",
+          "source": "OpenAI ImageGen",
+          "license": "见 THIRD_PARTY_NOTICES.md"
+        },
+        "image": ""
+      },
+      {
+        "id": "09b14fd4-a2ff-4d00-8f86-4c8621c64bdf",
+        "type": "note",
+        "section": "overview",
+        "title": "战斗反馈",
+        "body": "角色与怪物步态，受击和击杀粒子，灯火尾迹，蓄能扩散环及精英预警。合成音效与独立静音开关。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}
