@@ -5,6 +5,7 @@ func _initialize() -> void:
 
 func run() -> void:
  var game = load("res://main.tscn").instantiate()
+ game.persist_enabled = false
  root.add_child(game)
  assert(game.art != null and game.arena != null, "both pixel art assets should be imported")
  var tap := InputEventScreenTouch.new()
@@ -49,8 +50,50 @@ func run() -> void:
  game.start_game()
  game.elapsed = 179.99
  game._process(0.05)
- assert(game.state == "win")
- print("SMOKE PASS: touch, drag, audio playback, combat, XP, flare, upgrade, restart, loss and win")
+ assert(game.state == "play", "survival must continue past the old 180-second ending")
+ game.enemies.clear()
+ game.hostile.clear()
+ game.loot.clear()
+ game.stage_time = 44.99
+ game.boss_spawned = false
+ game._process(0.05)
+ assert(game.boss_spawned)
+ var bosses = game.enemies.filter(func(e): return e.boss)
+ assert(bosses.size() == 1)
+ bosses[0].hp = 0
+ game._process(0.01)
+ var chests = game.loot.filter(func(item): return item.kind == 4)
+ assert(chests.size() == 1)
+ game.hero = chests[0].pos
+ game._process(0.01)
+ assert(game.state == "upgrade" and game.stage_reward)
+ game.handle_press(Vector2(90, 245), 1)
+ assert(game.stage == 2 and game.state == "play" and not game.boss_spawned)
+ assert(game.ranks.size() == 1)
+ assert(game.valid_checkpoint(game.saved_run))
+ var saved_power = game.damage
+ game.state = "title"
+ game.handle_press(Vector2(180, 490), 1)
+ assert(game.stage == 2 and game.damage == saved_power and game.stage_time == 0)
+ assert(not game.valid_checkpoint({"stage":2,"ranks":{}}))
+ var corrupt = game.saved_run.duplicate(true)
+ corrupt["damage"] = "bad"
+ assert(not game.valid_checkpoint(corrupt))
+ for gift in game.GIFTS:
+  game.apply_upgrade(gift)
+ assert(game.regen > 0 and game.armor > 0 and game.max_hp > 100)
+ for i in range(20): game.apply_upgrade("LANTERNS")
+ assert(game.damage > 18 and game.extra == 5)
+ game.stage = 99
+ game.advance_stage()
+ assert(game.stage == 100)
+ game.spawn_enemy(true)
+ assert(game.enemies[0].hp > 1000 and game.enemies[0].speed < 100)
+ for i in range(100): game.spawn_enemy()
+ assert(game.enemies.size() <= game.MAX_ENEMIES)
+ for i in range(150): game.drop_crystal(Vector2.ZERO, 1)
+ assert(game.gems.size() == 80)
+ print("SMOKE PASS: touch, drag, audio playback, combat, XP, flare, upgrade, restart, loss, endless stages, boss rewards, relic stacking and population limits")
  game.sound.toggle_mute()
  await create_timer(0.25).timeout
  game.queue_free()

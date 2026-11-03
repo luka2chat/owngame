@@ -1,12 +1,12 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 6,
+  "revision": 7,
   "project": {
     "id": "204b6698-0426-4699-b845-a7585091e482",
     "title": "午夜灯塔",
     "tagline": "在海雾中守住最后一盏灯。",
-    "experience": "单手移动，自动攻击，拾取光晶并选择成长路线，在三分钟压力曲线中生存至黎明。",
+    "experience": "单手移动，自动攻击，拾取光晶和装备，以持续叠加的遗物挑战无尽海雾关卡。",
     "scope": "Godot 4.4.1，手机竖屏，单指触控，ImageGen 像素风，合成音效。",
     "playable": "见 README.md 的 Godot Web 导出与 owngame USB 同步。",
     "cards": [
@@ -15,7 +15,7 @@
         "type": "rule",
         "section": "rules",
         "title": "生存与战斗",
-        "body": "拖动移动，灯火自动索敌。躲开海雾生物，在180秒前保持生命。45、90和135秒出现精英。",
+        "body": "每关45秒后出现守关巨兽。击杀后拾取宝箱，选择遗物进入下一关并恢复20%生命。四个场景循环，关数无固定终点；珊瑚关增加怪物生命，深渊关提高移速。远程水母和冲锋海鳗逐渐解锁。",
         "status": "done",
         "x": 80,
         "y": 80,
@@ -31,7 +31,7 @@
         "type": "rule",
         "section": "rules",
         "title": "光晶与成长",
-        "body": "光晶同时提供经验和闪光能量。能量满时释放一圈近身伤害。升级时暂停并选择一项强化。",
+        "body": "12类升级按当前旅程叠加等级。攻击、护甲、回复、闪电、光环、闪光和幸运可持续强化。攻速、移速、吸取范围和目标数达到实用上限后改为提升伤害或护甲。怪物掉落治疗药水和临时护盾。",
         "status": "done",
         "x": 80,
         "y": 80,
@@ -64,7 +64,7 @@
         "type": "note",
         "section": "overview",
         "title": "验证状态",
-        "body": "Godot 4.4.1 导入和 headless 冒烟通过。Moto g84 5G 经 owngame USB 同步后使用 WebGL 2。已观察触摸移动、击杀、升到3级、闪光冲击与失败结算。系统无默认网络，结束 App 进程后从最近玩过冷启成功。用同一游戏 ID 更新至 c9fa71e9bb6e 并启动。Android 检测到活跃音频流，媒体音量静音。iPhone、实听和人类手感评价待验证。",
+        "body": "无尽版 Godot 冒烟通过，覆盖180秒后继续、守关击杀和宝箱奖励、进入下一关、升级溢出收益、检查点恢复与坏数据拒绝、第100关属性及实体数量上限。Moto 已更新并验证启动、触控和新道具画面。更多实机长局与人类手感评价待反馈。",
         "status": "idea",
         "x": 80,
         "y": 80,
@@ -98,6 +98,39 @@
         "x": 80,
         "y": 80,
         "fields": {},
+        "image": ""
+      },
+      {
+        "id": "42e459b3-0a21-4f0a-a7c7-1378e51fe013",
+        "type": "rule",
+        "section": "rules",
+        "title": "关卡检查点",
+        "body": "过关后保存关数和装备。关闭后可从该关重新开始；失败清除检查点；新旅程重置当前构筑。最高关数独立保存。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "第2关退出后继续，恢复第2关初始状态及已有遗物。"
+        },
+        "image": ""
+      },
+      {
+        "id": "3bc9099d-117d-4362-b646-075b09b09ff2",
+        "type": "asset",
+        "section": "assets",
+        "title": "无尽模式怪物与道具图集",
+        "body": "",
+        "status": "done",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "assets/relics.png",
+          "spec": "水母术士、海鳗、巨兽、药水、宝箱和护盾的透明3×2像素图集",
+          "source": "OpenAI ImageGen",
+          "license": "见 THIRD_PARTY_NOTICES.md"
+        },
         "image": ""
       }
     ],
