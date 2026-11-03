@@ -528,9 +528,9 @@ func _draw() -> void:
   label("STAGE %d  %s" % [stage, LOCATIONS[(stage - 1) % 4]],Vector2(14,23),12,Color("f4dc9b"))
   label("%02d:%02d" % [int(elapsed)/60,int(elapsed)%60],Vector2(275,23),16)
   draw_rect(Rect2(14,34,210,9),Color("472d3a")); draw_rect(Rect2(14,34,210 * max(hp,0)/max_hp,9),Color("ef7973"))
-  draw_rect(Rect2(14,52,210,7),Color("253b4e")); draw_rect(Rect2(14,52,210.0*xp/xp_needed,7),Color("6ce5d2"))
+  draw_rect(Rect2(14,52,210,7),Color("253b4e")); draw_rect(Rect2(14,52,210.0 * clampf(float(xp) / xp_needed, 0, 1),7),Color("6ce5d2"))
   label("FLARE",Vector2(248,48),11,Color("f4dc9b"))
-  draw_rect(Rect2(248,52,98,7),Color("473f37")); draw_rect(Rect2(248,52,98.0 * charge / BEACON_CHARGE,7),Color("eab95e"))
+  draw_rect(Rect2(248,52,98,7),Color("473f37")); draw_rect(Rect2(248,52,98.0 * clampf(float(charge) / BEACON_CHARGE, 0, 1),7),Color("eab95e"))
   label("LV %d   DEFEATED %d" % [level,kills],Vector2(14,78),13,Color("b1cbd0"))
   if state == "play":
    var objective = "GUARDIAN IN %ds" % maxi(0, ceili(STAGE_SECONDS - stage_time))
