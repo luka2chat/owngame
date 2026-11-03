@@ -89,6 +89,19 @@ func run() -> void:
  assert(game.stage == 100)
  game.spawn_enemy(true)
  assert(game.enemies[0].hp > 1000 and game.enemies[0].speed < 100)
+ var guardian = game.enemies[0]
+ guardian.cooldown = 0
+ game.update_enemy(guardian, Vector2.RIGHT, 0.01)
+ assert(game.hostile.size() == 5, "guardian should emit a fan of projectiles")
+ guardian.boss = false
+ guardian.kind = 3
+ guardian.cooldown = 0
+ game.update_enemy(guardian, Vector2.RIGHT, 0.01)
+ assert(guardian.windup > 0, "eel must telegraph its dash")
+ var origin = guardian.pos
+ game.update_enemy(guardian, Vector2.RIGHT, 0.7)
+ game.update_enemy(guardian, Vector2.RIGHT, 0.1)
+ assert(guardian.pos.x > origin.x, "eel should charge after its telegraph")
  for i in range(100): game.spawn_enemy()
  assert(game.enemies.size() <= game.MAX_ENEMIES)
  for i in range(150): game.drop_crystal(Vector2.ZERO, 1)
