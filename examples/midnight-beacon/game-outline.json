@@ -1,7 +1,7 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 4,
+  "revision": 5,
   "project": {
     "id": "204b6698-0426-4699-b845-a7585091e482",
     "title": "午夜灯塔",
@@ -64,7 +64,7 @@
         "type": "note",
         "section": "overview",
         "title": "验证状态",
-        "body": "Godot 4.4.1 导入和 headless 冒烟通过。单线程 Web 导出经 owngame web.inspect 与 device sync 确认同一指纹 a5765a00c4fa。Moto g84 5G 上使用 WebGL 2，触摸开始、移动、击杀、升到3级并触发闪光。系统无默认网络时结束 App 进程，从最近玩过冷启至标题。Android 检测到活跃音频流，设备媒体音量静音。iPhone、实听和人类手感评价待验证。",
+        "body": "Godot 4.4.1 导入和 headless 冒烟通过。Moto g84 5G 经 owngame USB 同步 a5765a00c4fa，WebGL 2 竖屏启动、触摸移动、击杀、升到3级、闪光冲击与失败结算已观察。系统无默认网络，结束 App 进程后从最近玩过冷启成功。随后使用同一游戏 ID 安装并启动精简包 00e1d4457e04，公开源码重建的 Godot PCK 资源清单和摘要一致。Android 有活跃音频流，媒体音量静音。iPhone、实听和人类手感评价待验证。",
         "status": "idea",
         "x": 80,
         "y": 80,
