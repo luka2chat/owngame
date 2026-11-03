@@ -17,18 +17,26 @@ var streams := {}
 var voices: Array[AudioStreamPlayer] = []
 var voice_index := 0
 var muted := false
+var cue_time := {}
 
 func _ready() -> void:
  for cue in CUES:
   streams[cue] = build_cue(CUES[cue])
  for i in range(10):
   var player := AudioStreamPlayer.new()
+  player.volume_db = -5.0
   add_child(player)
   voices.append(player)
 
 func play(cue: String) -> void:
  if muted or voices.is_empty():
   return
+ # A flare can kill several enemies in one frame. Play one cue for the burst
+ # instead of stacking identical samples and clipping the mix.
+ var now := Time.get_ticks_msec()
+ if now - int(cue_time.get(cue, -1000)) < 55:
+  return
+ cue_time[cue] = now
  var player := voices[voice_index]
  voice_index = (voice_index + 1) % voices.size()
  player.stream = streams[cue]

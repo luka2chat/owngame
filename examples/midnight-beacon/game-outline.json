@@ -1,7 +1,7 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 5,
+  "revision": 6,
   "project": {
     "id": "204b6698-0426-4699-b845-a7585091e482",
     "title": "午夜灯塔",
@@ -64,7 +64,7 @@
         "type": "note",
         "section": "overview",
         "title": "验证状态",
-        "body": "Godot 4.4.1 导入和 headless 冒烟通过。Moto g84 5G 经 owngame USB 同步 a5765a00c4fa，WebGL 2 竖屏启动、触摸移动、击杀、升到3级、闪光冲击与失败结算已观察。系统无默认网络，结束 App 进程后从最近玩过冷启成功。随后使用同一游戏 ID 安装并启动精简包 00e1d4457e04，公开源码重建的 Godot PCK 资源清单和摘要一致。Android 有活跃音频流，媒体音量静音。iPhone、实听和人类手感评价待验证。",
+        "body": "Godot 4.4.1 导入和 headless 冒烟通过。Moto g84 5G 经 owngame USB 同步后使用 WebGL 2。已观察触摸移动、击杀、升到3级、闪光冲击与失败结算。系统无默认网络，结束 App 进程后从最近玩过冷启成功。用同一游戏 ID 更新至 c9fa71e9bb6e 并启动。Android 检测到活跃音频流，媒体音量静音。iPhone、实听和人类手感评价待验证。",
         "status": "idea",
         "x": 80,
         "y": 80,
@@ -93,7 +93,7 @@
         "type": "note",
         "section": "overview",
         "title": "战斗反馈",
-        "body": "角色与怪物步态，受击和击杀粒子，灯火尾迹，蓄能扩散环及精英预警。合成音效与独立静音开关。",
+        "body": "步态和漂浮、受击和击杀粒子、灯火尾迹、扩散闪光和精英预警。合成音效支持静音，同类事件短间隔合并并预留混音余量。",
         "status": "idea",
         "x": 80,
         "y": 80,
