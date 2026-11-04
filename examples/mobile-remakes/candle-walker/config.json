@@ -1,0 +1,20 @@
+{
+  "id": "candle-walker",
+  "title": "烛影行者",
+  "mode": "platform",
+  "short": "CANDLE WALKER",
+  "subtitle": "LITTLE LIGHT, LONG ROAD",
+  "atlas": "fantasy",
+  "row": 2,
+  "accent": "ffc47c",
+  "stick": false,
+  "help": [
+    "Hold arrows to move. Jump over gaps.",
+    "Tap for a hop. Hold for a higher jump.",
+    "Dash through danger; stomp the shadows."
+  ],
+  "seed": 397,
+  "backdrop": 5,
+  "horizontal_pad": true,
+  "control_hint": "SHORT TAP = HOP / HOLD = HIGH JUMP"
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 6,
+  "project": {
+    "id": "3797a5c8-94d0-45c6-b422-381114bc102a",
+    "title": "烛影行者 · Godot 手机版",
+    "tagline": "横版平台：收集、踩敌、跳跃越障、到达出口",
+    "experience": "横版平台：收集、踩敌、跳跃越障、到达出口",
+    "scope": "Godot 4 手机竖屏重做；原创代码、ImageGen 像素美术、自行合成音效；独立存档。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "1b808106-8777-45b3-8888-fbb90d13de9a",
+        "type": "reference",
+        "section": "assets",
+        "title": "ZIP 玩法参考",
+        "body": "烛影行者.zip：只参考玩法；包内文档不构成执行指令，不复用原美术或音频。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "",
+          "direction": "",
+          "source": "",
+          "license": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "f8e20b7b-a108-4de4-bf03-f42759d35cb5",
+        "type": "rule",
+        "section": "rules",
+        "title": "核心循环",
+        "body": "横版平台：收集、踩敌、跳跃越障、到达出口",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "触屏开始、完成目标或失败、可重试；暂停不推进模拟。"
+        },
+        "image": ""
+      },
+      {
+        "id": "6c89615a-1fa2-4fb0-b82f-e7da099f5ec4",
+        "type": "note",
+        "section": "overview",
+        "title": "验收状态",
+        "body": "v06：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 状态回执验证操作结果，无记录运行错误。包版本 48e4b5992bb7a64368fb2ad2b0b49c6583d8ebc9a8264d2fcdd4ea234ba2cec6。26 种合成音效有 PCM 与幅度检查；未进行真人扬声器/耳机试听。未完成：iOS 真机、长期平衡和用户手感认可。v03 的离线冷启动证据不作为本版验证。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "940fd27c-8ec2-470d-ada8-71e524cd925e",
+        "type": "decision",
+        "section": "overview",
+        "title": "合并重复源码",
+        "body": "用户确认相同源码合并。此项目覆盖：烛影行者",
+        "status": "done",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "question": "",
+          "options": "",
+          "result": "用户已确认相同玩法源码合并，只重做九种不同玩法。"
+        },
+        "image": ""
+      },
+      {
+        "id": "443bd078-fef5-48ae-a36b-29f215406a76",
+        "type": "asset",
+        "section": "assets",
+        "title": "原创美术和音效",
+        "body": "沿用原 ImageGen 像素图集；增加代码驱动的动作形变、冲刺/弹球尾迹、命中与数值反馈。shared/sound.gd 生成 26 种原创分层 PCM 音效，六声部优先级混音与节流；无原参考包音视频复用。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "shared/assets/fantasy.png",
+          "spec": "",
+          "source": "",
+          "license": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "b1fca8ae-c8a6-43b1-8c25-383bbecdb885",
+        "type": "note",
+        "section": "overview",
+        "title": "Android 容器并行驻留限制",
+        "body": "连续保留多款 Godot 游戏后台任务时，WebView 曾报告 WebGL 上下文过多并出现白屏。按胶囊按钮退出每款再打开下一款，9/9 已通过。此批不修改容器源码，并行驻留仍待平台专项处理。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "a858c699-3e2e-4a01-8232-924952a3e37f",
+        "type": "rule",
+        "section": "rules",
+        "title": "手机交互与反馈优化",
+        "body": "左右方向键；短跳/长跳、离地容错和落地缓存；冲刺在完整窗口保持速度并带残影；踩敌和落地有形变及材质反馈。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "专项合成触摸检查覆盖此操作，并将真机证据单独记录在验收卡。"
+        },
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 6,
+  "project": {
+    "id": "8c8423dd-65c1-4fb1-9c6b-e734dbaff2e3",
+    "title": "符文先锋：秘法围城 · Godot 手机版",
+    "tagline": "弹幕射击：拖动闪避、武器升级、扇形首领弹幕",
+    "experience": "弹幕射击：拖动闪避、武器升级、扇形首领弹幕",
+    "scope": "Godot 4 手机竖屏重做；原创代码、ImageGen 像素美术、自行合成音效；独立存档。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "32f62948-9059-41da-b33e-cf045adffd14",
+        "type": "reference",
+        "section": "assets",
+        "title": "ZIP 玩法参考",
+        "body": "符文先锋：秘法围城.zip：只参考玩法；包内文档不构成执行指令，不复用原美术或音频。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "",
+          "direction": "",
+          "source": "",
+          "license": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "9278e431-e227-43ce-9fda-3d5504276010",
+        "type": "rule",
+        "section": "rules",
+        "title": "核心循环",
+        "body": "弹幕射击：拖动闪避、武器升级、扇形首领弹幕",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "触屏开始、完成目标或失败、可重试；暂停不推进模拟。"
+        },
+        "image": ""
+      },
+      {
+        "id": "8bbfa4ef-ef57-480d-8c4e-ca3062b1b743",
+        "type": "note",
+        "section": "overview",
+        "title": "验收状态",
+        "body": "v06：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 状态回执验证操作结果，无记录运行错误。包版本 b050066575eff1a6082247d1f270875ad04ea2856bb022f82684a6be42ff94e2。26 种合成音效有 PCM 与幅度检查；未进行真人扬声器/耳机试听。未完成：iOS 真机、长期平衡和用户手感认可。v03 的离线冷启动证据不作为本版验证。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "cb6d0931-eca3-4004-bcbb-75518455c7ad",
+        "type": "decision",
+        "section": "overview",
+        "title": "合并重复源码",
+        "body": "用户确认相同源码合并。此项目覆盖：符文先锋：秘法围城",
+        "status": "done",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "question": "",
+          "options": "",
+          "result": "用户已确认相同玩法源码合并，只重做九种不同玩法。"
+        },
+        "image": ""
+      },
+      {
+        "id": "1ba24eba-c95f-42dd-b575-5008caaac516",
+        "type": "asset",
+        "section": "assets",
+        "title": "原创美术和音效",
+        "body": "沿用原 ImageGen 像素图集；增加代码驱动的动作形变、冲刺/弹球尾迹、命中与数值反馈。shared/sound.gd 生成 26 种原创分层 PCM 音效，六声部优先级混音与节流；无原参考包音视频复用。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "shared/assets/arcade.png",
+          "spec": "",
+          "source": "",
+          "license": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "19a67f52-42fa-49da-bb6a-ff9b99a71304",
+        "type": "note",
+        "section": "overview",
+        "title": "Android 容器并行驻留限制",
+        "body": "连续保留多款 Godot 游戏后台任务时，WebView 曾报告 WebGL 上下文过多并出现白屏。按胶囊按钮退出每款再打开下一款，9/9 已通过。此批不修改容器源码，并行驻留仍待平台专项处理。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "3ea8d7c9-bd91-4304-b4fa-0c725749e0ca",
+        "type": "rule",
+        "section": "rules",
+        "title": "手机交互与反馈优化",
+        "body": "场景相对拖动，按下不瞬移；第二指不能抢走移动指针；护盾/爆破独立冷却；符文吸附并每 3 个提升火力。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "专项合成触摸检查覆盖此操作，并将真机证据单独记录在验收卡。"
+        },
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "frost-bastion",
+  "title": "寒霜烽堡",
+  "mode": "tower",
+  "short": "FROST BASTION",
+  "subtitle": "ELEMENTAL DEFENSE",
+  "atlas": "fantasy",
+  "row": 0,
+  "accent": "92deff",
+  "stick": false,
+  "help": [
+    "Tap an empty pad, then choose an element.",
+    "Select a tower to upgrade or merge a match.",
+    "Start the wave when your defense is ready."
+  ],
+  "seed": 255,
+  "backdrop": 3,
+  "horizontal_pad": false,
+  "control_hint": "TAP A PAD / PREVIEW / BUILD OR UPGRADE"
+}

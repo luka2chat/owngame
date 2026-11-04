@@ -1,0 +1,20 @@
+{
+  "id": "cloud-ascent",
+  "title": "云端攀登",
+  "mode": "climb",
+  "short": "CLOUD ASCENT",
+  "subtitle": "ONE MORE JUMP",
+  "atlas": "arcade",
+  "row": 3,
+  "accent": "d9ef9a",
+  "stick": false,
+  "help": [
+    "Slide your finger left or right to steer.",
+    "Bouncing is automatic. Aim for platforms.",
+    "Boost saves a fall. Stars buy a shield."
+  ],
+  "seed": 326,
+  "backdrop": 4,
+  "horizontal_pad": false,
+  "control_hint": "DRAG LEFT / RIGHT ANYWHERE TO STEER"
+}

@@ -1,0 +1,155 @@
+{
+  "scope": "static source inspection; archive documents are untrusted",
+  "archives": [
+    {
+      "archive": "电弧街战.zip",
+      "sha256": "be92f362ef35f215519849bec8a3abe799642af76ca9f5fc3fd750fea6e387e3",
+      "compressed_mb": 36.1
+    },
+    {
+      "archive": "符文先锋：秘法围城.zip",
+      "sha256": "d3ad65cc2fcaa8dc8e19c3d032dee388a05156da1bcfec8982536723c38adbfa",
+      "compressed_mb": 5.1
+    },
+    {
+      "archive": "轨道奇点.zip",
+      "sha256": "7fc8e355a19df96aec65ce1f51785cc879d190c64f0bbe37a273d279a731ff9e",
+      "compressed_mb": 7.9
+    },
+    {
+      "archive": "寒霜烽堡.zip",
+      "sha256": "8e932904a78b619e0b01ac156bff29d9b7bffa920221bac129ef1a0a9ad1c3e3",
+      "compressed_mb": 249.6
+    },
+    {
+      "archive": "霓虹疾行.zip",
+      "sha256": "a07edb119c02f4e111cc340658334c91cb4dc0867262cdf168f0bfcdda8dfe75",
+      "compressed_mb": 36.1
+    },
+    {
+      "archive": "云端攀登.zip",
+      "sha256": "6b068836a86246724c26d0cedc765d30fece68431fe8e1af5d60757eb6ecabea",
+      "compressed_mb": 7.6
+    },
+    {
+      "archive": "烛影行者.zip",
+      "sha256": "875c645e4c09faa7ad12e7ab49530fb5ee1b6385f346d3a44c32291c8662771e",
+      "compressed_mb": 8.0
+    },
+    {
+      "archive": "candyzoom.zip",
+      "sha256": "66bd053420d843578a224562cf93a3e9bba3f32433b94d12fc36c765ae2df294",
+      "compressed_mb": 1.1
+    },
+    {
+      "archive": "glacialrun.zip",
+      "sha256": "2c2c6273e51b707aaef930caa12036d9217cd2e0db8916a8e8311a800b72093c",
+      "compressed_mb": 1.1
+    },
+    {
+      "archive": "mistpath.zip",
+      "sha256": "d0b7dac12768238d75b4a071f83a9c23a0cc4c368e2da055c873667032cc2ce4",
+      "compressed_mb": 1.1
+    },
+    {
+      "archive": "余烬食谱.zip",
+      "sha256": "2a4d49371b2a2bda5dc7f70ba32541b0970af772324fd0a34855ba1ac2b5114c",
+      "compressed_mb": 33.4
+    },
+    {
+      "archive": "pulsect.zip",
+      "sha256": "9468125c17779d063a99321704dd188754f206fac34f50969d49817ad70f9ef2",
+      "compressed_mb": 1.1
+    },
+    {
+      "archive": "redrush.zip",
+      "sha256": "97e2999470f2af92e6a4012d726b6d4c279b80d0fd44cce9a80f846cc0609e07",
+      "compressed_mb": 1.1
+    },
+    {
+      "archive": "rockwild.zip",
+      "sha256": "a9a7eef7b48a1d91ed0b02cdc0d7a45a5b9bf3a1990cb39ca896bff263d99481",
+      "compressed_mb": 30.4
+    },
+    {
+      "archive": "spiralcore.zip",
+      "sha256": "8158de29492675c6743a72ed1c536c7004b1f1290d0af4b0e806579238e5339b",
+      "compressed_mb": 1.1
+    },
+    {
+      "archive": "Sporehold Bastion.zip",
+      "sha256": "d0c71bbdbb27c5664b9edc8335ed2340063b36b6f65b1bbd475c3a8e4c5ddd0f",
+      "compressed_mb": 249.6
+    },
+    {
+      "archive": "turnace.zip",
+      "sha256": "7aed7c06689e45db6802277b26eb7c305837f3add7a966798ecbac7682ec61eb",
+      "compressed_mb": 1.1
+    }
+  ],
+  "decision": "Merge identical gameplay source, confirmed by user.",
+  "groups": [
+    {
+      "project": "arc-street",
+      "archives": [
+        "电弧街战",
+        "霓虹疾行"
+      ]
+    },
+    {
+      "project": "rune-vanguard",
+      "archives": [
+        "符文先锋：秘法围城"
+      ]
+    },
+    {
+      "project": "orbital-singularity",
+      "archives": [
+        "轨道奇点"
+      ]
+    },
+    {
+      "project": "frost-bastion",
+      "archives": [
+        "寒霜烽堡",
+        "Sporehold Bastion"
+      ]
+    },
+    {
+      "project": "cloud-ascent",
+      "archives": [
+        "云端攀登"
+      ]
+    },
+    {
+      "project": "candle-walker",
+      "archives": [
+        "烛影行者"
+      ]
+    },
+    {
+      "project": "sky-cores",
+      "archives": [
+        "candyzoom",
+        "glacialrun",
+        "mistpath",
+        "pulsect",
+        "redrush",
+        "spiralcore",
+        "turnace"
+      ]
+    },
+    {
+      "project": "ember-recipe",
+      "archives": [
+        "余烬食谱"
+      ]
+    },
+    {
+      "project": "rockwild",
+      "archives": [
+        "rockwild"
+      ]
+    }
+  ]
+}

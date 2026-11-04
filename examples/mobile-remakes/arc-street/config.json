@@ -1,0 +1,20 @@
+{
+  "id": "arc-street",
+  "title": "电弧街战",
+  "mode": "side",
+  "short": "ARC STREET",
+  "subtitle": "ELECTRIC ROOFTOP RESCUE",
+  "atlas": "arcade",
+  "row": 0,
+  "accent": "64e7e9",
+  "stick": false,
+  "help": [
+    "Hold arrows to run. Tap jump for a hop.",
+    "Hold jump for height. Auto-fire aims for you.",
+    "Blast breaks the gate guardian."
+  ],
+  "seed": 42,
+  "backdrop": 0,
+  "horizontal_pad": true,
+  "control_hint": "HOLD ARROWS / TAP OR HOLD JUMP"
+}

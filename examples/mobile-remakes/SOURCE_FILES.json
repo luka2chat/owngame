@@ -1,0 +1,457 @@
+{
+  "scope": "Reviewed standalone Godot source candidates; no production catalogue update",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "9d00702a6537a113d691f54429e17d847cb740af09db8c2b559a1f679901f0d8"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "387c6248cc831e4094ff22b364679bbfb1774f252a4fcff1890bb877c0ac31cf"
+    },
+    {
+      "path": "README.md",
+      "sha256": "584f195aa310c4ac23cd7244df3bb4819275a0b90ce6a6a0ab553e4567497ceb"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "1687aa58a5d931484a87772e1c6a089c0f95a89a5f41139f1bb6a9166092c57f"
+    },
+    {
+      "path": "VALIDATION.md",
+      "sha256": "4d499ac571dcff1d94238fa9fe1beb71289d3d02991370cc5e38f57b043a9c9c"
+    },
+    {
+      "path": "arc-street/AGENTS.md",
+      "sha256": "3e950452923d8fa034fdfe0c9727344816dd2a3e71fd15c136d69ae53838e689"
+    },
+    {
+      "path": "arc-street/config.json",
+      "sha256": "7414964901350c2591fa8768470f90e19821ba587855f401d07687bc83d500e2"
+    },
+    {
+      "path": "arc-street/export_presets.cfg",
+      "sha256": "cb66c4ff34f65d21c766885519a94c22827f08b56ad4acd28210f944383c8b5c"
+    },
+    {
+      "path": "arc-street/game-outline.json",
+      "sha256": "338103804c2a7ab3d707c8dd9c02e515cadcbdbbf0604afdde1a1be5edb1554a"
+    },
+    {
+      "path": "arc-street/main.tscn",
+      "sha256": "83aae1e2d3696a1d210e49545662a3cf99d7a03827e6dc546b9e8945a9177800"
+    },
+    {
+      "path": "arc-street/project.godot",
+      "sha256": "578c2b7b4c5a55f14b207630bb925bc9902cfd1af580dc881ed0dfa723870c19"
+    },
+    {
+      "path": "arc-street/shared",
+      "link": "../shared"
+    },
+    {
+      "path": "asset-provenance.json",
+      "sha256": "90cd1cd5feb38f9dda3ba7d819c672f0c0e7cd477b2b9f10de45b182a4623c0c"
+    },
+    {
+      "path": "batch.json",
+      "sha256": "6437038308a6a823eda74f836f0446ccc03f9572c26522fb548e6b4637200e7a"
+    },
+    {
+      "path": "candle-walker/AGENTS.md",
+      "sha256": "3e950452923d8fa034fdfe0c9727344816dd2a3e71fd15c136d69ae53838e689"
+    },
+    {
+      "path": "candle-walker/config.json",
+      "sha256": "2f5930f9a60f1ce38d535a0e354923cefcb3246484582b1b8d8a02e9fe787480"
+    },
+    {
+      "path": "candle-walker/export_presets.cfg",
+      "sha256": "cb66c4ff34f65d21c766885519a94c22827f08b56ad4acd28210f944383c8b5c"
+    },
+    {
+      "path": "candle-walker/game-outline.json",
+      "sha256": "3676a6c71b05949cb41ae409150001e7c2d7633691e4baa623e357428d97a13f"
+    },
+    {
+      "path": "candle-walker/main.tscn",
+      "sha256": "83aae1e2d3696a1d210e49545662a3cf99d7a03827e6dc546b9e8945a9177800"
+    },
+    {
+      "path": "candle-walker/project.godot",
+      "sha256": "05f9f3e9737f83abcc52399a961b75dc0f17fea733589aeaef7ce30cd3a8beaa"
+    },
+    {
+      "path": "candle-walker/shared",
+      "link": "../shared"
+    },
+    {
+      "path": "cloud-ascent/AGENTS.md",
+      "sha256": "3e950452923d8fa034fdfe0c9727344816dd2a3e71fd15c136d69ae53838e689"
+    },
+    {
+      "path": "cloud-ascent/config.json",
+      "sha256": "01a99e2c9375d4fa01f352b2e47f31486417a9a70d09d077de6ada990d3ff4dc"
+    },
+    {
+      "path": "cloud-ascent/export_presets.cfg",
+      "sha256": "cb66c4ff34f65d21c766885519a94c22827f08b56ad4acd28210f944383c8b5c"
+    },
+    {
+      "path": "cloud-ascent/game-outline.json",
+      "sha256": "fec60a8ac13a3eb3bd9fa3bee4ef0473732578c3a9f11494fefe5fee84323fbd"
+    },
+    {
+      "path": "cloud-ascent/main.tscn",
+      "sha256": "4a1dc5009341147243dc1d3ecd14026150837e231168c4b2abbc7480ad833aec"
+    },
+    {
+      "path": "cloud-ascent/project.godot",
+      "sha256": "57c86d0f001bed62d57bc5bfcced42bd18906ed513fe8767500ffedb49cada6f"
+    },
+    {
+      "path": "cloud-ascent/shared",
+      "link": "../shared"
+    },
+    {
+      "path": "ember-recipe/AGENTS.md",
+      "sha256": "3e950452923d8fa034fdfe0c9727344816dd2a3e71fd15c136d69ae53838e689"
+    },
+    {
+      "path": "ember-recipe/config.json",
+      "sha256": "0b26f51247bfe8ed35700b73e8669f7d4e602bd32d175d0fddda8627d3d47dc7"
+    },
+    {
+      "path": "ember-recipe/export_presets.cfg",
+      "sha256": "cb66c4ff34f65d21c766885519a94c22827f08b56ad4acd28210f944383c8b5c"
+    },
+    {
+      "path": "ember-recipe/game-outline.json",
+      "sha256": "2a8139fb56cf25024d0f1ad1e8c9b5c599afadd8c2587e7dd1c4ce82b45c56a5"
+    },
+    {
+      "path": "ember-recipe/main.tscn",
+      "sha256": "0e236a12ffff07483810fda2e2e6cac2ae841ae15d5f79d6e281e15c72e7a456"
+    },
+    {
+      "path": "ember-recipe/project.godot",
+      "sha256": "d027a6f8b1f92c07cf4bbc66b52807adba1ef29f768ff7264750ca3283234310"
+    },
+    {
+      "path": "ember-recipe/shared",
+      "link": "../shared"
+    },
+    {
+      "path": "frost-bastion/AGENTS.md",
+      "sha256": "3e950452923d8fa034fdfe0c9727344816dd2a3e71fd15c136d69ae53838e689"
+    },
+    {
+      "path": "frost-bastion/config.json",
+      "sha256": "4ef1317f38878cd1bb64c0ed4baf9396cb8f189bcabf8822d962e4f6d32f810d"
+    },
+    {
+      "path": "frost-bastion/export_presets.cfg",
+      "sha256": "cb66c4ff34f65d21c766885519a94c22827f08b56ad4acd28210f944383c8b5c"
+    },
+    {
+      "path": "frost-bastion/game-outline.json",
+      "sha256": "a27a3ceafbdd5e21d8d73aee732067c00cd2da6c46d348886656ab54ab30d619"
+    },
+    {
+      "path": "frost-bastion/main.tscn",
+      "sha256": "fc2ae1b2df21c085062fda3789cdf1c9e92ff667143de95e0ec67186ea2cb085"
+    },
+    {
+      "path": "frost-bastion/project.godot",
+      "sha256": "3212556b1715aa5c257ce0c1ed70b675fa7a927330af97d6175982343f15b2cb"
+    },
+    {
+      "path": "frost-bastion/shared",
+      "link": "../shared"
+    },
+    {
+      "path": "orbital-singularity/AGENTS.md",
+      "sha256": "3e950452923d8fa034fdfe0c9727344816dd2a3e71fd15c136d69ae53838e689"
+    },
+    {
+      "path": "orbital-singularity/config.json",
+      "sha256": "4b155b333aaf200fb54c6cff0604c46e72a4b383cdd1c12d5f764169a6f09ebd"
+    },
+    {
+      "path": "orbital-singularity/export_presets.cfg",
+      "sha256": "cb66c4ff34f65d21c766885519a94c22827f08b56ad4acd28210f944383c8b5c"
+    },
+    {
+      "path": "orbital-singularity/game-outline.json",
+      "sha256": "0827adb18f77aa698bc674ddeecf912f9c1cb7cce645f49c900a6c803e410dc2"
+    },
+    {
+      "path": "orbital-singularity/main.tscn",
+      "sha256": "bbf0e378a2be1a8a21d0fd7bf20c718d5c3032f03b06d882ea255fff5531f3f3"
+    },
+    {
+      "path": "orbital-singularity/project.godot",
+      "sha256": "b8e2df2127c5a169054179fa649551bb27318b6137deaaf38cc994eef495e388"
+    },
+    {
+      "path": "orbital-singularity/shared",
+      "link": "../shared"
+    },
+    {
+      "path": "reference-inventory.json",
+      "sha256": "af5c752b96a8c9be3d581017eb34bf271a5c3a107d71be5418933f60de856d5a"
+    },
+    {
+      "path": "rockwild/AGENTS.md",
+      "sha256": "3e950452923d8fa034fdfe0c9727344816dd2a3e71fd15c136d69ae53838e689"
+    },
+    {
+      "path": "rockwild/config.json",
+      "sha256": "b547c7c25a6b50dc4d3669f86d321fede73b863e3c6bbbf7b8ee0ca1136d242d"
+    },
+    {
+      "path": "rockwild/export_presets.cfg",
+      "sha256": "cb66c4ff34f65d21c766885519a94c22827f08b56ad4acd28210f944383c8b5c"
+    },
+    {
+      "path": "rockwild/game-outline.json",
+      "sha256": "7be43cd338bbcb80bc44ee0c8fab7664bcbe094fa0a2240d9753c89d64c57010"
+    },
+    {
+      "path": "rockwild/main.tscn",
+      "sha256": "c396130f54a588ce9859e5e36f4993d1f197e47cf629fb2f2c9c8f464e6bcfb0"
+    },
+    {
+      "path": "rockwild/project.godot",
+      "sha256": "2253c208a51e9855cd2963b5b467d0a5cd30bcbf2b2689cccb167001aa373ab4"
+    },
+    {
+      "path": "rockwild/shared",
+      "link": "../shared"
+    },
+    {
+      "path": "rune-vanguard/AGENTS.md",
+      "sha256": "3e950452923d8fa034fdfe0c9727344816dd2a3e71fd15c136d69ae53838e689"
+    },
+    {
+      "path": "rune-vanguard/config.json",
+      "sha256": "7f2d96c6705d49c963b85e519d429d22a4ec0be95985f5b9711cea6f9087d238"
+    },
+    {
+      "path": "rune-vanguard/export_presets.cfg",
+      "sha256": "cb66c4ff34f65d21c766885519a94c22827f08b56ad4acd28210f944383c8b5c"
+    },
+    {
+      "path": "rune-vanguard/game-outline.json",
+      "sha256": "b41405d946168f7ef1ba9c6b67ea5dc0c757675763d1bda3934f69bf4ee0b89d"
+    },
+    {
+      "path": "rune-vanguard/main.tscn",
+      "sha256": "44e371c6210415f7e2106c06fe2024d1808e800865f8e1e4fd77929e7fe0eb31"
+    },
+    {
+      "path": "rune-vanguard/project.godot",
+      "sha256": "c58846c6d1e899f42dc31a8104e641c70632efdb39334fd134ba92f37af88c2a"
+    },
+    {
+      "path": "rune-vanguard/shared",
+      "link": "../shared"
+    },
+    {
+      "path": "shared/assets/arcade.png",
+      "sha256": "d2dd1efafdf0cdcc73dae311646873b27ecff564c6e9544ce08d2a9670819425"
+    },
+    {
+      "path": "shared/assets/arcade.png.import",
+      "sha256": "11ba71c50bd8517681bdb43ee4252fd4dc82fc63f719b81f315eb8aa2e7f697d"
+    },
+    {
+      "path": "shared/assets/backdrops.png",
+      "sha256": "321b3fca7092a82a4e3bf7ef3e589128eeca88ab2ccd37a17c467fefc30b8024"
+    },
+    {
+      "path": "shared/assets/backdrops.png.import",
+      "sha256": "6459564ee97e06f03bf677c5991fdfb32e889e6b1f0f9bc9fef4eb4aabf46bcb"
+    },
+    {
+      "path": "shared/assets/fantasy.png",
+      "sha256": "827a259db2bf9e8f09338e80157ceb05a54dba50f2c9aaa58ef5f2537386cf1b"
+    },
+    {
+      "path": "shared/assets/fantasy.png.import",
+      "sha256": "0de9455541462880073d3521b6a16cd86fc608e9814e928abe7ccb81977bf979"
+    },
+    {
+      "path": "shared/assets/wild.png",
+      "sha256": "c109b8efb5c176d58002d069d8a14de138f02de9083fab458c966af1b797039c"
+    },
+    {
+      "path": "shared/assets/wild.png.import",
+      "sha256": "5f39f34a76705e6bfbb32a2103712950ff57cdcfb9a107416cd8a27bf62ad61e"
+    },
+    {
+      "path": "shared/base.gd",
+      "sha256": "73acbadd143d31584a6adcedda877f2c47ffefd1b10bfec34850e41eb4f612eb"
+    },
+    {
+      "path": "shared/base.gd.uid",
+      "sha256": "fac440358755bcf71d3babb0dece981c52770f3118845c8589e47be6d52dc94a"
+    },
+    {
+      "path": "shared/modes/cards.gd",
+      "sha256": "6bf185e7cdac3606d7e6964bfb6e168a39007ab9de61303c1b252689f5bc9b3d"
+    },
+    {
+      "path": "shared/modes/cards.gd.uid",
+      "sha256": "1449f9c2f7fd7b879ae3e40a9b2ff62b1d35b4ef0cea9b1b028e5316603d6e66"
+    },
+    {
+      "path": "shared/modes/climb.gd",
+      "sha256": "f695b6798a69bf6e4f48fd51e852c6bb731b3af640e98f351cea699d6f4e2c93"
+    },
+    {
+      "path": "shared/modes/climb.gd.uid",
+      "sha256": "866e141aeeea3c2a3a7ff062e06760c1025ae1a45cb9fbd10ac699ee25b2ad54"
+    },
+    {
+      "path": "shared/modes/cores.gd",
+      "sha256": "72ec75775cd3b52252166039c7e7c0ce46552112a6e932603cf792ecc86d789f"
+    },
+    {
+      "path": "shared/modes/cores.gd.uid",
+      "sha256": "b7d08f35d43377192f7716b8fa3077fb16a62018acdc031df0d2f10838928ba9"
+    },
+    {
+      "path": "shared/modes/hunt.gd",
+      "sha256": "c5a290933b49216ddceeca759d385878f4fa85abf282ac29566fffcd478b5e0b"
+    },
+    {
+      "path": "shared/modes/hunt.gd.uid",
+      "sha256": "e0681412900f081ff212ba9e44acae61467377dcafcf81b0ea25c7b11c9d2aaf"
+    },
+    {
+      "path": "shared/modes/pinball.gd",
+      "sha256": "bfbcf25ce0cc4647ea668bec56aee7bdff3e9960b39a18681804475b226636cf"
+    },
+    {
+      "path": "shared/modes/pinball.gd.uid",
+      "sha256": "5ffc088abf8bf41d037291ab3e8ab6de76295c0bf224db20b54b977ca14c303c"
+    },
+    {
+      "path": "shared/modes/platform.gd",
+      "sha256": "65b93b991c174df9c5b889e0069120e693f282c3256a93a9f2fadf30eb60bb48"
+    },
+    {
+      "path": "shared/modes/platform.gd.uid",
+      "sha256": "a1e94f6c538791648adf9dca05cd406aad7062c1e771927fce1fb28294694725"
+    },
+    {
+      "path": "shared/modes/shooter.gd",
+      "sha256": "53224cd796003b13516573e7a453c93fd79bd8e0ef34e1af1d66ca01705bcdf2"
+    },
+    {
+      "path": "shared/modes/shooter.gd.uid",
+      "sha256": "33af185fe447252a0992f0536ab9c66fb3d76ee6b7ab86cbf555b3f9fcb3f34b"
+    },
+    {
+      "path": "shared/modes/tower.gd",
+      "sha256": "ff8a160a0b7bf58bbb59e0af7f02883941b69449e6d853924b0c2911f02d7b5f"
+    },
+    {
+      "path": "shared/modes/tower.gd.uid",
+      "sha256": "f4e2faaa29282c417b73fcec968fd77008f6619e131e2b88ae2be22bfdd99762"
+    },
+    {
+      "path": "shared/sound.gd",
+      "sha256": "1d7b1dfb008da8e8a7b9c250512c513e48e83042ca23336c4c734e08c770bfe5"
+    },
+    {
+      "path": "shared/sound.gd.uid",
+      "sha256": "03db3b5aec026bb13166549c8fd6cfe223ef68e6780413de6af20c841f6ec67a"
+    },
+    {
+      "path": "shared/tests/audio-preview.gd",
+      "sha256": "713208480ff739876bb8892154759621a75e72291fbc37e94fce2b4fa2a9aab4"
+    },
+    {
+      "path": "shared/tests/audio-preview.gd.uid",
+      "sha256": "3c759912506c55a5a3f5bdd6334f570e8965fa45a8d36f42386d4346e789548d"
+    },
+    {
+      "path": "shared/tests/capture.gd",
+      "sha256": "cc5241a5e107cd9485627a38a32c9a4ce567302feb9ffbe417e13fbc33ed0f37"
+    },
+    {
+      "path": "shared/tests/capture.gd.uid",
+      "sha256": "fb35555a622eaa90fe40294a22b4b72d4ef41629e3a9913bdf0c07f198f557c7"
+    },
+    {
+      "path": "shared/tests/interactions.gd",
+      "sha256": "2c8757273b963835621d7977a12a89c7a7d413411d5ad20cac83128fefa8b743"
+    },
+    {
+      "path": "shared/tests/interactions.gd.uid",
+      "sha256": "5f0b6564d895de73a618bafd97bd3494ba160425bc8484b7083fc8957c90e2c9"
+    },
+    {
+      "path": "shared/tests/playthrough.gd",
+      "sha256": "c32dcf7c768d3684506fcda892f3fdadfbe4181703046024bc492f4217fb4e0b"
+    },
+    {
+      "path": "shared/tests/playthrough.gd.uid",
+      "sha256": "39e60e19f2a669412f43e490f9daaa00e054f65efb9df60479e06ab8db60433b"
+    },
+    {
+      "path": "shared/tests/smoke.gd",
+      "sha256": "85af931397483904ecf984642db311846981a9b4440c9da4bc0c5f4d5e2cf163"
+    },
+    {
+      "path": "shared/tests/smoke.gd.uid",
+      "sha256": "f089507aef571a56b19d439281d7669a2a9cfa4686a59f51b49a6ee95799c6ff"
+    },
+    {
+      "path": "sky-cores/AGENTS.md",
+      "sha256": "3e950452923d8fa034fdfe0c9727344816dd2a3e71fd15c136d69ae53838e689"
+    },
+    {
+      "path": "sky-cores/config.json",
+      "sha256": "8ee691868d5fbcc52ee3fdf10fa3b5c2b933ff0ee8cc0b2f3d4e4c71d1137b8d"
+    },
+    {
+      "path": "sky-cores/export_presets.cfg",
+      "sha256": "cb66c4ff34f65d21c766885519a94c22827f08b56ad4acd28210f944383c8b5c"
+    },
+    {
+      "path": "sky-cores/game-outline.json",
+      "sha256": "5f9db38002103f233974829fa21f8849580577d43538f91f9e80bf7d0dd7be8a"
+    },
+    {
+      "path": "sky-cores/main.tscn",
+      "sha256": "664485857b2cac6046ed12948a15653e788cc2e65e60f98c4c2dd3ffc9dcf103"
+    },
+    {
+      "path": "sky-cores/project.godot",
+      "sha256": "28728cdf01a4b7d446200dc3039596bc76ab1f4cd099f5bb3db1d852512edb99"
+    },
+    {
+      "path": "sky-cores/shared",
+      "link": "../shared"
+    },
+    {
+      "path": "tools/build.py",
+      "sha256": "183fd5be6e82d61df9e4f699ca225056509e9a9d4cb5ff67b80e93e38e16ad2a"
+    },
+    {
+      "path": "tools/check.py",
+      "sha256": "ea22b7c848d2218aeca64c5e3c0c9de18fa88e2e5347708b1d20601f0680d445"
+    },
+    {
+      "path": "tools/phone-check.py",
+      "sha256": "201c5a74913efcd547d0c3b418d5de9fcb1ee5676a0caa39e4378b34ce004332"
+    },
+    {
+      "path": "tools/prepare-links.py",
+      "sha256": "a5a896b00ff6fb54998b4f44bc4f8b0b562588f2fb2db5592e570e8ea782ce80"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "rockwild",
+  "title": "rockwild",
+  "mode": "hunt",
+  "short": "ROCKWILD",
+  "subtitle": "HUNT, FORGE, RETURN",
+  "atlas": "wild",
+  "row": 0,
+  "accent": "b2d58b",
+  "stick": true,
+  "help": [
+    "Move close; hold action to gather or attack.",
+    "A ring shows which target you will hit.",
+    "Forge at camp, dodge charges, bring trophies."
+  ],
+  "seed": 610,
+  "backdrop": 8,
+  "horizontal_pad": false,
+  "control_hint": "HOLD ACTION TO GATHER / ROLL TO EVADE"
+}

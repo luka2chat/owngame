@@ -1,0 +1,20 @@
+{
+  "id": "rune-vanguard",
+  "title": "符文先锋：秘法围城",
+  "mode": "shooter",
+  "short": "RUNE VANGUARD",
+  "subtitle": "ARCANE SIEGE",
+  "atlas": "arcade",
+  "row": 1,
+  "accent": "8bf1c3",
+  "stick": false,
+  "help": [
+    "Drag anywhere: your ship follows the motion.",
+    "Lift and reposition your finger safely.",
+    "Collect 3 runes to strengthen your weapon."
+  ],
+  "seed": 113,
+  "backdrop": 1,
+  "horizontal_pad": false,
+  "control_hint": "DRAG ANYWHERE TO FLY / AUTO FIRE"
+}

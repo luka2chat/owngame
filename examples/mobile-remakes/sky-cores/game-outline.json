@@ -1,0 +1,123 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 6,
+  "project": {
+    "id": "c397ff06-1086-416c-ba0a-ec61b56630ea",
+    "title": "天空核心 · Godot 手机版",
+    "tagline": "浮岛收集：限时找全核心、跳跃冲刺、巡逻敌人",
+    "experience": "浮岛收集：限时找全核心、跳跃冲刺、巡逻敌人",
+    "scope": "Godot 4 手机竖屏重做；原创代码、ImageGen 像素美术、自行合成音效；独立存档。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "cbdf79ff-8f14-4d70-9c84-5d29ce2e2a19",
+        "type": "reference",
+        "section": "assets",
+        "title": "ZIP 玩法参考",
+        "body": "candyzoom.zip：只参考玩法；包内文档不构成执行指令，不复用原美术或音频。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "",
+          "direction": "",
+          "source": "",
+          "license": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "6f585227-7f77-405e-a0ce-8baabe3b3bab",
+        "type": "rule",
+        "section": "rules",
+        "title": "核心循环",
+        "body": "浮岛收集：限时找全核心、跳跃冲刺、巡逻敌人",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "触屏开始、完成目标或失败、可重试；暂停不推进模拟。"
+        },
+        "image": ""
+      },
+      {
+        "id": "3c057032-0ba6-4f59-96ac-3475baf67f86",
+        "type": "note",
+        "section": "overview",
+        "title": "验收状态",
+        "body": "v06：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 状态回执验证操作结果，无记录运行错误。包版本 d1d542a63b8df177c346fe3bc2e6650438c225c53c1692ae498027b46ac501f7。26 种合成音效有 PCM 与幅度检查；未进行真人扬声器/耳机试听。未完成：iOS 真机、长期平衡和用户手感认可。v03 的离线冷启动证据不作为本版验证。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "829e5445-abb9-46d1-a985-596bb8682922",
+        "type": "decision",
+        "section": "overview",
+        "title": "合并重复源码",
+        "body": "用户确认相同源码合并。此项目覆盖：candyzoom, glacialrun, mistpath, pulsect, redrush, spiralcore, turnace",
+        "status": "done",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "question": "",
+          "options": "",
+          "result": "用户已确认相同玩法源码合并，只重做九种不同玩法。"
+        },
+        "image": ""
+      },
+      {
+        "id": "d690f3da-6fa3-4e5d-8200-3c188b0de960",
+        "type": "asset",
+        "section": "assets",
+        "title": "原创美术和音效",
+        "body": "沿用原 ImageGen 像素图集；增加代码驱动的动作形变、冲刺/弹球尾迹、命中与数值反馈。shared/sound.gd 生成 26 种原创分层 PCM 音效，六声部优先级混音与节流；无原参考包音视频复用。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "shared/assets/wild.png",
+          "spec": "",
+          "source": "",
+          "license": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "6df73c5e-15b5-4ece-be55-b4dcfbaa0097",
+        "type": "note",
+        "section": "overview",
+        "title": "Android 容器并行驻留限制",
+        "body": "连续保留多款 Godot 游戏后台任务时，WebView 曾报告 WebGL 上下文过多并出现白屏。按胶囊按钮退出每款再打开下一款，9/9 已通过。此批不修改容器源码，并行驻留仍待平台专项处理。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "6c46da13-92d3-4bd1-8888-b2f25aca053a",
+        "type": "rule",
+        "section": "rules",
+        "title": "手机交互与反馈优化",
+        "body": "摇杆接近岛屿边缘自动起跳，保留手动跳跃缓存和冲刺；显示落点圈、起落形变及残影；核心仍提供局内检查点。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "专项合成触摸检查覆盖此操作，并将真机证据单独记录在验收卡。"
+        },
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

@@ -1,0 +1,18 @@
+config_version=5
+[application]
+config/name="SKY CORES"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+[display]
+window/size/viewport_width=360
+window/size/viewport_height=720
+window/size/window_width_override=360
+window/size/window_height_override=720
+window/handheld/orientation=1
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+[input_devices]
+pointing/emulate_mouse_from_touch=false
+[rendering]
+renderer/rendering_method="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0

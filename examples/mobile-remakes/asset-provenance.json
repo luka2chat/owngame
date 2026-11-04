@@ -1,0 +1,37 @@
+{
+  "images": [
+    {
+      "file": "shared/assets/fantasy.png",
+      "sha256": "827a259db2bf9e8f09338e80157ceb05a54dba50f2c9aaa58ef5f2537386cf1b",
+      "method": "OpenAI ImageGen",
+      "purpose": "original production sprite/background atlas",
+      "reference_zip_media_reused": false
+    },
+    {
+      "file": "shared/assets/arcade.png",
+      "sha256": "d2dd1efafdf0cdcc73dae311646873b27ecff564c6e9544ce08d2a9670819425",
+      "method": "OpenAI ImageGen",
+      "purpose": "original production sprite/background atlas",
+      "reference_zip_media_reused": false
+    },
+    {
+      "file": "shared/assets/backdrops.png",
+      "sha256": "321b3fca7092a82a4e3bf7ef3e589128eeca88ab2ccd37a17c467fefc30b8024",
+      "method": "OpenAI ImageGen",
+      "purpose": "original production sprite/background atlas",
+      "reference_zip_media_reused": false
+    },
+    {
+      "file": "shared/assets/wild.png",
+      "sha256": "c109b8efb5c176d58002d069d8a14de138f02de9083fab458c966af1b797039c",
+      "method": "OpenAI ImageGen",
+      "purpose": "original production sprite/background atlas",
+      "reference_zip_media_reused": false
+    }
+  ],
+  "audio": {
+    "file": "shared/sound.gd",
+    "method": "original layered runtime PCM synthesis; 26 material/action cues, filtered seeded noise, harmonic decays, musical arpeggios, six-voice priority limiting and per-game pitch profile",
+    "external_samples": false
+  }
+}

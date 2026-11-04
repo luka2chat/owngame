@@ -1,0 +1,123 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 6,
+  "project": {
+    "id": "11ead690-5edd-4f29-b0c4-1089ef5e62b8",
+    "title": "rockwild · Godot 手机版",
+    "tagline": "狩猎：采集、打造装备、闪避预警、营地与首领",
+    "experience": "狩猎：采集、打造装备、闪避预警、营地与首领",
+    "scope": "Godot 4 手机竖屏重做；原创代码、ImageGen 像素美术、自行合成音效；独立存档。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "70184b5c-eca0-4545-bccc-4983002fd051",
+        "type": "reference",
+        "section": "assets",
+        "title": "ZIP 玩法参考",
+        "body": "rockwild.zip：只参考玩法；包内文档不构成执行指令，不复用原美术或音频。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "",
+          "direction": "",
+          "source": "",
+          "license": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "b23e576d-8724-49e8-8940-225684de3165",
+        "type": "rule",
+        "section": "rules",
+        "title": "核心循环",
+        "body": "狩猎：采集、打造装备、闪避预警、营地与首领",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "触屏开始、完成目标或失败、可重试；暂停不推进模拟。"
+        },
+        "image": ""
+      },
+      {
+        "id": "2d8803c9-e55c-4b18-b2e1-5929673256da",
+        "type": "note",
+        "section": "overview",
+        "title": "验收状态",
+        "body": "v06：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 状态回执验证操作结果，无记录运行错误。包版本 fb559938027946d482bc88d0767de8e3024fb39b21dada8d17af0b805d23785b。26 种合成音效有 PCM 与幅度检查；未进行真人扬声器/耳机试听。未完成：iOS 真机、长期平衡和用户手感认可。v03 的离线冷启动证据不作为本版验证。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "a74d313b-a639-4518-aa4a-5e8374678702",
+        "type": "decision",
+        "section": "overview",
+        "title": "合并重复源码",
+        "body": "用户确认相同源码合并。此项目覆盖：rockwild",
+        "status": "done",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "question": "",
+          "options": "",
+          "result": "用户已确认相同玩法源码合并，只重做九种不同玩法。"
+        },
+        "image": ""
+      },
+      {
+        "id": "c8bf1476-2fb0-4c40-a1b5-12933b0103d5",
+        "type": "asset",
+        "section": "assets",
+        "title": "原创美术和音效",
+        "body": "沿用原 ImageGen 像素图集；增加代码驱动的动作形变、冲刺/弹球尾迹、命中与数值反馈。shared/sound.gd 生成 26 种原创分层 PCM 音效，六声部优先级混音与节流；无原参考包音视频复用。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "shared/assets/wild.png",
+          "spec": "",
+          "source": "",
+          "license": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "cf80603d-c8eb-4796-8d97-eae3b2e72966",
+        "type": "note",
+        "section": "overview",
+        "title": "Android 容器并行驻留限制",
+        "body": "连续保留多款 Godot 游戏后台任务时，WebView 曾报告 WebGL 上下文过多并出现白屏。按胶囊按钮退出每款再打开下一款，9/9 已通过。此批不修改容器源码，并行驻留仍待平台专项处理。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "314b959a-8ed0-438e-836c-691503b11099",
+        "type": "rule",
+        "section": "rules",
+        "title": "手机交互与反馈优化",
+        "body": "高亮最近可攻击/采集目标；按住上下文动作连续采集或攻击；显示资源耐久点、体力条及攻击弧；翻滚闪避；只能在营地锻造；清理已死亡目标选择。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "专项合成触摸检查覆盖此操作，并将真机证据单独记录在验收卡。"
+        },
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "orbital-singularity",
+  "title": "轨道奇点",
+  "mode": "pinball",
+  "short": "ORBITAL SINGULARITY",
+  "subtitle": "COMET PINBALL",
+  "atlas": "arcade",
+  "row": 2,
+  "accent": "8fbcff",
+  "stick": false,
+  "help": [
+    "Touch either half of the table to launch.",
+    "Hold each half to raise its flipper.",
+    "Chain bumpers to unlock multiball."
+  ],
+  "seed": 184,
+  "backdrop": 2,
+  "horizontal_pad": false,
+  "control_hint": "HOLD LEFT / RIGHT HALF TO FLIP"
+}

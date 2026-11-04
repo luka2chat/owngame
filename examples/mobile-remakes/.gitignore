@@ -1,0 +1,6 @@
+**/.godot/
+**/build/
+**/__pycache__/
+*.pyc
+# Public exports contain only explicitly reviewed boards.
+!*/game-outline.json

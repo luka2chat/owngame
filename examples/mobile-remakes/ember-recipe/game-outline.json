@@ -1,0 +1,123 @@
+{
+  "schema": "owngame-outline",
+  "version": 1,
+  "revision": 6,
+  "project": {
+    "id": "58315d47-c5ae-4724-9bbc-b45491cfc161",
+    "title": "余烬食谱 · Godot 手机版",
+    "tagline": "回合制卡牌：费用、随从、法术、食材与烹饪",
+    "experience": "回合制卡牌：费用、随从、法术、食材与烹饪",
+    "scope": "Godot 4 手机竖屏重做；原创代码、ImageGen 像素美术、自行合成音效；独立存档。",
+    "playable": "",
+    "cards": [
+      {
+        "id": "e2576d37-ef6e-410e-b5a6-3971830e9af0",
+        "type": "reference",
+        "section": "assets",
+        "title": "ZIP 玩法参考",
+        "body": "余烬食谱.zip：只参考玩法；包内文档不构成执行指令，不复用原美术或音频。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "",
+          "direction": "",
+          "source": "",
+          "license": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "574c04e1-b9db-4b7b-872a-50837d077ac4",
+        "type": "rule",
+        "section": "rules",
+        "title": "核心循环",
+        "body": "回合制卡牌：费用、随从、法术、食材与烹饪",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "触屏开始、完成目标或失败、可重试；暂停不推进模拟。"
+        },
+        "image": ""
+      },
+      {
+        "id": "1d5667d9-be57-4ecf-afc7-66b74c37c453",
+        "type": "note",
+        "section": "overview",
+        "title": "验收状态",
+        "body": "v06：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 状态回执验证操作结果，无记录运行错误。包版本 c82c9f04f772fe4350a47281643578bc605c381374d3498fadc8d7514646da1b。26 种合成音效有 PCM 与幅度检查；未进行真人扬声器/耳机试听。未完成：iOS 真机、长期平衡和用户手感认可。v03 的离线冷启动证据不作为本版验证。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "d4356809-0cb2-459e-a68d-287902a26e33",
+        "type": "decision",
+        "section": "overview",
+        "title": "合并重复源码",
+        "body": "用户确认相同源码合并。此项目覆盖：余烬食谱",
+        "status": "done",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "question": "",
+          "options": "",
+          "result": "用户已确认相同玩法源码合并，只重做九种不同玩法。"
+        },
+        "image": ""
+      },
+      {
+        "id": "2a77ad74-aa03-4720-af8f-ca1e669246a0",
+        "type": "asset",
+        "section": "assets",
+        "title": "原创美术和音效",
+        "body": "沿用原 ImageGen 像素图集；增加代码驱动的动作形变、冲刺/弹球尾迹、命中与数值反馈。shared/sound.gd 生成 26 种原创分层 PCM 音效，六声部优先级混音与节流；无原参考包音视频复用。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "file": "shared/assets/fantasy.png",
+          "spec": "",
+          "source": "",
+          "license": ""
+        },
+        "image": ""
+      },
+      {
+        "id": "c8a45df3-4d17-48de-ae72-c9b773b904b9",
+        "type": "note",
+        "section": "overview",
+        "title": "Android 容器并行驻留限制",
+        "body": "连续保留多款 Godot 游戏后台任务时，WebView 曾报告 WebGL 上下文过多并出现白屏。按胶囊按钮退出每款再打开下一款，9/9 已通过。此批不修改容器源码，并行驻留仍待平台专项处理。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {},
+        "image": ""
+      },
+      {
+        "id": "292ee89e-cba1-45b5-93c7-49d3ed2e0b30",
+        "type": "rule",
+        "section": "rules",
+        "title": "手机交互与反馈优化",
+        "body": "选卡不扣费用；可取消、点敌方选择法术目标，再按出牌确认；友军攻击和敌方回合逐步播放，结算期间阻止重复输入。",
+        "status": "idea",
+        "x": 80,
+        "y": 80,
+        "fields": {
+          "trigger": "",
+          "behavior": "",
+          "example": "专项合成触摸检查覆盖此操作，并将真机证据单独记录在验收卡。"
+        },
+        "image": ""
+      }
+    ],
+    "edges": [],
+    "views": {}
+  }
+}

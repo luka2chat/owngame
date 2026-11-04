@@ -1,0 +1,20 @@
+{
+  "id": "sky-cores",
+  "title": "天空核心",
+  "mode": "cores",
+  "short": "SKY CORES",
+  "subtitle": "FLOATING ISLAND EXPEDITION",
+  "atlas": "wild",
+  "row": 1,
+  "accent": "ffa5c2",
+  "stick": true,
+  "help": [
+    "Steer toward islands. Edge hops are automatic.",
+    "Jump early for control; dash past drones.",
+    "Collected cores become your checkpoint."
+  ],
+  "seed": 468,
+  "backdrop": 6,
+  "horizontal_pad": false,
+  "control_hint": "STEER TO EDGE: AUTO HOP / DASH TO EVADE"
+}

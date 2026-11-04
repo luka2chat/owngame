@@ -1,0 +1,20 @@
+{
+  "id": "ember-recipe",
+  "title": "余烬食谱",
+  "mode": "cards",
+  "short": "EMBER RECIPE",
+  "subtitle": "A FEAST OF TACTICS",
+  "atlas": "fantasy",
+  "row": 3,
+  "accent": "ffc278",
+  "stick": false,
+  "help": [
+    "Tap a card to inspect it before spending.",
+    "Choose a foe for your targeted spell.",
+    "Play your hand, then watch the turn resolve."
+  ],
+  "seed": 539,
+  "backdrop": 7,
+  "horizontal_pad": false,
+  "control_hint": "SELECT A CARD / TAP PLAY TO CONFIRM"
+}

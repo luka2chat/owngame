@@ -26,3 +26,7 @@
 | [箭径出逃](arrow-escape/) | `arrow-escape` | MIT |
 
 在目标目录执行 `npm ci` 与 `npm start`；Unity 游戏另见其 README。第三方素材按各目录声明使用。
+
+## Godot mobile source candidates
+
+[九款 Godot 竖屏游戏](mobile-remakes/)提供完整可编辑源码、原创 ImageGen 像素素材、程序合成音效及触屏回归检查。九种玩法各有自己的手机操作方式。它们是独立源码候选项目，尚未加入上方网站目录；使用 Godot 4.4.1 打开，具体构建与验证范围见项目说明。
