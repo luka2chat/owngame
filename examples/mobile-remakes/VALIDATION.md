@@ -1,6 +1,6 @@
 # Mobile interaction revision — 2026-11-04
 
-Final candidate: **v08**, Godot **4.4.1**, single-thread compatibility Web export. Nine independent projects share editable GDScript and original generated atlases. Each export is about 51.0 MB. Exact Android package hashes are recorded in `batch.json`.
+Final candidate: **v09**, Godot **4.4.1**, single-thread compatibility Web export. Nine independent projects share editable GDScript and original generated atlases. Each export is about 51.0 MB. Exact Android package hashes are recorded in `batch.json`.
 
 | Check | Result | Scope |
 | --- | --- | --- |
@@ -9,7 +9,7 @@ Final candidate: **v08**, Godot **4.4.1**, single-thread compatibility Web expor
 | Focused input regressions | 9/9 | Synthetic viewport touches: independent movement/action fingers; short jump, edge grace and landing buffer; relative drag without teleporting; no pointer stealing; held table-half flippers; preview/build/upgrade/cancel; card confirmation and turn lock; auto edge hop; held gathering; camp-only crafting; modal input blocking |
 | First-stage bots | 9/9 cleared | Ordinary movement/actions, no altered health, teleporting, or goal skips. Tower bot explicitly confirms purchases; card bot waits for turn resolution |
 | Physical Android | 9/9 interaction scenarios | Moto g84 in the owngame container. ADB touch/hold/drag and pause; input receipts assert changed game state, not only successful page load. No recorded runtime errors |
-| Visual review | Native fixtures and Android captures | Native staged control states and Android play/pause captures reviewed: generated icons, circular skill layout, thumb wings, contextual actions and cooldowns. Toasts sit below the header; the environment continues beneath the translucent controls |
+| Visual review | Native fixtures (v08, unchanged rendering) and v09 Android captures | Native staged control states and Android play/pause captures reviewed: generated icons, circular skill layout, thumb wings, contextual actions and cooldowns. Toasts sit below the header; the environment continues beneath the translucent controls |
 | Audio | 26 runtime cues exercised | Nonempty PCM and per-sample headroom checked. Runtime samples also rendered to a listening montage. No human speaker/headphone listening acceptance claimed |
 | iOS | Not run | No iOS compatibility claim |
 | Long-term feel and balance | Awaiting play feedback | First-stage bots do not establish human enjoyment or high-stage balance |
@@ -20,8 +20,8 @@ Final candidate: **v08**, Godot **4.4.1**, single-thread compatibility Web expor
 - Large primary skill icons sit at the lower-right thumb position, with smaller secondary icons diagonally above. New original ImageGen icons, press compression/rebound, expanding touch rings, radial cooldowns and ready flashes communicate state. Circular hit geometry matches the controls, targets have at least 48 logical pixels in diameter, and targets do not overlap.
 - Shooter/climber steering works across unused bottom space. Dragging over a skill does not activate it or steal the steering pointer. Pinball has broad animated left/right thumb wings as well as held table halves.
 - Tower controls change between elemental purchases, upgrade/cancel and wave start; the non-actionable BUILD button and duplicate wave button were removed. Cards show play/cancel only after selecting a card, with the mana cost visible.
-- Tower/card actions confirm on release. Dragging outside cancels before spending. Focused tests verify this along with touch geometry, floating-stick reversal, two-finger ownership and existing rule scenarios.
-- All nine v08 Web exports passed the physical Android input scenarios and pause checks with no recorded runtime errors. Physical scenarios are single-pointer ADB sequences; multi-touch and slide-away cancellation are synthetic viewport checks.
+- Tower/card actions confirm on release. Dragging outside or receiving an operating-system touch cancellation cancels before spending. The cancellation regression was reproduced before the fix. Focused tests verify this along with touch geometry, floating-stick reversal, two-finger ownership and existing rule scenarios.
+- All nine v09 Web exports passed the physical Android input scenarios and pause checks with no recorded runtime errors. Physical scenarios are single-pointer ADB sequences; multi-touch and slide-away cancellation are synthetic viewport checks.
 
 ## Retained gameplay and feedback
 
@@ -36,7 +36,7 @@ Final candidate: **v08**, Godot **4.4.1**, single-thread compatibility Web expor
 
 ## Evidence boundaries
 
-The device scenarios exercise short concrete interactions, not full human playthroughs. Multi-touch ownership is covered by synthetic viewport events; the ADB scenarios use one pointer at a time. Offline cold start was verified for the earlier v03 Sky Cores package and was **not rerun for v08**. Current English in-game text, iOS compatibility, accessibility options and long-session balance remain follow-up areas.
+The device scenarios exercise short concrete interactions, not full human playthroughs. Multi-touch ownership is covered by synthetic viewport events; the ADB scenarios use one pointer at a time. Offline cold start was verified for the earlier v03 Sky Cores package and was **not rerun for v09**. Current English in-game text, iOS compatibility, accessibility options and long-session balance remain follow-up areas.
 
 The nine games are compact original 2D interpretations of the inspected reference mechanics. They do not reproduce every original campaign, 3D presentation or multiplayer service. Source publication is independent of a production catalogue release or standalone signed APK/IPA distribution.
 

@@ -1,7 +1,7 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 7,
+  "revision": 8,
   "project": {
     "id": "11ead690-5edd-4f29-b0c4-1089ef5e62b8",
     "title": "rockwild · Godot 手机版",
@@ -48,7 +48,7 @@
         "type": "note",
         "section": "overview",
         "title": "验收状态",
-        "body": "v08：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 回执验证结果，无记录运行错误。包版本 5740ba1a58090889b7dc999808d2e26fda92fd7d891ee7c29b390aeb831f9227。底部控件已审核原生截图与 Android 截图。多指和滑出取消由合成事件验证；真机 ADB 情景为单指操作。26 种现有合成音效通过 PCM 幅度检查。本轮未做 iOS、离线冷启动、真人试听及长期手感/平衡验收。",
+        "body": "v09：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 回执验证结果，无记录运行错误。包版本 d818137e8cf93192c1acc054b66f1b1e9106261528d30f8951b41352b32ac14c。底部控件已审核原生截图与 Android 截图。多指和滑出取消由合成事件验证；真机 ADB 情景为单指操作。26 种现有合成音效通过 PCM 幅度检查。本轮未做 iOS、离线冷启动、真人试听及长期手感/平衡验收。",
         "status": "idea",
         "x": 80,
         "y": 80,
@@ -112,7 +112,7 @@
         "fields": {
           "trigger": "",
           "behavior": "",
-          "example": "v08 专项触摸测试覆盖热区、指针所有权、浮动摇杆反向、滑出取消和模态阻断；真机证据在验收卡单独记录。"
+          "example": "v09 专项触摸测试覆盖热区、指针所有权、浮动摇杆反向、滑出取消、系统取消触摸和模态阻断；真机证据在验收卡单独记录。"
         },
         "image": ""
       }

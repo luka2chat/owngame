@@ -1,7 +1,7 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 7,
+  "revision": 8,
   "project": {
     "id": "9b33116d-f873-40ff-ba6b-a2795ade69ee",
     "title": "轨道奇点 · Godot 手机版",
@@ -48,7 +48,7 @@
         "type": "note",
         "section": "overview",
         "title": "验收状态",
-        "body": "v08：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 回执验证结果，无记录运行错误。包版本 86b51ec6a12ef657ae88e494bfdd773bb5fd4d4589132f1f852c564b32d3c004。底部控件已审核原生截图与 Android 截图。多指和滑出取消由合成事件验证；真机 ADB 情景为单指操作。26 种现有合成音效通过 PCM 幅度检查。本轮未做 iOS、离线冷启动、真人试听及长期手感/平衡验收。",
+        "body": "v09：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 回执验证结果，无记录运行错误。包版本 9ad49bcacc5baf4348db1ff5c62fe8806c52a969f9bf62f2b56e5d883970d9fd。底部控件已审核原生截图与 Android 截图。多指和滑出取消由合成事件验证；真机 ADB 情景为单指操作。26 种现有合成音效通过 PCM 幅度检查。本轮未做 iOS、离线冷启动、真人试听及长期手感/平衡验收。",
         "status": "idea",
         "x": 80,
         "y": 80,
@@ -112,7 +112,7 @@
         "fields": {
           "trigger": "",
           "behavior": "",
-          "example": "v08 专项触摸测试覆盖热区、指针所有权、浮动摇杆反向、滑出取消和模态阻断；真机证据在验收卡单独记录。"
+          "example": "v09 专项触摸测试覆盖热区、指针所有权、浮动摇杆反向、滑出取消、系统取消触摸和模态阻断；真机证据在验收卡单独记录。"
         },
         "image": ""
       }

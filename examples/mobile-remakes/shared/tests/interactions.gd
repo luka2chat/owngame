@@ -7,6 +7,8 @@ func check(ok: bool, label: String) -> void:
  if not ok:failures.append(label);push_error(label)
 func touch(id: int, at: Vector2, down: bool) -> void:
  var e=InputEventScreenTouch.new();e.index=id;e.position=at;e.pressed=down;root.push_input(e,true)
+func cancel_touch(id: int, at: Vector2) -> void:
+ var e=InputEventScreenTouch.new();e.index=id;e.position=at;e.pressed=false;e.canceled=true;root.push_input(e,true)
 func drag(id: int, at: Vector2) -> void:
  var e=InputEventScreenDrag.new();e.index=id;e.position=at;root.push_input(e,true)
 func tap(at: Vector2) -> void:
@@ -74,6 +76,8 @@ func run() -> void:
    check(g.money==cash and g.towers.is_empty(),"purchase waits for lift")
    drag(19,Vector2(180,710));touch(19,Vector2(180,710),false)
    check(g.money==cash and g.towers.is_empty(),"slide away cancels purchase")
+   touch(20,control("primary"),true);cancel_touch(20,control("primary"))
+   check(g.money==cash and g.towers.is_empty(),"OS touch cancellation never confirms a purchase")
    tap(control("cancel"));await process_frame;await process_frame
    check(g.build_cell==-1 and g.money==cash,"explicit cancel has no cost")
    tap(g.sockets[0]);await process_frame;await process_frame
@@ -92,6 +96,8 @@ func run() -> void:
    check(g.selected_card==0 and g.mana==mana and g.allies.is_empty(),"card selection has no cost")
    touch(19,control("primary"),true);drag(19,Vector2(180,710));touch(19,Vector2(180,710),false)
    check(g.mana==mana and g.allies.is_empty(),"slide away cancels card play")
+   touch(20,control("primary"),true);cancel_touch(20,control("primary"))
+   check(g.mana==mana and g.allies.is_empty(),"OS touch cancellation never plays a card")
    tap(control("secondary"));await process_frame;await process_frame
    check(g.selected_card==-1 and g.mana==mana,"cancel card safely")
    tap(Vector2(90,400));await process_frame;await process_frame;tap(control("primary"));await process_frame;await process_frame

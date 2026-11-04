@@ -1,7 +1,7 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 7,
+  "revision": 8,
   "project": {
     "id": "8c8423dd-65c1-4fb1-9c6b-e734dbaff2e3",
     "title": "符文先锋：秘法围城 · Godot 手机版",
@@ -48,7 +48,7 @@
         "type": "note",
         "section": "overview",
         "title": "验收状态",
-        "body": "v08：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 回执验证结果，无记录运行错误。包版本 5ef78cc293b251b1966bd5db2a732f5975dea0024d615b10a663b33f75ef6a5b。底部控件已审核原生截图与 Android 截图。多指和滑出取消由合成事件验证；真机 ADB 情景为单指操作。26 种现有合成音效通过 PCM 幅度检查。本轮未做 iOS、离线冷启动、真人试听及长期手感/平衡验收。",
+        "body": "v09：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 回执验证结果，无记录运行错误。包版本 eceb25fd617cf9f62ee76c06d1acb261219723bf8b54f290640b8d96d7838649。底部控件已审核原生截图与 Android 截图。多指和滑出取消由合成事件验证；真机 ADB 情景为单指操作。26 种现有合成音效通过 PCM 幅度检查。本轮未做 iOS、离线冷启动、真人试听及长期手感/平衡验收。",
         "status": "idea",
         "x": 80,
         "y": 80,
@@ -112,7 +112,7 @@
         "fields": {
           "trigger": "",
           "behavior": "",
-          "example": "v08 专项触摸测试覆盖热区、指针所有权、浮动摇杆反向、滑出取消和模态阻断；真机证据在验收卡单独记录。"
+          "example": "v09 专项触摸测试覆盖热区、指针所有权、浮动摇杆反向、滑出取消、系统取消触摸和模态阻断；真机证据在验收卡单独记录。"
         },
         "image": ""
       }

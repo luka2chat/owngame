@@ -279,7 +279,8 @@ func _input(event: InputEvent) -> void:
  var is_tap:=false
  var is_drag:=false
  if event is InputEventScreenTouch:
-  at=event.position;pressed=event.pressed;pointer=event.index;is_tap=true
+  at=event.position;pressed=event.pressed and not event.canceled;pointer=event.index;is_tap=true
+  if event.canceled:pending_controls.erase(pointer)
  elif event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT:
   at=event.position;pressed=event.pressed;is_tap=true
  elif event is InputEventScreenDrag:

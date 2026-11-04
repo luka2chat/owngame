@@ -11,7 +11,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "4fcfc08a45768f6523d7291f68ca6608cd2795330358cfd68a4a86ed01193fc2"
+      "sha256": "d9248f02ee5f9893157fc82d2445a8e15b77d7f88de24f8cbaf9b2f813100e64"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -19,7 +19,7 @@
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "9d79986371f13cfd4d189ec1a551140780c35506e46b28683f9400271adc037a"
+      "sha256": "f7e45cd5e65b4b9144e00e763d2b7c3c7e6394b7b3b8aef3a82907b3307e3cc3"
     },
     {
       "path": "arc-street/AGENTS.md",
@@ -35,7 +35,7 @@
     },
     {
       "path": "arc-street/game-outline.json",
-      "sha256": "40f8105e772d571f7368552d40bf085fe539de26a1d4a867734d71531c49a5f2"
+      "sha256": "0ecfbbf669097ed5b31529c194a2c00311e648f437b0956bf3ccb54cf63b6a65"
     },
     {
       "path": "arc-street/main.tscn",
@@ -55,7 +55,7 @@
     },
     {
       "path": "batch.json",
-      "sha256": "29b79676224939a3d3757b4ba6c3eeeff4804d5206306a3f2bda9cc1e1abc493"
+      "sha256": "d7586705b0f69d3a0506852225e55dcea7a6cdfb32500e05a09afe414d5f586e"
     },
     {
       "path": "candle-walker/AGENTS.md",
@@ -71,7 +71,7 @@
     },
     {
       "path": "candle-walker/game-outline.json",
-      "sha256": "538171876083b0d2b6c8b6ab0b7773d0efe6dadb2e530e5b29c4091efe8b1fac"
+      "sha256": "cc9a20a54da486ecf10b1eef2a345f766d20ba865dfc3859a7b7f7b4b33babc0"
     },
     {
       "path": "candle-walker/main.tscn",
@@ -99,7 +99,7 @@
     },
     {
       "path": "cloud-ascent/game-outline.json",
-      "sha256": "fc8bc78fbed2bd65670f525e6f27fa5614c264f0d841da9806ab7b4845f528e0"
+      "sha256": "0e16041d6da80e0e2cc2d1412bc2eabd7ff1f18fb41acdd46df73cf6b6ec4951"
     },
     {
       "path": "cloud-ascent/main.tscn",
@@ -127,7 +127,7 @@
     },
     {
       "path": "ember-recipe/game-outline.json",
-      "sha256": "d4d57b8e538b819be858a3a79139aef2ba4a09e621047d01fe050b3b36438942"
+      "sha256": "5e2b7e23a62d48738ec7ae8f7a3a5fadc5c956dc5ccdc130e21d089637cfbb3a"
     },
     {
       "path": "ember-recipe/main.tscn",
@@ -155,7 +155,7 @@
     },
     {
       "path": "frost-bastion/game-outline.json",
-      "sha256": "bc485862e8cea0cddef69d2806505372ff5bd5ea5fb71ede813f1c6969276385"
+      "sha256": "0b8d9d317c366ac02481d353777ab4ac25c716fefdc0bd01e6f40d95088d08d5"
     },
     {
       "path": "frost-bastion/main.tscn",
@@ -183,7 +183,7 @@
     },
     {
       "path": "orbital-singularity/game-outline.json",
-      "sha256": "83db39dcebd4a912c20ce4f00809bfbcb1e9f8ff05c34409c5bd71eb75df4cc8"
+      "sha256": "0869a7f2fe2f73dd32f456d45134f65be56a87e4e824dcf49ed3ec0ec889a492"
     },
     {
       "path": "orbital-singularity/main.tscn",
@@ -215,7 +215,7 @@
     },
     {
       "path": "rockwild/game-outline.json",
-      "sha256": "76033004fd1e6830a135b1393da98fba63573fc9df613923c58876c0471a95f1"
+      "sha256": "c1f8c87f434d3c0a0dc768783e9c4b5945eaabdfb7ef2b8e9bf2b1b7bde2ff04"
     },
     {
       "path": "rockwild/main.tscn",
@@ -243,7 +243,7 @@
     },
     {
       "path": "rune-vanguard/game-outline.json",
-      "sha256": "9ebfff2c51073532d07a41bf267eb2d4ce679ff4cb497fb6985a419f42236ac0"
+      "sha256": "27406591217e1872edc400b337937cc3ca7998a9520edcae215699f96674a0a3"
     },
     {
       "path": "rune-vanguard/main.tscn",
@@ -299,7 +299,7 @@
     },
     {
       "path": "shared/base.gd",
-      "sha256": "c2515e5d015cd137a5367738e3f3fc725cfb09766e45354ddc9005373bfa89b1"
+      "sha256": "2ea201ab41806404f44a0d0ecec054f8306fc580b002766abffc99773cb5ac45"
     },
     {
       "path": "shared/base.gd.uid",
@@ -395,7 +395,7 @@
     },
     {
       "path": "shared/tests/interactions.gd",
-      "sha256": "a66e62c8c16f6e416ae4d21d62ea8f887e3ba52ad383f740e1ad10cba79ac60c"
+      "sha256": "86bc68642877c56f724b442097abed9d698462a795cf2c8d12c15085c09fd621"
     },
     {
       "path": "shared/tests/interactions.gd.uid",
@@ -439,7 +439,7 @@
     },
     {
       "path": "sky-cores/game-outline.json",
-      "sha256": "5583c36638c1a717acaf55d3df6374f1eca172bd2ec90876d5c6cb90b2e711e0"
+      "sha256": "87eabf5be4a774e06a5cc1010e582cc59347b7031a48f6e29c23683a50c04b0f"
     },
     {
       "path": "sky-cores/main.tscn",

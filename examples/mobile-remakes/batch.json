@@ -10,8 +10,8 @@
       "电弧街战",
       "霓虹疾行"
     ],
-    "build": "v08",
-    "device_version": "76816533cfc28c6980339cd52975699acf74acb4b3d64e15ec19955420bf2e86"
+    "build": "v09",
+    "device_version": "4c8970004a366c176de4152e49b8c551b1ce8a62b761b334545ceb75b3445ab7"
   },
   {
     "id": "rune-vanguard",
@@ -23,8 +23,8 @@
     "aliases": [
       "符文先锋：秘法围城"
     ],
-    "build": "v08",
-    "device_version": "5ef78cc293b251b1966bd5db2a732f5975dea0024d615b10a663b33f75ef6a5b"
+    "build": "v09",
+    "device_version": "eceb25fd617cf9f62ee76c06d1acb261219723bf8b54f290640b8d96d7838649"
   },
   {
     "id": "orbital-singularity",
@@ -36,8 +36,8 @@
     "aliases": [
       "轨道奇点"
     ],
-    "build": "v08",
-    "device_version": "86b51ec6a12ef657ae88e494bfdd773bb5fd4d4589132f1f852c564b32d3c004"
+    "build": "v09",
+    "device_version": "9ad49bcacc5baf4348db1ff5c62fe8806c52a969f9bf62f2b56e5d883970d9fd"
   },
   {
     "id": "frost-bastion",
@@ -50,8 +50,8 @@
       "寒霜烽堡",
       "Sporehold Bastion"
     ],
-    "build": "v08",
-    "device_version": "129288748a3137cb74037da8043329c635b9cb188330218198b5daafd2f7db97"
+    "build": "v09",
+    "device_version": "c513265e5ee797d25084029bd57169e4bae4a0d572c17a76076fc559e3b1094b"
   },
   {
     "id": "cloud-ascent",
@@ -63,8 +63,8 @@
     "aliases": [
       "云端攀登"
     ],
-    "build": "v08",
-    "device_version": "fa2ba4d6f0f52b666d74fe3c14d0520ff1ca1c6ed6127eb3dd7b7e0158827ecd"
+    "build": "v09",
+    "device_version": "c41366c2c32ac0dae4972ba64037455dbca95c165be4687a0da4d47d4fcaf51f"
   },
   {
     "id": "candle-walker",
@@ -76,8 +76,8 @@
     "aliases": [
       "烛影行者"
     ],
-    "build": "v08",
-    "device_version": "e7345aefd4ed474df5c86f3dc56f06ae439864b96d9e59e2f018aa662b3b6720"
+    "build": "v09",
+    "device_version": "628e8a7a2a82615fd90b8e9f39094e872749d57f4d02a3581fe47e87aa9d4627"
   },
   {
     "id": "sky-cores",
@@ -95,8 +95,8 @@
       "spiralcore",
       "turnace"
     ],
-    "build": "v08",
-    "device_version": "b8dbaf6e993b34eb5d3e4f97771e580eca92a77e1581886574d913fe17dfb619"
+    "build": "v09",
+    "device_version": "1383bd96876c3a915bff32c27a470ae4cdf9e5703baff7384b0c2a161dc4b272"
   },
   {
     "id": "ember-recipe",
@@ -108,8 +108,8 @@
     "aliases": [
       "余烬食谱"
     ],
-    "build": "v08",
-    "device_version": "32366a049bb5c91b5ec43997990032d59cc85d58410ce113b2d3be13cbd1e255"
+    "build": "v09",
+    "device_version": "8bf23361125089484b8d146bb8bd2b72bf89dd91af0e0192ee9f06e4c4b94a57"
   },
   {
     "id": "rockwild",
@@ -121,7 +121,7 @@
     "aliases": [
       "rockwild"
     ],
-    "build": "v08",
-    "device_version": "5740ba1a58090889b7dc999808d2e26fda92fd7d891ee7c29b390aeb831f9227"
+    "build": "v09",
+    "device_version": "d818137e8cf93192c1acc054b66f1b1e9106261528d30f8951b41352b32ac14c"
   }
 ]
