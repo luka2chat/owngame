@@ -66,7 +66,10 @@ func run() -> void:
  assert(chests.size() == 1)
  game.hero = chests[0].pos
  game._process(0.01)
- assert(game.state == "upgrade" and game.stage_reward)
+ assert(game.state == "reward" and game.stage_reward)
+ for i in range(12):game._process(0.05)
+ game.handle_press(Vector2(180,580),1)
+ assert(game.state=="upgrade")
  game.handle_press(Vector2(90, 245), 1)
  assert(game.stage == 2 and game.state == "play" and not game.boss_spawned)
  assert(game.ranks.size() == 1)

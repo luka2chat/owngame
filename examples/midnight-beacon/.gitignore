@@ -1,2 +1,6 @@
-/.godot/
-/build/
+.godot/
+build/
+**/__pycache__/
+*.pyc
+# Only reviewed snapshots are exported to the public checkout.
+!game-outline.json
