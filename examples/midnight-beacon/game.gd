@@ -6,6 +6,19 @@ const START_BUTTON = Rect2(48, 457, 264, 68)
 const SOUND_BUTTON = Rect2(246, 52, 110, 44)
 const BEACON_CHARGE = 12
 const Sound = preload("res://sound.gd")
+const Equipment = preload("res://equipment.gd")
+var gear = Equipment.new()
+var gear_ui = preload("res://equipment_ui.gd").new()
+var gear_return := "play"
+var reward_ui = preload("res://reward_ui.gd").new()
+var pending_reward := {}
+var reward_age := 0.0
+var new_gear := false
+const DROP_AREA = Rect2(30,140,300,420)
+const STICK_TRAVEL = 24.0
+var gear_notice := ""
+var gear_notice_time := 0.0
+var gear_bonus := {}
 var rng := RandomNumberGenerator.new()
 var state := "title"
 var hero := Vector2(180, 340)
@@ -75,13 +88,22 @@ var arena: Texture2D
 var font: Font
 
 func _ready() -> void:
+ Input.use_accumulated_input = false
  rng.randomize()
+ gear.reset()
+ gear_bonus = gear.totals()
  font = ThemeDB.fallback_font
  if persist_enabled and FileAccess.file_exists("user://beacon-best.txt"):
   best_stage = maxi(1, FileAccess.get_file_as_string("user://beacon-best.txt").to_int())
  if persist_enabled and FileAccess.file_exists("user://beacon-run.json"):
   var parsed = JSON.parse_string(FileAccess.get_file_as_string("user://beacon-run.json"))
   if valid_checkpoint(parsed): saved_run = parsed
+ if not saved_run.is_empty():
+  for key in checkpoint_keys(): set(key,saved_run[key])
+  ranks = saved_run.ranks.duplicate()
+  stage = int(saved_run.stage)
+ if saved_run.has("equipment"): gear.restore(saved_run.equipment)
+ gear_bonus = gear.totals()
  add_child(sound)
  if ResourceLoader.exists("res://assets/sprites.png"):
   art = load("res://assets/sprites.png")
@@ -89,10 +111,15 @@ func _ready() -> void:
   arena = load("res://assets/arena.png")
  if ResourceLoader.exists("res://assets/relics.png"):
   loot_art = load("res://assets/relics.png")
+ print("BEACON_READY")
  queue_redraw()
 
 func start_game() -> void:
  state = "play"
+ gear.reset()
+ gear_bonus = gear.totals()
+ gear_notice_time = 0
+ pending_reward.clear();reward_age=0;new_gear=false
  hero = Vector2(180, 340)
  enemies.clear(); shots.clear(); gems.clear(); sparks.clear()
  elapsed = 0; spawn_clock = 0; shot_clock = 0; invincible = 0
@@ -105,27 +132,53 @@ func start_game() -> void:
  storm_clock = 1; halo_clock = 0
  walk_phase = 0; facing = 1
  touch_id = -1
+ save_stage_checkpoint()
  sound.play("collect")
 
 func _input(event: InputEvent) -> void:
  if event is InputEventScreenTouch:
-  if event.pressed:
+  if event.pressed and not event.canceled:
    handle_press(event.position, event.index)
+   input_receipt("press")
   elif event.index == touch_id:
    touch_id = -1
+   input_receipt("release")
  elif event is InputEventScreenDrag and event.index == touch_id:
-  touch_pos = event.position
+  update_touch(event.position)
  elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
   if event.pressed: handle_press(event.position, 999)
   elif touch_id == 999: touch_id = -1
  elif event is InputEventMouseMotion and touch_id == 999:
-  touch_pos = event.position
+  update_touch(event.position)
+
+func update_touch(at: Vector2) -> void:
+ touch_pos=at
+ var displacement=touch_pos-touch_origin
+ if displacement.length()>STICK_TRAVEL:
+  touch_origin+=displacement-displacement.limit_length(STICK_TRAVEL)
+
+func movement_input() -> Vector2:
+ var direction=Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+ if touch_id!=-1:
+  var offset=touch_pos-touch_origin
+  if offset.length()>2:
+   direction+=offset.normalized()*pow(clampf((offset.length()-2)/18.0,0,1),0.7)
+ return direction.limit_length()
 
 func _notification(what: int) -> void:
  if what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_APPLICATION_PAUSED:
   touch_id = -1
 
 func handle_press(pos: Vector2, id: int) -> void:
+ if state=="reward":
+  reward_ui.press(self,pos)
+  return
+ if state == "equipment":
+  gear_ui.press(self,pos)
+  return
+ if (state == "play" and Rect2(266,594,90,44).has_point(pos)) or (state == "title" and Rect2(94,329,172,44).has_point(pos)):
+  open_equipment()
+  return
  if SOUND_BUTTON.has_point(pos):
   sound.toggle_mute()
   queue_redraw()
@@ -138,11 +191,22 @@ func handle_press(pos: Vector2, id: int) -> void:
  if state == "title" or state == "over":
   if START_BUTTON.has_point(pos):
    var resume = saved_run.duplicate(true) if state == "title" else {}
+   var loadout = gear.snapshot() if state == "title" else {}
    start_game()
+   if resume.is_empty() and not loadout.is_empty():
+    gear.restore(loadout)
+    gear_bonus = gear.totals()
    if not resume.is_empty():
     stage = int(resume.stage)
     for key in checkpoint_keys(): set(key, resume[key])
     ranks = resume.ranks.duplicate()
+    if resume.has("equipment"): gear.restore(resume.equipment)
+    gear_bonus = gear.totals()
+    hp = minf(hp,health_limit())
+    saved_run = resume.duplicate(true)
+    saved_run["equipment"] = gear.snapshot()
+    write_checkpoint(saved_run)
+   else: save_stage_checkpoint()
  elif state == "upgrade":
   for i in range(3):
    if Rect2(28, 220 + i * 93, 304, 76).has_point(pos):
@@ -156,12 +220,17 @@ func handle_press(pos: Vector2, id: int) -> void:
   touch_id = id; touch_origin = pos; touch_pos = pos
 
 func _process(delta: float) -> void:
+ if state=="reward":
+  reward_age+=minf(delta,0.05)
+  queue_redraw()
+  return
  if state != "play":
   return
  var dt = min(delta, 0.05)
  elapsed += dt
  stage_time += dt
- hp = minf(max_hp, hp + regen * dt)
+ if hp>0: hp = minf(health_limit(), hp + (regen + gear_bonus.get("regen",0.0)) * dt)
+ gear_notice_time = maxf(0,gear_notice_time-dt)
  update_relics(dt)
  if hp <= 0:
   state = "over"
@@ -176,16 +245,14 @@ func _process(delta: float) -> void:
   return
  flare = maxf(0.0, flare - dt)
  invincible = max(0.0, invincible - dt)
- var direction = Vector2.ZERO
- if touch_id != -1:
-  direction = (touch_pos - touch_origin).limit_length(45.0) / 45.0
- direction += Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+ var direction = movement_input()
  if direction.length_squared() > 0.04:
   walk_phase += dt * 18.0
   if absf(direction.x) > 0.15: facing = signf(direction.x)
  else:
   walk_phase = 0
- hero += direction.limit_length(1.0) * speed * dt
+ var hero_before_move=hero
+ hero += direction.limit_length(1.0) * move_speed() * dt
  hero = hero.clamp(Vector2(18, 102), Vector2(342, 590))
  spawn_clock -= dt
  if stage_time >= STAGE_SECONDS and not boss_spawned:
@@ -197,21 +264,21 @@ func _process(delta: float) -> void:
   spawn_clock = maxf(0.16, 1.15 / (1.0 + stage * 0.15))
  shot_clock -= dt
  if shot_clock <= 0 and not enemies.is_empty():
-  fire(); shot_clock = fire_rate
+  fire(); shot_clock = shot_interval()
  for e in enemies:
   var toward: Vector2 = (hero - e.pos).normalized()
   update_enemy(e, toward, dt)
   if e.boss:
    e.pos = e.pos.clamp(Vector2(28, 140), Vector2(332, 590))
   if e.pos.distance_to(hero) < e.radius + 9 and invincible <= 0:
-   hp -= maxf(1.0, e.hit - armor); invincible = 0.65
+   hp -= maxf(1.0, e.hit - effective_armor()); invincible = 0.65
    sound.play("hurt")
    emit_sparks(hero, Color("ff8b78"), 8)
  for s in shots:
   s.pos += s.vel * dt; s.life -= dt
   for e in enemies:
    if s.pos.distance_to(e.pos) < e.radius + 5:
-    e.hp -= damage
+    e.hp -= effective_damage() * (1.75 if rng.randf()<crit_chance() else 1.0)
     e.flash = 0.10
     emit_sparks(s.pos, Color("ffd695"), 4)
     s.life = 0
@@ -219,20 +286,22 @@ func _process(delta: float) -> void:
  for e in enemies.duplicate():
   if e.hp <= 0:
    kills += 1
+   hp = minf(health_limit(),hp+gear_bonus.get("siphon",0.0))
    sound.play("kill")
    emit_sparks(e.pos, Color("ad8ae6"), 8)
    drop_crystal(e.pos, (4 + stage) if e.boss else 1 + int(stage / 3) + int(ranks.get("FORTUNE", 0)))
    if e.boss:
-    loot.append({"pos":e.pos, "kind":4})
+    loot.append({"pos":safe_drop_position(e.pos), "kind":4})
    elif loot.size() < 12 and rng.randf() < 0.05 + minf(0.12, ranks.get("FORTUNE", 0) * 0.015):
-    loot.append({"pos":e.pos, "kind":3 if rng.randf() < 0.7 else 5})
+    loot.append({"pos":safe_drop_position(e.pos), "kind":3 if rng.randf() < 0.7 else 5})
    enemies.erase(e)
  for s in shots.duplicate():
   if s.life <= 0: shots.erase(s)
  for g in gems.duplicate():
-  var dist: float = g.pos.distance_to(hero)
-  if dist < magnet: g.pos += (hero - g.pos).normalized() * 200 * dt
-  if dist < 13:
+  if not g.get("pulling",false):g.pos=safe_drop_position(g.pos)
+  if g.pos.distance_to(Geometry2D.get_closest_point_to_segment(g.pos,hero_before_move,hero))<=pickup_range():g["pulling"]=true
+  if g.get("pulling",false):g.pos=g.pos.move_toward(hero,maxf(300,move_speed()*1.8)*dt)
+  if g.pos.distance_to(hero)<18:
    xp += g.value
    charge += g.value
    sound.play("collect")
@@ -244,7 +313,7 @@ func _process(delta: float) -> void:
   sound.play("flare")
   for e in enemies:
    if e.pos.distance_to(hero) <= flare_radius():
-    e.hp -= damage * (2.5 + ranks.get("FLARE", 0) * 0.6)
+    e.hp -= effective_damage() * (2.5 + ranks.get("FLARE", 0) * 0.6)
  if xp >= xp_needed and state == "play":
   xp -= xp_needed; level += 1; xp_needed = 4 + level * 2
   choose_upgrades(); state = "upgrade"; touch_id = -1
@@ -321,7 +390,7 @@ func apply_upgrade(kind: String) -> void:
    else: damage *= 1.12
   "HEART":
    max_hp += 25
-   hp = minf(max_hp, hp + 25)
+   hp = minf(health_limit(), hp + 25)
   "LANTERNS":
    if extra < 5: extra += 1
    else: damage *= 1.2
@@ -338,11 +407,14 @@ func gift_description(kind: String) -> String:
 func flare_radius() -> float:
  return minf(220.0, 112.0 + ranks.get("FLARE", 0) * 12)
 
+func safe_drop_position(at: Vector2) -> Vector2:
+ return at.clamp(DROP_AREA.position,DROP_AREA.end)
+
 func drop_crystal(pos: Vector2, value: int) -> void:
  if gems.size() >= 80:
   gems[0].value += value
  else:
-  gems.append({"pos":pos, "value":value})
+  gems.append({"pos":safe_drop_position(pos), "value":value})
 
 func advance_stage() -> void:
  stage += 1
@@ -355,7 +427,7 @@ func advance_stage() -> void:
  loot.clear()
  for gem in gems: xp += gem.value
  gems.clear()
- hp = minf(max_hp, hp + max_hp * 0.2)
+ hp = minf(health_limit(), hp + health_limit() * 0.2)
  invincible = 2.0
  spawn_clock = 1.0
  if stage > best_stage:
@@ -363,7 +435,10 @@ func advance_stage() -> void:
   if persist_enabled:
    var file = FileAccess.open("user://beacon-best.txt", FileAccess.WRITE)
    if file: file.store_string(str(best_stage))
- saved_run = {"stage":stage, "ranks":ranks.duplicate()}
+ save_stage_checkpoint()
+
+func save_stage_checkpoint() -> void:
+ saved_run = {"stage":stage, "ranks":ranks.duplicate(), "equipment":gear.snapshot()}
  for key in checkpoint_keys(): saved_run[key] = get(key)
  write_checkpoint(saved_run)
 
@@ -371,6 +446,7 @@ func checkpoint_keys() -> Array:
  return ["hp", "max_hp", "level", "xp", "xp_needed", "damage", "fire_rate", "speed", "magnet", "extra", "armor", "regen", "elapsed", "kills"]
 
 func valid_checkpoint(data: Variant) -> bool:
+ if data is Dictionary and data.has("equipment") and not gear.valid(data.equipment): return false
  if not data is Dictionary or not data.get("ranks") is Dictionary:
   return false
  if not data.get("stage") is float and not data.get("stage") is int: return false
@@ -429,22 +505,35 @@ func update_relics(dt: float) -> void:
   bullet.pos += bullet.vel * dt
   bullet.life -= dt
   if bullet.pos.distance_to(hero) < 12 and invincible <= 0:
-   hp -= maxf(1.0, 7.0 + stage * 1.5 - armor)
+   hp -= maxf(1.0, 7.0 + stage * 1.5 - effective_armor())
    invincible = 0.65
    bullet.life = 0
    sound.play("hurt")
  hostile = hostile.filter(func(b): return b.life > 0)
  for item in loot.duplicate():
   if hp <= 0: break
-  if item.pos.distance_to(hero) < 24:
+  if not item.get("pulling",false):item.pos=safe_drop_position(item.pos)
+  if item.pos.distance_to(hero)<=maxf(84 if item.kind==4 else 64,pickup_range()):item["pulling"]=true
+  if item.get("pulling",false):item.pos=item.pos.move_toward(hero,maxf(280,move_speed()*1.6)*dt)
+  if item.pos.distance_to(hero) < 26:
    loot.erase(item)
-   sound.play("upgrade")
+   if item.kind!=4:sound.play("upgrade")
    if item.kind == 4:
-    stage_reward = true
+    var dust_before=gear.dust
+    var bag_was_full=gear.items.size()>=gear.CAPACITY
+    pending_reward=gear.reward(stage,rng)
+    pending_reward["spare_recycled"]=bag_was_full and not pending_reward.recycled
+    pending_reward["dust"]=gear.dust-dust_before
+    reward_age=0;new_gear=not pending_reward.recycled
+    gear_ui.notice="Weakest spare recycled into dust." if pending_reward.spare_recycled else "Defeat a guardian > open its chest > equip."
+    gear_bonus=gear.totals()
+    stage_reward=true
     choose_upgrades()
-    state = "upgrade"
-    touch_id = -1
-   elif item.kind == 3: hp = minf(max_hp, hp + max_hp * 0.25)
+    state="reward";touch_id=-1
+    sound.play("loot%d"%int(pending_reward.item.quality))
+    print("BEACON_REWARD ",JSON.stringify({"slot":pending_reward.item.slot,"quality":pending_reward.item.quality,"dust":pending_reward.dust,"recycled":pending_reward.recycled}))
+    return
+   elif item.kind == 3: hp = minf(health_limit(), hp + health_limit() * 0.25)
    else: invincible = 5.0
  storm_clock -= dt
  if storm_clock <= 0:
@@ -452,7 +541,7 @@ func update_relics(dt: float) -> void:
   var count = mini(int(ranks.get("STORM", 0)), 6)
   for i in range(mini(count, enemies.size())):
    var enemy: Dictionary = enemies[i]
-   enemy.hp -= damage * (1.0 + ranks.get("STORM", 0) * 0.35)
+   enemy.hp -= effective_damage() * (1.0 + ranks.get("STORM", 0) * 0.35)
    bolts.append({"from":hero, "to":enemy.pos, "life":0.18})
   if count > 0 and not enemies.is_empty(): sound.play("flare")
  halo_clock -= dt
@@ -460,7 +549,7 @@ func update_relics(dt: float) -> void:
   halo_clock = 0.5
   for enemy in enemies:
    if enemy.pos.distance_to(hero) < 60 and ranks.get("HALO", 0) > 0:
-    enemy.hp -= damage * 0.3 * ranks.HALO
+    enemy.hp -= effective_damage() * 0.3 * ranks.HALO
     enemy.flash = 0.1
 
 func label(t: String, pos: Vector2, size: int, color := Color.WHITE) -> void:
@@ -478,6 +567,7 @@ func sprite(cell: int, pos: Vector2, size: float, tint := Color.WHITE, flip := f
   draw_circle(pos, size * 0.22, [Color.TURQUOISE, Color.MEDIUM_PURPLE, Color.INDIAN_RED, Color.AQUA, Color.GOLD, Color.DARK_SLATE_BLUE][cell])
 
 func _draw() -> void:
+ gear_ui.targets.clear()
  draw_rect(Rect2(0,0,W,H), Color("101d2c"))
  if arena:
   var palettes = [Color.WHITE, Color("c4b9e5"), Color("d9c1a1"), Color("a0c9ce")]
@@ -498,6 +588,10 @@ func _draw() -> void:
     draw_rect(Rect2(e.pos + Vector2(-30,-37), Vector2(60,4)), Color("442b42"))
     draw_rect(Rect2(e.pos + Vector2(-30,-37), Vector2(60 * maxf(0, e.hp) / e.max_hp,4)), Color("ed8b79"))
   for item in loot:
+   if item.kind==4:
+    draw_line(item.pos-Vector2(0,52),item.pos,Color(1,0.82,0.4,0.25),15)
+    draw_line(hero,item.pos,Color(1,0.82,0.4,0.18),1)
+    gear_ui.center(self,"GEAR CHEST",item.pos.y-35,10,Color("f6dea1"),clampf(item.pos.x,46,314))
    draw_arc(item.pos, 20 + sin(elapsed * 5) * 2, 0, TAU, 24, Color("f6dea1"), 1)
    relic_sprite(item.kind, item.pos, 48)
   for bullet in hostile:
@@ -527,28 +621,34 @@ func _draw() -> void:
   draw_rect(Rect2(0,0,360,90),Color("0b1522"))
   label("STAGE %d  %s" % [stage, LOCATIONS[(stage - 1) % 4]],Vector2(14,23),12,Color("f4dc9b"))
   label("%02d:%02d" % [int(elapsed)/60,int(elapsed)%60],Vector2(275,23),16)
-  draw_rect(Rect2(14,34,210,9),Color("472d3a")); draw_rect(Rect2(14,34,210 * max(hp,0)/max_hp,9),Color("ef7973"))
+  draw_rect(Rect2(14,34,210,9),Color("472d3a")); draw_rect(Rect2(14,34,210 * clampf(hp/health_limit(),0,1),9),Color("ef7973"))
   draw_rect(Rect2(14,52,210,7),Color("253b4e")); draw_rect(Rect2(14,52,210.0 * clampf(float(xp) / xp_needed, 0, 1),7),Color("6ce5d2"))
   label("FLARE",Vector2(248,48),11,Color("f4dc9b"))
   draw_rect(Rect2(248,52,98,7),Color("473f37")); draw_rect(Rect2(248,52,98.0 * clampf(float(charge) / BEACON_CHARGE, 0, 1),7),Color("eab95e"))
   label("LV %d   DEFEATED %d" % [level,kills],Vector2(14,78),13,Color("b1cbd0"))
   if state == "play":
-   var objective = "GUARDIAN IN %ds" % maxi(0, ceili(STAGE_SECONDS - stage_time))
+   var objective = "GEAR CHEST: GUARDIAN IN %ds" % maxi(0, ceili(STAGE_SECONDS - stage_time))
    if boss_spawned:
-    objective = "DEFEAT THE GUARDIAN"
-    if not loot.filter(func(item): return item.kind == 4).is_empty(): objective = "COLLECT THE RELIC CHEST"
+    objective = "DEFEAT GUARDIAN FOR GEAR"
+    if not loot.filter(func(item): return item.kind == 4).is_empty(): objective = "COLLECT YOUR GEAR CHEST"
    draw_rect(Rect2(55, 96, 250, 25), Color(0.03,0.08,0.12,0.85))
-   label(objective, Vector2(74, 113), 12, Color("f6dea1"))
+   gear_ui.center(self,objective,113,11, Color("f6dea1"))
    draw_rect(Rect2(0, 602, 360, 38), Color(0.03,0.08,0.12,0.9))
-   label("STORM %d   HALO %d   REGEN %.1f/s" % [ranks.get("STORM",0), ranks.get("HALO",0),regen], Vector2(20,616),11,Color("85dece"))
-   label("POWER %d  ARMOR %d  RELICS %d" % [int(damage), int(armor), ranks.size()], Vector2(20,632),11,Color("d3e8e2"))
+   label("STORM %d  HALO %d  REGEN %.1f/s" % [ranks.get("STORM",0), ranks.get("HALO",0),regen], Vector2(12,616),10,Color("85dece"))
+   label("POWER %d  ARMOR %d  RELICS %d" % [int(effective_damage()), int(effective_armor()), ranks.size()], Vector2(12,632),10,Color("d3e8e2"))
+   gear_ui.action(self,Rect2(266,594,90,44),"GEAR +" if new_gear else "GEAR","open")
+   if new_gear:draw_circle(Vector2(342,600),4,Color("f4dc9b"))
+   if gear_notice_time>0:
+    draw_rect(Rect2(30,127,300,26),Color("142e38"))
+    gear_ui.center(self,gear_notice,145,12,Color("f4dc9b"))
  if state == "title":
   sprite(0,Vector2(180,260),180)
   label("MIDNIGHT",Vector2(69,105),35,Color("f6dea1"))
   label("BEACON",Vector2(92,145),35,Color("6ce5d2"))
+  button(Rect2(94,329,172,44),"EQUIPMENT")
   label("Endless nights. Ever stronger relics.",Vector2(47,383),15)
   label("Drag to move. Your lantern fires itself.",Vector2(38,410),14,Color("a9c4c9"))
-  label("Collect crystals to charge a flare.",Vector2(67,433),14,Color("f4dc9b"))
+  label("Defeat guardians. Open chests. Equip loot.",Vector2(35,433),13,Color("f4dc9b"))
   button(START_BUTTON,"CONTINUE STAGE %d" % int(saved_run.stage) if not saved_run.is_empty() else "LIGHT THE BEACON")
   if not saved_run.is_empty():
    button(Rect2(90,536,180,44), "NEW VOYAGE")
@@ -556,7 +656,7 @@ func _draw() -> void:
  elif state == "upgrade":
   draw_rect(Rect2(0,90,W,550),Color(0.02,0.06,0.1,0.88))
   label("STAGE CLEAR" if stage_reward else "CHOOSE A GIFT",Vector2(75,174),25,Color("f6dea1"))
-  if stage_reward: label("Choose a relic. Next stage restores 20% HP.", Vector2(31,200),13,Color("a9c4c9"))
+  if stage_reward: label("Gear found! Choose a gift to sail onward.", Vector2(31,200),13,Color("a9c4c9"))
   for i in range(3):
 
    var box = Rect2(28,220+i*93,304,76)
@@ -572,6 +672,8 @@ func _draw() -> void:
   button(START_BUTTON,"KEEP THE LIGHT AGAIN")
  draw_rect(Rect2(253, 62, 93, 25), Color("263d49"))
  label("SOUND OFF" if sound.muted else "SOUND ON", Vector2(263, 79), 11, Color("b1cbd0"))
+ if state == "equipment": gear_ui.draw(self)
+ if state == "reward": reward_ui.draw(self)
 
 func button(rect: Rect2, text: String) -> void:
  draw_rect(rect,Color("deb968")); draw_rect(rect.grow(-4),Color("324b4a"))
@@ -582,3 +684,65 @@ func relic_sprite(cell: int, pos: Vector2, size: float) -> void:
   var dimensions = Vector2(loot_art.get_width() / 3.0, loot_art.get_height() / 2.0)
   draw_texture_rect_region(loot_art, Rect2(pos - Vector2.ONE * size / 2, Vector2.ONE * size),
    Rect2(Vector2(cell % 3, int(cell / 3)) * dimensions, dimensions))
+
+func effective_damage() -> float:
+ return damage * (1.0 + gear_bonus.get("power",0.0)/100.0)
+
+func health_limit() -> float:
+ return max_hp + gear_bonus.get("health",0.0)
+
+func effective_armor() -> float:
+ return armor + gear_bonus.get("armor",0.0)
+
+func move_speed() -> float:
+ return minf(250.0,speed + gear_bonus.get("speed",0.0))
+
+func shot_interval() -> float:
+ return maxf(0.12,fire_rate / (1.0 + gear_bonus.get("haste",0.0)/100.0))
+
+func crit_chance() -> float:
+ return minf(0.60,gear_bonus.get("crit",0.0)/100.0)
+
+func pickup_range() -> float:
+ return minf(240.0,magnet + gear_bonus.get("magnet",0.0))
+
+func open_equipment() -> void:
+ new_gear=false
+ gear_return = state
+ state = "equipment"
+ touch_id = -1
+ gear_ui.selected = -1
+ gear_ui.confirm_salvage = false
+ queue_redraw()
+
+func close_equipment() -> void:
+ state = gear_return
+ touch_id = -1
+ queue_redraw()
+
+func gear_changed() -> void:
+ gear_bonus = gear.totals()
+ hp = minf(hp,health_limit())
+ # Persist only gear edits into the stage checkpoint; combat snapshot remains at entry.
+ if not saved_run.is_empty():
+  saved_run["equipment"] = gear.snapshot()
+  write_checkpoint(saved_run)
+
+func accept_reward(equip_now: bool) -> void:
+ if state!="reward" or reward_age<0.45:return
+ var item=pending_reward.item
+ if equip_now and not pending_reward.recycled and not gear.find_item(int(item.id)).is_empty():
+  if not gear.equipped(item):gear.equip(int(item.id))
+  gear_changed();new_gear=false
+  gear_notice="EQUIPPED: "+gear.NAMES[int(item.slot)]
+  sound.play("equip")
+ else:
+  gear_notice="RECYCLED INTO DUST" if pending_reward.recycled else "IN BACKPACK: "+gear.NAMES[int(item.slot)]
+  sound.play("collect")
+ gear_notice_time=6
+ pending_reward.clear()
+ state="upgrade";touch_id=-1
+ queue_redraw()
+
+func input_receipt(action: String) -> void:
+ print("BEACON_INPUT ",action," ",JSON.stringify({"state":state,"x":hero.x,"y":hero.y,"hp":hp,"stage":stage,"elapsed":elapsed,"gear_count":gear.items.size()}))

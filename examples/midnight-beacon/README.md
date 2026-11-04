@@ -1,6 +1,6 @@
 # Midnight Beacon · 午夜灯塔
 
-An endless portrait survival game for phones. Drag to move and fire automatically. Each stage lasts 45 seconds before its guardian appears. Defeat the guardian, collect its chest and choose a relic to enter the next stage with 20% health recovery. There is no final stage.
+An endless portrait survival game for phones. Drag to move with a responsive floating thumbstick and fire automatically. Each stage lasts 45 seconds before its guardian appears. Defeat the guardian, collect its chest, inspect/equip the revealed gear and choose a relic to enter the next stage with 20% health recovery. There is no final stage.
 
 Four recurring locations change the palette and encounter pressure. Later stages introduce ranged jellyfish and telegraphed charging eels. Coral stages strengthen enemy health, while abyss stages speed enemies up. Guardian health and damage grow with the stage.
 
@@ -36,6 +36,20 @@ The local development delivery path was exercised on an Android Moto g84 5G. The
 
 The owngame 0.12.0 design-board and Web delivery tools worked with this source and build. Its `project.inspect` expects a Node project, so use Godot for source import and export.
 
-## Game design board
+## Keeper equipment
 
-The editable [game-outline.json](./game-outline.json) lives beside the game source. From this directory run `owngame outline` (or `npx @owngame/cli@latest outline .`). The command opens the local canvas; Ctrl+C stops it. Read the design before development and write design changes and actual validation back afterward. JSON and other project file references are relative to this directory. The published snapshot has been reviewed to remove private content.
+The Equipment button on the title screen and GEAR in combat open a paused, portrait inventory. Six slots (lantern, hat, coat, boots, ring, charm) surround the keeper. Tap an item to inspect its quality, level, score comparison, base attribute and bonus affixes, then equip or remove it. Common, uncommon, rare and legendary items have zero to three bonus affixes. Legendary Soul Light restores 1 health per kill per equipped legendary item.
+
+Guardian chests guarantee one item and upgrade dust. A paused reveal shows its quality, score comparison and main attribute; choose Equip or Keep in Bag before the usual gift choice. The title, combat objective and inventory explain this path. Higher stages increase item level (capped at 100) and the legendary chance (capped at 20%). Upgrade items to +5 with dust; each step adds 15% of their unenhanced attributes. Salvaging a spare item requires a second tap; equipped items cannot be salvaged. At the 24-item limit, the weakest spare or incoming item is recycled automatically, never equipped items.
+
+Gear modifies actual damage, critical chance, attack speed, armor, health capacity, movement, pickup radius and regeneration. Critical lantern hits deal 1.75x damage; critical chance is capped at 60%. Gear is calculated separately from gift upgrades so repeated equipping cannot accumulate bonuses. Raising health capacity does not heal the keeper. Switching away from health gear clamps current health to the new maximum.
+
+Equipment belongs to the current voyage, not a permanent account. The initial voyage and each stage entry save a checkpoint; subsequent gear changes update its inventory without advancing its combat snapshot. Existing checkpoints without equipment receive starter gear, preserving their stage and gifts. New Voyage and defeat retain the existing fresh-run behavior. The title loadout is kept when starting or continuing a voyage.
+
+Tests: `godot --headless --path . --script res://tests/equipment_test.gd` covers 106 inventory, combat and migration checks. `tests/equipment_capture.gd` runs engine touch-event and rendering checks in a separate window; images default to `/tmp/midnight-equipment-evidence`. These checks are separate from WebView, physical-phone and offline acceptance. See [equipment validation](EQUIPMENT-VALIDATION.md).
+
+## Movement and pickup revision
+
+Light thumb movements respond quickly; dragging farther moves the stick base with the finger. Lifting the finger stops movement immediately. Drops from enemies killed outside the arena return to the reachable area, and attracted crystals keep chasing even at maximum movement speed. Chests show a guiding light and a dedicated reward reveal with original synthesized quality/equip cues.
+
+Run `GODOT_BIN=/path/to/godot python3 tools/check.py` for imports, rules, equipment and focused input/pickup tests. See [current validation](FEEL-VALIDATION.md) for the exact package and isolated Android first-stage run. Earlier evidence in EQUIPMENT-VALIDATION.md remains historical. The existing phone's Stage 7 continue entry was preserved; iOS and human feel/audio acceptance remain open.

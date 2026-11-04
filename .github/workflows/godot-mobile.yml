@@ -1,9 +1,9 @@
 name: Godot mobile checks
 on:
   push:
-    paths: ['examples/mobile-remakes/**', '.github/workflows/godot-mobile.yml']
+    paths: ['examples/mobile-remakes/**', 'examples/midnight-beacon/**', '.github/workflows/godot-mobile.yml']
   pull_request:
-    paths: ['examples/mobile-remakes/**', '.github/workflows/godot-mobile.yml']
+    paths: ['examples/mobile-remakes/**', 'examples/midnight-beacon/**', '.github/workflows/godot-mobile.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -23,3 +23,5 @@ jobs:
           echo "GODOT_BIN=$RUNNER_TEMP/Godot_v4.4.1-stable_linux.x86_64" >> "$GITHUB_ENV"
       - name: Nine game imports, rules, touch interactions and first-stage playthroughs
         run: python3 examples/mobile-remakes/tools/check.py
+      - name: Midnight Beacon combat, equipment, touch response and edge pickups
+        run: python3 examples/midnight-beacon/tools/check.py

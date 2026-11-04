@@ -22,6 +22,8 @@ var cue_time := {}
 func _ready() -> void:
  for cue in CUES:
   streams[cue] = build_cue(CUES[cue])
+ for quality in range(4):streams["loot%d"%quality]=build_reward(quality)
+ streams["equip"]=build_reward(0,0.36)
  for i in range(10):
   var player := AudioStreamPlayer.new()
   player.volume_db = -5.0
@@ -66,4 +68,23 @@ func build_cue(spec: Array) -> AudioStreamWAV:
  stream.format = AudioStreamWAV.FORMAT_16_BITS
  stream.mix_rate = SAMPLE_RATE
  stream.data = samples
+ return stream
+
+func build_reward(quality: int, duration: float = 0.95) -> AudioStreamWAV:
+ var data=PackedByteArray()
+ var count=int(duration*SAMPLE_RATE)
+ data.resize(count*2)
+ var notes=[523.25,659.25,783.99,1046.50]
+ for i in range(count):
+  var seconds=float(i)/SAMPLE_RATE
+  var value=0.0
+  for n in range(4):
+   var t=seconds-n*duration*0.13
+   if t>=0:
+    var envelope=minf(1,t*150)*exp(-t*(7.0-quality*0.8))*maxf(0,1-seconds/duration)
+    var f=notes[n]*(1+quality*0.06)
+    value+=envelope*(sin(TAU*f*t)+0.18*sin(TAU*f*2*t))*0.085
+  data.encode_s16(i*2,int(clampf(value,-0.8,0.8)*32767))
+ var stream=AudioStreamWAV.new()
+ stream.format=AudioStreamWAV.FORMAT_16_BITS;stream.mix_rate=SAMPLE_RATE;stream.data=data
  return stream
