@@ -5,13 +5,13 @@
     "mode": "side",
     "reference": "电弧街战",
     "mechanics": "横版射击：跳跃、自动瞄准、能量爆破、击败守门首领",
-    "status": "interaction_revision_android_checked",
+    "status": "thumb_controls_android_checked",
     "aliases": [
       "电弧街战",
       "霓虹疾行"
     ],
-    "build": "v06",
-    "device_version": "303351f63d35e94e9076b430e4f6ef48ac9ef9f67056e736e8d0cf0e3e6fc25f"
+    "build": "v08",
+    "device_version": "76816533cfc28c6980339cd52975699acf74acb4b3d64e15ec19955420bf2e86"
   },
   {
     "id": "rune-vanguard",
@@ -19,12 +19,12 @@
     "mode": "shooter",
     "reference": "符文先锋：秘法围城",
     "mechanics": "弹幕射击：拖动闪避、武器升级、扇形首领弹幕",
-    "status": "interaction_revision_android_checked",
+    "status": "thumb_controls_android_checked",
     "aliases": [
       "符文先锋：秘法围城"
     ],
-    "build": "v06",
-    "device_version": "b050066575eff1a6082247d1f270875ad04ea2856bb022f82684a6be42ff94e2"
+    "build": "v08",
+    "device_version": "5ef78cc293b251b1966bd5db2a732f5975dea0024d615b10a663b33f75ef6a5b"
   },
   {
     "id": "orbital-singularity",
@@ -32,12 +32,12 @@
     "mode": "pinball",
     "reference": "轨道奇点",
     "mechanics": "弹球：双挡板、弹射、连击任务、多球奖励",
-    "status": "interaction_revision_android_checked",
+    "status": "thumb_controls_android_checked",
     "aliases": [
       "轨道奇点"
     ],
-    "build": "v06",
-    "device_version": "095ac3ee67b896e1827606bcc71ac45564d8224589f56c993ae2aa6453f23f32"
+    "build": "v08",
+    "device_version": "86b51ec6a12ef657ae88e494bfdd773bb5fd4d4589132f1f852c564b32d3c004"
   },
   {
     "id": "frost-bastion",
@@ -45,13 +45,13 @@
     "mode": "tower",
     "reference": "寒霜烽堡",
     "mechanics": "塔防：布置元素塔、合成升级、波次防守",
-    "status": "interaction_revision_android_checked",
+    "status": "thumb_controls_android_checked",
     "aliases": [
       "寒霜烽堡",
       "Sporehold Bastion"
     ],
-    "build": "v06",
-    "device_version": "8c064abcb546a9a10409f8820fa1497de9516ace498d08cc573ff180edd3b866"
+    "build": "v08",
+    "device_version": "129288748a3137cb74037da8043329c635b9cb188330218198b5daafd2f7db97"
   },
   {
     "id": "cloud-ascent",
@@ -59,12 +59,12 @@
     "mode": "climb",
     "reference": "云端攀登",
     "mechanics": "向上跳跃：移动与碎裂平台、弹簧、护盾",
-    "status": "interaction_revision_android_checked",
+    "status": "thumb_controls_android_checked",
     "aliases": [
       "云端攀登"
     ],
-    "build": "v06",
-    "device_version": "69718e06c1137a2254f3f6499e893b0ae76ea6565768a91694410056d796310b"
+    "build": "v08",
+    "device_version": "fa2ba4d6f0f52b666d74fe3c14d0520ff1ca1c6ed6127eb3dd7b7e0158827ecd"
   },
   {
     "id": "candle-walker",
@@ -72,12 +72,12 @@
     "mode": "platform",
     "reference": "烛影行者",
     "mechanics": "横版平台：收集、踩敌、跳跃越障、到达出口",
-    "status": "interaction_revision_android_checked",
+    "status": "thumb_controls_android_checked",
     "aliases": [
       "烛影行者"
     ],
-    "build": "v06",
-    "device_version": "48e4b5992bb7a64368fb2ad2b0b49c6583d8ebc9a8264d2fcdd4ea234ba2cec6"
+    "build": "v08",
+    "device_version": "e7345aefd4ed474df5c86f3dc56f06ae439864b96d9e59e2f018aa662b3b6720"
   },
   {
     "id": "sky-cores",
@@ -85,7 +85,7 @@
     "mode": "cores",
     "reference": "candyzoom",
     "mechanics": "浮岛收集：限时找全核心、跳跃冲刺、巡逻敌人",
-    "status": "interaction_revision_android_checked",
+    "status": "thumb_controls_android_checked",
     "aliases": [
       "candyzoom",
       "glacialrun",
@@ -95,8 +95,8 @@
       "spiralcore",
       "turnace"
     ],
-    "build": "v06",
-    "device_version": "d1d542a63b8df177c346fe3bc2e6650438c225c53c1692ae498027b46ac501f7"
+    "build": "v08",
+    "device_version": "b8dbaf6e993b34eb5d3e4f97771e580eca92a77e1581886574d913fe17dfb619"
   },
   {
     "id": "ember-recipe",
@@ -104,12 +104,12 @@
     "mode": "cards",
     "reference": "余烬食谱",
     "mechanics": "回合制卡牌：费用、随从、法术、食材与烹饪",
-    "status": "interaction_revision_android_checked",
+    "status": "thumb_controls_android_checked",
     "aliases": [
       "余烬食谱"
     ],
-    "build": "v06",
-    "device_version": "c82c9f04f772fe4350a47281643578bc605c381374d3498fadc8d7514646da1b"
+    "build": "v08",
+    "device_version": "32366a049bb5c91b5ec43997990032d59cc85d58410ce113b2d3be13cbd1e255"
   },
   {
     "id": "rockwild",
@@ -117,11 +117,11 @@
     "mode": "hunt",
     "reference": "rockwild",
     "mechanics": "狩猎：采集、打造装备、闪避预警、营地与首领",
-    "status": "interaction_revision_android_checked",
+    "status": "thumb_controls_android_checked",
     "aliases": [
       "rockwild"
     ],
-    "build": "v06",
-    "device_version": "fb559938027946d482bc88d0767de8e3024fb39b21dada8d17af0b805d23785b"
+    "build": "v08",
+    "device_version": "5740ba1a58090889b7dc999808d2e26fda92fd7d891ee7c29b390aeb831f9227"
   }
 ]

@@ -35,6 +35,12 @@ var screen_offset := Vector2.ZERO
 var field_pointers := {}
 var impact_pause := 0.0
 var damage_flash := 0.0
+var touch_icons: Texture2D
+var touch_hud = preload("res://shared/touch_hud.gd").new()
+var control_motion := {}
+var control_cooldowns := {}
+var ready_pulses := {}
+var pending_controls := {}
 
 func held(key: String) -> bool:
  return key in touches.values() or (key=="primary" and Input.is_physical_key_pressed(KEY_SPACE))
@@ -80,6 +86,7 @@ func _ready() -> void:
  atlas = load("res://shared/assets/" + cfg.get("atlas", "arcade") + ".png")
  backdrop = load("res://shared/assets/backdrops.png")
  atlas_row = int(cfg.get("row", 0))
+ touch_icons = load("res://shared/assets/touch-icons.png")
  if ResourceLoader.exists("res://shared/assets/ui.ttf"):
   font = load("res://shared/assets/ui.ttf")
  audio = preload("res://shared/sound.gd").new()
@@ -172,6 +179,10 @@ func _process(dt: float) -> void:
  screen_offset=Vector2(sin(clock*101),cos(clock*127))*minf(4,shake*22)
  actor_spring=move_toward(actor_spring,0,dt*7)
  for key in button_pulses:button_pulses[key]=maxf(0,button_pulses[key]-dt)
+ for key in ready_pulses:ready_pulses[key]=maxf(0,ready_pulses[key]-dt)
+ for key in control_motion:
+  var target=1.0 if held(key) else 0.0
+  control_motion[key]=lerpf(control_motion[key],target,1-exp(-dt*22))
  for i in range(effects.size()-1,-1,-1):
   effects[i].life-=dt
   if effects[i].life<=0:effects.remove_at(i)
@@ -209,6 +220,7 @@ func clear_input() -> void:
  stick_id = -1
  touches.clear()
  field_pointers.clear()
+ pending_controls.clear()
 
 func move_vector() -> Vector2:
  var keys = Vector2(float(Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_A)), float(Input.is_physical_key_pressed(KEY_S)) - float(Input.is_physical_key_pressed(KEY_W)))
@@ -223,7 +235,7 @@ func input_receipt(label: String) -> void:
 
 func action(name: String) -> void:
  var previous_phase=phase
- button_pulses[name]=0.16
+ button_pulses[name]=0.32
  match name:
   "start", "retry": start_run()
   "next": next_stage()
@@ -274,37 +286,56 @@ func _input(event: InputEvent) -> void:
   at=event.position;pointer=event.index;is_drag=true
  elif event is InputEventMouseMotion:
   at=event.position;is_drag=true
+ if is_drag and pending_controls.has(pointer):
+  var pending=pending_controls[pointer]
+  if not control_contains(pending,at):
+   pending_controls.erase(pointer)
+   touches.erase(pointer)
  if is_drag and phase=="play":
-  if pointer==stick_id:stick=((at-stick_origin)/42.0).limit_length()
+  if pointer==stick_id:
+   var displacement=at-stick_origin
+   if cfg.get("horizontal_pad",false):displacement.y=0
+   # Floating base follows the thumb beyond its travel; no edge deadlock.
+   if displacement.length()>48:stick_origin+=displacement-displacement.limit_length(48)
+   stick=(displacement/36.0).limit_length()
+   if displacement.length()<4:stick=Vector2.ZERO
   if field_pointers.has(pointer):
    var delta:Vector2=at-field_pointers[pointer]
    field_pointers[pointer]=at
    field_motion(at,delta,pointer)
-  # Slide between left/right controls without lifting the thumb.
-  if touches.get(pointer,"") in ["left","right"]:
-   touches[pointer]="left" if at.x<78 else "right"
  if not is_tap:return
  if not pressed:
   var released=str(touches.get(pointer,""))
   touches.erase(pointer)
+  if pending_controls.has(pointer):
+   var pending=pending_controls[pointer]
+   pending_controls.erase(pointer)
+   for b in buttons:
+    if b.action==pending.action and b.get("context","")==pending.get("context","") and b.get("enabled",true) and control_contains(b,at):
+     action(b.action)
+     break
   if not held(released):action_release(released)
-  if pointer==stick_id:stick=Vector2.ZERO;stick_id=-1
+  if pointer==stick_id:stick=Vector2.ZERO;stick_id=-1;input_receipt("move_release")
   if field_pointers.has(pointer):field_pointers.erase(pointer);field_end(at,pointer);input_receipt("field_release")
   return
  # Modal UI must not allow touches through to gameplay.
  for b in buttons:
-  if b.rect.has_point(at):
+  if control_contains(b,at):
    if not b.get("enabled",true):return
    touches[pointer]=b.action
-   action(b.action)
+   if b.get("release",false):pending_controls[pointer]=b.duplicate()
+   else:action(b.action)
    return
  if phase!="play":return
- if cfg.get("stick",true) and at.y>570 and at.x<155 and stick_id==-1:
+ if (cfg.get("stick",true) or cfg.get("horizontal_pad",false)) and at.y>570 and at.x<170 and stick_id==-1:
   stick_id=pointer;stick_origin=at;stick=Vector2.ZERO
  else:
   field_pointers[pointer]=at
   field_begin(at,pointer)
  queue_redraw()
+
+func control_contains(control: Dictionary, at: Vector2) -> bool:
+ return control.rect.has_point(at) and (not control.has("radius") or at.distance_to(control.center)<=control.radius)
 
 func text_at(label: String, at: Vector2, size: int = 16, color: Color = Color.WHITE) -> void:
  draw_string(font, at, label, HORIZONTAL_ALIGNMENT_LEFT, -1, size, color)
@@ -353,8 +384,8 @@ func _draw() -> void:
  if backdrop:
   var cell=backdrop.get_size()/3
   var index=int(cfg.get("backdrop",0))
-  draw_texture_rect_region(backdrop,Rect2(0,84,360,496),Rect2(Vector2(index%3,int(index/3))*cell,cell))
-  draw_rect(Rect2(0,84,360,496),Color(0.02,0.04,0.08,0.20))
+  draw_texture_rect_region(backdrop,Rect2(0,84,360,636),Rect2(Vector2(index%3,int(index/3))*cell,cell))
+  draw_rect(Rect2(0,84,360,636),Color(0.02,0.04,0.08,0.20))
  draw_set_transform(screen_offset)
  world_draw()
  for p in particles:
@@ -373,26 +404,11 @@ func _draw() -> void:
  for i in range(5):
   draw_rect(Rect2(222+i*10,48,7,9),Color("ff7978") if i<hp else Color("394655"))
  # Keep the action below the mobile container's top-right capsule.
- button("II",Rect2(292,37,49,44),"pause",phase=="play")
- panel(Rect2(0,580,360,140),Color("0e1b2a"))
- if cfg.get("horizontal_pad",false):
-  button("<",Rect2(10,607,63,70),"left",phase=="play")
-  button(">",Rect2(82,607,63,70),"right",phase=="play")
- elif cfg.get("stick",true):
-  var origin=stick_origin if stick_id!=-1 else Vector2(70,642)
-  origin=origin.clamp(Vector2(44,624),Vector2(111,662))
-  draw_circle(origin,42,Color("243b50"))
-  draw_arc(origin,42,0,TAU,40,accent.darkened(0.4),2)
-  draw_circle(origin+stick*27,18,accent)
- var cs=controls()
- for i in range(cs.size()):
-  var c=cs[i]
-  var rect=Rect2(166+i*96,603,86,71) if cfg.get("stick",true) or cfg.get("horizontal_pad",false) else Rect2(18+i*171,603,153,71)
-  button(c[0],rect,c[1],phase=="play" and (c.size()<3 or c[2]))
- centered_hint(control_hint(),Vector2(180,704))
+ touch_hud.pause_button(self)
+ touch_hud.draw(self)
  if notice_time>0 and phase=="play":
-  panel(Rect2(15,682,330,29),Color("253644"))
-  centered(notice,702,12,accent)
+  panel(Rect2(15,86,330,27),Color("253644"))
+  centered(notice,104,12,accent)
  if phase != "play": draw_overlay()
 
 func centered_hint(label: String, at: Vector2) -> void:

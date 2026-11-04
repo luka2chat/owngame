@@ -16,5 +16,5 @@
   "seed": 184,
   "backdrop": 2,
   "horizontal_pad": false,
-  "control_hint": "HOLD LEFT / RIGHT HALF TO FLIP"
+  "control_hint": "HOLD LEFT + RIGHT TO FLIP"
 }

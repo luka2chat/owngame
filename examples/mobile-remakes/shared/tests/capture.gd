@@ -14,7 +14,17 @@ func run() -> void:
   "side","platform":game.stick=Vector2.RIGHT
   "hunt":game.stick=Vector2(-0.5,-0.8)
  for i in range(180):game._process(1.0/60)
- game.clear_input();game.queue_redraw()
+ game.clear_input()
+ var args=OS.get_cmdline_user_args()
+ if args.size()>1 and args[1]=="controls":
+  if game.cfg.mode=="tower":game.field_press(game.sockets[3])
+  elif game.cfg.mode=="cards":game.selected_card=0
+  elif game.cfg.mode=="pinball":game.touches[7]="primary";game.touches[8]="secondary"
+  else:
+   game.action("secondary");game.touches[7]="primary"
+   if game.cfg.get("stick",false) or game.cfg.get("horizontal_pad",false):game.stick_id=8;game.stick_origin=Vector2(78,639);game.stick=Vector2(0.8,-0.3)
+  for i in range(10):game._process(1.0/60)
+ game.queue_redraw()
  await process_frame
  await RenderingServer.frame_post_draw
  var path=OS.get_cmdline_user_args()[0]

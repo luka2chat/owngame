@@ -9,12 +9,12 @@
   "accent": "64e7e9",
   "stick": false,
   "help": [
-    "Hold arrows to run. Tap jump for a hop.",
+    "Slide your left thumb to run.",
     "Hold jump for height. Auto-fire aims for you.",
     "Blast breaks the gate guardian."
   ],
   "seed": 42,
   "backdrop": 0,
   "horizontal_pad": true,
-  "control_hint": "HOLD ARROWS / TAP OR HOLD JUMP"
+  "control_hint": "SLIDE TO MOVE  /  HOLD JUMP FOR HEIGHT"
 }

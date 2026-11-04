@@ -9,12 +9,12 @@
   "accent": "ffc47c",
   "stick": false,
   "help": [
-    "Hold arrows to move. Jump over gaps.",
+    "Slide your left thumb to run.",
     "Tap for a hop. Hold for a higher jump.",
     "Dash through danger; stomp the shadows."
   ],
   "seed": 397,
   "backdrop": 5,
   "horizontal_pad": true,
-  "control_hint": "SHORT TAP = HOP / HOLD = HIGH JUMP"
+  "control_hint": "SLIDE TO MOVE  /  HOLD JUMP FOR HEIGHT"
 }

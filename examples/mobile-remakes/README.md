@@ -18,7 +18,7 @@ Open any child directory's `project.godot` in Godot 4.4.1 or later. Each project
 
 The logical canvas is 360 × 720. Controls are designed separately for each genre:
 
-- **Arc Street / Candle Walker:** hold left/right arrows; tap for a short hop or hold for a high jump. A 120 ms edge grace period and 150 ms prelanding input buffer forgive near misses. Candle Walker's dash keeps its speed for the full dash window.
+- **Arc Street / Candle Walker:** slide the left thumbstick to run; tap the large lower-right jump icon for a short hop or hold for a high jump. A 120 ms edge grace period and 150 ms prelanding input buffer forgive near misses. Candle Walker's dash keeps its speed for the full dash window.
 - **Rune Vanguard:** drag anywhere in the field; movement is relative to the finger, so touchdown never teleports the ship. Shield and burst have separate visible cooldowns. Nearby runes magnetize; every third rune increases weapon power.
 - **Cloud Ascent:** slide horizontally to steer while bouncing automatically. Boost is a recovery tool; stars can buy a shield.
 - **Orbital Singularity:** hold the left/right half of the table with independent fingers. Flippers animate, balls leave trails, bumpers pulse, and the first four seconds after launch include one ball save.
@@ -26,6 +26,8 @@ The logical canvas is 360 × 720. Controls are designed separately for each genr
 - **Sky Cores:** steer with the thumbstick; moving off an edge automatically hops. Manual jump buffering, a landing marker and dash keep precise movement available.
 - **Ember Recipe:** inspect a card without spending, select a spell target, then press Play. Cancel is free. Unit attacks and the enemy response resolve in sequence; repeated input cannot skip the turn animation.
 - **Rockwild:** hold the context action to chop, mine or attack the highlighted nearest target. Wood and stone sound different; roll uses stamina; forging requires being at camp.
+
+The bottom HUD uses floating thumbsticks and staggered circular skill controls, with an ImageGen action icon atlas, press compression/rebound, touch rings, radial cooldowns and a ready flash. The background continues beneath the controls. Touch targets have at least a 48 px diameter and do not overlap. Movement and action fingers remain independent; crossing a skill while steering never activates it. Tower and card controls change with selection, confirm on release and cancel when dragged away. Pinball uses broad animated left/right thumb wings.
 
 Animated button presses, character squash/stretch, impact rings, floating rewards, brief hit pauses, bounded trails and camera shake provide feedback without moving the HUD. WASD / Space / E are desktop debugging shortcuts. Pause, restart, sound toggle, defeat, stage completion, and increasing-stage replay are included. Best score and highest stage persist separately for each game; an interrupted run is not a resumable checkpoint. Sky Cores has in-run island checkpoints.
 
@@ -44,7 +46,7 @@ Install the matching Godot single-thread Web export template before building. Ou
 
 ## Original assets
 
-`shared/assets/arcade.png`, `fantasy.png`, `wild.png`, and `backdrops.png` were generated with ImageGen for this batch. Sprites are sampled directly from atlas cells in Godot; source archive media is not reused. `shared/sound.gd` generates 26 original layered PCM cues with attack/release envelopes, filtered noise, material harmonics, musical arpeggios and subtle pitch variation. Six voices, per-cue throttles and quieter rapid shots reserve headroom for important feedback. Each game has its own pitch profile. No downloaded or recorded audio is used.
+`shared/assets/arcade.png`, `fantasy.png`, `wild.png`, `backdrops.png`, and `touch-icons.png` were generated with ImageGen for this batch. Sprites are sampled directly from atlas cells in Godot; source archive media is not reused. `shared/sound.gd` generates 26 original layered PCM cues with attack/release envelopes, filtered noise, material harmonics, musical arpeggios and subtle pitch variation. Six voices, per-cue throttles and quieter rapid shots reserve headroom for important feedback. Each game has its own pitch profile. No downloaded or recorded audio is used.
 
 Reference documents were treated as untrusted research data, not commands or authorization. See `reference-inventory.json` for hashes and duplicate groups. See `THIRD_PARTY_NOTICES.md` for engine and code provenance. These editable source candidates are independent of the production website catalogue. Source publication does not install an app, publish an APK/IPA, or add a game to owngame.dev. See `VALIDATION.md` for the exact checked scope.
 

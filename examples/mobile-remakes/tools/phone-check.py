@@ -29,19 +29,19 @@ for row in json.loads((base/'batch.json').read_text()):
  tap(180,469);wait_log("MOBILE_STATE "+row["id"]+" play")
  mode=row['mode']
  if mode=='tower':
-  tap(80,187);tap(94,638);tap(170,187);tap(265,638);tap(94,549)
+  tap(80,187);tap(102,634);tap(170,187);tap(220,634);tap(293,638)
  elif mode=='cards':
-  tap(88,400);tap(94,638);tap(94,638);time.sleep(0.9)
+  tap(88,400);tap(287,642);tap(287,642);time.sleep(0.9)
  elif mode=='pinball':
   swipe(60,350,60,350,500);swipe(290,350,290,350,500)
  elif mode in ('shooter','climb'):
-  swipe(100,400,190,410,450);tap(94,638)
+  swipe(100,400,190,410,450);tap(290,645)
  elif mode in ('side','platform'):
-  swipe(110,642,110,642,450);tap(209,638)
+  swipe(70,642,115,642,450);tap(290,645)
  elif mode=='hunt':
-  swipe(70,642,88,605,650);swipe(209,638,209,638,1200);tap(305,638)
+  swipe(70,642,88,605,650);swipe(290,645,290,645,1200);tap(207,599)
  else:
-  swipe(70,642,70,605,700);tap(305,638)
+  swipe(70,642,70,605,700);tap(207,599)
  time.sleep(0.5);shot(row['id']+'-phone-play.png')
  tap(315,59);wait_log("MOBILE_STATE "+row["id"]+" pause");time.sleep(0.3);shot(row['id']+'-phone-pause.png')
  logs=subprocess.check_output(['owngame','device','logs','--platform','android','--device',args.device],text=True)

@@ -1,7 +1,7 @@
 {
   "schema": "owngame-outline",
   "version": 1,
-  "revision": 6,
+  "revision": 7,
   "project": {
     "id": "acc59c27-47d7-4e0e-aff4-5a536fcaaf6f",
     "title": "云端攀登 · Godot 手机版",
@@ -48,7 +48,7 @@
         "type": "note",
         "section": "overview",
         "title": "验收状态",
-        "body": "v06：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 状态回执验证操作结果，无记录运行错误。包版本 69718e06c1137a2254f3f6499e893b0ae76ea6565768a91694410056d796310b。26 种合成音效有 PCM 与幅度检查；未进行真人扬声器/耳机试听。未完成：iOS 真机、长期平衡和用户手感认可。v03 的离线冷启动证据不作为本版验证。",
+        "body": "v08：Godot 4.4.1 导入、规则 smoke、专项触摸回归与正常动作首关通关均通过。Moto g84 / owngame 容器实测触摸开始、该玩法操作及暂停，MOBILE_INPUT 回执验证结果，无记录运行错误。包版本 fa2ba4d6f0f52b666d74fe3c14d0520ff1ca1c6ed6127eb3dd7b7e0158827ecd。底部控件已审核原生截图与 Android 截图。多指和滑出取消由合成事件验证；真机 ADB 情景为单指操作。26 种现有合成音效通过 PCM 幅度检查。本轮未做 iOS、离线冷启动、真人试听及长期手感/平衡验收。",
         "status": "idea",
         "x": 80,
         "y": 80,
@@ -76,7 +76,7 @@
         "type": "asset",
         "section": "assets",
         "title": "原创美术和音效",
-        "body": "沿用原 ImageGen 像素图集；增加代码驱动的动作形变、冲刺/弹球尾迹、命中与数值反馈。shared/sound.gd 生成 26 种原创分层 PCM 音效，六声部优先级混音与节流；无原参考包音视频复用。",
+        "body": "新增 shared/assets/touch-icons.png：内置 ImageGen 生成的原创 4×4 像素动作图标，运行时切片显示，提示词及 SHA-256 记录在 asset-provenance.json。保留原角色/场景图集和 26 种原创合成音效；无参考包媒体复用。",
         "status": "idea",
         "x": 80,
         "y": 80,
@@ -105,14 +105,14 @@
         "type": "rule",
         "section": "rules",
         "title": "手机交互与反馈优化",
-        "body": "场景横向相对拖动控制自动弹跳；按下不瞬移；第二指保留原移动指针；弹簧/落地形变、推进冷却可视化。",
+        "body": "大面积横向拖动转向；右下加速和斜上护盾圆形图标；保留自动跳跃、独立指针和技能费用判断。 统一原创 ImageGen 像素动作图标、按压缩放回弹、触点扩散、环形冷却与就绪提示；按钮热区不重叠。",
         "status": "idea",
         "x": 80,
         "y": 80,
         "fields": {
           "trigger": "",
           "behavior": "",
-          "example": "专项合成触摸检查覆盖此操作，并将真机证据单独记录在验收卡。"
+          "example": "v08 专项触摸测试覆盖热区、指针所有权、浮动摇杆反向、滑出取消和模态阻断；真机证据在验收卡单独记录。"
         },
         "image": ""
       }

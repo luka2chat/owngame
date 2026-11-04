@@ -16,5 +16,5 @@
   "seed": 326,
   "backdrop": 4,
   "horizontal_pad": false,
-  "control_hint": "DRAG LEFT / RIGHT ANYWHERE TO STEER"
+  "control_hint": "DRAG ANYWHERE TO STEER"
 }

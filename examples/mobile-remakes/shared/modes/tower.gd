@@ -30,6 +30,7 @@ func upgrade_cost() -> int:
 func mode_action(name: String) -> void:
  if phase!="play":return
  if name=="wave":start_wave();return
+ if name=="cancel":selected=-1;build_cell=-1;audio.play("select");return
  if build_cell>=0 and name in ["primary","secondary"]:
   if money<40:toast("NEED 40 GOLD");audio.play("deny");return
   choice=0 if name=="primary" else 1
@@ -136,8 +137,7 @@ func world_draw() -> void:
   draw_rect(Rect2(e.p-Vector2(15,24),Vector2(30*maxf(0,e.hp/e.max),3)),Color("ff9694"))
  for b in beams:draw_line(b.a,b.b,accent if b.kind==0 else Color("ffa05c"),3)
  sprite(3,Vector2(320,535),Vector2(60,60))
- if pending==0 and enemies.is_empty() and not towers.is_empty():button("START WAVE %d"%(wave+1),Rect2(18,529,238,42),"wave",phase=="play")
- elif wave==0:centered("TAP AN EMPTY PAD TO PLAN YOUR DEFENSE",560,12,accent)
+ if wave==0:centered("TAP A PAD TO PLAN YOUR DEFENSE",560,12,accent)
 
 func interaction_state() -> Dictionary:
  var state=super.interaction_state()

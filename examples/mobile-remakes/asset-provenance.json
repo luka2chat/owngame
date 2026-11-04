@@ -27,6 +27,14 @@
       "method": "OpenAI ImageGen",
       "purpose": "original production sprite/background atlas",
       "reference_zip_media_reused": false
+    },
+    {
+      "file": "shared/assets/touch-icons.png",
+      "sha256": "b1f1fe6890dad489294927bb6ce32a0a5a1ae147970eb90c75829da375e2e7ba",
+      "method": "OpenAI ImageGen built-in imagegen tool",
+      "purpose": "Original transparent 4x4 mobile action icon atlas; runtime cell slicing only",
+      "reference_zip_media_reused": false,
+      "prompt": "Use case: ui-mockup / production game icon sprite atlas. Create ONE square 1024x1024 transparent PNG asset containing exactly sixteen isolated pixel-art action icons arranged in a mathematically regular 4 by 4 grid. Each cell is 256x256; icon centered at each cell center, max silhouette 150x150, generous transparent margin, nothing crosses cells. No text, no letters, no labels, no grid lines, no frames, no buttons, no backgrounds, no drop shadows outside icon. Crisp intentional 32-bit pixel art, chunky readable silhouettes for phone game buttons displayed at 32-40px, bright warm ivory main shapes, restrained ice-blue highlights and deep navy pixel outlines. All icons use the same visual weight and style. Row 1 left to right: boot with upward arrow (JUMP); wing with motion streaks (DASH); star-shaped energy explosion (BLAST); medieval shield (SHIELD). Row 2: small upward rocket (BOOST); diagonal sword (ATTACK); woodcutting axe (CHOP); mining pickaxe (MINE). Row 3: crystal-topped frost turret (FROST TOWER); fire-topped turret (FIRE TOWER); two stacked upward chevrons (UPGRADE); triangular pennant flag (START WAVE). Row 4: playing card with a small outward arrow (PLAY CARD); curved clockwise turn arrow (END TURN); bubbling cooking cauldron (COOK); bold clean X (CANCEL). Make shapes maximally legible at small scale, with minimal internal details. Truly transparent alpha background."
     }
   ],
   "audio": {

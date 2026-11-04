@@ -11,7 +11,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "584f195aa310c4ac23cd7244df3bb4819275a0b90ce6a6a0ab553e4567497ceb"
+      "sha256": "4fcfc08a45768f6523d7291f68ca6608cd2795330358cfd68a4a86ed01193fc2"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -19,7 +19,7 @@
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "4d499ac571dcff1d94238fa9fe1beb71289d3d02991370cc5e38f57b043a9c9c"
+      "sha256": "9d79986371f13cfd4d189ec1a551140780c35506e46b28683f9400271adc037a"
     },
     {
       "path": "arc-street/AGENTS.md",
@@ -27,7 +27,7 @@
     },
     {
       "path": "arc-street/config.json",
-      "sha256": "7414964901350c2591fa8768470f90e19821ba587855f401d07687bc83d500e2"
+      "sha256": "026c616ac99366135d09ef61dd74add51da5c5e313669ccfe1d94d49de8e3393"
     },
     {
       "path": "arc-street/export_presets.cfg",
@@ -35,7 +35,7 @@
     },
     {
       "path": "arc-street/game-outline.json",
-      "sha256": "338103804c2a7ab3d707c8dd9c02e515cadcbdbbf0604afdde1a1be5edb1554a"
+      "sha256": "40f8105e772d571f7368552d40bf085fe539de26a1d4a867734d71531c49a5f2"
     },
     {
       "path": "arc-street/main.tscn",
@@ -51,11 +51,11 @@
     },
     {
       "path": "asset-provenance.json",
-      "sha256": "90cd1cd5feb38f9dda3ba7d819c672f0c0e7cd477b2b9f10de45b182a4623c0c"
+      "sha256": "973cacf48d511dc3ad4ecb02d2d224ed3e920a02eb50a64a7d7b766ff0e7d758"
     },
     {
       "path": "batch.json",
-      "sha256": "6437038308a6a823eda74f836f0446ccc03f9572c26522fb548e6b4637200e7a"
+      "sha256": "29b79676224939a3d3757b4ba6c3eeeff4804d5206306a3f2bda9cc1e1abc493"
     },
     {
       "path": "candle-walker/AGENTS.md",
@@ -63,7 +63,7 @@
     },
     {
       "path": "candle-walker/config.json",
-      "sha256": "2f5930f9a60f1ce38d535a0e354923cefcb3246484582b1b8d8a02e9fe787480"
+      "sha256": "20ca9da47e8e15493161c11f5a845adb7d41f2b4459803418c280a6dff76dfa2"
     },
     {
       "path": "candle-walker/export_presets.cfg",
@@ -71,7 +71,7 @@
     },
     {
       "path": "candle-walker/game-outline.json",
-      "sha256": "3676a6c71b05949cb41ae409150001e7c2d7633691e4baa623e357428d97a13f"
+      "sha256": "538171876083b0d2b6c8b6ab0b7773d0efe6dadb2e530e5b29c4091efe8b1fac"
     },
     {
       "path": "candle-walker/main.tscn",
@@ -91,7 +91,7 @@
     },
     {
       "path": "cloud-ascent/config.json",
-      "sha256": "01a99e2c9375d4fa01f352b2e47f31486417a9a70d09d077de6ada990d3ff4dc"
+      "sha256": "e9ae12de842e629f8d50a408b144cc120ffcab0cd7ec855bd879a27f07bf434b"
     },
     {
       "path": "cloud-ascent/export_presets.cfg",
@@ -99,7 +99,7 @@
     },
     {
       "path": "cloud-ascent/game-outline.json",
-      "sha256": "fec60a8ac13a3eb3bd9fa3bee4ef0473732578c3a9f11494fefe5fee84323fbd"
+      "sha256": "fc8bc78fbed2bd65670f525e6f27fa5614c264f0d841da9806ab7b4845f528e0"
     },
     {
       "path": "cloud-ascent/main.tscn",
@@ -127,7 +127,7 @@
     },
     {
       "path": "ember-recipe/game-outline.json",
-      "sha256": "2a8139fb56cf25024d0f1ad1e8c9b5c599afadd8c2587e7dd1c4ce82b45c56a5"
+      "sha256": "d4d57b8e538b819be858a3a79139aef2ba4a09e621047d01fe050b3b36438942"
     },
     {
       "path": "ember-recipe/main.tscn",
@@ -155,7 +155,7 @@
     },
     {
       "path": "frost-bastion/game-outline.json",
-      "sha256": "a27a3ceafbdd5e21d8d73aee732067c00cd2da6c46d348886656ab54ab30d619"
+      "sha256": "bc485862e8cea0cddef69d2806505372ff5bd5ea5fb71ede813f1c6969276385"
     },
     {
       "path": "frost-bastion/main.tscn",
@@ -175,7 +175,7 @@
     },
     {
       "path": "orbital-singularity/config.json",
-      "sha256": "4b155b333aaf200fb54c6cff0604c46e72a4b383cdd1c12d5f764169a6f09ebd"
+      "sha256": "51a3574b883281d949bffb685a9cdbfafbe7ba565a9e3e46e93bbd7ee955c42a"
     },
     {
       "path": "orbital-singularity/export_presets.cfg",
@@ -183,7 +183,7 @@
     },
     {
       "path": "orbital-singularity/game-outline.json",
-      "sha256": "0827adb18f77aa698bc674ddeecf912f9c1cb7cce645f49c900a6c803e410dc2"
+      "sha256": "83db39dcebd4a912c20ce4f00809bfbcb1e9f8ff05c34409c5bd71eb75df4cc8"
     },
     {
       "path": "orbital-singularity/main.tscn",
@@ -215,7 +215,7 @@
     },
     {
       "path": "rockwild/game-outline.json",
-      "sha256": "7be43cd338bbcb80bc44ee0c8fab7664bcbe094fa0a2240d9753c89d64c57010"
+      "sha256": "76033004fd1e6830a135b1393da98fba63573fc9df613923c58876c0471a95f1"
     },
     {
       "path": "rockwild/main.tscn",
@@ -235,7 +235,7 @@
     },
     {
       "path": "rune-vanguard/config.json",
-      "sha256": "7f2d96c6705d49c963b85e519d429d22a4ec0be95985f5b9711cea6f9087d238"
+      "sha256": "13609bb54d54b3bd13053e45d5a9ae2c6fffe89df42edff2bf393c08438123d1"
     },
     {
       "path": "rune-vanguard/export_presets.cfg",
@@ -243,7 +243,7 @@
     },
     {
       "path": "rune-vanguard/game-outline.json",
-      "sha256": "b41405d946168f7ef1ba9c6b67ea5dc0c757675763d1bda3934f69bf4ee0b89d"
+      "sha256": "9ebfff2c51073532d07a41bf267eb2d4ce679ff4cb497fb6985a419f42236ac0"
     },
     {
       "path": "rune-vanguard/main.tscn",
@@ -282,6 +282,14 @@
       "sha256": "0de9455541462880073d3521b6a16cd86fc608e9814e928abe7ccb81977bf979"
     },
     {
+      "path": "shared/assets/touch-icons.png",
+      "sha256": "b1f1fe6890dad489294927bb6ce32a0a5a1ae147970eb90c75829da375e2e7ba"
+    },
+    {
+      "path": "shared/assets/touch-icons.png.import",
+      "sha256": "d15d536bf26c6b9319f6341e1c13b204fa9fe60bff59e1fe9040106c074621ee"
+    },
+    {
       "path": "shared/assets/wild.png",
       "sha256": "c109b8efb5c176d58002d069d8a14de138f02de9083fab458c966af1b797039c"
     },
@@ -291,7 +299,7 @@
     },
     {
       "path": "shared/base.gd",
-      "sha256": "73acbadd143d31584a6adcedda877f2c47ffefd1b10bfec34850e41eb4f612eb"
+      "sha256": "c2515e5d015cd137a5367738e3f3fc725cfb09766e45354ddc9005373bfa89b1"
     },
     {
       "path": "shared/base.gd.uid",
@@ -355,7 +363,7 @@
     },
     {
       "path": "shared/modes/tower.gd",
-      "sha256": "ff8a160a0b7bf58bbb59e0af7f02883941b69449e6d853924b0c2911f02d7b5f"
+      "sha256": "6732a0ee0833d7b2f6b6a01ff0c46b31470d68bc41c1bfdcd8feb886ea4ab172"
     },
     {
       "path": "shared/modes/tower.gd.uid",
@@ -379,7 +387,7 @@
     },
     {
       "path": "shared/tests/capture.gd",
-      "sha256": "cc5241a5e107cd9485627a38a32c9a4ce567302feb9ffbe417e13fbc33ed0f37"
+      "sha256": "d949ade6d05cdfe94aeb719490ce0555eae406fd65c0225df1df01e70406da74"
     },
     {
       "path": "shared/tests/capture.gd.uid",
@@ -387,7 +395,7 @@
     },
     {
       "path": "shared/tests/interactions.gd",
-      "sha256": "2c8757273b963835621d7977a12a89c7a7d413411d5ad20cac83128fefa8b743"
+      "sha256": "a66e62c8c16f6e416ae4d21d62ea8f887e3ba52ad383f740e1ad10cba79ac60c"
     },
     {
       "path": "shared/tests/interactions.gd.uid",
@@ -403,11 +411,19 @@
     },
     {
       "path": "shared/tests/smoke.gd",
-      "sha256": "85af931397483904ecf984642db311846981a9b4440c9da4bc0c5f4d5e2cf163"
+      "sha256": "6416384970f8aea572a79ec6ae76de96a1f9d6a7111d74383a5231aa50cfde45"
     },
     {
       "path": "shared/tests/smoke.gd.uid",
       "sha256": "f089507aef571a56b19d439281d7669a2a9cfa4686a59f51b49a6ee95799c6ff"
+    },
+    {
+      "path": "shared/touch_hud.gd",
+      "sha256": "e5cc4450b071efb2d483d033f59e0699853f1a37d1f84e9215e99565c6fb60a4"
+    },
+    {
+      "path": "shared/touch_hud.gd.uid",
+      "sha256": "df14504699b453a2fea444409f9eadc00259c753543c3a3e19acca3e523e7874"
     },
     {
       "path": "sky-cores/AGENTS.md",
@@ -423,7 +439,7 @@
     },
     {
       "path": "sky-cores/game-outline.json",
-      "sha256": "5f9db38002103f233974829fa21f8849580577d43538f91f9e80bf7d0dd7be8a"
+      "sha256": "5583c36638c1a717acaf55d3df6374f1eca172bd2ec90876d5c6cb90b2e711e0"
     },
     {
       "path": "sky-cores/main.tscn",
@@ -439,7 +455,7 @@
     },
     {
       "path": "tools/build.py",
-      "sha256": "183fd5be6e82d61df9e4f699ca225056509e9a9d4cb5ff67b80e93e38e16ad2a"
+      "sha256": "b4efec038c40ef7b14681a6862fe1613ffca9cba68de1e249d7ba69e713cdf8b"
     },
     {
       "path": "tools/check.py",
@@ -447,7 +463,7 @@
     },
     {
       "path": "tools/phone-check.py",
-      "sha256": "201c5a74913efcd547d0c3b418d5de9fcb1ee5676a0caa39e4378b34ce004332"
+      "sha256": "2abe7bfa2466d2db69aca8f0fd2c4c2b0f65cb97391bfaa339fa58ff71ad50ac"
     },
     {
       "path": "tools/prepare-links.py",

@@ -30,7 +30,7 @@ func run() -> void:
   var hold=InputEventScreenTouch.new();hold.index=7;hold.position=Vector2(70,642);hold.pressed=true;root.push_input(hold,true)
   var drag=InputEventScreenDrag.new();drag.index=7;drag.position=Vector2(110,642);root.push_input(drag,true)
   check(game.stick.x>0.8,"joystick drag")
-  tap(Vector2(209,638))
+  tap(Vector2(290,645))
   check(game.stick_id==7 and game.stick.x>0.8,"action finger does not release joystick")
   hold=InputEventScreenTouch.new();hold.index=7;hold.position=Vector2(110,642);hold.pressed=false;root.push_input(hold,true)
   check(game.stick_id==-1 and game.stick==Vector2.ZERO,"joystick releases independently")
