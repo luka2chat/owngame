@@ -10,7 +10,7 @@
 
 Keep the production workspace, which contains internal projects and selected immutable deliveries in `.owngame/library`, separate from the public repository checkout. Register the completed delivery with the existing project builder, then maintain the game catalogues referenced by `scripts/web/catalog.mjs`.
 
-For each game ID, register its source directory, build type and licensing in `scripts/games/projects.json`. The exporter supports Phaser, Canvas, plain JavaScript/TypeScript, static sites, Vite and reviewed Unity source allowlists. Add an editable export and an independent build path before supporting another type. Empty directories and minified scripts are not substitutes for editable source.
+For each game ID, register its source directory, build type and licensing in `scripts/games/projects.json`. The exporter supports Phaser, Canvas, plain JavaScript/TypeScript, static sites, Vite and reviewed Unity/Godot source allowlists. Godot exports retain the editor project, GDScript, original assets and an independent Godot Web builder; runtime compression is lossless and verified. Godot headless rules and packaging tests run in source CI, while Web export and browser/device acceptance are separate. Add an editable export and an independent build path before supporting another type. Empty directories and minified scripts are not substitutes for editable source.
 
 Preserve upstream revisions, licenses and notices for third-party projects, fonts, images and models. Record the provenance of new assets before publication.
 

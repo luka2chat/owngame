@@ -3,7 +3,7 @@ import path from 'node:path';
 import {spawn} from 'node:child_process';
 const root=path.resolve(process.argv[2] || '.');
 const index=JSON.parse(await fs.readFile(path.join(root,'games.json')));
-const queue=index.games.filter(g=>g.kind!=='unity');
+const queue=index.games.filter(g=>!['unity','godot'].includes(g.kind));
 const run=(args,cwd)=>new Promise((resolve,reject)=>{
   const child=spawn('npm',args,{cwd,stdio:'inherit'});
   child.on('error',reject);child.on('exit',code=>code===0?resolve():reject(Error('npm '+args.join(' ')+' failed in '+cwd)));

@@ -477,5 +477,35 @@
         "sha256": "e0c8775f8f62b3db019b13bac133cd3ae40e06c21a023d932da774d153f79f62"
       }
     ]
+  },
+  "midnight-beacon": {
+    "f021f46e-de05-4cee-8cba-135f01912139": [
+      {
+        "file": "assets/sprites.png",
+        "title": "像素角色图集",
+        "sha256": "e5535c673bb659ea6950e03b52a21c775d91c14e547e81096f34e8d447d65e8d"
+      }
+    ],
+    "5b6fca8c-be04-42a1-bb3a-a81c42d0ac9f": [
+      {
+        "file": "assets/arena.png",
+        "title": "灯塔甲板",
+        "sha256": "3048ae86a9698e27b5ec111bb3717f9bcaf59379176ade06ef8567a40584c1f4"
+      }
+    ],
+    "3bc9099d-117d-4362-b646-075b09b09ff2": [
+      {
+        "file": "assets/relics.png",
+        "title": "无尽模式怪物与道具图集",
+        "sha256": "dbedd1e32df8153d72eddd113e11fe91e54afada0994e6075b25bbf31b44ff59"
+      }
+    ],
+    "dfba44c7-ae67-431d-9b14-963663cf8ff1": [
+      {
+        "file": "assets/equipment.png",
+        "title": "守灯人装备图集",
+        "sha256": "b9d916f9ac896f7b44a406bc78916e0b63c61cdc6569594b7bfed3eaed31c4c8"
+      }
+    ]
   }
 }

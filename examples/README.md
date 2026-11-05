@@ -1,6 +1,6 @@
 # 网站游戏源码
 
-共 20 款，与 [games.json](../games.json) 中的线上版本对应。
+共 21 款，与 [games.json](../games.json) 中的线上版本对应。
 
 | 游戏 | ID | 代码许可 |
 |---|---|---|
@@ -24,11 +24,8 @@
 | [小小文明](civ-clicker/) | `civ-clicker` | GPL-3.0-or-later |
 | [人潮冲线](crowd-runner/) | `crowd-runner` | MIT |
 | [箭径出逃](arrow-escape/) | `arrow-escape` | MIT |
+| [午夜灯塔](midnight-beacon/) | `midnight-beacon` | MIT; Godot runtime: MIT |
 
-在目标目录执行 `npm ci` 与 `npm start`；Unity 游戏另见其 README。第三方素材按各目录声明使用。
+[九款 Godot 竖屏源码候选](mobile-remakes/)仍保留为独立项目，尚未加入网站目录。
 
-## Godot mobile source candidates
-
-[九款 Godot 竖屏游戏](mobile-remakes/)提供完整可编辑源码、原创 ImageGen 像素素材、程序合成音效及触屏回归检查。九种玩法各有自己的手机操作方式。它们是独立源码候选项目，尚未加入上方网站目录；使用 Godot 4.4.1 打开，具体构建与验证范围见项目说明。
-
-[午夜灯塔（Midnight Beacon）](midnight-beacon/)是 Godot 竖屏无尽生存源码候选：自动攻击、浮动摇杆、装备宝箱、六部位背包与原创合成音效。包含装备和拾取回归检查，尚未加入网站游戏目录。
+在目标目录执行 `npm ci` 与 `npm start`；Unity 和 Godot 游戏另见其 README。第三方素材按各目录声明使用。

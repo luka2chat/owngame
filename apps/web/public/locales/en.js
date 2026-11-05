@@ -497,6 +497,12 @@ export const messages = {
 };
 
 export const games = {
+  "midnight-beacon": {
+    title: "Midnight Beacon",
+    tag: "Fogbound survival · Endless gear builds",
+    description: "Keep the last lantern burning. One-thumb movement, automatic attacks, endless stages and equipment chests.",
+    instructions: "Play in portrait on a phone. Hold and drag to move; release to stop. Attacks fire automatically. Collect crystals to level up. A guardian appears after 45 seconds each stage: defeat it, collect its chest, equip or keep the gear and choose a gift. GEAR opens the inventory. Continue restarts the current stage checkpoint; defeat or New Voyage resets the build. First load is about 15 MB; use a recent browser.",
+  },
   "azeroth-strike": {
     title: "Azeroth Strike",
     tag: "Unlimited Fire · Four battleground modes",

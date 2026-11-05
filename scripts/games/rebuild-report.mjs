@@ -3,7 +3,7 @@ import path from 'node:path';
 import {sha256} from './source-policy.mjs';
 const root=path.resolve(process.argv[2] || '.');
 const index=JSON.parse(await fs.readFile(path.join(root,'games.json'))),results=[];
-for(const game of index.games.filter(g=>g.kind!=='unity')) {
+for(const game of index.games.filter(g=>!['unity','godot'].includes(g.kind))) {
   const folder=path.join(root,game.path),binding=JSON.parse(await fs.readFile(path.join(folder,'ONLINE_BUILD.json')));
   const same=[],different=[],omitted=[];
   for(const f of binding.files) {

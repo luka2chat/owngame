@@ -65,7 +65,25 @@ def export(catalog, destination, library=None, only=None):
                     continue  # Finder metadata, editor caches and hidden local state are not source.
                 if f.is_file() and (allowed is None or f.suffix in allowed):
                     copy(f, Path(relative)/f.relative_to(p))
-        if spec['kind'] == 'unity':
+        if spec['kind'] == 'godot':
+            # Explicit source allowlist; never publish the Godot cache or engine binaries.
+            target.mkdir(parents=True, exist_ok=True)
+            for name in spec.get('sourceFiles', []):
+                rel = Path(name)
+                if rel.is_absolute() or '..' in rel.parts or any(x in rel.parts for x in ['.godot', 'build', 'dist', '.git']):
+                    raise ValueError('Unsafe Godot source path')
+                if (source/rel).is_symlink():
+                    raise ValueError('Godot source symlink')
+                copy(source/rel, rel)
+            required = ['project.godot', 'main.tscn', 'game.gd', 'export_presets.cfg', 'build-web.sh', 'web/pack.mjs']
+            if not all(name in spec.get('sourceFiles', []) for name in required):
+                raise ValueError('Incomplete Godot editable source/build allowlist')
+            # Replace the previous candidate inventory with the published manifest below.
+            (target/'SOURCE_FILES.json').unlink(missing_ok=True)
+            dump(target/'game.json', {'managed_export':'owngame', 'id':ident, 'kind':'godot', 'online_build_sha256':version})
+            dump(target/'ONLINE_BUILD.json', {'id':ident, 'build_sha256':version,
+                'entrypoint':delivery['entrypoint'], 'files':canonical})
+        elif spec['kind'] == 'unity':
             # The previously reviewed Unity source manifest is the allowlist.
             manifest = json.loads((source/'SOURCE_MANIFEST.json').read_text())
             prior_file = target/'SOURCE_MANIFEST.json'
@@ -246,10 +264,10 @@ def export(catalog, destination, library=None, only=None):
         digest = SHA(json.dumps(inputs,sort_keys=True,separators=(',',':')).encode())
         files = []
         for p in ([] if spec['kind'] == 'unity' else sorted(target.rglob('*'))):
-            if not p.is_file() or p.name == 'SOURCE_MANIFEST.json' or any(x in p.relative_to(target).parts for x in ['node_modules','dist','.git']):
+            if not p.is_file() or p.name == 'SOURCE_MANIFEST.json' or any(x in p.relative_to(target).parts for x in ['node_modules','dist','.git','.godot','build','__pycache__']):
                 continue
             b = p.read_bytes()
-            if p.suffix in ['.ts','.js','.mjs','.json','.md','.html','.css'] and re.search(rb'/Users/|/Volumes/|192\.168\.\d+\.\d+|gh[pousr]_[A-Za-z0-9]{30,}|-----BEGIN (?:RSA |OPENSSH )?PRIVATE KEY', b):
+            if p.suffix in ['.ts','.js','.mjs','.json','.md','.html','.css','.gd','.godot','.cfg','.sh','.py'] and re.search(rb'/Users/|/Volumes/|192\.168\.\d+\.\d+|gh[pousr]_[A-Za-z0-9]{30,}|-----BEGIN (?:RSA |OPENSSH )?PRIVATE KEY', b):
                 raise ValueError('Private/machine-specific content: '+str(p.relative_to(target)))
             files.append({'path':p.relative_to(target).as_posix(),'bytes':len(b),'sha256':SHA(b)})
         if spec['kind'] != 'unity':
@@ -262,7 +280,7 @@ def export(catalog, destination, library=None, only=None):
             b = (target/'ONLINE_BUILD.json').read_bytes()
             manifest['files'].append({'path':'ONLINE_BUILD.json','bytes':len(b),'sha256':SHA(b),'license':'MIT'})
             dump(target/'SOURCE_MANIFEST.json', manifest)
-        games.append({'id':ident,'title':game['title'],'kind':('unity' if spec['kind']=='unity' else config['kind']),
+        games.append({'id':ident,'title':game['title'],'kind':(spec['kind'] if spec['kind'] in ['unity','godot'] else config['kind']),
             'path':'examples/'+ident,'online_build_sha256':version,'input_sha256':digest,
             'source_manifest_sha256':SHA((target/'SOURCE_MANIFEST.json').read_bytes()),
             'license':spec.get('license','MIT')})
@@ -276,7 +294,7 @@ def export(catalog, destination, library=None, only=None):
     if outline_ids:
         subprocess.run(['node', str(ROOT/'scripts/games/export-outlines.mjs'), '--repository-dir', str(destination), '--only', ','.join(outline_ids)], check=True)
     rows = '\n'.join(f"| [{g['title']}]({g['id']}/) | `{g['id']}` | {g['license']} |" for g in games)
-    (destination/'examples/README.md').write_text('# 网站游戏源码\n\n'+f'共 {len(games)} 款，与 [games.json](../games.json) 中的线上版本对应。\n\n| 游戏 | ID | 代码许可 |\n|---|---|---|\n'+rows+'\n\n在目标目录执行 `npm ci` 与 `npm start`；Unity 游戏另见其 README。第三方素材按各目录声明使用。\n')
+    (destination/'examples/README.md').write_text('# 网站游戏源码\n\n'+f'共 {len(games)} 款，与 [games.json](../games.json) 中的线上版本对应。\n\n| 游戏 | ID | 代码许可 |\n|---|---|---|\n'+rows+'\n\n[九款 Godot 竖屏源码候选](mobile-remakes/)仍保留为独立项目，尚未加入网站目录。\n\n在目标目录执行 `npm ci` 与 `npm start`；Unity 和 Godot 游戏另见其 README。第三方素材按各目录声明使用。\n')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

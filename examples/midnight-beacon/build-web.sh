@@ -3,7 +3,7 @@ set -eu
 
 project_dir=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd)
 godot_bin=${GODOT_BIN:-godot}
-output="$project_dir/build/mobile-web"
+output="${1:-$project_dir/build/mobile-web}"
 
 cd "$project_dir"
 mkdir -p "$output"

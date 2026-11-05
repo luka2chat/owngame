@@ -201,6 +201,16 @@
       "input_sha256": "2331ae4266135ebaf66174162331a5820c50632fd4e7e675504843112721f60c",
       "source_manifest_sha256": "ff86809b95214608bd9412b71d373eba3cf8ae52210eeaf403f81f7bb74f0116",
       "license": "MIT"
+    },
+    {
+      "id": "midnight-beacon",
+      "title": "午夜灯塔",
+      "kind": "godot",
+      "path": "examples/midnight-beacon",
+      "online_build_sha256": "a4e62b55b1ffb2bdbbc74c31ef9befd82a41c40d72e372466323afb935aa10df",
+      "input_sha256": "086d4cf9478c9177f253f98c527f4a1ff5ad69d5ef6ccd97c3abf3c4ad850b63",
+      "source_manifest_sha256": "5f79ed6efdfd76958536481b3d3ff8efc88c2c21b8e92b8c2434421ec7d8f70f",
+      "license": "MIT; Godot runtime: MIT"
     }
   ]
 }

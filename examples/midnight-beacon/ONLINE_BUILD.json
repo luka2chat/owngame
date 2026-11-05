@@ -1,0 +1,52 @@
+{
+  "id": "midnight-beacon",
+  "build_sha256": "a4e62b55b1ffb2bdbbc74c31ef9befd82a41c40d72e372466323afb935aa10df",
+  "entrypoint": "index.html",
+  "files": [
+    {
+      "bytes": 1830,
+      "path": "engine-loader.js",
+      "sha256": "f46d7636af2591ec13e0b31a6e08b444cd489142abed971c392307c2bb6abeac"
+    },
+    {
+      "bytes": 9387768,
+      "path": "engine.bin",
+      "sha256": "68e422df4025305025e4098378a7678e5f8966ef4b7114b225e444f4615223c5"
+    },
+    {
+      "bytes": 217,
+      "path": "engine.json",
+      "sha256": "05ebbad76d18c33fd00d8315c8cd374a3e964a2a92939c69c7e774ea6ab6101f"
+    },
+    {
+      "bytes": 3149,
+      "path": "index.audio.position.worklet.js",
+      "sha256": "347b512529c5dca302093f7b9de6d184dd09d10e9a6fba62cbab098a891b2368"
+    },
+    {
+      "bytes": 7298,
+      "path": "index.audio.worklet.js",
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+    },
+    {
+      "bytes": 5301,
+      "path": "index.html",
+      "sha256": "cdb0716416181dd6a2fd55f1ec2c9e81eeff3ea7f11cbb9ec1dd9c1c72ce97a3"
+    },
+    {
+      "bytes": 317142,
+      "path": "index.js",
+      "sha256": "19eb180d568bb8e17bcf4c72ca034ed3af44deeb90304deefee4e665562dfe31"
+    },
+    {
+      "bytes": 5040048,
+      "path": "index.pck",
+      "sha256": "71aa84da1604e3eb52b71cf7102232699b19108754e61364ea1f5295362a3325"
+    },
+    {
+      "bytes": 21443,
+      "path": "index.png",
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e"
+    }
+  ]
+}

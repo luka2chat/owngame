@@ -1,0 +1,63 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
+import vm from 'node:vm';
+import {webcrypto, createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+const sha = b => createHash('sha256').update(b).digest('hex');
+test('Godot web packing preserves runtime bytes and rejects corrupted downloads', async t => {
+ const root=await fs.mkdtemp(path.join(os.tmpdir(),'godot-pack-'));t.after(()=>fs.rm(root,{recursive:true,force:true}));
+ const input=path.join(root,'input'),output=path.join(root,'output');await fs.mkdir(input);
+ const raw=Buffer.from('original Godot runtime fixture'.repeat(500));
+ for(const n of ['index.js','index.pck','index.png','index.audio.worklet.js','index.audio.position.worklet.js'])await fs.writeFile(path.join(input,n),'fixture');
+ await fs.writeFile(path.join(input,'index.html'),'<script src="index.js"></script>');await fs.writeFile(path.join(input,'index.wasm'),raw);
+ execFileSync(process.execPath,['examples/midnight-beacon/web/pack.mjs',input,output]);
+ const meta=JSON.parse(await fs.readFile(path.join(output,'engine.json')));assert.equal(meta.sha256,sha(raw));
+ const packed=await fs.readFile(path.join(output,'engine.bin'));const loader=await fs.readFile(path.join(output,'engine-loader.js'),'utf8');
+ const setup=(corrupt=false)=>{
+  const calls=[];
+  const context={URL,Request,Response,Blob,DecompressionStream,crypto:webcrypto,console,document:{currentScript:{src:'https://game.test/build/engine-loader.js'}},location:{href:'https://game.test/build/'},fetch:async input=>{
+   const url=String(input);calls.push(url);
+   if(url.endsWith('engine.json'))return Response.json(meta);
+   if(url.endsWith('engine.bin'))return new Response(corrupt?Buffer.from('bad'):packed);
+   return new Response('passthrough');
+  }};
+  vm.createContext(context);vm.runInContext(loader,context);return {context,calls};
+ };
+ const {context,calls}=setup();
+ const [a,b]=await Promise.all([context.fetch('index.wasm'),context.fetch(new Request('https://game.test/build/index.wasm'))]);
+ assert.equal(a.headers.get('content-type'),'application/wasm');assert.deepEqual(Buffer.from(await a.arrayBuffer()),raw);assert.deepEqual(Buffer.from(await b.arrayBuffer()),raw);
+ assert.equal(calls.filter(x=>x.endsWith('engine.bin')).length,1);
+ assert.equal(await (await context.fetch('https://another.test/index.wasm')).text(),'passthrough');
+ await assert.rejects(setup(true).context.fetch('index.wasm'),/integrity/);
+ await assert.rejects(fs.access(path.join(output,'index.wasm')));
+ assert.match(await fs.readFile(path.join(output,'index.html'),'utf8'),/engine-loader.js/);
+});
+test('Godot export includes only reviewed editable inputs and excludes caches',async t=>{
+ const root=await fs.mkdtemp(path.join(os.tmpdir(),'godot-export-'));t.after(()=>fs.rm(root,{recursive:true,force:true}));
+ const put=async(p,v)=>{const f=path.join(root,p);await fs.mkdir(path.dirname(f),{recursive:true});await fs.writeFile(f,v)};
+ const files=['project.godot','main.tscn','game.gd','export_presets.cfg','build-web.sh','web/pack.mjs'];
+ await put('scripts/games/projects.json',JSON.stringify({fixture:{project:'source',kind:'godot',sourceFiles:files}}));
+ for(const n of files)await put('source/'+n,'editable');
+ await put('source/.godot/private','cache');await put('source/private.json','private');
+ const body=Buffer.from('frozen');const inventory=[{bytes:body.length,path:'index.html',sha256:sha(body)}];const version=sha(JSON.stringify(inventory));
+ await put(`library/fixture/${version}/files/index.html`,body);await put(`library/fixture/${version}/delivery.json`,JSON.stringify({entrypoint:'index.html',files:inventory}));
+ await put('catalog.json',JSON.stringify([{id:'fixture',version,title:'Fixture'}]));
+ const program='import importlib.util,pathlib,json,sys\ns=importlib.util.spec_from_file_location("exporter",sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);r=pathlib.Path(sys.argv[2]);m.ROOT=r;m.export(json.loads((r/"catalog.json").read_text()),r/"out",r/"library")';
+ execFileSync('python3',['-c',program,path.resolve('scripts/games/export.py'),root]);
+ for(const n of files)assert.equal(await fs.readFile(path.join(root,'out/examples/fixture',n),'utf8'),'editable');
+ await assert.rejects(fs.access(path.join(root,'out/examples/fixture/.godot')));await assert.rejects(fs.access(path.join(root,'out/examples/fixture/private.json')));
+ const manifest=JSON.parse(await fs.readFile(path.join(root,'out/examples/fixture/SOURCE_MANIFEST.json')));assert.equal(manifest.online_build_sha256,version);
+});
+test('root inventory records reviewed relative Godot links without following external targets',async t=>{
+ const root=await fs.mkdtemp(path.join(os.tmpdir(),'godot-links-'));t.after(()=>fs.rm(root,{recursive:true,force:true}));
+ const git=(...a)=>execFileSync('git',a,{cwd:root,stdio:'pipe'});
+ git('init');await fs.writeFile(path.join(root,'SOURCE_MANIFEST.json'),'{"files":[]}');
+ const folder=path.join(root,'examples/mobile-remakes');await fs.mkdir(folder+'/shared',{recursive:true});await fs.mkdir(folder+'/arc-street');
+ await fs.writeFile(folder+'/shared/game.gd','extends Node');await fs.symlink('../shared',folder+'/arc-street/shared');git('add','.');
+ const run=()=>execFileSync(process.execPath,[path.resolve('scripts/games/refresh-root-manifest.mjs'),root],{stdio:'pipe'});
+ run();const m=JSON.parse(await fs.readFile(path.join(root,'SOURCE_MANIFEST.json')));const link=m.files.find(f=>f.path.endsWith('arc-street/shared'));assert.equal(link.type,'symlink');assert.equal(link.target,'../shared');assert.equal(link.sha256,sha('../shared'));
+ await fs.unlink(folder+'/arc-street/shared');await fs.symlink('/tmp',folder+'/arc-street/shared');assert.throws(run,e=>String(e.stderr).includes('Unreviewed source symlink'));
+});

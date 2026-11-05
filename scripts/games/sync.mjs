@@ -21,7 +21,7 @@ if(repo.startsWith('/Volumes/')) {
   await fs.access(repo,fs.constants.W_OK);
 }
 git('fetch','origin','main');git('switch','--detach','origin/main');
-const branch='release/game-source-'+new Date().toISOString().replace(/[^0-9]/g,'');
+const branch='codex/game-source-'+new Date().toISOString().replace(/[^0-9]/g,'');
 git('switch','-c',branch);
 // Remove legacy tracked interpreter caches before tests can regenerate them.
 git('rm','-r','--ignore-unmatch','scripts/games/__pycache__');
@@ -54,7 +54,7 @@ const packagePath=path.join(repo,'package.json');
 const publicPackage=JSON.parse(await fs.readFile(packagePath));
 Object.assign(publicPackage.scripts,{'web:build':'node scripts/web/build.mjs','web:publish':'node scripts/web/publish.mjs'});
 await fs.writeFile(packagePath,JSON.stringify(publicPackage,null,2)+'\n');
-for(const game of index.games.filter(g=>!retainGames && g.kind!=='unity')) {
+for(const game of index.games.filter(g=>!retainGames && !['unity','godot'].includes(g.kind) && (!selected.length || selected.includes(g.id)))) {
   execFileSync('npm',['install','--package-lock-only','--ignore-scripts','--no-audit','--no-fund'],{cwd:path.join(repo,game.path),stdio:'inherit'});
 }
 execFileSync(process.execPath,[path.join(root,'scripts/games/refresh-manifests.mjs'),repo],{stdio:'inherit'});

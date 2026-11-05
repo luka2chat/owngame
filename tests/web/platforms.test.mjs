@@ -10,7 +10,7 @@ test("every published game explicitly declares supported platforms", async () =>
   for (const game of entries) assert(validPlatforms(game.platforms), game.id);
   assert.deepEqual(entries.slice(0, 3).map(g => g.id), ["azeroth-strike", "tidal-reclaim", "star-letters"]);
   assert.deepEqual(entries.filter(g => supportsPlatform(g, "pc")).map(g => g.id), ["azeroth-strike", "tidal-reclaim", "star-letters"]);
-  assert.equal(entries.filter(g => supportsPlatform(g, "mobile")).length, 17);
+  assert.equal(entries.filter(g => supportsPlatform(g, "mobile")).length, 18);
 });
 
 test("single-platform games stay separate; historical catalogues stay usable", () => {

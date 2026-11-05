@@ -44,6 +44,7 @@ entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/crowd-runne
 entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/arrow-escape/catalog.json"),"utf8")));
 entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/tidal-reclaim/catalog.json"),"utf8")));
 entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/azeroth-strike/catalog.json"),"utf8")));
+entries.push(...JSON.parse(await fs.readFile(path.join(root,"scripts/midnight-beacon/catalog.json"),"utf8")));
 // Lead with the three PC worlds, followed by the existing creative examples.
 // Stable sorting preserves the existing relative order of all remaining games.
 const featuredOrder = new Map([

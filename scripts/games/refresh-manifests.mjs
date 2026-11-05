@@ -9,7 +9,7 @@ for (const game of index.games) {
   if (game.kind !== 'unity') {
     manifest.files=[];
     const walk=async dir=>{await Promise.all((await fs.readdir(dir,{withFileTypes:true})).map(async e=> {
-      if (['node_modules','dist','.git'].includes(e.name)) return;
+      if (['node_modules','dist','.git','.godot','build','__pycache__'].includes(e.name)) return;
 
       const p=path.join(dir,e.name), relative=path.relative(folder,p).split(path.sep).join('/');
       if(e.isSymbolicLink()) throw Error('Unexpected exported symlink: '+relative);

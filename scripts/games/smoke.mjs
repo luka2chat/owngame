@@ -24,7 +24,7 @@ const catalog=await readGameEntries(root);
 try {
   browser=await chromium.launch({headless:true,executablePath:process.env.OWNGAME_CHROME_PATH,args:['--enable-unsafe-swiftshader']});
   const selected=process.env.OWNGAME_GAME_IDS?.split(',');
-  for(const game of index.games.filter(g=>g.kind!=='unity' && (!selected || selected.includes(g.id)))) {
+  for(const game of index.games.filter(g=>!['unity','godot'].includes(g.kind) && (!selected || selected.includes(g.id)))) {
     const pc=catalog.find(e=>e.id===game.id)?.platforms.includes('pc');
     const context=await browser.newContext({...(game.id==='azeroth-strike'?{locale:'zh-CN'}:{}),viewport:pc?{width:1280,height:720}:{width:390,height:844}}),page=await context.newPage();
     const errors=[],missing=[],external=[];

@@ -28,6 +28,10 @@ godot --headless --path . --import
 godot --headless --path . --quit-after 120 --script res://tests/smoke.gd
 ```
 
+For an online delivery, run `node web/pack.mjs build/mobile-web dist` after export (the output directory must be new). It losslessly compresses and verifies the standard runtime, keeping every file below the hosting limit. The browser verifies and decompresses it before starting Godot. Use a modern browser with WebGL 2 and DecompressionStream. The downloadable package uses the same loader.
+
+[Play online](https://owngame.dev/play?game=midnight-beacon). Source CI checks native game rules and packaging integrity; the Web export and browser run are validated separately.
+
 The second command must print `SMOKE PASS`. See [asset provenance](THIRD_PARTY_NOTICES.md) for the two generated art assets and the sound implementation.
 
 ## owngame verification
@@ -53,3 +57,7 @@ Tests: `godot --headless --path . --script res://tests/equipment_test.gd` covers
 Light thumb movements respond quickly; dragging farther moves the stick base with the finger. Lifting the finger stops movement immediately. Drops from enemies killed outside the arena return to the reachable area, and attracted crystals keep chasing even at maximum movement speed. Chests show a guiding light and a dedicated reward reveal with original synthesized quality/equip cues.
 
 Run `GODOT_BIN=/path/to/godot python3 tools/check.py` for imports, rules, equipment and focused input/pickup tests. See [current validation](FEEL-VALIDATION.md) for the exact package and isolated Android first-stage run. Earlier evidence in EQUIPMENT-VALIDATION.md remains historical. The existing phone's Stage 7 continue entry was preserved; iOS and human feel/audio acceptance remain open.
+
+## Game design board
+
+The editable [game-outline.json](./game-outline.json) lives beside the game source. From this directory run `owngame outline` (or `npx @owngame/cli@latest outline .`). The command opens the local canvas; Ctrl+C stops it. Read the design before development and write design changes and actual validation back afterward. JSON and other project file references are relative to this directory. The published snapshot has been reviewed to remove private content.

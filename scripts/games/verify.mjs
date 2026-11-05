@@ -22,19 +22,21 @@ export async function verify(root) {
     await Promise.all(Array.from({length:12},async()=>{while(queue.length) {
       const f=queue.shift();
       if (names.has(f.path) || path.isAbsolute(f.path) || f.path.split('/').some(s => !s || s === '..') ||
-          /(^|\/)(node_modules|Library|Temp|\.git|\.env|\.npmrc|\.DS_Store)(\/|$)/.test(f.path)) throw Error('Unsafe source path: '+f.path);
+          /(^|\/)(node_modules|Library|Temp|\.godot|build|__pycache__|\.git|\.env|\.npmrc|\.DS_Store)(\/|$)/.test(f.path)) throw Error('Unsafe source path: '+f.path);
       names.add(f.path);
       const target = path.join(folder, f.path);
       if ((await fs.lstat(target)).isSymbolicLink()) throw Error('Source symlink: '+target);
       const b=await fs.readFile(target);
       if (b.length !== f.bytes || sha256(b) !== f.sha256) throw Error('Source file hash mismatch: '+game.id+'/'+f.path);
-      if (/\.(?:ts|js|mjs|json|md|html|css)$/.test(f.path) && /\/Users\/|\/Volumes\/|192\.168\.\d+\.\d+|gh[pousr]_[A-Za-z0-9]{30,}|-----BEGIN (?:RSA |OPENSSH )?PRIVATE KEY/.test(b.toString())) throw Error('Private data in public source: '+game.id+'/'+f.path);
+      if (/\.(?:ts|js|mjs|json|md|html|css|gd|godot|cfg|sh|py)$/.test(f.path) && /\/Users\/|\/Volumes\/|192\.168\.\d+\.\d+|gh[pousr]_[A-Za-z0-9]{30,}|-----BEGIN (?:RSA |OPENSSH )?PRIVATE KEY/.test(b.toString())) throw Error('Private data in public source: '+game.id+'/'+f.path);
       count++; bytes+=b.length;
     }}));
     if (!names.has('game-outline.json') || !names.has('AGENTS.md')) throw Error('Missing project-local design board: '+game.id);
     validatePublicOutline(JSON.parse(await fs.readFile(path.join(folder,'game-outline.json'),'utf8')));
-    for (const name of ['README.md','LICENSE','THIRD_PARTY_NOTICES.md','package.json']) if (!names.has(name)) throw Error('Missing public documentation: '+game.id+'/'+name);
-    if (game.kind !== 'unity') {
+    for (const name of ['README.md','LICENSE','THIRD_PARTY_NOTICES.md',...(game.kind==='godot'?[]:['package.json'])]) if (!names.has(name)) throw Error('Missing public documentation: '+game.id+'/'+name);
+    if (game.kind === 'godot') {
+      for (const name of ['project.godot','main.tscn','game.gd','export_presets.cfg','build-web.sh','web/pack.mjs','web/engine-loader.js']) if (!names.has(name)) throw Error('Missing editable Godot source/build: '+game.id+'/'+name);
+    } else if (game.kind !== 'unity') {
       for (const name of ['game.json','build.mjs','serve.mjs','package-lock.json']) if (!names.has(name)) throw Error('Missing portable build: '+game.id+'/'+name);
       if (game.kind !== 'static' && ![...names].some(n => n.startsWith('src/'))) throw Error('Editable source missing: '+game.id);
     }

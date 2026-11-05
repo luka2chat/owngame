@@ -1,0 +1,15 @@
+[
+  {
+    "id": "midnight-beacon",
+    "title": "午夜灯塔",
+    "subtitle": "MIDNIGHT BEACON",
+    "tag": "海雾生存 · 无尽装备构筑",
+    "art": "midnight-beacon",
+    "cover": "/art/midnight-beacon.png",
+    "category": "动作",
+    "responsiveViewport": true,
+    "viewportHeight": 640,
+    "description": "单手守住海雾中的最后一盏灯。自动攻击、无尽关卡、装备宝箱和持续成长。",
+    "instructions": "手机竖屏，按住战场拖动即可移动，松手停止，灯笼自动攻击。拾取光晶升级；每关45秒后出现守关巨兽，击败后拾取宝箱，查看并穿戴装备，再选择强化进入下一关。GEAR打开装备背包。关闭后可从当前关的检查点继续；失败或新旅程会重置本局构筑。首次加载需下载约15 MB，建议使用新版浏览器。"
+  }
+]
