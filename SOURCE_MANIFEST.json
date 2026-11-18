@@ -1503,6 +1503,16 @@
       "sha256": "89e97effd078917c930a61af2cfd6265ddeba54b4a85e12a49b27682a7dd4f96"
     },
     {
+      "path": "docs/images/arrow-escape-preview.gif",
+      "bytes": 180665,
+      "sha256": "9b4d6c8cdbf7017cff4389054e0fff9c35818fc4b91377a24a413364a30ca463"
+    },
+    {
+      "path": "docs/images/azeroth-strike-preview.webp",
+      "bytes": 642228,
+      "sha256": "893b2a46e14cd39ba14d3358b745293f16157fb0c2dae79c416a115d1c525d16"
+    },
+    {
       "path": "docs/images/moonlit-lines.png",
       "bytes": 359719,
       "sha256": "2e48923f5479f97fef8709181f6fa47d527f7cca636c6108d6ed200bb8e6a7bc"
@@ -17731,9 +17741,14 @@
       "sha256": "2931bad332fffef22022872349fb69cc3c58004bd7e5da441affd18314d31943"
     },
     {
+      "path": "README.en.md",
+      "bytes": 6146,
+      "sha256": "ce953be457113b0f59dd6cf813878f98e36b493f0a42942e1f574ce61678867c"
+    },
+    {
       "path": "README.md",
-      "bytes": 24685,
-      "sha256": "482aeadd8e9dc26365e8359740047ac2b596c5d03381c798740c9799e5ef5c20"
+      "bytes": 6044,
+      "sha256": "d52a967fd5527640e6258155794dda65b7ed29594491e311ac51fd19b1b7e32a"
     },
     {
       "path": "scripts/android/build.mjs",
